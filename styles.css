@@ -381,7 +381,7 @@ h3 {
 }
 
 .hero h1 {
-  max-width: 10.5em;
+  max-width: 13em;
 }
 
 .hero .lead {
@@ -421,6 +421,7 @@ h3 {
   border-radius: 16px;
   box-shadow: var(--shadow);
   overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .product-bar {
@@ -555,6 +556,145 @@ h3 {
   color: var(--muted);
 }
 
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .product:hover .product-frame {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 56px rgba(48, 45, 36, 0.14);
+  }
+}
+
+/* Nightly email
+   ========================================================================== */
+
+.nightly-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: center;
+}
+
+.nightly-copy h2 {
+  max-width: 11em;
+}
+
+.mail {
+  margin: 0;
+  position: relative;
+}
+
+.mail::before {
+  content: "";
+  position: absolute;
+  inset: 18px -10px -14px 18px;
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  z-index: 0;
+  transform: rotate(1.4deg);
+}
+
+.mail-sheet {
+  position: relative;
+  z-index: 1;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .mail:hover .mail-sheet {
+    transform: translateY(-4px) rotate(-0.4deg);
+    box-shadow: 0 22px 56px rgba(48, 45, 36, 0.12);
+  }
+}
+
+.mail-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.mail-bar .pill {
+  background: rgba(251, 248, 241, 0.14);
+  color: var(--cream);
+}
+
+.mail-head {
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.mail-label {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mail-subject {
+  margin: 4px 0 6px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.mail-from {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.mail-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+}
+
+.mail-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 18px;
+  border-top: 1px solid #ebe8e0;
+  font-weight: 600;
+}
+
+.mail-list li:first-child {
+  border-top: 0;
+}
+
+.mail-list li span:last-child {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.mail-print {
+  margin: 0;
+  padding: 12px 18px 16px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.mail .caption {
+  position: relative;
+  z-index: 1;
+  padding: 0 4px;
+}
+
 /* Sections
    ========================================================================== */
 
@@ -615,6 +755,16 @@ section {
   grid-row: 1 / span 2;
 }
 
+.sequence li {
+  transition: background 0.2s ease;
+}
+
+@media (hover: hover) {
+  .sequence li:hover {
+    background: rgba(232, 238, 228, 0.4);
+  }
+}
+
 .sequence h3 {
   font-family: var(--font-display);
   font-weight: 500;
@@ -626,6 +776,7 @@ section {
   margin: 0;
   color: var(--muted);
   overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 @media (min-width: 801px) {
@@ -1061,6 +1212,27 @@ textarea {
     opacity: 1;
     transform: none;
   }
+
+  .js .mail .mail-list li {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .js .mail.visible .mail-list li,
+  .js .mail.reveal.visible .mail-list li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .mail.visible .mail-list li:nth-child(1),
+  .js .mail.reveal.visible .mail-list li:nth-child(1) { transition-delay: 0.08s; }
+  .js .mail.visible .mail-list li:nth-child(2),
+  .js .mail.reveal.visible .mail-list li:nth-child(2) { transition-delay: 0.14s; }
+  .js .mail.visible .mail-list li:nth-child(3),
+  .js .mail.reveal.visible .mail-list li:nth-child(3) { transition-delay: 0.2s; }
+  .js .mail.visible .mail-list li:nth-child(4),
+  .js .mail.reveal.visible .mail-list li:nth-child(4) { transition-delay: 0.26s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1077,6 +1249,8 @@ textarea {
   .btn,
   .brand,
   .forecast td,
+  .product-frame,
+  .mail-sheet,
   input,
   textarea,
   .nav-toggle span {
@@ -1095,7 +1269,8 @@ textarea {
   .hero-grid,
   .contact-grid,
   .partner-inner,
-  .split-notes {
+  .split-notes,
+  .nightly-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
@@ -1104,7 +1279,8 @@ textarea {
     max-width: none;
   }
 
-  .product::before {
+  .product::before,
+  .mail::before {
     display: none;
   }
 

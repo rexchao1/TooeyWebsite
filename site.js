@@ -111,7 +111,7 @@
       submit.textContent = "Send";
       submit.disabled = false;
       if (note) {
-        note.textContent = "Got it. We'll write back from tooeyteam@gmail.com.";
+        note.textContent = "Thank you. We will write back from tooeyteam@gmail.com.";
         note.classList.add("is-ok");
       }
       form.reset();
@@ -135,7 +135,7 @@
         submit.textContent = "Send";
         submit.disabled = false;
         if (note) {
-          note.textContent = "Got it. We'll write back from tooeyteam@gmail.com.";
+          note.textContent = "Thank you. We will write back from tooeyteam@gmail.com.";
           note.classList.add("is-ok");
         }
       })
@@ -144,7 +144,7 @@
         submit.disabled = false;
         if (note) {
           note.textContent =
-            "That didn't go through. Email tooeyteam@gmail.com directly.";
+            "The message did not go through. Email tooeyteam@gmail.com directly.";
           note.classList.add("is-err");
         }
       });

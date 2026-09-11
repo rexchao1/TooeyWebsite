@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tooey</title>
-  <meta name="description" content="Tooey forecasts how many of each menu item a restaurant will sell, from that restaurant's own sales history." />
+  <meta name="description" content="Tooey forecasts item-level sales for independent restaurants and emails tomorrow's counts every night." />
   <meta property="og:title" content="Tooey" />
-  <meta property="og:description" content="How many of each dish, before you prep. Forecasts from your own sales history." />
+  <meta property="og:description" content="Know what your restaurant will sell before the day begins. Item-level forecasts are emailed every night." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#fbf8f1" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -25,7 +25,6 @@
       <nav id="site-nav" class="site-nav" aria-label="Main">
         <a href="how.html">How it works</a>
         <a href="about.html">About</a>
-        <a href="#contact">Contact</a>
         <a class="btn btn-primary nav-cta" href="#contact">Talk to us</a>
       </nav>
     </div>
@@ -35,8 +34,8 @@
     <section class="hero" id="top">
       <div class="container hero-grid">
         <div>
-          <h1>How many of each dish, before you prep.</h1>
-          <p class="lead">Tooey forecasts each item from your restaurant's own sales history. You still run the kitchen. You get a count instead of a guess.</p>
+          <h1>Know what your restaurant will sell before the day begins.</h1>
+          <p class="lead">Tooey forecasts item-level sales from your own history. You get a number for each dish, not a guess for the whole day.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Talk to us</a>
             <a class="btn btn-ghost" href="#how">How it works</a>
@@ -101,96 +100,83 @@
     <section id="how" class="band-cream">
       <div class="container">
         <div class="section-head reveal">
-          <h2>Don't change the kitchen yet.</h2>
-          <p class="lead">We start with sales. After a week, you decide if the numbers are close enough to go further.</p>
+          <h2>After a week of onboarding, you get tomorrow's list every night.</h2>
+          <p class="lead">Tooey pulls from your POS every night and emails a per-item forecast for the next day. You print the list, then decide if the numbers are any good.</p>
         </div>
         <ol class="sequence">
           <li class="reveal">
-            <h3>Send sales history.</h3>
-            <p>Item-level, from the POS you already have. A spreadsheet is fine. Covers help if you keep them.</p>
+            <h3>Onboarding takes about a week.</h3>
+            <p>We connect to the POS you already use and set up a collector that pulls sales every night. You do not send us a spreadsheet to get started.</p>
           </li>
           <li class="reveal">
-            <h3>Tooey forecasts a week.</h3>
-            <p>You don't change how you prep or buy. You just look at a count next to each dish.</p>
+            <h3>Tomorrow's forecast is emailed every night.</h3>
+            <p>Each item gets a count for the next day. You print the email and hang it where you prep.</p>
           </li>
           <li class="reveal">
-            <h3>Compare it to what sold.</h3>
-            <p>If the counts are close enough, you say so. If they aren't, we don't go further.</p>
+            <h3>You decide if the numbers are any good.</h3>
+            <p>Compare the forecast to what actually sold for a week, or we can backtest on your history. You decide whether to keep going.</p>
           </li>
           <li class="reveal">
-            <h3>Prep and purchasing come after.</h3>
-            <p>Recipes, inventory, vendors. Optional, and only once the forecast has earned it.</p>
+            <h3>Inventory and purchasing come later.</h3>
+            <p>The first job is the per-item count, so prep is tighter and there is less waste. Inventory and more efficient purchasing come next.</p>
           </li>
         </ol>
-        <p class="section-more reveal"><a class="text-link" href="how.html">The week in more detail</a></p>
+        <p class="section-more reveal"><a class="text-link" href="how.html">Read how it works</a></p>
       </div>
     </section>
 
-    <section id="why">
-      <div class="container">
-        <div class="compare-intro reveal">
-          <h2>Your POS already has yesterday.</h2>
-          <p class="lead">It will not tell you how many Caesar salads to cut at eight in the morning.</p>
+    <section id="nightly">
+      <div class="container nightly-grid">
+        <div class="nightly-copy reveal">
+          <h2>Tomorrow's forecast lands in the inbox tonight.</h2>
+          <p class="lead">That nightly email is what the kitchen uses. It is a list you can print, with a number next to each dish.</p>
         </div>
-        <div class="compare-wrap reveal">
-          <table class="compare">
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Last Tuesday</th>
-                <th>Tomorrow</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Cheeseburger</td>
-                <td>38 sold</td>
-                <td>42</td>
-              </tr>
-              <tr>
-                <td>Chicken sandwich</td>
-                <td>29 sold</td>
-                <td>31</td>
-              </tr>
-              <tr>
-                <td>Caesar salad</td>
-                <td>25 sold</td>
-                <td>24</td>
-              </tr>
-              <tr>
-                <td>House pasta</td>
-                <td>16 sold</td>
-                <td>18</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="caption">Sample numbers. Same Tuesday as the card above.</p>
-        </div>
+        <figure class="mail reveal">
+          <div class="mail-sheet" aria-label="Sample nightly forecast email">
+            <div class="mail-bar">
+              <span>Tonight's email</span>
+              <span class="pill">Sample</span>
+            </div>
+            <div class="mail-head">
+              <p class="mail-label">Subject</p>
+              <p class="mail-subject">Tomorrow's forecast</p>
+              <p class="mail-from">Tooey · every night after the POS pull</p>
+            </div>
+            <ul class="mail-list">
+              <li><span>Cheeseburger</span><span>42</span></li>
+              <li><span>Chicken sandwich</span><span>31</span></li>
+              <li><span>Caesar salad</span><span>24</span></li>
+              <li><span>House pasta</span><span>18</span></li>
+            </ul>
+            <p class="mail-print">Print this list and hang it where you prep.</p>
+          </div>
+          <figcaption class="caption">Sample items. This is the email layout, not a restaurant we work with.</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="partner band-sage" id="partners">
       <div class="container partner-inner reveal">
         <div>
-          <h2>A couple of restaurants. That's it.</h2>
-          <p>We're working with a couple of restaurants. Tooey is free for them, for a little while.</p>
+          <h2>Tooey is free for restaurant partners.</h2>
+          <p>We are working with a couple of restaurants. What we need is time to set up the nightly collector, and honest feedback once the emails start.</p>
         </div>
-        <a class="btn btn-primary" href="#contact">Write us</a>
+        <a class="btn btn-primary" href="#contact">Talk to us</a>
       </div>
     </section>
 
     <section class="about-band">
       <div class="container reveal">
-        <p>Tooey was started by a group of students. Guesswork is expensive. That's why this exists. <a class="text-link" href="about.html">About the team</a></p>
+        <p>Tooey was started by university students who saw kitchens guessing the prep. Guesswork is expensive, and that is why this exists. <a class="text-link" href="about.html">About the team</a></p>
       </div>
     </section>
 
     <section id="contact" class="contact">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <h2>Write us.</h2>
-          <p class="lead">Name, restaurant, whatever you want us to know.</p>
-          <p class="contact-aside">If you want a week of forecasts, say so. We read everything that comes in at <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
+          <h2>Talk to us.</h2>
+          <p class="lead">Send your name, your restaurant, and the best way to reach you. If you want to come on as a restaurant partner, say so in the message.</p>
+          <p class="contact-aside">A person reads this at <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
         </div>
         <form id="contactForm">
           <input type="hidden" name="_subject" value="New Tooey inquiry" />
@@ -213,16 +199,16 @@
               <input id="email" name="email" type="email" required autocomplete="email" />
             </div>
             <div class="field">
-              <label for="phone">Phone, if you like</label>
+              <label for="phone">Phone</label>
               <input id="phone" name="phone" type="tel" autocomplete="tel" />
             </div>
           </div>
           <div class="field">
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Days you run, what you want to try, anything that helps."></textarea>
+            <textarea id="message" name="message" placeholder="POS you use, days you are open, or questions about onboarding."></textarea>
           </div>
           <button class="btn btn-primary" type="submit" id="contactSubmit">Send</button>
-          <p class="form-note" id="contactNote">Goes to tooeyteam@gmail.com. <a href="privacy.html">How we handle it</a></p>
+          <p class="form-note" id="contactNote">Goes to tooeyteam@gmail.com. <a href="privacy.html">Privacy</a></p>
         </form>
       </div>
     </section>
@@ -238,7 +224,7 @@
         <a href="how.html">How it works</a>
         <a href="about.html">About</a>
         <a href="privacy.html">Privacy</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact">Talk to us</a>
       </nav>
     </div>
   </footer>
