@@ -4,9 +4,9 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
+		"dev": "python3 -m http.server 5173",
+		"build": "mkdir -p dist && cp index.html dist/index.html",
+		"preview": "python3 -m http.server 4173 --directory dist",
 		"prepare": "svelte-kit sync || echo ''"
 	},
 	"devDependencies": {
