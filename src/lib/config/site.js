@@ -8,7 +8,7 @@
 export const CONTACT_EMAIL = 'hello@tooey.co';
 export const SIGNUP_URL = '#hook';
 export const LOGIN_URL = '#';
-export const SITE_URL = 'https://tooey.co';
+export const SITE_URL = 'https://usetooey.com';
 
 export const meta = {
 	title: 'Tooey. Prep the right amount, every day.',
