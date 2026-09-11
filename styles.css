@@ -939,22 +939,6 @@ section {
   color: #c6c9c2;
 }
 
-.contact-aside {
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-  color: #b9bdb5;
-}
-
-.contact-aside a {
-  color: #dfe7d9;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.contact-aside a:hover {
-  color: var(--white);
-}
-
 form {
   background: var(--white);
   color: var(--ink);
