@@ -23,7 +23,6 @@
   }
 
   if (toggle && nav) {
-    if (/(?:^|[?&])nav=open(?:&|$)/.test(location.search)) setOpen(true);
     toggle.addEventListener("click", function () {
       setOpen(!header.classList.contains("is-open"));
     });
@@ -102,6 +101,16 @@
     }
 
     const data = Object.fromEntries(new FormData(form).entries());
+    if (data._honey) {
+      submit.textContent = "Send";
+      submit.disabled = false;
+      if (note) {
+        note.textContent = "Got it. We'll write back from tooeyteam@gmail.com.";
+        note.classList.add("is-ok");
+      }
+      form.reset();
+      return;
+    }
     delete data._honey;
 
     fetch("https://formsubmit.co/ajax/tooeyteam@gmail.com", {
