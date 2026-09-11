@@ -25,6 +25,7 @@
 	font-weight: 600;
 	font-display: swap;
 }
+
 :root {
 	/* color */
 	--moss: #606c38;
@@ -41,13 +42,15 @@
 	--font-body: 'IBM Plex Sans', system-ui, sans-serif;
 
 	/* shape */
-	--radius-card: 20px;
-	--radius-pill: 999px;
+	--radius-card: 12px;
+	--radius-btn: 8px;
+	--radius-pill: 6px;
 
 	/* the hero screenshot is 1030x579 (aspect .562); the dark band cuts it in
 	   half, so overlap = half the rendered image height */
 	--shot-width: min(1030px, 92vw);
 	--half-shot: calc(var(--shot-width) * 0.281);
+	--header-h: 4.25rem;
 }
 
 *,
@@ -60,6 +63,12 @@ html {
 	scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
 body {
 	margin: 0;
 	background: var(--bg);
@@ -68,6 +77,11 @@ body {
 	font-size: 1.0625rem;
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
+}
+
+::selection {
+	background: var(--sage);
+	color: var(--ink);
 }
 
 h1,
@@ -94,6 +108,36 @@ img {
 	display: block;
 }
 
+:focus-visible {
+	outline: 2px solid var(--moss);
+	outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+	body:has(dialog[open]) header {
+		visibility: hidden;
+	}
+}
+
+.skip {
+	position: absolute;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: 100;
+	background: var(--ink);
+	color: var(--bg);
+	padding: 0.5rem 0.9rem;
+	border-radius: var(--radius-btn);
+	font-family: var(--font-display);
+	font-weight: 600;
+	font-size: 0.9rem;
+	transform: translateY(-150%);
+}
+
+.skip:focus {
+	transform: none;
+}
+
 .container {
 	width: min(1180px, 92vw);
 	margin-inline: auto;
@@ -101,21 +145,22 @@ img {
 
 .section {
 	padding-block: clamp(72px, 9vw, 128px);
+	scroll-margin-top: var(--header-h);
 }
 
 /* section eyebrow label */
 .eyebrow {
 	font-family: var(--font-display);
-	font-size: 0.8rem;
-	font-weight: 700;
-	letter-spacing: 0.14em;
-	text-transform: uppercase;
+	font-size: 0.95rem;
+	font-weight: 600;
+	letter-spacing: 0;
+	text-transform: none;
 	color: var(--moss);
 }
 
 .section-title {
 	font-size: clamp(2.1rem, 4.4vw, 3.4rem);
-	margin-top: 0.5rem;
+	margin-top: 0.45rem;
 }
 
 /* buttons */
@@ -124,19 +169,13 @@ img {
 	align-items: center;
 	gap: 0.55rem;
 	border: none;
-	border-radius: var(--radius-pill);
-	padding: 0.95rem 1.7rem;
+	border-radius: var(--radius-btn);
+	padding: 0.9rem 1.45rem;
 	font-family: var(--font-display);
 	font-size: 1.02rem;
 	font-weight: 700;
 	cursor: pointer;
-	transition:
-		background 0.18s ease,
-		transform 0.18s ease;
-}
-
-.btn:active {
-	transform: scale(0.98);
+	transition: background 0.15s ease;
 }
 
 .btn-moss {

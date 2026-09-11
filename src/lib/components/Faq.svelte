@@ -1,5 +1,8 @@
 <script>
-	import { faq } from '$lib/config/site.js';
+	import { faq, features } from '$lib/config/site.js';
+
+	const ticket = features.cards.find((c) => c.kind === 'compare')?.tooey ?? { rows: [] };
+	const why = features.cards.find((c) => c.kind === 'dark')?.quote ?? '';
 </script>
 
 <section class="section" id="faq">
@@ -9,14 +12,22 @@
 
 		<div class="cols">
 			<div class="visual">
-				<div class="visual-card">
-					<img
-						src="/app-screenshot.png"
-						alt="Tooey prep plan dashboard"
-						loading="lazy"
-					/>
-				</div>
-				<p class="caption">{faq.visualCaption}</p>
+				<aside class="ticket" aria-label={faq.ticketCaption}>
+					<p class="ticket-head">
+						<span>{faq.ticketEyebrow}</span>
+						<span>Prep list</span>
+					</p>
+					<ul>
+						{#each ticket.rows as row (row.item)}
+							<li>
+								<span>{row.item}</span>
+								<strong>{row.qty}</strong>
+							</li>
+						{/each}
+					</ul>
+					<p class="why">{why}</p>
+				</aside>
+				<p class="caption">{faq.ticketCaption}</p>
 			</div>
 
 			<div class="list">
@@ -60,20 +71,61 @@
 		}
 	}
 
-	.visual-card {
-		background: var(--sage);
+	.ticket {
+		background: #fff;
+		border: 1px solid var(--line);
 		border-radius: var(--radius-card);
-		padding: 1.1rem;
+		padding: 0 0 1.2rem;
 		overflow: hidden;
 	}
 
-	.visual-card img {
-		width: 100%;
-		height: 380px;
-		object-fit: cover;
-		object-position: 50% 0%;
-		border-radius: 12px;
-		border: 1px solid var(--line);
+	.ticket-head {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		font-family: var(--font-display);
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--sage);
+		background: var(--moss-dark);
+		padding: 0.75rem 1.4rem;
+	}
+
+	.ticket ul {
+		list-style: none;
+		margin: 0.9rem 1.4rem 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.7rem;
+	}
+
+	.ticket li {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		font-size: 1.05rem;
+		font-variant-numeric: tabular-nums;
+		border-bottom: 1px solid var(--line);
+		padding-bottom: 0.7rem;
+	}
+
+	.ticket li:last-of-type {
+		border-bottom: none;
+	}
+
+	.ticket strong {
+		font-family: var(--font-display);
+		font-weight: 700;
+	}
+
+	.why {
+		margin: 0.4rem 1.4rem 0;
+		padding-top: 0.85rem;
+		border-top: 1px solid var(--line);
+		font-family: var(--font-display);
+		font-size: 0.95rem;
+		color: var(--moss-deep);
 	}
 
 	.caption {
@@ -92,7 +144,7 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 1.5rem;
-		padding-block: 1.35rem;
+		padding-block: 1.3rem;
 		cursor: pointer;
 		list-style: none;
 		font-family: var(--font-display);
@@ -120,6 +172,12 @@
 
 	details[open] .icon {
 		transform: rotate(45deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.icon {
+			transition: none;
+		}
 	}
 
 	.answer {

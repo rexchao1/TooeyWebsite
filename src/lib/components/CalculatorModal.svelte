@@ -1,6 +1,6 @@
 <script>
 	import { INPUTS, estimate, fmtUSD } from '$lib/config/calculator.js';
-	import { CONTACT_EMAIL } from '$lib/config/site.js';
+	import { CONTACT_EMAIL, calculator } from '$lib/config/site.js';
 
 	let dialog; // <dialog> element
 
@@ -19,12 +19,14 @@
 	}
 </script>
 
-<dialog bind:this={dialog} onclick={onBackdropClick}>
+<dialog bind:this={dialog} onclick={onBackdropClick} aria-labelledby="calc-title">
 	<div class="inner">
-		<button class="close" onclick={() => dialog.close()} aria-label="Close">&times;</button>
+		<button type="button" class="close" onclick={() => dialog.close()} aria-label="Close"
+			>&times;</button
+		>
 
-		<p class="eyebrow">Your kitchen, roughly</p>
-		<h3>Three numbers you already know.</h3>
+		<p class="eyebrow">{calculator.eyebrow}</p>
+		<h3 id="calc-title">{calculator.title}</h3>
 
 		<form method="dialog">
 			<label>
@@ -71,21 +73,15 @@
 		</form>
 
 		<div class="result">
-			<p class="result-label">Restaurants like yours typically leave</p>
+			<p class="result-label">{calculator.resultLead}</p>
 			<p class="range">{fmtUSD.format(result.low)}&ndash;{fmtUSD.format(result.high)}</p>
-			<p class="result-label">on the table every month.</p>
+			<p class="result-label">{calculator.resultTail}</p>
 		</div>
 
-		<p class="honest">
-			That’s the industry estimate. Your real number depends on your menu — so we measure it on
-			your own sales history, free, before you pay anything.
-		</p>
+		<p class="honest">{calculator.honest}</p>
 
-		<a
-			class="btn btn-moss backtest"
-			href={`mailto:${CONTACT_EMAIL}?subject=Free%20backtest`}
-		>
-			Run the free backtest <span class="arrow">&rarr;</span>
+		<a class="btn btn-moss backtest" href={`mailto:${CONTACT_EMAIL}?subject=Free%20backtest`}>
+			{calculator.cta} <span class="arrow">&rarr;</span>
 		</a>
 	</div>
 </dialog>
@@ -93,16 +89,30 @@
 <style>
 	dialog {
 		border: none;
-		border-radius: 24px;
+		border-radius: var(--radius-card);
 		padding: 0;
 		width: min(520px, 92vw);
+		max-height: min(92vh, 760px);
+		overflow: auto;
 		background: var(--bg);
 		color: var(--ink);
+		box-shadow: 0 24px 60px rgba(11, 11, 10, 0.28);
+	}
+
+	@media (max-width: 560px) {
+		dialog {
+			width: min(520px, 94vw);
+			max-height: calc(100dvh - 1.5rem);
+		}
+
+		.inner {
+			padding: 1.3rem 1.2rem 1.2rem;
+			gap: 0.85rem;
+		}
 	}
 
 	dialog::backdrop {
 		background: rgba(11, 11, 10, 0.55);
-		backdrop-filter: blur(3px);
 	}
 
 	.inner {
@@ -110,7 +120,7 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 1.1rem;
+		gap: 1.05rem;
 	}
 
 	.close {
@@ -137,14 +147,14 @@
 	form {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 1.05rem;
 		margin-top: 0.3rem;
 	}
 
 	label {
 		display: flex;
 		flex-direction: column;
-		gap: 0.35rem;
+		gap: 0.4rem;
 	}
 
 	.label-row {
@@ -155,18 +165,53 @@
 
 	.label-row strong {
 		font-family: var(--font-display);
+		font-variant-numeric: tabular-nums;
 	}
 
 	input[type='range'] {
-		accent-color: var(--moss);
+		appearance: none;
 		width: 100%;
+		height: 24px;
+		background: transparent;
+		accent-color: var(--moss);
+	}
+
+	input[type='range']::-webkit-slider-runnable-track {
+		height: 2px;
+		background: var(--line);
+	}
+
+	input[type='range']::-webkit-slider-thumb {
+		appearance: none;
+		width: 18px;
+		height: 18px;
+		margin-top: -8px;
+		border-radius: 50%;
+		background: var(--moss);
+		cursor: pointer;
+		border: none;
+	}
+
+	input[type='range']::-moz-range-thumb {
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		background: var(--moss);
+		cursor: pointer;
+		border: none;
+	}
+
+	input[type='range']::-moz-range-track {
+		height: 2px;
+		background: var(--line);
+		border: none;
 	}
 
 	.result {
 		text-align: center;
 		background: var(--sage);
-		border-radius: 16px;
-		padding: 1.2rem 1rem;
+		border-radius: 8px;
+		padding: 1.15rem 1rem;
 	}
 
 	.result-label {
@@ -181,6 +226,7 @@
 		letter-spacing: -0.02em;
 		color: var(--moss-deep);
 		line-height: 1.15;
+		font-variant-numeric: tabular-nums;
 	}
 
 	.honest {

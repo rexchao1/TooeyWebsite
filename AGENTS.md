@@ -20,11 +20,9 @@ width; there is nothing else to hide behind.
 
 ## Before you write anything
 
-- **Changing words** — headline, features, FAQ, footer, contact address:
-  edit `src/lib/config/site.js` and nothing else. Every section component
-  reads it. The exception is `CalculatorModal.svelte`, which still holds its
-  own labels; move a string you touch there into `site.js` rather than
-  editing it in place, and leave the rest alone.
+- **Changing words** — headline, features, FAQ, footer, contact address,
+  calculator labels: edit `src/lib/config/site.js` and nothing else. Every
+  section component reads it.
 - **Changing the calculator's numbers**: `src/lib/config/calculator.js` holds
   both the assumptions and the arithmetic. The figure it shows a restaurant
   owner is a claim, so change it only with a reason you can state.

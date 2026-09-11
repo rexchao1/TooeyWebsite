@@ -6,18 +6,24 @@
 	import Hook from '$lib/components/Hook.svelte';
 	import Faq from '$lib/components/Faq.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { meta, SITE_URL } from '$lib/config/site.js';
 </script>
 
 <svelte:head>
-	<title>Tooey — Prep the right amount. Every day.</title>
-	<meta
-		name="description"
-		content="AI forecasts how much of each item you'll sell — then hands your kitchen a prep list. Built for independent restaurants."
-	/>
+	<title>{meta.title}</title>
+	<meta name="description" content={meta.description} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={meta.title} />
+	<meta property="og:description" content={meta.description} />
+	<meta property="og:url" content={SITE_URL} />
+	<meta property="og:image" content="{SITE_URL}/app-screenshot.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={meta.title} />
+	<meta name="twitter:description" content={meta.description} />
 </svelte:head>
 
 <Nav />
-<main>
+<main id="main">
 	<Hero />
 	<Credibility />
 	<Features />
