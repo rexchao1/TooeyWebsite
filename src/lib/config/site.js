@@ -5,7 +5,7 @@
 
 // Where "Contact" and the calculator's backtest CTA point. Swap for a real
 // address / signup URL when ready.
-export const CONTACT_EMAIL = 'hello@tooey.co';
+export const CONTACT_EMAIL = 'team@usetooey.com';
 export const SIGNUP_URL = '#hook';
 export const LOGIN_URL = '#';
 export const SITE_URL = 'https://usetooey.com';
