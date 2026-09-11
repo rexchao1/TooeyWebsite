@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "python3 -m http.server 5173",
-		"build": "mkdir -p dist && cp index.html dist/index.html",
+		"build": "mkdir -p dist/fonts && cp index.html how.html about.html privacy.html styles.css site.js logo.png favicon.svg dist/ && cp fonts/* dist/fonts/",
 		"preview": "python3 -m http.server 4173 --directory dist",
 		"prepare": "svelte-kit sync || echo ''"
 	},
