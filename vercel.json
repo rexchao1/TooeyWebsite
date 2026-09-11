@@ -1,6 +1,6 @@
 {
 	"framework": null,
 	"installCommand": "echo skip",
-	"buildCommand": "mkdir -p dist && cp index.html dist/index.html",
+	"buildCommand": "mkdir -p dist/fonts && cp index.html how.html about.html privacy.html styles.css site.js logo.png favicon.svg dist/ && cp fonts/* dist/fonts/",
 	"outputDirectory": "dist"
 }

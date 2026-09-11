@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<rect width="64" height="64" rx="14" fill="#606c38"/>
-	<text x="32" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#faf8f2">t</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#f4efe4"/>
+  <g transform="translate(16 18) rotate(-28)">
+    <ellipse cx="0" cy="-7.2" rx="4.4" ry="5.4" fill="#b98b62"/>
+    <rect x="-1.35" y="-3" width="2.7" height="13.5" rx="1.35" fill="#b98b62"/>
+    <path d="M1.6-9.2c2.4-3.6 6.4-3.2 7.2.2-2.2.2-3.8 1.4-4.6 3.6-1.4-.6-2.2-1.8-2.6-3.8z" fill="#a8b79f"/>
+    <path d="M3.2-10.4c1.1-1.8 2.8-2.2 3.6-.4-1.2.1-2 .8-2.4 1.8-.6-.3-1-.8-1.2-1.4z" fill="#596955"/>
+  </g>
 </svg>
