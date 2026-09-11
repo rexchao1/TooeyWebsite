@@ -53,7 +53,7 @@
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
-		gap: 1.1rem;
+		gap: 1rem;
 		margin-top: clamp(2.2rem, 4vw, 3.4rem);
 	}
 
@@ -62,10 +62,10 @@
 		background: #fff;
 		border: 1px solid var(--line);
 		border-radius: var(--radius-card);
-		padding: clamp(1.5rem, 2.4vw, 2.2rem);
+		padding: clamp(1.4rem, 2.4vw, 2rem);
 		display: flex;
 		flex-direction: column;
-		gap: 0.85rem;
+		gap: 0.8rem;
 	}
 
 	@media (min-width: 800px) {
@@ -83,7 +83,7 @@
 	}
 
 	.card h3 {
-		font-size: 1.45rem;
+		font-size: 1.4rem;
 		font-weight: 700;
 		letter-spacing: -0.015em;
 	}
@@ -108,12 +108,12 @@
 
 	.big-quote {
 		font-family: var(--font-display);
-		font-size: 1.35rem;
+		font-size: 1.28rem;
 		font-weight: 500;
 		color: var(--sage);
 		background: color-mix(in srgb, var(--moss) 30%, transparent);
-		border-radius: 12px;
-		padding: 0.8rem 1.1rem;
+		border-radius: 8px;
+		padding: 0.75rem 1rem;
 		align-self: flex-start;
 	}
 
@@ -121,7 +121,7 @@
 	.compare {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 0.9rem;
+		gap: 0.75rem;
 		margin-top: auto;
 	}
 
@@ -132,8 +132,8 @@
 	}
 
 	.col {
-		border-radius: 14px;
-		padding: 1rem 1.1rem;
+		border-radius: 8px;
+		padding: 0.95rem 1rem;
 	}
 
 	.col.them {
@@ -147,10 +147,8 @@
 
 	.col-label {
 		font-family: var(--font-display);
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		font-size: 0.78rem;
+		font-weight: 600;
 		color: var(--muted);
 		margin-bottom: 0.5rem;
 	}
@@ -161,7 +159,6 @@
 
 	.quote {
 		color: var(--muted);
-		font-style: italic;
 		font-size: 0.98rem;
 	}
 
@@ -181,6 +178,7 @@
 		font-size: 0.95rem;
 		border-bottom: 1px solid rgba(11, 11, 10, 0.07);
 		padding-bottom: 0.35rem;
+		font-variant-numeric: tabular-nums;
 	}
 
 	.col li:last-child {
@@ -195,7 +193,7 @@
 	.chips {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem;
+		gap: 0.45rem;
 		margin-top: auto;
 	}
 
@@ -205,7 +203,7 @@
 		font-family: var(--font-display);
 		font-size: 0.88rem;
 		font-weight: 500;
-		padding: 0.45rem 0.95rem;
+		padding: 0.4rem 0.75rem;
 		border-radius: var(--radius-pill);
 	}
 </style>

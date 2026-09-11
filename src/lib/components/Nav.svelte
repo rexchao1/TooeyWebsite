@@ -1,6 +1,8 @@
 <script>
 	import Wordmark from './Wordmark.svelte';
 	import { nav, SIGNUP_URL, LOGIN_URL } from '$lib/config/site.js';
+
+	const showLogin = LOGIN_URL && LOGIN_URL !== '#';
 </script>
 
 <header>
@@ -14,8 +16,10 @@
 		</nav>
 
 		<div class="actions">
-			<a class="btn btn-outline login" href={LOGIN_URL}>Login</a>
-			<a class="btn btn-moss" href={SIGNUP_URL}>Sign up <span class="arrow">&rarr;</span></a>
+			{#if showLogin}
+				<a class="btn btn-outline login" href={LOGIN_URL}>Login</a>
+			{/if}
+			<a class="btn btn-moss cta" href={SIGNUP_URL}>{nav.cta}</a>
 		</div>
 	</div>
 </header>
@@ -25,8 +29,7 @@
 		position: sticky;
 		top: 0;
 		z-index: 50;
-		background: color-mix(in srgb, var(--bg) 88%, transparent);
-		backdrop-filter: blur(10px);
+		background: var(--bg);
 		border-bottom: 1px solid var(--line);
 	}
 
@@ -34,13 +37,14 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 1.5rem;
-		padding-block: 0.9rem;
+		gap: 1.25rem;
+		padding-block: 0.85rem;
+		min-height: var(--header-h);
 	}
 
 	nav {
 		display: flex;
-		gap: 2.2rem;
+		gap: 1.8rem;
 	}
 
 	nav a {
@@ -57,16 +61,16 @@
 		display: flex;
 		align-items: center;
 		gap: 0.6rem;
+		flex-shrink: 0;
 	}
 
 	.actions .btn {
-		padding: 0.55rem 1.15rem;
-		font-size: 0.92rem;
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
 	}
 
 	@media (max-width: 760px) {
-		nav,
-		.login {
+		nav {
 			display: none;
 		}
 	}
