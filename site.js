@@ -17,6 +17,7 @@
   function setOpen(open) {
     if (!header || !toggle) return;
     header.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     document.body.style.overflow = open ? "hidden" : "";
@@ -26,10 +27,15 @@
     toggle.addEventListener("click", function () {
       setOpen(!header.classList.contains("is-open"));
     });
-    nav.querySelectorAll("a").forEach(function (link) {
+    header.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         setOpen(false);
       });
+    });
+    document.addEventListener("click", function (e) {
+      if (!header.classList.contains("is-open")) return;
+      if (header.contains(e.target)) return;
+      setOpen(false);
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") setOpen(false);
@@ -89,14 +95,14 @@
 
   const note = document.getElementById("contactNote");
   const submit = document.getElementById("contactSubmit");
-  const defaultNote = note ? note.textContent : "";
+  const defaultNote = note ? note.innerHTML : "";
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     submit.disabled = true;
     submit.textContent = "Sending…";
     if (note) {
-      note.textContent = defaultNote;
+      note.innerHTML = defaultNote;
       note.classList.remove("is-ok", "is-err");
     }
 
