@@ -188,6 +188,11 @@ select {
   box-shadow: inset 0 -1.5px 0 var(--wood);
 }
 
+.site-nav .nav-more,
+.site-nav .nav-note {
+  display: none;
+}
+
 .site-nav a:not(.btn):hover {
   color: var(--ink);
 }
@@ -296,18 +301,6 @@ select {
   background: var(--cream);
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-}
-
-.btn.header-cta {
-  display: none;
-  flex-shrink: 0;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-.site-header.cta-wait .header-cta {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .text-link {
@@ -1241,7 +1234,7 @@ textarea {
 
   .btn,
   .brand,
-  .header-cta,
+  .cta-bar,
   .forecast td,
   .product-frame,
   .mail-sheet,
@@ -1254,6 +1247,51 @@ textarea {
   .btn:hover {
     transform: none;
   }
+}
+
+/* Bottom bar (phones)
+   ========================================================================== */
+
+.cta-bar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  background: rgba(251, 248, 241, 0.94);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  transform: translateY(100%);
+  visibility: hidden;
+  transition: transform 0.25s ease, visibility 0.25s ease;
+}
+
+.cta-bar.is-on {
+  transform: none;
+  visibility: visible;
+}
+
+body.nav-open .cta-bar {
+  visibility: hidden;
+}
+
+.cta-bar p {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.cta-bar .btn {
+  flex-shrink: 0;
+  padding-inline: 1.3rem;
 }
 
 /* Breakpoints
@@ -1292,57 +1330,69 @@ textarea {
     padding-left: 20px;
   }
 
-  .btn.header-cta {
-    display: inline-flex;
-    margin-left: auto;
-    min-height: 44px;
-    padding: 0 0.95rem;
-    font-size: 0.88rem;
+  .cta-bar {
+    display: flex;
   }
 
   .nav-toggle {
     display: flex;
-    margin-left: 0;
+    margin-left: auto;
     margin-right: -8px;
   }
 
   .site-nav {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: calc(50% - 50vw);
-    right: calc(50% - 50vw);
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: 0;
-    padding: 8px 24px 24px;
+    padding: 8px 24px calc(20px + env(safe-area-inset-bottom, 0px));
     background: var(--cream);
-    border-bottom: 1px solid var(--line);
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    box-shadow: 0 16px 32px rgba(32, 35, 31, 0.08);
+    overflow-y: auto;
   }
 
   .site-header.is-open .site-nav {
     display: flex;
   }
 
-  body.nav-open::after {
-    content: "";
-    position: fixed;
-    inset: var(--header-h) 0 0 0;
-    background: rgba(32, 35, 31, 0.48);
-    z-index: 40;
-  }
-
-  .site-nav a:not(.btn) {
-    padding: 12px 0;
-    font-size: 1.05rem;
+  .site-nav > a:not(.btn) {
+    padding: 18px 0;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
     color: var(--ink);
     border-bottom: 1px solid var(--line);
   }
 
+  .site-nav .nav-more {
+    display: block;
+  }
+
+  .site-nav .nav-note {
+    display: block;
+    margin: auto 0 14px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .site-nav .nav-note a {
+    display: inline-block;
+    padding: 6px 0;
+    color: var(--sage-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .site-nav .nav-cta {
-    display: none;
+    width: 100%;
+    min-height: 52px;
+    font-size: 1rem;
   }
 
   .compare th,
@@ -1352,6 +1402,14 @@ textarea {
 }
 
 @media (max-width: 600px) {
+  :root {
+    --header-h: 56px;
+  }
+
+  .brand img {
+    height: 30px;
+  }
+
   .container {
     width: min(calc(100% - 32px), var(--max));
   }
@@ -1371,7 +1429,23 @@ textarea {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 4px;
     margin-top: 1.5rem;
+  }
+
+  .hero-actions .btn-ghost {
+    background: none;
+    border: 0;
+    color: var(--sage-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  .hero-actions .btn-ghost:hover {
+    transform: none;
+    box-shadow: none;
+    color: var(--ink);
   }
 
   .hero-actions .btn,
