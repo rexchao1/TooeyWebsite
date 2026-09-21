@@ -45,19 +45,45 @@
     });
   }
 
-  // On the home page the header's Talk to us waits until the hero's has
-  // scrolled under the header, so a phone does not show two at once.
-  const heroCta = document.querySelector(".hero-actions .btn-primary");
-  if (header && heroCta && "IntersectionObserver" in window) {
+  // The phone's bottom Talk to us bar shows once the page's own button
+  // (or the page head) has scrolled away, and hides while the contact
+  // section, the page's closing button, or the footer is on screen.
+  const bar = document.querySelector(".cta-bar");
+  if (bar && header && "IntersectionObserver" in window) {
     const headerH = header.offsetHeight;
-    header.classList.add("cta-wait");
-    new IntersectionObserver(
-      function (entries) {
-        const box = entries[0].boundingClientRect;
-        header.classList.toggle("cta-wait", box.top >= headerH);
-      },
-      { rootMargin: -headerH + "px 0px 0px 0px" }
-    ).observe(heroCta);
+    const start =
+      document.querySelector(".hero-actions .btn-primary") ||
+      document.querySelector(".page-head");
+    const ends = [
+      document.getElementById("contact"),
+      document.querySelector(".page-cta"),
+      document.querySelector(".site-footer")
+    ].filter(Boolean);
+    let passed = false;
+    const visible = new Set();
+    function update() {
+      bar.classList.toggle("is-on", passed && visible.size === 0);
+    }
+    if (start) {
+      new IntersectionObserver(
+        function (entries) {
+          const e = entries[0];
+          passed = !e.isIntersecting && e.boundingClientRect.top < headerH;
+          update();
+        },
+        { rootMargin: -headerH + "px 0px 0px 0px" }
+      ).observe(start);
+    }
+    const endIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) visible.add(e.target);
+        else visible.delete(e.target);
+      });
+      update();
+    });
+    ends.forEach(function (el) {
+      endIo.observe(el);
+    });
   }
 
   const tickRoot = document.querySelector("[data-tick-root]");
