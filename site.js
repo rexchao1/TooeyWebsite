@@ -45,6 +45,21 @@
     });
   }
 
+  // On the home page the header's Talk to us waits until the hero's has
+  // scrolled under the header, so a phone does not show two at once.
+  const heroCta = document.querySelector(".hero-actions .btn-primary");
+  if (header && heroCta && "IntersectionObserver" in window) {
+    const headerH = header.offsetHeight;
+    header.classList.add("cta-wait");
+    new IntersectionObserver(
+      function (entries) {
+        const box = entries[0].boundingClientRect;
+        header.classList.toggle("cta-wait", box.top >= headerH);
+      },
+      { rootMargin: -headerH + "px 0px 0px 0px" }
+    ).observe(heroCta);
+  }
+
   const tickRoot = document.querySelector("[data-tick-root]");
   if (tickRoot) tick(tickRoot);
 
