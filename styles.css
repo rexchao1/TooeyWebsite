@@ -1,11 +1,59 @@
-/* Tooey: plain, sturdy, real. One typeface, ink on white, the real app up front.
-   Direction and rules: docs/plans/site-redesign.md */
+/* Tooey: ink on white, the printed prep list up front.
+   Direction and rules: docs/plans/new-site.md
 
+   Two type candidates are on trial. A is the default: Source Serif 4 for
+   headlines and reading text, Schibsted Grotesk for buttons, nav, form
+   fields, and small labels. C (html[data-font="c"], set by the temporary
+   switch in site.js) is Figtree throughout. Once one is picked, delete the
+   other's @font-face rules, its block below, and the switch. */
+
+/* Self-hosted variable woff2, latin subset, from fontsource (SIL OFL 1.1).
+   The latin subset has no U+2192, used by the "→" after .go links, so each
+   family gets a one-glyph arrow file from Google Fonts via unicode-range. */
 @font-face {
-  font-family: "Libre Franklin";
-  src: url("fonts/libre-franklin.woff2") format("woff2");
-  font-weight: 400 900;
+  font-family: "Source Serif 4";
+  src: url("fonts/source-serif-4.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
   font-display: swap;
+}
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("fonts/source-serif-4-arrow.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2192;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/schibsted-grotesk.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/schibsted-grotesk-arrow.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2192;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("fonts/figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("fonts/figtree-arrow.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2192;
 }
 
 :root {
@@ -17,7 +65,25 @@
   --field: #c8c9c4;
   --err: #b3261e;
 
-  --sans: "Libre Franklin", "Franklin Gothic Medium", "Helvetica Neue", Arial, sans-serif;
+  /* Type, candidate A (default). */
+  --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-head: var(--font-text);
+  --font-ui: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --text-size: 19px;
+  --text-size-phone: 18px;
+  --text-leading: 1.6;
+  --head-weight: 700;
+  --head-leading: 1.1;
+  --head-track: 0;
+  --display-track: -0.01em;
+  --display-leading: 1.04;
+  --hero-size: clamp(46px, 6vw, 80px);
+  --hero-size-phone: clamp(40px, 12vw, 58px);
+  --title-weight: 600;
+  --strong-weight: 600;
+  /* Source Serif's figures are narrow, so its ch is small: wider ch measures. */
+  --lead-measure: 42ch;
+  --copy-measure: 48ch;
 
   --wrap: 1160px;
   --gutter: 24px;
@@ -25,6 +91,27 @@
   --section: clamp(64px, 9vw, 112px);
 
   color-scheme: light;
+}
+
+/* Type, candidate C: Figtree for everything. Temporary, see the top of this file. */
+html[data-font="c"] {
+  --font-text: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  --font-head: var(--font-text);
+  --font-ui: var(--font-text);
+  --text-size: 18px;
+  --text-size-phone: 17px;
+  --text-leading: 1.62;
+  --head-weight: 650;
+  --head-leading: 1.08;
+  --head-track: -0.015em;
+  --display-track: -0.022em;
+  --display-leading: 1.02;
+  --hero-size: clamp(44px, 5.8vw, 76px);
+  --hero-size-phone: clamp(38px, 11.5vw, 56px);
+  --title-weight: 600;
+  --strong-weight: 600;
+  --lead-measure: 36ch;
+  --copy-measure: 42ch;
 }
 
 *,
@@ -35,6 +122,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  font-optical-sizing: auto;
   scroll-padding-top: calc(var(--header-h) + 16px);
 }
 
@@ -42,8 +130,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 400 18px/1.55 var(--sans);
-  font-variant-numeric: tabular-nums;
+  font: 400 var(--text-size) / var(--text-leading) var(--font-text);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -57,9 +144,10 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.04;
+  font-family: var(--font-head);
+  font-weight: var(--head-weight);
+  letter-spacing: var(--head-track);
+  line-height: var(--head-leading);
   text-wrap: balance;
 }
 
@@ -67,13 +155,13 @@ h2 {
   font-size: clamp(28px, 3.2vw, 38px);
 }
 h2.big {
-  font-size: clamp(36px, 4.8vw, 58px);
-  letter-spacing: -0.025em;
+  font-size: clamp(36px, 4.6vw, 56px);
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-track);
 }
 h3 {
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: 21px;
+  line-height: 1.25;
 }
 
 p,
@@ -102,6 +190,7 @@ a {
 }
 
 .skip {
+  font-family: var(--font-ui);
   position: absolute;
   left: 12px;
   top: -60px;
@@ -116,16 +205,17 @@ a {
 }
 
 .eyebrow {
+  font-family: var(--font-ui);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--muted);
 }
 .lead {
   text-wrap: pretty;
-  font-size: clamp(19px, 1.9vw, 22px);
+  font-size: clamp(20px, 1.9vw, 23px);
   line-height: 1.45;
   color: var(--muted);
-  max-width: 36ch;
+  max-width: var(--lead-measure);
 }
 .muted {
   color: var(--muted);
@@ -141,7 +231,7 @@ a {
   padding: 0 22px;
   border: 0;
   border-radius: 6px;
-  font: 600 16px/1 var(--sans);
+  font: 600 16px/1 var(--font-ui);
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
@@ -159,6 +249,8 @@ a {
 }
 
 .go {
+  font-family: var(--font-ui);
+  font-size: 17px;
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
@@ -200,7 +292,9 @@ a {
   display: flex;
   align-items: center;
   gap: 28px;
+  font-family: var(--font-ui);
   font-size: 16px;
+  font-weight: 500;
 }
 .site-nav > a:not(.btn) {
   text-decoration: none;
@@ -240,9 +334,9 @@ a {
   justify-items: start;
 }
 .hero h1 {
-  font-size: clamp(48px, 6.4vw, 88px);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  font-size: var(--hero-size);
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-track);
 }
 .hero-actions {
   display: flex;
@@ -252,8 +346,8 @@ a {
   margin-top: 4px;
 }
 .promise {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: var(--strong-weight);
 }
 
 /* The forecast sheet */
@@ -266,60 +360,69 @@ a {
   overflow: hidden;
 }
 .sheet-bar {
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-bottom: 1px solid var(--line);
   background: var(--wash);
+  font-family: var(--font-ui);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .sheet-body {
-  padding: 20px 20px 16px;
+  padding: 22px 22px 16px;
 }
 .sheet-kicker {
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
 }
 .sheet-day {
+  font-family: var(--font-head);
   font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 2px 0 14px;
+  font-weight: var(--title-weight);
+  line-height: 1.15;
+  letter-spacing: var(--head-track);
+  margin: 2px 0 16px;
 }
 .forecast {
   width: 100%;
   border-collapse: collapse;
   font-size: 16px;
-  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums lining-nums;
 }
+/* Column heads: small caps on the serif, tracked capitals on the sans. */
 .forecast th {
   text-align: left;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.06em;
   color: var(--muted);
   padding: 0 0 8px;
+  vertical-align: bottom;
   white-space: nowrap;
 }
 .forecast td {
-  padding: 13px 0;
+  padding: 10px 0;
   border-top: 1px solid var(--line);
+  vertical-align: baseline;
   white-space: nowrap;
 }
 .forecast th:not(:first-child),
 .forecast td:not(:first-child) {
+  width: 1%;
   text-align: right;
   padding-left: 16px;
 }
 .forecast td:first-child {
-  font-weight: 600;
+  font-weight: 500;
 }
 .forecast .predicted {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 19px;
+  font-weight: 700;
 }
 .forecast .range,
 .forecast .delta {
@@ -359,7 +462,7 @@ a {
 .deal-head {
   display: grid;
   gap: 18px;
-  max-width: 42ch;
+  max-width: var(--copy-measure);
 }
 .terms {
   border-top: 2px solid var(--ink);
@@ -372,7 +475,7 @@ a {
   border-bottom: 1px solid var(--line);
 }
 .terms dt {
-  font-weight: 700;
+  font-weight: var(--strong-weight);
 }
 .terms dd {
   margin: 0;
@@ -397,9 +500,11 @@ a {
   border-top: 2px solid var(--ink);
 }
 .steps4 .n {
+  font-family: var(--font-ui);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 .steps4 p {
   color: var(--muted);
@@ -440,7 +545,7 @@ a {
   justify-items: start;
 }
 .contact-copy .mail {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--muted);
 }
 .contact-copy .mail a {
@@ -465,8 +570,9 @@ form {
   gap: 7px;
 }
 label {
+  font-family: var(--font-ui);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
 }
 label .opt {
   font-weight: 400;
@@ -476,7 +582,7 @@ label .opt {
 input,
 textarea {
   width: 100%;
-  font: 400 17px/1.4 var(--sans);
+  font: 400 17px/1.4 var(--font-ui);
   color: var(--ink);
   background: #fff;
   border: 1px solid var(--field);
@@ -510,6 +616,7 @@ textarea:focus {
   flex-wrap: wrap;
 }
 .form-note {
+  font-family: var(--font-ui);
   font-size: 14px;
   color: var(--muted);
 }
@@ -533,9 +640,9 @@ textarea:focus {
   justify-items: start;
 }
 .page-head h1 {
-  font-size: clamp(40px, 5.6vw, 72px);
-  line-height: 1;
-  letter-spacing: -0.03em;
+  font-size: clamp(40px, 5.4vw, 68px);
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-track);
   max-width: 16ch;
 }
 
@@ -557,10 +664,10 @@ textarea:focus {
   align-content: start;
 }
 .step-copy p:not(.eyebrow) {
-  max-width: 42ch;
+  max-width: var(--copy-measure);
 }
 .step-aside {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--muted);
   border-left: 3px solid var(--line);
   padding-left: 16px;
@@ -584,11 +691,15 @@ textarea:focus {
   border-bottom: 1px solid var(--line);
   display: grid;
   gap: 2px;
+  font-family: var(--font-ui);
   font-size: 14px;
   color: var(--muted);
 }
 .card-head strong {
-  font-size: 18px;
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: var(--title-weight);
+  line-height: 1.25;
   color: var(--ink);
 }
 .card-body {
@@ -596,27 +707,38 @@ textarea:focus {
 }
 .row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 3.4em 4.6em;
+  grid-template-columns: minmax(0, 1fr) 4.2em 4.6em;
   gap: 10px;
   align-items: baseline;
-  padding-block: 11px;
+  padding-block: 10px;
   border-bottom: 1px solid var(--line);
   font-size: 16px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 .row:last-of-type {
   border-bottom: 0;
 }
+.row > :first-child {
+  font-weight: 500;
+}
 .row.head {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.06em;
   color: var(--muted);
   padding-block: 10px 8px;
+}
+.row.head > :first-child {
+  font-weight: 600;
 }
 .row > :not(:first-child) {
   text-align: right;
 }
 .row b {
-  font-size: 18px;
+  font-size: 19px;
+  font-weight: 700;
 }
 .row .range {
   color: var(--muted);
@@ -649,6 +771,7 @@ textarea:focus {
   position: absolute;
   left: 2px;
   top: 18px;
+  top: calc(13px + (1lh - 14px) / 2 + 1px);
   width: 14px;
   height: 14px;
   border: 1.5px solid var(--ink);
@@ -679,11 +802,12 @@ textarea:focus {
   flex-wrap: wrap;
 }
 .page-cta p {
+  font-family: var(--font-head);
   font-size: clamp(24px, 2.6vw, 32px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  max-width: 24ch;
+  font-weight: var(--head-weight);
+  letter-spacing: var(--head-track);
+  line-height: 1.15;
+  max-width: var(--lead-measure);
 }
 
 .page-body {
@@ -702,9 +826,9 @@ textarea:focus {
 }
 .prose .first {
   font-size: clamp(22px, 2.3vw, 27px);
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-weight: var(--title-weight);
+  line-height: 1.35;
+  letter-spacing: var(--head-track);
 }
 /* Footer */
 
@@ -729,6 +853,7 @@ textarea:focus {
   width: auto;
 }
 .copyright {
+  font-family: var(--font-ui);
   font-size: 14px;
   color: var(--muted);
 }
@@ -736,6 +861,7 @@ textarea:focus {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
+  font-family: var(--font-ui);
   font-size: 15px;
 }
 .footer-links a {
@@ -749,6 +875,17 @@ textarea:focus {
 
 .cta-bar {
   display: none;
+}
+
+/* Candidate C: the sans has no small caps worth using, so its table
+   heads are tracked capitals, as on the review page. Temporary. */
+
+html[data-font="c"] .forecast th,
+html[data-font="c"] .row.head {
+  font-size: 12px;
+  font-variant-caps: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* Tablet */
@@ -778,7 +915,7 @@ textarea:focus {
     --header-h: 64px;
   }
   body {
-    font-size: 17px;
+    font-size: var(--text-size-phone);
   }
   .brand img {
     height: 32px;
@@ -828,9 +965,10 @@ textarea:focus {
     display: block;
     padding-block: 16px;
     border-bottom: 1px solid var(--line);
+    font-family: var(--font-head);
     font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-weight: var(--head-weight);
+    letter-spacing: var(--head-track);
     color: var(--ink);
     text-decoration: none;
   }
@@ -851,10 +989,13 @@ textarea:focus {
     color: var(--muted);
   }
   .hero h1 {
-    font-size: clamp(44px, 13vw, 64px);
+    font-size: var(--hero-size-phone);
+  }
+  .sheet-bar {
+    padding-inline: 14px;
   }
   .sheet-body {
-    padding: 16px 14px 12px;
+    padding: 18px 14px 12px;
   }
   .forecast {
     font-size: 15px;
@@ -864,8 +1005,8 @@ textarea:focus {
     padding-left: 10px;
   }
   .forecast th {
-    font-size: 11px;
-    letter-spacing: 0.02em;
+    font-size: 14px;
+    letter-spacing: 0.03em;
   }
   .forecast td:first-child {
     white-space: normal;
@@ -925,6 +1066,7 @@ textarea:focus {
     transform: none;
   }
   .cta-bar p {
+    font-family: var(--font-ui);
     font-size: 14px;
     color: var(--muted);
   }
@@ -933,6 +1075,13 @@ textarea:focus {
   }
   .site-footer {
     padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 760px) {
+  html[data-font="c"] .forecast th {
+    font-size: 11px;
+    letter-spacing: 0.02em;
   }
 }
 

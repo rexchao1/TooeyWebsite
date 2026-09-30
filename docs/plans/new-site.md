@@ -16,9 +16,9 @@ The sections below are the earlier rewrite plan. They are kept for the
 facts about the product, which still bind any future copy change.
 
 Steps for this pass:
-- [ ] Fonts self-hosted in `fonts/`, both candidates switchable on the real pages
-- [ ] Sheet and page styling brought over from the review page
-- [ ] Desktop and phone check of every page in both candidates
+- [x] Fonts self-hosted in `fonts/`, both candidates switchable on the real pages (`?font=c`)
+- [x] Sheet and page styling brought over from the review page
+- [x] Desktop and phone check of every page in both candidates
 - [ ] Rex picks A or C; the other and the switch are removed
 - [ ] Pull request
 

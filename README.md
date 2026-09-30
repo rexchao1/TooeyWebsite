@@ -27,5 +27,5 @@ into `dist/`, which is what Vercel publishes.
 | `styles.css` | Shared type, color, and layout. |
 | `site.js` | Nav, motion, contact form. |
 | `logo.png` | The Tooey wordmark. |
-| `fonts/` | Self-hosted Libre Franklin. |
+| `fonts/` | Self-hosted fonts: Source Serif 4 and Schibsted Grotesk, plus Figtree while the two type candidates are on trial. |
 | `src/` | An unused one-page Svelte draft. Editing it does not change the live site. |

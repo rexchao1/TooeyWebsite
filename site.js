@@ -1,6 +1,23 @@
 (function () {
   document.documentElement.classList.add("js");
 
+  // TEMPORARY type trial: ?font=c shows candidate C (Figtree) instead of the
+  // default A (Source Serif 4 + Schibsted Grotesk), and keeps it for the rest
+  // of the visit; ?font=a goes back. Remove this block, the html[data-font="c"]
+  // rules, and the unused fonts once Rex picks one. See docs/plans/new-site.md.
+  (function () {
+    var key = "tooey-font";
+    var pick = null;
+    try {
+      pick = new URLSearchParams(window.location.search).get("font");
+    } catch (e) {}
+    try {
+      if (pick === "a" || pick === "c") sessionStorage.setItem(key, pick);
+      else pick = sessionStorage.getItem(key);
+    } catch (e) {}
+    if (pick === "c") document.documentElement.setAttribute("data-font", "c");
+  })();
+
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");
