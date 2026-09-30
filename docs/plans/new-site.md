@@ -19,7 +19,7 @@ Steps for this pass:
 - [x] Fonts self-hosted in `fonts/`, both candidates switchable on the real pages (`?font=c`)
 - [x] Sheet and page styling brought over from the review page
 - [x] Desktop and phone check of every page in both candidates
-- [ ] Rex picks A or C; the other and the switch are removed
+- [x] Rex picks A or C; the other and the switch are removed (A)
 - [ ] Pull request
 
 
@@ -174,8 +174,8 @@ copy has been through `/unslop`, and a pull request against `main` is open.
 
 - [x] Diagnose the current site and write this plan
 - [x] Rex answers the questions above
-- [ ] Type comparison page with the three candidates; Rex picks one (page built in `.lavish/type-samples/`, waiting on Rex)
-- [ ] Draft copy from Rex's material; Rex reviews wording before any layout (draft in `new-site-copy.md`, on the same review page, waiting on Rex)
+- [x] Type comparison page with the three candidates; Rex picked A, headlines bold
+- [x] Draft copy; Rex dropped the rewrite (see Change of direction)
 - [ ] Build the home page
 - [ ] Privacy page in the new type
 - [ ] Redirects for old routes
