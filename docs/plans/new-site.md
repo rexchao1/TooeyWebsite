@@ -29,6 +29,17 @@ Hero pass (2026-09-30), Rex's picks from four ideas:
 - [x] Two blank past sheets under tomorrow's: fanned left on desktop, stacked straight up at 980px and below so they stay inside the gutter
 - Not taken: a night-to-morning gradient across the whole hero
 
+Prep counter (2026-09-30). Rex found the hero too white. A look at Stripe,
+Linear, Notion, Mercury, and Square (Toast blocked automation) showed none
+of them float a small picture on white: the product runs near full width on
+its own surface, often with a still grain. Rex approved:
+- [x] Headline row on top (headline left, lead and buttons right), sheet below
+- [x] The sheets sit on a wide butcher-paper tan panel with a soft light and still grain, running past the fold; it replaces the glow
+- [x] Sheet grows to about 620px wide
+- [x] Two-column variant behind `?hero=side`: the panel sits behind the right column and runs off the right edge
+- [x] Desktop, tablet, and phone check of both
+- [ ] Rex picks one and the switch is removed
+
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces

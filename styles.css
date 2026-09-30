@@ -46,9 +46,10 @@
   --line: #e3e3df;
   --field: #c8c9c4;
   --err: #b3261e;
-  /* The spoon and the leaf in the wordmark, for the glow behind the sheet. */
-  --spoon: 217, 165, 111;
-  --leaf: 154, 171, 128;
+  /* Butcher paper, warmed from the spoon in the wordmark: the counter
+     the hero's sheets sit on. */
+  --counter-top: #efe4d3;
+  --counter-bottom: #e6d8c3;
 
   /* Type, candidate A (default). */
   --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -284,28 +285,42 @@ a {
 /* Hero */
 
 .hero {
-  padding-block: clamp(40px, 7vw, 96px) clamp(56px, 7vw, 96px);
-  /* Keeps the glow and the tilted sheets from widening the page. */
+  padding-block: clamp(32px, 5vw, 64px) clamp(56px, 7vw, 96px);
+  /* Keeps the tilted sheets and the bleeding panel from widening the page. */
   overflow: hidden;
   overflow: clip;
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
+  gap: clamp(40px, 5vw, 64px);
 }
+/* Headline on the left, the lead and buttons beside it, the sheets below. */
 .hero-copy {
   display: grid;
-  gap: 22px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-areas:
+    "eyebrow ."
+    "title lead"
+    "title actions";
+  column-gap: clamp(32px, 5vw, 72px);
+  row-gap: 22px;
+  align-items: end;
   justify-items: start;
 }
+.hero-copy .eyebrow {
+  grid-area: eyebrow;
+}
 .hero h1 {
+  grid-area: title;
   font-size: var(--hero-size);
   line-height: var(--display-leading);
   letter-spacing: var(--display-track);
 }
+.hero .lead {
+  grid-area: lead;
+}
 .hero-actions {
+  grid-area: actions;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -396,22 +411,38 @@ a {
   display: none;
 }
 
-/* Yesterday's sheets under tomorrow's, the glow, and the print-in */
+/* The counter: a lit butcher-paper panel the sheets sit on, with a still
+   grain so it reads as paper, not a flat fill. */
+
+.counter {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: clamp(48px, 6vw, 72px) var(--gutter) clamp(56px, 6vw, 88px);
+  background:
+    radial-gradient(55% 65% at 50% 32%, rgba(255, 255, 255, 0.55), transparent 72%),
+    linear-gradient(180deg, var(--counter-top), var(--counter-bottom));
+}
+.counter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Yesterday's sheets under tomorrow's, and the print-in */
 
 .sheet-stack {
   position: relative;
+  z-index: 1;
   isolation: isolate;
-}
-.sheet-stack::before {
-  content: "";
-  position: absolute;
-  inset: -22% -16%;
-  z-index: -2;
-  background:
-    radial-gradient(closest-side at 28% 30%, rgba(var(--spoon), 0.55), transparent),
-    radial-gradient(closest-side at 76% 74%, rgba(var(--leaf), 0.5), transparent);
-  filter: blur(24px);
-  pointer-events: none;
+  width: min(640px, 100%);
+  margin-inline: auto;
 }
 .sheet-now {
   position: relative;
@@ -447,9 +478,6 @@ a {
   .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 770ms; }
   .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 890ms; }
   .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 1010ms; }
-  .sheet-stack::before {
-    animation: glow-drift 18s ease-in-out infinite alternate;
-  }
 }
 @keyframes sheet-feed {
   from {
@@ -471,12 +499,32 @@ a {
     transform: none;
   }
 }
-@keyframes glow-drift {
-  from {
-    transform: translate(-3%, 2%) scale(1);
+
+/* Hero trial, ?hero=side: the headline and the sheets side by side, the
+   counter behind the right column running off the right edge. */
+
+@media (min-width: 981px) {
+  .hero-side .hero {
+    padding-top: clamp(40px, 7vw, 96px);
   }
-  to {
-    transform: translate(3%, -2%) scale(1.06);
+  .hero-side .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 72px);
+  }
+  .hero-side .hero-copy {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "eyebrow" "title" "lead" "actions";
+    align-items: start;
+  }
+  .hero-side .counter {
+    margin-right: calc(-1 * max(var(--gutter), (100vw - var(--wrap)) / 2 + var(--gutter)));
+    border-radius: 20px 0 0 20px;
+    padding: 72px 48px 80px 64px;
+  }
+  .hero-side .sheet-stack {
+    width: min(560px, 100%);
+    margin-inline: 0;
   }
 }
 
@@ -1027,6 +1075,11 @@ textarea:focus {
   .hero h1 {
     font-size: var(--hero-size-phone);
   }
+  .counter {
+    margin-inline: calc(8px - var(--gutter));
+    border-radius: 16px;
+    padding: 40px 8px 44px;
+  }
   .sheet-bar {
     padding-inline: 14px;
   }
@@ -1114,10 +1167,15 @@ textarea:focus {
   }
 }
 
-/* Tablet and phone: the hero is one column and the sheet spans it, so the
-   old sheets stack straight up to stay inside the gutter. */
+/* Tablet and phone: the hero copy is one column, and the old sheets stack
+   straight up so they stay inside the counter. */
 
 @media (max-width: 980px) {
+  .hero-copy {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "eyebrow" "title" "lead" "actions";
+    align-items: start;
+  }
   .sheet-past {
     transform-origin: 50% 0;
   }
@@ -1126,9 +1184,6 @@ textarea:focus {
   }
   .sheet-past:nth-child(2) {
     transform: translateY(-10px) scale(0.96);
-  }
-  .sheet-stack {
-    margin-top: 20px;
   }
 }
 
