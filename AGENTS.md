@@ -26,8 +26,9 @@ Changing words, layout, or style: edit the root HTML and `styles.css`.
 Those are the pages.
 
 Work that runs past a few steps gets a plan in `docs/plans/`. Read
-`docs/plans/site-redesign.md` before changing the look: it holds the chosen
-colors, type, and why the first redesign was dropped.
+`docs/plans/new-site.md` before changing the look or the wording: it holds
+the current direction and copy rules. `docs/plans/site-redesign.md` is the
+earlier pass it replaces, kept for the colors and why that design was dropped.
 
 ## Claims
 
