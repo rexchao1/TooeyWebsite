@@ -32,4 +32,4 @@ and the pull request is open.
 - [x] Privacy
 - [x] Favicon
 - [x] Desktop and phone check of every page (Chrome, 1440 and 390 wide; no sideways scroll at 360)
-- [ ] Pull request
+- [x] Pull request (#6)
