@@ -86,9 +86,9 @@
     });
   }
 
-  // Count each predicted number up as its row prints. The delays match the
+  // Count each prep number up as its row prints. The delays match the
   // row-print animation in styles.css, measured from page start.
-  const counts = document.querySelectorAll(".sheet-now .predicted");
+  const counts = document.querySelectorAll(".sheet-now .prep");
   if (counts.length && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
     counts.forEach(function (el, i) {
       const end = parseInt(el.textContent, 10);

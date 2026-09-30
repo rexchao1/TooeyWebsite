@@ -38,7 +38,11 @@ its own surface, often with a still grain. Rex approved:
 - [x] Sheet grows to about 620px wide
 - [x] Two-column variant behind `?hero=side`: the panel sits behind the right column and runs off the right edge
 - [x] Desktop, tablet, and phone check of both
-- [ ] Rex picks one and the switch is removed
+- [x] Rex picks one and the switch is removed (the prep counter)
+- [x] The sheet drops Range and adds Prep, how many to make (Rex, 2026-09-30:
+  the product has no range any more). Prep is the bold number; the example
+  values are the prediction plus a small cushion. The "What happens each
+  night" step says the same. `how.html` still shows and explains a range.
 
 
 Goal: a site that reads like it was written by the people who built Tooey,

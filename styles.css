@@ -304,7 +304,7 @@ a {
     "title actions";
   column-gap: clamp(32px, 5vw, 72px);
   row-gap: 22px;
-  align-items: end;
+  align-items: start;
   justify-items: start;
 }
 .hero-copy .eyebrow {
@@ -321,6 +321,7 @@ a {
 }
 .hero-actions {
   grid-area: actions;
+  align-self: end;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -398,11 +399,12 @@ a {
 .forecast td:first-child {
   font-weight: 500;
 }
-.forecast .predicted {
+/* Prep is the number the kitchen acts on, so it carries the weight. */
+.forecast .prep {
   font-size: 19px;
   font-weight: 700;
 }
-.forecast .range,
+.forecast .predicted,
 .forecast .delta {
   font-size: 15px;
   color: var(--muted);
@@ -497,34 +499,6 @@ a {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-/* Hero trial, ?hero=side: the headline and the sheets side by side, the
-   counter behind the right column running off the right edge. */
-
-@media (min-width: 981px) {
-  .hero-side .hero {
-    padding-top: clamp(40px, 7vw, 96px);
-  }
-  .hero-side .hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    align-items: center;
-    gap: clamp(32px, 5vw, 72px);
-  }
-  .hero-side .hero-copy {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "eyebrow" "title" "lead" "actions";
-    align-items: start;
-  }
-  .hero-side .counter {
-    margin-right: calc(-1 * max(var(--gutter), (100vw - var(--wrap)) / 2 + var(--gutter)));
-    border-radius: 20px 0 0 20px;
-    padding: 72px 48px 80px 64px;
-  }
-  .hero-side .sheet-stack {
-    width: min(560px, 100%);
-    margin-inline: 0;
   }
 }
 
@@ -1100,10 +1074,10 @@ textarea:focus {
   .forecast td:first-child {
     white-space: normal;
   }
-  .forecast .predicted {
+  .forecast .prep {
     font-size: 18px;
   }
-  .forecast .range,
+  .forecast .predicted,
   .forecast .delta {
     font-size: 14px;
   }

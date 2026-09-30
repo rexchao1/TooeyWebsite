@@ -12,8 +12,6 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Hero trial: ?hero=side shows the two-column version. Remove after the pick. -->
-  <script>if (/[?&]hero=side\b/.test(location.search)) document.documentElement.classList.add("hero-side");</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -57,13 +55,13 @@
                 <p class="sheet-day">Tuesday</p>
                 <table class="forecast">
                   <thead>
-                    <tr><th>Item</th><th>Predicted</th><th>Range</th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr>
+                    <tr><th>Item</th><th>Predicted</th><th>Prep</th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="range">38–46</td><td class="delta">+8%</td></tr>
-                    <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="range">27–34</td><td class="delta">+5%</td></tr>
-                    <tr><td>Caesar salad</td><td class="predicted">24</td><td class="range">20–27</td><td class="delta">−4%</td></tr>
-                    <tr><td>House pasta</td><td class="predicted">18</td><td class="range">15–21</td><td class="delta">+12%</td></tr>
+                    <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="prep">45</td><td class="delta">+8%</td></tr>
+                    <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="prep">33</td><td class="delta">+5%</td></tr>
+                    <tr><td>Caesar salad</td><td class="predicted">24</td><td class="prep">26</td><td class="delta">−4%</td></tr>
+                    <tr><td>House pasta</td><td class="predicted">18</td><td class="prep">20</td><td class="delta">+12%</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -96,7 +94,7 @@
         <h2>What happens each night</h2>
         <ol class="steps4">
           <li><span class="n">1</span><h3>We pull the day's sales.</h3><p>Nobody types anything in.</p></li>
-          <li><span class="n">2</span><h3>Tomorrow's list is in your email.</h3><p>A count for each dish, with a range.</p></li>
+          <li><span class="n">2</span><h3>Tomorrow's list is in your email.</h3><p>A count for each dish, and how many to prep.</p></li>
           <li><span class="n">3</span><h3>Print it and prep from it.</h3><p>Or open it in the app.</p></li>
           <li><span class="n">4</span><h3>Tell us where it was off.</h3><p>We read every reply.</p></li>
         </ol>
