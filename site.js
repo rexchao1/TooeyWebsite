@@ -86,14 +86,11 @@
     });
   }
 
-  // The example list is always for tomorrow, with that day's rotation-label color.
+  // The example email is always for tomorrow.
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const tomorrow = days[(new Date().getDay() + 1) % 7];
   document.querySelectorAll("[data-tomorrow]").forEach(function (el) {
     el.textContent = tomorrow;
-  });
-  document.querySelectorAll("[data-tomorrow-dot]").forEach(function (el) {
-    el.style.background = "var(--" + tomorrow.toLowerCase() + ")";
   });
 
   const form = document.getElementById("contactForm");

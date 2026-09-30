@@ -27,7 +27,7 @@ Those are the pages.
 
 Work that runs past a few steps gets a plan in `docs/plans/`. Read
 `docs/plans/site-redesign.md` before changing the look: it holds the chosen
-colors, type, and how the red and the weekday dots may be used.
+colors, type, and why the first redesign was dropped.
 
 ## Claims
 

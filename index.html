@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Tooey · Prep to the number</title>
-  <meta name="description" content="Every night, Tooey emails tomorrow's count for each dish on your menu, worked out from your own sales. Free for independent restaurant partners." />
+  <meta name="description" content="Every night, Tooey emails tomorrow's count for each dish, based on what you actually sold. Free for independent restaurants." />
   <meta property="og:title" content="Tooey · Prep to the number" />
-  <meta property="og:description" content="Tomorrow's count for every dish, from your own sales, in your inbox tonight." />
+  <meta property="og:description" content="Tomorrow's count for each dish, based on what you actually sold, in your email every night." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#f2f3f0" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preload" href="fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/libre-franklin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -34,147 +34,82 @@
 
   <main id="main">
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="container">
         <div class="hero-copy">
-          <p class="kicker">For independent restaurants</p>
+          <p class="eyebrow">For independent restaurants</p>
           <h1>Prep to the number.</h1>
-          <p class="lead">Every night, Tooey emails tomorrow's count for each dish on your menu, worked out from your own sales. Print it. Tape it up. Prep from it.</p>
+          <p class="lead">Every night we email you tomorrow's count for each dish, based on what you actually sold. Print it and prep from it.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Talk to us</a>
             <a class="go" href="how.html">How it works</a>
           </div>
-          <p class="hero-free">Free for independent restaurant partners.</p>
+          <p class="promise">Free for independent restaurants. If it doesn't help, we stop.</p>
         </div>
-
-        <figure class="list-wrap" aria-label="An example of the nightly prep list">
-          <span class="tape tape-l" aria-hidden="true"></span>
-          <span class="tape tape-r" aria-hidden="true"></span>
-          <div class="list">
-            <div class="list-top">
-              <span class="list-day"><span class="dot" data-tomorrow-dot></span><span data-tomorrow>Tue</span> · Prep</span>
-              <span>Tooey</span>
-            </div>
-            <div class="list-row head"><span>Dish</span><span>Make</span><span>Range</span><span>Made</span></div>
-            <div class="list-row">
-              <span>Cheeseburger</span>
-              <b>42<svg class="circle" viewBox="0 0 62 40" aria-hidden="true"><path d="M40 5C24 1 5 7 4 19c-1 12 20 17 36 15 14-2 20-9 18-17-2-8-14-12-27-11" /></svg></b>
-              <span class="range">38–46</span><span class="made"></span>
-            </div>
-            <div class="list-row"><span>Chicken sandwich</span><b>31</b><span class="range">27–34</span><span class="made"></span></div>
-            <div class="list-row"><span>Caesar salad</span><b>24</b><span class="range">20–27</span><span class="made"></span></div>
-            <div class="list-row"><span>House pasta</span><b>18</b><span class="range">15–21</span><span class="made"></span></div>
-            <div class="list-row"><span>Tomato soup</span><b>12</b><span class="range">9–15</span><span class="made"></span></div>
-            <p class="list-foot">From your POS, after close.</p>
-          </div>
+      </div>
+      <div class="container">
+        <figure class="shot">
+          <img src="app-screenshot.png" width="2060" height="1158" alt="The Tooey app showing today's prep plan: projected demand for each dish, estimated prep time, and how much of the menu is covered." />
+          <figcaption>The prep plan in the Tooey app. The same counts come to your email every night.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container guess-grid">
-        <div class="section-head">
-          <p class="kicker">Every morning</p>
-          <h2>Most prep starts with a guess.</h2>
-        </div>
-        <div class="guess-copy">
-          <p>Someone looks at yesterday's tickets and picks a number. Guess high and the extra goes in the bin. Guess low and you 86 a dish in the middle of service.</p>
+    <section class="band">
+      <div class="container band-grid">
+        <h2>Most prep starts with a guess.</h2>
+        <div class="band-copy">
+          <p>Someone looks at yesterday's tickets and picks a number. Guess high, it goes in the bin. Guess low, you 86 it at 7:30.</p>
           <p>Chains pay a team to forecast this. Independent kitchens get yesterday's tickets.</p>
-          <p class="source"><strong>Most kitchens waste 4 to 10 percent of the food they buy.</strong>LeanPath, from kitchens that weigh their waste.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container deal">
+        <div class="deal-head">
+          <h2 class="big">We're new. Here's the deal.</h2>
+          <p>We're looking for a few independent restaurants to start with. You get the forecast free. We learn from a real kitchen.</p>
+          <p class="muted">All we ask is honest feedback once the lists start.</p>
+        </div>
+        <dl class="terms">
+          <div><dt>Cost</dt><dd>Free for partner restaurants.</dd></div>
+          <div><dt>Setup</dt><dd>About a week. We connect to the POS you already use.</dd></div>
+          <div><dt>Proof</dt><dd>Check the lists against what sold. If they don't help, we stop.</dd></div>
+          <div><dt>Wrong numbers</dt><dd>It's a starting point. You still make the call.</dd></div>
+          <div><dt>Your data</dt><dd>Used for your forecast only. Never sold, never shared with other restaurants.</dd></div>
+          <div><dt>Help</dt><dd>Email us and one of us writes back.</dd></div>
+        </dl>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="section-head">
-          <p class="kicker">How a day goes</p>
-          <h2>It runs while you close.</h2>
-        </div>
-        <ol class="rail">
-          <li class="slip">
-            <p class="slip-when"><span>After close</span><span>1</span></p>
-            <h3>We pull the day's sales.</h3>
-            <p>Straight from your POS. Nobody types anything in.</p>
-          </li>
-          <li class="slip">
-            <p class="slip-when"><span>Tonight</span><span>2</span></p>
-            <h3>Tomorrow's list hits your inbox.</h3>
-            <p>A number for each dish, and a range.</p>
-          </li>
-          <li class="slip">
-            <p class="slip-when"><span>Morning</span><span>3</span></p>
-            <h3>Print it. Tape it up.</h3>
-            <p>Hang it where you prep, and prep to the number.</p>
-          </li>
-          <li class="slip">
-            <p class="slip-when"><span>Next day</span><span>4</span></p>
-            <h3>Tell us where it was off.</h3>
-            <p>Every night adds another day of your sales to work from.</p>
-          </li>
+        <h2>What happens each night</h2>
+        <ol class="steps4">
+          <li><span class="n">1</span><h3>We pull the day's sales.</h3><p>Nobody types anything in.</p></li>
+          <li><span class="n">2</span><h3>Tomorrow's list is in your email.</h3><p>A count for each dish, with a range.</p></li>
+          <li><span class="n">3</span><h3>Print it and prep from it.</h3><p>Or open it in the app.</p></li>
+          <li><span class="n">4</span><h3>Tell us where it was off.</h3><p>We read every reply.</p></li>
         </ol>
-        <p class="rail-more"><a class="go" href="how.html">Setup, step by step</a></p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container split">
-        <div class="split-copy">
-          <p class="kicker">The deal</p>
-          <h2>We're new. Here's what that gets you.</h2>
-          <p>We're looking for a few independent restaurants to start with. You get the forecast free. We get to learn from a real kitchen.</p>
-          <p class="ask">What we ask: a week to set up, and honest feedback once the lists start.</p>
-        </div>
-        <div class="receipt-wrap">
-          <div class="receipt">
-            <p class="receipt-top"><strong>Partner kitchen</strong>Tooey</p>
-            <div class="receipt-items">
-              <div class="receipt-item">
-                <div class="receipt-line"><span>Cost</span><span class="leader"></span><span class="val">Free</span></div>
-                <p>For independent restaurant partners.</p>
-              </div>
-              <div class="receipt-item">
-                <div class="receipt-line"><span>Setup</span><span class="leader"></span><span class="val">About a week</span></div>
-                <p>We connect to the POS you already use. You don't send us spreadsheets.</p>
-              </div>
-              <div class="receipt-item">
-                <div class="receipt-line"><span>Proof</span><span class="leader"></span><span class="val">You decide</span></div>
-                <p>Check the lists against what really sold. If they don't help, we stop.</p>
-              </div>
-              <div class="receipt-item">
-                <div class="receipt-line"><span>Your data</span><span class="leader"></span><span class="val">Stays yours</span></div>
-                <p>Used for your forecast only. Never sold, never shared with other restaurants.</p>
-              </div>
-              <div class="receipt-item">
-                <div class="receipt-line"><span>Help</span><span class="leader"></span><span class="val">A person</span></div>
-                <p>Email us and one of us writes back.</p>
-              </div>
-            </div>
-            <p class="receipt-total"><span>Total</span><span>$0.00</span></p>
-          </div>
-        </div>
+        <p class="more"><a class="go" href="how.html">How setup works</a></p>
       </div>
     </section>
 
     <section class="section">
       <div class="container who">
-        <div class="section-head">
-          <p class="kicker">Who's behind it</p>
-          <h2>University students who kept seeing kitchens guess.</h2>
-        </div>
+        <h2>A few university students.</h2>
         <div class="who-copy">
-          <p>We saw the same thing in restaurant after restaurant. Good food going in the bin because nobody knew how much to make.</p>
-          <p>The POS already knew what sold. It just never said how much to make tomorrow. So we built the thing that does.</p>
-          <p><a class="go" href="about.html">More about us</a></p>
+          <p>We kept seeing restaurants guess the prep and throw out good food. The POS knew what sold. It never said how much to make tomorrow. So we built that.</p>
+          <p><a class="go" href="about.html">About us</a></p>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section contact">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <p class="kicker">Talk to us</p>
-          <h2>Want the list?</h2>
-          <p class="lead">Tell us about your restaurant and which POS you use. One of us will write back.</p>
+          <h2 class="big">Want the list?</h2>
+          <p class="lead">Tell us about your restaurant. One of us will write back.</p>
           <p class="mail">Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
         </div>
         <form id="contactForm">
@@ -198,13 +133,17 @@
               <input id="email" name="email" type="email" required autocomplete="email" />
             </div>
             <div class="field">
-              <label for="phone">Phone <span class="opt">(optional)</span></label>
+              <label for="phone">Phone <span class="opt">optional</span></label>
               <input id="phone" name="phone" type="tel" autocomplete="tel" />
             </div>
           </div>
           <div class="field">
-            <label for="message">Message <span class="opt">(optional)</span></label>
-            <textarea id="message" name="message" placeholder="Which POS you use, what days you're open, anything you want to ask."></textarea>
+            <label for="pos">Which POS do you use? <span class="opt">optional</span></label>
+            <input id="pos" name="pos" placeholder="Toast, Square, Clover…" />
+          </div>
+          <div class="field">
+            <label for="message">Anything else <span class="opt">optional</span></label>
+            <textarea id="message" name="message"></textarea>
           </div>
           <div class="form-foot">
             <button class="btn btn-primary" type="submit" id="contactSubmit">Send</button>
@@ -231,7 +170,7 @@
   </footer>
 
   <div class="cta-bar">
-    <p>Free for partner restaurants.</p>
+    <p>Free for independent restaurants.</p>
     <a class="btn btn-primary" href="#contact">Talk to us</a>
   </div>
 
