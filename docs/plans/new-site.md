@@ -20,7 +20,7 @@ Steps for this pass:
 - [x] Sheet and page styling brought over from the review page
 - [x] Desktop and phone check of every page in both candidates
 - [x] Rex picks A or C; the other and the switch are removed (A)
-- [ ] Pull request
+- [x] Pull request (#7)
 
 
 Goal: a site that reads like it was written by the people who built Tooey,
@@ -180,4 +180,4 @@ copy has been through `/unslop`, and a pull request against `main` is open.
 - [ ] Privacy page in the new type
 - [ ] Redirects for old routes
 - [ ] Desktop and phone check of every page
-- [ ] Pull request
+- [x] Pull request (#7)
