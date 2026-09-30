@@ -86,6 +86,25 @@
     });
   }
 
+  // Count each predicted number up as its row prints. The delays match the
+  // row-print animation in styles.css, measured from page start.
+  const counts = document.querySelectorAll(".sheet-now .predicted");
+  if (counts.length && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    counts.forEach(function (el, i) {
+      const end = parseInt(el.textContent, 10);
+      if (!end) return;
+      el.textContent = "0";
+      const start = 650 + i * 120;
+      const length = 700;
+      function tick(now) {
+        const t = Math.min(1, Math.max(0, (now - start) / length));
+        el.textContent = String(Math.round(end * (1 - Math.pow(1 - t, 3))));
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
   // The example email is always for tomorrow.
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const tomorrow = days[(new Date().getDay() + 1) % 7];

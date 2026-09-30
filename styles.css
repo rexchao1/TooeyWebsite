@@ -46,6 +46,9 @@
   --line: #e3e3df;
   --field: #c8c9c4;
   --err: #b3261e;
+  /* The spoon and the leaf in the wordmark, for the glow behind the sheet. */
+  --spoon: 217, 165, 111;
+  --leaf: 154, 171, 128;
 
   /* Type, candidate A (default). */
   --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -282,6 +285,9 @@ a {
 
 .hero {
   padding-block: clamp(40px, 7vw, 96px) clamp(56px, 7vw, 96px);
+  /* Keeps the glow and the tilted sheets from widening the page. */
+  overflow: hidden;
+  overflow: clip;
 }
 .hero-grid {
   display: grid;
@@ -388,6 +394,90 @@ a {
 }
 .forecast .th-short {
   display: none;
+}
+
+/* Yesterday's sheets under tomorrow's, the glow, and the print-in */
+
+.sheet-stack {
+  position: relative;
+  isolation: isolate;
+}
+.sheet-stack::before {
+  content: "";
+  position: absolute;
+  inset: -22% -16%;
+  z-index: -2;
+  background:
+    radial-gradient(closest-side at 28% 30%, rgba(var(--spoon), 0.55), transparent),
+    radial-gradient(closest-side at 76% 74%, rgba(var(--leaf), 0.5), transparent);
+  filter: blur(24px);
+  pointer-events: none;
+}
+.sheet-now {
+  position: relative;
+}
+.sheet-past {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform-origin: 50% 100%;
+  box-shadow: 0 1px 2px rgba(24, 24, 26, 0.05), 0 16px 32px -24px rgba(24, 24, 26, 0.24);
+}
+.sheet-past:nth-child(1) {
+  transform: translate(-26px, -6px) rotate(-5deg);
+}
+.sheet-past:nth-child(2) {
+  transform: translate(-12px, -2px) rotate(-2.5deg);
+}
+/* Blank bars: the old sheets only need to read as paper. */
+.sheet-past .sheet-bar {
+  height: 48px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The sheet feeds out top first, then the rows print one by one.
+     site.js counts the numbers up on the same timing. */
+  .sheet-now {
+    animation: sheet-feed 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 150ms both;
+  }
+  .sheet-now .forecast tbody tr {
+    animation: row-print 360ms ease-out both;
+  }
+  .sheet-now .forecast tbody tr:nth-child(1) { animation-delay: 650ms; }
+  .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 770ms; }
+  .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 890ms; }
+  .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 1010ms; }
+  .sheet-stack::before {
+    animation: glow-drift 18s ease-in-out infinite alternate;
+  }
+}
+@keyframes sheet-feed {
+  from {
+    transform: translateY(-32px);
+    clip-path: inset(-80px -80px 100% -80px);
+  }
+  to {
+    transform: none;
+    clip-path: inset(-80px);
+  }
+}
+@keyframes row-print {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes glow-drift {
+  from {
+    transform: translate(-3%, 2%) scale(1);
+  }
+  to {
+    transform: translate(3%, -2%) scale(1.06);
+  }
 }
 
 /* Sections */
@@ -1021,6 +1111,24 @@ textarea:focus {
   }
   .site-footer {
     padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Tablet and phone: the hero is one column and the sheet spans it, so the
+   old sheets stack straight up to stay inside the gutter. */
+
+@media (max-width: 980px) {
+  .sheet-past {
+    transform-origin: 50% 0;
+  }
+  .sheet-past:nth-child(1) {
+    transform: translateY(-20px) scale(0.92);
+  }
+  .sheet-past:nth-child(2) {
+    transform: translateY(-10px) scale(0.96);
+  }
+  .sheet-stack {
+    margin-top: 20px;
   }
 }
 

@@ -44,24 +44,28 @@
             <a class="go" href="how.html">How it works</a>
           </div>
         </div>
-        <figure class="sheet" aria-label="Tooey forecast for tomorrow">
-          <div class="sheet-bar">Forecast</div>
-          <div class="sheet-body">
-            <p class="sheet-kicker">Tomorrow</p>
-            <p class="sheet-day">Tuesday</p>
-            <table class="forecast">
-              <thead>
-                <tr><th>Item</th><th>Predicted</th><th>Range</th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="range">38–46</td><td class="delta">+8%</td></tr>
-                <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="range">27–34</td><td class="delta">+5%</td></tr>
-                <tr><td>Caesar salad</td><td class="predicted">24</td><td class="range">20–27</td><td class="delta">−4%</td></tr>
-                <tr><td>House pasta</td><td class="predicted">18</td><td class="range">15–21</td><td class="delta">+12%</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </figure>
+        <div class="sheet-stack">
+          <div class="sheet sheet-past" aria-hidden="true"><div class="sheet-bar"></div></div>
+          <div class="sheet sheet-past" aria-hidden="true"><div class="sheet-bar"></div></div>
+          <figure class="sheet sheet-now" aria-label="Tooey forecast for tomorrow">
+            <div class="sheet-bar">Forecast</div>
+            <div class="sheet-body">
+              <p class="sheet-kicker">Tomorrow</p>
+              <p class="sheet-day">Tuesday</p>
+              <table class="forecast">
+                <thead>
+                  <tr><th>Item</th><th>Predicted</th><th>Range</th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="range">38–46</td><td class="delta">+8%</td></tr>
+                  <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="range">27–34</td><td class="delta">+5%</td></tr>
+                  <tr><td>Caesar salad</td><td class="predicted">24</td><td class="range">20–27</td><td class="delta">−4%</td></tr>
+                  <tr><td>House pasta</td><td class="predicted">18</td><td class="range">15–21</td><td class="delta">+12%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+        </div>
       </div>
     </section>
 

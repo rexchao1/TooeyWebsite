@@ -22,6 +22,13 @@ Steps for this pass:
 - [x] Rex picks A or C; the other and the switch are removed (A)
 - [x] Pull request (#7)
 
+Hero pass (2026-09-30), Rex's picks from four ideas:
+- [x] "Free for independent restaurants. If it doesn't help, we stop." removed from the hero
+- [x] Tomorrow's sheet prints in on load: feeds out top first, rows appear one by one, counts tick up (CSS plus `site.js`, off under reduced motion)
+- [x] A soft glow in the wordmark's spoon tan and leaf green behind the sheet, drifting slowly
+- [x] Two blank past sheets under tomorrow's: fanned left on desktop, stacked straight up at 980px and below so they stay inside the gutter
+- Not taken: a night-to-morning gradient across the whole hero
+
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
