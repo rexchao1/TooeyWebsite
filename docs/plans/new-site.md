@@ -49,9 +49,10 @@ and wants the headline broad enough that Tooey can grow past prep, so it
 names the company, not a feature. The lead says what exists today.
 - [x] Headline: "The operations partner for independent restaurants." The
   "For independent restaurants" label above it is gone.
-- [x] Lead (draft, Rex still choosing): "We start with prep. Each morning
-  before the kitchen opens, you get a count for every dish, worked out from
-  what you sold." Page title and share text match.
+- [x] Lead (Rex's words): "We start with prep. Each morning before the
+  kitchen opens, you get a count for every dish. No more guessing." Page
+  title and share text match. Benefit lines stay unquantified (no "saves
+  X%", no margins) until a partner has measured results.
 - [x] The sheet says "Today", since the email arrives that morning.
 - Rejected headlines: anything about forecasting or prep alone (reads as the
   whole product), "operating system", "data-driven", two-part slogans.
