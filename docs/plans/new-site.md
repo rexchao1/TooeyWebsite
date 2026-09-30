@@ -44,6 +44,18 @@ its own surface, often with a still grain. Rex approved:
   values are the prediction plus a small cushion. The "What happens each
   night" step says the same. `how.html` still shows and explains a range.
 
+Hero words (2026-09-30). Rex dropped "Prep to the number." as meaningless
+and wants the headline broad enough that Tooey can grow past prep, so it
+names the company, not a feature. The lead says what exists today.
+- [x] Headline: "The operations partner for independent restaurants." The
+  "For independent restaurants" label above it is gone.
+- [x] Lead (draft, Rex still choosing): "We start with prep. Each morning
+  before the kitchen opens, you get a count for every dish, worked out from
+  what you sold." Page title and share text match.
+- [x] The sheet says "Today", since the email arrives that morning.
+- Rejected headlines: anything about forecasting or prep alone (reads as the
+  whole product), "operating system", "data-driven", two-part slogans.
+
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces

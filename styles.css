@@ -64,7 +64,7 @@
   --display-track: -0.01em;
   --display-leading: 1.04;
   --hero-size: clamp(46px, 6vw, 80px);
-  --hero-size-phone: clamp(40px, 12vw, 58px);
+  --hero-size-phone: clamp(34px, 10vw, 48px);
   --title-weight: 600;
   --strong-weight: 600;
   /* Source Serif's figures are narrow, so its ch is small: wider ch measures. */
@@ -294,24 +294,23 @@ a {
   display: grid;
   gap: clamp(40px, 5vw, 64px);
 }
-/* Headline on the left, the lead and buttons beside it, the sheets below. */
+/* Headline across the top, the lead and buttons side by side under it,
+   the sheets below. */
 .hero-copy {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-columns: auto auto;
   grid-template-areas:
-    "eyebrow ."
-    "title lead"
-    "title actions";
-  column-gap: clamp(32px, 5vw, 72px);
-  row-gap: 22px;
-  align-items: start;
+    "title title"
+    "lead actions";
+  justify-content: start;
+  column-gap: clamp(32px, 5vw, 64px);
+  row-gap: 24px;
+  align-items: end;
   justify-items: start;
-}
-.hero-copy .eyebrow {
-  grid-area: eyebrow;
 }
 .hero h1 {
   grid-area: title;
+  text-wrap: balance;
   font-size: var(--hero-size);
   line-height: var(--display-leading);
   letter-spacing: var(--display-track);
@@ -321,7 +320,6 @@ a {
 }
 .hero-actions {
   grid-area: actions;
-  align-self: end;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -1147,7 +1145,7 @@ textarea:focus {
 @media (max-width: 980px) {
   .hero-copy {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "eyebrow" "title" "lead" "actions";
+    grid-template-areas: "title" "lead" "actions";
     align-items: start;
   }
   .sheet-past {
