@@ -34,46 +34,48 @@
 
   <main id="main">
     <section class="hero">
-      <div class="container">
+      <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">For independent restaurants</p>
           <h1>Prep to the number.</h1>
-          <p class="lead">Every night we email you tomorrow's count for each dish, based on what you actually sold. Print it and prep from it.</p>
+          <p class="lead">Every night after close we email you tomorrow's count for each dish, based on what you sold. Print it and prep from it.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Talk to us</a>
             <a class="go" href="how.html">How it works</a>
           </div>
           <p class="promise">Free for independent restaurants. If it doesn't help, we stop.</p>
         </div>
-      </div>
-      <div class="container">
-        <figure class="shot">
-          <img src="app-screenshot.png" width="2060" height="1158" alt="The Tooey app showing today's prep plan: projected demand for each dish, estimated prep time, and how much of the menu is covered." />
-          <figcaption>The prep plan in the Tooey app. The same counts come to your email every night.</figcaption>
+        <figure class="sheet" aria-label="Tooey forecast for tomorrow">
+          <div class="sheet-bar">Forecast</div>
+          <div class="sheet-body">
+            <p class="sheet-kicker">Tomorrow</p>
+            <p class="sheet-day">Tuesday</p>
+            <table class="forecast">
+              <thead>
+                <tr><th>Item</th><th>Predicted</th><th>Range</th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="range">38–46</td><td class="delta">+8%</td></tr>
+                <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="range">27–34</td><td class="delta">+5%</td></tr>
+                <tr><td>Caesar salad</td><td class="predicted">24</td><td class="range">20–27</td><td class="delta">−4%</td></tr>
+                <tr><td>House pasta</td><td class="predicted">18</td><td class="range">15–21</td><td class="delta">+12%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </figure>
       </div>
     </section>
 
-    <section class="band">
-      <div class="container band-grid">
-        <h2>Most prep starts with a guess.</h2>
-        <div class="band-copy">
-          <p>Someone looks at yesterday's tickets and picks a number. Guess high, it goes in the bin. Guess low, you 86 it at 7:30.</p>
-          <p>Chains pay a team to forecast this. Independent kitchens get yesterday's tickets.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section wash">
       <div class="container deal">
         <div class="deal-head">
           <h2 class="big">We're new. Here's the deal.</h2>
-          <p>We're looking for a few independent restaurants to start with. You get the forecast free. We learn from a real kitchen.</p>
+          <p>We're looking for a few independent restaurants to start with. You get the forecast free. We need a real kitchen to test it in.</p>
           <p class="muted">All we ask is honest feedback once the lists start.</p>
         </div>
         <dl class="terms">
           <div><dt>Cost</dt><dd>Free for partner restaurants.</dd></div>
-          <div><dt>Setup</dt><dd>About a week. We connect to the POS you already use.</dd></div>
+          <div><dt>Setup</dt><dd>About a week. Tell us your POS and we'll check we can connect to it.</dd></div>
           <div><dt>Proof</dt><dd>Check the lists against what sold. If they don't help, we stop.</dd></div>
           <div><dt>Wrong numbers</dt><dd>It's a starting point. You still make the call.</dd></div>
           <div><dt>Your data</dt><dd>Used for your forecast only. Never sold, never shared with other restaurants.</dd></div>
@@ -97,9 +99,9 @@
 
     <section class="section">
       <div class="container who">
-        <h2>A few university students.</h2>
+        <h2>Why we built it.</h2>
         <div class="who-copy">
-          <p>We kept seeing restaurants guess the prep and throw out good food. The POS knew what sold. It never said how much to make tomorrow. So we built that.</p>
+          <p>We're a few university students. We kept seeing restaurants guess the prep and throw out good food. The POS knew what sold. It never said how much to make tomorrow. So we built that.</p>
           <p><a class="go" href="about.html">About us</a></p>
         </div>
       </div>
@@ -108,7 +110,7 @@
     <section id="contact" class="section contact">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <h2 class="big">Want the list?</h2>
+          <h2 class="big">Want to try it?</h2>
           <p class="lead">Tell us about your restaurant. One of us will write back.</p>
           <p class="mail">Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
         </div>

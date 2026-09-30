@@ -28,5 +28,4 @@ into `dist/`, which is what Vercel publishes.
 | `site.js` | Nav, motion, contact form. |
 | `logo.png` | The Tooey wordmark. |
 | `fonts/` | Self-hosted Libre Franklin. |
-| `app-screenshot.png` | The real app screenshot on the home page. |
 | `src/` | An unused one-page Svelte draft. Editing it does not change the live site. |

@@ -4,7 +4,10 @@ Goal: replace the generic cream-and-serif look with one a restaurant owner
 trusts, and cut the copy down to short, plain lines.
 
 Direction (second pass, after an owner's-eye review): plain, sturdy, and
-honest about being early. The real Tooey app screenshot is the main visual.
+honest about being early. The main visual is the forecast sheet from the
+original site (Tomorrow, Tuesday, a count and range per dish), rebuilt in
+HTML in the new type. The owner asked for that one specifically; the app
+screenshot in `static/` is not used.
 No props that pretend to be something else (no taped ticket, no receipt, no
 typewriter labels). The first pass (paper, ticket printer red, weekday dots,
 three typefaces) was dropped as looking made-up.
@@ -16,7 +19,7 @@ color. Buttons are ink.
 Type: Libre Franklin only, self-hosted in `fonts/`. Headlines weight 800,
 text 400.
 
-Home page order: hero with the app screenshot, the problem ("Most prep starts
+Home page order: hero with the forecast sheet, the problem ("Most prep starts
 with a guess"), the deal (free, setup, proof, wrong numbers, data, help),
 four nightly steps, who we are, contact form.
 
@@ -26,8 +29,7 @@ was added), keep the phone bottom bar and menu sheet.
 
 Open facts only the team can give: which POS systems are supported, what free
 turns into later, how much of the owner's time setup takes, reply time,
-founder names or a photo. A cleaner app screenshot would help: the current one
-shows a test account and a plan five days past its data.
+founder names or a photo.
 
 Done when: all four pages are rebuilt, read well at desktop and phone width,
 and the pull request is open.
@@ -36,10 +38,10 @@ and the pull request is open.
 
 - [x] Fonts swapped to Libre Franklin
 - [x] `styles.css` rewritten
-- [x] Home page, with the real app screenshot
+- [x] Home page, with the forecast sheet
 - [x] How it works
 - [x] About
 - [x] Privacy
 - [x] Favicon
-- [x] Desktop and phone check of every page (Chrome, 1440 and 390 wide, home also at 360)
+- [x] Desktop and phone check of every page (Chrome, 1440 and 390 wide, home also at 360 and 320)
 - [x] Pull request (#6) updated
