@@ -180,4 +180,4 @@ copy has been through `/unslop`, and a pull request against `main` is open.
 - [ ] Privacy page in the new type
 - [ ] Redirects for old routes
 - [ ] Desktop and phone check of every page
-- [x] Pull request (#7)
+- [ ] Pull request (not needed: the rewrite was dropped)
