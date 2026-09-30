@@ -29,6 +29,15 @@
   font-style: normal;
   font-display: swap;
 }
+/* Pencil on the old prep list in the hero. Reenie Beanie, latin, from
+   fontsource (SIL OFL 1.1). */
+@font-face {
+  font-family: "Reenie Beanie";
+  src: url("fonts/reenie-beanie.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: "Schibsted Grotesk";
   src: url("fonts/schibsted-grotesk-arrow.woff2") format("woff2");
@@ -40,16 +49,26 @@
 
 :root {
   --bg: #ffffff;
-  --wash: #f3f3f0;
+  --wash: #f2f4ee;
+  --sheet-bar: #f3f3f0;
   --ink: #18181a;
   --muted: #5d5f64;
   --line: #e3e3df;
   --field: #c8c9c4;
   --err: #b3261e;
-  /* Butcher paper, warmed from the spoon in the wordmark: the counter
-     the hero's sheets sit on. */
-  --counter-top: #efe4d3;
-  --counter-bottom: #e6d8c3;
+  /* The hero's ground, a light sage, and the one color the page leans on:
+     the leaf in the wordmark, muted. */
+  --counter-top: #eef1e7;
+  --counter-bottom: #dfe6d5;
+  --light: rgba(255, 250, 232, 0.75);
+  --accent: #3f6b50;
+  --accent-deep: #325a42;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* A scrap off a yellow pad, and the pencil on it. */
+  --pad: #f5ecc6;
+  --pad-rule: rgba(92, 128, 160, 0.28);
+  --pad-margin: rgba(196, 84, 70, 0.4);
+  --pencil: #3f4043;
 
   /* Type, candidate A (default). */
   --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -78,6 +97,7 @@
 
   color-scheme: light;
 }
+
 
 *,
 *::before,
@@ -202,11 +222,11 @@ a {
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
 }
 .btn-primary:hover {
-  background: #000;
+  background: var(--accent-deep);
 }
 .btn:disabled {
   opacity: 0.6;
@@ -225,7 +245,7 @@ a {
   content: " →";
 }
 .go:hover {
-  text-decoration-color: var(--ink);
+  text-decoration-color: var(--accent);
 }
 
 /* Header */
@@ -241,6 +261,15 @@ a {
 .site-header.is-stuck,
 .site-header.is-open {
   border-bottom-color: var(--line);
+}
+/* On the home page the header is clear over the counter until the page
+   moves; the hero runs up behind it. */
+.home .site-header:not(.is-stuck):not(.is-open) {
+  background: transparent;
+}
+.home .hero {
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: calc(var(--header-h) + clamp(32px, 5vw, 64px));
 }
 .header-inner {
   height: var(--header-h);
@@ -339,7 +368,7 @@ a {
 .sheet-bar {
   padding: 12px 22px;
   border-bottom: 1px solid var(--line);
-  background: var(--wash);
+  background: var(--sheet-bar);
   font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 600;
@@ -411,28 +440,132 @@ a {
   display: none;
 }
 
-/* The counter: a lit butcher-paper panel the sheets sit on, with a still
-   grain so it reads as paper, not a flat fill. */
+/* The counter: the whole hero is one lit ground, from behind the header
+   down past the sheet, with a still grain so it reads as paper, not a flat
+   fill. Morning light from a window drifts slowly across it. */
 
-.counter {
+.hero {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  border-radius: 20px;
-  padding: clamp(48px, 6vw, 72px) var(--gutter) clamp(56px, 6vw, 88px);
   background:
-    radial-gradient(55% 65% at 50% 32%, rgba(255, 255, 255, 0.55), transparent 72%),
+    radial-gradient(48% 42% at 50% 70%, rgba(255, 255, 255, 0.6), transparent 72%),
     linear-gradient(180deg, var(--counter-top), var(--counter-bottom));
 }
-.counter::before {
+.hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: -1;
+  background-image: var(--grain);
   background-size: 160px;
   opacity: 0.14;
   mix-blend-mode: multiply;
   pointer-events: none;
+}
+.window-light {
+  position: absolute;
+  z-index: -2;
+  top: -12%;
+  right: -8%;
+  width: 72%;
+  height: 125%;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  gap: clamp(20px, 3vw, 40px);
+  transform: skewX(-22deg);
+  filter: blur(26px);
+  pointer-events: none;
+}
+.window-light span {
+  background: var(--light);
+  border-radius: 6px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .window-light {
+    animation: light-drift 28s ease-in-out infinite alternate;
+  }
+}
+@keyframes light-drift {
+  from {
+    transform: translateX(-6%) skewX(-24deg);
+    opacity: 0.75;
+  }
+  to {
+    transform: translateX(5%) skewX(-19deg);
+    opacity: 1;
+  }
+}
+.counter {
+  position: relative;
+  padding-top: 16px;
+}
+
+/* The old way, under the new: a pencil prep list on a scrap off a yellow
+   pad, taped, with a coffee ring, left under the right edge of tomorrow's
+   sheet. It is meant to look like the kitchen, not like the product. */
+
+.old-list {
+  --tilt: 5deg;
+  position: absolute;
+  z-index: 0;
+  top: 72px;
+  left: calc(50% + 320px - 72px);
+  width: 300px;
+  transform: rotate(var(--tilt));
+  filter: drop-shadow(0 1px 1px rgba(24, 24, 26, 0.12)) drop-shadow(0 10px 14px rgba(24, 24, 26, 0.12));
+}
+/* Masking tape across the top. */
+.old-list::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 58%;
+  width: 92px;
+  height: 26px;
+  transform: rotate(-6deg);
+  background: rgba(233, 222, 192, 0.88);
+  clip-path: polygon(0 8%, 6% 0, 12% 10%, 20% 2%, 100% 0, 96% 20%, 100% 38%, 95% 60%, 100% 82%, 97% 100%, 0 100%, 4% 78%, 0 58%, 5% 36%);
+}
+.old-paper {
+  --rule: 34px;
+  --pt: 26px;
+  padding: var(--pt) 18px 34px 90px;
+  background:
+    /* coffee ring */
+    radial-gradient(42px 37px at 84% 90%, rgba(128, 84, 40, 0.035) 0 72%, rgba(128, 84, 40, 0.09) 80%, rgba(128, 84, 40, 0.17) 88%, rgba(128, 84, 40, 0.06) 94%, transparent 100%),
+    /* a smudge where a hand rested */
+    radial-gradient(ellipse 34% 18% at 40% 62%, rgba(60, 60, 64, 0.07), transparent),
+    /* red margin line */
+    linear-gradient(90deg, transparent 72px, var(--pad-margin) 72px 73.5px, transparent 73.5px),
+    /* blue rules */
+    repeating-linear-gradient(180deg, transparent 0 calc(var(--rule) - 1px), var(--pad-rule) calc(var(--rule) - 1px) var(--rule)) 0 var(--pt) / 100% 100% no-repeat,
+    var(--pad);
+  /* A torn bottom edge. */
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 96% 97.5%, 92% 95.2%, 87% 98.4%, 83% 95.8%, 78% 97.2%, 73% 94.8%, 68% 98.6%, 63% 96%, 58% 97.8%, 53% 95%, 48% 98.2%, 43% 95.6%, 38% 97.6%, 33% 94.9%, 28% 98%, 23% 95.7%, 18% 97.4%, 13% 95.1%, 8% 98.3%, 4% 96%, 0 97.6%);
+  font: 400 29px / 34px "Reenie Beanie", "Bradley Hand", cursive;
+  color: var(--pencil);
+  white-space: nowrap;
+}
+.old-list p {
+  margin: 0;
+}
+.old-list .old-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.old-list del {
+  position: relative;
+  text-decoration: none;
+}
+.old-list del::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 32%;
+  height: 0.4em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 12' preserveAspectRatio='none'%3E%3Cpath d='M1 5 C12 3 26 6 39 3 M3 9 C15 7 27 9 38 6' fill='none' stroke='%233f4043' stroke-width='1.3' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
 /* Yesterday's sheets under tomorrow's, and the print-in */
@@ -468,21 +601,83 @@ a {
 @media (prefers-reduced-motion: no-preference) {
   /* The sheet feeds out top first, then the rows print one by one.
      site.js counts the numbers up on the same timing. */
+  /* Before, then after. The pencil list lands alone in the middle of the
+     counter and is written in, its guesses crossed out. Then tomorrow's
+     sheet feeds out and the list is pushed aside under it. site.js sets
+     --dx and --dy, the distance from the list's resting place to the
+     middle of the sheet. */
+  .old-list {
+    animation:
+      note-in 200ms ease-out both,
+      note-aside 650ms cubic-bezier(0.3, 0.7, 0.2, 1) 1150ms both;
+  }
+  .old-list p {
+    animation: pencil-write 260ms ease-in-out both;
+  }
+  .old-list p:nth-child(1) { animation-delay: 200ms; }
+  .old-list p:nth-child(2) { animation-delay: 310ms; }
+  .old-list p:nth-child(3) { animation-delay: 420ms; }
+  .old-list p:nth-child(4) { animation-delay: 530ms; }
+  .old-list p:nth-child(5) { animation-delay: 640ms; }
+  .old-list p:nth-child(6) { animation-delay: 750ms; }
+  .old-list del::after {
+    animation: pencil-write 180ms ease-out 950ms both;
+  }
+  .sheet-now,
+  .sheet-past {
+    animation: sheet-fade 400ms ease-out 1250ms both;
+  }
   .sheet-now {
-    animation: sheet-feed 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 150ms both;
+    animation: sheet-feed 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 1250ms both;
   }
   .sheet-now .forecast tbody tr {
     animation: row-print 360ms ease-out both;
   }
-  .sheet-now .forecast tbody tr:nth-child(1) { animation-delay: 650ms; }
-  .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 770ms; }
-  .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 890ms; }
-  .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 1010ms; }
+  .sheet-now .forecast tbody tr:nth-child(1) { animation-delay: 1750ms; }
+  .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 1870ms; }
+  .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 1990ms; }
+  .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 2110ms; }
+}
+@keyframes note-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes note-aside {
+  0% {
+    z-index: 2;
+    transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(-3deg) scale(1.08);
+  }
+  12% {
+    z-index: 0;
+  }
+  100% {
+    z-index: 0;
+    transform: rotate(var(--tilt));
+  }
+}
+@keyframes sheet-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes bury {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes pencil-write {
+  from {
+    clip-path: inset(-20% 100% -20% -10%);
+  }
+  to {
+    clip-path: inset(-20% -10% -20% -10%);
+  }
 }
 @keyframes sheet-feed {
   from {
     transform: translateY(-32px);
-    clip-path: inset(-80px -80px 100% -80px);
+    clip-path: inset(-80px -80px calc(100% + 2px) -80px);
   }
   to {
     transform: none;
@@ -1049,8 +1244,6 @@ textarea:focus {
   }
   .counter {
     margin-inline: calc(8px - var(--gutter));
-    border-radius: 16px;
-    padding: 40px 8px 44px;
   }
   .sheet-bar {
     padding-inline: 14px;
@@ -1156,6 +1349,59 @@ textarea:focus {
   }
   .sheet-past:nth-child(2) {
     transform: translateY(-10px) scale(0.96);
+  }
+}
+
+/* Too narrow to tuck the pencil list beside the sheet: it sits above the
+   sheet's right side instead, and the sheet covers its lower half. */
+
+@media (max-width: 1160px) {
+  .counter {
+    padding-top: 128px;
+  }
+  .old-list {
+    --tilt: 3deg;
+    top: 0;
+    left: auto;
+    right: max(0px, calc(50% - 320px - 8px));
+    width: 280px;
+  }
+  .old-paper {
+    padding-left: 48px;
+    background-position: 0 0, 0 0, -32px 0, 0 var(--pt), 0 0;
+  }
+  /* Only the first two lines clear the sheet; the rest would peek out as
+     stray pencil tops, so once the list is pushed aside they fade. */
+  .old-list p:nth-child(n + 3) {
+    visibility: hidden;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .old-list p:nth-child(n + 3) {
+      visibility: visible;
+      animation:
+        pencil-write 260ms ease-in-out both,
+        bury 200ms ease-out 1500ms both;
+    }
+    .old-list p:nth-child(3) { animation-delay: 420ms, 1500ms; }
+    .old-list p:nth-child(4) { animation-delay: 530ms, 1500ms; }
+    .old-list p:nth-child(5) { animation-delay: 640ms, 1500ms; }
+    .old-list p:nth-child(6) { animation-delay: 750ms, 1500ms; }
+  }
+}
+@media (max-width: 760px) {
+  .counter {
+    padding-top: 112px;
+  }
+  .old-list {
+    right: 4px;
+    width: 236px;
+  }
+  .old-paper {
+    --rule: 30px;
+    --pt: 24px;
+    padding: var(--pt) 16px 28px 38px;
+    font-size: 26px;
+    line-height: 30px;
   }
 }
 

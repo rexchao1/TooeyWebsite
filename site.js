@@ -86,15 +86,27 @@
     });
   }
 
-  // Count each prep number up as its row prints. The delays match the
-  // row-print animation in styles.css, measured from page start.
+  // The pencil list starts in the middle of the sheet before it is pushed
+  // aside (note-aside in styles.css). Offsets ignore transforms, so this
+  // measures the list's resting place.
+  const oldList = document.querySelector(".old-list");
+  const stack = document.querySelector(".sheet-stack");
+  if (oldList && stack) {
+    const dx = stack.offsetLeft + stack.offsetWidth / 2 - (oldList.offsetLeft + oldList.offsetWidth / 2);
+    const dy = stack.offsetTop + Math.min(stack.offsetHeight / 2, 180) - (oldList.offsetTop + oldList.offsetHeight / 2);
+    oldList.style.setProperty("--dx", Math.round(dx) + "px");
+    oldList.style.setProperty("--dy", Math.round(dy) + "px");
+  }
+
+  // Count each prep number up as its row prints, starting at that row's
+  // row-print delay in styles.css, measured from page start.
   const counts = document.querySelectorAll(".sheet-now .prep");
   if (counts.length && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
-    counts.forEach(function (el, i) {
+    counts.forEach(function (el) {
       const end = parseInt(el.textContent, 10);
       if (!end) return;
       el.textContent = "0";
-      const start = 650 + i * 120;
+      const start = parseFloat(getComputedStyle(el.parentElement).animationDelay) * 1000 || 0;
       const length = 700;
       function tick(now) {
         const t = Math.min(1, Math.max(0, (now - start) / length));

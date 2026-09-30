@@ -58,6 +58,36 @@ names the company, not a feature. The lead says what exists today.
   whole product), "operating system", "data-driven", two-part slogans.
 
 
+Hero ground (2026-09-30). Rex still found the top of the hero plain white
+above the counter. Of seven ideas he left the pick to judgement:
+- [x] The butcher-paper counter becomes the whole hero, from behind the
+  header down past the sheet, with the grain and the light behind the sheet
+- [x] The old way under the new: a pencil prep list on the back of a guest
+  check, guesses crossed out ("burgers 40? 50?", "pasta, ask chef"), half
+  under tomorrow's sheet. Written in on load, then the sheet prints over it.
+  Pencil is Reenie Beanie (OFL, `fonts/`) until a real handwritten list can
+  be scanned and traced. (Superseded below: a yellow pad scrap, not a guest
+  check.)
+- [x] Desktop, tablet, and phone check (1440, 900, 390, 320)
+- Not taken: a dark early-morning hero, a ticket rail, a scrolling strip of
+  counts, a marker swipe in the headline, stock photos.
+
+Color and note pass (2026-09-30). Rex: the note is good but reads as part of
+the product, and every color on the page is bland; keep colors low-key,
+light, nothing bold or dark.
+- [x] One accent for the whole site: the wordmark's leaf, muted (#3f6b50) on
+  the primary buttons and link hovers. The grey band is tinted to match.
+- [x] Three light hero grounds on trial behind `?look=`: sage (default),
+  cream, sky. Tan is gone.
+- [x] Morning window light: four soft panes drifting slowly across the hero
+  (still under reduced motion)
+- [x] The note becomes a torn scrap off a yellow pad: masking tape, coffee
+  ring, a smudge, margin line. It lands alone in the middle first and is
+  written in, then the sheet feeds out and pushes it aside.
+- [x] Desktop, tablet, and phone check, including frozen mid-animation frames
+- [x] Rex picks a look; the switch and the other two are removed (sage)
+- [x] Commit and push to `new-site`
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in
