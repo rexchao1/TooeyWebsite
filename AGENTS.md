@@ -25,6 +25,10 @@ a browser at desktop and phone width, including every route.
 Changing words, layout, or style: edit the root HTML and `styles.css`.
 Those are the pages.
 
+Work that runs past a few steps gets a plan in `docs/plans/`. Read
+`docs/plans/site-redesign.md` before changing the look: it holds the chosen
+colors, type, and how the red and the weekday dots may be used.
+
 ## Claims
 
 Everything on this site is a promise to a restaurant owner who has not paid

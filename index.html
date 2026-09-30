@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tooey</title>
-  <meta name="description" content="Tooey forecasts item-level sales for independent restaurants and emails tomorrow's counts every night." />
-  <meta property="og:title" content="Tooey" />
-  <meta property="og:description" content="Know what your restaurant will sell before the day begins. Item-level forecasts are emailed every night." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Tooey · Prep to the number</title>
+  <meta name="description" content="Every night, Tooey emails tomorrow's count for each dish on your menu, worked out from your own sales. Free for independent restaurant partners." />
+  <meta property="og:title" content="Tooey · Prep to the number" />
+  <meta property="og:description" content="Tomorrow's count for every dish, from your own sales, in your inbox tonight." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#fbf8f1" />
+  <meta name="theme-color" content="#f2f3f0" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -17,7 +18,7 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#top"><img src="logo.png" width="171" height="74" alt="Tooey" /></a>
+      <a class="brand" href="index.html"><img src="logo.png" width="171" height="74" alt="Tooey" /></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span>
       </button>
@@ -32,134 +33,155 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <section class="hero">
       <div class="container hero-grid">
-        <div>
-          <h1>Know what your restaurant will sell before the day begins.</h1>
-          <p class="lead">Tooey forecasts item-level sales for independent restaurants, using your own history. You get a number for each dish, not a guess for the whole day.</p>
+        <div class="hero-copy">
+          <p class="kicker">For independent restaurants</p>
+          <h1>Prep to the number.</h1>
+          <p class="lead">Every night, Tooey emails tomorrow's count for each dish on your menu, worked out from your own sales. Print it. Tape it up. Prep from it.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Talk to us</a>
-            <a class="btn btn-ghost" href="how.html">How it works</a>
+            <a class="go" href="how.html">How it works</a>
           </div>
+          <p class="hero-free">Free for independent restaurant partners.</p>
         </div>
 
-        <figure class="product">
-          <div class="product-frame" data-tick-root aria-label="Tooey forecast">
-            <div class="product-bar">
-              <span class="product-title">Forecast</span>
+        <figure class="list-wrap" aria-label="An example of the nightly prep list">
+          <span class="tape tape-l" aria-hidden="true"></span>
+          <span class="tape tape-r" aria-hidden="true"></span>
+          <div class="list">
+            <div class="list-top">
+              <span class="list-day"><span class="dot" data-tomorrow-dot></span><span data-tomorrow>Tue</span> · Prep</span>
+              <span>Tooey</span>
             </div>
-            <div class="product-body">
-              <div class="product-kicker">Tomorrow</div>
-              <div class="product-date">Tuesday</div>
-              <table class="forecast">
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Predicted</th>
-                    <th>Range</th>
-                    <th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Cheeseburger</td>
-                    <td class="predicted" data-tick="42">42</td>
-                    <td class="range">38–46</td>
-                    <td class="delta up">+8%</td>
-                  </tr>
-                  <tr>
-                    <td>Chicken sandwich</td>
-                    <td class="predicted" data-tick="31">31</td>
-                    <td class="range">27–34</td>
-                    <td class="delta up">+5%</td>
-                  </tr>
-                  <tr>
-                    <td>Caesar salad</td>
-                    <td class="predicted" data-tick="24">24</td>
-                    <td class="range">20–27</td>
-                    <td class="delta down">−4%</td>
-                  </tr>
-                  <tr>
-                    <td>House pasta</td>
-                    <td class="predicted" data-tick="18">18</td>
-                    <td class="range">15–21</td>
-                    <td class="delta up">+12%</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="list-row head"><span>Dish</span><span>Make</span><span>Range</span><span>Made</span></div>
+            <div class="list-row">
+              <span>Cheeseburger</span>
+              <b>42<svg class="circle" viewBox="0 0 62 40" aria-hidden="true"><path d="M40 5C24 1 5 7 4 19c-1 12 20 17 36 15 14-2 20-9 18-17-2-8-14-12-27-11" /></svg></b>
+              <span class="range">38–46</span><span class="made"></span>
             </div>
+            <div class="list-row"><span>Chicken sandwich</span><b>31</b><span class="range">27–34</span><span class="made"></span></div>
+            <div class="list-row"><span>Caesar salad</span><b>24</b><span class="range">20–27</span><span class="made"></span></div>
+            <div class="list-row"><span>House pasta</span><b>18</b><span class="range">15–21</span><span class="made"></span></div>
+            <div class="list-row"><span>Tomato soup</span><b>12</b><span class="range">9–15</span><span class="made"></span></div>
+            <p class="list-foot">From your POS, after close.</p>
           </div>
         </figure>
       </div>
     </section>
 
-    <section id="waste" class="band-cream">
+    <section class="section">
+      <div class="container guess-grid">
+        <div class="section-head">
+          <p class="kicker">Every morning</p>
+          <h2>Most prep starts with a guess.</h2>
+        </div>
+        <div class="guess-copy">
+          <p>Someone looks at yesterday's tickets and picks a number. Guess high and the extra goes in the bin. Guess low and you 86 a dish in the middle of service.</p>
+          <p>Chains pay a team to forecast this. Independent kitchens get yesterday's tickets.</p>
+          <p class="source"><strong>Most kitchens waste 4 to 10 percent of the food they buy.</strong>LeanPath, from kitchens that weigh their waste.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="container">
-        <div class="waste-inner reveal">
-          <h2>Most kitchens waste 4 to 10 percent of the food they buy.</h2>
-          <p class="lead">Overproduction is usually the largest share. A chain already has a forecasting team. An independent restaurant does not.</p>
-          <p>Prep is yesterday's tickets and guessing, and the extra food still hits food cost. Tooey is the nightly item count for that kitchen.</p>
-          <p class="waste-source">LeanPath, from kitchens that weigh their waste</p>
-          <p class="section-more"><a class="text-link" href="how.html">How Tooey works</a></p>
+        <div class="section-head">
+          <p class="kicker">How a day goes</p>
+          <h2>It runs while you close.</h2>
         </div>
+        <ol class="rail">
+          <li class="slip">
+            <p class="slip-when"><span>After close</span><span>1</span></p>
+            <h3>We pull the day's sales.</h3>
+            <p>Straight from your POS. Nobody types anything in.</p>
+          </li>
+          <li class="slip">
+            <p class="slip-when"><span>Tonight</span><span>2</span></p>
+            <h3>Tomorrow's list hits your inbox.</h3>
+            <p>A number for each dish, and a range.</p>
+          </li>
+          <li class="slip">
+            <p class="slip-when"><span>Morning</span><span>3</span></p>
+            <h3>Print it. Tape it up.</h3>
+            <p>Hang it where you prep, and prep to the number.</p>
+          </li>
+          <li class="slip">
+            <p class="slip-when"><span>Next day</span><span>4</span></p>
+            <h3>Tell us where it was off.</h3>
+            <p>Every night adds another day of your sales to work from.</p>
+          </li>
+        </ol>
+        <p class="rail-more"><a class="go" href="how.html">Setup, step by step</a></p>
       </div>
     </section>
 
-    <section id="nightly">
-      <div class="container nightly-grid">
-        <div class="nightly-copy reveal">
-          <h2>Tomorrow's forecast lands in the inbox tonight.</h2>
-          <p class="lead">That nightly email is what the kitchen uses. It is a list you can print, with a number next to each dish.</p>
+    <section class="section">
+      <div class="container split">
+        <div class="split-copy">
+          <p class="kicker">The deal</p>
+          <h2>We're new. Here's what that gets you.</h2>
+          <p>We're looking for a few independent restaurants to start with. You get the forecast free. We get to learn from a real kitchen.</p>
+          <p class="ask">What we ask: a week to set up, and honest feedback once the lists start.</p>
         </div>
-        <figure class="mail reveal">
-          <div class="mail-sheet" aria-label="Nightly forecast email">
-            <div class="mail-bar">
-              <span>Tonight's email</span>
+        <div class="receipt-wrap">
+          <div class="receipt">
+            <p class="receipt-top"><strong>Partner kitchen</strong>Tooey</p>
+            <div class="receipt-items">
+              <div class="receipt-item">
+                <div class="receipt-line"><span>Cost</span><span class="leader"></span><span class="val">Free</span></div>
+                <p>For independent restaurant partners.</p>
+              </div>
+              <div class="receipt-item">
+                <div class="receipt-line"><span>Setup</span><span class="leader"></span><span class="val">About a week</span></div>
+                <p>We connect to the POS you already use. You don't send us spreadsheets.</p>
+              </div>
+              <div class="receipt-item">
+                <div class="receipt-line"><span>Proof</span><span class="leader"></span><span class="val">You decide</span></div>
+                <p>Check the lists against what really sold. If they don't help, we stop.</p>
+              </div>
+              <div class="receipt-item">
+                <div class="receipt-line"><span>Your data</span><span class="leader"></span><span class="val">Stays yours</span></div>
+                <p>Used for your forecast only. Never sold, never shared with other restaurants.</p>
+              </div>
+              <div class="receipt-item">
+                <div class="receipt-line"><span>Help</span><span class="leader"></span><span class="val">A person</span></div>
+                <p>Email us and one of us writes back.</p>
+              </div>
             </div>
-            <div class="mail-head">
-              <p class="mail-label">Subject</p>
-              <p class="mail-subject">Tomorrow's forecast</p>
-              <p class="mail-from">Tooey · every night after the POS pull</p>
-            </div>
-            <ul class="mail-list">
-              <li><span>Cheeseburger</span><span>42</span></li>
-              <li><span>Chicken sandwich</span><span>31</span></li>
-              <li><span>Caesar salad</span><span>24</span></li>
-              <li><span>House pasta</span><span>18</span></li>
-            </ul>
-            <p class="mail-print">Print this list and hang it where you prep.</p>
+            <p class="receipt-total"><span>Total</span><span>$0.00</span></p>
           </div>
-        </figure>
-      </div>
-    </section>
-
-    <section class="partner band-sage" id="partners">
-      <div class="container partner-inner reveal">
-        <div>
-          <h2>Tooey is free for independent restaurant partners.</h2>
-          <p>We are working with a couple of restaurants. What we need is time to set up the nightly collector, and honest feedback once the emails start.</p>
         </div>
-        <a class="btn btn-primary" href="#contact">Talk to us</a>
       </div>
     </section>
 
-    <section class="about-band">
-      <div class="container reveal">
-        <p>Tooey was started by university students who saw kitchens guessing the prep. Guesswork is expensive, and that is why this exists. <a class="text-link" href="about.html">About the team</a></p>
+    <section class="section">
+      <div class="container who">
+        <div class="section-head">
+          <p class="kicker">Who's behind it</p>
+          <h2>University students who kept seeing kitchens guess.</h2>
+        </div>
+        <div class="who-copy">
+          <p>We saw the same thing in restaurant after restaurant. Good food going in the bin because nobody knew how much to make.</p>
+          <p>The POS already knew what sold. It just never said how much to make tomorrow. So we built the thing that does.</p>
+          <p><a class="go" href="about.html">More about us</a></p>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="section">
       <div class="container contact-grid">
         <div class="contact-copy">
-          <h2>Talk to us.</h2>
-          <p class="lead">Send your name, your restaurant, and the best way to reach you. If you want to come on as a restaurant partner, say so in the message.</p>
+          <p class="kicker">Talk to us</p>
+          <h2>Want the list?</h2>
+          <p class="lead">Tell us about your restaurant and which POS you use. One of us will write back.</p>
+          <p class="mail">Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
         </div>
         <form id="contactForm">
           <input type="hidden" name="_subject" value="New Tooey inquiry" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
-          <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+          <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="form-row">
             <div class="field">
               <label for="name">Name</label>
@@ -176,16 +198,18 @@
               <input id="email" name="email" type="email" required autocomplete="email" />
             </div>
             <div class="field">
-              <label for="phone">Phone</label>
+              <label for="phone">Phone <span class="opt">(optional)</span></label>
               <input id="phone" name="phone" type="tel" autocomplete="tel" />
             </div>
           </div>
           <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="POS you use, days you are open, or questions about onboarding."></textarea>
+            <label for="message">Message <span class="opt">(optional)</span></label>
+            <textarea id="message" name="message" placeholder="Which POS you use, what days you're open, anything you want to ask."></textarea>
           </div>
-          <button class="btn btn-primary" type="submit" id="contactSubmit">Send</button>
-          <p class="form-note" id="contactNote">Goes to tooeyteam@gmail.com. <a href="privacy.html">Privacy</a></p>
+          <div class="form-foot">
+            <button class="btn btn-primary" type="submit" id="contactSubmit">Send</button>
+            <p class="form-note" id="contactNote">Goes to tooeyteam@gmail.com. <a href="privacy.html">Privacy</a></p>
+          </div>
         </form>
       </div>
     </section>
@@ -194,7 +218,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a class="brand" href="#top"><img src="logo.png" width="171" height="74" alt="Tooey" /></a>
+        <a class="brand" href="index.html"><img src="logo.png" width="171" height="74" alt="Tooey" /></a>
         <p class="copyright">© 2026 Tooey LLC</p>
       </div>
       <nav class="footer-links" aria-label="Footer">

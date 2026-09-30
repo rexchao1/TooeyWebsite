@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Privacy · Tooey</title>
-  <meta name="description" content="How Tooey handles the contact form, nightly POS data, and forecast emails. We do not sell restaurant data." />
-  <meta name="theme-color" content="#fbf8f1" />
+  <meta name="description" content="What Tooey collects from the contact form and your POS, why, and who sees it. We don't sell restaurant data." />
+  <meta name="theme-color" content="#f2f3f0" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -31,35 +32,32 @@
   <main id="main">
     <header class="page-head">
       <div class="container">
-        <h1>Privacy</h1>
-        <p class="lead">This page covers what we collect, why we collect it, and who sees it.</p>
+        <p class="kicker">Privacy</p>
+        <h1>Your data, plainly.</h1>
+        <p class="lead">What we collect, why we collect it, and who sees it.</p>
       </div>
     </header>
 
     <div class="page-body">
       <div class="container">
-      <div class="prose">
-        <h2>The contact form</h2>
-        <p>When you write us from the site, we receive your name, restaurant, email, phone if you add it, and your message. FormSubmit sends that to tooeyteam@gmail.com. We use it to reply. We do not sell it, and we do not use it for ads.</p>
+        <div class="prose">
+          <h2>The contact form</h2>
+          <p>When you write us from the site, we get your name, restaurant, email, phone if you add it, and your message. FormSubmit sends it to tooeyteam@gmail.com. We use it to reply. We don't sell it or use it for ads.</p>
 
-        <h2>If you become a restaurant partner</h2>
-        <p>Onboarding includes connecting to your POS so an automatic collector can pull item-level sales every night. That history is used to forecast for your restaurant, and nowhere else. The nightly email we send you is built from that pull. We do not sell sales data, we do not share it with other restaurants, and we do not turn it into a public dataset.</p>
-        <p>If you later share recipes, inventory, or purchasing records, those stay attached to your restaurant and are used only to turn the forecast into prep and purchasing help.</p>
+          <h2>If you become a partner</h2>
+          <p>Setup connects to your POS so we can pull item-level sales every night. We use that history to forecast for your restaurant and nothing else. We don't sell it, share it with other restaurants, or publish it.</p>
+          <p>If you later share recipes, inventory, or purchasing records, they stay with your restaurant. We use them only to help with your prep and purchasing.</p>
 
-        <h2>Who can see it</h2>
-        <p>The people on the Tooey team who are building your forecast and answering your email. FormSubmit processes the contact form. Your POS vendor already holds the underlying sales. We do not send that data anywhere else.</p>
+          <h2>Who can see it</h2>
+          <p>The people on the Tooey team who build your forecast and answer your email. FormSubmit handles the contact form. Your POS company already holds your sales. We don't send your data anywhere else.</p>
 
-        <h2>If you want data removed</h2>
-        <p>Write tooeyteam@gmail.com. Tell us to delete the contact note, stop the nightly collector, or remove sales we have stored for your restaurant, and we will.</p>
-
-        <h2>Questions</h2>
-        <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
-
+          <h2>Getting data removed</h2>
+          <p>Email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>. Ask us to delete your message, stop the nightly pull, or remove the sales we've stored, and we will.</p>
+        </div>
         <div class="page-cta">
-          <p>The contact form is on the home page.</p>
+          <p>Questions? Write us.</p>
           <a class="btn btn-primary" href="index.html#contact">Talk to us</a>
         </div>
-      </div>
       </div>
     </div>
   </main>

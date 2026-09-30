@@ -4,8 +4,7 @@
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-
+  
   if (header) {
     var onScroll = function () {
       header.classList.toggle("is-stuck", window.scrollY > 8);
@@ -41,7 +40,7 @@
       if (e.key === "Escape") setOpen(false);
     });
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 900) setOpen(false);
+      if (window.innerWidth > 760) setOpen(false);
     });
   }
 
@@ -53,6 +52,7 @@
     const headerH = header.offsetHeight;
     const start =
       document.querySelector(".hero-actions .btn-primary") ||
+      document.querySelector(".page-head .btn-primary") ||
       document.querySelector(".page-head");
     const ends = [
       document.getElementById("contact"),
@@ -86,50 +86,15 @@
     });
   }
 
-  const tickRoot = document.querySelector("[data-tick-root]");
-  if (tickRoot) tick(tickRoot);
-
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("visible");
-          io.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.14 }
-    );
-
-    document.querySelectorAll(".sequence > .reveal").forEach(function (el, i) {
-      if (!reduce.matches) el.style.transitionDelay = i * 0.06 + "s";
-    });
-
-    document.querySelectorAll(".reveal").forEach(function (el) {
-      io.observe(el);
-    });
-  } else {
-    document.querySelectorAll(".reveal").forEach(function (el) {
-      el.classList.add("visible");
-    });
-  }
-
-  function tick(root) {
-    if (reduce.matches) return;
-    root.querySelectorAll("[data-tick]").forEach(function (el) {
-      const end = parseInt(el.getAttribute("data-tick"), 10);
-      if (isNaN(end)) return;
-      const start = performance.now();
-      const dur = 640;
-      function frame(now) {
-        const p = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = String(Math.round(end * eased));
-        if (p < 1) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    });
-  }
+  // The example list is always for tomorrow, with that day's rotation-label color.
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const tomorrow = days[(new Date().getDay() + 1) % 7];
+  document.querySelectorAll("[data-tomorrow]").forEach(function (el) {
+    el.textContent = tomorrow;
+  });
+  document.querySelectorAll("[data-tomorrow-dot]").forEach(function (el) {
+    el.style.background = "var(--" + tomorrow.toLowerCase() + ")";
+  });
 
   const form = document.getElementById("contactForm");
   if (!form) return;
