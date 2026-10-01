@@ -102,6 +102,19 @@ the home page, fonts self-hosted in `fonts/`:
   switch, and their files are removed. Body text stays Source Serif 4.
 - [x] Desktop and phone check of every page in the pick, then commit
 
+Crumpled note (2026-09-30). Rex: pushed aside, the note still sat beside
+the sheet like a second tool, and the replacement did not read. He picked
+crumpling it from four endings (bury, cross out, crumple, fade), with the
+ball left on the counter.
+- [x] The note lands alone on the empty counter and is written in, then
+  crumples (clip-path folds and creases), turns into a paper ball that is
+  tossed aside, and tomorrow's sheet prints where it was. The ball rests
+  right of the sheet on desktop and on its bottom right corner below 1160px.
+- [x] Ball is an inline SVG of shaded facets generated from a lit, bumpy
+  surface (one-off script, not kept). Without motion, only the ball shows.
+- [x] Desktop, tablet, and phone check with frozen frames; reduced motion
+  not checked in a browser
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in

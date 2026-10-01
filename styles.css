@@ -510,19 +510,22 @@ a {
   padding-top: 16px;
 }
 
-/* The old way, under the new: a pencil prep list on a scrap off a yellow
-   pad, taped, with a coffee ring, left under the right edge of tomorrow's
-   sheet. It is meant to look like the kitchen, not like the product. */
+/* The old way, then the new: a pencil prep list on a scrap off a yellow
+   pad lands on the empty counter and is written in. Then it is crumpled,
+   tossed aside, and tomorrow's sheet prints where it was. The ball stays on
+   the counter. Without motion only the ball is shown. */
 
 .old-list {
-  --tilt: 5deg;
+  display: none;
   position: absolute;
-  z-index: 0;
-  top: 72px;
-  left: calc(50% + 320px - 72px);
-  width: 300px;
-  transform: rotate(var(--tilt));
+  z-index: 3;
+  top: 28px;
+  left: 50%;
+  width: 310px;
+  margin-left: -155px;
+  transform: rotate(-3deg);
   filter: drop-shadow(0 1px 1px rgba(24, 24, 26, 0.12)) drop-shadow(0 10px 14px rgba(24, 24, 26, 0.12));
+  pointer-events: none;
 }
 /* Masking tape across the top. */
 .old-list::after {
@@ -537,27 +540,61 @@ a {
   clip-path: polygon(0 8%, 6% 0, 12% 10%, 20% 2%, 100% 0, 96% 20%, 100% 38%, 95% 60%, 100% 82%, 97% 100%, 0 100%, 4% 78%, 0 58%, 5% 36%);
 }
 .old-paper {
+  position: relative;
   --rule: 34px;
   --pt: 26px;
-  padding: var(--pt) 18px 34px 90px;
+  padding: var(--pt) 20px 34px 62px;
   background:
     /* coffee ring */
     radial-gradient(42px 37px at 84% 90%, rgba(128, 84, 40, 0.035) 0 72%, rgba(128, 84, 40, 0.09) 80%, rgba(128, 84, 40, 0.17) 88%, rgba(128, 84, 40, 0.06) 94%, transparent 100%),
     /* a smudge where a hand rested */
     radial-gradient(ellipse 34% 18% at 40% 62%, rgba(60, 60, 64, 0.07), transparent),
     /* red margin line */
-    linear-gradient(90deg, transparent 72px, var(--pad-margin) 72px 73.5px, transparent 73.5px),
+    linear-gradient(90deg, transparent 44px, var(--pad-margin) 44px 45.5px, transparent 45.5px),
     /* blue rules */
     repeating-linear-gradient(180deg, transparent 0 calc(var(--rule) - 1px), var(--pad-rule) calc(var(--rule) - 1px) var(--rule)) 0 var(--pt) / 100% 100% no-repeat,
     var(--pad);
   /* A torn bottom edge. */
-  clip-path: polygon(0 0, 100% 0, 100% 95%, 96% 97.5%, 92% 95.2%, 87% 98.4%, 83% 95.8%, 78% 97.2%, 73% 94.8%, 68% 98.6%, 63% 96%, 58% 97.8%, 53% 95%, 48% 98.2%, 43% 95.6%, 38% 97.6%, 33% 94.9%, 28% 98%, 23% 95.7%, 18% 97.4%, 13% 95.1%, 8% 98.3%, 4% 96%, 0 97.6%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 96% 97.5%, 92% 95.2%, 87% 98.4%, 83% 95.8%, 78% 97.2%, 73% 94.8%, 68% 98.6%, 63% 96%, 58% 97.8%, 53% 95%, 48% 98.2%, 43% 95.6%, 38% 97.6%, 33% 94.9%, 28% 98%, 23% 95.7%, 18% 97.4%, 13% 95.1%, 8% 98.3%, 4% 96%, 0% 97.6%, 0% 70%, 0% 45%, 0% 20%);
   font: 400 29px / 34px "Reenie Beanie", "Bradley Hand", cursive;
   color: var(--pencil);
   white-space: nowrap;
 }
+/* Creases, shown as the paper crumples. */
+.old-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background:
+    linear-gradient(118deg, transparent 31%, rgba(90, 70, 30, 0.14) 32%, rgba(255, 255, 255, 0.5) 33%, transparent 35%),
+    linear-gradient(62deg, transparent 54%, rgba(90, 70, 30, 0.12) 55%, rgba(255, 255, 255, 0.45) 56%, transparent 58%),
+    linear-gradient(168deg, transparent 63%, rgba(90, 70, 30, 0.12) 64%, rgba(255, 255, 255, 0.4) 65%, transparent 67%),
+    linear-gradient(20deg, transparent 22%, rgba(90, 70, 30, 0.1) 23%, rgba(255, 255, 255, 0.4) 24%, transparent 26%),
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.25), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(90, 70, 30, 0.06) 20%, rgba(90, 70, 30, 0.26));
+}
 .old-list p {
   margin: 0;
+}
+
+/* The crumpled list, left on the counter beside the sheet. */
+.old-ball {
+  --ball: 96px;
+  position: absolute;
+  z-index: 3;
+  left: calc(100% + 36px);
+  top: calc(100% - 118px);
+  width: var(--ball);
+  height: var(--ball);
+  transform: rotate(-14deg);
+  filter: drop-shadow(0 2px 2px rgba(24, 24, 26, 0.14)) drop-shadow(0 10px 12px rgba(24, 24, 26, 0.14));
+  pointer-events: none;
+}
+.old-ball svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .old-list .old-title {
   text-decoration: underline;
@@ -611,69 +648,115 @@ a {
 @media (prefers-reduced-motion: no-preference) {
   /* The sheet feeds out top first, then the rows print one by one.
      site.js counts the numbers up on the same timing. */
-  /* Before, then after. The pencil list lands alone in the middle of the
-     counter and is written in, its guesses crossed out. Then tomorrow's
-     sheet feeds out and the list is pushed aside under it. site.js sets
-     --dx and --dy, the distance from the list's resting place to the
-     middle of the sheet. */
+  /* Before, then after. The pencil list lands alone on the counter and is
+     written in, its guesses crossed out. Then it crumples, the ball is
+     tossed aside, and tomorrow's sheet feeds out where the list was. */
   .old-list {
+    display: block;
     animation:
       note-in 200ms ease-out both,
-      note-aside 650ms cubic-bezier(0.3, 0.7, 0.2, 1) 1150ms both;
+      note-crumple 420ms cubic-bezier(0.5, 0, 0.6, 1) 1150ms forwards;
+  }
+  .old-paper {
+    animation: paper-crumple 420ms cubic-bezier(0.5, 0, 0.6, 1) 1150ms forwards;
+  }
+  .old-paper::after {
+    animation: creases 260ms ease-out 1150ms forwards;
+  }
+  .old-list::after {
+    animation: fade-out 150ms ease-out 1150ms forwards;
   }
   .old-list p {
-    animation: pencil-write 260ms ease-in-out both;
+    animation: pencil-write 240ms ease-in-out both;
   }
   .old-list p:nth-child(1) { animation-delay: 200ms; }
-  .old-list p:nth-child(2) { animation-delay: 310ms; }
-  .old-list p:nth-child(3) { animation-delay: 420ms; }
-  .old-list p:nth-child(4) { animation-delay: 530ms; }
-  .old-list p:nth-child(5) { animation-delay: 640ms; }
-  .old-list p:nth-child(6) { animation-delay: 750ms; }
+  .old-list p:nth-child(2) { animation-delay: 300ms; }
+  .old-list p:nth-child(3) { animation-delay: 400ms; }
+  .old-list p:nth-child(4) { animation-delay: 500ms; }
+  .old-list p:nth-child(5) { animation-delay: 600ms; }
+  .old-list p:nth-child(6) { animation-delay: 700ms; }
   .old-list del::after {
-    animation: pencil-write 180ms ease-out 950ms both;
+    animation: pencil-write 160ms ease-out 900ms both;
+  }
+  /* The ball takes over from the crumpled paper in the middle, then flies
+     to its place: across on one curve, up then down on another, spinning. */
+  .old-ball {
+    --from-top: 160px;
+    animation:
+      fade-in 80ms linear 1460ms both,
+      ball-x 650ms cubic-bezier(0.25, 0.6, 0.4, 1) 1540ms both,
+      ball-y 650ms cubic-bezier(0.4, -0.9, 0.7, 1) 1540ms both,
+      ball-spin 700ms cubic-bezier(0.2, 0.7, 0.3, 1) 1540ms both;
   }
   .sheet-now,
   .sheet-past {
-    animation: sheet-fade 400ms ease-out 1250ms both;
+    animation: fade-in 400ms ease-out 1650ms both;
   }
   .sheet-now {
-    animation: sheet-feed 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 1250ms both;
+    animation: sheet-feed 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 1650ms both;
   }
   .sheet-now .forecast tbody tr {
     animation: row-print 360ms ease-out both;
   }
-  .sheet-now .forecast tbody tr:nth-child(1) { animation-delay: 1750ms; }
-  .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 1870ms; }
-  .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 1990ms; }
-  .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 2110ms; }
+  .sheet-now .forecast tbody tr:nth-child(1) { animation-delay: 2150ms; }
+  .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 2270ms; }
+  .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 2390ms; }
+  .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 2510ms; }
 }
 @keyframes note-in {
   from {
     opacity: 0;
   }
 }
-@keyframes note-aside {
-  0% {
-    z-index: 2;
-    transform: translate(var(--dx, 0px), var(--dy, 0px)) rotate(-3deg) scale(1.08);
+@keyframes note-crumple {
+  35% {
+    transform: rotate(2deg) scale(0.86, 0.8);
   }
-  12% {
-    z-index: 0;
+  70% {
+    transform: rotate(-7deg) scale(0.52);
+    opacity: 1;
   }
   100% {
-    z-index: 0;
-    transform: rotate(var(--tilt));
+    transform: rotate(9deg) scale(0.32);
+    opacity: 0;
   }
 }
-@keyframes sheet-fade {
+@keyframes paper-crumple {
+  45% {
+    clip-path: polygon(7.6% 7.9%, 81.4% 18.4%, 93.2% 90.5%, 76.7% 79.4%, 87.7% 91.1%, 69.2% 79.5%, 76.7% 87.2%, 66.5% 83.6%, 73.7% 91.1%, 64.4% 82.8%, 59.9% 88.3%, 52.7% 80.3%, 53.9% 91.3%, 48.8% 76.1%, 41.3% 92.5%, 45.2% 74.5%, 35.1% 87.6%, 38.3% 79.6%, 29.8% 87.8%, 32.2% 76.4%, 20.3% 86.0%, 21.0% 82.9%, 10.9% 91.9%, 16.3% 77.7%, 9.4% 65.4%, 23.1% 46.7%, 7.9% 23.3%);
+  }
+  100% {
+    clip-path: polygon(19.2% 19.2%, 73.0% 27.0%, 77.4% 74.7%, 73.7% 74.4%, 79.5% 81.7%, 67.0% 72.2%, 75.1% 84.9%, 69.5% 82.9%, 68.9% 86.9%, 63.7% 87.1%, 60.2% 85.9%, 55.7% 84.0%, 52.6% 88.4%, 48.6% 82.7%, 44.5% 85.8%, 40.9% 85.9%, 37.1% 84.0%, 34.8% 83.3%, 30.2% 83.4%, 29.6% 80.2%, 22.4% 83.7%, 24.5% 79.3%, 22.8% 77.2%, 29.7% 69.4%, 16.2% 63.5%, 20.8% 47.1%, 16.2% 29.7%);
+  }
+}
+@keyframes creases {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
   from {
     opacity: 0;
   }
 }
-@keyframes bury {
-  to {
-    opacity: 0;
+@keyframes ball-x {
+  from {
+    left: calc(50% - var(--ball) / 2);
+  }
+}
+@keyframes ball-y {
+  from {
+    top: calc(var(--from-top) - var(--ball) / 2);
+  }
+}
+@keyframes ball-spin {
+  from {
+    transform: rotate(-420deg) scale(0.9);
   }
 }
 @keyframes pencil-write {
@@ -1362,49 +1445,23 @@ textarea:focus {
   }
 }
 
-/* Too narrow to tuck the pencil list beside the sheet: it sits above the
-   sheet's right side instead, and the sheet covers its lower half. */
+/* Too narrow for the ball beside the sheet: it rests on the sheet's bottom
+   right corner instead, clear of the last row. */
 
 @media (max-width: 1160px) {
   .counter {
-    padding-top: 128px;
+    padding-bottom: 40px;
   }
-  .old-list {
-    --tilt: 3deg;
-    top: 0;
-    left: auto;
-    right: max(0px, calc(50% - 320px - 8px));
-    width: 280px;
-  }
-  .old-paper {
-    padding-left: 48px;
-    background-position: 0 0, 0 0, -32px 0, 0 var(--pt), 0 0;
-  }
-  /* Only the first two lines clear the sheet; the rest would peek out as
-     stray pencil tops, so once the list is pushed aside they fade. */
-  .old-list p:nth-child(n + 3) {
-    visibility: hidden;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .old-list p:nth-child(n + 3) {
-      visibility: visible;
-      animation:
-        pencil-write 260ms ease-in-out both,
-        bury 200ms ease-out 1500ms both;
-    }
-    .old-list p:nth-child(3) { animation-delay: 420ms, 1500ms; }
-    .old-list p:nth-child(4) { animation-delay: 530ms, 1500ms; }
-    .old-list p:nth-child(5) { animation-delay: 640ms, 1500ms; }
-    .old-list p:nth-child(6) { animation-delay: 750ms, 1500ms; }
+  .old-ball {
+    --ball: 80px;
+    left: calc(100% - var(--ball) * 0.8);
+    top: calc(100% - var(--ball) * 0.3);
   }
 }
 @media (max-width: 760px) {
-  .counter {
-    padding-top: 112px;
-  }
   .old-list {
-    right: 4px;
     width: 236px;
+    margin-left: -118px;
   }
   .old-paper {
     --rule: 30px;
@@ -1412,6 +1469,17 @@ textarea:focus {
     padding: var(--pt) 16px 28px 38px;
     font-size: 26px;
     line-height: 30px;
+    background-position: 0 0, 0 0, -16px 0, 0 var(--pt), 0 0;
+  }
+  .old-ball {
+    --ball: 64px;
+    left: calc(100% - var(--ball) - 4px);
+    top: calc(100% - var(--ball) * 0.25);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .old-ball {
+      --from-top: 144px;
+    }
   }
 }
 
