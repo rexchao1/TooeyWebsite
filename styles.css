@@ -387,7 +387,7 @@ a {
   font-size: 14px;
   font-weight: 600;
 }
-/* The wordmark on the sheet's bar, and the label beside it. */
+/* The label on the sheet's bar, and the wordmark at its right. */
 .sheet-bar img {
   height: 26px;
   width: auto;
@@ -666,54 +666,54 @@ a {
   .old-list {
     display: block;
     animation:
-      note-in 150ms ease-out both,
-      note-crumple 340ms cubic-bezier(0.5, 0, 0.6, 1) 800ms forwards;
+      note-in 120ms ease-out both,
+      note-crumple 200ms cubic-bezier(0.5, 0, 0.6, 1) 600ms forwards;
   }
   .old-paper {
-    animation: paper-crumple 340ms cubic-bezier(0.5, 0, 0.6, 1) 800ms forwards;
+    animation: paper-crumple 200ms cubic-bezier(0.5, 0, 0.6, 1) 600ms forwards;
   }
   .old-paper::after {
-    animation: creases 220ms ease-out 800ms forwards;
+    animation: creases 140ms ease-out 600ms forwards;
   }
   .old-list::after {
-    animation: fade-out 120ms ease-out 800ms forwards;
+    animation: fade-out 90ms ease-out 600ms forwards;
   }
   .old-list p {
-    animation: pencil-write 200ms ease-in-out both;
+    animation: pencil-write 160ms ease-in-out both;
   }
-  .old-list p:nth-child(1) { animation-delay: 120ms; }
-  .old-list p:nth-child(2) { animation-delay: 190ms; }
-  .old-list p:nth-child(3) { animation-delay: 260ms; }
-  .old-list p:nth-child(4) { animation-delay: 330ms; }
-  .old-list p:nth-child(5) { animation-delay: 400ms; }
-  .old-list p:nth-child(6) { animation-delay: 470ms; }
+  .old-list p:nth-child(1) { animation-delay: 80ms; }
+  .old-list p:nth-child(2) { animation-delay: 130ms; }
+  .old-list p:nth-child(3) { animation-delay: 180ms; }
+  .old-list p:nth-child(4) { animation-delay: 230ms; }
+  .old-list p:nth-child(5) { animation-delay: 280ms; }
+  .old-list p:nth-child(6) { animation-delay: 330ms; }
   .old-list del::after {
-    animation: pencil-write 140ms ease-out 640ms both;
+    animation: pencil-write 120ms ease-out 460ms both;
   }
   /* The ball takes over from the crumpled paper in the middle, then flies
      to its place: across on one curve, up then down on another, spinning. */
   .old-ball {
     --from-top: 160px;
     animation:
-      fade-in 60ms linear 1050ms both,
-      ball-x 520ms cubic-bezier(0.25, 0.6, 0.4, 1) 1100ms both,
-      ball-y 520ms cubic-bezier(0.4, -0.9, 0.7, 1) 1100ms both,
-      ball-spin 560ms cubic-bezier(0.2, 0.7, 0.3, 1) 1100ms both;
+      fade-in 50ms linear 760ms both,
+      ball-x 420ms cubic-bezier(0.25, 0.6, 0.4, 1) 790ms both,
+      ball-y 420ms cubic-bezier(0.4, -0.9, 0.7, 1) 790ms both,
+      ball-spin 460ms cubic-bezier(0.2, 0.7, 0.3, 1) 790ms both;
   }
   .sheet-now,
   .sheet-past {
-    animation: fade-in 320ms ease-out 1150ms both;
+    animation: fade-in 260ms ease-out 850ms both;
   }
   .sheet-now {
-    animation: sheet-feed 560ms cubic-bezier(0.2, 0.7, 0.2, 1) 1150ms both;
+    animation: sheet-feed 460ms cubic-bezier(0.2, 0.7, 0.2, 1) 850ms both;
   }
   .sheet-now .forecast tbody tr {
-    animation: row-print 300ms ease-out both;
+    animation: row-print 260ms ease-out both;
   }
-  .sheet-now .forecast tbody tr:nth-child(1) { animation-delay: 1500ms; }
-  .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 1600ms; }
-  .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 1700ms; }
-  .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 1800ms; }
+  .sheet-now .forecast tbody tr:nth-child(1) { animation-delay: 1130ms; }
+  .sheet-now .forecast tbody tr:nth-child(2) { animation-delay: 1210ms; }
+  .sheet-now .forecast tbody tr:nth-child(3) { animation-delay: 1290ms; }
+  .sheet-now .forecast tbody tr:nth-child(4) { animation-delay: 1370ms; }
 }
 @keyframes note-in {
   from {

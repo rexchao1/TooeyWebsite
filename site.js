@@ -95,7 +95,7 @@
       if (!end) return;
       el.textContent = "0";
       const start = parseFloat(getComputedStyle(el.parentElement).animationDelay) * 1000 || 0;
-      const length = 550;
+      const length = 420;
       function tick(now) {
         const t = Math.min(1, Math.max(0, (now - start) / length));
         el.textContent = String(Math.round(end * (1 - Math.pow(1 - t, 3))));
