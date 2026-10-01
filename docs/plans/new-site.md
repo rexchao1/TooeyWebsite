@@ -178,16 +178,17 @@ Steps:
 Each night, scroll-led (2026-09-30). Rex: the four nightly steps go into
 the deal's scrolling layout, and the deal's terms and intro are dropped
 from the home page. The heading is "What happens each night" with the "How
-setup works" link beside it; the steps keep their words. Pictures, example
-values only:
+setup works" link beside it; the steps keep their bold line. Pictures,
+example values only:
 - Pull: a slip headed "Your POS / Monday" with the day's counts, stamped
   "Pulled".
 - Email: "Tooey to you", unread, "Your prep list for Tuesday", with the
   Predicted and Prep columns as in the hero.
 - Print: the forecast sheet with a penciled "done" column ticked down.
-- Tell us: the owner's email to tooeyteam@gmail.com and the team's reply.
 - [x] Section rebuilt, old steps grid and the six deal pictures' styles removed
 - [x] Desktop, tablet, and phone check (1440, 900, 390, 320)
+- [x] Rex dropped step 4 ("Tell us where it was off") and its email
+  picture, and the line under each step: only the bold step shows.
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces

@@ -856,10 +856,6 @@ a {
   line-height: 1.1;
   letter-spacing: -0.01em;
 }
-.term-text p {
-  color: var(--muted);
-  max-width: 40ch;
-}
 .term-pic {
   grid-column: 1 / -1;
   display: grid;
@@ -1075,11 +1071,7 @@ a {
   rotate: 40deg;
   opacity: 0.8;
 }
-/* Tell us: an email, and a reply from one of us. */
-.pic-help {
-  gap: 14px;
-  align-content: center;
-}
+/* An email card, used by the email picture. */
 .mail {
   display: grid;
   gap: 6px;
@@ -1102,32 +1094,6 @@ a {
 .mail-subject {
   font-weight: 600;
 }
-.reply {
-  position: relative;
-  padding-left: 28px;
-}
-.mail-reply {
-  border-color: rgba(63, 107, 80, 0.35);
-}
-.typing {
-  position: absolute;
-  left: 28px;
-  top: 0;
-  display: none;
-  gap: 5px;
-  padding: 12px 14px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 10px 24px -16px rgba(24, 24, 26, 0.35);
-}
-.typing i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--muted);
-  opacity: 0.5;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .is-staged .term {
@@ -1142,9 +1108,6 @@ a {
   .js .pic:not(.is-playing) .in {
     opacity: 0;
   }
-  .js .typing {
-    display: flex;
-  }
   .js .pic.is-playing .in {
     animation: pic-rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
   }
@@ -1156,19 +1119,6 @@ a {
     animation-name: pic-write;
     animation-duration: 0.45s;
     animation-timing-function: ease-out;
-  }
-  .js .pic.is-playing .typing {
-    animation-name: pic-typing;
-    animation-duration: 1s;
-  }
-  .js .pic.is-playing .typing i {
-    animation: pic-dot 0.9s ease-in-out infinite;
-  }
-  .js .pic.is-playing .typing i:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-  .js .pic.is-playing .typing i:nth-child(3) {
-    animation-delay: 0.3s;
   }
 }
 @keyframes pic-rise {
@@ -1193,24 +1143,6 @@ a {
   }
   to {
     clip-path: inset(-30% -20% -30% -20%);
-  }
-}
-@keyframes pic-typing {
-  0% {
-    opacity: 0;
-  }
-  15%,
-  85% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes pic-dot {
-  50% {
-    translate: 0 -3px;
-    opacity: 1;
   }
 }
 
