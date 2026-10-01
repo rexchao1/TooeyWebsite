@@ -114,6 +114,8 @@ ball left on the counter.
   surface (one-off script, not kept). Without motion, only the ball shows.
 - [x] Desktop, tablet, and phone check with frozen frames; reduced motion
   not checked in a browser
+- [x] Whole sequence about a third faster (sheet's last row prints at 1.8s,
+  was 2.5s); the sheet's bar carries the tooey wordmark beside "Forecast"
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
