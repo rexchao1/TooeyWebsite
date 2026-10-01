@@ -198,6 +198,30 @@
     wide.addEventListener("change", layout);
   }
 
+  // Onboarding. Each step and arrow plays once as it scrolls into view.
+  // Side by side they arrive together, and their delays in styles.css play
+  // them in turn.
+  const onboard = document.querySelectorAll(".onboard-step, .onboard-arrow");
+  if (onboard.length && "IntersectionObserver" in window) {
+    const seen = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-playing");
+          seen.unobserve(e.target);
+        });
+      },
+      { threshold: 0.4 }
+    );
+    onboard.forEach(function (el) {
+      seen.observe(el);
+    });
+  } else {
+    onboard.forEach(function (el) {
+      el.classList.add("is-playing");
+    });
+  }
+
   // The example email is always for tomorrow.
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const tomorrow = days[(new Date().getDay() + 1) % 7];

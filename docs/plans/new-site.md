@@ -201,6 +201,23 @@ The students line moved into the contact lead.
 - [x] Section, contact lead, and every free claim changed
 - [x] Desktop (1440) and phone (390) check of the home page
 
+Onboarding on the counter (2026-09-30). Rex picked this over a ticket rail
+and a clipboard checklist. The three steps become paper on one wide sage
+panel (the hero's grain and window light), left to right: a POS slip of
+five weeks of past sales stamped "Connected", the setup week strip (about a
+week, no exact days), and tomorrow's sheet with a penciled "sold" column,
+which shows the trial line. Pencil arrows draw between them. Each step's
+words sit under its paper. The heading row carries the trial line. Phone:
+the papers stack with the arrows turned down. The sequence plays once on
+scroll-in; under reduced motion or without JavaScript, everything shows.
+Example values only.
+- [x] Markup, styles, and the play-on-view script. The sheet keeps three
+  rows (no chicken sandwich) so it fits a third of the panel.
+- [x] Desktop, tablet, and phone check (1440, 1100, 900, 390, 320), with a
+  frame caught mid-sequence. Reduced motion and no-JS not checked in a
+  browser.
+- [x] Commit and push to `new-site`
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in
