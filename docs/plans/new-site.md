@@ -217,6 +217,10 @@ Example values only.
   frame caught mid-sequence. Reduced motion and no-JS not checked in a
   browser.
 - [x] Commit and push to `new-site`
+- [x] Rex: the five weeks of past sales are needed at the start, so step 1
+  says it; step 3 no longer does. "Square works today, others on site" is
+  replaced by a nightly POS download that works with most systems (Rex,
+  2026-09-30; this overrides the Square-only answer below).
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
