@@ -1159,6 +1159,41 @@ a {
   gap: 16px;
   max-width: 48ch;
 }
+.onboard {
+  max-width: 560px;
+}
+.onboard-steps {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.onboard-steps li {
+  display: grid;
+  grid-template-columns: 2.6em minmax(0, 1fr);
+  column-gap: 12px;
+  padding-block: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.onboard-n {
+  padding-top: 0.45em;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.onboard-steps h3 {
+  font-size: clamp(21px, 2vw, 24px);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.onboard-steps p {
+  color: var(--muted);
+}
+.onboard-trial {
+  margin-top: 24px;
+}
 
 /* Contact */
 

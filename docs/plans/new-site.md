@@ -190,6 +190,17 @@ example values only:
 - [x] Rex dropped step 4 ("Tell us where it was off") and its email
   picture, and the line under each step: only the bold step shows.
 
+Onboarding (2026-09-30). Rex dropped "Why we built it." It answered nothing
+an owner asks just before the form. In its place, "Onboarding.": three short
+steps (connect your sales, a week of setup, first list after about five
+weeks of past sales) and a trial line. Rex: Tooey is not free for
+independent restaurants. It is a free trial where the owner checks the
+counts against what sold. "Free for independent restaurants." became "Try it
+free first." on every page. No trial length is stated until Rex sets one.
+The students line moved into the contact lead.
+- [x] Section, contact lead, and every free claim changed
+- [x] Desktop (1440) and phone (390) check of the home page
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in
