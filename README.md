@@ -27,5 +27,5 @@ into `dist/`, which is what Vercel publishes.
 | `styles.css` | Shared type, color, and layout. |
 | `site.js` | Nav, motion, contact form. |
 | `logo.png` | The Tooey wordmark. |
-| `fonts/` | Self-hosted Newsreader, IBM Plex Sans, IBM Plex Mono. |
+| `fonts/` | Self-hosted Literata (headings), Source Serif 4 (text), Schibsted Grotesk (labels and buttons), and Reenie Beanie (the hero's pencil note). |
 | `src/` | An unused one-page Svelte draft. Editing it does not change the live site. |

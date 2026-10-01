@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>How it works · Tooey</title>
-  <meta name="description" content="Onboarding takes about a week. After that, Tooey emails tomorrow's item-level forecast every night. You print it, prep from it, and decide if the numbers are any good." />
-  <meta name="theme-color" content="#fbf8f1" />
+  <meta name="description" content="What goes into each Tooey count, and how to read the list." />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="fonts/literata.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -31,60 +33,56 @@
   <main id="main">
     <header class="page-head">
       <div class="container">
-        <h1>How Tooey works</h1>
-        <p class="lead">You spend a week onboarding. After that, you get a forecast for tomorrow every night, and you decide if the numbers are any good.</p>
+        <h1>How the counts are made.</h1>
+        <p class="lead">What goes into each count, and how to read the list you get each morning.</p>
       </div>
     </header>
 
-    <div class="page-body">
-      <div class="container">
-        <ol class="sequence">
-          <li>
-            <h3>Onboarding takes about a week.</h3>
-            <p>We sit with you, connect to the POS you already run, and set up an automatic collector. After that, sales pull every night. You do not start by emailing us a spreadsheet.</p>
-          </li>
-          <li>
-            <h3>Tomorrow's forecast is emailed every night.</h3>
-            <p>After the nightly POS pull, you get an email with a count for each item for the next day.</p>
-          </li>
-          <li>
-            <h3>You print the list.</h3>
-            <p>It is a list for the kitchen. You hang it, prep from the number next to each dish, and keep running service the way you already do.</p>
-          </li>
-          <li>
-            <h3>You decide if the numbers are any good.</h3>
-            <p>You can compare each night's forecast to what actually sold, for about a week. We can also backtest on your history. You decide whether the counts are close enough to keep using.</p>
-          </li>
-        </ol>
-
-        <div class="split-notes">
-          <div>
-            <h2>What we need from you</h2>
-            <ul>
-              <li>Time to onboard, about a week.</li>
-              <li>Access to the POS so the nightly collector can run.</li>
-              <li>Feedback once the emails start: what looks right, what does not.</li>
-            </ul>
-          </div>
-          <div>
-            <h2>What you get</h2>
-            <ul>
-              <li>A per-item forecast every night, in email.</li>
-              <li>A list you can print, so nobody is guessing the prep.</li>
-              <li>Tighter prep and less waste, which is how food cost and margin get better.</li>
-            </ul>
-          </div>
+    <div class="container">
+      <section class="ref" aria-labelledby="inputs">
+        <h2 id="inputs">What goes in</h2>
+        <div class="ref-body">
+          <ul class="inputs">
+            <li>Your sales</li>
+            <li>Day of the week</li>
+            <li>Time of year</li>
+            <li>Holidays</li>
+          </ul>
         </div>
-        <div class="later">
-          <h2>What comes later</h2>
-          <p>Inventory is next. The same nightly forecast can point at what you buy and hold, so purchasing is as efficient as prep. That is not the first step. The first step is the count for each dish.</p>
-        </div>
+      </section>
 
-        <div class="page-cta">
-          <p>Tooey is free for independent restaurant partners. Write us if you want to onboard.</p>
+      <section class="ref" aria-labelledby="reading">
+        <h2 id="reading">Reading the list</h2>
+        <div class="ref-body">
+          <figure class="sample">
+            <figcaption>Tuesday</figcaption>
+            <table class="forecast">
+              <thead>
+                <tr><th>Item</th><th>Predicted <span class="mark">1</span></th><th>Prep <span class="mark">2</span></th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span> <span class="mark">3</span></th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="prep">45</td><td class="delta">+8%</td></tr>
+                <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="prep">33</td><td class="delta">+5%</td></tr>
+                <tr><td>Caesar salad</td><td class="predicted">24</td><td class="prep">26</td><td class="delta">&minus;4%</td></tr>
+              </tbody>
+            </table>
+          </figure>
+          <ol class="key">
+            <li><b>Predicted.</b> How many we expect you to sell.</li>
+            <li><b>Prep.</b> How many to make. A little over Predicted, so a rush doesn't leave you short.</li>
+            <li><b>vs. last Tue.</b> Against the same day last week, so a big change stands out.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="ref page-cta" aria-labelledby="cost">
+        <h2 id="cost">Cost</h2>
+        <div class="ref-body">
+          <p class="cost-lead">Free while we're in a pilot.</p>
+          <p>All it takes is about a week to get set up for your restaurant.</p>
           <a class="btn btn-primary" href="index.html#contact">Talk to us</a>
         </div>
-      </div>
+      </section>
     </div>
   </main>
 
@@ -104,7 +102,7 @@
   </footer>
 
   <div class="cta-bar">
-    <p>Free for partner restaurants.</p>
+    <p>Free while we're in a pilot.</p>
     <a class="btn btn-primary" href="index.html#contact">Talk to us</a>
   </div>
 

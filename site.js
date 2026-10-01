@@ -4,8 +4,7 @@
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-
+  
   if (header) {
     var onScroll = function () {
       header.classList.toggle("is-stuck", window.scrollY > 8);
@@ -41,7 +40,7 @@
       if (e.key === "Escape") setOpen(false);
     });
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 900) setOpen(false);
+      if (window.innerWidth > 760) setOpen(false);
     });
   }
 
@@ -53,6 +52,7 @@
     const headerH = header.offsetHeight;
     const start =
       document.querySelector(".hero-actions .btn-primary") ||
+      document.querySelector(".page-head .btn-primary") ||
       document.querySelector(".page-head");
     const ends = [
       document.getElementById("contact"),
@@ -86,50 +86,148 @@
     });
   }
 
-  const tickRoot = document.querySelector("[data-tick-root]");
-  if (tickRoot) tick(tickRoot);
+  // Count each prep number up as its row prints, starting at that row's
+  // row-print delay in styles.css, measured from page start.
+  const counts = document.querySelectorAll(".sheet-now .prep");
+  if (counts.length && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    counts.forEach(function (el) {
+      const end = parseInt(el.textContent, 10);
+      if (!end) return;
+      el.textContent = "0";
+      const start = parseFloat(getComputedStyle(el.parentElement).animationDelay) * 1000 || 0;
+      const length = 420;
+      function tick(now) {
+        const t = Math.min(1, Math.max(0, (now - start) / length));
+        el.textContent = String(Math.round(end * (1 - Math.pow(1 - t, 3))));
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
 
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
+  // Each night. On wide screens the pictures move out from under their steps
+  // into the panel that stays put; the step crossing the middle of the
+  // screen is lit and its picture plays. Narrower, each picture plays under
+  // its step the first time it scrolls into view.
+  const night = document.querySelector(".night");
+  const stage = night && night.querySelector(".night-stage");
+  if (stage && "IntersectionObserver" in window) {
+    const terms = Array.from(night.querySelectorAll(".term"));
+    const homes = terms.map(function (t) {
+      return t.querySelector(".term-pic");
+    });
+    const pics = homes.map(function (h) {
+      return h.querySelector(".pic");
+    });
+    const wide = window.matchMedia("(min-width: 981px)");
+    let active = -1;
+
+    function play(pic) {
+      pic.classList.remove("is-playing");
+      void pic.offsetWidth;
+      pic.classList.add("is-playing");
+    }
+    function setActive(i) {
+      if (i === active) return;
+      active = i;
+      terms.forEach(function (t, j) {
+        t.classList.toggle("is-active", j === i);
+      });
+      pics.forEach(function (p, j) {
+        p.classList.toggle("is-active", j === i);
+      });
+      play(pics[i]);
+    }
+
+    const middle = new IntersectionObserver(
       function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("visible");
-          io.unobserve(entry.target);
+        entries.forEach(function (e) {
+          if (e.isIntersecting) setActive(terms.indexOf(e.target));
         });
       },
-      { threshold: 0.14 }
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+    // Replay the shown picture whenever the panel comes back into view.
+    const onStage = new IntersectionObserver(
+      function (entries) {
+        if (entries[0].isIntersecting && active > -1) play(pics[active]);
+      },
+      { threshold: 0.35 }
+    );
+    const inView = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          play(e.target.querySelector(".pic"));
+          inView.unobserve(e.target);
+        });
+      },
+      { threshold: 0.45 }
     );
 
-    document.querySelectorAll(".sequence > .reveal").forEach(function (el, i) {
-      if (!reduce.matches) el.style.transitionDelay = i * 0.06 + "s";
-    });
+    function layout() {
+      middle.disconnect();
+      onStage.disconnect();
+      inView.disconnect();
+      active = -1;
+      if (wide.matches) {
+        pics.forEach(function (p) {
+          stage.appendChild(p);
+        });
+        night.classList.add("is-staged");
+        setActive(0);
+        terms.forEach(function (t) {
+          middle.observe(t);
+        });
+        onStage.observe(stage);
+      } else {
+        night.classList.remove("is-staged");
+        pics.forEach(function (p, i) {
+          p.classList.remove("is-active");
+          homes[i].appendChild(p);
+        });
+        terms.forEach(function (t) {
+          t.classList.remove("is-active");
+        });
+        homes.forEach(function (h) {
+          inView.observe(h);
+        });
+      }
+    }
+    layout();
+    wide.addEventListener("change", layout);
+  }
 
-    document.querySelectorAll(".reveal").forEach(function (el) {
-      io.observe(el);
+  // Onboarding. Each step and arrow plays once as it scrolls into view.
+  // Side by side they arrive together, and their delays in styles.css play
+  // them in turn.
+  const onboard = document.querySelectorAll(".onboard-step, .onboard-arrow");
+  if (onboard.length && "IntersectionObserver" in window) {
+    const seen = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-playing");
+          seen.unobserve(e.target);
+        });
+      },
+      { threshold: 0.4 }
+    );
+    onboard.forEach(function (el) {
+      seen.observe(el);
     });
   } else {
-    document.querySelectorAll(".reveal").forEach(function (el) {
-      el.classList.add("visible");
+    onboard.forEach(function (el) {
+      el.classList.add("is-playing");
     });
   }
 
-  function tick(root) {
-    if (reduce.matches) return;
-    root.querySelectorAll("[data-tick]").forEach(function (el) {
-      const end = parseInt(el.getAttribute("data-tick"), 10);
-      if (isNaN(end)) return;
-      const start = performance.now();
-      const dur = 640;
-      function frame(now) {
-        const p = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = String(Math.round(end * eased));
-        if (p < 1) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    });
-  }
+  // The example email is always for tomorrow.
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const tomorrow = days[(new Date().getDay() + 1) % 7];
+  document.querySelectorAll("[data-tomorrow]").forEach(function (el) {
+    el.textContent = tomorrow;
+  });
 
   const form = document.getElementById("contactForm");
   if (!form) return;
