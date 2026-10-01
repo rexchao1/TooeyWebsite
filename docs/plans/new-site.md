@@ -302,6 +302,13 @@ all motion, and reads as a reference page:
 - Cost: "Free while we're in a pilot." and the Talk to us button.
 - [x] Built and checked at 1440, 900, 390, and 320 (no sideways scroll)
 - [x] Commit and push to `new-site` (PR #7)
+- [x] Rex: What goes in is four bullets only (your sales, day of the week,
+  time of year, holidays), no descriptions, no Weather row, no nightly
+  redo line. The sample list loses "Example values", the blank row, and
+  its key item. Cost says what the pilot asks (about a week of setup,
+  telling us where counts were off) and that the price comes before the
+  pilot ends, with the owner deciding then. That last line is a promise
+  Rex should confirm.
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces

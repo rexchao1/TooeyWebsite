@@ -42,14 +42,12 @@
       <section class="ref" aria-labelledby="inputs">
         <h2 id="inputs">What goes in</h2>
         <div class="ref-body">
-          <dl class="inputs">
-            <div><dt>Your sales</dt><dd>Every item's sales from your POS, going back at least five weeks.</dd></div>
-            <div><dt>Day of the week</dt><dd>A Tuesday is compared with past Tuesdays.</dd></div>
-            <div><dt>Time of year</dt><dd>Where the date falls in the year.</dd></div>
-            <div><dt>Holidays</dt><dd>Days like Thanksgiving and July 4.</dd></div>
-            <div><dt>Weather</dt><dd>Not used.</dd></div>
-          </dl>
-          <p class="ref-note">Each night we add that day's sales and redo every count.</p>
+          <ul class="inputs">
+            <li>Your sales</li>
+            <li>Day of the week</li>
+            <li>Time of year</li>
+            <li>Holidays</li>
+          </ul>
         </div>
       </section>
 
@@ -57,7 +55,7 @@
         <h2 id="reading">Reading the list</h2>
         <div class="ref-body">
           <figure class="sample">
-            <figcaption><span>Tuesday</span><span>Example values</span></figcaption>
+            <figcaption>Tuesday</figcaption>
             <table class="forecast">
               <thead>
                 <tr><th>Item</th><th>Predicted <span class="mark">1</span></th><th>Prep <span class="mark">2</span></th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span> <span class="mark">3</span></th></tr>
@@ -66,7 +64,6 @@
                 <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="prep">45</td><td class="delta">+8%</td></tr>
                 <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="prep">33</td><td class="delta">+5%</td></tr>
                 <tr><td>Caesar salad</td><td class="predicted">24</td><td class="prep">26</td><td class="delta">&minus;4%</td></tr>
-                <tr><td>Lamb <span class="nowrap">special <span class="mark">4</span></span></td><td class="why" colspan="3">Under 5 weeks of sales</td></tr>
               </tbody>
             </table>
           </figure>
@@ -74,7 +71,6 @@
             <li><b>Predicted.</b> How many we expect you to sell.</li>
             <li><b>Prep.</b> How many to make. A little over Predicted, so a rush doesn't leave you short.</li>
             <li><b>vs. last Tue.</b> Against the same day last week, so a big change stands out.</li>
-            <li><b>A blank.</b> Under five weeks on the menu, or under one sold a day. We leave it blank and say why. It isn't a zero.</li>
           </ol>
         </div>
       </section>
@@ -82,7 +78,9 @@
       <section class="ref page-cta" aria-labelledby="cost">
         <h2 id="cost">Cost</h2>
         <div class="ref-body">
-          <p>Free while we're in a pilot.</p>
+          <p class="cost-lead">Free while we're in a pilot.</p>
+          <p>In return, we ask you to work through about a week of setup with us and tell us where the counts were off.</p>
+          <p>Before the pilot ends, we'll tell you what Tooey will cost. You decide then whether to keep it.</p>
           <a class="btn btn-primary" href="index.html#contact">Talk to us</a>
         </div>
       </section>
