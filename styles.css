@@ -1,7 +1,7 @@
 /* Tooey: ink on white, the printed prep list up front.
    Direction and rules: docs/plans/new-site.md
 
-   Source Serif 4 for headlines and reading text, headlines bold.
+   Literata for headings, at medium weight. Source Serif 4 for reading text.
    Schibsted Grotesk for buttons, nav, form fields, and small labels. */
 
 /* Self-hosted variable woff2, latin subset, from fontsource (SIL OFL 1.1).
@@ -29,6 +29,16 @@
   font-style: normal;
   font-display: swap;
 }
+/* Literata for headings, set at its display optical size. Latin, from
+   fontsource (SIL OFL 1.1). */
+@font-face {
+  font-family: "Literata";
+  src: url("fonts/literata.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Pencil on the old prep list in the hero. Reenie Beanie, latin, from
    fontsource (SIL OFL 1.1). */
 @font-face {
@@ -70,21 +80,21 @@
   --pad-margin: rgba(196, 84, 70, 0.4);
   --pencil: #3f4043;
 
-  /* Type, candidate A (default). */
+  /* Type. */
   --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --font-head: var(--font-text);
+  --font-head: "Literata", Georgia, "Times New Roman", serif;
   --font-ui: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
   --text-size: 19px;
   --text-size-phone: 18px;
   --text-leading: 1.6;
-  --head-weight: 700;
+  --head-weight: 500;
   --head-leading: 1.1;
   --head-track: 0;
-  --display-track: -0.01em;
+  --display-track: -0.02em;
   --display-leading: 1.04;
-  --hero-size: clamp(46px, 6vw, 80px);
+  --hero-size: clamp(44px, 5.7vw, 76px);
   --hero-size-phone: clamp(34px, 10vw, 48px);
-  --title-weight: 600;
+  --title-weight: 500;
   --strong-weight: 600;
   /* Source Serif's figures are narrow, so its ch is small: wider ch measures. */
   --lead-measure: 42ch;

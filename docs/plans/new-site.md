@@ -88,6 +88,20 @@ light, nothing bold or dark.
 - [x] Rex picks a look; the switch and the other two are removed (sage)
 - [x] Commit and push to `new-site`
 
+Heading font (2026-09-30). Rex does not like Source Serif 4 bold for the
+headings; body text is not in question. Six candidates behind `?font=` on
+the home page, fonts self-hosted in `fonts/`:
+- newsreader (Newsreader 500), young (Young Serif), alegreya (Alegreya 600),
+  schibsted (Schibsted Grotesk 600, already the UI font), hanken (Hanken
+  Grotesk 600), gloock (Gloock)
+- [x] Candidates in place; headings fit at 320 wide in each
+- [x] Rex narrowed it to current, Newsreader, and Hanken. Dropped Young
+  Serif, Alegreya, Schibsted, Gloock. Added current at 600, Literata,
+  Spectral, Albert Sans, Onest, Mona Sans, with a picker bar on the page
+- [x] Rex picks Literata (500, display optical size); the other fonts, the
+  switch, and their files are removed. Body text stays Source Serif 4.
+- [x] Desktop and phone check of every page in the pick, then commit
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in
