@@ -175,6 +175,20 @@ Steps:
   caught mid-animation. Reduced motion and no-JS not checked in a browser.
 - [x] Commit and push to `new-site`
 
+Each night, scroll-led (2026-09-30). Rex: the four nightly steps go into
+the deal's scrolling layout, and the deal's terms and intro are dropped
+from the home page. The heading is "What happens each night" with the "How
+setup works" link beside it; the steps keep their words. Pictures, example
+values only:
+- Pull: a slip headed "Your POS / Monday" with the day's counts, stamped
+  "Pulled".
+- Email: "Tooey to you", unread, "Your prep list for Tuesday", with the
+  Predicted and Prep columns as in the hero.
+- Print: the forecast sheet with a penciled "done" column ticked down.
+- Tell us: the owner's email to tooeyteam@gmail.com and the team's reply.
+- [x] Section rebuilt, old steps grid and the six deal pictures' styles removed
+- [x] Desktop, tablet, and phone check (1440, 900, 390, 320)
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in

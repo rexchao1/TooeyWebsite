@@ -808,29 +808,21 @@ a {
 .section + .section {
   border-top: 1px solid var(--line);
 }
-.more {
-  margin-top: 32px;
-}
-
-/* The deal. A numbered list of terms, each with a small picture on the
+/* Each night. A numbered list of steps, each with a small picture on the
    hero's sage. Wide screens with JavaScript (.is-staged, set in site.js)
    move the pictures into one panel that stays put while the list scrolls;
-   the term at the middle of the screen is lit and its picture shows.
+   the step at the middle of the screen is lit and its picture shows.
    Narrower, or without JavaScript, each picture sits under its term.
    Pictures play their small animation when shown (.is-playing). */
 
-.deal-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 18px clamp(32px, 6vw, 96px);
-  align-items: end;
+.night-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px 32px;
 }
-.deal-intro {
-  display: grid;
-  gap: 14px;
-  max-width: var(--copy-measure);
-}
-.deal {
+.night {
   max-width: 640px;
   margin-top: clamp(40px, 6vw, 72px);
 }
@@ -897,11 +889,11 @@ a {
   mix-blend-mode: multiply;
   pointer-events: none;
 }
-.deal-stage {
+.night-stage {
   display: none;
 }
 
-.deal.is-staged {
+.night.is-staged {
   --stage-h: min(580px, calc(100svh - var(--header-h) - 64px));
   max-width: none;
   display: grid;
@@ -925,7 +917,7 @@ a {
 .is-staged .term.is-active {
   opacity: 1;
 }
-.is-staged .deal-stage {
+.is-staged .night-stage {
   display: block;
   position: sticky;
   top: calc((100svh + var(--header-h) - var(--stage-h)) / 2);
@@ -938,7 +930,7 @@ a {
   width: 90%;
   height: 140%;
 }
-.deal-stage .pic {
+.night-stage .pic {
   position: absolute;
   inset: 0;
   display: grid;
@@ -948,10 +940,10 @@ a {
   visibility: hidden;
   transform: translateY(16px);
 }
-.deal-stage .pic > * {
+.night-stage .pic > * {
   zoom: 1.15;
 }
-.deal-stage .pic.is-active {
+.night-stage .pic.is-active {
   opacity: 1;
   visibility: visible;
   transform: none;
@@ -968,7 +960,7 @@ a {
   color: var(--pencil);
 }
 
-/* Cost: a guest check, stamped. */
+/* The pull: the day's sales off the POS, stamped. */
 .check {
   position: relative;
   max-width: 350px;
@@ -983,6 +975,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   margin-inline: -22px;
   padding: 12px 22px;
   margin-bottom: 6px;
@@ -993,9 +986,9 @@ a {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.check-head img {
-  height: 22px;
-  width: auto;
+.check-src {
+  color: var(--muted);
+  font-weight: 600;
 }
 .check-row {
   display: flex;
@@ -1007,12 +1000,6 @@ a {
 }
 .check-row span:last-child {
   font-variant-numeric: tabular-nums;
-}
-.check-total {
-  border-bottom: 0;
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 17px;
 }
 .stamp {
   position: absolute;
@@ -1030,80 +1017,28 @@ a {
   mix-blend-mode: multiply;
 }
 
-/* Setup: a week on a calendar, three blocks across it. */
-.week {
-  padding: 18px 18px 20px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 1px 2px rgba(24, 24, 26, 0.06), 0 24px 48px -24px rgba(24, 24, 26, 0.28);
-  font-family: var(--font-ui);
-}
-.week-head {
-  display: grid;
-  gap: 2px;
-  margin-bottom: 16px;
-}
-.week-title {
-  font: var(--title-weight) 24px / 1.15 var(--font-head);
-}
-.week-days,
-.week-grid {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-.week-days span {
+/* The email: the list as it lands, unread. */
+.pic-email .mail {
   padding-bottom: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
-  text-align: center;
 }
-.week-grid {
-  grid-auto-rows: 58px;
-  row-gap: 8px;
-  padding-block: 10px;
-  border-top: 1px solid var(--line);
-  background: repeating-linear-gradient(90deg, transparent 0 calc(100% / 7 - 1px), var(--line) calc(100% / 7 - 1px) calc(100% / 7));
+.pic-email .mail-subject {
+  margin-bottom: 10px;
+  font: var(--title-weight) 22px / 1.2 var(--font-head);
 }
-.task {
-  margin-inline: 3px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.25;
-  color: #26302a;
+.pic-email .forecast {
+  font-size: 15px;
 }
-.task-1 {
-  grid-column: 1 / 3;
-  background: #dbe7d3;
-}
-.task-2 {
-  grid-column: 3 / 5;
-  background: #efe4c8;
-}
-.task-3 {
-  grid-column: 5 / 8;
-  background: #d9e4ee;
-}
-/* Too narrow for three side by side: they step down a row each. */
-@media (max-width: 420px) {
-  .week-grid {
-    grid-auto-rows: auto;
-  }
-  .task-1 {
-    grid-area: 1 / 1 / 2 / 4;
-  }
-  .task-2 {
-    grid-area: 2 / 3 / 3 / 6;
-  }
-  .task-3 {
-    grid-area: 3 / 5 / 4 / 8;
-  }
+.unread {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 1px;
 }
 
-/* Proof and wrong numbers: the forecast sheet, penciled on. */
+/* Print it: the forecast sheet, ticked off in pencil. */
 .pic-sheet .sheet-body {
   padding-bottom: 12px;
 }
@@ -1113,18 +1048,18 @@ a {
 .pic-sheet .forecast {
   font-size: 15px;
 }
-.forecast th.sold,
-.forecast td.sold {
+.forecast th.done,
+.forecast td.done {
   padding-left: 26px;
   text-align: left;
 }
-.forecast th.sold .pencil {
+.forecast th.done .pencil {
   font-size: 28px;
   font-variant-caps: normal;
   letter-spacing: 0;
   color: var(--pencil);
 }
-.sold .pencil {
+.done .pencil {
   position: relative;
   display: inline-block;
   font-size: 34px;
@@ -1140,98 +1075,7 @@ a {
   rotate: 40deg;
   opacity: 0.8;
 }
-/* The one row that was off, circled. */
-.pencil.off::after {
-  content: "";
-  position: absolute;
-  inset: -5px -9px -3px -9px;
-  border: 1.5px solid var(--pencil);
-  border-radius: 50%;
-  rotate: -6deg;
-  opacity: 0.75;
-}
-.struck {
-  position: relative;
-  display: inline-block;
-  color: var(--muted);
-}
-.strike {
-  position: absolute;
-  left: -4px;
-  right: -4px;
-  top: 50%;
-  height: 2px;
-  background: var(--pencil);
-  border-radius: 2px;
-  rotate: -14deg;
-  transform-origin: left;
-}
-.fix {
-  display: inline-block;
-  margin-right: 12px;
-  font-size: 40px;
-  line-height: 0.7;
-  rotate: -4deg;
-}
-.call-note {
-  margin: 6px 0 4px auto;
-  width: max-content;
-  font-size: 30px;
-  rotate: -3deg;
-}
-
-/* Your data: where it goes, and where it does not. */
-.pic-data svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-  font: 600 15px var(--font-ui);
-}
-.pic-data text {
-  text-anchor: middle;
-  fill: var(--ink);
-}
-.flow-box rect {
-  fill: var(--bg);
-  stroke: var(--line);
-}
-.flow-yours rect {
-  stroke: var(--accent);
-  stroke-width: 1.5;
-}
-.flow-line,
-.flow-head {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.flow-line {
-  stroke-dasharray: 1;
-}
-.flow-no path,
-.flow-no rect {
-  fill: none;
-  stroke: rgba(93, 95, 100, 0.55);
-  stroke-dasharray: 4 5;
-}
-.flow-no rect {
-  fill: rgba(255, 255, 255, 0.35);
-}
-.flow-no text {
-  fill: var(--muted);
-  font-weight: 500;
-}
-.flow-x path {
-  fill: none;
-  stroke: var(--err);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
-
-/* Help: an email, and a reply from one of us. */
+/* Tell us: an email, and a reply from one of us. */
 .pic-help {
   gap: 14px;
   align-content: center;
@@ -1289,10 +1133,10 @@ a {
   .is-staged .term {
     transition: opacity 0.35s ease;
   }
-  .deal-stage .pic {
+  .night-stage .pic {
     transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), visibility 0s 0.45s;
   }
-  .deal-stage .pic.is-active {
+  .night-stage .pic.is-active {
     transition: opacity 0.45s ease 0.1s, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s, visibility 0s;
   }
   .js .pic:not(.is-playing) .in {
@@ -1312,23 +1156,6 @@ a {
     animation-name: pic-write;
     animation-duration: 0.45s;
     animation-timing-function: ease-out;
-  }
-  .js .pic.is-playing .strike {
-    animation-name: pic-strike;
-    animation-duration: 0.3s;
-  }
-  .js .pic.is-playing .task {
-    animation-name: pic-block;
-    animation-duration: 0.45s;
-  }
-  .js .pic.is-playing .flow-line {
-    animation-name: pic-draw;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
-  }
-  .js .pic.is-playing .flow-x {
-    animation-name: pic-pop;
-    animation-duration: 0.3s;
   }
   .js .pic.is-playing .typing {
     animation-name: pic-typing;
@@ -1368,32 +1195,6 @@ a {
     clip-path: inset(-30% -20% -30% -20%);
   }
 }
-@keyframes pic-strike {
-  from {
-    scale: 0 1;
-  }
-}
-@keyframes pic-block {
-  from {
-    opacity: 0;
-    scale: 0.6 1;
-    transform-origin: left;
-  }
-}
-@keyframes pic-draw {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes pic-pop {
-  from {
-    opacity: 0;
-    scale: 0.4;
-  }
-}
 @keyframes pic-typing {
   0% {
     opacity: 0;
@@ -1411,35 +1212,6 @@ a {
     translate: 0 -3px;
     opacity: 1;
   }
-}
-
-/* Each night */
-
-.steps4 {
-  list-style: none;
-  padding: 0;
-  margin-top: 32px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-}
-.steps4 li {
-  display: grid;
-  gap: 8px;
-  align-content: start;
-  padding-top: 18px;
-  border-top: 2px solid var(--ink);
-}
-.steps4 .n {
-  font-family: var(--font-ui);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-.steps4 p {
-  color: var(--muted);
-  font-size: 17px;
 }
 
 /* Who */
@@ -1812,15 +1584,10 @@ textarea:focus {
 
 @media (max-width: 980px) {
   .hero-grid,
-  .deal-head,
   .who,
   .contact-grid,
   .step {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .steps4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 32px;
   }
   .card {
     justify-self: start;
@@ -1946,10 +1713,6 @@ textarea:focus {
   }
   .forecast .th-short {
     display: inline;
-  }
-  .steps4 {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 24px;
   }
   .form-row,
   .two-lists {

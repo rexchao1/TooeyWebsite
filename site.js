@@ -105,14 +105,14 @@
     });
   }
 
-  // The deal. On wide screens the pictures move out from under their terms
-  // into the panel that stays put; the term crossing the middle of the
+  // Each night. On wide screens the pictures move out from under their steps
+  // into the panel that stays put; the step crossing the middle of the
   // screen is lit and its picture plays. Narrower, each picture plays under
-  // its term the first time it scrolls into view.
-  const deal = document.querySelector(".deal");
-  const stage = deal && deal.querySelector(".deal-stage");
+  // its step the first time it scrolls into view.
+  const night = document.querySelector(".night");
+  const stage = night && night.querySelector(".night-stage");
   if (stage && "IntersectionObserver" in window) {
-    const terms = Array.from(deal.querySelectorAll(".term"));
+    const terms = Array.from(night.querySelectorAll(".term"));
     const homes = terms.map(function (t) {
       return t.querySelector(".term-pic");
     });
@@ -174,14 +174,14 @@
         pics.forEach(function (p) {
           stage.appendChild(p);
         });
-        deal.classList.add("is-staged");
+        night.classList.add("is-staged");
         setActive(0);
         terms.forEach(function (t) {
           middle.observe(t);
         });
         onStage.observe(stage);
       } else {
-        deal.classList.remove("is-staged");
+        night.classList.remove("is-staged");
         pics.forEach(function (p, i) {
           p.classList.remove("is-active");
           homes[i].appendChild(p);
