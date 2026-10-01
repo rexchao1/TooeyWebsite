@@ -222,6 +222,71 @@ Example values only.
   replaced by a nightly POS download that works with most systems (Rex,
   2026-09-30; this overrides the Square-only answer below).
 
+How it works page (2026-09-30). Rex: make `how.html` match the home page,
+stop repeating it, and explain more where it helps. It is not "free" in the
+way the site says. Tooey is in a pilot and free for now as a trial (Rex's
+words: "we are still in pilot phase, and it is free for now in a trial").
+
+What is wrong with `how.html` today:
+- Old look: eyebrow labels, the slogan "Set up once. A list every night.",
+  plain cards instead of paper on the sage counter.
+- It repeats the home page: connect the POS, the list arrives, check it
+  against sales. The home page's nightly steps and onboarding already say
+  all three. The "What we need / What you get" lists repeat them again.
+- Out of date: a Range column (gone from the product), "after close" (the
+  list arrives in the morning), "Make" instead of Prep, "open it in the
+  app", and "We can also test it on your past sales" (no backtest offer).
+
+The page's job: answer what an owner asks after reading the home page.
+How is the number made, what does each column mean, what if it is wrong,
+what happens to my sales, and what does it cost. Setup stays on the home
+page and is not explained again here.
+
+Rex (2026-09-30): skip "When a count looks wrong" and "Your sales stay
+yours"; keep the copy short and plain, no stock phrases. The page as built:
+1. Head: "How the counts are made." The lead names what goes in (past
+   sales, day of the week, time of year, holidays, not weather) and that
+   every count is redone each night. Under it, those four as paper on the
+   sage counter: a slip of one dish's past Tuesdays, and three calendar
+   tiles (day, time of year, a holiday). Example values only.
+2. "Reading the list." The home page's scroll-led layout: a numbered list
+   on the left, the forecast sheet sticky on the right, the column for the
+   active item lit and the rest dimmed. Predicted, Prep (a little over
+   Predicted, no cushion size stated), vs. last Tuesday, and a blank row
+   (under five weeks on the menu or under one sold a day, left blank with
+   the reason; not a zero).
+3. Closing line: in a pilot, free for now. No trial length or price until
+   Rex sets them. Talk to us button.
+
+Dropped: the three steps, both lists, the Range explainer, every line in
+"What is wrong" above.
+
+The free line on every page. "Try it free first." changes everywhere to
+the pilot wording: the home onboarding lead ("We're in a pilot, so Tooey is
+free for now. Check our counts against what you actually sold, then
+decide."), the bar at the foot of each page and the page-end lines on About
+and How ("Free for now, while we're in a pilot.").
+
+The home page's "How setup works" link beside "What happens each night"
+becomes "How the counts are made", since the How page no longer covers
+setup.
+
+Not in this pass: rewriting About or Privacy beyond the free line. About
+still says "every night" and "If an email is late"; noted for later.
+
+Steps:
+- [x] Rex reviews this plan (skip 4 and 5, otherwise go)
+- [x] Rebuild `how.html` with the sections above, using the home page's
+  styles (counter panel, sheet, scroll-led list); remove styles only the
+  old How page used
+- [x] Pilot wording on every page ("Free while we're in a pilot." in the
+  bar and on About); home link renamed
+- [x] `/unslop` on the new copy
+- [x] Desktop, tablet, and phone check (1440, 900, 390, 320) of How and
+  the changed lines on Home and About. Reduced motion and no-JS not
+  checked in a browser.
+- [x] Commit and push to `new-site` (PR #7)
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in

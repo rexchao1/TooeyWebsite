@@ -1563,150 +1563,140 @@ textarea:focus {
   max-width: 16ch;
 }
 
-.steps {
-  list-style: none;
-  padding: 0;
-}
-.step {
+/* How the counts are made. What goes in, as paper on the hero's sage: one
+   dish's past Tuesdays and three calendar tiles. */
+
+.inputs {
+  width: 100%;
+  margin-top: clamp(16px, 3vw, 32px);
+  border-radius: 24px;
+  padding: clamp(32px, 5vw, 56px) clamp(16px, 4vw, 48px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(28px, 6vw, 96px);
-  padding-block: clamp(44px, 6vw, 80px);
-  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 32px);
   align-items: center;
 }
-.step-copy {
-  display: grid;
-  gap: 14px;
-  align-content: start;
+.inputs .window-light {
+  top: -30%;
+  right: -10%;
+  width: 70%;
+  height: 160%;
 }
-.step-copy p:not(.eyebrow) {
-  max-width: var(--copy-measure);
-}
-.step-aside {
-  font-size: 17px;
-  color: var(--muted);
-  border-left: 3px solid var(--line);
-  padding-left: 16px;
-}
-.step-aside strong {
-  color: var(--ink);
-}
-
-.card {
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  box-shadow: 0 16px 32px -24px rgba(24, 24, 26, 0.3);
-  max-width: 480px;
+.input-sales {
   width: 100%;
   justify-self: center;
-  overflow: hidden;
+  padding-bottom: 14px;
 }
-.card-head {
-  padding: 16px 20px;
+.cal {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(24, 24, 26, 0.06), 0 24px 48px -24px rgba(24, 24, 26, 0.28);
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 18px;
+}
+.cal:nth-child(3) {
+  rotate: 1.5deg;
+}
+.cal:nth-child(4) {
+  rotate: -1deg;
+}
+.cal:nth-child(5) {
+  rotate: 2deg;
+}
+.cal-top {
+  padding: 10px 8px;
   border-bottom: 1px solid var(--line);
+  background: var(--sheet-bar);
+  font: 600 12px / 1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cal-big {
+  margin-top: 16px;
+  font: var(--title-weight) clamp(28px, 3.4vw, 44px) / 1.1 var(--font-head);
+  white-space: nowrap;
+}
+.cal-sub {
+  margin-top: 4px;
+  font: 500 14px / 1.3 var(--font-ui);
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .inputs .in {
+    animation: pic-rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+  }
+}
+
+/* Reading the list. The night layout, with the same sheet in every
+   picture and the column the active term names lit. */
+
+.read-section h2 {
+  max-width: 14ch;
+}
+.read-section .page-cta {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-bottom: 0;
+  border-top: 0;
+}
+.read-section .page-cta p {
+  text-wrap: balance;
+}
+.term-text p {
+  color: var(--muted);
+  max-width: var(--copy-measure);
+}
+.read .night-stage .pic {
+  transform: none;
+}
+.pic-read {
+  width: 100%;
   display: grid;
-  gap: 2px;
-  font-family: var(--font-ui);
+  justify-items: center;
+}
+.pic-read > * {
+  max-width: 440px;
+}
+.pic-read .sheet-day {
+  margin-bottom: 10px;
+}
+.pic-read .forecast td,
+.pic-read .forecast th {
+  padding-right: 8px;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+.pic-read .forecast td:first-child,
+.pic-read .forecast th:first-child {
+  padding-left: 8px;
+}
+.pic-read .forecast :is(.c-pred, .c-prep, .c-delta, .why) {
+  opacity: 0.3;
+}
+.pic-read .why {
+  white-space: normal;
+  text-align: right;
   font-size: 14px;
   color: var(--muted);
 }
-.card-head strong {
-  font-family: var(--font-head);
-  font-size: 20px;
-  font-weight: var(--title-weight);
-  line-height: 1.25;
+.pic-read.lit-pred .forecast .c-pred,
+.pic-read.lit-prep .forecast .c-prep,
+.pic-read.lit-delta .forecast .c-delta,
+.pic-read.lit-blank .forecast .blank-row td {
+  opacity: 1;
+  color: var(--ink);
+  background: rgba(63, 107, 80, 0.1);
+}
+.pic-read.lit-blank .forecast .why {
   color: var(--ink);
 }
-.card-body {
-  padding: 6px 20px 18px;
+.pic-read.lit-blank .forecast :is(.c-pred, .c-prep, .c-delta) {
+  opacity: 1;
 }
-.row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 4.2em 4.6em;
-  gap: 10px;
-  align-items: baseline;
-  padding-block: 10px;
-  border-bottom: 1px solid var(--line);
-  font-size: 16px;
-  line-height: 1.4;
-  font-variant-numeric: tabular-nums lining-nums;
-}
-.row:last-of-type {
-  border-bottom: 0;
-}
-.row > :first-child {
-  font-weight: 500;
-}
-.row.head {
-  font-size: 15px;
-  font-weight: 600;
-  font-variant-caps: all-small-caps;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  padding-block: 10px 8px;
-}
-.row.head > :first-child {
-  font-weight: 600;
-}
-.row > :not(:first-child) {
-  text-align: right;
-}
-.row b {
-  font-size: 19px;
-  font-weight: 700;
-}
-.row .range {
-  color: var(--muted);
-  font-size: 15px;
-}
-.row .blank {
-  align-self: end;
-  height: 1px;
-  margin-bottom: 5px;
-  background: var(--field);
-}
-.card-note {
-  margin-top: 10px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.ticks {
-  list-style: none;
-  padding: 0;
-}
-.ticks li {
-  padding-block: 13px;
-  padding-left: 30px;
-  border-bottom: 1px solid var(--line);
-  position: relative;
-}
-.ticks li::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 18px;
-  top: calc(13px + (1lh - 14px) / 2 + 1px);
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid var(--ink);
-  border-radius: 3px;
-}
-.card .ticks li:last-child {
-  border-bottom: 0;
-}
-
-.two-lists {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 72px);
-  padding-block: clamp(44px, 6vw, 80px);
-  border-top: 1px solid var(--line);
-}
-.two-lists h2 {
-  margin-bottom: 14px;
+.pic-read.lit-blank .forecast thead,
+.pic-read.lit-blank .forecast tbody tr:not(.blank-row) {
+  opacity: 0.3;
 }
 
 .page-cta {
@@ -1799,12 +1789,8 @@ textarea:focus {
 @media (max-width: 980px) {
   .hero-grid,
   .onboard-head,
-  .contact-grid,
-  .step {
+  .contact-grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .card {
-    justify-self: start;
   }
 }
 
@@ -1928,8 +1914,7 @@ textarea:focus {
   .forecast .th-short {
     display: inline;
   }
-  .form-row,
-  .two-lists {
+  .form-row {
     grid-template-columns: minmax(0, 1fr);
   }
   .form-foot .btn {
@@ -2034,7 +2019,54 @@ textarea:focus {
 
 /* Very small phones: drop the week-over-week column so the counts stay whole. */
 
+@media (max-width: 639px) {
+  .inputs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 12px;
+  }
+  .input-sales {
+    grid-column: 1 / -1;
+    max-width: 320px;
+  }
+  .cal-top {
+    padding-inline: 4px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+  .cal-big {
+    font-size: 24px;
+  }
+  .cal-sub {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 359px) {
+  .cal-top {
+    padding-inline: 2px;
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+  .cal-big {
+    font-size: 20px;
+  }
+  .read .term-pic {
+    padding-inline: 8px;
+  }
+  .pic-read .forecast {
+    font-size: 14px;
+  }
+  .pic-read .forecast th {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .pic-read .forecast :is(th, td):not(:first-child) {
+    padding-left: 6px;
+    padding-right: 4px;
+  }
+  .pic-read .forecast :is(th, td):first-child {
+    padding-left: 4px;
+  }
   .sheet-now .forecast th:last-child,
   .sheet-now .forecast td:last-child {
     display: none;
