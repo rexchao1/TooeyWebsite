@@ -287,6 +287,22 @@ Steps:
   checked in a browser.
 - [x] Commit and push to `new-site` (PR #7)
 
+Formal pass (2026-09-30). Rex: the visuals still looked like the home page.
+This page should be more formal and less creative, not the same look. So
+it drops the sage counter, the paper pictures, the scroll-led list, and
+all motion, and reads as a reference page:
+- Each section is a row: heading in the left column, content on the right,
+  hairlines between (`.ref` in `styles.css`). Sections: What goes in,
+  Reading the list, Cost.
+- What goes in: a plain two-column list (Your sales, Day of the week, Time
+  of year, Holidays, Weather: not used), then one line on the nightly redo.
+- Reading the list: one flat sample list captioned "Example values", with
+  numbered marks on Predicted, Prep, vs. last Tue, and the blank row, and
+  a numbered key under it. Same words as before.
+- Cost: "Free while we're in a pilot." and the Talk to us button.
+- [x] Built and checked at 1440, 900, 390, and 320 (no sideways scroll)
+- [x] Commit and push to `new-site` (PR #7)
+
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
 the direction in `site-redesign.md` (PR #6), which Rex judged generic in

@@ -1563,140 +1563,162 @@ textarea:focus {
   max-width: 16ch;
 }
 
-/* How the counts are made. What goes in, as paper on the hero's sage: one
-   dish's past Tuesdays and three calendar tiles. */
+/* How the counts are made. A reference page: each section's heading in
+   the left column, its content on the right, hairlines between. */
+
+.ref {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+  gap: 20px clamp(32px, 6vw, 96px);
+  padding-block: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--line);
+}
+.ref h2 {
+  font-size: clamp(24px, 2.4vw, 30px);
+}
+.ref-body {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+.ref-note {
+  color: var(--muted);
+}
 
 .inputs {
   width: 100%;
-  margin-top: clamp(16px, 3vw, 32px);
-  border-radius: 24px;
-  padding: clamp(32px, 5vw, 56px) clamp(16px, 4vw, 48px);
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+}
+.inputs > div {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
-  gap: clamp(16px, 2.4vw, 32px);
-  align-items: center;
+  grid-template-columns: minmax(0, 12em) minmax(0, 1fr);
+  gap: 4px 24px;
+  padding-block: 14px;
+  border-top: 1px solid var(--line);
 }
-.inputs .window-light {
-  top: -30%;
-  right: -10%;
-  width: 70%;
-  height: 160%;
+.inputs > div:first-child {
+  border-top: 0;
+  padding-top: 0;
 }
-.input-sales {
+.inputs dt {
+  font-weight: var(--strong-weight);
+}
+.inputs dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* The sample list, flat, with numbered marks keyed below it. */
+.sample {
   width: 100%;
-  justify-self: center;
-  padding-bottom: 14px;
-}
-.cal {
-  background: var(--bg);
+  max-width: 640px;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 1px 2px rgba(24, 24, 26, 0.06), 0 24px 48px -24px rgba(24, 24, 26, 0.28);
-  overflow: hidden;
-  text-align: center;
-  padding-bottom: 18px;
+  border-radius: 8px;
+  padding: 0 20px 6px;
 }
-.cal:nth-child(3) {
-  rotate: 1.5deg;
-}
-.cal:nth-child(4) {
-  rotate: -1deg;
-}
-.cal:nth-child(5) {
-  rotate: 2deg;
-}
-.cal-top {
-  padding: 10px 8px;
+.sample figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-inline: -20px;
+  margin-bottom: 14px;
+  padding: 12px 20px;
   border-bottom: 1px solid var(--line);
   background: var(--sheet-bar);
-  font: 600 12px / 1.2 var(--font-ui);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 600 14px / 1.3 var(--font-ui);
+}
+.sample figcaption span:last-child {
+  font-weight: 500;
   color: var(--muted);
 }
-.cal-big {
-  margin-top: 16px;
-  font: var(--title-weight) clamp(28px, 3.4vw, 44px) / 1.1 var(--font-head);
-  white-space: nowrap;
-}
-.cal-sub {
-  margin-top: 4px;
-  font: 500 14px / 1.3 var(--font-ui);
-  color: var(--muted);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .inputs .in {
-    animation: pic-rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
-  }
-}
-
-/* Reading the list. The night layout, with the same sheet in every
-   picture and the column the active term names lit. */
-
-.read-section h2 {
-  max-width: 14ch;
-}
-.read-section .page-cta {
-  margin-top: clamp(48px, 6vw, 80px);
-  padding-bottom: 0;
-  border-top: 0;
-}
-.read-section .page-cta p {
-  text-wrap: balance;
-}
-.term-text p {
-  color: var(--muted);
-  max-width: var(--copy-measure);
-}
-.read .night-stage .pic {
-  transform: none;
-}
-.pic-read {
-  width: 100%;
-  display: grid;
-  justify-items: center;
-}
-.pic-read > * {
-  max-width: 440px;
-}
-.pic-read .sheet-day {
-  margin-bottom: 10px;
-}
-.pic-read .forecast td,
-.pic-read .forecast th {
-  padding-right: 8px;
-  transition: opacity 0.3s ease, background-color 0.3s ease;
-}
-.pic-read .forecast td:first-child,
-.pic-read .forecast th:first-child {
-  padding-left: 8px;
-}
-.pic-read .forecast :is(.c-pred, .c-prep, .c-delta, .why) {
-  opacity: 0.3;
-}
-.pic-read .why {
+.sample .why {
   white-space: normal;
-  text-align: right;
   font-size: 14px;
   color: var(--muted);
 }
-.pic-read.lit-pred .forecast .c-pred,
-.pic-read.lit-prep .forecast .c-prep,
-.pic-read.lit-delta .forecast .c-delta,
-.pic-read.lit-blank .forecast .blank-row td {
-  opacity: 1;
+.mark {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 2px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  font: 600 11px / 1 var(--font-ui);
+  font-variant-caps: normal;
+  letter-spacing: 0;
+  color: var(--accent);
+  vertical-align: 1px;
+}
+
+.key {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 40px;
+  max-width: 640px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: key;
+}
+.key li {
+  position: relative;
+  padding-left: 30px;
+  counter-increment: key;
+  font-size: 17px;
+  color: var(--muted);
+}
+.key li::before {
+  content: counter(key);
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  font: 600 11px / 1 var(--font-ui);
+  color: var(--accent);
+}
+.key b {
+  font-weight: var(--strong-weight);
   color: var(--ink);
-  background: rgba(63, 107, 80, 0.1);
 }
-.pic-read.lit-blank .forecast .why {
-  color: var(--ink);
+
+.ref.page-cta {
+  display: grid;
+  align-items: start;
+  gap: 20px clamp(32px, 6vw, 96px);
+  padding-block: clamp(40px, 5vw, 64px);
 }
-.pic-read.lit-blank .forecast :is(.c-pred, .c-prep, .c-delta) {
-  opacity: 1;
+.nowrap {
+  white-space: nowrap;
 }
-.pic-read.lit-blank .forecast thead,
-.pic-read.lit-blank .forecast tbody tr:not(.blank-row) {
-  opacity: 0.3;
+.ref.page-cta p {
+  font-family: var(--font-text);
+  font-size: inherit;
+  font-weight: 400;
+  line-height: var(--text-leading);
+}
+
+@media (max-width: 760px) {
+  .ref,
+  .key {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .inputs > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sample {
+    padding-inline: 12px;
+  }
+  .sample figcaption {
+    margin-inline: -12px;
+    padding-inline: 12px;
+  }
 }
 
 .page-cta {
@@ -2019,53 +2041,27 @@ textarea:focus {
 
 /* Very small phones: drop the week-over-week column so the counts stay whole. */
 
-@media (max-width: 639px) {
-  .inputs {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px 12px;
-  }
-  .input-sales {
-    grid-column: 1 / -1;
-    max-width: 320px;
-  }
-  .cal-top {
-    padding-inline: 4px;
-    font-size: 10px;
-    letter-spacing: 0.04em;
-  }
-  .cal-big {
-    font-size: 24px;
-  }
-  .cal-sub {
-    font-size: 12px;
-  }
-}
-
 @media (max-width: 359px) {
-  .cal-top {
-    padding-inline: 2px;
-    font-size: 9px;
-    letter-spacing: 0;
+  .sample {
+    padding-inline: 10px;
   }
-  .cal-big {
-    font-size: 20px;
+  .sample figcaption {
+    margin-inline: -10px;
+    padding-inline: 10px;
   }
-  .read .term-pic {
-    padding-inline: 8px;
+  .sample .mark {
+    width: 15px;
+    height: 15px;
+    margin-left: 0;
+    font-size: 10px;
   }
-  .pic-read .forecast {
-    font-size: 14px;
+  .sample .forecast th:not(:first-child),
+  .sample .forecast td:not(:first-child) {
+    padding-left: 6px;
   }
-  .pic-read .forecast th {
+  .sample .forecast th {
     font-size: 12px;
     letter-spacing: 0;
-  }
-  .pic-read .forecast :is(th, td):not(:first-child) {
-    padding-left: 6px;
-    padding-right: 4px;
-  }
-  .pic-read .forecast :is(th, td):first-child {
-    padding-left: 4px;
   }
   .sheet-now .forecast th:last-child,
   .sheet-now .forecast td:last-child {

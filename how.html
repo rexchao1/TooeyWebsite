@@ -34,136 +34,59 @@
     <header class="page-head">
       <div class="container">
         <h1>How the counts are made.</h1>
-        <p class="lead">From your past sales, the day of the week, the time of year, and holidays. Not the weather. Each night we add the day's sales and redo every count.</p>
-        <div class="inputs panel" aria-hidden="true">
-          <div class="window-light"><span></span><span></span><span></span><span></span></div>
-          <div class="check slip input-sales in">
-            <div class="check-head"><span>Cheeseburger</span><span class="check-src">Past Tuesdays</span></div>
-            <div class="check-row in" style="--d: 0.15s"><span>Sep 8</span><span>41</span></div>
-            <div class="check-row in" style="--d: 0.22s"><span>Sep 15</span><span>44</span></div>
-            <div class="check-row in" style="--d: 0.29s"><span>Sep 22</span><span>40</span></div>
-            <div class="check-row in" style="--d: 0.36s"><span>Sep 29</span><span>39</span></div>
-          </div>
-          <div class="cal in" style="--d: 0.45s"><p class="cal-top">Day</p><p class="cal-big">Tue</p><p class="cal-sub">Today</p></div>
-          <div class="cal in" style="--d: 0.55s"><p class="cal-top">Time of year</p><p class="cal-big">Oct</p><p class="cal-sub">Fall</p></div>
-          <div class="cal in" style="--d: 0.65s"><p class="cal-top">Holiday</p><p class="cal-big">Nov 26</p><p class="cal-sub">Thanksgiving</p></div>
-        </div>
+        <p class="lead">What goes into each count, and how to read the list you get each morning.</p>
       </div>
     </header>
 
-    <section class="section read-section">
-      <div class="container">
-        <h2 class="big">Reading the list.</h2>
-        <div class="night read">
-          <ol class="terms">
-            <li class="term">
-              <span class="term-n">01</span>
-              <div class="term-text"><h3>Predicted</h3><p>How many we expect you to sell.</p></div>
-              <div class="term-pic panel" aria-hidden="true">
-                <div class="pic pic-read lit-pred">
-                  <div class="sheet">
-                    <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
-                    <div class="sheet-body">
-                      <p class="sheet-kicker">Today</p>
-                      <p class="sheet-day">Tuesday</p>
-                      <table class="forecast">
-                        <thead><tr><th>Item</th><th class="c-pred">Predicted</th><th class="c-prep">Prep</th><th class="c-delta"><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr></thead>
-                        <tbody>
-                          <tr><td>Cheeseburger</td><td class="predicted c-pred">42</td><td class="prep c-prep">45</td><td class="delta c-delta">+8%</td></tr>
-                          <tr><td>Chicken sandwich</td><td class="predicted c-pred">31</td><td class="prep c-prep">33</td><td class="delta c-delta">+5%</td></tr>
-                          <tr><td>Caesar salad</td><td class="predicted c-pred">24</td><td class="prep c-prep">26</td><td class="delta c-delta">&minus;4%</td></tr>
-                          <tr class="blank-row"><td>Lamb special</td><td class="why" colspan="3">Under 5 weeks of sales</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="term">
-              <span class="term-n">02</span>
-              <div class="term-text"><h3>Prep</h3><p>How many to make. A little over Predicted, so a rush doesn't leave you short.</p></div>
-              <div class="term-pic panel" aria-hidden="true">
-                <div class="pic pic-read lit-prep">
-                  <div class="sheet">
-                    <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
-                    <div class="sheet-body">
-                      <p class="sheet-kicker">Today</p>
-                      <p class="sheet-day">Tuesday</p>
-                      <table class="forecast">
-                        <thead><tr><th>Item</th><th class="c-pred">Predicted</th><th class="c-prep">Prep</th><th class="c-delta"><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr></thead>
-                        <tbody>
-                          <tr><td>Cheeseburger</td><td class="predicted c-pred">42</td><td class="prep c-prep">45</td><td class="delta c-delta">+8%</td></tr>
-                          <tr><td>Chicken sandwich</td><td class="predicted c-pred">31</td><td class="prep c-prep">33</td><td class="delta c-delta">+5%</td></tr>
-                          <tr><td>Caesar salad</td><td class="predicted c-pred">24</td><td class="prep c-prep">26</td><td class="delta c-delta">&minus;4%</td></tr>
-                          <tr class="blank-row"><td>Lamb special</td><td class="why" colspan="3">Under 5 weeks of sales</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="term">
-              <span class="term-n">03</span>
-              <div class="term-text"><h3>vs. last Tuesday</h3><p>Against the same day last week, so a big change stands out.</p></div>
-              <div class="term-pic panel" aria-hidden="true">
-                <div class="pic pic-read lit-delta">
-                  <div class="sheet">
-                    <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
-                    <div class="sheet-body">
-                      <p class="sheet-kicker">Today</p>
-                      <p class="sheet-day">Tuesday</p>
-                      <table class="forecast">
-                        <thead><tr><th>Item</th><th class="c-pred">Predicted</th><th class="c-prep">Prep</th><th class="c-delta"><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr></thead>
-                        <tbody>
-                          <tr><td>Cheeseburger</td><td class="predicted c-pred">42</td><td class="prep c-prep">45</td><td class="delta c-delta">+8%</td></tr>
-                          <tr><td>Chicken sandwich</td><td class="predicted c-pred">31</td><td class="prep c-prep">33</td><td class="delta c-delta">+5%</td></tr>
-                          <tr><td>Caesar salad</td><td class="predicted c-pred">24</td><td class="prep c-prep">26</td><td class="delta c-delta">&minus;4%</td></tr>
-                          <tr class="blank-row"><td>Lamb special</td><td class="why" colspan="3">Under 5 weeks of sales</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="term">
-              <span class="term-n">04</span>
-              <div class="term-text"><h3>A blank</h3><p>Under five weeks on the menu, or under one sold a day. We leave it blank and say why. It isn't a zero.</p></div>
-              <div class="term-pic panel" aria-hidden="true">
-                <div class="pic pic-read lit-blank">
-                  <div class="sheet">
-                    <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
-                    <div class="sheet-body">
-                      <p class="sheet-kicker">Today</p>
-                      <p class="sheet-day">Tuesday</p>
-                      <table class="forecast">
-                        <thead><tr><th>Item</th><th class="c-pred">Predicted</th><th class="c-prep">Prep</th><th class="c-delta"><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr></thead>
-                        <tbody>
-                          <tr><td>Cheeseburger</td><td class="predicted c-pred">42</td><td class="prep c-prep">45</td><td class="delta c-delta">+8%</td></tr>
-                          <tr><td>Chicken sandwich</td><td class="predicted c-pred">31</td><td class="prep c-prep">33</td><td class="delta c-delta">+5%</td></tr>
-                          <tr><td>Caesar salad</td><td class="predicted c-pred">24</td><td class="prep c-prep">26</td><td class="delta c-delta">&minus;4%</td></tr>
-                          <tr class="blank-row"><td>Lamb special</td><td class="why" colspan="3">Under 5 weeks of sales</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ol>
-          <div class="night-stage panel" aria-hidden="true">
-            <div class="window-light"><span></span><span></span><span></span><span></span></div>
-          </div>
+    <div class="container">
+      <section class="ref" aria-labelledby="inputs">
+        <h2 id="inputs">What goes in</h2>
+        <div class="ref-body">
+          <dl class="inputs">
+            <div><dt>Your sales</dt><dd>Every item's sales from your POS, going back at least five weeks.</dd></div>
+            <div><dt>Day of the week</dt><dd>A Tuesday is compared with past Tuesdays.</dd></div>
+            <div><dt>Time of year</dt><dd>Where the date falls in the year.</dd></div>
+            <div><dt>Holidays</dt><dd>Days like Thanksgiving and July 4.</dd></div>
+            <div><dt>Weather</dt><dd>Not used.</dd></div>
+          </dl>
+          <p class="ref-note">Each night we add that day's sales and redo every count.</p>
         </div>
+      </section>
 
-        <div class="page-cta">
-          <p>We're in a pilot. It's free for now.</p>
+      <section class="ref" aria-labelledby="reading">
+        <h2 id="reading">Reading the list</h2>
+        <div class="ref-body">
+          <figure class="sample">
+            <figcaption><span>Tuesday</span><span>Example values</span></figcaption>
+            <table class="forecast">
+              <thead>
+                <tr><th>Item</th><th>Predicted <span class="mark">1</span></th><th>Prep <span class="mark">2</span></th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span> <span class="mark">3</span></th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="prep">45</td><td class="delta">+8%</td></tr>
+                <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="prep">33</td><td class="delta">+5%</td></tr>
+                <tr><td>Caesar salad</td><td class="predicted">24</td><td class="prep">26</td><td class="delta">&minus;4%</td></tr>
+                <tr><td>Lamb <span class="nowrap">special <span class="mark">4</span></span></td><td class="why" colspan="3">Under 5 weeks of sales</td></tr>
+              </tbody>
+            </table>
+          </figure>
+          <ol class="key">
+            <li><b>Predicted.</b> How many we expect you to sell.</li>
+            <li><b>Prep.</b> How many to make. A little over Predicted, so a rush doesn't leave you short.</li>
+            <li><b>vs. last Tue.</b> Against the same day last week, so a big change stands out.</li>
+            <li><b>A blank.</b> Under five weeks on the menu, or under one sold a day. We leave it blank and say why. It isn't a zero.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="ref page-cta" aria-labelledby="cost">
+        <h2 id="cost">Cost</h2>
+        <div class="ref-body">
+          <p>Free while we're in a pilot.</p>
           <a class="btn btn-primary" href="index.html#contact">Talk to us</a>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
