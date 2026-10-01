@@ -808,45 +808,609 @@ a {
 .section + .section {
   border-top: 1px solid var(--line);
 }
-.section.wash {
-  background: var(--wash);
-}
-.section.wash + .section {
-  border-top: 0;
-}
 .more {
   margin-top: 32px;
 }
 
-/* The deal */
+/* The deal. A numbered list of terms, each with a small picture on the
+   hero's sage. Wide screens with JavaScript (.is-staged, set in site.js)
+   move the pictures into one panel that stays put while the list scrolls;
+   the term at the middle of the screen is lit and its picture shows.
+   Narrower, or without JavaScript, each picture sits under its term.
+   Pictures play their small animation when shown (.is-playing). */
 
-.deal {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(32px, 6vw, 96px);
-  align-items: start;
-}
 .deal-head {
   display: grid;
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+.deal-intro {
+  display: grid;
+  gap: 14px;
   max-width: var(--copy-measure);
 }
-.terms {
-  border-top: 2px solid var(--ink);
+.deal {
+  max-width: 640px;
+  margin-top: clamp(40px, 6vw, 72px);
 }
-.terms > div {
+.terms {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.term {
   display: grid;
-  grid-template-columns: 9.5em minmax(0, 1fr);
-  gap: 16px;
-  padding-block: 16px;
+  grid-template-columns: 2.6em minmax(0, 1fr);
+  column-gap: 12px;
+  padding-block: clamp(28px, 4vw, 44px);
   border-bottom: 1px solid var(--line);
 }
-.terms dt {
-  font-weight: var(--strong-weight);
-}
-.terms dd {
-  margin: 0;
+.term-n {
+  padding-top: 0.7em;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.term-text {
+  display: grid;
+  gap: 10px;
+}
+.term h3 {
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.term-text p {
+  color: var(--muted);
+  max-width: 40ch;
+}
+.term-pic {
+  grid-column: 1 / -1;
+  display: grid;
+  place-items: center;
+  margin-top: 24px;
+  padding: clamp(28px, 6vw, 48px) 16px;
+}
+
+/* The hero's ground: light sage, a still grain, and window light. */
+.panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 20px;
+  background:
+    radial-gradient(60% 50% at 50% 55%, rgba(255, 255, 255, 0.55), transparent 72%),
+    linear-gradient(180deg, var(--counter-top), var(--counter-bottom));
+}
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--grain);
+  background-size: 160px;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.deal-stage {
+  display: none;
+}
+
+.deal.is-staged {
+  --stage-h: min(580px, calc(100svh - var(--header-h) - 64px));
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.is-staged .terms {
+  padding-bottom: calc(var(--stage-h) / 2 - 60px);
+  border-top: 0;
+}
+.is-staged .term:first-child {
+  border-top: 1px solid var(--line);
+}
+.is-staged .term-pic {
+  display: none;
+}
+.is-staged .term {
+  opacity: 0.32;
+}
+.is-staged .term.is-active {
+  opacity: 1;
+}
+.is-staged .deal-stage {
+  display: block;
+  position: sticky;
+  top: calc((100svh + var(--header-h) - var(--stage-h)) / 2);
+  height: var(--stage-h);
+  border-radius: 24px;
+}
+.is-staged .window-light {
+  top: -20%;
+  right: -20%;
+  width: 90%;
+  height: 140%;
+}
+.deal-stage .pic {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+}
+.deal-stage .pic > * {
+  zoom: 1.15;
+}
+.deal-stage .pic.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* The pictures. Each is drawn about 400px wide and shrinks to fit. */
+
+.pic > * {
+  width: 100%;
+  max-width: 400px;
+}
+.pencil {
+  font: 400 27px / 1 "Reenie Beanie", "Bradley Hand", cursive;
+  color: var(--pencil);
+}
+
+/* Cost: a guest check, stamped. */
+.check {
+  position: relative;
+  max-width: 350px;
+  rotate: -2deg;
+  padding: 0 22px 76px;
+  background: #fbfaf4;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(24, 24, 26, 0.08), 0 20px 40px -22px rgba(24, 24, 26, 0.3);
+  font: 500 15px / 1.3 var(--font-ui);
+}
+.check-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline: -22px;
+  padding: 12px 22px;
+  margin-bottom: 6px;
+  border-bottom: 2px solid rgba(63, 107, 80, 0.5);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.check-head img {
+  height: 22px;
+  width: auto;
+}
+.check-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(63, 107, 80, 0.18);
+  color: var(--muted);
+}
+.check-row span:last-child {
+  font-variant-numeric: tabular-nums;
+}
+.check-total {
+  border-bottom: 0;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 17px;
+}
+.stamp {
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  rotate: -8deg;
+  padding: 6px 14px;
+  border: 3px solid var(--accent);
+  border-radius: 8px;
+  color: var(--accent);
+  font: 800 20px / 1 var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  mix-blend-mode: multiply;
+}
+
+/* Setup: a week on a calendar, three blocks across it. */
+.week {
+  padding: 18px 18px 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(24, 24, 26, 0.06), 0 24px 48px -24px rgba(24, 24, 26, 0.28);
+  font-family: var(--font-ui);
+}
+.week-head {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+.week-title {
+  font: var(--title-weight) 24px / 1.15 var(--font-head);
+}
+.week-days,
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.week-days span {
+  padding-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+}
+.week-grid {
+  grid-auto-rows: 58px;
+  row-gap: 8px;
+  padding-block: 10px;
+  border-top: 1px solid var(--line);
+  background: repeating-linear-gradient(90deg, transparent 0 calc(100% / 7 - 1px), var(--line) calc(100% / 7 - 1px) calc(100% / 7));
+}
+.task {
+  margin-inline: 3px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #26302a;
+}
+.task-1 {
+  grid-column: 1 / 3;
+  background: #dbe7d3;
+}
+.task-2 {
+  grid-column: 3 / 5;
+  background: #efe4c8;
+}
+.task-3 {
+  grid-column: 5 / 8;
+  background: #d9e4ee;
+}
+/* Too narrow for three side by side: they step down a row each. */
+@media (max-width: 420px) {
+  .week-grid {
+    grid-auto-rows: auto;
+  }
+  .task-1 {
+    grid-area: 1 / 1 / 2 / 4;
+  }
+  .task-2 {
+    grid-area: 2 / 3 / 3 / 6;
+  }
+  .task-3 {
+    grid-area: 3 / 5 / 4 / 8;
+  }
+}
+
+/* Proof and wrong numbers: the forecast sheet, penciled on. */
+.pic-sheet .sheet-body {
+  padding-bottom: 12px;
+}
+.pic-sheet .sheet-day {
+  margin-bottom: 10px;
+}
+.pic-sheet .forecast {
+  font-size: 15px;
+}
+.forecast th.sold,
+.forecast td.sold {
+  padding-left: 26px;
+  text-align: left;
+}
+.forecast th.sold .pencil {
+  font-size: 28px;
+  font-variant-caps: normal;
+  letter-spacing: 0;
+  color: var(--pencil);
+}
+.sold .pencil {
+  position: relative;
+  display: inline-block;
+  font-size: 34px;
+  line-height: 0.7;
+}
+.tick {
+  display: inline-block;
+  margin-left: 8px;
+  width: 7px;
+  height: 14px;
+  border: solid var(--pencil);
+  border-width: 0 2px 2px 0;
+  rotate: 40deg;
+  opacity: 0.8;
+}
+/* The one row that was off, circled. */
+.pencil.off::after {
+  content: "";
+  position: absolute;
+  inset: -5px -9px -3px -9px;
+  border: 1.5px solid var(--pencil);
+  border-radius: 50%;
+  rotate: -6deg;
+  opacity: 0.75;
+}
+.struck {
+  position: relative;
+  display: inline-block;
+  color: var(--muted);
+}
+.strike {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 50%;
+  height: 2px;
+  background: var(--pencil);
+  border-radius: 2px;
+  rotate: -14deg;
+  transform-origin: left;
+}
+.fix {
+  display: inline-block;
+  margin-right: 12px;
+  font-size: 40px;
+  line-height: 0.7;
+  rotate: -4deg;
+}
+.call-note {
+  margin: 6px 0 4px auto;
+  width: max-content;
+  font-size: 30px;
+  rotate: -3deg;
+}
+
+/* Your data: where it goes, and where it does not. */
+.pic-data svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font: 600 15px var(--font-ui);
+}
+.pic-data text {
+  text-anchor: middle;
+  fill: var(--ink);
+}
+.flow-box rect {
+  fill: var(--bg);
+  stroke: var(--line);
+}
+.flow-yours rect {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.flow-line,
+.flow-head {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.flow-line {
+  stroke-dasharray: 1;
+}
+.flow-no path,
+.flow-no rect {
+  fill: none;
+  stroke: rgba(93, 95, 100, 0.55);
+  stroke-dasharray: 4 5;
+}
+.flow-no rect {
+  fill: rgba(255, 255, 255, 0.35);
+}
+.flow-no text {
+  fill: var(--muted);
+  font-weight: 500;
+}
+.flow-x path {
+  fill: none;
+  stroke: var(--err);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+/* Help: an email, and a reply from one of us. */
+.pic-help {
+  gap: 14px;
+  align-content: center;
+}
+.mail {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(24, 24, 26, 0.06), 0 18px 36px -24px rgba(24, 24, 26, 0.3);
+  font-size: 16px;
+  line-height: 1.45;
+}
+.mail-from {
+  font: 400 13px / 1.3 var(--font-ui);
+  color: var(--muted);
+}
+.mail-from b {
+  font-weight: 600;
+  color: var(--ink);
+}
+.mail-subject {
+  font-weight: 600;
+}
+.reply {
+  position: relative;
+  padding-left: 28px;
+}
+.mail-reply {
+  border-color: rgba(63, 107, 80, 0.35);
+}
+.typing {
+  position: absolute;
+  left: 28px;
+  top: 0;
+  display: none;
+  gap: 5px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px -16px rgba(24, 24, 26, 0.35);
+}
+.typing i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .is-staged .term {
+    transition: opacity 0.35s ease;
+  }
+  .deal-stage .pic {
+    transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), visibility 0s 0.45s;
+  }
+  .deal-stage .pic.is-active {
+    transition: opacity 0.45s ease 0.1s, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s, visibility 0s;
+  }
+  .js .pic:not(.is-playing) .in {
+    opacity: 0;
+  }
+  .js .typing {
+    display: flex;
+  }
+  .js .pic.is-playing .in {
+    animation: pic-rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+  }
+  .js .pic.is-playing .stamp {
+    animation-name: pic-stamp;
+    animation-duration: 0.35s;
+  }
+  .js .pic.is-playing .pencil.in {
+    animation-name: pic-write;
+    animation-duration: 0.45s;
+    animation-timing-function: ease-out;
+  }
+  .js .pic.is-playing .strike {
+    animation-name: pic-strike;
+    animation-duration: 0.3s;
+  }
+  .js .pic.is-playing .task {
+    animation-name: pic-block;
+    animation-duration: 0.45s;
+  }
+  .js .pic.is-playing .flow-line {
+    animation-name: pic-draw;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+  }
+  .js .pic.is-playing .flow-x {
+    animation-name: pic-pop;
+    animation-duration: 0.3s;
+  }
+  .js .pic.is-playing .typing {
+    animation-name: pic-typing;
+    animation-duration: 1s;
+  }
+  .js .pic.is-playing .typing i {
+    animation: pic-dot 0.9s ease-in-out infinite;
+  }
+  .js .pic.is-playing .typing i:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .js .pic.is-playing .typing i:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+}
+@keyframes pic-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes pic-stamp {
+  from {
+    opacity: 0;
+    scale: 1.9;
+  }
+  70% {
+    opacity: 0.9;
+    scale: 0.94;
+  }
+}
+@keyframes pic-write {
+  from {
+    clip-path: inset(-30% 100% -30% -20%);
+  }
+  to {
+    clip-path: inset(-30% -20% -30% -20%);
+  }
+}
+@keyframes pic-strike {
+  from {
+    scale: 0 1;
+  }
+}
+@keyframes pic-block {
+  from {
+    opacity: 0;
+    scale: 0.6 1;
+    transform-origin: left;
+  }
+}
+@keyframes pic-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pic-pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+@keyframes pic-typing {
+  0% {
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pic-dot {
+  50% {
+    translate: 0 -3px;
+    opacity: 1;
+  }
 }
 
 /* Each night */
@@ -1248,7 +1812,7 @@ textarea:focus {
 
 @media (max-width: 980px) {
   .hero-grid,
-  .deal,
+  .deal-head,
   .who,
   .contact-grid,
   .step {
@@ -1387,10 +1951,6 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 24px;
   }
-  .terms > div {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2px;
-  }
   .form-row,
   .two-lists {
     grid-template-columns: minmax(0, 1fr);
@@ -1498,8 +2058,8 @@ textarea:focus {
 /* Very small phones: drop the week-over-week column so the counts stay whole. */
 
 @media (max-width: 359px) {
-  .forecast th:last-child,
-  .forecast td:last-child {
+  .sheet-now .forecast th:last-child,
+  .sheet-now .forecast td:last-child {
     display: none;
   }
 }

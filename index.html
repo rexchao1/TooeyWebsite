@@ -187,21 +187,141 @@
       </div>
     </section>
 
-    <section class="section wash">
-      <div class="container deal">
+    <section class="section deal-section">
+      <div class="container">
         <div class="deal-head">
           <h2 class="big">We're new. Here's the deal.</h2>
-          <p>We're looking for a few independent restaurants to start with. You get the forecast free. We need a real kitchen to test it in.</p>
-          <p class="muted">All we ask is honest feedback once the lists start.</p>
+          <div class="deal-intro">
+            <p>We're looking for a few independent restaurants to start with. You get the forecast free. We need a real kitchen to test it in.</p>
+            <p class="muted">All we ask is honest feedback once the lists start.</p>
+          </div>
         </div>
-        <dl class="terms">
-          <div><dt>Cost</dt><dd>Free for partner restaurants.</dd></div>
-          <div><dt>Setup</dt><dd>About a week. Tell us your POS and we'll check we can connect to it.</dd></div>
-          <div><dt>Proof</dt><dd>Check the lists against what sold. If they don't help, we stop.</dd></div>
-          <div><dt>Wrong numbers</dt><dd>It's a starting point. You still make the call.</dd></div>
-          <div><dt>Your data</dt><dd>Used for your forecast only. Never sold, never shared with other restaurants.</dd></div>
-          <div><dt>Help</dt><dd>Email us and one of us writes back.</dd></div>
-        </dl>
+        <div class="deal">
+          <ol class="terms">
+            <li class="term">
+              <span class="term-n">01</span>
+              <div class="term-text"><h3>Cost</h3><p>Free for partner restaurants.</p></div>
+              <div class="term-pic panel" aria-hidden="true">
+                <div class="pic pic-cost">
+                  <div class="check in">
+                    <div class="check-head"><span>Guest check</span><img src="logo.png" width="60" height="26" alt="" /></div>
+                    <div class="check-row in" style="--d: 0.25s"><span>Forecast, every morning</span><span>0.00</span></div>
+                    <div class="check-row in" style="--d: 0.4s"><span>Setup week</span><span>0.00</span></div>
+                    <div class="check-row check-total in" style="--d: 0.55s"><span>Total</span><span>0.00</span></div>
+                    <span class="stamp in" style="--d: 0.85s">Partner</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="term">
+              <span class="term-n">02</span>
+              <div class="term-text"><h3>Setup</h3><p>About a week. Tell us your POS and we'll check we can connect to it.</p></div>
+              <div class="term-pic panel" aria-hidden="true">
+                <div class="pic pic-setup">
+                  <div class="week in">
+                    <div class="week-head"><span class="sheet-kicker">Setup</span><span class="week-title">About a week</span></div>
+                    <div class="week-days"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+                    <div class="week-grid">
+                      <span class="task task-1 in" style="--d: 0.3s">Tell us what matters</span>
+                      <span class="task task-2 in" style="--d: 0.65s">Connect to your POS</span>
+                      <span class="task task-3 in" style="--d: 1s">Check the list</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="term">
+              <span class="term-n">03</span>
+              <div class="term-text"><h3>Proof</h3><p>Check the lists against what sold. If they don't help, we stop.</p></div>
+              <div class="term-pic panel" aria-hidden="true">
+                <div class="pic pic-proof">
+                  <div class="sheet pic-sheet in">
+                    <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
+                    <div class="sheet-body">
+                      <p class="sheet-kicker">Today</p>
+                      <p class="sheet-day">Tuesday</p>
+                      <table class="forecast">
+                        <thead><tr><th>Item</th><th>Prep</th><th class="sold"><span class="pencil in" style="--d: 0.35s">sold</span></th></tr></thead>
+                        <tbody>
+                          <tr><td>Cheeseburger</td><td class="prep">45</td><td class="sold"><span class="pencil in" style="--d: 0.55s">43<i class="tick"></i></span></td></tr>
+                          <tr><td>Chicken sandwich</td><td class="prep">33</td><td class="sold"><span class="pencil in" style="--d: 0.75s">31<i class="tick"></i></span></td></tr>
+                          <tr><td>Caesar salad</td><td class="prep">26</td><td class="sold"><span class="pencil off in" style="--d: 0.95s">17</span></td></tr>
+                          <tr><td>House pasta</td><td class="prep">20</td><td class="sold"><span class="pencil in" style="--d: 1.15s">19<i class="tick"></i></span></td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="term">
+              <span class="term-n">04</span>
+              <div class="term-text"><h3>Wrong numbers</h3><p>It's a starting point. You still make the call.</p></div>
+              <div class="term-pic panel" aria-hidden="true">
+                <div class="pic pic-call">
+                  <div class="sheet pic-sheet in">
+                    <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
+                    <div class="sheet-body">
+                      <table class="forecast">
+                        <thead><tr><th>Item</th><th>Prep</th></tr></thead>
+                        <tbody>
+                          <tr><td>Cheeseburger</td><td class="prep">45</td></tr>
+                          <tr><td>House pasta</td><td class="prep"><span class="pencil fix in" style="--d: 0.75s">28</span><span class="struck">20<i class="strike in" style="--d: 0.45s"></i></span></td></tr>
+                          <tr><td>Caesar salad</td><td class="prep">26</td></tr>
+                        </tbody>
+                      </table>
+                      <p class="pencil call-note in" style="--d: 1.05s">party of 12 at 7</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="term">
+              <span class="term-n">05</span>
+              <div class="term-text"><h3>Your data</h3><p>Used for your forecast only. Never sold, never shared with other restaurants.</p></div>
+              <div class="term-pic panel" aria-hidden="true">
+                <div class="pic pic-data">
+                  <svg viewBox="0 0 400 320" width="400" height="320">
+                    <g class="flow-box in"><rect x="125" y="20" width="150" height="52" rx="10" /><text x="200" y="51">Your sales</text></g>
+                    <path class="flow-line in" style="--d: 0.3s" d="M200 72 V234" pathLength="1" />
+                    <path class="flow-head in" style="--d: 0.75s" d="M192 230 L200 240 L208 230" />
+                    <g class="flow-box flow-yours in" style="--d: 0.75s"><rect x="125" y="248" width="150" height="52" rx="10" /><text x="200" y="279">Your forecast</text></g>
+                    <g class="flow-no in" style="--d: 1s">
+                      <path d="M172 72 C150 110 110 120 84 160" />
+                      <path d="M228 72 C250 110 290 120 316 160" />
+                      <rect x="10" y="160" width="148" height="44" rx="10" /><text x="84" y="187">Other restaurants</text>
+                      <rect x="242" y="160" width="148" height="44" rx="10" /><text x="316" y="187">Data buyers</text>
+                    </g>
+                    <g class="flow-x in" style="--d: 1.3s"><path d="M117 108 l14 14 m0 -14 l-14 14" /><path d="M269 108 l14 14 m0 -14 l-14 14" /></g>
+                  </svg>
+                </div>
+              </div>
+            </li>
+            <li class="term">
+              <span class="term-n">06</span>
+              <div class="term-text"><h3>Help</h3><p>Email us and one of us writes back.</p></div>
+              <div class="term-pic panel" aria-hidden="true">
+                <div class="pic pic-help">
+                  <div class="mail in">
+                    <p class="mail-from"><b>You</b> to tooeyteam@gmail.com</p>
+                    <p class="mail-subject">Chicken sandwiches on Tuesday</p>
+                    <p>We ran out by eight. Should the count have been higher?</p>
+                  </div>
+                  <div class="reply">
+                    <span class="typing in" style="--d: 0.45s"><i></i><i></i><i></i></span>
+                    <div class="mail mail-reply in" style="--d: 1.35s">
+                      <p class="mail-from"><b>Tooey team</b> to you</p>
+                      <p>Thanks for telling us. We're looking at Tuesday's numbers now and will tell you what we find.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+          <div class="deal-stage panel" aria-hidden="true">
+            <div class="window-light"><span></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -146,8 +146,9 @@ images, nothing that claims a figure:
   pencil and a new one written over it (Reenie Beanie, as in the hero).
 - Your data: your sales feeding your forecast; arrows toward "other
   restaurants" and "sold" end in a cross.
-- Help: a short email thread, "Re: Tuesday's list", a reply sliding in from
-  Tooey. No names.
+- Help: an email from the owner to tooeyteam@gmail.com and a reply from
+  "Tooey team" after typing dots. Not a reply to the nightly email, since
+  nobody reads those. No names.
 
 Phone and tablet (980px and below): no sticky panel. Each term is full ink
 with its picture under it in a smaller panel; the picture plays when it
@@ -155,26 +156,24 @@ scrolls into view.
 
 Motion rules: the active term is picked by an IntersectionObserver on a
 band at mid-screen, in `site.js`. Each picture restarts its small animation
-when it becomes active. Under reduced motion nothing fades or moves: every
-term is full ink and pictures swap instantly. Without JavaScript the phone
+when it becomes active. Under reduced motion nothing fades or moves and
+pictures swap instantly; the lit term still dims the others, since without
+that the panel has no visible link to its term. Without JavaScript the phone
 layout shows at every width. Pictures are `aria-hidden`; the list carries
 the meaning.
 
-Open for Rex:
-- The six pictures above, or simpler: one forecast sheet that changes per
-  term (a note, a stamp, a pencil mark).
-- The headline is on this plan's own "do not" list. Keep it, since the
-  words were kept, or change it in this pass.
+Rex said go ahead without settling the two open points, so this pass takes
+six separate pictures and keeps the headline (the words were kept).
 
 Steps:
-- [ ] Rex settles the open points
-- [ ] Markup: heading row, numbered list, sticky panel with six pictures
-- [ ] The six pictures and their small animations
-- [ ] Active-term logic in `site.js`, reduced motion, no-JS fallback
-- [ ] Phone and tablet layout with pictures inline
-- [ ] Desktop, tablet, and phone check (1440, 900, 390, 320), frozen frames
-  of each picture, reduced motion in a browser
-- [ ] Commit and push to `new-site`
+- [x] Markup: heading row, numbered list, sticky panel with six pictures
+- [x] The six pictures and their small animations
+- [x] Active-term logic in `site.js`, reduced motion, no-JS fallback
+- [x] Phone and tablet layout with pictures inline; the setup blocks step
+  down a row each below 420px
+- [x] Desktop, tablet, and phone check (1440, 900, 390, 320), with frames
+  caught mid-animation. Reduced motion and no-JS not checked in a browser.
+- [x] Commit and push to `new-site`
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces

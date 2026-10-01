@@ -105,6 +105,99 @@
     });
   }
 
+  // The deal. On wide screens the pictures move out from under their terms
+  // into the panel that stays put; the term crossing the middle of the
+  // screen is lit and its picture plays. Narrower, each picture plays under
+  // its term the first time it scrolls into view.
+  const deal = document.querySelector(".deal");
+  const stage = deal && deal.querySelector(".deal-stage");
+  if (stage && "IntersectionObserver" in window) {
+    const terms = Array.from(deal.querySelectorAll(".term"));
+    const homes = terms.map(function (t) {
+      return t.querySelector(".term-pic");
+    });
+    const pics = homes.map(function (h) {
+      return h.querySelector(".pic");
+    });
+    const wide = window.matchMedia("(min-width: 981px)");
+    let active = -1;
+
+    function play(pic) {
+      pic.classList.remove("is-playing");
+      void pic.offsetWidth;
+      pic.classList.add("is-playing");
+    }
+    function setActive(i) {
+      if (i === active) return;
+      active = i;
+      terms.forEach(function (t, j) {
+        t.classList.toggle("is-active", j === i);
+      });
+      pics.forEach(function (p, j) {
+        p.classList.toggle("is-active", j === i);
+      });
+      play(pics[i]);
+    }
+
+    const middle = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) setActive(terms.indexOf(e.target));
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+    // Replay the shown picture whenever the panel comes back into view.
+    const onStage = new IntersectionObserver(
+      function (entries) {
+        if (entries[0].isIntersecting && active > -1) play(pics[active]);
+      },
+      { threshold: 0.35 }
+    );
+    const inView = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          play(e.target.querySelector(".pic"));
+          inView.unobserve(e.target);
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    function layout() {
+      middle.disconnect();
+      onStage.disconnect();
+      inView.disconnect();
+      active = -1;
+      if (wide.matches) {
+        pics.forEach(function (p) {
+          stage.appendChild(p);
+        });
+        deal.classList.add("is-staged");
+        setActive(0);
+        terms.forEach(function (t) {
+          middle.observe(t);
+        });
+        onStage.observe(stage);
+      } else {
+        deal.classList.remove("is-staged");
+        pics.forEach(function (p, i) {
+          p.classList.remove("is-active");
+          homes[i].appendChild(p);
+        });
+        terms.forEach(function (t) {
+          t.classList.remove("is-active");
+        });
+        homes.forEach(function (h) {
+          inView.observe(h);
+        });
+      }
+    }
+    layout();
+    wide.addEventListener("change", layout);
+  }
+
   // The example email is always for tomorrow.
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const tomorrow = days[(new Date().getDay() + 1) % 7];
