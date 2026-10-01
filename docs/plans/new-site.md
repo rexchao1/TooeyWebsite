@@ -305,10 +305,8 @@ all motion, and reads as a reference page:
 - [x] Rex: What goes in is four bullets only (your sales, day of the week,
   time of year, holidays), no descriptions, no Weather row, no nightly
   redo line. The sample list loses "Example values", the blank row, and
-  its key item. Cost says what the pilot asks (about a week of setup,
-  telling us where counts were off) and that the price comes before the
-  pilot ends, with the owner deciding then. That last line is a promise
-  Rex should confirm.
+  its key item. Cost reads "All it takes is about a week to get set up
+  for your restaurant." (Rex's pick; no feedback ask, no price promise).
 
 Goal: a site that reads like it was written by the people who built Tooey,
 for one restaurant owner, and not like a landing page template. It replaces
