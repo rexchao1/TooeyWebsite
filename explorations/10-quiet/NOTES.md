@@ -1,162 +1,52 @@
-# 10 · Quiet ("Less")
+# 10-quiet: "Service is loud."
 
-Preview: serve the repo root (`python3 -m http.server 5210`) and open
-`/explorations/10-quiet/`. Pages: `index.html` (home) and `privacy.html`.
+## Concept
+A restaurant is loud. Tooey is the one thing that is quiet and already done. The hero plays one service and then goes quiet by itself: the visitor watches the roar of orders turn into a few calm counts, and nothing has to be scrolled, clicked or understood first.
 
-## 1. Positioning in one sentence
+## Signature motion (`service.js`, about 9.4 s, plays on load)
+- **Roar, 0 to 2.3 s.** Lanes of real-sounding order lines ("2 short rib", "smash no onion", "heard", "fire 12") stream across a heat-lamp red field. They are drawn on a 2D canvas and set tone on tone, so the headline stays readable. Each lane surges on its own rhythm, like a ticket printer.
+- **Coast, 2.3 to 6.4 s.** The lanes slow under friction (speed × (1−p)^2.2) instead of braking. Kitchen chatter fades out line by line.
+- **Tally, 3.0 to 7.5 s.** About 30 dish lines leave their lanes in a staggered, shuffled order. Each takes a quadratic arc to its row. Along the way it lifts from lane colour to ink, shrinks and gets lighter, then dissolves into the row's number. The number rolls up toward what has landed. This is the real mechanism: the day's orders become tomorrow's count.
+- **Cool, 2.5 to 7.6 s.** The ground is mixed in OKLab from heat-lamp red to "lamp off" pink. The noise is always the ground colour one shade darker, so it never goes muddy. The type flips from light to dark inside a short window, so the headline is never grey on salmon for long.
+- **Exhale, 3.3 to 8.0 s.** "Service is loud." goes from Mona Sans 900 to 260, its tracking opens, and it settles 8% smaller. The words stay the same and the voice changes. The width axis is not used.
+- **Rest.** The halibut lines land last and leave no number, just "New this week. Too early to count." The caption appears, the animation loop is cancelled and the page is truly still.
 
-Tooey does a restaurant's number work overnight, so the owner starts the
-morning with fewer questions. Today it answers one of them: how much of each
-dish to make.
+**Control.** A small "Quiet now" button skips to the rest state during play (this covers WCAG 2.2.2). At rest the same button reads "Play service again". Its dot glows like a lamp while service plays.
 
-## 2. Core message, and why
+**Waiting on phones.** The tally waits until the list is at least half in view, so on a small phone the roar keeps going until you scroll to the list.
 
-**"Tooey works on tomorrow while you're closed."**
+**Reduced motion and no JS.** A designed still: service frozen as a red panel of heavy order lines behind the headline (left on desktop, top on phone), and the finished list already quiet on pink. If `service.js` never runs, the page falls back to this still after 4 s.
 
-It names the company and how it behaves, not a feature. It doesn't make
-forecasting the whole company: "works on tomorrow" has room for staffing,
-margins and the rest later. It's also the feeling the brief asks for (steady,
-there before you need it) said as a plain sentence, not a two-part slogan. The
-lead under it covers today's product exactly: nightly sales from the POS, a
-list in your email before prep, how many of each dish to make.
+## Palette
+| Name | Hex | Use |
+|---|---|---|
+| Heat lamp | #C4381A | the service ground |
+| Ticket | #FFF1E4 | type on red (4.8:1) |
+| Lamp off | #F0C9BD | the calm ground, the colour of the kitchen after close |
+| Char | #4E1A10 | type on pink (9.3:1) |
+| Char soft | #7E3A2A | secondary type (5.5:1) |
+| Well | #F7DED6 | form field fill |
 
-## 3. What the visitor understands first, and the journey
+## Type
+Mona Sans (OFL, self-hosted, Latin, weight axis 200–900 only, about 40 KB). It is the only family on the site. Counts use tabular figures. There is no serif and no mono.
 
-In the first viewport, at every width: what Tooey is (headline), what it does
-today (lead), that it's free during the pilot, and how to start (a button). On
-desktop the top of the example list also shows.
+## Word count
+**92 words** of visible home-page copy, plus 8 example figures. This excludes nav, form labels, footer, screen-reader-only text and the decorative order lines (which are `aria-hidden`). The control is counted at its longer label.
 
-After that the page takes **one idea at a time**, and most of the ideas zoom
-in on one part of that same example list:
+## Illustrative vs. factual
+- **Illustrative:** the dish names, the counts, the order lines and the kitchen chatter. The list is labelled "Example list". The animation of orders turning into counts shows the idea, not the real model's arithmetic.
+- **Factual, from the brief:**
+  - The list comes each night from the day's sales and arrives by email before prep.
+  - "Likely" is the prediction and "Make" is the prep count.
+  - New dishes get a blank with the reason.
+  - Setup takes about a week and starts from about five weeks of past sales.
+  - The pilot is free and is for independent restaurants; the owner checks the counts and decides.
+  - The privacy terms.
+- **Not mentioned:** any figure, any customer and any future feature.
 
-1. **The list** (hero): an example prep list, grouped by category, with
-   Predicted, Prep and vs. last week, plus one blank row.
-2. **One line, explained.** "Prep is a little more than we expect you to
-   sell." A single row of the list set large: Predicted, Prep, vs. last week.
-3. **What goes in.** "Every count starts from your own sales." Two short
-   lists: what goes in, and what doesn't yet (weather, local events,
-   reservations).
-4. **The blank.** "When there isn't enough to go on, we leave it blank." The
-   two blank cases, with an empty slot where the number would be.
-5. **Starting.** About five weeks of sales and about a week of setup, and
-   what the owner does that week.
-6. **Being early.** Students, a pilot, check our counts, you decide.
-7. **Where it's going.** The only change of tone on the page, a slightly
-   darker paper band. It gives the vision as four questions an owner "carries
-   home at night", clearly labeled as what we want, and ends by echoing the
-   headline.
-8. **Talk to us.** The form.
-
-## 4. How it builds trust
-
-- It says less, and says exactly what's true. Every claim comes from the
-  facts sheet. There are no figures, no logos, no quotes.
-- The blank row is the centrepiece of the trust argument: a product that
-  leaves a line blank rather than guess. It shows up in the hero list before
-  it's explained, so the explanation answers a question the owner already has.
-- "Not yet" is written out: weather, events and reservations, listed in grey.
-- Being early is its own section, with an invitation to check the work.
-  "You decide what to make" stays in.
-- The example is labeled twice ("Example" on the sheet, and a caption saying
-  the dishes and numbers are made up).
-- Each fact appears once. "Free" appears once, in the hero.
-
-## 5. Design and interaction rationale
-
-- **One column, one sheet, one colour.** Warm paper (#f3f0e8), warm ink, and
-  a single accent: a small blue **pilot light**. It sits in the wordmark, next
-  to "Free while we're in a pilot.", and in the favicon. A pilot light is the
-  small flame that stays lit in a kitchen so the burners light at once:
-  quiet, steady, ready before you need it. It's also the pilot. The page
-  never spells out the pun.
-- **Type.** Newsreader carries the voice: display cut, light, for headings,
-  and text cut for paragraphs. Hanken Grotesk carries anything that is the
-  product's own output or UI (the list, labels, buttons, form). That split
-  helps the owner tell "what we say" apart from "what you'd get". Neither
-  face is on the founder's list of rejected fonts. Both are self-hosted, OFL,
-  and subset to Latin. The Newsreader optical sizes are pinned to two static
-  cuts to keep the weight down (about 140 KB of fonts in total).
-- **Wordmark.** "tooey" is set in Newsreader with the flame, instead of the
-  raster `logo.png`, which looks soft on high-density screens and brings in
-  colours that clash with the page's one accent. (Open question below.)
-- **Rhythm.** The gap between ideas is the same every time, so the page keeps
-  a steady pace. Hairlines (black on top, light between rows) carry the
-  printed-list look into the exhibits. Exhibits and text-only sections take
-  turns, so the stack doesn't read as a template.
-- **Motion.** Almost none. The pilot flame breathes very slowly (it is off
-  under reduced motion), and anchor scrolling is smooth only when motion is
-  allowed.
-- **Day-aware example.** The sample sheet is titled for the day the
-  visitor's next list would cover: today until 2 pm, tomorrow after that. "vs.
-  last Tue" follows the same day. Without JavaScript it reads Tuesday. It's a
-  small sign that the thing keeps time, and it isn't a gimmick.
-- **Form.** Name, restaurant and email are required. Phone, POS and message
-  are optional. Errors are shown inline, in the page's own words, and focus
-  moves to the first problem. The button shows "Sending…", then a calm
-  success state takes focus. A failure keeps what was typed and gives the
-  email address. The honeypot fakes success and sends nothing. Without
-  JavaScript the form posts to FormSubmit's standard endpoint.
-- **Phone.** The header is just the wordmark and "Talk to us", so it needs
-  no menu. On narrow screens the list keeps all four columns, with the "vs.
-  last" heading broken over two lines.
-- **Print.** A small print stylesheet drops the navigation, buttons, form and footer (not checked on paper).
-
-## 6. Illustrative vs. factual
-
-Illustrative, labeled "Example" and with a caption: every dish name, every
-number (42/45, 31/33, 24/26, 18/20, +8% and the rest), the category names,
-the two blank dishes (Short rib ragù, Affogato), and the reason wording on
-the blank rows. The OG image only repeats the headline and facts.
-
-Factual, from the facts sheet: nightly recompute from the day's sales;
-Predicted, Prep (a little over Predicted, cushion size not stated), and change
-vs. the same weekday last week; grouping by category; blanks for items under
-about five weeks on the menu or under about one sale a day; the inputs and
-non-inputs; about five weeks of history; about a week of setup and what
-happens in it; a nightly download that works with most POS systems; email
-before prep and printable; free during the pilot; small student team; the
-owner checks counts and decides; the full privacy text.
-
-Vision, labeled as "Over time we want…": margins, costs, staffing, and
-weather-aware forecasts.
-
-## 7. Strengths, weaknesses, open questions
-
-Strengths
-- Within a few seconds the owner knows what it is, what it does today, that
-  it's free for now, and where to click. There's very little to read.
-- It has a real idea behind it (the night shift, the pilot light, the blank)
-  rather than just whitespace.
-- Honest without apologising. The blank row and "Not yet" do more for trust
-  than any badge would.
-
-Weaknesses
-- At 1440 px and wider, the single centered column leaves wide empty margins.
-  It's deliberate, but a founder who found the old hero "too white" may feel
-  the same here.
-- The flame is subtle. Most visitors won't connect "pilot light" with
-  "pilot", and that's fine. But a flame can also suggest a gas or energy
-  company if it's seen without context, for example as a favicon on its own.
-- There's no picture of the morning email itself. The sheet stands in for
-  it.
-- The OG image path is relative (`og.png`). Some scrapers need an absolute
-  URL, so set it once the domain is known.
-
-Questions for the founder
-- Is a typographic wordmark acceptable, or must `logo.png` (spoon and leaf)
-  appear? If it must, it belongs in the footer, and the flame stays the
-  accent.
-- Is "Tooey works on tomorrow while you're closed." broad enough as the
-  company line, given the "not just forecasting" rule?
-- The 2 pm cutover for the example's day is arbitrary. Does it match when
-  real lists are computed?
-
-## 8. Stack
-
-Hand-written HTML, CSS and a small vanilla JS file (`site.js`, about 3 KB).
-There is no build step and nothing to install. The fonts in `fonts/` were
-made from the `@fontsource-variable/newsreader` and `hanken-grotesk` packages:
-Newsreader was instanced with fontTools (display opsz 56, weights 300–460;
-text opsz 16, weights 400–560; italic opsz 16, weight 400) and subset to
-Latin. OFL licences are next to the files. `og.png` is a 1200×630 render of
-the page's own type.
+## Weaknesses
+- The middle second of the cool (around 4.5–5 s) is the least beautiful frame: salmon ground and a busy tally.
+- The decorative order lines are words. A strict reader could count them against the 150-word budget, though they are imagery and hidden from assistive tech.
+- On the smallest phones the list is below the fold, so the quiet only starts once you scroll to it.
+- The setup lines and the form are deliberately plain. All the craft is in the hero.
+- Mona Sans is widely used in tech (it is GitHub's typeface), which slightly dilutes the identity.
