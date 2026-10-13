@@ -3,107 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy · Tooey</title>
-<meta name="description" content="What Tooey collects from the contact form and from a restaurant's sales, what it's used for, who sees it, and how to have it removed.">
-<meta name="theme-color" content="#f3eee4">
+<title>Privacy, Tooey</title>
+<meta name="description" content="What Tooey does with what you send through the form, and with a pilot restaurant's sales.">
+<meta name="theme-color" content="#E8EEF4">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preload" href="fonts/besley.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/funnel-display.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Tooey">
-<meta property="og:title" content="Privacy · Tooey">
-<meta property="og:description" content="What Tooey collects, what it's used for, who sees it, and how to have it removed.">
-<meta property="og:image" content="og.png">
-<script>document.documentElement.classList.add('js')</script>
 </head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
+<body class="plain">
+<a class="skip" href="#content">Skip to content</a>
 
-<header class="top">
-  <div class="top__in wrap">
-    <a class="brand" href="./" aria-label="Tooey, home"><img src="img/logo.png" alt="tooey" width="343" height="148"></a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">
-      <span class="menu-btn__label">Menu</span>
-      <span class="menu-btn__icon" aria-hidden="true"></span>
-    </button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <ul>
-        <li><a href="./#overnight">How it works</a></li>
-        <li><a href="./#asks">What it asks of you</a></li>
-        <li><a href="./#next">What's next</a></li>
-        <li class="nav__cta"><a class="btn btn--small" href="./#pilot">Join the pilot</a></li>
-      </ul>
-    </nav>
-  </div>
+<header class="bar" data-tone="day">
+  <a class="mark" href="./">tooey</a>
+  <nav aria-label="Main">
+    <a href="privacy.html" aria-current="page">Privacy</a>
+    <a href="./#pilot">Ask to join</a>
+  </nav>
 </header>
 
-<main id="main">
-  <div class="wrap page-head">
-    <h1>Privacy</h1>
-    <p>What we collect, what we use it for, and who gets to see it. If anything here is unclear, write to us and ask.</p>
-  </div>
-
-  <div class="wrap policy">
-    <section class="policy__row" aria-labelledby="p-form">
-      <h2 id="p-form">If you write to us</h2>
-      <div>
-        <p>The contact form sends us your name, your restaurant, your email, your phone number and POS if you add them, and your message. It goes through a service called FormSubmit to tooeyteam@gmail.com.</p>
-        <p>We use it to reply to you. We don't sell it, and we don't use it for ads.</p>
-      </div>
-    </section>
-
-    <section class="policy__row" aria-labelledby="p-sales">
-      <h2 id="p-sales">If you join the pilot</h2>
-      <div>
-        <p>We set up a nightly download of your item-level sales from your POS. Your sales are used for one thing: forecasting for your restaurant.</p>
-        <p>We don't sell them, we don't share them with other restaurants, and we don't publish them.</p>
-      </div>
-    </section>
-
-    <section class="policy__row" aria-labelledby="p-more">
-      <h2 id="p-more">If you share more later</h2>
-      <div>
-        <p>If you later share recipes, inventory, or purchasing records, they stay with your restaurant. We use them only to help with your prep and purchasing.</p>
-      </div>
-    </section>
-
-    <section class="policy__row" aria-labelledby="p-who">
-      <h2 id="p-who">Who sees it</h2>
-      <div>
-        <p>Only the people on the Tooey team who build your forecast.</p>
-      </div>
-    </section>
-
-    <section class="policy__row" aria-labelledby="p-remove">
-      <h2 id="p-remove">Taking it back</h2>
-      <div>
-        <p>Email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a> and ask. We'll delete your messages, stop the nightly download, or remove the sales we've stored.</p>
-      </div>
-    </section>
-
-    <section class="policy__row" aria-labelledby="p-site">
-      <h2 id="p-site">This website</h2>
-      <div>
-        <p>This site has no analytics and no ad trackers. Its fonts are served from here, not from a font service.</p>
-      </div>
-    </section>
-
-    <p class="policy__updated">Tooey LLC. Last updated October 2026.</p>
-  </div>
+<main id="content" class="page">
+  <h1>Privacy</h1>
+  <p>The form on this site goes through FormSubmit to tooeyteam@gmail.com. We use what you send only to reply to you.</p>
+  <p>If your restaurant joins the pilot, its sales are used only to make counts for that restaurant. They are not sold, not shared with other restaurants, and not published. Only the Tooey team sees them.</p>
+  <p>To have anything deleted, email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
+  <p>This site has no analytics or tracking, and its fonts are served from here.</p>
 </main>
 
 <footer class="foot">
-  <div class="wrap foot__in">
-    <p class="foot__name">Tooey LLC</p>
-    <ul class="foot__links">
-      <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
-      <li><a href="privacy.html" aria-current="page">Privacy</a></li>
-    </ul>
-    <p class="foot__copy">&copy; 2026 Tooey LLC</p>
-  </div>
+  <p>Tooey LLC, a small team of university students.</p>
+  <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+  <p><a href="./">Home</a></p>
 </footer>
-
-<script src="site.js" defer></script>
 </body>
 </html>

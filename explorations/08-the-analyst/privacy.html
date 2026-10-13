@@ -1,123 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy · Tooey</title>
-  <meta name="description" content="What Tooey does with a contact form message and, for pilot restaurants, their sales: what each is used for, who sees it, and how to have it removed.">
-  <meta name="theme-color" content="#e7b53f">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Tooey">
-  <meta property="og:title" content="Privacy · Tooey">
-  <meta property="og:description" content="What Tooey does with a contact form message and, for pilot restaurants, their sales.">
-  <meta property="og:image" content="og.png">
-  <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/commissioner.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy, Tooey</title>
+<meta name="description" content="What Tooey does with your form details and your restaurant's sales.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/hubot-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<svg class="sprite" aria-hidden="true" focusable="false">
-  <symbol id="i-plate" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a10 10 0 1 1 0 20a10 10 0 1 1 0-20zm0 3.3a6.7 6.7 0 1 0 0 13.4a6.7 6.7 0 1 0 0-13.4zm0 1.5a5.2 5.2 0 1 1 0 10.4a5.2 5.2 0 1 1 0-10.4z"/></symbol>
-</svg>
-
-<header class="masthead">
-  <div class="wrap masthead-in">
-    <a class="brand" href="index.html" aria-label="Tooey, home">
-      <svg class="brand-mark" aria-hidden="true"><use href="#i-plate"/></svg>
-      <span class="brand-word">tooey</span>
-    </a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav id="site-nav" class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="index.html#night">How it works</a></li>
-        <li><a href="index.html#pilot">The pilot</a></li>
-        <li><a href="privacy.html" aria-current="page">Privacy</a></li>
-        <li><a class="btn btn-sm" href="index.html#talk">Talk to us</a></li>
-      </ul>
-    </nav>
-  </div>
+<header class="top">
+  <a class="brand" href="./" aria-label="Tooey home"><img src="logo.png" alt="Tooey" width="343" height="148"></a>
+  <nav aria-label="Main">
+    <a href="./#pilot">Join the pilot</a>
+    <a href="privacy.html" aria-current="page">Privacy</a>
+  </nav>
 </header>
 
-<main id="main">
-  <div class="plate-ochre doc-top">
-    <div class="wrap">
-      <h1>What happens to what you send us</h1>
-      <p>Two kinds of information reach Tooey: what you type into the contact form, and, if your restaurant joins the pilot, its sales. Here is what each one is used for, who sees it, and how to have it removed.</p>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <div class="doc">
-      <section class="doc-row" aria-labelledby="p-form">
-        <h2 id="p-form">The contact form</h2>
-        <div class="doc-body">
-          <p>The form sends these fields, and nothing else:</p>
-          <ul class="doc-list">
-            <li><span>Name</span><span>required</span></li>
-            <li><span>Restaurant</span><span>required</span></li>
-            <li><span>Email</span><span>required</span></li>
-            <li><span>Phone</span><span>optional</span></li>
-            <li><span>Which POS you use</span><span>optional</span></li>
-            <li><span>Your message</span><span>optional</span></li>
-          </ul>
-          <p>FormSubmit, the form service we use, passes them to tooeyteam@gmail.com. We use them to reply to you. We don’t sell them, and we don’t use them for ads.</p>
-        </div>
-      </section>
-
-      <section class="doc-row" aria-labelledby="p-sales">
-        <h2 id="p-sales">Your sales, if you join the pilot</h2>
-        <div class="doc-body">
-          <p>At setup we arrange a nightly download of your item-level sales from your POS. Those sales are used to forecast for your restaurant, and for nothing else.</p>
-          <p>We don’t sell them, share them with other restaurants, or publish them.</p>
-        </div>
-      </section>
-
-      <section class="doc-row" aria-labelledby="p-records">
-        <h2 id="p-records">Recipes, inventory, and purchasing</h2>
-        <div class="doc-body">
-          <p>If you later share recipes, inventory, or purchasing records, they stay with your restaurant. We use them only to help with your prep and purchasing.</p>
-        </div>
-      </section>
-
-      <section class="doc-row" aria-labelledby="p-who">
-        <h2 id="p-who">Who sees it</h2>
-        <div class="doc-body">
-          <p>The people on the Tooey team who build your forecast and answer your email.</p>
-          <p>FormSubmit carries contact messages to our inbox. Your POS company already holds your sales. We don’t send your data anywhere else.</p>
-        </div>
-      </section>
-
-      <section class="doc-row" aria-labelledby="p-remove">
-        <h2 id="p-remove">Having it removed</h2>
-        <div class="doc-body">
-          <p>Email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a> and ask us to delete your messages, stop the nightly download, or remove the sales we’ve stored. We will.</p>
-        </div>
-      </section>
-
-      <div class="doc-end">
-        <p>A question about any of this?</p>
-        <a class="btn" href="index.html#talk">Talk to us</a>
-      </div>
-    </div>
+<main id="main" class="doc">
+  <h1>Your sales stay yours.</h1>
+  <div class="body">
+    <p>The contact form goes through FormSubmit to tooeyteam@gmail.com. We use what you send only to reply.</p>
+    <p>If you join the pilot, we use your restaurant's sales only to forecast for your restaurant. We don't sell them, share them with other restaurants, or publish them. Only the Tooey team sees them.</p>
+    <p>To have your data deleted, email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
   </div>
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-in">
-    <p class="foot-mark"><svg class="brand-mark" aria-hidden="true"><use href="#i-plate"/></svg>tooey</p>
-    <p class="foot-line">For independent restaurants. © 2026 Tooey LLC.</p>
-    <ul class="foot-links">
-      <li><a href="index.html#pilot">The pilot</a></li>
-      <li><a href="privacy.html" aria-current="page">Privacy</a></li>
-      <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
-    </ul>
-  </div>
+  <span>Tooey LLC</span>
+  <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
+  <a href="./">Home</a>
 </footer>
-
-<script src="site.js" defer></script>
 </body>
 </html>

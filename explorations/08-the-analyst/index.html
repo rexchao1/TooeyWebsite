@@ -1,361 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tooey · Nightly sales work for independent restaurants</title>
-  <meta name="description" content="Restaurant groups pay people to study what sold and plan the next day. Tooey does that work every night for independent restaurants, starting with a prep count for each dish before the kitchen opens.">
-  <meta name="theme-color" content="#e7b53f">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Tooey">
-  <meta property="og:title" content="Tooey · Nightly sales work for independent restaurants">
-  <meta property="og:description" content="Every night, Tooey goes through your sales the way a restaurant group’s analyst would. It starts with how many of each dish to prep.">
-  <meta property="og:image" content="og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/commissioner.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey, for independent restaurants</title>
+<meta name="description" content="Chains have a team reading their sales every night. Tooey reads yours and emails how many of each dish to make before prep. Free pilot for independent restaurants.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/hubot-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<svg class="sprite" aria-hidden="true" focusable="false">
-  <symbol id="i-plate" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a10 10 0 1 1 0 20a10 10 0 1 1 0-20zm0 3.3a6.7 6.7 0 1 0 0 13.4a6.7 6.7 0 1 0 0-13.4zm0 1.5a5.2 5.2 0 1 1 0 10.4a5.2 5.2 0 1 1 0-10.4z"/></symbol>
-  <symbol id="i-person" viewBox="0 0 24 40"><circle cx="12" cy="5.5" r="5"/><path d="M5.5 12.5h13a3 3 0 0 1 3 3V27h-3.4v12H6V27H2.5V15.5a3 3 0 0 1 3-3z"/></symbol>
-  <symbol id="i-sales" viewBox="0 0 24 24"><rect x="2" y="13" width="5" height="9" rx="1"/><rect x="9.5" y="8" width="5" height="14" rx="1"/><rect x="17" y="3" width="5" height="19" rx="1"/></symbol>
-  <symbol id="i-order" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2 7h20v15H2zM4.5 9.5v10h15v-10zM7 12h10v2H7zM7 15.5h10v2H7z"/><path d="M5 2h14l3 4H2z"/></symbol>
-  <symbol id="i-schedule" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2 4h20v18H2zm2.5 6v9.5h15V10z"/><rect x="6" y="1.5" width="2.5" height="5" rx="1"/><rect x="15.5" y="1.5" width="2.5" height="5" rx="1"/><rect x="6.5" y="12" width="3" height="3"/><rect x="10.5" y="12" width="3" height="3"/><rect x="14.5" y="12" width="3" height="3"/><rect x="6.5" y="16" width="3" height="2.5"/></symbol>
-  <symbol id="i-cold" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"><path d="M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10"/><path d="M9 3.8l3 2.6 3-2.6M9 20.2l3-2.6 3 2.6"/></g></symbol>
-  <symbol id="i-bell" viewBox="0 0 24 24"><rect x="10.5" y="3" width="3" height="3" rx="1"/><path d="M12 6.5a8.5 8.5 0 0 1 8.5 8.5v1.5h-17V15A8.5 8.5 0 0 1 12 6.5z"/><rect x="1.5" y="18" width="21" height="3" rx="1"/></symbol>
-</svg>
-
-<header class="masthead">
-    <div class="wrap masthead-in">
-      <a class="brand" href="index.html" aria-label="Tooey, home">
-        <svg class="brand-mark" aria-hidden="true"><use href="#i-plate"/></svg>
-        <span class="brand-word">tooey</span>
-      </a>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Main">
-        <ul>
-          <li><a href="#night">How it works</a></li>
-          <li><a href="#pilot">The pilot</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a class="btn btn-sm" href="#talk">Talk to us</a></li>
-        </ul>
-      </nav>
-    </div>
+<header class="top">
+  <a class="brand" href="./" aria-label="Tooey home"><img src="logo.png" alt="Tooey" width="343" height="148"></a>
+  <nav aria-label="Main">
+    <a href="#pilot">Join the pilot</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
 </header>
 
 <main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="intro">
+      <h1 id="hero-title">Chains have a team reading their sales every night.</h1>
+      <div class="lede">
+        <p>Tooey reads your POS sales every night and emails you how many of each dish to make before prep.</p>
+        <a class="button" href="#pilot">Join the free pilot</a>
+      </div>
+    </div>
 
-  <!-- Opening -->
-  <section class="opening plate-ochre" aria-labelledby="top-h">
-    <div class="wrap">
-      <h1 id="top-h">Every night, Tooey goes through your sales the way a restaurant group’s analyst would.</h1>
-      <div class="opening-row">
-        <p class="lead">It starts with the call you make every morning before prep: how many of each dish to make. Tooey works that out overnight from your own sales and emails you the list.</p>
-        <div class="actions">
-          <a class="btn" href="#talk">Join the pilot</a>
-          <a class="arrow-link" href="#night">What happens overnight</a>
-        </div>
+    <div class="stage" data-stage>
+      <svg class="wires" aria-hidden="true" focusable="false"></svg>
+
+      <div class="you-row">
+        <span class="you-mark" aria-hidden="true">
+          <svg viewBox="0 0 44 44"><circle cx="22" cy="13" r="8.5"/><path d="M5 43c0-11 7.6-18 17-18s17 7 17 18z"/></svg>
+        </span>
+        <p class="owner-line">Independents have the owner, after close, if at all.</p>
       </div>
 
-      <figure class="fig fig1" id="fig1" aria-labelledby="fig1-cap">
-        <div class="fig1-bar">
-          <p class="fig1-title"><span class="fig-no">Fig. 1</span> Tuesday’s prep at a sample restaurant</p>
-          <div class="view" role="group" aria-label="Show the list">
-            <button type="button" class="view-btn" data-view="drawn" aria-pressed="true">Drawn</button>
-            <button type="button" class="view-btn" data-view="list" aria-pressed="false">As it arrives</button>
-          </div>
-        </div>
+      <div class="tooey-row">
+        <span class="tooey-mark" aria-hidden="true"></span>
+        <span class="tooey-name">Tooey</span>
+      </div>
 
-        <ul class="legend" aria-label="How to read Fig. 1">
-          <li><span class="sym sym-ink" aria-hidden="true"></span><span><strong>Predicted</strong> is how many of that dish Tooey expects you to sell that day.</span></li>
-          <li><span class="sym sym-red" aria-hidden="true"></span><span><strong>Prep</strong> is how many to make: Predicted plus a little extra, so a rush doesn’t leave the line short.</span></li>
-          <li><span class="sym-txt" aria-hidden="true">+6%</span><span><strong>vs. last Tue</strong> is the change from the same day last week, so a big swing stands out.</span></li>
+      <div class="dishes">
+        <p class="dishes-cap" id="dishes-cap">To make on Tuesday (example)</p>
+        <ul aria-labelledby="dishes-cap">
+          <li><span class="count" data-n="46">46</span><span class="dish">Burger</span></li>
+          <li><span class="count" data-n="31">31</span><span class="dish">Carbonara</span></li>
+          <li><span class="count" data-n="22">22</span><span class="dish">Caesar salad</span></li>
+          <li class="blank"><span class="count" aria-label="no count">&mdash;</span><span class="dish">Lamb special <em>new on the menu</em></span></li>
         </ul>
+      </div>
 
-        <table class="prep">
-          <caption class="vh">Example prep list for a sample restaurant, Tuesday. Example values, not results.</caption>
-          <thead>
-            <tr>
-              <th scope="col" class="c-item">Dish</th>
-              <th scope="col" class="c-draw"><span class="unit">One symbol is two plates</span></th>
-              <th scope="col" class="c-num">Predicted</th>
-              <th scope="col" class="c-num">Prep</th>
-              <th scope="col" class="c-num"><span class="nowrap">vs. last</span> Tue</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="cat"><th scope="colgroup" colspan="5">Starters</th></tr>
-            <tr style="--a:12;--b:1"><th scope="row">Caesar salad</th><td class="c-draw" aria-hidden="true"><span class="bar-a"></span><span class="bar-b"></span></td><td class="c-num" data-l="Predicted" data-s="Pred.">24</td><td class="c-num c-prep" data-l="Prep" data-s="Prep">26</td><td class="c-num" data-l="vs. last Tue" data-s="vs. Tue">−4%</td></tr>
-            <tr style="--a:9;--b:1"><th scope="row">Fried calamari</th><td class="c-draw" aria-hidden="true"><span class="bar-a"></span><span class="bar-b"></span></td><td class="c-num" data-l="Predicted" data-s="Pred.">18</td><td class="c-num c-prep" data-l="Prep" data-s="Prep">20</td><td class="c-num" data-l="vs. last Tue" data-s="vs. Tue">+6%</td></tr>
-            <tr class="is-blank"><th scope="row">Burrata</th><td colspan="4" class="c-why"><span>No count yet. New: three weeks on the menu.</span></td></tr>
-            <tr class="cat"><th scope="colgroup" colspan="5">Mains</th></tr>
-            <tr style="--a:19;--b:2"><th scope="row">Braised short rib</th><td class="c-draw" aria-hidden="true"><span class="bar-a"></span><span class="bar-b"></span></td><td class="c-num" data-l="Predicted" data-s="Pred.">38</td><td class="c-num c-prep" data-l="Prep" data-s="Prep">42</td><td class="c-num" data-l="vs. last Tue" data-s="vs. Tue">+6%</td></tr>
-            <tr style="--a:15;--b:1"><th scope="row">Roast half chicken</th><td class="c-draw" aria-hidden="true"><span class="bar-a"></span><span class="bar-b"></span></td><td class="c-num" data-l="Predicted" data-s="Pred.">30</td><td class="c-num c-prep" data-l="Prep" data-s="Prep">32</td><td class="c-num" data-l="vs. last Tue" data-s="vs. Tue">−3%</td></tr>
-            <tr style="--a:13;--b:1"><th scope="row">Rigatoni alla vodka</th><td class="c-draw" aria-hidden="true"><span class="bar-a"></span><span class="bar-b"></span></td><td class="c-num" data-l="Predicted" data-s="Pred.">26</td><td class="c-num c-prep" data-l="Prep" data-s="Prep">28</td><td class="c-num" data-l="vs. last Tue" data-s="vs. Tue">+8%</td></tr>
-            <tr class="is-blank"><th scope="row">Whole branzino</th><td colspan="4" class="c-why"><span>No count. Sells under one a day.</span></td></tr>
-            <tr class="cat"><th scope="colgroup" colspan="5">Desserts</th></tr>
-            <tr style="--a:7;--b:1"><th scope="row">Olive oil cake</th><td class="c-draw" aria-hidden="true"><span class="bar-a"></span><span class="bar-b"></span></td><td class="c-num" data-l="Predicted" data-s="Pred.">14</td><td class="c-num c-prep" data-l="Prep" data-s="Prep">16</td><td class="c-num" data-l="vs. last Tue" data-s="vs. Tue">same</td></tr>
-            <tr style="--a:4;--b:1"><th scope="row">Affogato</th><td class="c-draw" aria-hidden="true"><span class="bar-a"></span><span class="bar-b"></span></td><td class="c-num" data-l="Predicted" data-s="Pred.">8</td><td class="c-num c-prep" data-l="Prep" data-s="Prep">10</td><td class="c-num" data-l="vs. last Tue" data-s="vs. Tue">+14%</td></tr>
-          </tbody>
-        </table>
-
-        <div class="fig1-foot">
-          <figcaption class="fig-cap" id="fig1-cap">What arrives by email each morning before prep, drawn so the sizes are easy to compare. The dishes and numbers are made up to show the layout. They are not results. Rows with a note instead of numbers are dishes Tooey won’t guess at yet; <a href="#blanks">here’s why</a>.</figcaption>
-          <button type="button" class="print-btn" id="print-btn" hidden>Print this example</button>
-        </div>
-      </figure>
+      <button class="replay" type="button" hidden>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4"/><path d="M2 1.5v3.4h3.4"/></svg>
+        Replay
+      </button>
     </div>
   </section>
 
-  <!-- The gap -->
-  <section class="gap plate-blue" aria-labelledby="gap-h">
-    <div class="wrap">
-      <h2 id="gap-h">At an independent restaurant, nobody’s job is reading the numbers.</h2>
-      <div class="gap-grid">
-        <div class="gap-body">
-          <p>At a restaurant group, someone’s is. They go through what sold, hold it up against the same week last year and the holiday coming up, and tell each kitchen what to expect. They work out which plates pay for themselves and how many people each shift needs.</p>
-          <p>At an independent, the person who would do that is also placing orders, writing the schedule, getting the walk-in fixed, and working the pass. A lot of the answers are already sitting in the POS. There aren’t enough hours in the day to dig them out.</p>
-        </div>
-
-        <figure class="fig who" aria-labelledby="fig2-cap">
-          <div class="who-row">
-            <p class="who-label">At a restaurant group</p>
-            <ul class="who-people">
-              <li class="is-numbers"><svg class="who-p" aria-hidden="true"><use href="#i-person"/></svg><svg class="who-t" aria-hidden="true"><use href="#i-sales"/></svg><span>Sales numbers</span></li>
-              <li><svg class="who-p" aria-hidden="true"><use href="#i-person"/></svg><svg class="who-t" aria-hidden="true"><use href="#i-order"/></svg><span>Ordering</span></li>
-              <li><svg class="who-p" aria-hidden="true"><use href="#i-person"/></svg><svg class="who-t" aria-hidden="true"><use href="#i-schedule"/></svg><span>Schedule</span></li>
-              <li><svg class="who-p" aria-hidden="true"><use href="#i-person"/></svg><svg class="who-t" aria-hidden="true"><use href="#i-cold"/></svg><span>Walk-in</span></li>
-              <li><svg class="who-p" aria-hidden="true"><use href="#i-person"/></svg><svg class="who-t" aria-hidden="true"><use href="#i-bell"/></svg><span>The pass</span></li>
-            </ul>
-          </div>
-          <div class="who-row">
-            <p class="who-label">At an independent restaurant</p>
-            <div class="who-indie">
-              <div class="who-one">
-                <svg class="who-p" aria-hidden="true"><use href="#i-person"/></svg>
-                <ul class="who-tasks">
-                  <li><svg class="who-t" aria-hidden="true"><use href="#i-order"/></svg><span>Ordering</span></li>
-                  <li><svg class="who-t" aria-hidden="true"><use href="#i-schedule"/></svg><span>Schedule</span></li>
-                  <li><svg class="who-t" aria-hidden="true"><use href="#i-cold"/></svg><span>Walk-in</span></li>
-                  <li><svg class="who-t" aria-hidden="true"><use href="#i-bell"/></svg><span>The pass</span></li>
-                </ul>
-              </div>
-              <div class="who-none">
-                <svg class="who-t" aria-hidden="true"><use href="#i-sales"/></svg><span>Sales numbers: nobody</span>
-              </div>
-            </div>
-          </div>
-          <figcaption class="fig-cap" id="fig2-cap"><span class="fig-no">Fig. 2</span> Who does what. A diagram of the argument above, not data.</figcaption>
-        </figure>
-      </div>
-      <p class="stance">Tooey is on the independent restaurant’s side of that gap. We’re building software to do that work for one restaurant at a time, every night.</p>
+  <section class="pilot" id="pilot" aria-labelledby="pilot-title">
+    <div class="pilot-copy">
+      <h2 id="pilot-title">Free while we pilot with independent restaurants.</h2>
+      <p>We connect to your POS, with about five weeks of past sales and a week of setup. You check our counts against what sold, then decide.</p>
     </div>
-  </section>
 
-  <!-- The job -->
-  <section class="job plate-stone" aria-labelledby="job-h">
-    <div class="wrap">
-      <div class="split-head">
-        <h2 id="job-h">Prep is the first part of that job we’ve taken on.</h2>
-        <p>It comes first because a wrong guess costs you every single day. Make too much and it ends up in the bin; make too little and you’re 86ing it by eight. The rest of this list is where Tooey is going. We aren’t putting dates on it.</p>
-      </div>
-      <table class="ledger">
-        <caption class="vh">Parts of an analyst’s job, and which Tooey does today</caption>
-        <thead>
-          <tr><th scope="col">Part of the job</th><th scope="col">The question it answers</th><th scope="col">At Tooey</th></tr>
-        </thead>
-        <tbody>
-          <tr class="is-now"><th scope="row">Prep</th><td>How many of each dish should we make today?</td><td><span class="status status-now">In the pilot now</span></td></tr>
-          <tr><th scope="row">Forecasting</th><td>How will the weather, a game downtown, or a full book change tonight?</td><td><span class="status">Where we’re going</span></td></tr>
-          <tr><th scope="row">Profitability</th><td>Which dishes and costs are actually making us money?</td><td><span class="status">Where we’re going</span></td></tr>
-          <tr><th scope="row">Staffing</th><td>How many people does each shift need?</td><td><span class="status">Where we’re going</span></td></tr>
-          <tr><th scope="row">Guests</th><td>How do we bring people back and fill the slow nights?</td><td><span class="status">Where we’re going</span></td></tr>
-          <tr><th scope="row">The whole picture</th><td>Given all of it, what should we change this week?</td><td><span class="status">Where we’re going</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Overnight -->
-  <section class="night plate-stone" id="night" aria-labelledby="night-h">
-    <div class="wrap">
-      <div class="split-head">
-        <h2 id="night-h">What happens between close and prep</h2>
-        <p>You don’t do anything at night. A nightly download, which we set up with you, brings the day’s sales over from your POS, and the rest runs on its own. Nobody at Tooey sits up going through your numbers by hand. People come in at setup, and whenever you write to us.</p>
+    <form class="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="honey" aria-hidden="true">
+        <label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
       </div>
 
-      <ol class="steps">
-        <li>
-          <p class="when">After close</p>
-          <h3>The day’s sales come over.</h3>
-          <p>Item by item, from your POS. The download works with most systems. Square, Toast, and Clover sales exports are read as they are, and others can be mapped.</p>
-        </li>
-        <li>
-          <p class="when">Overnight</p>
-          <h3>Every count is worked out again.</h3>
-          <p>For each dish, Tooey weighs your own past sales against the day of the week, the time of year, and holidays, then sets Predicted and Prep for the coming day.</p>
-        </li>
-        <li>
-          <p class="when">Before prep</p>
-          <h3>The list is in your inbox.</h3>
-          <p>Grouped by category, laid out the way you chose at setup. Print it and use it on the line.</p>
-        </li>
-        <li>
-          <p class="when">The next night</p>
-          <h3>It starts again with one more day.</h3>
-          <p>Each day’s sales go into the next night’s counts, so the list keeps up with your menu and your season.</p>
-        </li>
-      </ol>
-
-      <div class="night-detail">
-        <figure class="fig fig3" aria-labelledby="fig3-cap">
-          <p class="fig3-title" aria-hidden="true">Braised short rib, plates sold on Tuesdays</p>
-          <div class="tally" role="img" aria-label="Example values. Braised short rib sold 28, 30, 32, 30, 32, 34, 34 and 36 on the last eight Tuesdays. This Tuesday: Predicted 38, Prep 42.">
-            <div class="t-row" style="--a:14" aria-hidden="true"><span class="t-l">8 weeks ago</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">28</span></div>
-            <div class="t-row" style="--a:15" aria-hidden="true"><span class="t-l">7 weeks ago</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">30</span></div>
-            <div class="t-row" style="--a:16" aria-hidden="true"><span class="t-l">6 weeks ago</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">32</span></div>
-            <div class="t-row" style="--a:15" aria-hidden="true"><span class="t-l">5 weeks ago</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">30</span></div>
-            <div class="t-row" style="--a:16" aria-hidden="true"><span class="t-l">4 weeks ago</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">32</span></div>
-            <div class="t-row" style="--a:17" aria-hidden="true"><span class="t-l">3 weeks ago</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">34</span></div>
-            <div class="t-row" style="--a:17" aria-hidden="true"><span class="t-l">2 weeks ago</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">34</span></div>
-            <div class="t-row is-last" style="--a:18" aria-hidden="true"><span class="t-l">Last Tue</span><span class="t-s"><span class="bar-a"></span></span><span class="t-n">36</span></div>
-            <div class="t-row is-now" style="--a:19;--b:2" aria-hidden="true"><span class="t-l">This Tue</span><span class="t-s"><span class="bar-a"></span><span class="bar-b"></span></span><span class="t-n">38, make 42</span></div>
-          </div>
-          <figcaption class="fig-cap" id="fig3-cap"><span class="fig-no">Fig. 3</span> One dish from Fig. 1: plates sold on each of the last eight Tuesdays (blue), then this Tuesday’s Predicted (black) and the extra in Prep (red). One symbol is two plates. Example values. The day of the week is one input among four.</figcaption>
-        </figure>
-
-        <div class="inputs">
-          <h3>What goes into a count</h3>
-          <div class="inputs-cols">
-            <div>
-              <p class="inputs-label">Used today</p>
-              <ul class="ins">
-                <li>Your past item-level sales</li>
-                <li>Day of the week</li>
-                <li>Time of year</li>
-                <li>Holidays</li>
-              </ul>
-            </div>
-            <div>
-              <p class="inputs-label">Not yet</p>
-              <ul class="ins ins-no">
-                <li>Weather</li>
-                <li>Local events</li>
-                <li>Reservations</li>
-              </ul>
-            </div>
-          </div>
-          <p class="inputs-note">Those three are where the forecasting part of the job goes next. Today’s counts don’t know about them, so a rained-out patio or a concert down the street is still your call.</p>
-        </div>
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
       </div>
-    </div>
-  </section>
-
-  <!-- Blanks -->
-  <section class="blanks plate-red" id="blanks" aria-labelledby="blank-h">
-    <div class="wrap">
-      <h2 id="blank-h">A blank is a decline, not a zero.</h2>
-      <div class="blank-demo" aria-hidden="true">
-        <span class="bd-item">Burrata</span>
-        <span class="bd-track"></span>
-        <span class="bd-why">New: three weeks on the menu</span>
+      <div class="field">
+        <label for="f-restaurant">Restaurant</label>
+        <input id="f-restaurant" name="restaurant" type="text" autocomplete="organization" required>
       </div>
-      <div class="blanks-body">
-        <p>When a dish has been on the menu less than about five weeks, or sells under about one a day, there isn’t enough behind it for an honest count. Tooey leaves that row blank and prints the reason, instead of handing you a number it can’t stand behind. Make your usual call on that one.</p>
-        <p>The counts it does give are still forecasts. We haven’t measured accuracy at a live restaurant yet, so you won’t find an accuracy figure on this site. During the pilot you check each count against what actually sold, and you decide how far to trust it.</p>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
       </div>
-    </div>
-  </section>
-
-  <!-- Pilot -->
-  <section class="pilot plate-stone" id="pilot" aria-labelledby="pilot-h">
-    <div class="wrap pilot-in">
-      <div class="pilot-head">
-        <h2 id="pilot-h">Joining the pilot</h2>
-        <p>Tooey is early. We’re running a pilot with independent restaurants, and it’s free for now. No price has been set.</p>
+      <div class="field">
+        <label for="f-phone">Phone <span class="opt">optional</span></label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel">
       </div>
-      <dl class="terms">
-        <div><dt>You’ll need</dt><dd>About five weeks of past sales in your POS, so there’s some history to start from.</dd></div>
-        <div><dt>Setup</dt><dd>About a week. You tell us what matters in your kitchen, choose how your list is set up, and check it before you rely on it.</dd></div>
-        <div><dt>Your sales</dt><dd>Used only to forecast for your restaurant. Not sold, not shared with other restaurants, not published. <a href="privacy.html">The privacy page</a> has the rest.</dd></div>
-        <div><dt>Who we are</dt><dd>A small team of university students; the company is Tooey LLC. We set each restaurant up ourselves and answer the email at tooeyteam@gmail.com.</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="talk plate-ochre" id="talk" aria-labelledby="talk-h">
-    <div class="wrap talk-in">
-      <div class="talk-head">
-        <h2 id="talk-h">Tell us about your restaurant.</h2>
-        <p>Say a little about your kitchen and someone on the team will write back.</p>
-        <p class="talk-mail">Rather write an email?<a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+      <div class="field wide">
+        <label for="f-pos">Which POS you use <span class="opt">optional</span></label>
+        <input id="f-pos" name="pos" type="text">
+      </div>
+      <div class="field wide">
+        <label for="f-message">Anything else <span class="opt">optional</span></label>
+        <textarea id="f-message" name="message" rows="3"></textarea>
       </div>
 
-      <form class="form" id="contact" action="https://formsubmit.co/tooeyteam@gmail.com" method="post">
-        <input type="hidden" name="_subject" value="New Tooey inquiry">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <div class="hp" aria-hidden="true">
-          <label for="f-honey">Leave this empty</label>
-          <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off">
-        </div>
-
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="f-rest">Restaurant</label>
-          <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required>
-        </div>
-        <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="f-phone">Phone <span class="opt">optional</span></label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
-        </div>
-        <div class="field field-wide">
-          <label for="f-pos">Which POS do you use? <span class="opt">optional</span></label>
-          <input id="f-pos" name="pos" type="text" list="pos-list">
-          <datalist id="pos-list"><option value="Square"><option value="Toast"><option value="Clover"><option value="Not sure"></datalist>
-        </div>
-        <div class="field field-wide">
-          <label for="f-msg">What do you wish you knew about your numbers? <span class="opt">optional</span></label>
-          <textarea id="f-msg" name="message" rows="4" aria-describedby="f-msg-hint"></textarea>
-          <p class="hint" id="f-msg-hint">It helps us decide what to build after prep.</p>
-        </div>
-
-        <div class="form-foot">
-          <button class="btn" type="submit" id="f-submit">Send</button>
-          <p class="form-note">Sent to our inbox through FormSubmit and used only to reply. <a href="privacy.html">Privacy</a></p>
-        </div>
-        <p class="form-status" id="f-status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
+      <div class="send wide">
+        <button class="button" type="submit">Join the pilot</button>
+        <p class="status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </section>
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-in">
-    <p class="foot-mark"><svg class="brand-mark" aria-hidden="true"><use href="#i-plate"/></svg>tooey</p>
-    <p class="foot-line">For independent restaurants. © 2026 Tooey LLC.</p>
-    <ul class="foot-links">
-      <li><a href="#pilot">The pilot</a></li>
-      <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
-    </ul>
-  </div>
+  <span>Tooey LLC</span>
+  <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
+  <a href="privacy.html">Privacy</a>
 </footer>
 
-<script src="site.js" defer></script>
+<script src="app.js" defer></script>
 </body>
 </html>
