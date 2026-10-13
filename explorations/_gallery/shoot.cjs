@@ -32,7 +32,7 @@ async function shoot(browser, url, file, opts) {
   const page = await ctx.newPage();
   await page.route('**/formsubmit.co/**', (r) => r.abort());
   await page.goto(url, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(opts.wait || 3500);
+  await page.waitForTimeout(opts.wait || 11000);
   if (opts.full) {
     // Walk the page so anything revealed on scroll is on screen once.
     await page.evaluate(async () => {
