@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tooey · Ten directions</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<style>
+:root {
+  --bg: #f6f6f4;
+  --panel: #ffffff;
+  --ink: #17181a;
+  --muted: #64666b;
+  --faint: #9a9ca1;
+  --line: #e4e4e0;
+  --hover: #efefec;
+  --accent: #17181a;
+  --stage: #e9e9e6;
+  --shadow: 0 1px 2px rgba(0,0,0,.05), 0 8px 24px rgba(0,0,0,.06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121314; --panel: #1b1c1e; --ink: #ececea; --muted: #a3a5a9; --faint: #74767b;
+    --line: #2c2d30; --hover: #232427; --accent: #ececea; --stage: #0c0d0e;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121314; --panel: #1b1c1e; --ink: #ececea; --muted: #a3a5a9; --faint: #74767b;
+  --line: #2c2d30; --hover: #232427; --accent: #ececea; --stage: #0c0d0e;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 15px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.num { font-variant-numeric: tabular-nums; color: var(--faint); }
+
+/* ---------- top bar ---------- */
+.top {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 16px;
+  height: 56px; padding: 0 20px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top .home { font-weight: 600; text-decoration: none; white-space: nowrap; }
+.top .home span { color: var(--muted); font-weight: 400; }
+.top .spacer { flex: 1; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 32px; padding: 0 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--panel);
+  text-decoration: none; cursor: pointer; white-space: nowrap; font-size: 14px;
+}
+.btn:hover { background: var(--hover); }
+.btn[aria-disabled="true"] { opacity: .4; pointer-events: none; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 2px; }
+.seg button {
+  border: 0; background: none; height: 26px; padding: 0 10px; border-radius: 6px; cursor: pointer; font-size: 13px; color: var(--muted);
+}
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+/* ---------- overview ---------- */
+.overview { max-width: 1280px; margin: 0 auto; padding: 48px 20px 80px; }
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 48px; align-items: end; margin-bottom: 36px; }
+.intro h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 12px; font-weight: 600; }
+.intro p { margin: 0; max-width: 62ch; color: var(--muted); }
+.intro p + p { margin-top: 8px; }
+.intro code { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--hover); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
+.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px 24px; }
+.card { display: flex; flex-direction: column; min-width: 0; }
+.thumb {
+  position: relative; display: block; border-radius: 12px; overflow: hidden;
+  background: var(--stage); border: 1px solid var(--line); aspect-ratio: 16 / 10; cursor: pointer; padding: 0;
+  box-shadow: var(--shadow); width: 100%;
+}
+.thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s ease; }
+.thumb:hover img { transform: scale(1.015); }
+.thumb .phone {
+  position: absolute; right: 14px; bottom: -14%; width: 21%;
+  aspect-ratio: 390 / 844; border-radius: 10px; overflow: hidden;
+  border: 3px solid #111; background: #111; box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.thumb .phone img { object-fit: cover; }
+.grid[data-mode="phone"] .thumb { aspect-ratio: 16 / 10; display: flex; justify-content: center; align-items: flex-start; padding-top: 18px; }
+.grid[data-mode="phone"] .thumb > img { display: none; }
+.grid[data-mode="phone"] .thumb .phone { position: static; width: 44%; height: auto; }
+.meta { padding: 14px 2px 0; }
+.meta h2 { font-size: 17px; margin: 0; font-weight: 600; letter-spacing: -0.01em; display: flex; gap: 8px; align-items: baseline; }
+.meta p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.meta .row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.card.original .thumb { box-shadow: none; border-style: dashed; }
+
+/* ---------- detail ---------- */
+.detail { display: grid; grid-template-columns: minmax(0, 1fr) 380px; height: calc(100vh - 56px); height: calc(100dvh - 56px); }
+.stage-wrap { display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; border-right: 1px solid var(--line); }
+.toolbar { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.toolbar h2 { margin: 0 auto 0 0; font-size: 16px; font-weight: 600; display: flex; gap: 8px; align-items: baseline; min-width: 0; }
+.stage { position: relative; flex: 1; min-height: 0; background: var(--stage); overflow: hidden; display: flex; align-items: flex-start; justify-content: center; gap: 24px; padding: 20px; }
+.frame { position: relative; flex: none; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
+.frame iframe { border: 0; display: block; transform-origin: 0 0; background: #fff; }
+.frame.phone { border-radius: 28px; border: 8px solid #111; }
+.frame .label { position: absolute; left: 0; right: 0; bottom: 100%; }
+.info { min-height: 0; overflow-y: auto; padding: 24px 24px 48px; background: var(--panel); }
+.info h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin: 26px 0 8px; font-weight: 600; }
+.info h3:first-child { margin-top: 0; }
+.info p { margin: 0 0 10px; }
+.info .lede { font-size: 17px; line-height: 1.45; letter-spacing: -0.005em; }
+.info ul { margin: 0; padding-left: 18px; }
+.info li { margin: 0 0 6px; }
+.info .muted { color: var(--muted); }
+.info .links { display: flex; flex-wrap: wrap; gap: 6px; }
+.info .links a { font-size: 13px; }
+.pager { display: flex; gap: 6px; }
+
+@media (max-width: 1100px) {
+  .detail { grid-template-columns: 1fr; height: auto; }
+  .stage-wrap { border-right: 0; }
+  .stage { height: 78vh; height: 78dvh; flex: none; }
+  .info { border-top: 1px solid var(--line); }
+}
+@media (max-width: 640px) {
+  .top { padding: 0 12px; gap: 8px; }
+  .top .home span { display: none; }
+  .intro { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+  .toolbar h2 { width: 100%; }
+  .stage { padding: 12px; }
+  .info { padding: 20px 16px 40px; }
+}
+@media (prefers-reduced-motion: reduce) { .thumb img { transition: none; } }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="home" href="#">Tooey <span>· Ten directions</span></a>
+  <div class="spacer"></div>
+  <div class="pager" id="pager" hidden>
+    <a class="btn" id="prev" href="#" aria-label="Previous direction">←</a>
+    <a class="btn" id="next" href="#" aria-label="Next direction">→</a>
+  </div>
+  <a class="btn" id="allLink" href="#" hidden>All</a>
+</header>
+
+<main class="overview" id="overview">
+  <div class="intro">
+    <div>
+      <h1>Ten directions for the Tooey site</h1>
+      <p>Each site was designed and built by its own agent from one shared fact sheet and its own strategic brief, without seeing the others. None of them is live. The current site comes first, unchanged, for reference.</p>
+      <p>Open one to try it at full size, in a desktop or phone frame, with its brief, its reasoning, and an honest read of what works and what doesn't.</p>
+    </div>
+    <div class="seg" role="group" aria-label="Thumbnails">
+      <button type="button" data-thumb="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-thumb="phone" aria-pressed="false">Phone</button>
+    </div>
+  </div>
+  <ol class="grid" id="grid" data-mode="desktop"></ol>
+</main>
+
+<main class="detail" id="detail" hidden>
+  <div class="stage-wrap">
+    <div class="toolbar">
+      <h2 id="dTitle"></h2>
+      <div class="seg" role="group" aria-label="Preview size">
+        <button type="button" data-view="both" aria-pressed="true">Both</button>
+        <button type="button" data-view="desktop" aria-pressed="false">Desktop</button>
+        <button type="button" data-view="phone" aria-pressed="false">Phone</button>
+      </div>
+      <a class="btn" id="dOpen" target="_blank" rel="noopener">Open site ↗</a>
+    </div>
+    <div class="stage" id="stage">
+      <div class="frame desktop" id="fDesk"><iframe id="iDesk" title="Desktop preview" width="1440" height="900" loading="lazy"></iframe></div>
+      <div class="frame phone" id="fPhone"><iframe id="iPhone" title="Phone preview" width="390" height="844" loading="lazy"></iframe></div>
+    </div>
+  </div>
+  <aside class="info" id="info" aria-live="polite"></aside>
+</main>
+
+<script src="_gallery/data.js"></script>
+<script>
+(function () {
+  var sites = window.EXPLORATIONS || [];
+  var grid = document.getElementById('grid');
+  var overview = document.getElementById('overview');
+  var detail = document.getElementById('detail');
+  var pager = document.getElementById('pager');
+  var allLink = document.getElementById('allLink');
+  var view = 'both';
+  try { view = localStorage.getItem('tooey-gallery-view') || 'both'; } catch (e) {}
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function shot(id, kind) { return '_gallery/shots/' + id + '-' + kind + '.jpg'; }
+
+  grid.innerHTML = sites.map(function (s) {
+    return '<li class="card' + (s.id === '00-original' ? ' original' : '') + '">' +
+      '<a class="thumb" href="#' + s.id + '" aria-label="Review ' + esc(s.name) + '">' +
+        '<img src="' + shot(s.id, 'desktop') + '" alt="" loading="lazy">' +
+        '<span class="phone"><img src="' + shot(s.id, 'phone') + '" alt="" loading="lazy"></span>' +
+      '</a>' +
+      '<div class="meta">' +
+        '<h2><span class="num">' + esc(s.num) + '</span>' + esc(s.name) + '</h2>' +
+        '<p>' + esc(s.line) + '</p>' +
+        '<div class="row"><a class="btn" href="#' + s.id + '">Review</a>' +
+        '<a class="btn" href="' + s.href + '" target="_blank" rel="noopener">Open site ↗</a></div>' +
+      '</div></li>';
+  }).join('');
+
+  document.querySelectorAll('[data-thumb]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      grid.dataset.mode = b.dataset.thumb;
+      document.querySelectorAll('[data-thumb]').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+    });
+  });
+
+  function list(items) { return items && items.length ? '<ul>' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Pending review.</p>'; }
+
+  function renderInfo(s) {
+    var html = '';
+    html += '<h3>Brief</h3><p class="lede">' + esc(s.brief) + '</p>';
+    if (s.concept) html += '<h3>What it became</h3><p>' + esc(s.concept) + '</p>';
+    html += '<h3>Strengths</h3>' + list(s.strengths);
+    html += '<h3>Weaknesses</h3>' + list(s.weaknesses);
+    if (s.pages && s.pages.length) {
+      html += '<h3>Pages</h3><p class="links">' + s.pages.map(function (p) {
+        return '<a class="btn" href="' + p.href + '" target="_blank" rel="noopener">' + esc(p.label) + ' ↗</a>';
+      }).join('') + '</p>';
+    }
+    html += '<h3>Full-page screenshots</h3><p class="links">' +
+      '<a class="btn" href="' + shot(s.id, 'desktop-full') + '" target="_blank" rel="noopener">Desktop ↗</a>' +
+      '<a class="btn" href="' + shot(s.id, 'phone-full') + '" target="_blank" rel="noopener">Phone ↗</a></p>';
+    if (s.notes) html += '<h3>Its own notes</h3><p><a href="' + s.notes + '" target="_blank" rel="noopener">NOTES.md</a>' + (s.stack ? ' <span class="muted">· ' + esc(s.stack) + '</span>' : '') + '</p>';
+    document.getElementById('info').innerHTML = html;
+  }
+
+  var current = null;
+  function show(id) {
+    var i = sites.findIndex(function (s) { return s.id === id; });
+    if (i < 0) {
+      current = null;
+      overview.hidden = false; detail.hidden = true; pager.hidden = true; allLink.hidden = true;
+      document.title = 'Tooey · Ten directions';
+      document.getElementById('iDesk').removeAttribute('src');
+      document.getElementById('iPhone').removeAttribute('src');
+      return;
+    }
+    var s = sites[i];
+    current = s;
+    overview.hidden = true; detail.hidden = false; pager.hidden = false; allLink.hidden = false;
+    document.title = s.num + ' ' + s.name + ' · Tooey directions';
+    document.getElementById('dTitle').innerHTML = '<span class="num">' + esc(s.num) + '</span>' + esc(s.name);
+    document.getElementById('dOpen').href = s.href;
+    document.getElementById('prev').href = '#' + sites[(i - 1 + sites.length) % sites.length].id;
+    document.getElementById('next').href = '#' + sites[(i + 1) % sites.length].id;
+    var d = document.getElementById('iDesk'), p = document.getElementById('iPhone');
+    if (d.getAttribute('src') !== s.href) d.src = s.href;
+    if (p.getAttribute('src') !== s.href) p.src = s.href;
+    renderInfo(s);
+    window.scrollTo(0, 0);
+    layout();
+  }
+
+  function setView(v) {
+    view = v;
+    try { localStorage.setItem('tooey-gallery-view', v); } catch (e) {}
+    document.querySelectorAll('[data-view]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === v ? 'true' : 'false'); });
+    layout();
+  }
+  document.querySelectorAll('[data-view]').forEach(function (b) { b.addEventListener('click', function () { setView(b.dataset.view); }); });
+
+  function layout() {
+    if (!current) return;
+    var stage = document.getElementById('stage');
+    var fD = document.getElementById('fDesk'), fP = document.getElementById('fPhone');
+    var iD = document.getElementById('iDesk'), iP = document.getElementById('iPhone');
+    var pad = window.innerWidth <= 640 ? 24 : 40, gap = 24;
+    var W = stage.clientWidth - pad, H = stage.clientHeight - pad;
+    var v = view;
+    if (v === 'both' && W < 900) v = 'desktop';
+    fD.hidden = v === 'phone'; fP.hidden = v === 'desktop';
+
+    var pScale = Math.min(1, (H - 16) / 844, (W - 16) / 390);
+    if (v !== 'desktop') {
+      iP.style.transform = 'scale(' + pScale + ')';
+      fP.style.width = Math.round(390 * pScale) + 16 + 'px';
+      fP.style.height = Math.round(844 * pScale) + 16 + 'px';
+    }
+    if (v !== 'phone') {
+      var avail = v === 'both' ? W - (390 * pScale + 16) - gap : W;
+      var dScale = Math.min(1, avail / 1440);
+      var dH = Math.max(400, H / dScale);
+      iD.style.height = dH + 'px';
+      iD.style.transform = 'scale(' + dScale + ')';
+      fD.style.width = Math.round(1440 * dScale) + 'px';
+      fD.style.height = Math.round(dH * dScale) + 'px';
+    }
+  }
+  window.addEventListener('resize', layout);
+
+  document.addEventListener('keydown', function (e) {
+    if (!current || e.target.closest('input, textarea')) return;
+    if (e.key === 'ArrowRight') location.hash = document.getElementById('next').getAttribute('href');
+    if (e.key === 'ArrowLeft') location.hash = document.getElementById('prev').getAttribute('href');
+    if (e.key === 'Escape') location.hash = '';
+  });
+
+  function route() { show(decodeURIComponent(location.hash.slice(1))); }
+  window.addEventListener('hashchange', route);
+  setView(view);
+  route();
+})();
+</script>
+</body>
+</html>
