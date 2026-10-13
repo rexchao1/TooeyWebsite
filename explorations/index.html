@@ -293,7 +293,7 @@ button { font: inherit; color: inherit; }
     var pad = window.innerWidth <= 640 ? 24 : 40, gap = 24;
     var W = stage.clientWidth - pad, H = stage.clientHeight - pad;
     var v = view;
-    if (v === 'both' && W < 900) v = 'desktop';
+    if (v === 'both' && W < 900) v = W < 600 ? 'phone' : 'desktop';
     fD.hidden = v === 'phone'; fP.hidden = v === 'desktop';
 
     var pScale = Math.min(1, (H - 16) / 844, (W - 16) / 390);

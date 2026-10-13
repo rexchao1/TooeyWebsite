@@ -51,9 +51,33 @@ pilot with no price or trial length; no team names.
 
 - [x] Read the repo, the plans, the live pages, and the product notes
 - [x] Write the fact sheet and the ten briefs
-- [ ] Ten agents build in isolated worktrees
-- [ ] Collect each exploration onto this branch
-- [ ] Review each site (desktop and phone, every route, claims) and send fixes back
-- [ ] Check the ten for overlap; reconsider any pair that converged
-- [ ] Gallery with screenshots, previews, and summaries
-- [ ] Commit and push to the working branch (no merge, no deploy)
+- [x] Ten agents build in isolated worktrees
+- [x] Collect each exploration onto this branch
+- [x] Review each site (desktop and phone, every route, claims) and send fixes back
+- [x] Check the ten for overlap; reconsider any pair that converged
+- [x] Gallery with screenshots, previews, and summaries
+- [x] Commit and push to the working branch (no merge, no deploy)
+
+## What review changed
+
+The first round converged on one look: warm cream paper, a near-black serif
+headline, a black button, a white card with a sample prep list, and dashed
+marks for anything not built. The strategies and copy were distinct; the
+faces were not. 01 (a ledger), 02 (day and night), and 10 (calm) kept paper
+because it is their idea. 03, 04, 05, 06, 07, 08, and 09 were sent back to
+rethink their visual identity while keeping strategy and copy, with a list
+of looks and typefaces already taken. Two second-round collisions followed
+(06 and 09 both went royal blue on grey in Archivo; 03 went to the same
+sage green as 04) and were sent back once more. Remaining overlaps, judged
+acceptable: 07 and 08 share a yellow family (pale lemon with aubergine vs.
+saturated ochre with pictograms), and 03 and 09 share a blush note.
+
+## Open for Rex
+
+Each gallery entry ends with a question. Across all ten:
+- Several say plainly that accuracy hasn't been measured at a live
+  restaurant. That is true and more candid than the live site.
+- All promise the morning email and the nightly POS pull, as the live site
+  does, on the condition recorded in `new-site.md`.
+- Several state "no analytics, no cookies"; true of these builds only.
+- Share images use relative paths and need the real domain.
