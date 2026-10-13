@@ -35,7 +35,7 @@
   }
 
   /* ---------- Hero card: read the past Tuesdays, then fill in the next ---------- */
-  var card = document.querySelector('.card[data-play]');
+  var card = document.querySelector('.cal[data-play]');
   if (card) {
     var start = function () { card.classList.add('is-on'); };
     if (reduce || !('IntersectionObserver' in window)) {
@@ -57,8 +57,23 @@
   var items = document.querySelectorAll('.rd[data-reading]');
   if (ledger && items.length) {
     var buttons = [];
-    var choose = function (name) {
+    // On a phone the year is one strip you swipe; take it to the part of
+    // the year each reading is about (in weeks from the start of the record).
+    var strip = ledger.querySelector('.lg-scroll');
+    var where = { week: 0, year: 12, holidays: 16, dish: 40 };
+    var moveStrip = function (name) {
+      if (!strip || strip.scrollWidth <= strip.clientWidth + 4) return;
+      var cell = strip.querySelector('.lg-grid .c');
+      var col = cell ? cell.getBoundingClientRect().width : 30;
+      var wk = where[name] || 0;
+      var first = strip.querySelector('.lg-half');
+      var x = wk < 27 ? first.offsetLeft + wk * col : strip.querySelectorAll('.lg-half')[1].offsetLeft + (wk - 27) * col;
+      var lab = strip.querySelector('.lg-pin').offsetWidth;
+      strip.scrollTo({ left: Math.max(0, x - lab - col), behavior: reduce ? "auto" : "smooth" });
+    };
+    var choose = function (name, user) {
       ledger.setAttribute('data-reading', name);
+      if (user) moveStrip(name);
       items.forEach(function (li, n) {
         var on = li.getAttribute('data-reading') === name;
         li.classList.toggle('is-on', on);
@@ -77,7 +92,7 @@
       b.setAttribute('aria-describedby', body.id);
       h.textContent = '';
       h.appendChild(b);
-      b.addEventListener('click', function () { choose(li.getAttribute('data-reading')); });
+      b.addEventListener('click', function () { choose(li.getAttribute('data-reading'), true); });
       buttons.push(b);
     });
     var hint = document.createElement('p');
@@ -90,7 +105,7 @@
   /* ---------- Key beside the sample list lights its column ---------- */
   var sheet = document.getElementById('sheet');
   if (sheet) {
-    document.querySelectorAll('.key-i[data-col]').forEach(function (k) {
+    document.querySelectorAll('.key-i[data-col], .key-blank[data-col]').forEach(function (k) {
       k.addEventListener('mouseenter', function () {
         sheet.setAttribute('data-hi', k.getAttribute('data-col'));
         k.classList.add('is-hi');

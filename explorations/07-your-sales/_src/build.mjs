@@ -60,36 +60,57 @@ function cell(i) {
   return `<span class="${cls.join(' ')}" style="--w:${w};--y:${y};--k:${k}"><span class="p">${p.v}</span><span class="t">${t.v}</span></span>`;
 }
 
-function yearLedger() {
-  const cols = WEEKS + 1;
+// The year is folded in two, like a long printout: October to April on
+// top, April to October underneath. Both halves have 27 week columns so the
+// days line up. On a phone the halves sit side by side in one strip.
+const HALF = 27;
+
+function half(from, to) {
   const cells = [];
-  for (let i = 0; i < cols * 7; i++) cells.push(cell(i));
+  for (let wk = from; wk < from + HALF; wk++) {
+    for (let w = 0; w < 7; w++) cells.push(wk <= to ? cell(wk * 7 + w) : '<span class="c e"></span>');
+  }
 
   const months = [];
   let prev = -1;
-  for (let wk = 0; wk < cols; wk++) {
-    const d = pasta[wk * 7];
-    // Label the week that holds the 1st of a month (or the first week).
+  for (let wk = from; wk <= to; wk++) {
     const days = pasta.slice(wk * 7, wk * 7 + 7);
     const first = days.find((x) => x.date === 1);
-    const m = first ? first.month : wk === 0 ? d.month : -1;
+    const m = first ? first.month : wk === from && days[0] ? days[0].month : -1;
     if (m !== -1 && m !== prev) {
-      months.push(`<span style="--c:${wk + 1}">${MONTHS[m]}</span>`);
+      months.push(`<span style="--c:${wk - from + 1}">${MONTHS[m]}</span>`);
       prev = m;
     }
   }
 
+  // Drop a month label that would sit right against the next one.
+  for (let n = months.length - 2; n >= 0; n--) {
+    const c = (x) => Number(x.match(/--c:(\d+)/)[1]);
+    if (c(months[n + 1]) - c(months[n]) < 2) months.splice(n, 1);
+  }
+
   const labels = [];
   for (const d of pasta) {
-    if (d.hol && LABELS[d.hol]) labels.push(`<span style="--c:${d.week + 1}">${LABELS[d.hol]}</span>`);
+    if (d.week >= from && d.week <= to && d.hol && LABELS[d.hol]) {
+      labels.push(`<span style="--c:${d.week - from + 1}">${LABELS[d.hol]}</span>`);
+    }
   }
 
   const days = DOW.map((d) => `<span>${d}</span>`).join('');
-  return `<div class="lg-body">
-              <div class="lg-months" aria-hidden="true">${months.join('')}</div>
-              <div class="lg-days" aria-hidden="true">${days}</div>
-              <div class="lg-grid" aria-hidden="true">${cells.join('')}</div>
-              <div class="lg-labels" aria-hidden="true">${labels.join('')}</div>
+  return `<div class="lg-half">
+                <div class="lg-months">${months.join('')}</div>
+                <div class="lg-days">${days}</div>
+                <div class="lg-grid">${cells.join('')}</div>
+                <div class="lg-labels">${labels.join('')}</div>
+              </div>`;
+}
+
+function yearLedger() {
+  const pin = DOW.map((d) => `<span>${d}</span>`).join('');
+  return `<div class="lg-scroll" tabindex="0" role="region" aria-label="The sample year, one number a night. Scroll sideways to move through it.">
+              <div class="lg-pin">${pin}</div>
+              ${half(0, HALF - 1)}
+              ${half(HALF, WEEKS)}
             </div>`;
 }
 
@@ -116,8 +137,7 @@ function heroLedger() {
     }
     rows.push(`<span class="hl">${label}</span>${cells.join('')}`);
   }
-  const head = '<span class="hl"></span>' + DOW.map((d) => `<span class="hd">${d.slice(0, 3)}</span>`).join('');
-  return `<div class="hero-grid" aria-hidden="true">${head}${rows.join('')}</div>`;
+  return rows.join('');
 }
 
 const header = read('partials/header.html');

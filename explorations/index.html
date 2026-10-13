@@ -229,10 +229,15 @@ button { font: inherit; color: inherit; }
 
   function renderInfo(s) {
     var html = '';
-    html += '<h3>Brief</h3><p class="lede">' + esc(s.brief) + '</p>';
+    if (s.headline) html += '<h3>Headline</h3><p class="lede">' + esc(s.headline) + '</p>';
+    html += '<h3>Brief</h3><p>' + esc(s.brief) + '</p>';
     if (s.concept) html += '<h3>What it became</h3><p>' + esc(s.concept) + '</p>';
-    html += '<h3>Strengths</h3>' + list(s.strengths);
-    html += '<h3>Weaknesses</h3>' + list(s.weaknesses);
+    if (s.look) html += '<h3>Look</h3><p>' + esc(s.look) + '</p>';
+    if (s.id !== '00-original') {
+      html += '<h3>Strengths</h3>' + list(s.strengths);
+      html += '<h3>Weaknesses</h3>' + list(s.weaknesses);
+    }
+    if (s.ask) html += '<h3>For Rex to decide</h3><p>' + esc(s.ask) + '</p>';
     if (s.pages && s.pages.length) {
       html += '<h3>Pages</h3><p class="links">' + s.pages.map(function (p) {
         return '<a class="btn" href="' + p.href + '" target="_blank" rel="noopener">' + esc(p.label) + ' ↗</a>';

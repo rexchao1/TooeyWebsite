@@ -25,35 +25,42 @@ undersells this brief.
 
 ## 3. What the visitor understands first, and the journey
 
-1. **Hero.** The headline, a two-sentence lead, and a small calendar of one
-   dish's nightly sales at a sample restaurant. On load, the past Tuesdays are
-   underlined one at a time, then the next Tuesday is circled and filled in:
-   "Tuesday: we expect 15. Prep 17." Within a few seconds an owner sees the
-   input (my sales), the output (a number to prep), and who does the reading.
-2. **What your sales already know.** The emotional turn. A full year of one
-   dish, one number a night, set like a ledger. Four readings change only
-   which numbers stand out: the day of the week (Friday and Saturday turn
-   bold), the time of year (the winter band gets darker), holidays (circled,
-   and labelled on desktop), and each dish's own sales (the ledger switches to
+1. **Hero: one calendar page.** The week (MON to SUN) runs across the top of
+   the page, and its columns are ruled down through the headline, the lead,
+   and a calendar of one dish's nightly sales at a sample restaurant, printed
+   large into the same columns. On load, the past Tuesdays are underlined one
+   at a time, then the next Tuesday is circled: "Tuesday: we expect 15.
+   Prep 17." Within a few seconds an owner sees the input (my sales), the
+   output (a number to prep), and who does the reading.
+2. **What your sales already know.** The emotional turn, on a night band in
+   the site's ink. A full year of one dish, one number a night, folded in two
+   like a long printout: October to April on top, April to October
+   underneath, so winter sits directly above summer. Four readings change
+   only which numbers stand out: the day of the week (Friday and Saturday turn
+   bold), the time of year (the winter half gets brighter), holidays
+   (circled and labelled), and each dish's own sales (the record switches to
    fish tacos, which climb all year). These four are exactly the inputs the
    forecast uses today, so the section shows the method without claiming any
    analytics. The closing line says it plainly: all of it goes into one count
    per dish, and weather, events, and reservations don't.
-3. **What arrives in the morning.** The product: a sample list for Tuesday,
-   grouped by category, with Predicted, Prep, and vs. last Tue, plus two blank
-   rows with their reasons. A key explains each column and the blank rule.
-   The pilot line says the owner checks the counts against what sold.
-4. **What it takes to start.** Five weeks of sales, a nightly download, about
-   a week of setup. "Free for now, while we're in a pilot." appears only here.
-5. **Your sales stay yours.** A short paragraph, plus a small account sheet
-   that answers the questions an owner has about their data: used for, sold,
-   shared, published, seen by, stopped or deleted.
-6. **The same record holds more.** The vision, on a dark band so it reads as
-   a different register. It says up front that only the prep count exists,
-   then lists four questions that are not built: which dishes make money,
-   staffing, bringing guests back, and signals beyond sales.
-7. **Tell us about your restaurant.** The contact form, with the students
-   line and the email address.
+3. **What arrives in the morning.** The product, printed straight onto the
+   page rather than shown on a card: a sample list for Tuesday, grouped by
+   category, with Predicted, Prep, and vs. last Tue, and two hatched blank
+   rows with their reasons. Tooey's notes sit above the columns they explain,
+   and the blank rule sits under the blank rows. The pilot line says the
+   owner checks the counts against what sold.
+4. **What it takes to start / Your sales stay yours.** One section, two
+   columns. Left: five weeks of sales, a nightly download, about a week of
+   setup, and "Free for now, while we're in a pilot." (the only place "free"
+   appears). Right: a short paragraph and a small account of where the sales
+   go (used for, sold, shared, published, seen by, stopped or deleted), with
+   the three "No"s in the mark colour.
+5. **The same record holds more.** Says first that only the prep count
+   exists. The four questions that aren't built (which dishes make money,
+   staffing, bringing guests back, signals beyond sales) sit in dashed empty
+   cells with the same dot as the hero's empty days still to come.
+6. **Tell us about your restaurant.** The contact form on the night band,
+   with the students line and the email address.
 
 The nav has Your sales, The morning list, How to start, Your data, and a
 Talk to us button.
@@ -63,57 +70,69 @@ Talk to us button.
 - Every number on the site is labelled as a sample or an example: "Example
   from a sample restaurant", "Sample restaurant", "Example values".
 - It is honest about being early: "We're early: a small team, running a
-  pilot" sits under the hero buttons, and the vision section says "None of
+  pilot" sits beside the hero buttons, and the vision section says "None of
   them is built yet."
 - The blank-row rule is shown in the product and explained ("Rather than
   guess, we leave it blank and say why. A blank is not a zero."), because it
   shows restraint better than any claim could.
 - The owner stays in charge: "What goes on the line stays your call."
-- Data respect gets its own section, set as a small ledger, and the full
-  privacy page uses the same plain words.
+- Data respect is set as a plain account, and the privacy page uses the same
+  words.
 - There are no figures beyond the sample data, no logos, no testimonials, and
   no badges.
 
 ## 5. Design and interaction rationale
 
-- **Idea:** a record and a reader. The POS record is set in a monospace
-  (Spline Sans Mono), like a printout. Everything Tooey "says" is in
-  Newsreader, a serif made for reading on screens, with an italic in one
-  sienna ink (#a3421b) for Tooey's marks: underlines, circles, the Tuesday
-  note, holiday labels. That ink is the only accent on the site.
-- **Not a dashboard.** The ledger has no charts, axes, or colors by value.
-  The numbers stay exactly as the POS would give them. The readings change
-  only their weight and darkness (a variable-font weight from 300 to 700 and a
-  color mix), so the pattern comes out of the record itself.
-- **Layout.** The ledger runs as a horizontal strip (53 weeks across, days
-  down) at 1180px and up. Below that it turns on its side into a tall
-  calendar (days across, weeks down), using the same cells in the same order
-  through a grid-auto-flow switch. Between 640 and 1179px the readings stay
-  beside it as a sticky column. On phones the readings sit above it as a
-  short list, with only the chosen one expanded.
-- **Paper.** Warm off-white ground; record, list, and form on whiter
-  "sheets" with a soft shadow; one tan band for the product; one dark band
-  for the future.
-- **Motion.** One sequence in the hero (about 2 seconds, once, when the card
-  is in view). The readings cross-fade weight and color in 0.5s. Under
-  reduced motion everything shows in its final state and nothing moves.
-- **Without JavaScript** every word is readable, the ledger shows the first
-  reading, the nav shows as plain links, and the form posts straight to
-  FormSubmit.
-- **Fonts:** Newsreader (roman and italic, opsz and wght axes cut down to the
-  weights used) and Spline Sans Mono, both OFL. They are subset to Latin and
-  self-hosted, about 210 KB in total. Licences are in `assets/fonts/`.
+- **Idea: the record is the identity.** The site reads as the restaurant's
+  own copy of its record. The paper is lemon yellow, like the duplicate copy
+  a restaurant keeps. Everything is printed in one ink, aubergine (#2b1a3d).
+  Tooey's marks (underlines, circles, the Tuesday note, holiday labels, the
+  notes over the list's columns) are the only other colour, a vermilion
+  pencil (#a33310 on paper, #ff9a6b on the night band). Eggplant, lemon,
+  tomato: kitchen colours, not SaaS colours. There are no cards on a light
+  ground, no beige bands, and no black buttons.
+- **The week as the page grid.** The hero is laid out on a label column plus
+  seven day columns (CSS subgrid), with the day hairlines running behind the
+  headline. The sample record is not a picture placed on the page; it *is*
+  the page.
+- **Night and morning.** The year of sales is read on a band of the ink
+  colour with its numbers printed in the paper's yellow, the way Tooey reads
+  it after close. The morning list is back on paper.
+- **Type.** Mona Sans (variable width and weight): condensed at 75% and
+  bold for headlines, normal width for reading text, italic for Tooey's
+  notes. Spline Sans Mono for every number in the record and the list. Both
+  are OFL, self-hosted, and about 235 KB together. The Mona Sans files are
+  used unmodified from fontsource's Latin subset, because its licence
+  reserves the name.
+- **Not a dashboard.** No charts, axes, or colours by value. The numbers stay
+  as the POS would give them. The readings change only their weight (300 to
+  700 on a variable font) and brightness. The faintest number is about 6:1
+  against the band, so every number passes AA.
+- **Responsive record.** From 900px up, the year is folded in two (27 week
+  columns per half), which gives about 38px per column at 1180px and 47px at
+  1440px. Below 900px the two halves open out into one strip, seven rows
+  high (about 250px), that you swipe sideways. The day names stay pinned at
+  the left. On phones and tablets, choosing a reading also scrolls the strip
+  to the part of the year it's about: January for the seasons, February for
+  Valentine's Day, the end of the year for the fish tacos.
+- **Motion.** One sequence in the hero (about 2 seconds, once, when the
+  calendar is in view). Readings cross-fade in 0.5s. Under reduced motion
+  everything shows in its final state and the strip jumps without
+  smoothing.
+- **Without JavaScript** every word is readable, the record shows the first
+  reading (and the strip still scrolls natively), the nav shows as plain
+  links, and the form posts straight to FormSubmit.
 
 ## 6. What is illustrative and what is factual
 
 Illustrative (invented, labelled as sample or example):
 - The sample restaurant, its dishes, and every number in the hero calendar,
-  the year ledger, and the prep list.
-- The ledger data is generated by `_src/data.mjs` from a seeded model
-  (weekday pattern, a seasonal curve, holidays, noise). The numbers quoted
-  in the readings (about 33 vs. 15, about 41 vs. 26, 60 on Valentine's Day,
-  15 on the Fourth, fish tacos 7 to 16) are computed from that data and
-  printed by the build, so the words can be checked against it.
+  the year record, and the prep list.
+- The record is generated by `_src/data.mjs` from a seeded model (weekday
+  pattern, a seasonal curve, holidays, noise). The numbers quoted in the
+  readings (about 33 vs. 15, about 41 vs. 26, 60 on Valentine's Day, 15 on
+  the Fourth, fish tacos 7 to 16) are computed from that data and printed by
+  the build, so the words can be checked against it.
 - The holidays themselves, and the closed days.
 
 Factual (from the brief, no more):
@@ -130,7 +149,7 @@ Factual (from the brief, no more):
   others mapped. About five weeks of history; about a week of setup.
 - Email before prep, printable; during the pilot the owner checks the counts
   against what sold.
-- Every privacy fact on the privacy page and in the data section.
+- Every privacy fact on the privacy page and in the data column.
 
 One statement is about this build, not the company: the privacy page says
 the site has no analytics, ads, or tracking cookies and loads fonts and
@@ -141,28 +160,25 @@ anything is added at deploy.
 
 Strengths
 - The hero says what Tooey is and shows the output within seconds, without a
-  slogan.
-- The ledger makes "your sales already know" something you can see, and it
-  maps exactly onto the four real inputs, so it explains the method without
-  overclaiming.
+  slogan, and the week grid makes it look like nobody else's site.
+- The folded year makes "your sales already know" something you can see,
+  and it maps exactly onto the four real inputs, so it explains the method
+  without overclaiming.
 - The trust material is specific: the blank rule, the owner's call, and the
-  data sheet.
+  account of where sales go.
 
 Weaknesses
-- The year ledger is dense. At 1180 to 1300px wide the horizontal numbers are
-  tight (11 to 12px), and on a phone it is long (53 rows). Owners who skip it
-  still get the point from the reading notes, but it asks for attention.
-- The page is long: seven sections. Each one answers a different question,
-  but a founder who wants a shorter page could merge "What it takes to
-  start" and "Your sales stay yours".
+- Lemon yellow across the whole page is a strong choice. It is legible
+  (aubergine on it is 13:1), but some owners may find it loud. The fallback
+  is a paler yellow on the same tokens.
+- On phones the year is a swipe strip. Readings jump it to the right place,
+  but an owner who doesn't swipe sees about ten weeks at a time.
 - The weekday, season, and holiday patterns in the sample are clean because
   they are modelled. Real sales are noisier. They are labelled as a sample,
   but an owner might still take them as typical.
-- The ledger is hidden from screen readers (370 numbers would be noise).
-  Its meaning is carried by the four reading notes, which are real text.
-- Faded ledger numbers are about 3.2:1 against the sheet. They are de-emphasis
-  inside a figure, and the active ones are full contrast, but they are below
-  4.5:1.
+- The record grid is hidden from screen readers (370 numbers would be noise).
+  The scroll region has a label, and its meaning is carried by the four
+  reading notes, which are real text.
 
 Open questions for the founder
 - Is "on record" the right word for a restaurant owner, or would "in your
@@ -185,8 +201,8 @@ and are committed, so previewing needs no build.
 explorations/07-your-sales/
   index.html, privacy.html   built pages (do not edit; edit _src/)
   assets/site.css            all styles
-  assets/site.js             menu, hero sequence, readings, list key, form
-  assets/fonts/              subset woff2 files and OFL licences
+  assets/site.js             menu, hero sequence, readings, strip, list key, form
+  assets/fonts/              Mona Sans, Spline Sans Mono (subset), OFL licences
   assets/logo.png            the wordmark from the repo root
   assets/favicon.svg, og.png
   _src/index.html            home page template
@@ -215,3 +231,35 @@ node _src/og.mjs
 
 Preview: serve the repo root and open
 http://127.0.0.1:5207/explorations/07-your-sales/
+
+## Revision (second pass)
+
+The first version sat in the visual family several explorations had
+converged on: warm cream paper, a near-black serif headline, a black
+rectangular button, white cards on a light ground, and beige bands. Its
+concept, structure, and copy were kept. The visual identity was rebuilt from
+the strategy instead.
+
+- **Palette.** Cream, near-black, and beige were replaced by lemon paper,
+  one aubergine ink, and a vermilion mark. I tried navy ink first, then
+  bottle green; both were dropped because other explorations had since taken
+  blue-on-white and green looks.
+- **Type.** Newsreader (also used elsewhere) was replaced by Mona Sans,
+  condensed for headlines. I tried Archivo first and dropped it because it was
+  taken too.
+- **Composition.** The record is no longer a card on a marketing page. The
+  hero is a calendar page ruled by the week. The year is staged full width on
+  a night band. The prep list is printed onto the page with Tooey's notes
+  over its columns. The future questions are empty dashed day cells.
+- **Cramped year grid (about 1180 to 1300px).** Fixed by folding the year in
+  two: 27 columns instead of 53, so the columns are roughly twice as wide.
+- **53-row phone version.** Replaced by a seven-row strip with pinned day
+  names (about 250px tall instead of about 1,000px). Choosing a reading moves
+  the strip to the relevant weeks.
+- **Faded numbers at 3.2:1.** The faintest number is now about 6:1, and the
+  emphasis comes mostly from weight.
+- **Merged sections.** "What it takes to start" and "Your sales stay yours"
+  are now one two-column section. The four vision questions moved off the dark
+  band, which now holds the record and the contact form.
+- **Copy.** Unchanged, apart from caption wording that described the old
+  layout.

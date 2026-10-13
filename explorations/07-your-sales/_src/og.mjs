@@ -21,22 +21,19 @@ const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, dev
 await page.goto(url, { waitUntil: 'networkidle' });
 await page.addStyleTag({
   content: `
-    .site-head, .hero-act, .hero-early, .hero-lead, .hero-card figcaption { display: none !important; }
+    .skip, .nav, .hero-lead, .hero-side, .cal-cap, .cal-foot, .record { display: none !important; }
+    .cal-grid .last::after { display: none; }
+    .cal-note { font-size: 24px !important; margin-top: 14px !important; }
     body { overflow: hidden; }
-    .hero { padding: 0 !important; height: 630px; display: flex; align-items: center; }
-    .hero-in { grid-template-columns: 1.05fr 0.95fr !important; gap: 64px !important; padding-inline: 72px !important; max-width: none !important; }
-    .hero h1 { font-size: 60px !important; max-width: 12ch; margin-top: 72px; }
-    .og-logo { position: absolute; left: 72px; top: 48px; width: 112px; }
+    .head-in { padding-block: 22px 14px; }
+    .hero h1 { font-size: 64px !important; padding-top: 18px !important; grid-column: 2 / span 6 !important; }
+    .cal { margin-top: 26px !important; }
+    .cal-grid > span { height: 50px !important; }
+    .cal-grid .hc { font-size: 26px !important; }
+    .cal-grid > span:nth-child(-n+16) { display: none !important; }
   `,
 });
-await page.evaluate(() => {
-  const img = document.createElement('img');
-  img.src = 'assets/logo.png';
-  img.className = 'og-logo';
-  img.alt = '';
-  document.body.appendChild(img);
-  document.querySelector('.card').classList.add('is-on');
-});
+await page.evaluate(() => document.querySelector('.cal').classList.add('is-on'));
 await page.waitForTimeout(400);
 await page.screenshot({ path: join(here, '..', 'assets', 'og.png'), clip: { x: 0, y: 0, width: 1200, height: 630 } });
 await browser.close();
