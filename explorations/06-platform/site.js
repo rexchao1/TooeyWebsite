@@ -38,23 +38,23 @@
     });
   }
 
-  /* Ink only: hide everything drawn in pencil */
-  var switches = document.querySelectorAll('[data-ink-switch]');
-  var live = document.getElementById('ink-live');
+  /* Show only what works today: hide everything that isn't built */
+  var switches = document.querySelectorAll('[data-built-switch]');
+  var live = document.getElementById('built-live');
   if (switches.length) {
-    var setInk = function (on) {
-      root.classList.toggle('ink-only', on);
+    var setBuilt = function (on) {
+      root.classList.toggle('built-only', on);
       switches.forEach(function (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
       if (live) {
         live.textContent = on
-          ? 'Showing only what works today. Everything in pencil is hidden.'
-          : 'Showing the whole plan, in ink and pencil.';
+          ? 'Showing only what works today. Everything not built yet is hidden.'
+          : 'Showing the whole plan, built and not built.';
       }
     };
     switches.forEach(function (b) {
       b.hidden = false;
       b.addEventListener('click', function () {
-        setInk(b.getAttribute('aria-pressed') !== 'true');
+        setBuilt(b.getAttribute('aria-pressed') !== 'true');
       });
     });
   }
@@ -63,7 +63,7 @@
   var form = document.getElementById('contact-form');
   if (!form || !window.fetch) return;
 
-  var card = form.closest('.form-card');
+  var card = form.closest('.form-wrap');
   var status = document.getElementById('form-status');
   var submit = document.getElementById('f-submit');
   var done = document.getElementById('form-done');
