@@ -32,31 +32,22 @@
     });
   }
 
-  /* Key: light up a column of the sample sheet */
-  var sheet = document.getElementById("sheet");
-  var keys = document.querySelectorAll(".key-btn");
-  if (sheet && keys.length) {
-    var pinned = "";
-    var show = function (col) {
-      sheet.setAttribute("data-hl", col || "");
-    };
-    keys.forEach(function (btn) {
-      var col = btn.getAttribute("data-col");
-      btn.addEventListener("mouseenter", function () { show(col); });
-      btn.addEventListener("mouseleave", function () { show(pinned); });
-      btn.addEventListener("focus", function () { show(col); });
-      btn.addEventListener("blur", function () { show(pinned); });
+  /* Fig. 1: drawn, or as the list arrives */
+  var fig1 = document.getElementById("fig1");
+  var viewBtns = document.querySelectorAll(".view-btn");
+  if (fig1 && viewBtns.length) {
+    viewBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        pinned = pinned === col ? "" : col;
-        keys.forEach(function (b) {
-          b.setAttribute("aria-pressed", b.getAttribute("data-col") === pinned ? "true" : "false");
+        var list = btn.getAttribute("data-view") === "list";
+        fig1.classList.toggle("is-list", list);
+        viewBtns.forEach(function (b) {
+          b.setAttribute("aria-pressed", b === btn ? "true" : "false");
         });
-        show(pinned || col);
       });
     });
   }
 
-  /* Print the example sheet */
+  /* Print the example list */
   var printBtn = document.getElementById("print-btn");
   if (printBtn && window.print) {
     printBtn.hidden = false;
@@ -69,8 +60,8 @@
     });
   }
 
-  /* Reveal: the overnight line and the chart, once, when they come into view */
-  var seen = document.querySelectorAll(".timeline, .fig-chart");
+  /* Reveal: the symbols are counted out once, when a figure comes into view */
+  var seen = document.querySelectorAll(".fig1, .fig3");
   if (reduce || !("IntersectionObserver" in window)) {
     seen.forEach(function (el) { el.classList.add("is-seen"); });
   } else {
@@ -81,22 +72,8 @@
           io.unobserve(entry.target);
         }
       });
-    }, { rootMargin: "0px 0px -20% 0px", threshold: 0.2 });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.15 });
     seen.forEach(function (el) { io.observe(el); });
-  }
-
-  /* Chart: say the value of the bar under the pointer */
-  var tip = document.querySelector(".chart-tip");
-  if (tip) {
-    document.querySelectorAll(".bar").forEach(function (bar) {
-      bar.addEventListener("mouseenter", function () {
-        tip.textContent = bar.getAttribute("data-tip");
-        tip.classList.add("is-on");
-      });
-      bar.addEventListener("mouseleave", function () {
-        tip.classList.remove("is-on");
-      });
-    });
   }
 
   /* Contact form */

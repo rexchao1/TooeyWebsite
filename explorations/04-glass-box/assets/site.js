@@ -1,6 +1,6 @@
 /* Tooey — glass box exploration. Small, dependency-free.
-   Everything here is an enhancement: without it the notes sit under the
-   sample list, every worked example is shown, and the form posts normally. */
+   Everything here is an enhancement: without it the diagram shows without
+   wires, every worked example is shown, and the form posts normally. */
 (function () {
   'use strict';
 
@@ -35,91 +35,87 @@
     window.matchMedia('(min-width: 900px)').addEventListener('change', function () { setMenu(false); });
   }
 
-  /* ── Hero: place each note beside its row and draw a leader to it ── */
-  var drawing = document.getElementById('drawing');
-  var sheet = document.getElementById('sheet');
-  var notes = document.getElementById('notes');
-  var svg = document.getElementById('leaders');
-  var wide = window.matchMedia('(min-width: 1000px)');
+  /* ── Hero: draw the wires. Four inputs run into the glass box, one line
+        comes out and runs down the list as a rail. Wide screens run left to
+        right; narrow screens run top to bottom. ── */
+  var fig = document.getElementById('machine');
+  var svg = document.getElementById('wires');
+  var glass = document.getElementById('glass');
+  var list = document.getElementById('list');
+  var wide = window.matchMedia('(min-width: 1180px)');
   var NS = 'http://www.w3.org/2000/svg';
 
-  function clearNotes() {
-    if (!notes) return;
-    notes.style.height = '';
-    notes.classList.remove('is-placed');
-    Array.prototype.forEach.call(notes.children, function (li) { li.style.top = ''; });
-    if (svg) svg.innerHTML = '';
+  function rel(el, f) {
+    var r = el.getBoundingClientRect();
+    return {
+      x: r.left + r.width / 2 - f.left, y: r.top + r.height / 2 - f.top,
+      left: r.left - f.left, right: r.right - f.left, top: r.top - f.top, bottom: r.bottom - f.top,
+      w: r.width, h: r.height
+    };
   }
+  function path(d, color, width, cls) {
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d);
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', width);
+    if (cls) p.setAttribute('class', cls);
+    svg.appendChild(p);
+  }
+  function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
 
-  function layoutNotes() {
-    if (!drawing || !sheet || !notes || !svg) return;
-    if (!wide.matches) { clearNotes(); return; }
-
-    var d = drawing.getBoundingClientRect();
-    var s = sheet.getBoundingClientRect();
-    var n = notes.getBoundingClientRect();
-    var notesTop = n.top - d.top;
-    var prevBottom = -Infinity;
-    var paths = [];
-
-    notes.classList.add('is-placed');
-    notes.style.height = s.height + 'px';
-
-    Array.prototype.forEach.call(notes.children, function (li) {
-      var target = document.getElementById(li.getAttribute('data-target'));
-      if (!target) return;
-      var row = target.closest('tr') || target;
-      var r = row.getBoundingClientRect();
-      var rowY = r.top + r.height / 2 - d.top;
-      var firstLine = 12; // centre of the note's first line
-      var top = Math.max(rowY - notesTop - firstLine, prevBottom + 18);
-      li.style.top = top + 'px';
-      prevBottom = top + li.offsetHeight;
-      paths.push({
-        li: li,
-        target: target,
-        sx: s.right - d.left,
-        sy: rowY,
-        nx: n.left - d.left,
-        ny: notesTop + top + firstLine
-      });
-    });
-
-    var lastBottom = prevBottom + notesTop;
-    if (lastBottom > s.height) notes.style.height = (prevBottom) + 'px';
-
-    svg.setAttribute('viewBox', '0 0 ' + d.width + ' ' + d.height);
+  function drawWires() {
+    if (!fig || !svg || !glass || !list) return;
+    var f = fig.getBoundingClientRect();
+    svg.setAttribute('viewBox', '0 0 ' + f.width + ' ' + f.height);
     svg.innerHTML = '';
-    paths.forEach(function (p, i) {
-      var g = document.createElementNS(NS, 'g');
-      g.setAttribute('data-i', i);
-      var path = document.createElementNS(NS, 'path');
-      var midX = p.sx + 22;
-      var d1 = 'M' + p.sx + ' ' + p.sy + ' H' + midX + ' L' + (p.nx - 22) + ' ' + p.ny + ' H' + (p.nx - 8);
-      path.setAttribute('d', d1);
-      var dot = document.createElementNS(NS, 'circle');
-      dot.setAttribute('cx', p.sx);
-      dot.setAttribute('cy', p.sy);
-      dot.setAttribute('r', 3);
-      g.appendChild(path);
-      g.appendChild(dot);
-      svg.appendChild(g);
-      p.g = g;
-    });
 
-    // Pointing at a note lights its value on the sheet, and the other way round.
-    paths.forEach(function (p) {
-      var on = function () { p.target.classList.add('is-lit'); p.g.classList.add('is-lit'); };
-      var off = function () { p.target.classList.remove('is-lit'); p.g.classList.remove('is-lit'); };
-      p.li.onmouseenter = on; p.li.onmouseleave = off;
-      var row = p.target.closest('tr') || p.target;
-      row.onmouseenter = on; row.onmouseleave = off;
-    });
+    var g = rel(glass, f);
+    var stations = list.querySelectorAll('.stn');
+    if (!stations.length) return;
+    var first = rel(stations[0], f);
+    var last = rel(stations[stations.length - 1], f);
+    var railX = first.x;
+    var ink = css('--ink');
+    var off = css('--off');
+    var nodes = fig.querySelectorAll('.feeds .node');
+
+    if (wide.matches) {
+      // inputs enter the left edge, meet at the right edge, level with the first dish
+      var exitY = first.y;
+      Array.prototype.forEach.call(nodes, function (n) {
+        var p = rel(n, f);
+        var c = getComputedStyle(n).backgroundColor;
+        var gw = g.right - g.left;
+        path('M' + p.x + ' ' + p.y + ' H' + g.left +
+             ' C' + (g.left + gw * 0.55) + ' ' + p.y + ' ' + (g.right - gw * 0.45) + ' ' + exitY + ' ' + g.right + ' ' + exitY,
+             c, 3);
+      });
+      path('M' + g.right + ' ' + exitY + ' H' + railX + ' V' + last.y, ink, 3.5);
+      // unplugged inputs: a short lead that stops, with a plug end
+      fig.querySelectorAll('.off-list .ring').forEach(function (r) {
+        var p = rel(r, f);
+        var x0 = p.right + 2, x1 = p.right + 30;
+        path('M' + x0 + ' ' + p.y + ' H' + x1 + ' M' + x1 + ' ' + (p.y - 6) + ' V' + (p.y + 6), off, 2);
+      });
+    } else {
+      // inputs drop into the top of the box, run behind the nameplate,
+      // and meet at the bottom edge above the list's rail
+      var bend = Math.min(44, (g.bottom - g.top) * 0.3);
+      Array.prototype.forEach.call(nodes, function (n) {
+        var p = rel(n, f);
+        var c = getComputedStyle(n).backgroundColor;
+        var yb = g.bottom - bend;
+        path('M' + p.x + ' ' + p.y + ' V' + yb +
+             ' C' + p.x + ' ' + (yb + bend * 0.6) + ' ' + railX + ' ' + (g.bottom - bend * 0.4) + ' ' + railX + ' ' + g.bottom,
+             c, 3);
+      });
+      path('M' + railX + ' ' + g.bottom + ' V' + last.y, ink, 3.5);
+    }
   }
 
-  if (drawing) {
+  if (fig) {
     var raf = 0;
-    var schedule = function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(layoutNotes); };
+    var schedule = function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(drawWires); };
     window.addEventListener('resize', schedule);
     wide.addEventListener('change', schedule);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
