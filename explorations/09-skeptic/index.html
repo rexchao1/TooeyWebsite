@@ -1,364 +1,155 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tooey · Straight answers for independent restaurant owners</title>
-  <meta name="description" content="Tooey is a small team of university students building software for independent restaurants. Today it emails a prep count for every dish each morning, worked out from your own sales. Here are straight answers to what you'd ask first.">
-  <meta name="theme-color" content="#dfe8cf">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/bitter.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/gelasio-italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/site.css">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Tooey">
-  <meta property="og:title" content="Tooey · Straight answers for independent restaurant owners">
-  <meta property="og:description" content="A prep count for every dish, in your email each morning, worked out from your own sales. And straight answers to what you'd ask first.">
-  <meta property="og:image" content="assets/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <script>document.documentElement.classList.add('js')</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: how many of each dish to make today</title>
+<meta name="description" content="Tooey reads yesterday’s sales and emails you how many of each dish to make today. For independent restaurants. Free while we pilot it.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script>
+  (function () {
+    var d = document.documentElement;
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    d.classList.add(still ? 'still' : 'moving');
+    if (!still) setTimeout(function () {
+      if (!window.__pitch) { d.classList.remove('moving'); d.classList.add('still'); }
+    }, 4000);
+  })();
+</script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-  <header class="top" id="top">
-    <div class="wrap top-in">
-      <a class="brand" href="index.html" aria-label="Tooey, home">
-        <img src="assets/logo.png" alt="tooey" width="343" height="148">
-      </a>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="bars" aria-hidden="true"></span>Menu
-      </button>
-      <nav class="nav" id="site-nav" aria-label="Main">
-        <a href="#questions">Your questions</a>
-        <a href="privacy.html">Privacy</a>
-        <a class="btn btn-sm" href="#talk">Talk to us</a>
-        <p class="nav-mail">Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
-      </nav>
-    </div>
-  </header>
+<header class="bar">
+  <a class="brand" href="./" aria-label="Tooey, home"><span class="logo" aria-hidden="true"></span></a>
+  <nav aria-label="Main">
+    <a class="bar-link" href="#try">Try it free</a>
+  </nav>
+</header>
 
-  <main id="main" class="table">
+<main id="main">
+  <section class="hero" aria-labelledby="pitch">
+    <div class="hero-copy">
+      <h1 class="pitch" id="pitch"><span class="t">Tooey</span><span class="p" aria-hidden="true">, </span><span class="h" aria-hidden="true">the</span> <span class="h" aria-hidden="true">revolutionary</span> <span class="h" aria-hidden="true">AI-powered</span> <span class="h" aria-hidden="true">growth</span> <span class="h" aria-hidden="true">engine</span><span class="p" aria-hidden="true">,</span> <span class="t">reads</span> <span class="t">yesterday’s</span> <span class="t">sales</span> <span class="h" aria-hidden="true">with</span> <span class="h" aria-hidden="true">next-generation</span> <span class="h" aria-hidden="true">intelligence</span> <span class="t">and</span> <span class="t">emails</span> <span class="t">you</span> <span class="h" aria-hidden="true">game-changing</span><span class="p" aria-hidden="true">,</span> <span class="h" aria-hidden="true">data-driven</span> <span class="h" aria-hidden="true">insights</span> <span class="h" aria-hidden="true">into</span> <span class="h x" aria-hidden="true">exactly</span> <span class="t">how</span> <span class="t">many</span> <span class="t">of</span> <span class="t">each</span> <span class="t">dish</span> <span class="t">to</span> <span class="t">make</span> <span class="t">today</span><span class="p" aria-hidden="true">, </span><span class="h" aria-hidden="true">seamlessly</span><span class="t">.</span></h1>
 
-    <section class="ex hero" aria-labelledby="hero-title">
-      <div class="wrap">
-        <div class="you">
-          <p class="said">“Okay. What is Tooey, exactly?”</p>
+      <div class="after">
+        <p class="sub">For independent restaurants. Yes, there’s AI in it. No, you won’t have to talk to it.</p>
+        <div class="actions">
+          <a class="btn" href="#try">Try it free</a>
+          <button class="undo" type="button" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M9 5 4 10l5 5M4.6 10H14a6 6 0 0 1 0 12h-3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Undo
+          </button>
         </div>
-        <div class="us">
-          <h1 id="hero-title">Tooey works out the numbers an independent restaurant runs on, starting with how much of each dish to prep.</h1>
-          <p class="lead">Right now that means <strong>one email each morning before prep</strong>, with a count for every dish worked out from your own sales.</p>
-          <p class="lead">If you've been sold software before, you'll have more questions. They're answered below in about the order they come up, the unflattering ones included.</p>
-          <div class="actions">
-            <a class="btn" href="#talk">Talk to us</a>
-            <a class="text-link down" href="#questions">Read the answers</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ex lists" id="questions" aria-label="Your questions, and a sample prep list">
-      <div class="wrap">
-        <div class="you">
-          <h2 class="said">“Before I hand anyone my sales, I’ve got questions.”</h2>
-          <ol class="asks">
-            <li><a href="#who"><span class="n">01</span><span class="q">Who are you?</span></a></li>
-            <li><a href="#around"><span class="n">02</span><span class="q">Will you still be around in a year?</span></a></li>
-            <li><a href="#get"><span class="n">03</span><span class="q">What exactly do I get?</span></a></li>
-            <li><a href="#ai"><span class="n">04</span><span class="q">Is this another AI thing?</span></a></li>
-            <li><a href="#right"><span class="n">05</span><span class="q">Will the count be right?</span></a></li>
-            <li><a href="#time"><span class="n">06</span><span class="q">How much of my time does it take?</span></a></li>
-            <li><a href="#data"><span class="n">07</span><span class="q">What do you do with my sales?</span></a></li>
-            <li><a href="#catch"><span class="n">08</span><span class="q">It’s free. What’s the catch?</span></a></li>
-            <li><a href="#stop"><span class="n">09</span><span class="q">How do I stop?</span></a></li>
-            <li><a href="#next"><span class="n">10</span><span class="q">Is a prep list all it’ll ever be?</span></a></li>
-          </ol>
-        </div>
-        <div class="us">
-          <h2 class="us-h" id="sample">Fair. First, here’s what would land in your inbox each morning.</h2>
-          <p class="aside">Made-up numbers, for a sample restaurant.</p>
-          <div class="list">
-            <div class="list-head">
-              <p class="list-day">Thursday</p>
-              <p class="list-where">Prep list</p>
-            </div>
-            <table>
-              <caption class="vh">Example prep list with made-up numbers. Columns: item, predicted sales, how many to prep, and change from last Thursday.</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Item</th>
-                  <th scope="col" class="num">Predicted</th>
-                  <th scope="col" class="num">Prep<span class="star" aria-hidden="true">*</span></th>
-                  <th scope="col" class="num">vs. last Thu</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="cat"><th scope="colgroup" colspan="4">Mains</th></tr>
-                <tr><th scope="row">Cheeseburger</th><td class="num">42</td><td class="num prep">46</td><td class="num delta">+4</td></tr>
-                <tr><th scope="row">Chicken sandwich</th><td class="num">31</td><td class="num prep">34</td><td class="num delta">−2</td></tr>
-                <tr><th scope="row">Fish tacos</th><td class="num">18</td><td class="num prep">20</td><td class="num delta">+3</td></tr>
-                <tr><th scope="row">Short rib</th><td class="blank" colspan="3">Blank: new on the menu</td></tr>
-                <tr class="cat"><th scope="colgroup" colspan="4">Salads and sides</th></tr>
-                <tr><th scope="row">Caesar salad</th><td class="num">24</td><td class="num prep">27</td><td class="num delta">+1</td></tr>
-                <tr><th scope="row">Soup of the day</th><td class="num">15</td><td class="num prep">17</td><td class="num delta">same</td></tr>
-                <tr><th scope="row">Beet salad</th><td class="blank" colspan="3">Blank: under one a day</td></tr>
-              </tbody>
-            </table>
-            <p class="list-note"><span class="star">*</span> Prep is a little over Predicted, so a rush doesn't leave the line short.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="answers-title">
-      <h2 class="vh" id="answers-title">Answers</h2>
-
-      <article class="ex qa" id="who">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">01</span>“Who are you?”</h3></div>
-          <div class="us">
-            <p class="say">A small team of university students.</p>
-            <div class="body">
-              <p>The company is Tooey LLC. We're early: Tooey is in a pilot with independent restaurants, and the people who answer your email are the same people building your forecast.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="around">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">02</span>“Students. Will you still be around in a year?”</h3></div>
-          <div class="us">
-            <p class="say">We can't promise that.</p>
-            <div class="body">
-              <p>So here's what you'd lose if we weren't. Tooey works from a copy of your sales, so your POS and the way you prep stay as they are. If we disappeared, you'd lose a morning email, not your records.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="get">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">03</span>“What exactly do I get?”</h3></div>
-          <div class="us">
-            <p class="say">One list. That's all of it, for now.</p>
-            <div class="body">
-              <p>Every dish gets two numbers: how many you'll likely sell, and how many to make. Beside them is the change from the same day last week, and the dishes are grouped by category. Print it and keep it on the line.</p>
-              <p>A dish that's been on the menu less than about five weeks, or sells under about one a day, stays blank with the reason instead of getting a guess. A blank means we declined. It doesn't mean make zero.</p>
-              <p class="more">The <a href="#sample">sample near the top</a> shows both.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="ai">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">04</span>“Is this another AI thing?”</h3></div>
-          <div class="us">
-            <p class="say">There's nothing to chat with.</p>
-            <div class="body">
-              <p>There's a forecasting model behind the list. Each night it takes the day's sales and works out the coming day, dish by dish, from four things:</p>
-              <ul class="used" aria-label="What the forecast uses">
-                <li>Your past sales</li>
-                <li>Day of the week</li>
-                <li>Time of year</li>
-                <li>Holidays</li>
-              </ul>
-              <dl class="minis">
-                <div><dt>“Does it know about the weather?”</dt><dd>Not yet.</dd></div>
-                <div><dt>“Local events?”</dt><dd>Not yet.</dd></div>
-                <div><dt>“Reservations?”</dt><dd>Not yet.</dd></div>
-              </dl>
-              <p>You won't type questions into anything or learn a new screen. You read a list, the way you'd read one your chef wrote.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="right">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">05</span>“Will the count be right?”</h3></div>
-          <div class="us">
-            <p class="say">Not every day, and we haven't measured how often.</p>
-            <div class="body">
-              <p>Nobody has checked it at a live restaurant yet, so there's no accuracy figure, savings figure, or percentage anywhere on this site. Treat the count as a starting point, not an order. You know about the bus tour booked for Friday and the road closed out front; the list doesn't.</p>
-              <p>During the pilot you hold the list up against what you really sold, and you decide whether to rely on it.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="time">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">06</span>“How much of my time does it take?”</h3></div>
-          <div class="us">
-            <p class="say">About a week of setup. Nobody types in sales.</p>
-            <div class="body">
-              <ol class="steps">
-                <li><span class="big">About five weeks</span><span class="detail">of past sales to start, already in your POS if you've used it that long.</span></li>
-                <li><span class="big">About a week</span><span class="detail">of setup. You tell us what matters in your kitchen, choose how the list is laid out, and check it before you rely on it.</span></li>
-                <li><span class="big">Then each morning</span><span class="detail">an email before prep.</span></li>
-              </ol>
-              <p>We set up a nightly download from your POS. It works with most systems: Square, Toast, and Clover sales exports are recognized as they come, and other exports can be mapped. Tell us what you use and we'll tell you plainly if it's a problem.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="data">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">07</span>“What do you do with my sales?”</h3></div>
-          <div class="us">
-            <p class="say">Forecast your restaurant. Nothing else.</p>
-            <div class="body">
-              <p>We don't sell your sales, share them with other restaurants, or publish them. The only people who see them are the Tooey team members building your forecast.</p>
-              <p class="more">The rest is on the <a href="privacy.html">privacy page</a>, in the same plain terms.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="catch">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">08</span>“It’s free. What’s the catch?”</h3></div>
-          <div class="us">
-            <p class="say">It's early. That's the catch.</p>
-            <div class="body">
-              <p>Tooey is free for now because we're in a pilot, which means you'd be one of the first kitchens using it. We haven't set a price or a trial length, so you won't find either here, and we won't make one up when we talk.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="stop">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">09</span>“How do I stop?”</h3></div>
-          <div class="us">
-            <p class="say">Send one email.</p>
-            <div class="body">
-              <p>Write to us and we stop the nightly download. Ask, and we also delete the sales we've stored and the messages you've sent us. Here it is, already written:</p>
-              <div class="draft">
-                <dl>
-                  <dt>To</dt><dd>tooeyteam@gmail.com</dd>
-                  <dt>Subject</dt><dd>Please stop the nightly download</dd>
-                </dl>
-                <p class="letter">Hi, please stop the nightly download for <span class="fill">your restaurant</span> and delete the sales and messages you've stored for us.</p>
-                <div class="send-row">
-                  <a class="btn btn-sm" href="mailto:tooeyteam@gmail.com?subject=Please%20stop%20the%20nightly%20download&amp;body=Hi%2C%20please%20stop%20the%20nightly%20download%20for%20%5Byour%20restaurant%5D%20and%20delete%20the%20sales%20and%20messages%20you've%20stored%20for%20us.">Open it in your email</a>
-                  <small>Same address as everything else. No form, no call.</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="ex qa" id="next">
-        <div class="wrap">
-          <div class="you"><h3 class="said"><span class="n">10</span>“Is a prep list all it’ll ever be?”</h3></div>
-          <div class="us">
-            <p class="say">It's where we're starting.</p>
-            <div class="body">
-              <p>We're building toward one place where an owner can see what the restaurant's own numbers mean and what to do about them. Prep came first because it happens every day and your POS already holds what it needs.</p>
-              <dl class="minis">
-                <div class="today"><dt>“So what does it do today?”</dt><dd>Prep counts</dd></div>
-                <div><dt>“Can it show which dishes actually make money?”</dt><dd>Not yet.</dd></div>
-                <div><dt>“Which costs aren’t earning their keep?”</dt><dd>Not yet.</dd></div>
-                <div><dt>“Can it help fill the slow nights and bring regulars back?”</dt><dd>Not yet.</dd></div>
-                <div><dt>“Can it plan staff around a busy Friday?”</dt><dd>Not yet.</dd></div>
-              </dl>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <div class="ex answers-end">
-        <div class="wrap">
-          <div class="you" aria-hidden="true"></div>
-          <div class="us">
-            <p>Need to show your chef or a partner? These answers print cleanly on paper.</p>
-            <button class="btn btn-sm btn-ghost" type="button" data-print hidden>Print the answers</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ex talk" id="talk" aria-labelledby="talk-title">
-      <div class="wrap">
-        <div class="us">
-          <h2 class="us-h" id="talk-title">Ask us what this page didn't answer.</h2>
-          <p class="lead">Or tell us about your restaurant. Tooey is free for now, while we're in a pilot.</p>
-          <p class="after">Sending this signs you up for nothing. We write back, and if Tooey sounds like a fit, we talk through your kitchen and your POS before anything is set up.</p>
-          <p class="direct">Rather use your own email? Write to <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
-        </div>
-
-        <div class="you">
-          <p class="said form-said">“Here’s what I’d like to know.”</p>
-          <form class="form" id="contact" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New Tooey inquiry">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <div class="honey" aria-hidden="true">
-              <label for="f-honey">Leave this empty</label>
-              <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="two">
-              <div class="field">
-                <label for="f-name">Your name</label>
-                <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
-                <span class="err" id="e-name"></span>
-              </div>
-              <div class="field">
-                <label for="f-restaurant">Restaurant</label>
-                <input id="f-restaurant" name="restaurant" type="text" autocomplete="organization" required aria-describedby="e-restaurant">
-                <span class="err" id="e-restaurant"></span>
-              </div>
-            </div>
-            <div class="two">
-              <div class="field">
-                <label for="f-email">Email</label>
-                <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
-                <span class="err" id="e-email"></span>
-              </div>
-              <div class="field">
-                <label for="f-phone">Phone <span class="opt">optional</span></label>
-                <input id="f-phone" name="phone" type="tel" autocomplete="tel">
-              </div>
-            </div>
-            <div class="field">
-              <label for="f-pos">Which POS do you use? <span class="opt">optional</span></label>
-              <input id="f-pos" name="pos" type="text" placeholder="Square, Toast, Clover, other">
-            </div>
-            <div class="field">
-              <label for="f-message">Your question, or anything about your kitchen</label>
-              <textarea id="f-message" name="message" rows="5" required aria-describedby="e-message"></textarea>
-              <span class="err" id="e-message"></span>
-            </div>
-
-            <div class="status" id="form-status" role="status" aria-live="polite"></div>
-
-            <div class="form-foot">
-              <button class="btn" type="submit">Send</button>
-              <small>Used only to reply. <a href="privacy.html">Privacy</a></small>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="foot">
-    <div class="wrap foot-in">
-      <p>© 2026 Tooey LLC</p>
-      <div class="foot-links">
-        <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="#top">Back to top</a>
       </div>
     </div>
-  </footer>
 
-  <script src="assets/site.js" defer></script>
+    <div class="heap-zone">
+      <p class="heap-static" aria-hidden="true">
+        <span style="--r:-4deg">next-generation</span>
+        <span style="--r:3deg">revolutionary</span>
+        <span style="--r:-2deg">game-changing</span>
+        <span style="--r:6deg">intelligence</span>
+        <span style="--r:-7deg">AI-powered</span>
+        <span style="--r:2deg">data-driven</span>
+        <span style="--r:-3deg">seamlessly</span>
+        <span style="--r:9deg">insights</span>
+        <span style="--r:-12deg">exactly</span>
+        <span style="--r:5deg">engine</span>
+        <span style="--r:-6deg">growth</span>
+        <span style="--r:14deg">with</span>
+        <span style="--r:-9deg">into</span>
+        <span style="--r:4deg">the</span>
+      </p>
+    </div>
+    <div class="stage" aria-hidden="true"></div>
+  </section>
+
+  <section class="kitchen" aria-labelledby="list-h">
+    <div class="list">
+      <div class="list-head">
+        <h2 id="list-h">Prep for Tuesday</h2>
+        <p class="eg">Example email</p>
+      </div>
+      <table>
+        <thead>
+          <tr><th scope="col"><span class="sr">Dish</span></th><th scope="col">Likely to sell</th><th scope="col">Make</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Margherita</th><td>31</td><td class="make">34</td></tr>
+          <tr><th scope="row">Cacio e pepe</th><td>22</td><td class="make">24</td></tr>
+          <tr><th scope="row">Short rib</th><td>14</td><td class="make">15</td></tr>
+          <tr><th scope="row">Caesar</th><td>19</td><td class="make">21</td></tr>
+          <tr class="blank"><th scope="row">Lamb shank <span class="why">New on the menu. We’d rather leave a blank than guess.</span></th><td><span class="gap" role="img" aria-label="blank"></span></td><td class="make"><span class="gap" role="img" aria-label="blank"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="terms">
+      <h2 class="sr">The terms</h2>
+      <p>Free while we pilot it. No price yet, so we won’t invent one.</p>
+      <p>We connect to your POS; most systems work. Setup takes about a week.</p>
+      <p>You check our counts against what actually sold. Then you decide.</p>
+      <p>Your sales stay yours. Not sold, not shared, not published.</p>
+      <p>We’re a few university students. We answer our email.</p>
+    </div>
+  </section>
+
+  <section class="try" id="try" aria-labelledby="try-h">
+    <h2 id="try-h">Try it at your restaurant.</h2>
+    <form class="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="honey" aria-hidden="true">
+        <label for="f-honey">Leave this empty</label>
+        <input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-rest">Restaurant</label>
+        <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+      </div>
+      <div class="field">
+        <label for="f-pos">Which POS <span class="opt">(optional)</span></label>
+        <input id="f-pos" name="pos" type="text">
+      </div>
+      <div class="field msg">
+        <label for="f-msg">Anything else <span class="opt">(optional)</span></label>
+        <textarea id="f-msg" name="message" rows="1"></textarea>
+      </div>
+
+      <div class="send wide">
+        <button class="btn" type="submit">Send</button>
+        <p class="status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>Tooey LLC</span>
+  <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
+  <a href="privacy.html">Privacy</a>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/matter.min.js"></script>
+<script src="pitch.js"></script>
+<script src="form.js"></script>
 </body>
 </html>

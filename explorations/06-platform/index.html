@@ -1,371 +1,117 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tooey · For independent restaurants, starting with each morning's prep count</title>
-  <meta name="description" content="Tooey is taking on the numbers side of running an independent restaurant, one job at a time. The first job works today: a count of every dish to prep, in your email each morning.">
-  <meta name="theme-color" content="#e5e5e0">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Tooey">
-  <meta property="og:title" content="Tooey · For independent restaurants, starting with each morning's prep count">
-  <meta property="og:description" content="Solid blue works today. Light type isn't built yet. The first piece: a count of every dish to prep, in your email each morning.">
-  <meta property="og:image" content="img/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add('js')</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey</title>
+<meta name="description" content="Tooey is building the system independent restaurants run on. Today it does one thing: a count of every dish to prep, emailed each morning.">
+<meta name="theme-color" content="#173A2F">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/encode-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  // Motion only when the visitor has not asked for less of it.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+</script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#pilot">Skip to the pilot form</a>
 
-  <header class="site-header">
-    <div class="wrap header-row">
-      <a class="brand" href="index.html" aria-label="Tooey, home"><img src="img/logo.png" alt="tooey" width="343" height="148"></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="menu-icon" aria-hidden="true"></span><span>Menu</span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Main">
-        <ul class="nav-list">
-          <li><a href="#today">Day one</a></li>
-          <li><a href="#why">Why prep</a></li>
-          <li><a href="#plan">The plan</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a class="btn btn-sm" href="#talk">Talk to us <svg class="arr" viewBox="0 0 16 12" aria-hidden="true"><path d="M0 6h14M9 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></li>
+<header class="top">
+  <a class="wordmark" href="./" aria-label="Tooey, home">tooey</a>
+  <nav aria-label="Main">
+    <a href="#pilot">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+
+<main>
+  <section class="dive" aria-labelledby="h-hero">
+    <div class="hero">
+      <div class="field-slot">
+        <picture>
+          <source media="(max-width: 640px)" srcset="img/field-still-phone.webp" width="1080" height="1200">
+          <img class="still" src="img/field-still.webp" width="2400" height="1080" loading="lazy" decoding="async"
+             alt="An example restaurant's year of sales as a woven grid: one row per dish, one column per day, Mondays closed. The last column, tomorrow, is empty except for one cell, short rib, ringed.">
+        </picture>
+      </div>
+      <p class="slot-label" aria-hidden="true">An example restaurant's year, dish by dish.</p>
+      <div class="hero-copy">
+        <h1 id="h-hero">Independent restaurants, run on their own numbers.</h1>
+        <div class="lead">
+          <p>We're building Tooey for that. Today it does one thing: a count of every dish to prep, emailed each morning.</p>
+          <a class="button" href="#pilot">Join the pilot</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <canvas class="field" aria-hidden="true"></canvas>
+      <ol class="captions">
+        <li class="cap" data-cap="1">An example restaurant's year, dish by dish.</li>
+        <li class="cap" data-cap="2">Each night, Tooey reads the day's sales.</li>
+        <li class="cap" data-cap="3">Then it weighs <span data-w="1">the weekday,</span> <span data-w="2">the time of year,</span> <span data-w="3">the holidays.</span></li>
+      </ol>
+
+      <div class="landing" aria-labelledby="h-landing">
+        <div class="l-main">
+          <h2 id="h-landing" class="l-dish">Short rib, Wednesday</h2>
+          <div class="l-num">
+            <span class="l-label">Prep</span>
+            <span class="numeral">34</span>
+          </div>
+          <p class="l-facts"><span>Predicted <b>31</b></span><span><b>+4</b> on last Wednesday</span></p>
+        </div>
+        <ul class="l-list" aria-label="The rest of Wednesday's list, examples">
+          <li><span class="n">Roast chicken</span><span class="v">41</span></li>
+          <li><span class="n">Mushroom risotto</span><span class="v">18</span></li>
+          <li class="blank"><span class="n">Lamb special</span><span class="v" aria-label="blank"></span><span class="why">New, 3 weeks on the menu</span></li>
+          <li class="blank"><span class="n">Affogato</span><span class="v" aria-label="blank"></span><span class="why">Under one a day</span></li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main id="main">
-
-    <!-- Opening -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap">
-        <h1 id="hero-title">Tooey is taking on the numbers side of running an independent restaurant, one job at a time.</h1>
-
-        <div class="hero-sub">
-          <p class="lead">The first job works today. Every morning before prep, you get a count of every dish to make, worked out overnight from your own sales.</p>
-          <div class="hero-actions">
-            <a class="btn" href="#talk">Talk to us <svg class="arr" viewBox="0 0 16 12" aria-hidden="true"><path d="M0 6h14M9 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
-            <a class="text-link" href="#today">What you get on day one</a>
-          </div>
-        </div>
-
-        <div class="scope" role="group" aria-label="What Tooey covers: one piece works today, the rest isn't built">
-          <div class="scope-built">
-            <p class="tag"><span class="sw" style="background:#fff" aria-hidden="true"></span>Works today</p>
-            <p class="scope-name">The prep count</p>
-            <p class="scope-figure">
-              <span class="big">42</span>
-              <span class="cap">cheeseburgers to make on Thursday, at a sample restaurant. An example value.</span>
-            </p>
-          </div>
-          <div class="scope-plan">
-            <p class="tag">Not built yet. No dates, no set order.</p>
-            <ul class="scope-list">
-              <li>Ordering</li>
-              <li>Staffing</li>
-              <li>Sharper counts</li>
-              <li>What makes money</li>
-              <li>Bringing people back</li>
-              <li>The whole picture</li>
-              <li>Doing it for you</li>
-            </ul>
-            <p class="note">Where we’re going, set in light type because none of it exists. <a href="#plan">The plan</a> says what each would answer.</p>
-          </div>
-        </div>
-
-        <div class="legend">
-          <span class="legend-item"><span class="sw sw-built" aria-hidden="true"></span>Solid blue and heavy type: works today</span>
-          <span class="legend-item"><span class="sw sw-plan" aria-hidden="true">Aa</span>Light type: not built yet</span>
-          <button class="switch" type="button" data-built-switch aria-pressed="false" hidden>
-            <span class="track" aria-hidden="true"></span>
-            <span class="label-text">Show only what works today</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Day one -->
-    <section class="section" id="today" aria-labelledby="today-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="today-title">What you get on day one</h2>
-          <p>One list each morning, with every dish on your menu. This is all of it, and all it takes to start.</p>
-        </div>
-
-        <div class="dayone-grid">
-          <div>
-            <table class="prep-table">
-              <caption>
-                <span class="cap-row"><span class="cap-title">Prep count, Thursday</span><span class="cap-meta">Sample restaurant. Example values.</span></span>
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">Item</th>
-                  <th scope="col">Predicted<small>expected to sell</small></th>
-                  <th scope="col">Prep<small>how many to make</small></th>
-                  <th scope="col">vs. last Thu<small>same day last week</small></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="cat"><th scope="rowgroup" colspan="4">Grill</th></tr>
-                <tr><td>Cheeseburger</td><td class="pred">38</td><td class="prep">42</td><td class="delta">+6%</td></tr>
-                <tr><td>Chicken sandwich</td><td class="pred">27</td><td class="prep">30</td><td class="delta">−4%</td></tr>
-                <tr><td>Short rib plate</td><td class="pred">14</td><td class="prep">16</td><td class="delta">+17%</td></tr>
-                <tr class="cat"><th scope="rowgroup" colspan="4">Salads</th></tr>
-                <tr><td>Caesar salad</td><td class="pred">22</td><td class="prep">25</td><td class="delta">+10%</td></tr>
-                <tr><td>Beet and farro</td><td class="pred">9</td><td class="prep">11</td><td class="delta">0%</td></tr>
-                <tr class="cat"><th scope="rowgroup" colspan="4">Pasta</th></tr>
-                <tr><td>House rigatoni</td><td class="pred">19</td><td class="prep">21</td><td class="delta">−5%</td></tr>
-                <tr><td>Mushroom pappardelle</td><td class="blank" colspan="3"><b>Blank.</b> On the menu two weeks.</td></tr>
-                <tr class="cat"><th scope="rowgroup" colspan="4">Dessert</th></tr>
-                <tr><td>Olive oil cake</td><td class="blank" colspan="3"><b>Blank.</b> Sells under one a day.</td></tr>
-              </tbody>
-            </table>
-            <div class="table-notes">
-              <p>Prep sits a little over Predicted, so a rush doesn’t leave the line short.</p>
-              <p>A blank means the dish has been on the menu under about five weeks, or sells under about one a day. We leave it blank and say why rather than guess. A blank is a decline, not a zero.</p>
-            </div>
-          </div>
-
-          <dl class="facts">
-            <div class="fact">
-              <dt>How it arrives</dt>
-              <dd>By email, each morning before prep. Print it and keep it on the line.</dd>
-            </div>
-            <div class="fact">
-              <dt>What it’s made from</dt>
-              <dd>Your own item-level sales, the day of the week, the time of year, and holidays. Every count is redone each night with that day’s sales.</dd>
-            </div>
-            <div class="fact is-plan">
-              <dt>What it doesn’t use yet</dt>
-              <dd>Weather, local events, and reservations. They’re in <a href="#plan">the plan</a>, not in the count.</dd>
-            </div>
-            <div class="fact">
-              <dt>Where the sales come from</dt>
-              <dd>Your POS. We set up a nightly download that works with most systems. Square, Toast, and Clover sales exports are recognized, and other exports can be mapped.</dd>
-            </div>
-            <div class="fact">
-              <dt>What you need to start</dt>
-              <dd>About five weeks of past sales.</dd>
-            </div>
-            <div class="fact">
-              <dt>Setup</dt>
-              <dd>About a week. You tell us what matters in your kitchen, choose how the list is set up for you, and check it before you rely on it.</dd>
-            </div>
-            <div class="fact">
-              <dt>Who decides</dt>
-              <dd>You do. While we’re in the pilot, you hold our counts up against what actually sold, then decide whether to prep from them.</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why prep came first -->
-    <section class="section" id="why" aria-labelledby="why-title" style="padding-bottom:0">
-      <div class="wrap why-text">
-        <div>
-          <h2 class="h2" id="why-title">Why prep came first</h2>
-          <p class="statement">Most of the calls you make about a week lean on one question: how much are we going to sell?</p>
-        </div>
-        <div class="why-body">
-          <p>It decides how much to prep, what to order, how many people to put on, and whether a slow Tuesday needs a push. So the first thing we built is an answer to it: a forecast of tomorrow’s sales, dish by dish. Prep is the first thing standing on it. Ordering, staffing, and marketing would stand on the same footing.</p>
-          <p>There was a plainer reason too. A prep count can be checked against what sold, every single day. We would rather earn your trust on a number you can check by close than ask for it on one you can’t.</p>
-        </div>
-      </div>
-
-      <figure class="footing-fig" aria-labelledby="footing-cap">
-        <figcaption id="footing-cap" class="visually-hidden">Drawing: the forecast is a footing that works today. Prep stands on it and works today. Ordering, staffing, and marketing are only staked out; none is built.</figcaption>
-        <div class="wrap uprights">
-          <div class="upright upright-built"><span class="upright-name">Prep</span><span class="upright-state">Works today</span></div>
-          <div class="upright upright-stake"><span class="upright-name">Ordering</span><span class="upright-state">Not built</span></div>
-          <div class="upright upright-stake"><span class="upright-name">Staffing</span><span class="upright-state">Not built</span></div>
-          <div class="upright upright-stake"><span class="upright-name">Marketing</span><span class="upright-state">Not built</span></div>
-        </div>
-        <div class="slab">
-          <div class="wrap slab-row">
-            <span class="slab-name">Tomorrow’s sales, dish by dish</span>
-            <span class="slab-state">The forecast underneath. Works today.</span>
-          </div>
-        </div>
-        <div class="ground-line" aria-hidden="true"></div>
-      </figure>
-    </section>
-
-    <!-- The plan -->
-    <section class="section section-plan" id="plan" aria-labelledby="plan-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="plan-title">Where Tooey is going</h2>
-          <p>The aim is one place where an independent restaurant can see how it’s doing and decide what to do next, built from records you already keep, starting with your POS. This is the direction as we see it now. It will change as we learn from the kitchens using it.</p>
-        </div>
-
-        <div class="ladder">
-          <p class="ladder-lead">Each piece is meant to grow the same way. It shows you something first, then suggests what to do about it. Only where you’ve said yes does it do the job for you.</p>
-          <ol>
-            <li class="rung-built"><span class="rung-n">1</span><span class="rung-name">Shows you</span></li>
-            <li class="rung-built"><span class="rung-n">2</span><span class="rung-name">Suggests</span><span class="rung-here">The prep count is here. It suggests; you decide.</span></li>
-            <li class="rung-plan"><span class="rung-n">3</span><span class="rung-name">Does it, if you say so</span></li>
-          </ol>
-        </div>
-
-        <table class="schedule">
-          <caption class="visually-hidden">The pieces of Tooey: the one that works today, and the ones that aren’t built yet</caption>
-          <thead>
-            <tr><th scope="col">Piece</th><th scope="col">The question it answers</th><th scope="col">What it would need</th></tr>
-          </thead>
-          <tbody class="is-built">
-            <tr class="group-row"><th scope="rowgroup" colspan="3"><span class="group-label"><span class="group-name"><span class="sw sw-built" aria-hidden="true"></span>Works today</span><span class="group-note">The piece you’d get on day one.</span></span></th></tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">Prep count</span></th>
-              <td class="q"><span class="q-text">“How much of each dish do we make today?”</span></td>
-              <td><span class="cell-label">What it needs</span><span class="needs">Your past sales, from your POS.</span></td>
-            </tr>
-          </tbody>
-          <tbody class="is-plan plan-hide">
-            <tr class="group-row"><th scope="rowgroup" colspan="3"><span class="group-label"><span class="group-name">Not built yet</span><span class="group-note">None of these exist. There are no dates and no set order. The further a piece reaches, the more of your records and your trust it would need.</span></span></th></tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">Ordering</span></th>
-              <td class="q"><span class="q-text">“What do I need to order, and how much?”</span></td>
-              <td><span class="cell-label">What it would need</span><span class="needs">Your recipes, and what’s already on the shelf.</span></td>
-            </tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">Staffing</span></th>
-              <td class="q"><span class="q-text">“How many people do I need on Friday night?”</span></td>
-              <td><span class="cell-label">What it would need</span><span class="needs">Your staff schedule.</span></td>
-            </tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">Sharper counts</span></th>
-              <td class="q"><span class="q-text">“Will the rain, or the game across town, change tomorrow?”</span></td>
-              <td><span class="cell-label">What it would need</span><span class="needs">Weather and local events, plus your reservations if you take them.</span></td>
-            </tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">What makes money</span></th>
-              <td class="q"><span class="q-text">“Which dishes are actually worth it?”</span></td>
-              <td><span class="cell-label">What it would need</span><span class="needs">What you pay for ingredients and labor.</span></td>
-            </tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">Bringing people back</span></th>
-              <td class="q"><span class="q-text">“Are regulars coming back, and what brings new people in?”</span></td>
-              <td><span class="cell-label">What it would need</span><span class="needs">Guest and visit records, where your systems keep them.</span></td>
-            </tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">The whole picture</span></th>
-              <td class="q"><span class="q-text">“How is the business really doing this month?”</span></td>
-              <td><span class="cell-label">What it would need</span><span class="needs">Whatever you’ve already connected, read together.</span></td>
-            </tr>
-            <tr class="row">
-              <th scope="row"><span class="piece">Doing it for you</span></th>
-              <td class="q"><span class="q-text">“Can Tooey just take care of it?”</span></td>
-              <td><span class="cell-label">What it would need</span><span class="needs">Your say-so, job by job.</span></td>
-            </tr>
-          </tbody>
-          <tbody class="built-only-note">
-            <tr><td colspan="3" class="note-cell">Seven pieces that aren’t built are hidden. What’s left is everything that works today.</td></tr>
-          </tbody>
-        </table>
-
-        <div class="plan-foot">
-          <p>This is a direction, not a boundary. If something here matters to your restaurant, or something that matters is missing, tell us.</p>
-          <button class="switch" type="button" data-built-switch aria-pressed="false" hidden>
-            <span class="track" aria-hidden="true"></span>
-            <span class="label-text">Show only what works today</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Joining -->
-    <section class="section section-join on-blue" id="talk" aria-labelledby="talk-title">
-      <div class="wrap join-grid">
-        <div class="join-copy">
-          <h2 class="h2" id="talk-title">Joining now</h2>
-          <p>Tooey LLC is a small team of university students, and we’re running a pilot with independent restaurants. It’s free for now, while the pilot runs. There’s no price yet.</p>
-          <p class="strong-line">Join for the prep count. If a better number each morning isn’t worth a week of setup to you, nothing that isn’t built yet should change your mind.</p>
-          <p>If it is, you’ll be working directly with the people building Tooey, while the rest is still being worked out. Tell us about your restaurant and one of us will write back.</p>
-          <p class="mail-line">Or write to <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
-        </div>
-
-        <div class="form-wrap" id="contact">
-          <form id="contact-form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New Tooey inquiry">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <div class="honey" aria-hidden="true">
-              <label for="f-honey">Leave this empty</label>
-              <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="form-grid">
-              <div class="field">
-                <label for="f-name">Your name</label>
-                <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
-                <span class="field-error" id="e-name"></span>
-              </div>
-              <div class="field">
-                <label for="f-restaurant">Restaurant</label>
-                <input id="f-restaurant" name="restaurant" type="text" autocomplete="organization" required aria-describedby="e-restaurant">
-                <span class="field-error" id="e-restaurant"></span>
-              </div>
-              <div class="field">
-                <label for="f-email">Email</label>
-                <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
-                <span class="field-error" id="e-email"></span>
-              </div>
-              <div class="field">
-                <label for="f-phone">Phone <span class="opt">optional</span></label>
-                <input id="f-phone" name="phone" type="tel" autocomplete="tel">
-              </div>
-              <div class="field field-wide">
-                <label for="f-pos">Which POS do you use? <span class="opt">optional</span></label>
-                <input id="f-pos" name="pos" type="text">
-              </div>
-              <div class="field field-wide">
-                <label for="f-message">How does prep work in your kitchen now? <span class="opt">optional</span></label>
-                <textarea id="f-message" name="message" rows="4"></textarea>
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button class="btn btn-white" type="submit" id="f-submit">Send</button>
-              <p class="form-fine">Goes to tooeyteam@gmail.com. See <a href="privacy.html">privacy</a>.</p>
-            </div>
-            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-          </form>
-
-          <div class="form-done" id="form-done" tabindex="-1">
-            <h3>Thanks. It’s in our inbox.</h3>
-            <p>One of us will write back to the email you gave.</p>
-            <p>If you think of something else, write to <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-row">
-      <div class="footer-brand">
-        <img src="img/logo.png" alt="" width="343" height="148">
-        <span>© 2026 Tooey LLC</span>
-      </div>
-      <ul>
-        <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="#talk">Talk to us</a></li>
-      </ul>
+  <section class="pilot" id="pilot" aria-labelledby="h-pilot">
+    <div class="pilot-copy">
+      <h2 id="h-pilot">Join the pilot</h2>
+      <p>The pilot is free for now. We set up a nightly download from your POS (most systems work), with about five weeks of past sales and a week of setup. You check the counts against what sold, then decide.</p>
+      <p class="team">Tooey is a small team of university students.</p>
     </div>
-  </footer>
 
-  <p class="visually-hidden" id="built-live" role="status" aria-live="polite"></p>
-  <script src="site.js" defer></script>
+    <form class="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <h3 class="form-head">Tell us about your restaurant.</h3>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="row two">
+        <label class="f"><span>Name</span><input name="name" autocomplete="name" required></label>
+        <label class="f"><span>Restaurant</span><input name="restaurant" autocomplete="organization" required></label>
+      </div>
+      <div class="row two">
+        <label class="f"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label class="f"><span>Phone <em>optional</em></span><input name="phone" type="tel" autocomplete="tel"></label>
+      </div>
+      <label class="f"><span>POS <em>optional</em></span><input name="pos"></label>
+      <label class="f"><span>Anything else <em>optional</em></span><textarea name="message" rows="3"></textarea></label>
+
+      <div class="send">
+        <button class="button" type="submit">Send</button>
+        <p class="status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>Tooey LLC</span>
+  <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
+  <a href="privacy.html">Privacy</a>
+</footer>
+
+<script src="dive.js" defer></script>
+<script src="form.js" defer></script>
 </body>
 </html>

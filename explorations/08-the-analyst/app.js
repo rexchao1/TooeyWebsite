@@ -209,7 +209,7 @@
           y = v * v * p.y + 2 * v * u * p.qy + u * u * L.ty();
           k = 1 - .7 * u;
           op = u < .82 ? 1 : 1 - (u - .82) / .18;
-          p.g.setAttribute('fill', mix('534F8C', '2C1A13', u));
+          p.g.setAttribute('fill', mix('46417F', '2C1A13', u));
         } else p.g.removeAttribute('fill');
         p.g.setAttribute('transform', `translate(${x.toFixed(2)} ${y.toFixed(2)}) scale(${Math.max(0, k).toFixed(3)})`);
         p.g.setAttribute('opacity', op.toFixed(3));

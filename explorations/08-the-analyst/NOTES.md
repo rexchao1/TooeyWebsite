@@ -27,15 +27,16 @@ The sequence plays once when the stage comes into view, runs about 5.1 s, and en
 - **Without JS:** all the text and the counts render as HTML; only the wires are missing.
 
 ## Palette
+The corporate cold is the room; Tooey is the only warm thing in it. (The ground was a deli pink until a revision. It moved to lilac because two other explorations had landed on a near-identical pink.)
 
 | Name | Hex | Role |
 |---|---|---|
-| Deli | `#EEC5B6` | The ground: the counter of an independent |
-| Espresso | `#2C1A13` | Type and the owner |
-| Memo lilac | `#534F8C` | The department: cold and institutional (4.6:1 on Deli) |
-| Tungsten | `#F4A12E` | Tooey, the light left on |
-| Rind | `#FAE9E2` | Input surfaces |
-| Cocoa | `#5E3F33` | Secondary text |
+| Memo lilac | `#DCD8EC` | The ground: the department's colour, made into the room |
+| Deep lilac | `#46417F` | The department's chart, lines and label (6.5:1 on the ground) |
+| Espresso | `#2C1A13` | Type and the owner (11.9:1) |
+| Tungsten | `#F4A12E` | Tooey, the one warm light; it glows against the cold and has an espresso ring for contrast |
+| Paper lilac | `#F1EFF8` | Input surfaces |
+| Cocoa | `#5E3F33` | Secondary text (6.8:1) |
 
 ## Type
 Hubot Sans variable (OFL, self-hosted, 93 KB, latin subset), and nothing else.

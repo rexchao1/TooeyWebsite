@@ -8,11 +8,11 @@
 }
 
 :root {
-  --deli: #EEC5B6;      /* ground: the deli counter, the independent */
-  --rind: #FAE9E2;      /* lighter surface: inputs */
+  --ground: #DCD8EC;    /* ground: pale memo lilac, the corporate cold as the room */
+  --rind: #F1EFF8;      /* lighter surface: inputs */
   --espresso: #2C1A13;  /* type, the owner */
   --cocoa: #5E3F33;     /* secondary type */
-  --memo: #534F8C;      /* the department: memo lilac, cold, institutional */
+  --memo: #46417F;      /* the department: deep memo lilac, cold, institutional */
   --tungsten: #F4A12E;  /* Tooey: the light left on */
 
   --gutter: clamp(16px, 4.2vw, 64px);
@@ -26,7 +26,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--deli);
+  background: var(--ground);
   color: var(--espresso);
   font-family: "Hubot Sans", system-ui, sans-serif;
   font-size: 1.0625rem;
