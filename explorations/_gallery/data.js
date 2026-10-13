@@ -89,11 +89,14 @@ window.EXPLORATIONS = [
   },
   {
     id: '07-your-sales', num: '07', name: 'The pattern',
-    href: '07-your-sales/', notes: '07-your-sales/NOTES.md', motion: 'Hands-on',
+    href: '07-your-sales/', notes: '07-your-sales/NOTES.md', words: 133, motion: 'Hands-on',
     line: 'Turn the dial until a year of sales snaps into a weekly rhythm.',
     brief: 'Every restaurant’s sales hold a rhythm the owner never sees. Make the visitor see it.',
     headline: 'Everything your guests have ordered is on record. Tooey reads it every night.',
-    concept: '', look: '', strengths: [], weaknesses: [],
+    concept: 'A pen draws a sample year of one dish as a ribbon as thick as each day\u2019s sales, and winds it into a coil at 10.6 days a turn: noise. Turn the dial (drag, wheel or arrows) and the arms swirl, then lock at 7 into a rosette of the week, with Friday and Saturday solid. Tomorrow grows at the edge in orange: "26 margheritas to prep tomorrow." If nobody touches it, it tunes itself.',
+    look: 'Olive ground, parchment ink, one orange for tomorrow and buttons. Big Shoulders Display (thin), Brygada 1918. Canvas, no libraries.',
+    strengths: ['The cleverest data idea: you discover the weekly rhythm yourself, and that is what Tooey reads.', 'The lock is a genuinely satisfying moment.'],
+    weaknesses: ['"Turn the dial to 7" asks for effort before the visitor knows why (auto-tune covers it).', 'Seasons and holidays show only as texture; olive plus one bright accent is close to a common default.'],
     pages: [{ label: 'Home', href: '07-your-sales/index.html' }, { label: 'Privacy', href: '07-your-sales/privacy.html' }]
   },
   {
