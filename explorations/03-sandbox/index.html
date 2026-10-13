@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey · Each morning, how many of each dish to make</title>
+<meta name="description" content="Tooey works out overnight, from your own sales, how many of each dish your kitchen should make the next day. Read a week of prep lists for a sample restaurant. Free for now, during our pilot.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tooey · Each morning, how many of each dish to make">
+<meta property="og:description" content="Read a week of prep lists for a sample restaurant, worked out from its own sales. Free for now, during our pilot.">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/besley-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/red-hat-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.className = 'js';</script>
+<script type="module" src="site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="./"><img src="logo.png" alt="Tooey" width="343" height="148"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><span class="menu-icon" aria-hidden="true"></span>Menu</button>
+    <nav id="nav" class="nav" aria-label="Main">
+      <ul>
+        <li><a href="#sample">The sample</a></li>
+        <li><a href="#setup">Getting started</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+      <a class="btn btn-sm" href="#contact">Ask about the pilot</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <h1 id="hero-h">Each morning before prep, Tooey tells you how many of each dish to make.</h1>
+    <div class="hero-side">
+      <p class="lead">The counts are worked out overnight from your restaurant’s own sales. That list is the first thing we’re building for independent restaurants, and the quickest way to judge it is to read one. Below is a week of them for a sample restaurant.</p>
+      <div class="hero-act">
+        <a class="btn" href="#contact">Ask about the pilot</a>
+        <p>Free for now, while we run a pilot with independent restaurants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sample" class="sample" aria-labelledby="sample-h">
+  <div class="wrap">
+    <div class="sample-head">
+      <h2 id="sample-h">A week at The Corner Booth</h2>
+      <p>A sample restaurant: casual dine-in, about 80 seats, lunch and dinner. The dishes and numbers are invented, but the list is set out the way Tooey’s is. <span class="js-only">Pick a morning, then pick any dish to see where its count comes from.</span></p>
+    </div>
+
+    <div class="bench" id="bench">
+      <div class="bench-main">
+        <div class="days js-only" role="tablist" aria-label="Morning">
+          <button type="button" role="tab" class="day d-mon" id="tab-0" data-day="0" aria-selected="false" aria-controls="sheet" tabindex="-1"><span class="dot">Mon</span><span class="sr-only">Monday</span></button>
+          <button type="button" role="tab" class="day d-tue" id="tab-1" data-day="1" aria-selected="true" aria-controls="sheet"><span class="dot">Tue</span><span class="sr-only">Tuesday</span></button>
+          <button type="button" role="tab" class="day d-wed" id="tab-2" data-day="2" aria-selected="false" aria-controls="sheet" tabindex="-1"><span class="dot">Wed</span><span class="sr-only">Wednesday</span></button>
+          <button type="button" role="tab" class="day d-thu" id="tab-3" data-day="3" aria-selected="false" aria-controls="sheet" tabindex="-1"><span class="dot">Thu</span><span class="sr-only">Thursday</span></button>
+          <button type="button" role="tab" class="day d-fri" id="tab-4" data-day="4" aria-selected="false" aria-controls="sheet" tabindex="-1"><span class="dot">Fri</span><span class="sr-only">Friday</span></button>
+          <button type="button" role="tab" class="day d-sat" id="tab-5" data-day="5" aria-selected="false" aria-controls="sheet" tabindex="-1"><span class="dot">Sat</span><span class="sr-only">Saturday</span></button>
+          <button type="button" role="tab" class="day d-sun" id="tab-6" data-day="6" aria-selected="false" aria-controls="sheet" tabindex="-1"><span class="dot">Sun</span><span class="sr-only">Sunday,</span><span class="day-note"><span class="dn-long">Mother’s Day</span><span class="dn-short" aria-hidden="true">Holiday</span></span></button>
+        </div>
+
+        <div class="inputs" id="inputs">
+          <p><span class="inputs-h">These counts go by</span> <b>the restaurant’s own past sales</b>, <b data-in="day">Tuesday</b>, <b>early May</b>, and <b data-in="holiday">no holiday</b>. <span class="inputs-not">Not by weather, local events, or reservations.</span></p>
+        </div>
+
+        <article class="sheet" id="sheet" role="tabpanel" aria-labelledby="tab-1">
+<!-- sample:start -->
+<div class="sheet-head">
+  <p class="sheet-from"><span class="sheet-brand">tooey</span><span>Prep list</span></p>
+  <p class="sheet-rest">The Corner Booth</p>
+  <p class="sheet-day">Tuesday</p>
+</div>
+<table class="list">
+  <caption class="sr-only">Prep list for Tuesday at The Corner Booth, a sample restaurant with made-up numbers</caption>
+  <colgroup><col class="c-item"><col class="c-num"><col class="c-num"><col class="c-chg"></colgroup>
+  <thead><tr><th scope="col">Item</th><th scope="col" class="num">Predicted</th><th scope="col" class="num">Prep</th><th scope="col" class="num">vs. last Tue</th></tr></thead>
+  <tbody><tr class="cat"><th colspan="4" scope="rowgroup">Starters</th></tr><tr class="row" data-item="wings"><th scope="row">Wings</th><td class="num">19</td><td class="num prep">21</td><td class="num chg">−10%</td></tr><tr class="row" data-item="pickles"><th scope="row">Fried pickles</th><td class="num">10</td><td class="num prep">11</td><td class="num chg">0%</td></tr><tr class="row" data-item="soup"><th scope="row">Tomato soup</th><td class="num">12</td><td class="num prep">13</td><td class="num chg">0%</td></tr></tbody><tbody><tr class="cat"><th colspan="4" scope="rowgroup">Salads</th></tr><tr class="row" data-item="cobb"><th scope="row">Cobb salad</th><td class="num">15</td><td class="num prep">16</td><td class="num chg">0%</td></tr><tr class="row" data-item="caesar"><th scope="row">Caesar salad</th><td class="num">17</td><td class="num prep">18</td><td class="num chg">+6%</td></tr></tbody><tbody><tr class="cat"><th colspan="4" scope="rowgroup">Burgers and sandwiches</th></tr><tr class="row" data-item="cheeseburger"><th scope="row">Cheeseburger</th><td class="num">37</td><td class="num prep">40</td><td class="num chg">+3%</td></tr><tr class="row" data-item="mushroom"><th scope="row">Mushroom Swiss burger</th><td class="num">16</td><td class="num prep">17</td><td class="num chg">+7%</td></tr><tr class="row" data-item="chicken"><th scope="row">Chicken sandwich</th><td class="num">27</td><td class="num prep">29</td><td class="num chg">+4%</td></tr><tr class="row" data-item="club"><th scope="row">Turkey club</th><td class="num">13</td><td class="num prep">14</td><td class="num chg">0%</td></tr><tr class="row is-blank" data-item="veggie"><th scope="row">Veggie burger</th><td colspan="3" class="why-blank">Sells under one a day</td></tr></tbody><tbody><tr class="cat"><th colspan="4" scope="rowgroup">Plates</th></tr><tr class="row" data-item="fish"><th scope="row">Fish and chips</th><td class="num">6</td><td class="num prep">7</td><td class="num chg">0%</td></tr><tr class="row" data-item="salmon"><th scope="row">Grilled salmon</th><td class="num">11</td><td class="num prep">12</td><td class="num chg">0%</td></tr><tr class="row" data-item="mac"><th scope="row">Mac and cheese</th><td class="num">10</td><td class="num prep">11</td><td class="num chg">+11%</td></tr><tr class="row" data-item="steak"><th scope="row">Steak frites</th><td class="num">8</td><td class="num prep">9</td><td class="num chg">0%</td></tr></tbody><tbody><tr class="cat"><th colspan="4" scope="rowgroup">Desserts</th></tr><tr class="row" data-item="brownie"><th scope="row">Brownie sundae</th><td class="num">8</td><td class="num prep">9</td><td class="num chg">+14%</td></tr><tr class="row is-blank" data-item="shortcake"><th scope="row">Strawberry shortcake</th><td colspan="3" class="why-blank">Too new: under five weeks on the menu</td></tr></tbody>
+</table>
+<!-- sample:end -->
+        </article>
+        <div class="sheet-foot">
+          <p>Sample restaurant. Made-up numbers.</p>
+          <button type="button" class="link-btn js-only" id="print">Print this list</button>
+        </div>
+      </div>
+
+      <aside class="notes" aria-labelledby="notes-tag">
+        <div class="notes-in">
+          <p class="notes-tag" id="notes-tag">Our notes on the sample. The real list is only the sheet.</p>
+          <div class="legend" id="legend">
+            <h3>Reading the list</h3>
+            <dl>
+              <div><dt>Predicted</dt><dd>How many of the dish we expect you to sell today.</dd></div>
+              <div><dt>Prep</dt><dd>How many to make. A little over Predicted, so a rush doesn’t leave the line short.</dd></div>
+              <div><dt>vs. last <span data-in="short">Tue</span></dt><dd>Predicted against what sold on the same day last week, so a big swing stands out before service.</dd></div>
+              <div><dt>A blank</dt><dd>The dish has been on the menu under about five weeks, or sells under one a day. Instead of guessing, the list says why. A blank is not a zero.</dd></div>
+            </dl>
+            <p class="legend-end">If you know something about the day that isn’t in your sales, you know something the list doesn’t. The call stays yours.</p>
+            <div class="try js-only">
+              <p id="try-h">Worth a look</p>
+              <ul aria-labelledby="try-h">
+                <li><button type="button" data-try="fish" data-day="4">Fish and chips on Friday</button></li>
+                <li><button type="button" data-try="cobb" data-day="6">A salad on Mother’s Day</button></li>
+                <li><button type="button" data-try="wings" data-day="0">Wings on Monday</button></li>
+                <li><button type="button" data-try="veggie" data-day="1">The veggie burger’s blank</button></li>
+              </ul>
+            </div>
+          </div>
+          <div class="note" id="notes" hidden></div>
+        </div>
+      </aside>
+    </div>
+    <p class="bridge">Your list would have your own dishes and your own counts. <a href="#setup">See what it takes</a> or <a href="#contact">ask about the pilot</a>.</p>
+    <p class="sr-only" aria-live="polite" id="status"></p>
+  </div>
+</section>
+
+<section id="setup" class="setup" aria-labelledby="setup-h">
+  <div class="wrap">
+    <div class="setup-head">
+      <h2 id="setup-h">Getting a list for your restaurant</h2>
+      <p>You need about five weeks of past sales in your POS to start. From there, setup takes about a week.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3>Write to us</h3>
+        <p>Tell us about your restaurant and which POS you use. <a href="#contact">The form is at the bottom of this page.</a></p>
+      </li>
+      <li>
+        <h3>We set up a nightly download from your POS</h3>
+        <p>It works with most systems. Square, Toast, and Clover sales exports are recognized, and other exports can be mapped.</p>
+      </li>
+      <li>
+        <h3>About a week of setup</h3>
+        <p>You tell us what matters in your kitchen and choose how you want the list set up. Then you check it before you rely on it.</p>
+      </li>
+      <li>
+        <h3>Your list, every morning</h3>
+        <p>It arrives by email before prep, and you can print it for the line. During the pilot you check the counts against what actually sold, then decide.</p>
+      </li>
+    </ol>
+
+  </div>
+</section>
+
+<section id="about" class="about" aria-labelledby="about-h">
+  <div class="wrap about-in">
+    <div class="about-text">
+      <h2 id="about-h">About Tooey</h2>
+      <p>Tooey LLC is a small team of university students. We’re building software for independent and casual dine-in restaurants, especially ones where the owner has neither the time nor the staff to dig through their own numbers. What we want it to do is help you make more money while spending less time managing the place.</p>
+      <p>We started with prep because it’s a call your kitchen makes every morning, and your POS already holds what it takes to make it well. The rest is where we want to take it, and none of it is built yet. Today, Tooey makes the prep list.</p>
+    </div>
+    <div class="road">
+      <div class="road-now">
+        <h3>Today</h3>
+        <ul><li>A prep count for each dish, every morning, from your own sales</li></ul>
+      </div>
+      <div class="road-later">
+        <h3>Where we want to take it</h3>
+        <ul>
+          <li>Which dishes actually make money, and where costs creep in</li>
+          <li>Staff planned around how busy a day is likely to be</li>
+          <li>Forecasts that also weigh weather and local events</li>
+          <li>Bringing customers back, and bringing new ones in</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-in">
+    <div class="contact-text">
+      <h2 id="contact-h">Ask about the pilot</h2>
+      <p>Tell us a little about your restaurant and one of us will write back.</p>
+      <p class="contact-alt">Rather email? <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+      <dl class="facts">
+        <div>
+          <dt>Not measured yet</dt>
+          <dd>We haven’t yet measured how close the counts come at a live restaurant. That’s what the pilot is for, and why you check the list against your sales before you lean on it.</dd>
+        </div>
+        <div>
+          <dt>Your sales stay yours</dt>
+          <dd>They’re used only to forecast for your restaurant: not sold, not shared with other restaurants, not published. <a href="privacy.html">How we handle data</a></dd>
+        </div>
+      </dl>
+    </div>
+    <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="hp" aria-hidden="true"><label for="f-honey">Leave this empty</label><input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off"></div>
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
+        <p class="err" id="e-name"></p>
+      </div>
+      <div class="field">
+        <label for="f-rest">Restaurant</label>
+        <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required aria-describedby="e-rest">
+        <p class="err" id="e-rest"></p>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+        <p class="err" id="e-email"></p>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone <span class="opt">optional</span></label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+      </div>
+      <div class="field field-wide">
+        <label for="f-pos">Which POS do you use? <span class="opt">optional</span></label>
+        <input id="f-pos" name="pos" type="text" autocomplete="off">
+      </div>
+      <div class="field field-wide">
+        <label for="f-msg">Anything we should know <span class="opt">optional</span></label>
+        <textarea id="f-msg" name="message" rows="4"></textarea>
+      </div>
+      <div class="form-end field-wide">
+        <button class="btn" type="submit" id="f-send">Send</button>
+        <p class="form-note">Goes to tooeyteam@gmail.com and is used only to reply. <a href="privacy.html">Privacy</a></p>
+      </div>
+      <div class="form-msg field-wide" id="f-msg-box" role="status" aria-live="polite" tabindex="-1"></div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© 2026 Tooey LLC</p>
+    <ul>
+      <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <p class="foot-note">The Corner Booth is a sample. Its menu and numbers are made up.</p>
+  </div>
+</footer>
+</body>
+</html>
