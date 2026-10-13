@@ -91,7 +91,7 @@ const panels = [
     body: panel('sb-', { tickets: [P, P, P, P, 1, 0.75, 0.5, 0.28, 0.12] }),
   },
   {
-    id: 'sc', cap: "What your sales say you'll sell, plus a little.",
+    id: 'sc', cap: 'Closer, not perfect.', sub: "What your sales say you'll sell, plus a little.",
     alt: "Overhead view: a green line marks Tooey's count on the pan. Every ticket printed and one cup is left at close.",
     body: panel('sc-', { tickets: [P, P, P, P, P, P, P, P, P], inPan: [0], line: 4 }),
   },
@@ -99,7 +99,7 @@ const panels = [
 
 const html = panels.map((p) => `          <div class="still-panel">
             <svg viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${p.id}-alt"><title id="${p.id}-alt">${p.alt}</title>${p.body}</svg>
-            <p class="still-cap">${p.cap.replaceAll("'", '\u2019')}</p>
+            <p class="still-cap">${p.cap.replaceAll("'", '\u2019')}</p>${p.sub ? `\n            <p class="still-sub">${p.sub.replaceAll("'", '\u2019')}</p>` : ''}
           </div>`).join('\n');
 
 const src = readFileSync(file, 'utf8');

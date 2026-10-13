@@ -154,13 +154,19 @@ h1 {
   gap: 14px 24px;
   margin-top: clamp(10px, 1.6vh, 18px);
 }
+.calls { grid-area: call; }
 .call {
-  grid-area: call;
   font: 700 clamp(1.9rem, 3vw, 2.9rem)/1 var(--display);
   margin: 0; min-height: 1em;
   transition: opacity 0.16s ease, transform 0.16s ease;
 }
-.call.is-out { opacity: 0; transform: translateY(4px); }
+.call-sub {
+  margin: 0.35em 0 0; font-size: 1.0625rem; color: var(--ink-2);
+  transition: opacity 0.16s ease 0.08s;
+}
+.call-sub:empty { display: none; }
+.call.is-out, .call-sub.is-out { opacity: 0; }
+.call.is-out { transform: translateY(4px); }
 .controls {
   grid-area: controls;
   display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px;
@@ -174,6 +180,7 @@ h1 {
 .pass.is-live .still { display: none; }
 .still-panel svg { width: 100%; height: auto; }
 .still-cap { font: 700 clamp(1.25rem, 1.6vw, 1.6rem)/1.05 var(--display); margin: 10px 0 0; max-width: 14em; }
+.still-sub { margin: 6px 0 0; font-size: 1rem; line-height: 1.35; color: var(--ink-2); max-width: 20em; }
 
 /* ---------- how ---------- */
 .how {
@@ -267,6 +274,9 @@ h2 {
   .how, .pilot { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }
 }
 @media (max-width: 720px) {
+  .hero { row-gap: 22px; padding-top: 20px; }
+  h1 { margin-bottom: 0.26em; }
+  .lead { margin-bottom: 1.1em; }
   .still { grid-template-columns: minmax(0, 1fr); }
   .still-panel { max-width: 460px; }
   .desk { grid-template-columns: minmax(0, 1fr); grid-template-areas: "call" "controls" "tag"; }

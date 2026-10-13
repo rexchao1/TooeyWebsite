@@ -20,6 +20,7 @@
   const serveBtn = document.getElementById('serve');
   const tooeyBtn = document.getElementById('tooey');
   const callEl = document.getElementById('call');
+  const subEl = document.getElementById('call-sub');
   const promptEl = document.getElementById('prompt');
   if (!ctx) return;
 
@@ -70,13 +71,13 @@
         label: 22,
       };
     }
-    const pan = { x: 60, y: 156, cell: 80, pad: 26, cols: 3, rows: 10 };
+    const pan = { x: 60, y: 136, cell: 80, pad: 26, cols: 3, rows: 10 };
     pan.w = pan.cols * pan.cell + pan.pad * 2; pan.h = pan.rows * pan.cell + pan.pad * 2;
     return {
-      wide: false, W: 600, H: 1040,
+      wide: false, W: 600, H: 1020,
       rail: { x0: 8, x1: 592, y: 26, tw: 54, th: 88 },
       pan,
-      bin: { x: 474, y: 382, r: 104 },
+      bin: { x: 474, y: 362, r: 104 },
       knob: { off: 32 },
       label: 30,
     };
@@ -504,7 +505,15 @@
   }
 
   /* ---------- service ---------- */
-  function randomDemand() { return 14 + Math.floor(Math.random() * 4); } // 14..17 cups, illustrative
+  /* Demand is the same for everyone: it wanders around a centre every run, whoever preps.
+     Tooey's line sits a little above that centre, so usually a few cups are left,
+     sometimes it's nearly exact, and now and then a late ticket prints blank even at the line.
+     Illustrative only: no accuracy has been measured at a live restaurant. */
+  function randomDemand() {
+    const u = 1 - Math.random(), v = Math.random();
+    const z = Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+    return clamp(Math.round(16.4 + z * 1.7), 11, 22);
+  }
 
   function railSlot(k, D) {
     const r = L.rail;
@@ -625,11 +634,11 @@
 
     const missed = D - served;
     let line;
-    if (mode === 'tooey') line = 'What your sales say you’ll sell, plus a little.';
+    if (mode === 'tooey') line = 'Closer, not perfect.';
     else if (missed > 0) line = 'Too little, you can’t.';
     else if (leftover >= 5) line = 'Too much, you can see.';
     else line = 'Close. Now every dish, every day.';
-    setCall(line);
+    setCall(line, mode === 'tooey' ? 'What your sales say you’ll sell, plus a little.' : '');
 
     serving = false;
     pass.classList.remove('is-serving');
@@ -644,10 +653,13 @@
     if (mode === 'demo' && !touched) { promptEl.classList.add('is-nudged'); nudging = true; kick(); }
   }
 
-  function setCall(text) {
-    if (callEl.textContent === text) return;
-    callEl.classList.add('is-out');
-    window.setTimeout(() => { callEl.textContent = text; callEl.classList.remove('is-out'); }, text ? 160 : 0);
+  function setCall(text, sub = '') {
+    if (callEl.textContent === text && subEl.textContent === sub) return;
+    callEl.classList.add('is-out'); subEl.classList.add('is-out');
+    window.setTimeout(() => {
+      callEl.textContent = text; subEl.textContent = sub;
+      callEl.classList.remove('is-out'); subEl.classList.remove('is-out');
+    }, text ? 160 : 0);
   }
 
   /* ---------- input ---------- */
@@ -730,5 +742,5 @@
   io.observe(stage);
 
   // test hook: lets the screenshot script jump to known moments
-  window.__pass = { setLevel, runService: (m, d) => runService(m, d), get state() { return { level, serving, ran, tooeyShown }; }, takeOver };
+  window.__pass = { setLevel, runService: (m, d) => runService(m, d), randomDemand, get state() { return { level, serving, ran, tooeyShown }; }, takeOver };
 })();
