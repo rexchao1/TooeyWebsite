@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey · Work done while your restaurant is closed</title>
+<meta name="description" content="Each night Tooey goes through the day's sales and works out tomorrow's prep for every dish. The list is in your email before prep. A pilot with independent restaurants, free for now.">
+<meta name="theme-color" content="#f3eee4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/besley.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tooey">
+<meta property="og:title" content="Tooey does its work while your restaurant is closed">
+<meta property="og:description" content="Each night it goes through the day's sales and works out tomorrow's prep for every dish. The list is in your email before prep.">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top__in wrap">
+    <a class="brand" href="./" aria-label="Tooey, home"><img src="img/logo.png" alt="tooey" width="343" height="148"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="menu-btn__label">Menu</span>
+      <span class="menu-btn__icon" aria-hidden="true"></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#overnight">How it works</a></li>
+        <li><a href="#asks">What it asks of you</a></li>
+        <li><a href="#next">What's next</a></li>
+        <li class="nav__cta"><a class="btn btn--small" href="#pilot">Join the pilot</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__grid">
+      <h1 id="hero-title" class="hero__title">Tooey does its work while your restaurant is&nbsp;closed.</h1>
+      <div class="hero__side">
+        <p class="hero__lead">After you lock up, it goes through the day's sales and works out how much of each dish to prep the next morning. Nobody types anything in, and there's nothing for you to keep running.</p>
+        <div class="hero__act">
+          <a class="btn" href="#pilot">Join the pilot</a>
+          <a class="link-quiet" href="#overnight">See what happens overnight</a>
+        </div>
+        <p class="hero__note">We're running a pilot with independent restaurants, and it's free for now.</p>
+      </div>
+    </div>
+
+    <figure class="day wrap" aria-labelledby="day-cap">
+      <div class="day__track">
+        <p class="day__who day__who--you" aria-hidden="true">Your hours</p>
+        <p class="day__who day__who--tooey" aria-hidden="true">Tooey's hours</p>
+        <ol class="day__bar">
+          <li class="seg seg--you" style="--w:2"><span>Prep</span><span class="seg__who" aria-hidden="true">Your hours</span></li>
+          <li class="seg seg--you" style="--w:3"><span>Lunch</span></li>
+          <li class="seg seg--you" style="--w:4.2"><span>Dinner</span></li>
+          <li class="seg seg--you seg--close" style="--w:1.5"><span>Close</span></li>
+          <li class="seg seg--night" style="--w:7">
+            <span class="seg__name">Overnight</span><span class="seg__who" aria-hidden="true">Tooey's hours</span>
+            <ol class="marks">
+              <li>Sales in</li>
+              <li>Counts redone</li>
+              <li>List sent</li>
+            </ol>
+          </li>
+          <li class="seg seg--morning" style="--w:2.3"><span>Prep</span></li>
+        </ol>
+      </div>
+      <div class="inbox">
+        <p class="inbox__from"><span class="dot" aria-hidden="true"></span>From Tooey, before prep</p>
+        <p class="inbox__subject">Prep for Tuesday</p>
+        <table class="inbox__list">
+          <caption class="sr-only">Example prep counts</caption>
+          <thead><tr><th scope="col">Dish</th><th scope="col">Predicted</th><th scope="col">Prep</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Cheeseburger</th><td>42</td><td>45</td></tr>
+            <tr><th scope="row">Chicken sandwich</th><td>31</td><td>33</td></tr>
+            <tr><th scope="row">Caesar salad</th><td>24</td><td>26</td></tr>
+            <tr class="is-blank"><th scope="row">Braised short rib</th><td colspan="2">New dish</td></tr>
+          </tbody>
+        </table>
+        <p class="inbox__tag">Example</p>
+      </div>
+      <figcaption id="day-cap" class="day__cap">An example day. The dark stretch, after close and before prep, is when Tooey works.</figcaption>
+    </figure>
+  </section>
+
+  <!-- Overnight, then morning -->
+  <section class="night" id="overnight" aria-labelledby="night-title">
+    <div class="wrap">
+      <div class="tt__head">
+        <h2 id="night-title" class="night__title">What happens between closing and prep</h2>
+        <p class="night__lead">None of it needs you, or anyone on your staff, to be there.</p>
+      </div>
+      <ol class="tt" data-rail>
+        <li class="tt__row">
+          <p class="tt__time"><span class="tt__dot" aria-hidden="true"></span>After close</p>
+          <div class="tt__body">
+            <h3>The day's sales come in from your POS.</h3>
+            <p>A nightly download brings in what sold that day, dish by dish. It works with most POS systems, and we set it up for you when you join.</p>
+          </div>
+          <div class="tt__aside-visual" aria-hidden="true">
+            <div class="slip">
+              <p class="slip__head"><span>Your POS</span><span>Monday</span></p>
+              <ul class="slip__rows">
+                <li><span>Cheeseburger</span><span>43</span></li>
+                <li><span>Chicken sandwich</span><span>30</span></li>
+                <li><span>House pasta</span><span>19</span></li>
+                <li><span>Caesar salad</span><span>17</span></li>
+                <li><span>Olive oil cake</span><span>8</span></li>
+              </ul>
+              <p class="slip__stamp">Downloaded</p>
+            </div>
+            <p class="slip__note">Example values</p>
+          </div>
+        </li>
+        <li class="tt__row">
+          <p class="tt__time"><span class="tt__dot" aria-hidden="true"></span>Overnight</p>
+          <div class="tt__body">
+            <h3>Tomorrow's counts are worked out again, dish by dish.</h3>
+            <p>Tooey looks at how each dish has sold in your restaurant before: on the same day of the week, at this time of year, and around holidays. From that it works out how many you're likely to sell tomorrow, and how many to make.</p>
+            <p class="tt__aside">It doesn't use weather, local events, or reservations yet.</p>
+          </div>
+          <div class="tt__aside-visual" aria-hidden="true">
+            <div class="slip slip--work">
+              <p class="slip__head"><span>Cheeseburger</span><span>For Tuesday</span></p>
+              <ul class="slip__rows">
+                <li><span>Recent Tuesdays</span><span>38 41 39 44 40</span></li>
+                <li><span>Time of year</span><span>Spring</span></li>
+                <li><span>Holiday</span><span>None</span></li>
+              </ul>
+              <p class="slip__result"><span>Predicted <b>42</b></span><span>Prep <b>45</b></span></p>
+            </div>
+            <p class="slip__note">Example values</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="morning" id="list" aria-labelledby="list-title">
+    <div class="wrap">
+      <ol class="tt tt--morning" start="3">
+        <li class="tt__row">
+          <p class="tt__time"><span class="tt__dot" aria-hidden="true"></span>Before prep</p>
+          <div class="tt__body">
+            <h2 id="list-title" class="h3">The list is waiting in your email before prep.</h2>
+            <p>Read it on your phone, or print it and put it up where the line can see it.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="sheet-row">
+        <figure class="sheet" data-sheet>
+          <div class="sheet__top">
+            <img class="sheet__brand" src="img/logo.png" alt="Tooey" width="343" height="148">
+            <p class="sheet__day"><span>Prep for</span> Tuesday</p>
+            <p class="sheet__meta">Example restaurant<br>Sample values</p>
+          </div>
+          <table class="sheet__table">
+            <caption class="sr-only">Example prep list for a Tuesday, with sample values</caption>
+                        <thead>
+              <tr>
+                <th scope="col">Dish</th>
+                <th scope="col" data-col="1"><span class="pin" aria-hidden="true">1</span>Predicted</th>
+                <th scope="col" data-col="2"><span class="pin" aria-hidden="true">2</span>Prep</th>
+                <th scope="col" data-col="3"><span class="pin" aria-hidden="true">3</span>vs. last Tue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="cat"><th scope="rowgroup" colspan="4">Mains</th></tr>
+              <tr><th scope="row">Cheeseburger</th><td data-col="1">42</td><td data-col="2">45</td><td data-col="3">+8%</td></tr>
+              <tr><th scope="row">Chicken sandwich</th><td data-col="1">31</td><td data-col="2">33</td><td data-col="3">+5%</td></tr>
+              <tr><th scope="row">House pasta</th><td data-col="1">18</td><td data-col="2">20</td><td data-col="3">+12%</td></tr>
+              <tr class="blank" data-col-row="4"><th scope="row"><span class="pin" aria-hidden="true">4</span>Braised short rib</th><td colspan="3">New on the menu. Too few weeks to count.</td></tr>
+            </tbody>
+            <tbody>
+              <tr class="cat"><th scope="rowgroup" colspan="4">Salads</th></tr>
+              <tr><th scope="row">Caesar salad</th><td data-col="1">24</td><td data-col="2">26</td><td data-col="3">&minus;4%</td></tr>
+              <tr><th scope="row">Beet and citrus</th><td data-col="1">11</td><td data-col="2">12</td><td data-col="3">&minus;8%</td></tr>
+            </tbody>
+            <tbody>
+              <tr class="cat"><th scope="rowgroup" colspan="4">Desserts</th></tr>
+              <tr><th scope="row">Olive oil cake</th><td data-col="1">9</td><td data-col="2">10</td><td data-col="3">+13%</td></tr>
+              <tr class="blank" data-col-row="4"><th scope="row">Affogato</th><td colspan="3">Sells under one a day.</td></tr>
+            </tbody>
+          </table>
+        </figure>
+
+        <ol class="keys" aria-label="How to read the list">
+          <li data-key="1"><span class="pin" aria-hidden="true">1</span><p><b>Predicted</b> is how many of that dish Tooey expects you to sell.</p></li>
+          <li data-key="2"><span class="pin" aria-hidden="true">2</span><p><b>Prep</b> is how many to make. It runs a little over Predicted, so a rush doesn't leave the line short.</p></li>
+          <li data-key="3"><span class="pin" aria-hidden="true">3</span><p><b>vs. last Tue</b> is the change from the same day last week. A big jump is worth a second look.</p></li>
+          <li data-key="4"><span class="pin" aria-hidden="true">4</span><p><b>A blank</b> means Tooey declined to guess. Dishes on the menu less than about five weeks, or selling under about one a day, get the reason instead of a number. A blank is not a zero.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it asks -->
+  <section class="asks" id="asks" aria-labelledby="asks-title">
+    <div class="wrap asks__grid">
+      <div class="asks__intro">
+        <h2 id="asks-title">Everything Tooey needs from you</h2>
+        <p>You're already the buyer, the scheduler, the bookkeeper, and the one who locks up. Tooey shouldn't turn into another thing to look after, so this is the whole list.</p>
+      </div>
+      <div class="card">
+        <p class="card__head" aria-hidden="true"><span>Time card</span><span>Your side</span></p>
+        <dl class="card__rows">
+          <div class="card__row">
+            <dt>Before you start</dt>
+            <dd><b>About five weeks of past sales.</b> They're already in your POS. Tooey needs that much history before it can make a first count.</dd>
+          </div>
+          <div class="card__row">
+            <dt>The first week</dt>
+            <dd><b>About a week of setup with us.</b> You tell us what matters in your kitchen and choose how your list is set up. Then you check it before you rely on it.</dd>
+          </div>
+          <div class="card__row">
+            <dt>Each morning</dt>
+            <dd><b>Read the list.</b> On your phone, or printed for the line.</dd>
+          </div>
+          <div class="card__row">
+            <dt>During the pilot</dt>
+            <dd><b>Check the counts against what sold.</b> That's how you find out whether the numbers hold up in your kitchen. Then you decide whether to keep Tooey.</dd>
+          </div>
+          <div class="card__row card__row--off">
+            <dt>Not your job</dt>
+            <dd><b>Exports, uploads, typing in sales.</b> The download runs by itself each night, so there's no report to pull and no file to send.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's next -->
+  <section class="next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="next__head">
+        <h2 id="next-title">Prep counts are the first job we want Tooey to take off your hands.</h2>
+        <p>Nothing below the first line exists yet. It's where we're headed, built on the same routine: your sales come in while you're closed, and something useful is waiting in the morning.</p>
+      </div>
+      <ul class="chores">
+        <li class="chore chore--now">
+          <p class="chore__when">Every day</p>
+          <p class="chore__what">A prep count for every dish</p>
+          <p class="chore__state">In the pilot now</p>
+        </li>
+        <li class="chore">
+          <p class="chore__when">Every day</p>
+          <p class="chore__what">Counts that also weigh the weather, local events, and reservations</p>
+          <p class="chore__state">Not built yet</p>
+        </li>
+        <li class="chore">
+          <p class="chore__when">Every week</p>
+          <p class="chore__what">How much to order, following what you're likely to sell</p>
+          <p class="chore__state">Not built yet</p>
+        </li>
+        <li class="chore">
+          <p class="chore__when">Every week</p>
+          <p class="chore__what">A staff schedule planned around the business you're likely to do</p>
+          <p class="chore__state">Not built yet</p>
+        </li>
+        <li class="chore">
+          <p class="chore__when">Every month</p>
+          <p class="chore__what">Which dishes actually make money, and which costs you could do without</p>
+          <p class="chore__state">Not built yet</p>
+        </li>
+        <li class="chore">
+          <p class="chore__when">All year</p>
+          <p class="chore__what">Getting regulars back more often, and filling the slow nights</p>
+          <p class="chore__state">Not built yet</p>
+        </li>
+      </ul>
+      <p class="next__ask">If one of these takes more of your week than prep does, <a href="#pilot">tell us</a>. We'd like to know which one to build first.</p>
+    </div>
+  </section>
+
+  <!-- Pilot -->
+  <section class="pilot" id="pilot" aria-labelledby="pilot-title">
+    <div class="wrap pilot__grid">
+      <div class="pilot__text">
+        <h2 id="pilot-title">Join the pilot</h2>
+        <p>Tooey is early. We're a small team of university students, running a pilot with independent restaurants. We haven't yet measured how close the counts run in a working kitchen, and the pilot is how we'll find out.</p>
+        <p>Tell us about your restaurant and one of us will write back.</p>
+        <p class="pilot__mail">Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+      </div>
+
+      <form class="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" data-form novalidate>
+        <input type="hidden" name="_subject" value="New Tooey inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="hp" aria-hidden="true">
+          <label for="f-honey">Leave this empty</label>
+          <input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form__pair">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-rest">Restaurant</label>
+            <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required>
+          </div>
+        </div>
+        <div class="form__pair">
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="opt">optional</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-pos">Which POS do you use? <span class="opt">optional</span></label>
+          <input id="f-pos" name="pos" type="text" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="f-msg">Anything we should know? <span class="opt">optional</span></label>
+          <textarea id="f-msg" name="message" rows="4"></textarea>
+        </div>
+
+        <div class="form__foot">
+          <button class="btn" type="submit" data-submit>Send</button>
+          <p class="form__fine">Goes to tooeyteam@gmail.com. See <a href="privacy.html">privacy</a>.</p>
+        </div>
+        <p class="form__status" role="status" aria-live="polite" data-status></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <p class="foot__name">Tooey LLC</p>
+    <ul class="foot__links">
+      <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <p class="foot__copy">&copy; 2026 Tooey LLC</p>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
