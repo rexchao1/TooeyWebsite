@@ -6,14 +6,6 @@
   var EMAIL = 'tooeyteam@gmail.com';
   var ENDPOINT = 'https://formsubmit.co/ajax/' + EMAIL;
 
-  /* Header: hairline once the page scrolls ------------------------------ */
-  var top = document.querySelector('.top');
-  if (top) {
-    var onScroll = function () { top.classList.toggle('is-scrolled', window.scrollY > 8); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
   /* Phone menu ---------------------------------------------------------- */
   var menuBtn = document.querySelector('.menu-btn');
   var nav = document.getElementById('site-nav');
@@ -21,7 +13,7 @@
     var setOpen = function (open, returnFocus) {
       menuBtn.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('is-open', open);
-      menuBtn.querySelector('.menu-btn__label').textContent = open ? 'Close' : 'Menu';
+      menuBtn.textContent = open ? 'Close' : 'Menu';
       if (!open && returnFocus) menuBtn.focus();
     };
     menuBtn.addEventListener('click', function () {
@@ -44,55 +36,6 @@
     window.matchMedia('(min-width: 900px)').addEventListener('change', function (mq) {
       if (mq.matches) setOpen(false);
     });
-  }
-
-  /* The key lights up its column on the example sheet ------------------- */
-  var sheet = document.getElementById('sheet');
-  var items = Array.prototype.slice.call(document.querySelectorAll('.key__item'));
-  if (sheet && items.length) {
-    var scrolled = null;   // set by scrolling (wide screens only)
-    var pointed = null;    // set by hover or tap
-
-    var paint = function () {
-      var col = pointed || scrolled;
-      if (col) sheet.setAttribute('data-active', col);
-      else sheet.removeAttribute('data-active');
-      items.forEach(function (it) {
-        it.classList.toggle('is-active', it.getAttribute('data-col') === col);
-      });
-    };
-
-    items.forEach(function (it) {
-      it.addEventListener('mouseenter', function () { pointed = it.getAttribute('data-col'); paint(); });
-      it.addEventListener('mouseleave', function () { pointed = null; paint(); });
-    });
-
-    // On wide screens the sheet stays put beside the key. The item crossing
-    // the middle of the screen lights its column; between items the last one
-    // stays lit, and above or below the key nothing is.
-    var wide = window.matchMedia('(min-width: 960px)');
-    var ticking = false;
-    var measure = function () {
-      ticking = false;
-      var next = null;
-      if (wide.matches) {
-        var line = window.innerHeight * 0.5;
-        var first = items[0].getBoundingClientRect();
-        var last = items[items.length - 1].getBoundingClientRect();
-        if (line >= first.top && line <= last.bottom) {
-          items.forEach(function (it) {
-            if (it.getBoundingClientRect().top <= line) next = it.getAttribute('data-col');
-          });
-        }
-      }
-      if (next !== scrolled) { scrolled = next; paint(); }
-    };
-    var onSpyScroll = function () {
-      if (!ticking) { ticking = true; window.requestAnimationFrame(measure); }
-    };
-    window.addEventListener('scroll', onSpyScroll, { passive: true });
-    window.addEventListener('resize', onSpyScroll, { passive: true });
-    measure();
   }
 
   /* "Ask about this" fills in the start of a message ------------------ */

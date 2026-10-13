@@ -1,14 +1,6 @@
 (function () {
   'use strict';
 
-  /* Header: a hairline once the page has scrolled. */
-  var top = document.querySelector('.top');
-  if (top) {
-    var onScroll = function () { top.classList.toggle('is-stuck', window.scrollY > 4); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
   /* Phone menu. */
   var btn = document.querySelector('.menu-btn');
   var nav = document.getElementById('site-nav');

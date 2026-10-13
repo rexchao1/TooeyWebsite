@@ -7,6 +7,46 @@ a small script; no build step.
 Preview from the repo root: `python3 -m http.server 5209`, then open
 http://localhost:5209/explorations/09-skeptic/
 
+## Revision (second pass)
+
+Review feedback: strategy, structure, and copy were right, but the look
+(cream paper, near-black headlines, a white card with the sample list as
+the hero, dashed outlines for "example / not built") had converged with
+other explorations. Fourteen answers also made a long phone scroll.
+
+What changed:
+- **The conversation became the identity.** The page is now a table with
+  two sides. Left, on a cobalt field running the full height of the page,
+  is the owner. Right, on cool kitchen-steel grey, is Tooey. Every element
+  belongs to one side: questions, buttons, the stop email, and the contact
+  form are the owner's (cobalt); answers, the sample list, and explanations
+  are Tooey's (steel and leaf green).
+- **Two typefaces, one per voice.** The owner speaks in Newsreader italic,
+  a spoken, human serif. Tooey answers in Archivo, semi-condensed and
+  heavy for the short answers, plain width for the text. Gone: Atkinson
+  Hyperlegible, cream, the near-black ink, and the dark button.
+- **The hero is the first exchange.** "“Okay. What is Tooey, exactly?”" on
+  the owner's side; the headline answers it on Tooey's. No product card in
+  the hero.
+- **Two lists face each other.** Second screen: the owner's list of
+  questions (the index) on cobalt, opposite Tooey's list (the sample prep
+  list), set as plain type on the steel with no card or shadow.
+- **"Not built" is said, not drawn.** The dashed-outline device is gone.
+  Where something isn't built, the owner asks for it and Tooey answers
+  "Not yet." in the same two voices ("Does it know about the weather?"
+  Not yet.). The example list is labeled the same way, in a sentence:
+  "Made-up numbers, for a sample restaurant."
+- **Your question stays in view.** On wide screens each question sticks at
+  the top of the owner's side while you read the answer. On phones the
+  turns stack as alternating cobalt and steel bands.
+- **Fourteen answers became ten.** Merged: the AI question with where the
+  number comes from; "will it be right" with "how accurate" (now one
+  answer: "Not every day, and we haven't measured how often."); blank
+  dishes into "what exactly do I get"; time with typing and POS. The
+  phone page is about 8% shorter at 390 and 320 wide (each turn now adds
+  a cobalt band, which costs some of the saving), and every merged fact is
+  still there.
+
 ## 1. Positioning in one sentence
 
 Tooey is a small team that works out the numbers an independent restaurant
@@ -15,165 +55,141 @@ what it isn't yet, and how to leave before it asks you for anything.
 
 ## 2. Core message, and why
 
-The core message is "here is exactly what you'd get, and here is every
-catch." A skeptic doesn't believe a promise, but a plain admission costs us
-something, so they do believe it. The site's strongest lines are the ones
-that don't flatter Tooey: "We can't promise that." "Not every day." "We
-haven't measured that at a live restaurant yet." "It's early. That's the
-catch." Each of these makes the next answer easier to believe.
+"Here is exactly what you'd get, and here is every catch." A skeptic
+doesn't believe a promise, but a plain admission costs us something, so
+they believe it. The strongest lines are the ones that don't flatter
+Tooey: "We can't promise that." "Not every day, and we haven't measured
+how often." "It's early. That's the catch."
 
 The headline names the company broadly ("works out the numbers an
-independent restaurant runs on") and grounds it at once in the one thing
-that exists ("starting with how much of each dish to prep"). Forecasting
-does not read as the whole company, and the vision is held until the last
-answer.
+independent restaurant runs on") and grounds it at once in what exists
+("starting with how much of each dish to prep"), so forecasting doesn't
+read as the whole company.
 
 ## 3. What the visitor understands first, and the journey
 
-First screen: one sentence on what Tooey is, one on what arrives today (an
-email each morning before prep, a count for every dish, from your own
-sales), and a sample prep list labeled "Example values". In five seconds
-an owner sees the actual thing they'd tape up on the line.
+First screen: the owner's question and Tooey's one-sentence answer, then
+what arrives today (one email each morning before prep, a count for every
+dish, from your own sales). Second screen: the ten questions opposite the
+sample prep list, so the owner sees the actual thing before any answer.
 
-Then the page follows the doubts in about the order an owner has them,
-grouped like a conversation across the table:
-
-1. Who you'd be dealing with: students? still around in a year?
-2. What arrives, and how far to trust it: the list, "AI thing?", inputs,
-   "will it be right?", accuracy, blank dishes
-3. What it takes from you: time, typing, your sales
-4. The catch, and the way out: free, stopping
-5. Where it goes from here: the vision, clearly marked as not built
-
-It ends at the form, headed "Ask us what this page didn't answer." The
-form is the last answer: the place for the doubt we missed.
-
-An index of all fourteen questions sits under the section heading so the
-owner who only cares about "what's the catch" can go straight there.
+Then ten exchanges, in about the order an owner has the doubts: who you
+are; will you be around; what exactly do I get; is this another AI thing;
+will the count be right; how much of my time; what you do with my sales;
+what's the catch; how do I stop; is a prep list all it'll ever be. It ends
+with the form under "Ask us what this page didn't answer." The form sits
+on the owner's side: it's their turn to talk.
 
 ## 4. How it builds trust
 
-- Short answer first, at headline size. You can scan only the big lines
-  down the page and get the whole picture: "A small team of university
-  students. We can't promise that. One list. Not every day. No."
-- It says what it doesn't do, every time it comes up: weather, events, and
-  reservations shown as dashed "not yet" chips; a missing accuracy figure
-  stated outright; the price and trial length called unset.
+- Short answer first, at headline size. You can scan the green lines alone
+  and get the whole picture.
+- It says what it doesn't do every time it comes up, in the owner's own
+  words: weather, events, reservations, margins, costs, regulars,
+  staffing, each answered "Not yet."
+- No figures at all: "there's no accuracy figure, savings figure, or
+  percentage anywhere on this site."
 - The exit is shown before the entrance. "How do I stop?" includes the
-  stop-and-delete email already written, with a button that opens it.
-- "What you'd lose if we disappeared" answers the student question with a
-  fact (Tooey works from a copy; your POS is untouched) instead of a vow.
-- No testimonials, logos, badges, figures, or stock photos. The only
-  numbers on the site are example values, labeled as such.
-- "Sending this signs you up for nothing" above the form.
+  stop-and-delete email already written, on the owner's cobalt, with a
+  button that opens it.
+- The student question is answered with a fact (Tooey works from a copy;
+  your POS is untouched), not a vow.
+- "Sending this signs you up for nothing" next to the form.
+- No testimonials, logos, badges, stock photos, or fake dashboards.
 
 ## 5. Design and interaction rationale
 
-Two voices, one rule each. The owner's questions are blue italic, in
-quotes. Our answers are ink, large, upright. Blue is always "you": your
-questions, and the buttons you press. That makes the Q-and-A read as a
-conversation, not an FAQ. Question and answer are one heading
-(screen readers hear "Who are you? A small team of university students."),
-and nothing is collapsed: no accordions, no clicking to read.
+Palette, all from the conversation:
+- Cobalt `#2335ac`: the owner. Fields, questions, buttons, the email you'd
+  send, the form. White text on it is 9:1.
+- Kitchen steel `#e7e9eb`: Tooey's side and the page chrome. Cool and
+  plain, the colour of a prep counter, not paper.
+- Leaf green `#123b2b`: Tooey's voice, from the wordmark's leaf. 10:1 on
+  steel.
+- Body text `#222c27`, secondary `#4c5751` (6:1 on steel). The only other
+  colour is a pale coral for form errors on cobalt.
 
-Solid lines mean "exists today", dashed lines mean "an example or not
-built yet". The sample list's "Example values" tag, the not-yet inputs,
-the blank cells on the list, and the four future areas in the vision answer
-all use the dashed line, with a small legend at the end. The honesty is
-built into the drawing.
+Type: Newsreader italic (owner) and Archivo (Tooey), both OFL, self-hosted
+and cut down to the ranges used (Archivo width 75 to 100, weight 400 to
+800; Newsreader italic 400 to 500). Neither is on the founder's
+rejected list, and neither is what the live site uses.
 
-Nothing is tilted, hand-drawn, or animated in. Everything sits square on a
-grid, on purpose: straight answers, straight lines. The only motion is a
-short highlight on the answer you jump to from the index (a still tint
-under reduced motion) and smooth scrolling (off under reduced motion).
+Composition: on screens 900px and wider the cobalt runs from the window's
+left edge to the split at 35% of the content width, the whole length of
+the page. Questions sit left and stick while their answer scrolls; answers
+sit right. Below 900px each turn is a full-width cobalt band followed by
+a steel band, so the back-and-forth reads as rhythm.
 
-Type: Atkinson Hyperlegible Next, with its mono for the numbers on the
-list. It was drawn for the Braille Institute so letters can't be mistaken
-for one another, which is the typeface version of the brief. It is OFL,
-not one of the founder's rejected fonts, and not what the live site uses.
-Its slashed zero is the one quirk; on a prep list it reads as a printed
-count.
-
-Color: warm paper (#f2eee6), green-black ink, one ballpoint blue
-(#2445a2). Light and low-key, per the founder's notes. All text pairs pass
-WCAG AA (smallest grey is 4.7:1 on the contact section's darker paper).
-
-Small things that earn their place:
-- The phone menu holds the email address as well as the links.
-- "Print the answers" (shown only with JavaScript) uses a print stylesheet:
-  sample list on page one, answers from page two, no nav or form. Owners
-  show things to a chef or a partner on paper.
-- The form keeps what you typed if sending fails, and says so.
-- Without JavaScript, the phone nav shows as plain links, all content is
-  there, and the form still posts to FormSubmit's normal (non-AJAX)
-  endpoint.
+Interaction, kept small:
+- Sticky questions on wide screens.
+- Jumping from the index to an answer briefly lights the answer side (a
+  still highlight under reduced motion). Smooth scroll is off under
+  reduced motion.
+- Phone menu with the email address in it; focus moves into it and back.
+- "Print the answers" (shown only with JavaScript): a print stylesheet sets
+  the conversation in two plain columns, ink only, no nav or form.
+- The form keeps what you typed if sending fails. Without JavaScript it
+  still posts to FormSubmit's normal endpoint, the phone nav shows as plain
+  links, and all content is there.
 
 ## 6. Illustrative vs. factual
 
-Illustrative (labeled "Example values" / "Sample restaurant"):
-- Every dish name and number on the sample prep list, the day "Thursday",
-  and the category names.
+Illustrative (said so on the page: "Made-up numbers, for a sample
+restaurant"):
+- Every dish, number, category, and the day on the sample prep list.
 - The wording of the stop email (the address and the action are real).
-- The vision cards' short descriptions paraphrase the brief's direction;
-  each is marked "Not built".
+- The owner's questions in the "Not yet" lists are phrased by us; each
+  names a direction from the brief, and each is answered "Not yet."
 
-Factual (from the brief, nothing added):
-- Small team of university students; Tooey LLC; pilot; free for now; no
-  price or trial length set.
-- The list: Predicted, Prep (a little over Predicted, cushion size not
-  stated), change from the same weekday last week, grouped by category,
-  emailed each morning before prep, printable.
-- Blanks for dishes under about five weeks on the menu or under about one
-  sale a day; a blank is a decline, not a zero.
-- Inputs: past item-level sales, day of week, time of year, holidays. Not
-  weather, events, or reservations.
-- Nightly POS download set up by the team; works with most systems; Square,
-  Toast, and Clover exports recognized, others mapped. About five weeks of
-  history; about a week of setup (what matters, how it's laid out, check
-  it).
-- Privacy facts, FormSubmit, who sees data, how to stop and delete.
-- Accuracy not measured at a live restaurant.
+Factual (from the brief, nothing added): small team of university
+students; Tooey LLC; pilot; free for now; no price or trial length set;
+Predicted, Prep (a little over Predicted, cushion not sized), change from
+the same weekday last week, grouped by category, emailed each morning
+before prep, printable; blanks for dishes under about five weeks on the
+menu or under about one sale a day, a blank is a decline; inputs are past
+item sales, day of week, time of year, holidays, not weather, events, or
+reservations; nightly POS download set up by the team, most systems,
+Square/Toast/Clover exports recognized, others mapped; about five weeks of
+history; about a week of setup; privacy facts; accuracy not measured at a
+live restaurant.
 
 Lines that go slightly past the brief's wording, for the founder to check:
 - "Tooey works from a copy of your sales, so your POS and the way you prep
   stay as they are." (Inferred from "nightly download".)
 - "You'd be one of the first kitchens using it." (Inferred from "pilot".)
-- "If it sounds like a fit, we talk through your kitchen and your POS
+- "If Tooey sounds like a fit, we talk through your kitchen and your POS
   before anything is set up."
 - "There's a forecasting model behind the list."
 
 ## 7. Strengths, weaknesses, open questions
 
 Strengths
-- The big answers do the selling by not selling. A skeptic can read the
-  page in a minute by the large lines alone.
-- The voice system (blue you, ink us) and the line system (solid today,
-  dashed not yet) carry meaning, not decoration.
-- The product is visible in the first screen, and the vision is visible
-  but fenced off.
+- It looks like what it is: a conversation. The two-voice system carries
+  meaning, so no decoration is needed.
+- The answers do the selling by not selling.
+- The product is on the second screen; the vision is visible but every
+  item of it is answered "Not yet."
 
 Weaknesses
-- It is long: fourteen answers. Each is short, but the page is still a
-  long scroll on a phone. The index and the parts help; cutting to ten
-  (merging 06 and 07, 09 and 10) is the obvious trim if it feels heavy.
-- It is quiet. There is one picture (the sample list) and three small
-  diagrams. Someone wanting a showpiece hero won't find one; the bet is
-  that a guarded owner trusts plainness more.
-- The questions are visible, in quotes. That is a deliberate choice, and
-  the founder has disliked question headlines before. The headlines here
-  are the answers; the questions are the owner's lines beside them.
-- `og:image` is a relative path, per the folder rules. Social previews need
-  an absolute URL once there is a real domain.
+- Cobalt is loud. Half the screen is one saturated colour; some owners may
+  find it a lot. A deeper navy would calm it at some cost to the
+  "two people talking" read.
+- On wide screens the owner's side is mostly empty colour below each
+  question. That is the point (they ask, we explain), but it is a lot of
+  blue for few words.
+- The questions are visible, in quotes. The founder has disliked question
+  headlines; here the headlines are the answers and the questions are the
+  owner's side of the table, but it's still a judgment call.
+- `og:image` is a relative path, per the folder rules; social previews need
+  an absolute URL once there's a real domain.
 
 Open questions for the founder
-- Are you comfortable saying "We haven't measured that at a live restaurant
-  yet" and "We can't promise that" this plainly? They are the heart of
-  this direction.
+- Are you comfortable saying "Not every day, and we haven't measured how
+  often" and "We can't promise that" this plainly?
 - Is the stop email right: stop the download, delete sales and messages,
-  all from one email?
+  all in one email?
 - Is "one of the first kitchens using it" accurate for the pilot?
-- Should the form keep the phone and POS fields? The POS question is
-  useful; phone could go.
+- Keep the phone field on the form?
 
 ## 8. Stack
 
@@ -181,13 +197,16 @@ Hand-written static files, no build:
 
 - `index.html`, `privacy.html`
 - `assets/site.css`: all styles, including print
-- `assets/site.js`: header rule on scroll, phone menu, print button,
-  contact form (JSON to `https://formsubmit.co/ajax/tooeyteam@gmail.com`)
-- `assets/fonts/`: Atkinson Hyperlegible Next (roman and italic, variable)
-  and Atkinson Hyperlegible Mono, Latin subset, from fontsource, with their
-  OFL licenses
-- `assets/logo.png` (copied from the root), `assets/favicon.svg` (a drawn
-  "t", no font dependency), `assets/og.png` (1200x630)
+- `assets/site.js`: phone menu, print button, contact form (JSON to
+  `https://formsubmit.co/ajax/tooeyteam@gmail.com`, with sending, sent,
+  and failed states)
+- `assets/fonts/`: `archivo.woff2` (58 KB) and `newsreader-italic.woff2`
+  (42 KB), Latin subsets from fontsource, cut to the axis ranges used with
+  fontTools' instancer, with their OFL licenses
+- `assets/logo.png` (copied from the root), `assets/favicon.svg` (cobalt
+  and steel with a green "t", no font dependency), `assets/og.png`
+  (1200x630)
 
-Page weight: about 175 KB uncompressed for the home page with all three
-fonts, the logo, CSS, and JS.
+To recut the fonts: take the fontsource variable Latin files and run
+`fontTools.varLib.instancer` with `wght=(400,800), wdth=(75,100)` for
+Archivo and `wght=(400,500)` for Newsreader italic, saving as woff2.
