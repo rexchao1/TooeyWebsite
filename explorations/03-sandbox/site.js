@@ -29,7 +29,8 @@ if (bench) {
   const { default: data } = await import('./sample-data.js');
   const sheet = $('#sheet');
   const notes = $('#notes');
-  const panel = $('.notes-in');
+  const panel = $('.board-body');
+  const legend = $('#legend');
   const status = $('#status');
   const tabs = $$('.day');
   const wide = matchMedia('(min-width: 980px)');
@@ -190,7 +191,11 @@ if (bench) {
     }
   }
 
-  wide.addEventListener('change', placeNotes);
+  // The reading guide is open beside the list on wide screens and folded
+  // under it on phones, so the list and the way out stay close together.
+  const fitLegend = () => { legend.open = wide.matches; };
+  wide.addEventListener('change', () => { fitLegend(); placeNotes(); });
+  fitLegend();
   $('#print')?.addEventListener('click', () => window.print());
 
   render();

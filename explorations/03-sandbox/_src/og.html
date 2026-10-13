@@ -5,17 +5,25 @@
 <title>og</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
-  body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--bg); }
-  .og { display: grid; grid-template-columns: 560px 1fr; gap: 48px; height: 630px; padding: 56px 0 0 64px; box-sizing: border-box; }
-  .og-text h1 { font: 500 58px/1.06 var(--serif); letter-spacing: -.015em; margin-top: 28px; }
-  .og-text p { margin-top: 26px; font-size: 24px; color: var(--ink-2); line-height: 1.4; }
-  .og-text img { height: 52px; width: auto; }
-  .og .sheet { width: 560px; padding: 28px 32px; height: 640px; overflow: hidden; }
-  .og .sheet-day { font-size: 36px; }
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .og { display: grid; grid-template-columns: 560px 1fr; gap: 44px; height: 630px; padding: 52px 0 0 60px; box-sizing: border-box; }
+  .og-text h1 { font: 800 66px/.94 var(--display); margin-top: 34px; }
+  .og-text h1 span { display: block; margin-top: .12em; font-weight: 600; color: var(--green); }
+  .og-text img { height: 50px; width: auto; }
+  .og-text p { margin-top: 26px; display: inline-block; padding: 10px 14px; font: 400 22px/1.2 var(--marker); transform: rotate(-1deg); }
+  .og .clipboard { width: 560px; height: 700px; }
+  .og .sheet { height: 700px; overflow: hidden; }
 </style></head>
 <body><div class="og">
-  <div class="og-text"><img src="../logo.png" alt=""><h1>Each morning before prep, how many of each dish to make.</h1><p>Worked out overnight from your own sales. Read a week of lists for a sample restaurant.</p></div>
-  <article class="sheet" id="s"></article>
+  <div class="og-text">
+    <img src="../logo.png" alt="">
+    <h1>Tooey is software for independent restaurants. <span>It starts with prep: each morning, how many of each dish to make.</span></h1>
+    <p class="sticky">Try a week of lists for a sample restaurant</p>
+  </div>
+  <div class="clipboard">
+    <div class="clip"><span class="clip-tape sticky marker">Sample · made-up numbers</span></div>
+    <article class="sheet" id="s"></article>
+  </div>
 </div>
 <script type="module">
 import data from '../sample-data.js'; import { sheetBody } from '../sample.js';

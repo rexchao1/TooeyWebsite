@@ -52,18 +52,15 @@ const CATS = ['Starters', 'Salads', 'Burgers and sandwiches', 'Plates', 'Dessert
 
 const ITEMS = [
   { id: 'wings', name: 'Wings', cat: 'Starters', base: 24, prof: 'all', lift: 1.02 },
-  { id: 'pickles', name: 'Fried pickles', cat: 'Starters', base: 13, prof: 'all', lift: 1.1 },
   { id: 'soup', name: 'Tomato soup', cat: 'Starters', base: 14, prof: 'lunch', trend: 0.94, lift: 1.15 },
   { id: 'cobb', name: 'Cobb salad', cat: 'Salads', base: 17, prof: 'lunch', trend: 1.04, lift: 1.5 },
   { id: 'caesar', name: 'Caesar salad', cat: 'Salads', base: 19, prof: 'lunch', trend: 1.025, lift: 1.4 },
   { id: 'cheeseburger', name: 'Cheeseburger', cat: 'Burgers and sandwiches', base: 48, prof: 'all', lift: 1.12 },
-  { id: 'mushroom', name: 'Mushroom Swiss burger', cat: 'Burgers and sandwiches', base: 21, prof: 'all', lift: 1.15 },
   { id: 'chicken', name: 'Chicken sandwich', cat: 'Burgers and sandwiches', base: 35, prof: 'all', lift: 1.18 },
   { id: 'club', name: 'Turkey club', cat: 'Burgers and sandwiches', base: 15, prof: 'lunch', lift: 1.35 },
   { id: 'veggie', name: 'Veggie burger', cat: 'Burgers and sandwiches', base: 0.6, prof: 'all', blank: 'slow' },
   { id: 'fish', name: 'Fish and chips', cat: 'Plates', base: 9, prof: 'dinner', friday: 1.5, lift: 1.25 },
   { id: 'salmon', name: 'Grilled salmon', cat: 'Plates', base: 15, prof: 'dinner', trend: 1.01, lift: 1.6 },
-  { id: 'mac', name: 'Mac and cheese', cat: 'Plates', base: 13, prof: 'all', lift: 1.3 },
   { id: 'steak', name: 'Steak frites', cat: 'Plates', base: 11, prof: 'dinner', lift: 1.45 },
   { id: 'brownie', name: 'Brownie sundae', cat: 'Desserts', base: 11, prof: 'dinner', lift: 1.4 },
   { id: 'shortcake', name: 'Strawberry shortcake', cat: 'Desserts', base: 6, prof: 'dinner', blank: 'new', weeksOn: 2 },
