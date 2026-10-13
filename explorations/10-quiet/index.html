@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey · For independent restaurants</title>
+<meta name="description" content="Each night Tooey goes through your restaurant's sales. Before prep each morning, you get a count of how many of each dish to make. Free while we're in a pilot.">
+<meta name="theme-color" content="#F3F0E8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/newsreader-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/newsreader-text.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tooey">
+<meta property="og:title" content="Tooey works on tomorrow while you're closed.">
+<meta property="og:description" content="Each night Tooey goes through your restaurant's sales. Before prep each morning, you get a count of how many of each dish to make. Free while we're in a pilot.">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tooey works on tomorrow while you're closed.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="col top__in">
+    <a class="mark" href="index.html" aria-label="Tooey, home">tooey<svg class="flame" viewBox="0 0 28 43" aria-hidden="true" focusable="false"><path class="flame__outer" d="M14 0c3.6 7.6 14 15.4 14 27.4C28 36.2 21.8 43 14 43S0 36.2 0 27.4c0-7.4 4.6-12 7.6-17.4 1 3.8 2.6 6.3 4.6 7.6C12 10.6 12.6 5 14 0z"/><path class="flame__inner" d="M14 22c2.4 3.6 6 6.8 6 11.4 0 4-2.8 6.6-6 6.6s-6-2.6-6-6.6c0-4.6 3.6-7.8 6-11.4z"/></svg></a>
+    <nav aria-label="Main">
+      <a class="top__link" href="#talk">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="col">
+      <h1 id="hero-title">Tooey works on tomorrow while you’re closed.</h1>
+      <p class="lead">Each night it goes through the day’s sales from your POS. By morning, before prep, there’s a list in your email: how many of each dish to make today.</p>
+      <div class="pilot">
+        <p class="pilot__line"><svg class="flame flame--live" viewBox="0 0 28 43" aria-hidden="true" focusable="false"><path class="flame__outer" d="M14 0c3.6 7.6 14 15.4 14 27.4C28 36.2 21.8 43 14 43S0 36.2 0 27.4c0-7.4 4.6-12 7.6-17.4 1 3.8 2.6 6.3 4.6 7.6C12 10.6 12.6 5 14 0z"/><path class="flame__inner" d="M14 22c2.4 3.6 6 6.8 6 11.4 0 4-2.8 6.6-6 6.6s-6-2.6-6-6.6c0-4.6 3.6-7.8 6-11.4z"/></svg>Free while we’re in a pilot.</p>
+        <a class="btn" href="#talk">Talk to us</a>
+      </div>
+    </div>
+
+    <div class="col col--wide">
+      <figure class="sheet" aria-labelledby="sheet-cap">
+        <div class="sheet__head">
+          <p class="sheet__title">Prep for <span data-day="long">Tuesday</span></p>
+          <span class="tag">Example</span>
+        </div>
+        <table class="list">
+          <thead>
+            <tr>
+              <th scope="col" class="list__item">Item</th>
+              <th scope="col" class="num">Predicted</th>
+              <th scope="col" class="num list__prep">Prep</th>
+              <th scope="col" class="num list__vs">vs.&nbsp;last <span data-day="short">Tue</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="list__group"><th scope="rowgroup" colspan="4">Burgers &amp; sandwiches</th></tr>
+            <tr><th scope="row">Cheeseburger</th><td class="num">42</td><td class="num list__prep">45</td><td class="num list__vs">+8%</td></tr>
+            <tr><th scope="row">Chicken sandwich</th><td class="num">31</td><td class="num list__prep">33</td><td class="num list__vs">+5%</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="list__group"><th scope="rowgroup" colspan="4">Salads</th></tr>
+            <tr><th scope="row">Caesar salad</th><td class="num">24</td><td class="num list__prep">26</td><td class="num list__vs">−4%</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="list__group"><th scope="rowgroup" colspan="4">Pasta</th></tr>
+            <tr><th scope="row">House pasta</th><td class="num">18</td><td class="num list__prep">20</td><td class="num list__vs">+12%</td></tr>
+            <tr class="list__blank"><th scope="row">Short rib ragù</th><td colspan="3"><span class="slot" aria-hidden="true"></span>Too new to count</td></tr>
+          </tbody>
+        </table>
+      </figure>
+      <p class="caption" id="sheet-cap">An example list. The dishes and numbers are made up.</p>
+    </div>
+  </section>
+
+  <section class="moment" aria-labelledby="m-read">
+    <div class="col">
+      <h2 id="m-read">Prep is a little more than we expect you to sell.</h2>
+      <p>Predicted is how many we think you’ll sell today. Prep is how many to make, with a little extra so a rush doesn’t leave the line short. The last number is the change from the same day last week, so a big swing stands out.</p>
+    </div>
+    <div class="col">
+      <figure class="row" aria-label="One line of the example list, explained">
+        <p class="row__name">Cheeseburger</p>
+        <dl class="row__nums">
+          <div><dt>Predicted</dt><dd>42</dd></div>
+          <div class="row__prep"><dt>Prep</dt><dd>45</dd></div>
+          <div><dt>vs. last <span data-day="short">Tue</span></dt><dd>+8%</dd></div>
+        </dl>
+      </figure>
+    </div>
+  </section>
+
+  <section class="moment" aria-labelledby="m-from">
+    <div class="col">
+      <h2 id="m-from">Every count starts from your own sales.</h2>
+      <p>Tooey looks at what each dish has sold at your restaurant over past weeks, then allows for the calendar.</p>
+    </div>
+    <div class="col">
+      <div class="inputs">
+        <div class="inputs__col">
+          <h3>What goes in</h3>
+          <ul>
+            <li>Your past sales, dish by dish</li>
+            <li>The day of the week</li>
+            <li>The time of year</li>
+            <li>Holidays</li>
+          </ul>
+        </div>
+        <div class="inputs__col inputs__col--not">
+          <h3>Not yet</h3>
+          <ul>
+            <li>Weather</li>
+            <li>Local events</li>
+            <li>Reservations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment" aria-labelledby="m-blank">
+    <div class="col">
+      <h2 id="m-blank">When there isn’t enough to go on, we leave it blank.</h2>
+      <p>A dish that’s been on the menu less than about five weeks, or sells less than about one a day, gets no number. The reason goes where the number would be. A blank means we declined to guess. It isn’t a zero.</p>
+    </div>
+    <div class="col">
+      <figure class="blanks" aria-label="Two blank lines from the example list">
+        <div class="blanks__row"><p class="blanks__name">Short rib ragù</p><span class="slot slot--lg" aria-hidden="true"></span><p class="blanks__why">On the menu less than five weeks</p></div>
+        <div class="blanks__row"><p class="blanks__name">Affogato</p><span class="slot slot--lg" aria-hidden="true"></span><p class="blanks__why">Sells less than one a day</p></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="moment" aria-labelledby="m-start">
+    <div class="col">
+      <h2 id="m-start">Getting started takes about a week.</h2>
+      <p>You’ll need about five weeks of past sales in your POS. We set up a nightly download from it, which works with most systems. During that week you tell us what matters in your kitchen, choose how your list is laid out, and check it before you rely on it.</p>
+      <p>From then on, print it in the morning and keep it on the line if that suits you.</p>
+    </div>
+  </section>
+
+  <section class="moment" aria-labelledby="m-early">
+    <div class="col">
+      <h2 id="m-early">We’re early, and we’d like you to check our work.</h2>
+      <p>Tooey is a small team of university students, running a pilot with independent restaurants. While it runs, you hold each morning’s counts up against what you actually sold, and you decide what to make.</p>
+    </div>
+  </section>
+
+  <section class="moment next" aria-labelledby="m-next">
+    <div class="col">
+      <h2 id="m-next">Prep is where we’re starting.</h2>
+      <p>Over time we want Tooey to take on more of what an owner carries home at night: which dishes actually make money, where costs creep in, how many people a busy Friday needs, whether rain will keep Saturday quiet. The idea stays the same. The work happens while you’re closed, and the answer is there when you need it.</p>
+    </div>
+  </section>
+
+  <section class="talk" id="talk" aria-labelledby="talk-title">
+    <div class="col">
+      <h2 id="talk-title" tabindex="-1">Tell us about your restaurant.</h2>
+      <p>Someone from the team will write back. You can also email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
+
+      <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New Tooey inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="hp" aria-hidden="true">
+          <label for="f-honey">Leave this empty</label>
+          <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form__grid">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="field__err" id="f-name-err" hidden>Please add your name.</p>
+          </div>
+          <div class="field">
+            <label for="f-rest">Restaurant</label>
+            <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required aria-describedby="f-rest-err">
+            <p class="field__err" id="f-rest-err" hidden>Please add the restaurant’s name.</p>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
+            <p class="field__err" id="f-email-err" hidden>Please add an email we can reply to.</p>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="opt">optional</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field field--full">
+            <label for="f-pos">Your POS <span class="opt">optional</span></label>
+            <input id="f-pos" name="pos" type="text" autocomplete="off">
+          </div>
+          <div class="field field--full">
+            <label for="f-msg">Anything else <span class="opt">optional</span></label>
+            <textarea id="f-msg" name="message" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="form__foot">
+          <button class="btn" type="submit"><span class="btn__label">Send</span></button>
+          <p class="form__note">Goes to tooeyteam@gmail.com and is used only to reply. <a href="privacy.html">Privacy</a></p>
+        </div>
+        <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="sent" id="sent" hidden tabindex="-1">
+        <p class="sent__title">Thanks. It’s with us.</p>
+        <p>We’ll write back from tooeyteam@gmail.com.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="col foot__in">
+    <p>Tooey LLC</p>
+    <ul>
+      <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
