@@ -29,8 +29,8 @@ isn't proven yet, and how to start.
    the kitchen starts, and invites the visitor to use the sample. One button:
    Ask about the pilot, with "Free for now" beside it.
 2. The sample. A two-item key sets the rule: "Paper is the list Tooey sends.
-   Yellow notes are us, explaining the sample." Day-dot stickers on a strip of
-   masking tape pick the morning (Monday to Sunday, early May). A yellow note
+   Yellow notes are us, explaining the sample." Day-dot stickers pick the
+   morning (Monday to Sunday, early May). A yellow note
    says what that morning's counts go by (past sales, day, time of year,
    holiday) and what they don't (weather, local events, reservations). The
    printed list sits on a clipboard, with "Sample · made-up numbers" stuck on
@@ -46,7 +46,7 @@ isn't proven yet, and how to start.
    days). On a phone the note sticks under the row.
 5. Right after the clipboard: "Your list would have your own dishes and your
    own counts." with Ask about the pilot and See what it takes.
-6. Setup as four tickets on a rail; About Tooey with Today vs. "Where we want
+6. Setup as four numbered steps; About Tooey with Today vs. "Where we want
    to take it"; then the form, with "Not measured yet" and "Your sales stay
    yours" beside it.
 
@@ -65,17 +65,17 @@ isn't proven yet, and how to start.
 
 ## 5. Design and interaction rationale
 
-Identity: the front of house and the line, not a marketing page.
-- Ground: the pale green of a guest-check pad (#e3ecdb), with the check's
-  ruled lines behind the sample and its printed green (#1e5134) for
-  buttons, rules and the second line of the headline. The check's red is
-  used only for ticket numbers.
-- The sample is staged as objects you hold: a masonite clipboard with a
-  steel clip holding a white printed list; day-dot stickers (Monday blue,
-  Tuesday yellow, Wednesday red, Thursday brown, Friday green, Saturday
-  orange, Sunday black, as kitchens use them) on masking tape; setup steps as
-  tickets hanging from a rail; the form as a pilot request with a check-green
-  header.
+Identity: two objects you'd find on a pass, on a ground taken from an order pad.
+- Ground: the pink copy of a carbonless order pad (#f0d5cb, a shade deeper
+  behind the sample), with the oxblood those pads are printed in (#7a1c29)
+  for buttons, rules, step numbers and the second line of the headline.
+- Two objects carry the meaning, and nothing else is staged: a masonite
+  clipboard with a steel clip holding the white printed list, and yellow
+  sticky notes for everything we say about it. The day picker uses day-dot
+  colors (Monday blue, Tuesday yellow, Wednesday red, Thursday brown, Friday
+  green, Saturday orange, Sunday black, as kitchens use them), because they
+  name the day, which is what the picker does. Setup is a plain numbered
+  list; the form is a plain form.
 - Product vs. our notes is a material difference, not a caption: the list
   is white paper and black print and carries only what the real list shows
   (restaurant, day, items by category, Predicted, Prep, change vs. the same
@@ -89,7 +89,7 @@ Identity: the front of house and the line, not a marketing page.
   signage, with tabular figures) for text and for the list; Permanent Marker
   only for the handwritten headers on notes. All self-hosted (OFL / Apache
   2.0), six woff2 files, about 147 KB.
-- Contrast: every text pair passes WCAG AA (lowest 5.4:1, white on the Wednesday red).
+- Contrast: every text pair passes WCAG AA (lowest 5.4:1, white on the Wednesday red; oxblood on the ground is 7.5:1).
 - Motion: a short fade when the day or dish changes, and the day dot growing
   when picked. All off under prefers-reduced-motion.
 - Keyboard: the days are a tablist (arrows, Home, End); each dish is a
@@ -127,15 +127,14 @@ Strengths
   chips jump; pick Sunday and see Mother's Day; tap a blank and see why.
 - The demo can't pass for a product feature: the paper shows only real
   fields, and every explanation is visibly a sticky note.
-- It looks like a restaurant's back room rather than a software site, without
-  needing photos.
+- It looks like it came from a restaurant rather than a software company,
+  without photos and with only two objects.
 - Small: hand-written HTML and CSS, about 15 KB of JS plus 24 KB of sample
   data; no framework.
 
 Weaknesses
-- Several metaphors at once (guest check, clipboard, tape, tickets). Each is
-  restrained, but a stricter director might cut the tickets or the ruled
-  ground.
+- A pink ground is an unusual choice for a business tool; it reads warm and
+  kitchen-made to us, but the founder may find it too soft.
 - Permanent Marker is a recognizable font; it is limited to short headers.
 - On a phone the list is still 13 rows long before the way out.
 - The sticky notes lean on a convention (yellow = someone's note). The key
@@ -208,3 +207,10 @@ collided with another exploration. What changed and why:
   with Ask about the pilot now sits directly after the clipboard.
 - Interaction, copy, data model, built-in examples and fact discipline are
   unchanged.
+- Second revision: the ground moved off green (two other explorations
+  landed on sage) to the pink copy of an order pad, with oxblood for
+  buttons and rules. Props that didn't carry meaning are gone: the
+  masking-tape strip under the day dots, the ruled background, the ticket
+  rail (setup is now a plain numbered list), the tape on the notes pad, and
+  the form's slip header. The clipboard and the sticky notes stay, because
+  they are what separates the product from our explanation.
