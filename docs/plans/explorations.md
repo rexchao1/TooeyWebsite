@@ -81,3 +81,26 @@ Each gallery entry ends with a question. Across all ten:
   does, on the condition recorded in `new-site.md`.
 - Several state "no analytics, no cookies"; true of these builds only.
 - Share images use relative paths and need the real domain.
+
+## Round two (2026-10-13)
+
+Rex: round one was all too cliché and too wordy; he wants anti-cliché, far
+fewer words, better motion, and the quality bar of meuze.ai (unreachable
+from this environment's network). All ten were rebuilt from scratch by
+fresh agents, each following the `frontend-design` skill and a new brief:
+at most 150 words on the home page, one signature motion piece, no
+round-one tells (cream and serif, prep-list card hero, eyebrows, mono
+labels, fade-ups, dashed "not built" marks, roadmap grids).
+
+Each agent sent a plan before building. Across the plans six chose the
+same typeface and five the same night-to-morning palette, so each was
+given a distinct font, ground, and motion mode before any code was
+written: scroll-driven (02, 04, 05, 06), hands-on (01, 03, 07), or
+self-playing (08, 09, 10). Three sites still landed on the same pale pink;
+08 and 10 moved off it. 01 was sent back because Tooey's line always won
+in its demo, which implied unmeasured accuracy; its runs now vary and say
+"Closer, not perfect."
+
+- [x] Round two plans, collision review, and go-ahead
+- [x] Ten sites rebuilt, reviewed with motion frames, and committed
+- [x] Gallery rewritten for round two
