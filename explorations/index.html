@@ -100,6 +100,7 @@ button { font: inherit; color: inherit; }
 .meta { padding: 14px 2px 0; }
 .meta h2 { font-size: 17px; margin: 0; font-weight: 600; letter-spacing: -0.01em; display: flex; gap: 8px; align-items: baseline; }
 .meta p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.meta .tags { font-size: 13px; color: var(--faint); }
 .meta .row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
 .card.original .thumb { box-shadow: none; border-style: dashed; }
 
@@ -159,8 +160,7 @@ button { font: inherit; color: inherit; }
   <div class="intro">
     <div>
       <h1>Ten directions for the Tooey site</h1>
-      <p>Each site was designed and built by its own agent from one shared fact sheet and its own strategic brief, without seeing the others. None of them is live. The current site comes first, unchanged, for reference.</p>
-      <p>Open one to try it at full size, in a desktop or phone frame, with its brief, its reasoning, and an honest read of what works and what doesn't.</p>
+      <p>Round two. Each site was rebuilt from scratch by its own agent: under 150 words, one signature motion piece. The current site comes first, for reference.</p>
     </div>
     <div class="seg" role="group" aria-label="Thumbnails">
       <button type="button" data-thumb="desktop" aria-pressed="true">Desktop</button>
@@ -213,6 +213,7 @@ button { font: inherit; color: inherit; }
       '<div class="meta">' +
         '<h2><span class="num">' + esc(s.num) + '</span>' + esc(s.name) + '</h2>' +
         '<p>' + esc(s.line) + '</p>' +
+        (s.motion ? '<p class="tags">' + esc(s.motion) + (s.words ? ' \u00b7 ' + s.words + ' words' : '') + '</p>' : '') +
         '<div class="row"><a class="btn" href="#' + s.id + '">Review</a>' +
         '<a class="btn" href="' + s.href + '" target="_blank" rel="noopener">Open site ↗</a></div>' +
       '</div></li>';
@@ -233,6 +234,7 @@ button { font: inherit; color: inherit; }
     html += '<h3>Brief</h3><p>' + esc(s.brief) + '</p>';
     if (s.concept) html += '<h3>What it became</h3><p>' + esc(s.concept) + '</p>';
     if (s.look) html += '<h3>Look</h3><p>' + esc(s.look) + '</p>';
+    if (s.motion) html += '<h3>Motion</h3><p>' + esc(s.motion) + (s.words ? ', ' + s.words + ' words on the home page' : '') + '</p>';
     if (s.id !== '00-original') {
       html += '<h3>Strengths</h3>' + list(s.strengths);
       html += '<h3>Weaknesses</h3>' + list(s.weaknesses);
