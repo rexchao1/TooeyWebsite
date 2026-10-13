@@ -1,6 +1,7 @@
 /* Tooey, exploration 10: "Service is loud."
-   A heat-lamp red service that cools, by itself, into the quiet of a
-   kitchen after close. One family, Mona Sans, on the weight axis only. */
+   A heat-lamp red service that switches itself off: the red draws back into
+   one small dot and leaves a clean white counter, the kitchen after close.
+   One family, Mona Sans, on the weight axis only. */
 
 @font-face {
   font-family: "Mona Sans";
@@ -15,10 +16,10 @@
   --heat: #C4381A;      /* heat lamp, on: service */
   --ember: #A42C10;     /* order lines, tone on tone */
   --ticket: #FFF1E4;    /* type on the lamp */
-  --calm: #F0C9BD;      /* lamp off: the kitchen after close */
+  --calm: #FFFFFF;      /* lamp off: a wiped counter, a clean plate */
   --char: #4E1A10;      /* type on the quiet */
   --char-soft: #7E3A2A; /* secondary type on the quiet */
-  --well: #F7DED6;      /* form fields */
+  --well: #F4F2F1;      /* form fields */
 
   --gut: clamp(1.25rem, 5.5vw, 6.5rem);
   --sans: "Mona Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -277,12 +278,32 @@ a { color: inherit; }
   box-shadow: 0 0 .9rem .25rem rgba(255,190,150,.55);
 }
 
-/* ---------- Live: the sequence owns the hero's colours ---------- */
+/* ---------- Live: a red copy of the hero, clipped by the lamp (built in service.js) ---------- */
 
-.live .hero {
+.hot {
   --bg: var(--heat);
   --ink: var(--ticket);
   --ink-soft: var(--ticket);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: inherit;
+  grid-template-rows: inherit;
+  background: var(--heat);
+  color: var(--ticket);
+  pointer-events: none;
+  will-change: clip-path;
+}
+.hot .is-focus { outline: 2px solid var(--ticket); outline-offset: 4px; }
+.fly {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 .live .row { opacity: 0; transition: opacity .7s cubic-bezier(.3,.6,.2,1); }
 .live .row.is-in { opacity: 1; }
@@ -380,11 +401,11 @@ a { color: inherit; }
   transition: border-color .2s ease, background-color .2s ease;
 }
 .field textarea { resize: vertical; min-height: 6.5rem; }
-.field input:hover, .field textarea:hover { background: #FBE7E0; }
+.field input:hover, .field textarea:hover { background: #EFECEA; }
 .field input:focus, .field textarea:focus {
   outline: none;
   border-color: var(--char);
-  background: #FBEAE4;
+  background: var(--calm);
 }
 .field input[aria-invalid="true"] { border-color: var(--heat); }
 

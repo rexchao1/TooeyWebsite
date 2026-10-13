@@ -1,7 +1,8 @@
 /* Tooey, exploration 10: "Service is loud."
-   The hero plays one service and lets it go quiet by itself: order lines
-   stream in heat-lamp red, slow, fly into their dish's row as counts, and
-   the lamp cools to the colour of a kitchen after close. Then nothing moves. */
+   The hero plays one service and lets it go quiet by itself. Order lines
+   stream across a heat-lamp red field, slow, and fly into their dish's row
+   as counts. Then the lamp goes off: the whole red field draws back into one
+   small red dot, and what is left is a clean white counter. Nothing moves. */
 
 (function () {
   'use strict';
@@ -14,71 +15,98 @@
   var hero = document.querySelector('.hero');
   var canvas = hero && hero.querySelector('.roar');
   var ctx = canvas && canvas.getContext && canvas.getContext('2d');
-  if (!ctx) { doc.className = 'static'; return; }
+  var fly = document.createElement('canvas');
+  var fctx = fly.getContext && fly.getContext('2d');
+  if (!ctx || !fctx || !window.CSS || !CSS.supports('clip-path', 'circle(10px at 0 0)')) {
+    doc.className = 'static';
+    return;
+  }
 
-  var shout = hero.querySelector('.shout');
-  var sheet = hero.querySelector('.sheet');
-  var table = hero.querySelector('.counts');
-  var rows = Array.prototype.slice.call(hero.querySelectorAll('.row'));
   var btn = hero.querySelector('.replay');
-  var btnLabel = btn.querySelector('.replay-label');
+  var sheet = hero.querySelector('.sheet');
+  var lampEl = btn.querySelector('.lamp');
+  btn.hidden = false;
 
-  /* ---------- Colour, mixed in OKLab so red cools without going muddy ---------- */
+  // Counts: the screen shows a ticking number, assistive tech gets the real one.
+  Array.prototype.forEach.call(hero.querySelectorAll('[data-final]'), function (td) {
+    var final = td.getAttribute('data-final');
+    td.innerHTML = '<span class="sr-only">' + final + '</span><span class="tick" aria-hidden="true">0</span>';
+  });
 
-  function hexRgb(h) {
-    return [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255];
-  }
-  function lin(c) { return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
-  function gam(c) { return c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(c, 1 / 2.4) - 0.055; }
-  function lab(h) {
-    var c = hexRgb(h), r = lin(c[0]), g = lin(c[1]), b = lin(c[2]);
-    var l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
-    var m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
-    var s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
-    return [
-      0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
-      1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
-      0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s
-    ];
-  }
-  function mix(A, B, t) {
-    var L = A[0] + (B[0] - A[0]) * t, a = A[1] + (B[1] - A[1]) * t, bb = A[2] + (B[2] - A[2]) * t;
-    var l = Math.pow(L + 0.3963377774 * a + 0.2158037573 * bb, 3);
-    var m = Math.pow(L - 0.1055613458 * a - 0.0638541728 * bb, 3);
-    var s = Math.pow(L - 0.0894841775 * a - 1.2914855480 * bb, 3);
-    var rgb = [
-      4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
-      -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
-      -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s
-    ];
-    return 'rgb(' + rgb.map(function (v) {
-      return Math.round(Math.max(0, Math.min(1, gam(v))) * 255);
-    }).join(',') + ')';
-  }
+  /* ---------- The hot layer: the same hero, in service colours, clipped by the lamp ---------- */
 
-  function lerpLab(A, B, t) { return [A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t, A[2] + (B[2] - A[2]) * t]; }
-  function mixLab(A, B, t) { return mix(A, B, t); }
-  var EMBER_NOW, FLY_NOW;
-  var HEAT = lab('#C4381A'), CALM = lab('#F0C9BD');
-  var TICKET = lab('#FFF1E4'), CHAR = lab('#4E1A10'), CHAR_SOFT = lab('#7E3A2A');
+  var hot = document.createElement('div');
+  hot.className = 'hot';
+  hot.setAttribute('aria-hidden', 'true');
+  hot.setAttribute('inert', '');
+  hot.appendChild(canvas);
+  ['.nav', '.hero-main', '.hero-foot'].forEach(function (sel) {
+    var c = hero.querySelector(sel).cloneNode(true);
+    c.removeAttribute('aria-label');
+    Array.prototype.forEach.call(c.querySelectorAll('[id]'), function (n) { n.removeAttribute('id'); });
+    Array.prototype.forEach.call(c.querySelectorAll('a, button'), function (n) { n.tabIndex = -1; });
+    hot.appendChild(c);
+  });
+
+  function layer(root) {
+    var rows = Array.prototype.slice.call(root.querySelectorAll('.row'));
+    return {
+      shout: root.querySelector('.shout'),
+      table: root.querySelector('.counts'),
+      rows: rows,
+      label: root.querySelector('.replay-label'),
+      cells: rows.map(function (r) {
+        return Array.prototype.slice.call(r.querySelectorAll('[data-final]')).map(function (td) {
+          return td.querySelector('.tick');
+        });
+      }),
+      focusables: Array.prototype.slice.call(root.querySelectorAll('a, button'))
+    };
+  }
+  var real = layer(hero);          // collected before the hot layer joins the hero
+  var heat = layer(hot);
+  var both = [real, heat];
+  hero.insertBefore(hot, hero.firstChild);
+  fly.className = 'fly';
+  fly.setAttribute('aria-hidden', 'true');
+  hero.appendChild(fly);
+
+  // Keyboard focus lives on the real layer underneath; show its ring on the hot copy too.
+  real.focusables.forEach(function (el, i) {
+    var twin = heat.focusables[i];
+    if (!twin) return;
+    el.addEventListener('focus', function () {
+      var visible = true;
+      try { visible = el.matches(':focus-visible'); } catch (e) { /* older browsers */ }
+      if (visible) twin.classList.add('is-focus');
+    });
+    el.addEventListener('blur', function () { twin.classList.remove('is-focus'); });
+  });
+
+  var finals = real.rows.map(function (r) {
+    return Array.prototype.slice.call(r.querySelectorAll('[data-final]')).map(function (td) {
+      return { final: +td.getAttribute('data-final'), value: 0, target: 0, shown: -1 };
+    });
+  });
 
   /* ---------- Easing ---------- */
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function prog(t, a, b) { return clamp((t - a) / (b - a), 0, 1); }
   function inOutCubic(p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
-  function inOutSine(p) { return -(Math.cos(Math.PI * p) - 1) / 2; }
+  function inOutQuart(p) { return p < 0.5 ? 8 * p * p * p * p : 1 - Math.pow(-2 * p + 2, 4) / 2; }
+  function outCubic(p) { return 1 - Math.pow(1 - p, 3); }
   function smooth(p) { p = clamp(p, 0, 1); return p * p * (3 - 2 * p); }
 
   /* ---------- The choreography, in seconds ---------- */
 
   var T = {
-    slow: 2.3,      // the rush starts to ease
-    stop: 6.4,      // every lane at rest
-    bg0: 2.5, bg1: 7.6,     // lamp cools
-    h0: 3.3, h1: 8.0,       // the headline breathes out
-    fly0: 3.0, fly1: 6.3,   // order lines leave for their rows
-    end: 9.4
+    slow: 2.0,               // the rush starts to ease
+    stop: 5.6,               // every lane at rest
+    fly0: 2.6, fly1: 4.9,    // order lines leave for their rows
+    off0: 6.7, off1: 8.0,    // the lamp goes off: red draws back into the dot
+    h0: 7.6, h1: 9.5,        // the headline breathes out on the white
+    end: 9.9
   };
 
   /* ---------- What the kitchen says ---------- */
@@ -91,28 +119,23 @@
     ['1 halibut', 'halibut special', '2 halibut']
   ];
   var DISH_WEIGHT = [0.25, 0.2, 0.3, 0.17, 0.08];
-  var TAKE = [7, 6, 8, 5, 3]; // how many lines fly to each row
+  var TAKE = [7, 6, 8, 5, 3];
   var CHATTER = ['heard', 'behind', 'hands', 'fire 12', 'yes chef', 'corner', 'table 9 waiting',
     'all day 6', 're-fire', 'walking in', '86 fries', 'two minutes', 'sauce on the side',
     'behind you', 'order in', 'pick up 14', 'where’s 7?', 'heard, chef', 'sorry, re-fire'];
 
-  /* ---------- Counts: the screen shows a ticking number, readers get the real one ---------- */
-
-  var cells = rows.map(function (row) {
-    return Array.prototype.slice.call(row.querySelectorAll('[data-final]')).map(function (td) {
-      var final = +td.getAttribute('data-final');
-      td.innerHTML = '<span class="sr-only">' + final + '</span><span aria-hidden="true">0</span>';
-      return { el: td.lastChild, final: final, shown: 0, value: 0, target: 0 };
-    });
-  });
+  var EMBER = '#A42C10', TICKET = '#FFF1E4', CHAR = '#4E1A10';
 
   /* ---------- State ---------- */
 
   var W = 0, H = 0, dpr = 1;
   var lanes = [], flights = [];
   var t = 0, rt = 0, last = 0, raf = 0;
-  var playing = false, launched = false, seen = false;
+  var playing = false, launched = false, seen = false, dimmed = false;
+  var opening = 1;  // 1 = the red field already fills the hero
   var landed = [0, 0, 0, 0, 0], due = [0, 0, 0, 0, 0];
+  var lamp = { x: 0, y: 0, r: 6, R: 2000 };
+  var started = false;
   var rand = Math.random;
 
   function pickDish() {
@@ -123,31 +146,56 @@
 
   function fontOf(w, s) { return w + ' ' + s + 'px "Mona Sans", ui-sans-serif, system-ui, sans-serif'; }
 
-  function build() {
+  function rel(el) {
+    var r = el.getBoundingClientRect(), h = hero.getBoundingClientRect();
+    return { x: r.left - h.left, y: r.top - h.top, w: r.width, h: r.height };
+  }
+
+  function measureLamp() {
+    var r = rel(lampEl);
+    lamp.x = r.x + r.w / 2;
+    lamp.y = r.y + r.h / 2;
+    lamp.r = r.w / 2;
+    lamp.R = Math.ceil(Math.max(
+      Math.hypot(lamp.x, lamp.y), Math.hypot(W - lamp.x, lamp.y),
+      Math.hypot(lamp.x, H - lamp.y), Math.hypot(W - lamp.x, H - lamp.y)
+    )) + 4;
+  }
+
+  function clipTo(radius) {
+    if (radius >= lamp.R) { hot.style.clipPath = 'none'; hot.style.webkitClipPath = 'none'; return; }
+    var v = 'circle(' + radius.toFixed(2) + 'px at ' + lamp.x.toFixed(1) + 'px ' + lamp.y.toFixed(1) + 'px)';
+    hot.style.clipPath = v;
+    hot.style.webkitClipPath = v;
+  }
+
+  function size() {
     W = hero.clientWidth; H = hero.clientHeight;
     dpr = Math.min(2, window.devicePixelRatio || 1);
-    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    [canvas, fly].forEach(function (c) {
+      c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+    });
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    fctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    measureLamp();
+  }
 
+  function build() {
+    size();
     var k = clamp(Math.sqrt(W / 1280), 0.78, 1.15);
     var SIZES = [14, 16, 18, 21, 26, 34, 44];
     lanes = [];
-    var y = 6;
-    var i = 0;
+    var y = 6, i = 0;
     while (y < H + 20) {
-      var size = Math.round(SIZES[Math.floor(Math.pow(rand(), 1.25) * SIZES.length)] * k);
+      var s = Math.round(SIZES[Math.floor(Math.pow(rand(), 1.25) * SIZES.length)] * k);
       var lane = {
-        y: y + size * 0.82,
-        size: size,
+        y: y + s * 0.82, size: s,
         weight: [560, 680, 780, 860, 900][Math.floor(rand() * 5)],
         dir: i % 2 ? 1 : -1,
-        v: (46 + rand() * 130) * (size < 20 ? 1.25 : 0.85) * k,
-        phase: rand() * 6.28,
-        off: rand() * 500,
-        items: [],
-        len: 0
+        v: (46 + rand() * 130) * (s < 20 ? 1.25 : 0.85) * k,
+        phase: rand() * 6.28, off: rand() * 500, items: [], len: 0
       };
-      ctx.font = fontOf(lane.weight, size);
+      ctx.font = fontOf(lane.weight, s);
       var x = 0, limit = W + 1200;
       while (x < limit) {
         var chatter = rand() < 0.42;
@@ -158,14 +206,14 @@
         lane.items.push({
           text: text, dish: dish, w: w, base: x,
           a: 0.55 + rand() * 0.45,
-          fadeAt: chatter ? 2.2 + rand() * 2.6 : 4.3 + rand() * 2.1,
-          flying: false, x: 0
+          fadeAt: chatter ? 2.0 + rand() * 2.4 : 3.8 + rand() * 2.0,
+          flying: false
         });
-        x += w + size * (0.9 + rand() * 1.6);
+        x += w + s * (0.9 + rand() * 1.6);
       }
       lane.len = x;
       lanes.push(lane);
-      y += size * (1.05 + rand() * 0.55) + 4;
+      y += s * (1.05 + rand() * 0.55) + 4;
       i++;
     }
   }
@@ -176,9 +224,9 @@
     return p - (lane.len - W) / 2;
   }
 
-  function rel(el) {
-    var r = el.getBoundingClientRect(), h = hero.getBoundingClientRect();
-    return { x: r.left - h.left, y: r.top - h.top, w: r.width, h: r.height };
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(rand() * (i + 1)); var tmp = a[i]; a[i] = a[j]; a[j] = tmp; }
+    return a;
   }
 
   function launch() {
@@ -201,48 +249,55 @@
     shuffle(picks);
     // the new dish arrives last: it has the least to say
     picks.sort(function (a, b) { return (a.dish === 4) - (b.dish === 4); });
-
     var n = picks.length;
     flights = picks.map(function (c, idx) {
       var lane = c.lane, it = c.it;
       it.flying = true;
       var x = itemX(lane, it);
-      var start = T.fly0 + (n > 1 ? idx / (n - 1) : 0) * (T.fly1 - T.fly0) + rand() * 0.18;
       return {
         dish: c.dish, text: it.text, weight: lane.weight, size: lane.size, a: it.a,
         sx: clamp(x + it.w / 2, -40, W + 40), sy: lane.y - lane.size * 0.35,
-        start: start, dur: 1.05 + rand() * 0.55, lift: 40 + rand() * 120,
-        done: false
+        start: T.fly0 + (n > 1 ? idx / (n - 1) : 0) * (T.fly1 - T.fly0) + rand() * 0.18,
+        dur: 1.0 + rand() * 0.45, lift: 40 + rand() * 120, done: false
       };
     });
   }
 
-  function shuffle(a) {
-    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(rand() * (i + 1)); var tmp = a[i]; a[i] = a[j]; a[j] = tmp; }
-    return a;
-  }
-
   function targetOf(d) {
-    var row = rows[d];
+    var row = real.rows[d];
     var cell = row.querySelector('.likely') || row.querySelector('.reason');
     var r = rel(cell);
     if (d === 4) return { x: r.x + r.w * 0.5, y: r.y + r.h / 2 };
     return { x: r.x + r.w - 14, y: r.y + r.h / 2 };
   }
 
+  function each(fn) { both.forEach(fn); }
+
   function land(f) {
     f.done = true;
     var d = f.dish;
     landed[d]++;
-    rows[d].classList.add('is-in');
-    table.classList.add('is-open');
+    each(function (L) { L.rows[d].classList.add('is-in'); L.table.classList.add('is-open'); });
     if (d === 4) {
-      if (landed[4] >= due[4]) rows[4].classList.add('is-told');
+      if (landed[4] >= due[4]) each(function (L) { L.rows[4].classList.add('is-told'); });
       return;
     }
     var share = landed[d] / due[d];
-    cells[d].forEach(function (c) { c.target = landed[d] >= due[d] ? c.final : Math.round(c.final * share); });
+    finals[d].forEach(function (c) { c.target = landed[d] >= due[d] ? c.final : Math.round(c.final * share); });
   }
+
+  function setCount(d, i, v) {
+    each(function (L) { L.cells[d][i].textContent = v; });
+  }
+
+  function setShout(e) {
+    var w = Math.round(900 - 640 * e);
+    var ls = (-0.045 + 0.033 * e).toFixed(4) + 'em';
+    var tf = 'scale(' + (1 - 0.08 * e).toFixed(4) + ')';
+    each(function (L) { L.shout.style.fontWeight = w; L.shout.style.letterSpacing = ls; L.shout.style.transform = tf; });
+  }
+
+  function setLabel(s) { each(function (L) { L.label.textContent = s; }); }
 
   /* ---------- One frame ---------- */
 
@@ -253,66 +308,59 @@
     t += dt;
     if (!seen && t > T.slow) t = T.slow; // keep the rush going until the list is in view
 
-    var bgP = inOutSine(prog(t, T.bg0, T.bg1));
-    // type flips from light to dark quickly, so it is never grey on salmon for long
-    var inkP = smooth(prog(bgP, 0.24, 0.36));
-    var bgLab = lerpLab(HEAT, CALM, bgP);
-    hero.style.setProperty('--bg', mix(bgLab, bgLab, 0));
-    hero.style.setProperty('--ink', mix(TICKET, CHAR, inkP));
-    hero.style.setProperty('--ink-soft', mix(TICKET, CHAR_SOFT, inkP));
+    // the lamp: opens from the dot on a replay, draws back into it at the end
+    if (opening < 1) opening = Math.min(1, opening + dt / 0.75);
+    var close = inOutQuart(prog(t, T.off0, T.off1));
+    if (close > 0 && !dimmed) { dimmed = true; hero.classList.remove('is-playing'); }
+    var open = outCubic(opening);
+    var radius = lamp.r + (lamp.R - lamp.r) * open * (1 - close);
+    clipTo(opening >= 1 && close === 0 ? lamp.R : radius);
 
-    var e = inOutCubic(prog(t, T.h0, T.h1));
-    shout.style.fontWeight = Math.round(900 - 640 * e);
-    shout.style.letterSpacing = (-0.045 + 0.033 * e).toFixed(4) + 'em';
-    shout.style.transform = 'scale(' + (1 - 0.08 * e).toFixed(4) + ')';
+    setShout(inOutCubic(prog(t, T.h0, T.h1)));
 
     // friction: lanes coast to a stop rather than braking
     var m = t < T.slow ? 1 : Math.pow(1 - prog(t, T.slow, T.stop), 2.2);
-
     if (!launched && t >= T.fly0) launch();
 
     ctx.clearRect(0, 0, W, H);
-    // the noise is always the ground, a shade darker: tone on tone at every moment
-    EMBER_NOW = [bgLab[0] - 0.075 + 0.025 * bgP, bgLab[1] + 0.012, bgLab[2] + 0.008];
-    var ember = mix(EMBER_NOW, EMBER_NOW, 0);
-    ctx.fillStyle = ember;
-    ctx.textBaseline = 'alphabetic';
-    ctx.textAlign = 'left';
-
-    for (var i = 0; i < lanes.length; i++) {
-      var lane = lanes[i];
-      var surge = 1 + 0.5 * Math.pow(Math.max(0, Math.sin(rt * 1.9 + lane.phase)), 3);
-      lane.off += lane.v * surge * m * dt;
-      ctx.font = fontOf(lane.weight, lane.size);
-      for (var j = 0; j < lane.items.length; j++) {
-        var it = lane.items[j];
-        if (it.flying) continue;
-        var x = itemX(lane, it);
-        if (x > W || x + it.w < 0) continue;
-        var a = it.a * (1 - smooth((t - it.fadeAt) / 0.8));
-        if (a <= 0.01) continue;
-        ctx.globalAlpha = a;
-        ctx.fillText(it.text, x, lane.y);
+    if (close < 1) {
+      ctx.fillStyle = EMBER;
+      ctx.textBaseline = 'alphabetic';
+      ctx.textAlign = 'left';
+      for (var i = 0; i < lanes.length; i++) {
+        var lane = lanes[i];
+        var surge = 1 + 0.5 * Math.pow(Math.max(0, Math.sin(rt * 1.9 + lane.phase)), 3);
+        lane.off += lane.v * surge * m * dt;
+        ctx.font = fontOf(lane.weight, lane.size);
+        for (var j = 0; j < lane.items.length; j++) {
+          var it = lane.items[j];
+          if (it.flying) continue;
+          var x = itemX(lane, it);
+          if (x > W || x + it.w < 0) continue;
+          var a = it.a * (1 - smooth((t - it.fadeAt) / 0.8));
+          if (a <= 0.01) continue;
+          ctx.globalAlpha = a;
+          ctx.fillText(it.text, x, lane.y);
+        }
       }
+      ctx.globalAlpha = 1;
     }
 
-    var flyP = inkP;
-    var flyInk = mix(TICKET, CHAR, flyP);
-    FLY_NOW = lerpLab(TICKET, CHAR, flyP);
-    ctx.fillStyle = flyInk;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    var open = 0;
+    fctx.clearRect(0, 0, W, H);
+    fctx.textAlign = 'center';
+    fctx.textBaseline = 'middle';
+    var r2 = radius * radius;
+    var pending = 0;
     for (var k = 0; k < flights.length; k++) {
       var f = flights[k];
       if (f.done) continue;
-      open++;
+      pending++;
       if (t < f.start) {
         // waiting its turn: it stops where it was, still in the lane's colour
-        ctx.fillStyle = ember;
-        ctx.globalAlpha = f.a;
-        ctx.font = fontOf(f.weight, f.size);
-        ctx.fillText(f.text, f.sx, f.sy);
+        fctx.fillStyle = EMBER;
+        fctx.globalAlpha = f.a;
+        fctx.font = fontOf(f.weight, f.size);
+        fctx.fillText(f.text, f.sx, f.sy);
         continue;
       }
       var p = prog(t, f.start, f.start + f.dur);
@@ -323,26 +371,26 @@
       var u = 1 - q;
       var px = u * u * f.sx + 2 * u * q * cx + q * q * tg.x;
       var py = u * u * f.sy + 2 * u * q * cy + q * q * tg.y;
-      var size = f.size + (13 - f.size) * q;
-      // it lifts out of the noise as it leaves: lane colour to ink
-      ctx.fillStyle = p < 0.3 ? mixLab(EMBER_NOW, FLY_NOW, smooth(p / 0.3)) : flyInk;
-      ctx.globalAlpha = (f.a + (1 - f.a) * smooth(p / 0.3)) * (p < 0.68 ? 1 : 1 - (p - 0.68) / 0.32);
-      ctx.font = fontOf(Math.round(f.weight - 300 * q), Math.max(8, size));
-      ctx.fillText(f.text, px, py);
+      var inside = (px - lamp.x) * (px - lamp.x) + (py - lamp.y) * (py - lamp.y) < r2;
+      // it lifts out of the noise as it leaves: lane colour, then the ink of whatever it crosses
+      fctx.fillStyle = p < 0.18 ? EMBER : (inside ? TICKET : CHAR);
+      fctx.globalAlpha = (f.a + (1 - f.a) * smooth(p / 0.3)) * (p < 0.68 ? 1 : 1 - (p - 0.68) / 0.32);
+      fctx.font = fontOf(Math.round(f.weight - 300 * q), Math.max(8, f.size + (13 - f.size) * q));
+      fctx.fillText(f.text, px, py);
     }
-    ctx.globalAlpha = 1;
+    fctx.globalAlpha = 1;
 
     // numbers roll toward what has landed
-    for (var d = 0; d < cells.length; d++) {
-      for (var c = 0; c < cells[d].length; c++) {
-        var cell = cells[d][c];
+    for (var d = 0; d < finals.length; d++) {
+      for (var c = 0; c < finals[d].length; c++) {
+        var cell = finals[d][c];
         cell.value += (cell.target - cell.value) * Math.min(1, dt * 5.5);
         var shown = Math.round(cell.target - cell.value < 0.5 ? cell.target : cell.value);
-        if (shown !== cell.shown) { cell.shown = shown; cell.el.textContent = shown; }
+        if (shown !== cell.shown) { cell.shown = shown; setCount(d, c, shown); }
       }
     }
 
-    if (t >= T.end && launched && open === 0) { rest(); return; }
+    if (t >= T.end && launched && pending === 0) { rest(); return; }
     raf = requestAnimationFrame(frame);
   }
 
@@ -353,50 +401,52 @@
     raf = 0;
     playing = false;
     ctx.clearRect(0, 0, W, H);
-    hero.style.setProperty('--bg', mix(CALM, CALM, 0));
-    hero.style.setProperty('--ink', mix(CHAR, CHAR, 0));
-    hero.style.setProperty('--ink-soft', mix(CHAR_SOFT, CHAR_SOFT, 0));
-    shout.style.fontWeight = 260;
-    shout.style.letterSpacing = '-0.012em';
-    shout.style.transform = 'scale(0.92)';
-    rows.forEach(function (r) { r.classList.add('is-in'); });
-    rows[4].classList.add('is-told');
-    table.classList.add('is-open');
-    cells.forEach(function (list) {
-      list.forEach(function (c) { c.value = c.target = c.shown = c.final; c.el.textContent = c.final; });
+    fctx.clearRect(0, 0, W, H);
+    hot.style.visibility = 'hidden';
+    setShout(1);
+    each(function (L) {
+      L.rows.forEach(function (r) { r.classList.add('is-in'); });
+      L.rows[4].classList.add('is-told');
+      L.table.classList.add('is-open');
+    });
+    finals.forEach(function (list, d) {
+      list.forEach(function (c, i) { c.value = c.target = c.shown = c.final; setCount(d, i, c.final); });
     });
     hero.classList.remove('is-playing');
     hero.classList.add('is-rest');
-    btnLabel.textContent = 'Play service again';
+    setLabel('Play service again');
   }
 
-  function play() {
+  function play(fromDot) {
     cancelAnimationFrame(raf);
-    t = 0; rt = 0; launched = false; flights = [];
+    t = 0; rt = 0; launched = false; dimmed = false; flights = [];
     landed = [0, 0, 0, 0, 0]; due = [0, 0, 0, 0, 0];
-    rows.forEach(function (r) { r.classList.remove('is-in', 'is-told'); });
-    table.classList.remove('is-open');
-    cells.forEach(function (list) {
-      list.forEach(function (c) { c.value = c.target = c.shown = 0; c.el.textContent = '0'; });
+    each(function (L) {
+      L.rows.forEach(function (r) { r.classList.remove('is-in', 'is-told'); });
+      L.table.classList.remove('is-open');
     });
-    shout.style.fontWeight = 900;
-    shout.style.letterSpacing = '-0.045em';
-    shout.style.transform = 'scale(1)';
+    finals.forEach(function (list, d) {
+      list.forEach(function (c, i) { c.value = c.target = 0; c.shown = 0; setCount(d, i, 0); });
+    });
+    setShout(0);
     hero.classList.remove('is-rest');
     hero.classList.add('is-playing');
-    btnLabel.textContent = 'Quiet now';
+    setLabel('Quiet now');
     build();
+    opening = fromDot ? 0 : 1;
+    clipTo(fromDot ? lamp.r : lamp.R);
+    hot.style.visibility = 'visible';
     playing = true;
     last = performance.now();
     raf = requestAnimationFrame(frame);
   }
 
-  btn.hidden = false;
   btn.addEventListener('click', function () {
-    if (playing) rest(); else play();
+    if (!started) { started = true; rest(); return; } // quieted before it began
+    if (playing) rest(); else play(true);
   });
 
-  // Starting over mid-play is not worth a jump: a resize during service just ends it.
+  // A resize during service just ends it; a resize at rest only needs the lamp's new place.
   var lastW = window.innerWidth;
   window.addEventListener('resize', function () {
     if (Math.abs(window.innerWidth - lastW) < 40) return;
@@ -413,8 +463,7 @@
   }
 
   // Draw with the real face, or not at all for longer than a moment.
-  var started = false;
-  function go() { if (!started) { started = true; play(); } }
+  function go() { if (!started) { started = true; play(false); } }
   if (document.fonts && document.fonts.load) {
     document.fonts.load(fontOf(900, 20)).then(go, go);
     setTimeout(go, 1200);
@@ -422,7 +471,7 @@
     go();
   }
 
-  /* expose for frame captures during review */
+  /* exposed for frame captures during review */
   window.__tooeyService = { time: function () { return t; } };
 })();
 
