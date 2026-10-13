@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tooey · Prep counts you can see into, for independent restaurants</title>
+  <meta name="description" content="Each morning before prep, Tooey gives independent restaurants a count for every dish, worked out from their own sales. You can see what goes into each number, and lines it can't call are left blank with the reason.">
+  <meta name="theme-color" content="#f5f3ee">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tooey">
+  <meta property="og:title" content="Tooey · Prep counts you can see into">
+  <meta property="og:description" content="A count for every dish each morning, from your own sales. What goes in is shown, and lines Tooey can't call are left blank with the reason.">
+  <meta property="og:image" content="assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="assets/fonts/atkinson-next.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/atkinson-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html" aria-label="Tooey, home">
+        <img src="assets/logo.png" alt="tooey" width="343" height="148">
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="bars" aria-hidden="true"></span>Menu
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#count">How a count is made</a></li>
+          <li><a href="#blanks">Blank lines</a></li>
+          <li><a href="#next">Where it’s going</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li class="nav-cta"><a href="#start">Talk to us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ─────────────── What comes out ─────────────── -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-text">
+          <h1 id="hero-title">Restaurant software that tells you what goes into every number, <span class="quiet">and leaves the line blank when it can’t.</span></h1>
+          <div class="hero-side">
+            <p>Tooey is for independent restaurants, and it starts with prep. Every morning before the kitchen opens, you get a count for each dish, worked out overnight from your own sales. Here is a sample list, with our notes on it.</p>
+            <div class="hero-actions">
+              <a class="btn" href="#start">Talk to us</a>
+              <a class="link-arrow" href="#count"><span>How a count is made</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <figure class="sheet-fig" style="margin:0">
+          <div class="pad drawing-pad">
+            <div class="drawing" id="drawing">
+              <div class="sheet" id="sheet">
+                <div class="sheet-head">
+                  <div class="sheet-title">Prep list <span class="day">· Tuesday</span></div>
+                  <span class="stamp">Example</span>
+                </div>
+                <table class="prep">
+                  <caption class="visually-hidden">Sample prep list for Tuesday, grouped by category</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Item</th>
+                      <th scope="col" class="num">Predicted</th>
+                      <th scope="col" class="num">Prep</th>
+                      <th scope="col" class="num">vs. last Tue</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="cat"><th colspan="4" scope="colgroup">Mains</th></tr>
+                    <tr><th scope="row">Cheeseburger</th><td class="num"><span class="tgt" id="n1"><span class="mk" aria-hidden="true">1</span>42</span></td><td class="num prep-n">45</td><td class="num chg">+8%</td></tr>
+                    <tr><th scope="row">Chicken sandwich</th><td class="num">31</td><td class="num prep-n">33</td><td class="num chg">+7%</td></tr>
+                    <tr><th scope="row">House pasta</th><td class="num">18</td><td class="num prep-n"><span class="tgt" id="n2"><span class="mk" aria-hidden="true">2</span>20</span></td><td class="num chg">+6%</td></tr>
+                    <tr><th scope="row">Short rib special</th><td colspan="3"><span class="blank-cell hatch"><span><b>Blank:</b> 3 weeks on the menu</span></span></td></tr>
+                  </tbody>
+                  <tbody>
+                    <tr class="cat"><th colspan="4" scope="colgroup">Starters</th></tr>
+                    <tr><th scope="row">Tomato soup</th><td class="num">17</td><td class="num prep-n">19</td><td class="num chg"><span class="tgt" id="n3"><span class="mk" aria-hidden="true">3</span>+21%</span></td></tr>
+                    <tr><th scope="row">Caesar salad</th><td class="num">24</td><td class="num prep-n">26</td><td class="num chg">−8%</td></tr>
+                  </tbody>
+                  <tbody>
+                    <tr class="cat"><th colspan="4" scope="colgroup">Desserts</th></tr>
+                    <tr><th scope="row">Lemon tart</th><td colspan="3"><span class="blank-cell hatch tgt" id="n4"><span class="mk" aria-hidden="true">4</span><span><b>Blank:</b> sells under 1 a day</span></span></td></tr>
+                  </tbody>
+                </table>
+                <p class="sheet-foot">Worked out overnight, with Monday’s sales added.</p>
+              </div>
+
+              <ol class="notes" id="notes" aria-label="Notes on the sample list">
+                <li data-target="n1"><span class="mk" aria-hidden="true">1</span><b>Predicted.</b> How many cheeseburgers Tooey expects you to sell on Tuesday.</li>
+                <li data-target="n2"><span class="mk" aria-hidden="true">2</span><b>Prep.</b> How many to make. A little over Predicted, so a rush doesn’t leave the line short.</li>
+                <li data-target="n3"><span class="mk" aria-hidden="true">3</span><b>vs. last Tue.</b> The change from last Tuesday, so a big jump stands out before you prep for it.</li>
+                <li data-target="n4"><span class="mk" aria-hidden="true">4</span><b>Blank, on purpose.</b> Too new or too slow to count. The list prints the reason instead of a guess.</li>
+              </ol>
+              <svg class="leaders" id="leaders" aria-hidden="true" focusable="false"></svg>
+            </div>
+          </div>
+          <figcaption class="figure-note">A sample restaurant’s list. The numbers are illustrations, not results.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ─────────────── What goes in ─────────────── -->
+    <section class="section" id="count" aria-labelledby="count-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="count-title">What goes into a count</h2>
+          <p class="lead">Software like this gets called AI, which tells you nothing about what it actually looks at. Tooey looks at four things, and only these four.</p>
+          <p class="lead js-only">Pick a line from the sample list to see what Tooey had to go on for it, and what came out.</p>
+        </div>
+
+        <div class="inputs-strip">
+          <div><span class="v">Your own sales</span><span class="k">Each dish, from your POS</span></div>
+          <div><span class="v">Day of the week</span><span class="k">Tuesdays compared with Tuesdays</span></div>
+          <div><span class="v">Time of year</span><span class="k">How the season moves a dish</span></div>
+          <div><span class="v">Holidays</span><span class="k">As they fall on the calendar</span></div>
+        </div>
+
+        <div class="pad work">
+          <div class="work-grid">
+            <div class="picker">
+              <p class="picker-label" id="pick-label">Sample list, Tuesday</p>
+              <div role="tablist" aria-labelledby="pick-label" id="tabs">
+                <button class="tab" role="tab" type="button" id="t-burger" aria-controls="p-burger" aria-selected="true">Cheeseburger <span class="tv">45</span></button>
+                <button class="tab" role="tab" type="button" id="t-caesar" aria-controls="p-caesar" aria-selected="false" tabindex="-1">Caesar salad <span class="tv">26</span></button>
+                <button class="tab" role="tab" type="button" id="t-soup" aria-controls="p-soup" aria-selected="false" tabindex="-1">Tomato soup <span class="tv">19</span></button>
+                <button class="tab" role="tab" type="button" id="t-rib" aria-controls="p-rib" aria-selected="false" tabindex="-1">Short rib special <span class="tv is-blank" aria-label="blank"></span></button>
+                <button class="tab" role="tab" type="button" id="t-tart" aria-controls="p-tart" aria-selected="false" tabindex="-1">Lemon tart <span class="tv is-blank" aria-label="blank"></span></button>
+              </div>
+              <p class="picker-hint">Three lines get a count. The last two are left blank, each for a different reason.</p>
+            </div>
+
+            <div class="panels">
+              <!-- Cheeseburger -->
+              <div class="panel" id="p-burger" role="tabpanel" aria-labelledby="t-burger" tabindex="0">
+                <h3 class="panel-title">Cheeseburger <span class="day">· Tuesday</span></h3>
+                <dl class="in-list">
+                  <div class="in-row">
+                    <dt>Your sales<small>this dish, past Tuesdays</small></dt>
+                    <dd>
+                      <ol class="weeks" aria-label="Cheeseburgers sold on the last eight Tuesdays, oldest first">
+                        <li style="--v:.72"><span class="bar"></span><span class="n">36</span></li>
+                        <li style="--v:.82"><span class="bar"></span><span class="n">41</span></li>
+                        <li style="--v:.76"><span class="bar"></span><span class="n">38</span></li>
+                        <li style="--v:.88"><span class="bar"></span><span class="n">44</span></li>
+                        <li style="--v:.80"><span class="bar"></span><span class="n">40</span></li>
+                        <li style="--v:.74"><span class="bar"></span><span class="n">37</span></li>
+                        <li style="--v:.86"><span class="bar"></span><span class="n">43</span></li>
+                        <li class="last" style="--v:.78"><span class="bar"></span><span class="n">39</span></li>
+                      </ol>
+                      <div class="weeks-axis" aria-hidden="true"><span>8 Tuesdays ago</span><span>Last Tuesday</span></div>
+                    </dd>
+                  </div>
+                  <div class="in-row"><dt>Day of the week</dt><dd><strong>Tuesday.</strong> Read against your other Tuesdays, not against Friday night.</dd></div>
+                  <div class="in-row"><dt>Time of year</dt><dd><strong>Mid-October.</strong> Burgers have held about level here since summer.</dd></div>
+                  <div class="in-row"><dt>Holidays</dt><dd><strong>None</strong> this week.</dd></div>
+                </dl>
+                <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M2 12h34M28 5l8 7-8 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="out">
+                  <div class="out-row"><span class="k">Predicted<small>expected to sell</small></span><span class="v">42</span></div>
+                  <div class="out-row prep-row"><span class="k">Prep<small>a little over, for a rush</small></span><span class="v">45</span></div>
+                  <div class="out-row"><span class="k">vs. last Tue<small>last Tuesday: 39</small></span><span class="v">+8%</span></div>
+                </div>
+              </div>
+
+              <!-- Caesar -->
+              <div class="panel" id="p-caesar" role="tabpanel" aria-labelledby="t-caesar" tabindex="0">
+                <h3 class="panel-title">Caesar salad <span class="day">· Tuesday</span></h3>
+                <dl class="in-list">
+                  <div class="in-row">
+                    <dt>Your sales<small>this dish, past Tuesdays</small></dt>
+                    <dd>
+                      <ol class="weeks" aria-label="Caesar salads sold on the last eight Tuesdays, oldest first">
+                        <li style="--v:.89"><span class="bar"></span><span class="n">31</span></li>
+                        <li style="--v:.83"><span class="bar"></span><span class="n">29</span></li>
+                        <li style="--v:.86"><span class="bar"></span><span class="n">30</span></li>
+                        <li style="--v:.80"><span class="bar"></span><span class="n">28</span></li>
+                        <li style="--v:.77"><span class="bar"></span><span class="n">27</span></li>
+                        <li style="--v:.80"><span class="bar"></span><span class="n">28</span></li>
+                        <li style="--v:.71"><span class="bar"></span><span class="n">25</span></li>
+                        <li class="last" style="--v:.74"><span class="bar"></span><span class="n">26</span></li>
+                      </ol>
+                      <div class="weeks-axis" aria-hidden="true"><span>8 Tuesdays ago</span><span>Last Tuesday</span></div>
+                    </dd>
+                  </div>
+                  <div class="in-row"><dt>Day of the week</dt><dd><strong>Tuesday.</strong> Read against your other Tuesdays, not against Friday night.</dd></div>
+                  <div class="in-row"><dt>Time of year</dt><dd><strong>Mid-October.</strong> Salads here have been slipping since September.</dd></div>
+                  <div class="in-row"><dt>Holidays</dt><dd><strong>None</strong> this week.</dd></div>
+                </dl>
+                <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M2 12h34M28 5l8 7-8 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="out">
+                  <div class="out-row"><span class="k">Predicted<small>expected to sell</small></span><span class="v">24</span></div>
+                  <div class="out-row prep-row"><span class="k">Prep<small>a little over, for a rush</small></span><span class="v">26</span></div>
+                  <div class="out-row"><span class="k">vs. last Tue<small>last Tuesday: 26</small></span><span class="v">−8%</span></div>
+                </div>
+              </div>
+
+              <!-- Soup -->
+              <div class="panel" id="p-soup" role="tabpanel" aria-labelledby="t-soup" tabindex="0">
+                <h3 class="panel-title">Tomato soup <span class="day">· Tuesday</span></h3>
+                <dl class="in-list">
+                  <div class="in-row">
+                    <dt>Your sales<small>this dish, past Tuesdays</small></dt>
+                    <dd>
+                      <ol class="weeks" aria-label="Tomato soups sold on the last eight Tuesdays, oldest first">
+                        <li style="--v:.45"><span class="bar"></span><span class="n">9</span></li>
+                        <li style="--v:.50"><span class="bar"></span><span class="n">10</span></li>
+                        <li style="--v:.55"><span class="bar"></span><span class="n">11</span></li>
+                        <li style="--v:.50"><span class="bar"></span><span class="n">10</span></li>
+                        <li style="--v:.60"><span class="bar"></span><span class="n">12</span></li>
+                        <li style="--v:.65"><span class="bar"></span><span class="n">13</span></li>
+                        <li style="--v:.75"><span class="bar"></span><span class="n">15</span></li>
+                        <li class="last" style="--v:.70"><span class="bar"></span><span class="n">14</span></li>
+                      </ol>
+                      <div class="weeks-axis" aria-hidden="true"><span>8 Tuesdays ago</span><span>Last Tuesday</span></div>
+                    </dd>
+                  </div>
+                  <div class="in-row"><dt>Day of the week</dt><dd><strong>Tuesday.</strong> Read against your other Tuesdays, not against Friday night.</dd></div>
+                  <div class="in-row"><dt>Time of year</dt><dd><strong>Mid-October.</strong> Soup here has climbed most weeks since September.</dd></div>
+                  <div class="in-row"><dt>Holidays</dt><dd><strong>None</strong> this week.</dd></div>
+                </dl>
+                <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M2 12h34M28 5l8 7-8 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="out">
+                  <div class="out-row"><span class="k">Predicted<small>expected to sell</small></span><span class="v">17</span></div>
+                  <div class="out-row prep-row"><span class="k">Prep<small>a little over, for a rush</small></span><span class="v">19</span></div>
+                  <div class="out-row"><span class="k">vs. last Tue<small>last Tuesday: 14</small></span><span class="v">+21%</span></div>
+                </div>
+              </div>
+
+              <!-- Short rib: too new -->
+              <div class="panel" id="p-rib" role="tabpanel" aria-labelledby="t-rib" tabindex="0">
+                <h3 class="panel-title">Short rib special <span class="day">· Tuesday</span></h3>
+                <dl class="in-list">
+                  <div class="in-row">
+                    <dt>Your sales<small>this dish, Tuesdays so far</small></dt>
+                    <dd>
+                      <ol class="weeks" aria-label="Short rib specials sold on Tuesdays: not on the menu for the first five, then 6, 9 and 8">
+                        <li class="none"><span class="bar"></span><span class="n">–</span></li>
+                        <li class="none"><span class="bar"></span><span class="n">–</span></li>
+                        <li class="none"><span class="bar"></span><span class="n">–</span></li>
+                        <li class="none"><span class="bar"></span><span class="n">–</span></li>
+                        <li class="none"><span class="bar"></span><span class="n">–</span></li>
+                        <li style="--v:.6"><span class="bar"></span><span class="n">6</span></li>
+                        <li style="--v:.9"><span class="bar"></span><span class="n">9</span></li>
+                        <li class="last" style="--v:.8"><span class="bar"></span><span class="n">8</span></li>
+                      </ol>
+                      <div class="weeks-axis" aria-hidden="true"><span>Not on the menu yet</span><span>Last Tuesday</span></div>
+                    </dd>
+                  </div>
+                  <div class="in-row"><dt>Day of the week</dt><dd><strong>Tuesday.</strong> It has only had three.</dd></div>
+                  <div class="in-row"><dt>Time of year</dt><dd>Not enough history to say how the season moves it.</dd></div>
+                  <div class="in-row"><dt>Holidays</dt><dd><strong>None</strong> this week.</dd></div>
+                </dl>
+                <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M2 12h34M28 5l8 7-8 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="out out-blank">
+                  <div class="blank-box hatch" aria-hidden="true"></div>
+                  <span class="k">Blank</span>
+                  <p>On the menu three weeks. Tooey starts giving a count at about five. Until then, prep it the way you do now.</p>
+                </div>
+              </div>
+
+              <!-- Lemon tart: too slow -->
+              <div class="panel" id="p-tart" role="tabpanel" aria-labelledby="t-tart" tabindex="0">
+                <h3 class="panel-title">Lemon tart <span class="day">· Tuesday</span></h3>
+                <dl class="in-list">
+                  <div class="in-row">
+                    <dt>Your sales<small>this dish, past Tuesdays</small></dt>
+                    <dd>
+                      <ol class="weeks" aria-label="Lemon tarts sold on the last eight Tuesdays, oldest first">
+                        <li style="--v:0"><span class="bar"></span><span class="n">0</span></li>
+                        <li style="--v:.1"><span class="bar"></span><span class="n">1</span></li>
+                        <li style="--v:0"><span class="bar"></span><span class="n">0</span></li>
+                        <li style="--v:0"><span class="bar"></span><span class="n">0</span></li>
+                        <li style="--v:.1"><span class="bar"></span><span class="n">1</span></li>
+                        <li style="--v:0"><span class="bar"></span><span class="n">0</span></li>
+                        <li style="--v:0"><span class="bar"></span><span class="n">0</span></li>
+                        <li class="last" style="--v:.1"><span class="bar"></span><span class="n">1</span></li>
+                      </ol>
+                      <div class="weeks-axis" aria-hidden="true"><span>8 Tuesdays ago</span><span>Last Tuesday</span></div>
+                    </dd>
+                  </div>
+                  <div class="in-row"><dt>Day of the week</dt><dd><strong>Tuesday.</strong> Some Tuesdays it sells one. Most, none.</dd></div>
+                  <div class="in-row"><dt>Time of year</dt><dd>Too few sales to see a pattern.</dd></div>
+                  <div class="in-row"><dt>Holidays</dt><dd><strong>None</strong> this week.</dd></div>
+                </dl>
+                <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M2 12h34M28 5l8 7-8 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="out out-blank">
+                  <div class="blank-box hatch" aria-hidden="true"></div>
+                  <span class="k">Blank</span>
+                  <p>Sells under one a day. At three a week, a daily number would mostly be luck, so the list leaves this one to you.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="not-used">
+            <ul class="chips" aria-label="Not used yet">
+              <li>Weather</li>
+              <li>Local events</li>
+              <li>Reservations</li>
+            </ul>
+            <p><strong>Not in the count yet.</strong> Tooey doesn’t know there’s a game downtown tomorrow, or that it’s going to pour. You do, and that part is yours to add when you prep.</p>
+          </div>
+        </div>
+        <p class="work-foot">Example values from a sample restaurant. Every count is redone each night, with that day’s sales added.</p>
+      </div>
+    </section>
+
+    <!-- ─────────────── When it stays quiet ─────────────── -->
+    <section class="section" id="blanks" aria-labelledby="blanks-title">
+      <div class="wrap">
+        <div class="section-head is-statement">
+          <h2 id="blanks-title">A blank is a decline, not a zero.</h2>
+          <p class="lead">Some lines on your list will have no number, only a reason. Tooey leaves a dish blank in two cases, and says which one applies.</p>
+        </div>
+        <div class="blanks-grid">
+          <article class="rule-card">
+            <div class="sample" aria-hidden="true"><span class="dish">Short rib special</span><span class="blank-cell hatch"><span><b>Blank:</b> 3 weeks on the menu</span></span></div>
+            <h3>It has been on the menu less than about five weeks.</h3>
+            <p>There aren’t enough of its Tuesdays yet to say what a Tuesday looks like for it.</p>
+          </article>
+          <article class="rule-card">
+            <div class="sample" aria-hidden="true"><span class="dish">Lemon tart</span><span class="blank-cell hatch"><span><b>Blank:</b> sells under 1 a day</span></span></div>
+            <h3>It sells less than about one a day.</h3>
+            <p>When a dish sells three a week, which day those three land on is mostly chance.</p>
+          </article>
+        </div>
+        <div class="blanks-after">
+          <p class="big">A guessed number would look just as sure as the counts around it.</p>
+          <p>You’d have no way to tell the guess from the real count, so Tooey doesn’t print one. Blank doesn’t mean make none: prep those dishes on your own judgment, the way you do now.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── Who does what ─────────────── -->
+    <section class="section" id="night" aria-labelledby="night-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="night-title">Each night, and the morning after</h2>
+          <p class="lead">What Tooey does while you’re closed, and what stays with you. The sales come from your POS, so nobody on your staff types anything in.</p>
+        </div>
+
+        <div class="lanes">
+          <span class="lane-k corner" aria-hidden="true"></span>
+          <span class="lane-k t" aria-hidden="true">Tooey</span>
+          <span class="lane-k y" aria-hidden="true">You</span>
+
+          <div class="step">
+            <h3 class="when">After close</h3>
+            <div class="who t-row"><span class="who-k t">Tooey</span><p>A nightly download picks up the day’s item sales from your POS.</p></div>
+            <div class="who y-row"><span class="who-k">You</span><p>Close the way you always do.</p></div>
+          </div>
+          <div class="step">
+            <h3 class="when">Overnight</h3>
+            <div class="who t-row"><span class="who-k t">Tooey</span><p>Every count on the list is worked out again, with the day just finished added in.</p></div>
+            <div class="who y-row idle"><span class="who-k">You</span><p>Nothing.</p></div>
+          </div>
+          <div class="step">
+            <h3 class="when">Before prep</h3>
+            <div class="who t-row"><span class="who-k t">Tooey</span><p>The list arrives in your email, grouped by category.</p></div>
+            <div class="who y-row"><span class="who-k">You</span><p>Read it, print it, and hand it to whoever is on prep.</p></div>
+          </div>
+          <div class="step">
+            <h3 class="when">Through the day</h3>
+            <div class="who t-row idle"><span class="who-k t">Tooey</span><p>Nothing until tonight’s sales come in.</p></div>
+            <div class="who y-row"><span class="who-k">You</span><p>Prep from it, adjust for anything Tooey can’t know, and see what actually sells.</p></div>
+          </div>
+        </div>
+
+        <div class="decides">
+          <h3>The list is a count, not an order.</h3>
+          <p>Tooey doesn’t place orders, schedule staff, or change your menu. It hands the kitchen a number for each dish it can call, and the kitchen decides what gets made.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── Direction ─────────────── -->
+    <section class="section" id="next" aria-labelledby="next-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="next-title">Where Tooey is going</h2>
+          <p class="lead">Prep is where Tooey starts, not all it’s for. The aim is software that helps you understand and grow the whole restaurant, starting from the sales your POS already records. Each area would go the same way: what’s likely, then what to do about it, then doing it once you say yes.</p>
+          <p class="lead"><strong style="color:var(--ink)">Only the dark square exists today.</strong> Everything hatched is direction, not a feature.</p>
+        </div>
+
+        <div class="matrix" role="table" aria-label="Where Tooey is going: areas by stage">
+          <div class="m-head" role="row">
+            <span role="columnheader">Area</span>
+            <span role="columnheader">Forecast<small>what’s likely to happen</small></span>
+            <span role="columnheader">Recommend<small>what to do about it</small></span>
+            <span role="columnheader">Act<small>doing it, once you say yes</small></span>
+          </div>
+          <div class="m-row" role="row">
+            <div class="m-area" role="rowheader"><h3>Prep and operations</h3><p>The right amounts, less waste, simpler days.</p></div>
+            <ul class="m-cells" role="presentation">
+              <li class="m-cell is-live" role="cell"><span class="stage">Forecast</span><span class="state">Today: the daily prep count</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Recommend</span><span class="state">Not built</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Act</span><span class="state">Not built</span></li>
+            </ul>
+          </div>
+          <div class="m-row" role="row">
+            <div class="m-area" role="rowheader"><h3>Staffing</h3><p>Labor planned around the demand you’re likely to see.</p></div>
+            <ul class="m-cells" role="presentation">
+              <li class="m-cell" role="cell"><span class="stage">Forecast</span><span class="state">Not built</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Recommend</span><span class="state">Not built</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Act</span><span class="state">Not built</span></li>
+            </ul>
+          </div>
+          <div class="m-row" role="row">
+            <div class="m-area" role="rowheader"><h3>Profitability</h3><p>What actually makes money, and which costs aren’t earning their keep.</p></div>
+            <ul class="m-cells" role="presentation">
+              <li class="m-cell" role="cell"><span class="stage">Forecast</span><span class="state">Not built</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Recommend</span><span class="state">Not built</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Act</span><span class="state">Not built</span></li>
+            </ul>
+          </div>
+          <div class="m-row" role="row">
+            <div class="m-area" role="rowheader"><h3>Growth</h3><p>Bringing new guests in, and regulars back more often.</p></div>
+            <ul class="m-cells" role="presentation">
+              <li class="m-cell" role="cell"><span class="stage">Forecast</span><span class="state">Not built</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Recommend</span><span class="state">Not built</span></li>
+              <li class="m-cell" role="cell"><span class="stage">Act</span><span class="state">Not built</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="signals">
+          <div>
+            <h3>More of what goes in</h3>
+            <p style="color:var(--ink-2);margin:8px 0 0">Later, counts could take in some of what you know today and Tooey doesn’t.</p>
+          </div>
+          <div class="sig">
+            <div class="sig-row"><span class="when">Today</span><ul><li>Your sales</li><li>Day of the week</li><li>Time of year</li><li>Holidays</li></ul></div>
+            <div class="sig-row later"><span class="when">Later</span><ul><li>Weather</li><li>Local events</li></ul></div>
+          </div>
+        </div>
+        <p class="going-foot">Whatever gets added will be built the way the prep list is. You’ll be able to see what went into a number, and where Tooey doesn’t know, it will say so.</p>
+      </div>
+    </section>
+
+    <!-- ─────────────── Start ─────────────── -->
+    <section class="section" id="start" aria-labelledby="start-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="start-title">What it takes to start</h2>
+          <p class="lead">If the sample list looks like something your kitchen would use, here is what the pilot asks of you, and what we can and can’t tell you yet.</p>
+        </div>
+        <div class="start-grid">
+          <dl class="terms">
+            <div><dt>Cost</dt><dd><strong>Free for now, while we’re in a pilot.</strong></dd></div>
+            <div><dt>Your sales</dt><dd>About five weeks of past sales in your POS. We set up the nightly download, and it works with most systems.</dd></div>
+            <div><dt>Setup</dt><dd>About a week. You tell us what matters in your kitchen, choose how your list is set up, and check it before you rely on it.</dd></div>
+            <div><dt>Accuracy</dt><dd>Not measured yet at a live restaurant, so we don’t quote a figure. During the pilot you check the counts against what actually sold, then decide.</dd></div>
+            <div><dt>Your data</dt><dd>Used only to make your restaurant’s counts. Never sold, shared with other restaurants, or published. <a class="text-link" href="privacy.html">Read the privacy page</a>.</dd></div>
+            <div><dt>Who we are</dt><dd>A small team of university students. Tooey LLC.</dd></div>
+          </dl>
+
+          <div class="contact" id="talk">
+            <h3>Talk to us</h3>
+            <p>Tell us a little about your restaurant and one of us will write back.</p>
+            <form class="form" id="contact-form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New Tooey inquiry">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <div class="honey" aria-hidden="true">
+                <label for="f-honey">Leave this empty</label>
+                <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off">
+              </div>
+              <div class="pair">
+                <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+                <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
+              </div>
+              <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+              <div class="pair">
+                <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+                <div class="field"><label for="f-pos">Which POS? <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text" placeholder="Square, Toast, Clover…"></div>
+              </div>
+              <div class="field"><label for="f-msg">Anything else <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+              <div class="form-foot">
+                <button class="btn" type="submit" id="f-send">Send</button>
+                <small>Goes to tooeyteam@gmail.com. <a class="text-link" href="privacy.html">Privacy</a></small>
+              </div>
+              <p class="status" id="f-status" role="status" aria-live="polite"></p>
+            </form>
+            <p class="mail-alt">Or email <a class="text-link" href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot-row">
+      <img src="assets/logo.png" alt="tooey" width="343" height="148" loading="lazy">
+      <ul class="foot-links">
+        <li><a href="#count">How a count is made</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
+        <li>© 2026 Tooey LLC</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tooey · The arithmetic behind your restaurant, starting with prep</title>
+  <meta name="description" content="Tooey reads your own POS sales and does the arithmetic behind the small daily calls that decide what a restaurant keeps. It starts with a prep count for every dish, each morning. In a pilot with independent restaurants.">
+  <meta name="theme-color" content="#f4efe4">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tooey">
+  <meta property="og:title" content="Tooey · The arithmetic behind your restaurant, starting with prep">
+  <meta property="og:description" content="Restaurants make and lose money on small daily calls, like how much of each dish to prep. Tooey does the arithmetic from your own sales.">
+  <meta property="og:image" content="og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/brygada-1918.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/archivo-semicondensed.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="paper">
+
+  <header class="top" id="top">
+    <div class="ln">
+      <div class="top-row">
+        <a class="brand" href="./" aria-label="Tooey, home"><img src="logo.png" alt="tooey" width="343" height="148"></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span>Menu</button>
+        <nav class="nav" id="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="#costs">The two costs</a></li>
+            <li><a href="#numbers">Your numbers</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a class="btn" href="#talk">Talk to us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Opening ===== -->
+    <section class="hero" aria-labelledby="h-hero">
+      <div class="ln">
+        <div class="b">
+          <h1 id="h-hero">Restaurants make and lose money on small daily calls, like how much of each dish to prep.</h1>
+          <p class="lead">Tooey reads your own sales and does the arithmetic behind those calls for you. We’ve started with prep: a count for every dish on your menu, in your email each morning before the kitchen gets going.</p>
+          <div class="actions">
+            <a class="btn" href="#talk">Talk to us about your numbers <span class="arr" aria-hidden="true">→</span></a>
+            <a class="text-link" href="#how">How a count is made</a>
+          </div>
+        </div>
+        <aside class="m at-h" aria-label="Note">
+          <p>Tooey is early. We’re running a pilot with independent restaurants now.</p>
+        </aside>
+      </div>
+
+      <div class="ln sheet-ln">
+        <div class="b">
+          <figure class="sheet" id="sheet">
+            <div class="sheet-top" aria-hidden="true">
+              <img src="logo.png" alt="" width="343" height="148">
+              <span class="t">Prep count</span>
+              <span class="d">Tuesday</span>
+              <span class="stamp">Example</span>
+            </div>
+            <table>
+              <caption class="sr-only">Example prep count for Tuesday at a made-up restaurant. Values are illustrations, not results.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col" class="c-pred">Predicted<sup>a</sup></th>
+                  <th scope="col" class="c-prep">Prep<sup>a</sup></th>
+                  <th scope="col" class="c-vs">vs. last Tue<sup>b</sup></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cat"><th scope="colgroup" colspan="4">Mains</th></tr>
+                <tr><th scope="row">Braised short rib</th><td class="pred c-pred">13</td><td class="prep c-prep">15</td><td class="vs c-vs">+8%</td></tr>
+                <tr><th scope="row">Roast half chicken</th><td class="pred c-pred">22</td><td class="prep c-prep">24</td><td class="vs c-vs">−4%</td></tr>
+                <tr><th scope="row">Mushroom risotto</th><td class="pred c-pred">9</td><td class="prep c-prep">10</td><td class="vs c-vs">0%</td></tr>
+                <tr><th scope="row">Fish tacos</th><td class="pred c-pred">18</td><td class="prep c-prep">20</td><td class="vs c-vs">+13%</td></tr>
+                <tr class="cat"><th scope="colgroup" colspan="4">Sides</th></tr>
+                <tr><th scope="row">Hand-cut fries</th><td class="pred c-pred">41</td><td class="prep c-prep">45</td><td class="vs c-vs">+5%</td></tr>
+                <tr><th scope="row">Charred broccolini</th><td class="pred c-pred">12</td><td class="prep c-prep">13</td><td class="vs c-vs">−8%</td></tr>
+                <tr class="blank c-blank"><th scope="row">Creamed spinach<sup>c</sup></th><td colspan="3"><span>Sells under about one a day</span></td></tr>
+                <tr class="cat"><th scope="colgroup" colspan="4">Desserts</th></tr>
+                <tr><th scope="row">Olive oil cake</th><td class="pred c-pred">11</td><td class="prep c-prep">12</td><td class="vs c-vs">+10%</td></tr>
+                <tr class="blank c-blank"><th scope="row">Pumpkin cheesecake<sup>c</sup></th><td colspan="3"><span>New: under five weeks on the menu</span></td></tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
+        <ol class="sheet-notes" aria-label="How to read the list">
+          <li class="n-ex"><span class="ex">An example list for a made-up restaurant. The dishes and numbers are illustrations, not results.</span></li>
+          <li class="n-a" data-col="c-pred c-prep"><span class="k" aria-hidden="true">a</span><span><strong>Predicted</strong> is how many you’re likely to sell. <strong>Prep</strong> is how many to make: a little over, so a rush doesn’t leave you short.</span></li>
+          <li class="n-b" data-col="c-vs"><span class="k" aria-hidden="true">b</span><span>The change from the same day last week, so a big swing stands out.</span></li>
+          <li class="n-c" data-col="c-blank"><span class="k" aria-hidden="true">c</span><span>Not enough history to count from, so the line is left blank with the reason. A blank isn’t a zero.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== The two costs ===== -->
+    <section class="sec" id="costs" aria-labelledby="h-costs">
+      <div class="ln sec-head">
+        <div class="b">
+          <h2 id="h-costs">A prep count can miss in two directions, and only one of them leaves a trace.</h2>
+        </div>
+      </div>
+
+      <div class="ln">
+        <div class="b">
+          <div class="split">
+            <div>
+              <div class="pips" aria-hidden="true">
+                <div class="row">
+                  <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip bin"></span><span class="pip bin"></span><span class="pip bin"></span>
+                </div>
+                <div class="cap">Example: <b>16 prepped</b>, 13 sold, <span class="loss">3 in the bin</span></div>
+              </div>
+              <h3>Too many</h3>
+              <p>The extras go to staff meal, tomorrow’s special, or the bin. Either way you paid for every ingredient in them, and it lands in your food cost whether anyone wrote it down or not.</p>
+              <div class="entry"><span>Each one costs you</span><span class="loss">its plate cost</span></div>
+            </div>
+            <div>
+              <div class="pips" aria-hidden="true">
+                <div class="row">
+                  <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip gone"></span><span class="pip gone"></span><span class="pip gone"></span><span class="pip gone"></span>
+                </div>
+                <div class="cap">Example: <b>10 prepped</b>, 10 sold, <span class="loss">4 asked for after it ran out</span></div>
+              </div>
+              <h3>Too few</h3>
+              <p>The dish is 86’d by quarter past eight, and the tables after that order something else, or something cheaper. Your POS records what you sold, not what you would have sold, so this one never shows up on a report.</p>
+              <div class="entry"><span>Each one costs you</span><span class="loss">up to its price, less its plate cost</span></div>
+            </div>
+          </div>
+        </div>
+        <aside class="m" aria-label="Note">
+          <p>“Up to”, because a guest who can’t get the dish may order something else instead. Then you lose only the difference, if any.</p>
+        </aside>
+      </div>
+
+      <div class="ln rule-of-thumb">
+        <div class="b">
+          <p>Put the two side by side and a rule falls out of the arithmetic. Whenever a dish sells for more than twice what it costs to plate, a missed order can cost you more than a portion in the bin. It’s why the Prep number sits a little above Predicted: so a rush doesn’t leave you short.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Your numbers ===== -->
+    <section class="sec" id="numbers" aria-labelledby="h-numbers">
+      <div class="ln sec-head">
+        <div class="b">
+          <h2 id="h-numbers">Run the arithmetic on one of your own dishes.</h2>
+          <p>Pick something you prep ahead. You’ll know most of these numbers roughly. The last one has to be a guess, which is the point.</p>
+        </div>
+      </div>
+
+      <div class="ln note-first">
+        <div class="b">
+          <form class="ws" id="ws" aria-labelledby="ws-title" novalidate>
+            <div class="ws-top">
+              <span class="t" id="ws-title">One dish, one week</span>
+              <span class="stamp">Example values</span>
+            </div>
+            <div class="ws-body">
+              <fieldset class="ws-in">
+                <legend>What you know</legend>
+                <div class="field dish">
+                  <label for="w-dish">Dish</label>
+                  <div class="inp"><input id="w-dish" name="dish" type="text" value="Braised short rib" autocomplete="off" maxlength="60"></div>
+                </div>
+                <div class="field">
+                  <label for="w-cost">What one plate costs you to make<small>Food cost per portion</small></label>
+                  <div class="inp"><span class="u" aria-hidden="true">$</span><input id="w-cost" name="cost" type="text" inputmode="decimal" value="7.80" autocomplete="off"></div>
+                </div>
+                <div class="field">
+                  <label for="w-price">What it sells for<small>Menu price</small></label>
+                  <div class="inp"><span class="u" aria-hidden="true">$</span><input id="w-price" name="price" type="text" inputmode="decimal" value="29.00" autocomplete="off"></div>
+                </div>
+                <div class="field">
+                  <label for="w-bin">Portions thrown out<small>Last week</small></label>
+                  <div class="inp"><input id="w-bin" name="bin" type="text" inputmode="numeric" value="4" autocomplete="off"></div>
+                </div>
+                <div class="field">
+                  <label for="w-miss">Orders missed after it ran out<small>Last week. Your best guess.</small></label>
+                  <div class="inp"><input id="w-miss" name="miss" type="text" inputmode="numeric" value="6" autocomplete="off"></div>
+                </div>
+              </fieldset>
+
+              <div class="ws-out">
+                <h3>What it cost</h3>
+                <dl>
+                  <div class="line"><dt>Each portion thrown out</dt><dd class="loss" id="o-each-bin">(7.80)</dd></div>
+                  <div class="line"><dt>Each missed order, up to<small>Price less plate cost</small></dt><dd class="loss" id="o-each-miss">(21.20)</dd></div>
+                  <div class="line"><dt>In the bin last week<small id="o-bin-calc">4 × 7.80</small></dt><dd class="loss" id="o-bin">(31.20)</dd></div>
+                  <div class="line"><dt>Missed last week, up to<small id="o-miss-calc">6 × 21.20</small></dt><dd class="loss" id="o-miss">(127.20)</dd></div>
+                  <div class="line total"><dt>This dish, last week, up to</dt><dd class="loss" id="o-total">(158.40)</dd></div>
+                </dl>
+              </div>
+            </div>
+            <p class="ws-say" id="o-say" aria-live="polite">For braised short rib, a missed order can cost up to 2.7 times what a portion in the bin does.</p>
+          </form>
+          <div class="ws-foot">
+            <button class="btn btn-quiet" type="button" id="ws-send" hidden>Add these to my message <span class="arr" aria-hidden="true">↓</span></button>
+            <p class="hint" id="ws-hint" hidden>They go into the message box below. You can change them before you send anything.</p>
+          </div>
+        </div>
+        <aside class="m" aria-label="Notes">
+          <p>The worksheet starts with example values. Type over them with your own. Nothing you enter leaves this page unless you send it to us.</p>
+          <p>Figures in brackets and red are money lost, the way your accountant writes them.</p>
+          <p class="at-miss">Nobody counts missed orders. The POS can’t: they were never rung in.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== How it works ===== -->
+    <section class="sec" id="how" aria-labelledby="h-how">
+      <div class="ln sec-head">
+        <div class="b">
+          <h2 id="h-how">What happens between close and the next morning.</h2>
+        </div>
+      </div>
+
+      <div class="ln">
+        <div class="b">
+          <ol class="timeline">
+            <li><span class="when">After close</span><p><strong>The day’s sales come in from your POS.</strong> We set up the nightly download once, during setup, and it runs on its own after that.</p></li>
+            <li><span class="when">Overnight</span><p><strong>Every dish is worked out again for the coming day:</strong> how many you’re likely to sell, and how many to make.</p></li>
+            <li><span class="when">Before prep</span><p><strong>The list is in your email,</strong> grouped by category. Print it and keep it on the line.</p></li>
+          </ol>
+        </div>
+        <aside class="m" aria-label="Note">
+          <p>The download works with most POS systems. Square, Toast and Clover sales exports are recognized, and others can be mapped.</p>
+        </aside>
+      </div>
+
+      <div class="ln sub">
+        <div class="b">
+          <h3>What goes into a count</h3>
+          <p>Four things, all of them yours or the calendar’s.</p>
+          <ul class="inputs">
+            <li>Your past sales<span>Dish by dish</span></li>
+            <li>The day of the week<span>A Tuesday is not a Saturday</span></li>
+            <li>The time of year<span>Patio season, slow months</span></li>
+            <li>Holidays<span>The ones that fill you or empty you</span></li>
+          </ul>
+        </div>
+        <aside class="m at-h" aria-label="Note">
+          <p>Not in the count yet: weather, local events, reservations. We want to add them later.</p>
+        </aside>
+      </div>
+
+      <div class="ln sub">
+        <div class="b">
+          <h3>When a line is left blank</h3>
+          <p>Some dishes don’t have enough history to count from: anything on the menu for less than about five weeks, or that sells less than about one a day. Tooey leaves those lines blank and says why, rather than make up a number. A blank isn’t a zero. It means that one is your call.</p>
+        </div>
+        <aside class="m at-h" aria-label="Note">
+          <p>The example list at the top has two.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== What it takes ===== -->
+    <section class="sec" id="start" aria-labelledby="h-start">
+      <div class="ln sec-head">
+        <div class="b">
+          <h2 id="h-start">What it takes to get your first list.</h2>
+        </div>
+      </div>
+      <div class="ln">
+        <div class="b">
+          <ol class="steps">
+            <li><h3>About five weeks of past sales.</h3><p>Your POS already has them. That history is what the first counts are built from.</p></li>
+            <li><h3>About a week of setup.</h3><p>You tell us what matters in your kitchen, choose how you want the list set up, and check it before you rely on it.</p></li>
+            <li><h3>Then a list every morning.</h3><p>While we’re in the pilot, check the counts against what actually sold before you lean on them. Then decide whether it’s worth keeping.</p></li>
+          </ol>
+        </div>
+        <aside class="m" aria-label="Note">
+          <p><strong>Tooey is free for now,</strong> while we’re in a pilot.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== Where it's going ===== -->
+    <section class="sec" id="next" aria-labelledby="h-next">
+      <div class="ln sec-head">
+        <div class="b">
+          <h2 id="h-next">What we’ve pencilled in after prep.</h2>
+          <p>We started with the prep count because it sits between two costs every owner already feels. The same sales can answer bigger questions about where the money goes. Everything under the first line is a plan, not a product.</p>
+        </div>
+      </div>
+      <div class="ln">
+        <div class="b">
+          <ul class="plans">
+            <li class="now"><span>A prep count for every dish, each morning</span><span class="tag">In the pilot</span></li>
+            <li><span>Which dishes actually pay once you count what goes into them, and which ones just fill out the menu</span><span class="tag">Not built</span></li>
+            <li><span>Where costs creep up, before the month-end numbers show it</span><span class="tag">Not built</span></li>
+            <li><span>Staff scheduled around the covers you can expect</span><span class="tag">Not built</span></li>
+            <li><span>What brings guests back, and what fills a slow night</span><span class="tag">Not built</span></li>
+            <li><span>Counts that also know about weather, local events and reservations</span><span class="tag">Not built</span></li>
+          </ul>
+        </div>
+        <aside class="m" aria-label="Note">
+          <p>In pencil because none of it is built yet, and the order will change.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== Talk ===== -->
+    <section class="sec talk" id="talk" aria-labelledby="h-talk">
+      <div class="ln sec-head">
+        <div class="b">
+          <h2 id="h-talk">Talk to us about your numbers.</h2>
+          <p>Tell us about your restaurant and which POS you use. We’re a small team of university students, and one of us will write back. Tooey is free for now, while we’re in the pilot.</p>
+        </div>
+        <aside class="m at-h" aria-label="Note">
+          <p>Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
+        </aside>
+      </div>
+
+      <div class="ln">
+        <div class="b">
+          <div id="form-wrap">
+            <form class="form" id="contact" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New Tooey inquiry">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <div class="hp" aria-hidden="true">
+                <label for="f-honey">Leave this empty</label>
+                <input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+              </div>
+              <div class="grid">
+                <div class="f">
+                  <label for="f-name">Your name</label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
+                  <span class="err" id="e-name"></span>
+                </div>
+                <div class="f">
+                  <label for="f-restaurant">Restaurant</label>
+                  <input id="f-restaurant" name="restaurant" type="text" autocomplete="organization" required aria-describedby="e-restaurant">
+                  <span class="err" id="e-restaurant"></span>
+                </div>
+                <div class="f">
+                  <label for="f-email">Email</label>
+                  <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+                  <span class="err" id="e-email"></span>
+                </div>
+                <div class="f">
+                  <label for="f-phone">Phone <span class="opt">optional</span></label>
+                  <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+                </div>
+                <div class="f full">
+                  <label for="f-pos">Which POS do you use? <span class="opt">optional</span></label>
+                  <input id="f-pos" name="pos" type="text" list="pos-list" autocomplete="off">
+                  <datalist id="pos-list">
+                    <option value="Square"></option>
+                    <option value="Toast"></option>
+                    <option value="Clover"></option>
+                    <option value="Not sure"></option>
+                  </datalist>
+                </div>
+                <div class="f full">
+                  <label for="f-message">What you’d like to talk about <span class="opt">optional</span></label>
+                  <textarea id="f-message" name="message" rows="5"></textarea>
+                  <p class="prefilled" id="prefilled" hidden>Your worksheet numbers are in the message. Change or delete them as you like.</p>
+                </div>
+              </div>
+              <div class="form-foot">
+                <button class="btn" type="submit" id="f-send">Send <span class="arr" aria-hidden="true">→</span></button>
+                <p class="fine">Goes to tooeyteam@gmail.com and is used only to reply. <a href="privacy.html">Privacy</a></p>
+              </div>
+              <div class="status" id="f-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="ln">
+      <div class="b">
+        <span>© 2026 Tooey LLC</span>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></li>
+          <li><a href="#top">Back to top</a></li>
+        </ul>
+      </div>
+      <div class="m"><img src="logo.png" alt="" width="343" height="148"></div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="site.js" defer></script>
+</body>
+</html>
