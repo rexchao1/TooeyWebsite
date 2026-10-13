@@ -7,7 +7,21 @@ a small script; no build step.
 Preview from the repo root: `python3 -m http.server 5209`, then open
 http://localhost:5209/explorations/09-skeptic/
 
-## Revision (second pass)
+## Revision
+
+### Third pass: warmer palette and type
+
+Review feedback: the two-voice table stays, but cobalt on cool grey with
+Archivo collided with another exploration. Changed: the owner is now
+**blush with tomato ink** (`#f3d5c6` field, `#8a2a16` text, `#a8361f`
+buttons) instead of a saturated blue, which also makes the owner's column
+quieter where it is empty below a question. Tooey's ground is **celery
+green** (`#dfe8cf`) with leaf-green ink, instead of grey. Tooey speaks in
+**Bitter**, a sturdy screen slab (answers at 800, text at 400); the owner
+speaks in **Gelasio italic**. No blue anywhere. Tomato and celery are the
+produce colours of a kitchen, and both inks pass AA on both grounds.
+
+### Second pass: the conversation as the identity
 
 Review feedback: strategy, structure, and copy were right, but the look
 (cream paper, near-black headlines, a white card with the sample list as
@@ -16,21 +30,20 @@ other explorations. Fourteen answers also made a long phone scroll.
 
 What changed:
 - **The conversation became the identity.** The page is now a table with
-  two sides. Left, on a cobalt field running the full height of the page,
-  is the owner. Right, on cool kitchen-steel grey, is Tooey. Every element
-  belongs to one side: questions, buttons, the stop email, and the contact
-  form are the owner's (cobalt); answers, the sample list, and explanations
-  are Tooey's (steel and leaf green).
-- **Two typefaces, one per voice.** The owner speaks in Newsreader italic,
-  a spoken, human serif. Tooey answers in Archivo, semi-condensed and
-  heavy for the short answers, plain width for the text. Gone: Atkinson
+  two sides. Left, on a coloured field running the full height of the
+  page, is the owner. Right is Tooey. Every element belongs to one side:
+  questions, buttons, the stop email, and the contact form are the
+  owner's; answers, the sample list, and explanations are Tooey's.
+  (Colours and fonts as revised in the third pass above.)
+- **Two typefaces, one per voice.** The owner speaks in a spoken italic
+  serif; Tooey answers in a heavy, plain face. Gone: Atkinson
   Hyperlegible, cream, the near-black ink, and the dark button.
 - **The hero is the first exchange.** "“Okay. What is Tooey, exactly?”" on
   the owner's side; the headline answers it on Tooey's. No product card in
   the hero.
 - **Two lists face each other.** Second screen: the owner's list of
-  questions (the index) on cobalt, opposite Tooey's list (the sample prep
-  list), set as plain type on the steel with no card or shadow.
+  questions (the index) on the owner's colour, opposite Tooey's list (the sample prep
+  list), set as plain type on Tooey's ground with no card or shadow.
 - **"Not built" is said, not drawn.** The dashed-outline device is gone.
   Where something isn't built, the owner asks for it and Tooey answers
   "Not yet." in the same two voices ("Does it know about the weather?"
@@ -38,13 +51,13 @@ What changed:
   "Made-up numbers, for a sample restaurant."
 - **Your question stays in view.** On wide screens each question sticks at
   the top of the owner's side while you read the answer. On phones the
-  turns stack as alternating cobalt and steel bands.
+  turns stack as alternating bands in the two colours.
 - **Fourteen answers became ten.** Merged: the AI question with where the
   number comes from; "will it be right" with "how accurate" (now one
   answer: "Not every day, and we haven't measured how often."); blank
   dishes into "what exactly do I get"; time with typing and POS. The
   phone page is about 8% shorter at 390 and 320 wide (each turn now adds
-  a cobalt band, which costs some of the saving), and every merged fact is
+  a coloured band, which costs some of the saving), and every merged fact is
   still there.
 
 ## 1. Positioning in one sentence
@@ -90,7 +103,7 @@ on the owner's side: it's their turn to talk.
 - No figures at all: "there's no accuracy figure, savings figure, or
   percentage anywhere on this site."
 - The exit is shown before the entrance. "How do I stop?" includes the
-  stop-and-delete email already written, on the owner's cobalt, with a
+  stop-and-delete email already written, in the owner's colours, with a
   button that opens it.
 - The student question is answered with a fact (Tooey works from a copy;
   your POS is untouched), not a vow.
@@ -100,25 +113,28 @@ on the owner's side: it's their turn to talk.
 ## 5. Design and interaction rationale
 
 Palette, all from the conversation:
-- Cobalt `#2335ac`: the owner. Fields, questions, buttons, the email you'd
-  send, the form. White text on it is 9:1.
-- Kitchen steel `#e7e9eb`: Tooey's side and the page chrome. Cool and
-  plain, the colour of a prep counter, not paper.
-- Leaf green `#123b2b`: Tooey's voice, from the wordmark's leaf. 10:1 on
-  steel.
-- Body text `#222c27`, secondary `#4c5751` (6:1 on steel). The only other
-  colour is a pale coral for form errors on cobalt.
+- Blush `#f3d5c6` with tomato ink `#8a2a16`: the owner. Their column,
+  questions, the email they'd send, the form. Buttons are tomato `#a8361f`
+  with white text (6.5:1). Tomato ink on blush is 6.3:1.
+- Celery `#dfe8cf`: Tooey's side and the page chrome. A kitchen green,
+  not paper and not grey.
+- Leaf green `#1d3a27`: Tooey's voice, from the wordmark's leaf. 9.8:1 on
+  celery. Body text `#27322b` (10.5:1), secondary `#4a5648` (6.1:1).
+- Form inputs are white with a `#9a5a45` edge (over 3:1 against white and
+  blush). Errors are marked with a thicker tomato edge and a "!" line.
 
-Type: Newsreader italic (owner) and Archivo (Tooey), both OFL, self-hosted
-and cut down to the ranges used (Archivo width 75 to 100, weight 400 to
-800; Newsreader italic 400 to 500). Neither is on the founder's
-rejected list, and neither is what the live site uses.
+Type: Gelasio italic (owner) and Bitter (Tooey), both OFL, self-hosted
+and cut to the weights used (Bitter 400 to 800, Gelasio italic 400 to 500).
+Bitter is a slab drawn for reading on screens: sturdy and plain, like
+lettering on a menu board, which suits short straight answers. Gelasio's
+italic is round and warm, closer to someone talking than to a book. Neither
+is on the founder's rejected list or used by the live site.
 
-Composition: on screens 900px and wider the cobalt runs from the window's
+Composition: on screens 900px and wider the blush runs from the window's
 left edge to the split at 35% of the content width, the whole length of
 the page. Questions sit left and stick while their answer scrolls; answers
-sit right. Below 900px each turn is a full-width cobalt band followed by
-a steel band, so the back-and-forth reads as rhythm.
+sit right. Below 900px each turn is a full-width blush band followed by
+a celery band, so the back-and-forth reads as rhythm.
 
 Interaction, kept small:
 - Sticky questions on wide screens.
@@ -171,12 +187,11 @@ Strengths
   item of it is answered "Not yet."
 
 Weaknesses
-- Cobalt is loud. Half the screen is one saturated colour; some owners may
-  find it a lot. A deeper navy would calm it at some cost to the
-  "two people talking" read.
 - On wide screens the owner's side is mostly empty colour below each
-  question. That is the point (they ask, we explain), but it is a lot of
-  blue for few words.
+  question. Blush keeps that quiet, but it's still a lot of colour for few
+  words; a narrower owner column is the next lever if it feels heavy.
+- Tomato and green together can tip toward "festive" if either gets more
+  saturated; they're kept pale and dark on purpose.
 - The questions are visible, in quotes. The founder has disliked question
   headlines; here the headlines are the answers and the questions are the
   owner's side of the table, but it's still a judgment call.
@@ -200,13 +215,13 @@ Hand-written static files, no build:
 - `assets/site.js`: phone menu, print button, contact form (JSON to
   `https://formsubmit.co/ajax/tooeyteam@gmail.com`, with sending, sent,
   and failed states)
-- `assets/fonts/`: `archivo.woff2` (58 KB) and `newsreader-italic.woff2`
-  (42 KB), Latin subsets from fontsource, cut to the axis ranges used with
+- `assets/fonts/`: `bitter.woff2` (34 KB) and `gelasio-italic.woff2`
+  (34 KB), Latin subsets from fontsource, cut to the weights used with
   fontTools' instancer, with their OFL licenses
-- `assets/logo.png` (copied from the root), `assets/favicon.svg` (cobalt
-  and steel with a green "t", no font dependency), `assets/og.png`
+- `assets/logo.png` (copied from the root), `assets/favicon.svg` (blush
+  and celery with a green "t", no font dependency), `assets/og.png`
   (1200x630)
 
 To recut the fonts: take the fontsource variable Latin files and run
-`fontTools.varLib.instancer` with `wght=(400,800), wdth=(75,100)` for
-Archivo and `wght=(400,500)` for Newsreader italic, saving as woff2.
+`fontTools.varLib.instancer` with `wght=(400,800)` for Bitter and
+`wght=(400,500)` for Gelasio italic, saving as woff2.
