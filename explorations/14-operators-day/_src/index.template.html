@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: the back end of your restaurant's week</title>
+<meta name="description" content="Tooey runs the back end of an independent restaurant. Today it sends a morning prep count for every dish. Shifts and filling slow nights are next. Free while we pilot.">
+<meta name="theme-color" content="#3B2032">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/imbue-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/familjen-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>
+  (function (d) {
+    var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    d.className = 'js' + (rm ? ' rm' : ' motion');
+  })(document.documentElement);
+</script>
+</head>
+<body>
+<a class="skip" href="#pilot">Skip to the sign-up form</a>
+
+<header class="top">
+  <a class="wordmark" href="./" aria-label="Tooey, home">tooey</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" class="nav" aria-label="Main">
+    <a href="#week">The week</a>
+    <a href="privacy.html">Privacy</a>
+    <a class="btn btn-small" href="#pilot">Put us on the schedule</a>
+  </nav>
+</header>
+
+<main>
+  <section class="week" id="week" aria-labelledby="hero-title">
+    <div class="stage">
+      <div class="sky" aria-hidden="true"><span class="sun"></span><span class="moon"></span></div>
+      <div class="facade">
+        <div class="fascia">
+          <p class="dayname" aria-hidden="true">Monday</p>
+          <p class="clock" aria-hidden="true">05:40</p>
+        </div>
+        <div class="pier">
+          <div class="intro">
+            <p class="lead">Tooey runs a restaurant's back end. Today: each dish's prep count, emailed every morning, free while we pilot. Next: shifts, and filling slow nights.</p>
+            <a class="btn" href="#pilot">Put us on the schedule</a>
+          </div>
+        </div>
+        <div class="shopwindow">
+          <!--SHOP-->
+          <div class="glass">
+            <h1 id="hero-title">The prep's already counted.</h1>
+          </div>
+        </div>
+        <div class="door" aria-hidden="true"><span class="door-glass"></span><span class="door-handle"></span></div>
+        <div class="stallriser" aria-hidden="true"></div>
+        <div class="basement">
+          <!--BASE-->
+          <p class="example-tag">Example</p>
+        </div>
+      </div>
+      <nav class="ruler" aria-label="Jump to a day">
+        <span class="ruler-track" aria-hidden="true"><span class="ruler-mark"></span></span>
+        <button type="button" data-day="0">Mon</button>
+        <button type="button" data-day="1">Tue</button>
+        <button type="button" data-day="2">Wed</button>
+        <button type="button" data-day="3">Thu</button>
+        <button type="button" data-day="4">Fri</button>
+        <button type="button" data-day="5">Sat</button>
+        <button type="button" data-day="6">Sun</button>
+      </nav>
+      <div class="payoff" aria-hidden="true">
+        <p class="payoff-line">This part's real.</p>
+        <ul class="tapes">
+          <li><span>Short rib</span><b>16</b></li>
+          <li><span>Soup</span><b>24</b></li>
+          <li><span>Tart</span><b>10</b></li>
+          <li class="blank"><span>Crudo</span><b>too new</b></li>
+        </ul>
+        <p class="payoff-ex">Example</p>
+      </div>
+    </div>
+
+    <h2 class="sr-only">One week at an independent restaurant</h2>
+    <ol class="days">
+      <li data-day="0"><h3>Monday</h3><p>Every dish counted before anyone ties an apron, a little over. Too new to call? Blank, with a reason.</p></li>
+      <li data-day="1"><h3>Tuesday</h3><p>Half a room. The full one's a reflection: lit is Tooey today, reflected is what we're building.</p></li>
+      <li data-day="2"><h3>Wednesday</h3><p>From last night's sales, the day, the season, the holidays. No crystal ball.</p></li>
+      <li data-day="3"><h3>Thursday</h3><p>In the pilot, you grade every count against what sold.</p></li>
+      <li data-day="4"><h3>Friday</h3><p>Two cooks, one rush, you on dish. In the glass: the shift we're building.</p></li>
+      <li data-day="5"><h3>Saturday</h3><p>Nobody sits down. Least of all you.</p></li>
+      <li data-day="6"><h3>Sunday</h3><p>Lights out. Tooey reads the day's sales while you sleep.</p></li>
+    </ol>
+  </section>
+
+  <section class="pilot" id="pilot" aria-labelledby="pilot-title">
+    <div class="pilot-inner">
+      <h2 id="pilot-title">Put us on the schedule.</h2>
+      <dl class="hours">
+        <div><dt>To start</dt><dd>About five weeks of sales.</dd></div>
+        <div><dt>Setup</dt><dd>About a week.</dd></div>
+        <div><dt>Your POS</dt><dd>A nightly download. Most systems work.</dd></div>
+        <div><dt>Then</dt><dd>You decide.</dd></div>
+      </dl>
+      <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New Tooey inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="honey" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+          <p class="err" id="e-name" hidden>We need a name to write back to.</p>
+        </div>
+        <div class="field">
+          <label for="f-rest">Restaurant</label>
+          <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required>
+          <p class="err" id="e-rest" hidden>Which restaurant is this for?</p>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <p class="err" id="e-email" hidden>That email doesn't look right yet.</p>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone <span class="opt">(if you'd rather talk)</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-pos">POS <span class="opt">(if you know it)</span></label>
+          <input id="f-pos" name="pos" type="text">
+        </div>
+        <div class="field field-wide">
+          <label for="f-msg">Anything else <span class="opt">(your worst Friday counts)</span></label>
+          <textarea id="f-msg" name="message" rows="3"></textarea>
+        </div>
+        <div class="form-foot">
+          <button class="btn" type="submit">Put us on the schedule</button>
+          <p class="status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Lights out. Tooey LLC, a few university students.</p>
+  <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a> <a href="privacy.html">Privacy</a></p>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
