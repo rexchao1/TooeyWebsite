@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tooey, the back end of your restaurant</title>
+  <meta name="description" content="Tooey runs the numbers behind your restaurant, and the final call stays yours. Today that means a morning prep count from your own POS sales. Free during the pilot.">
+  <meta name="theme-color" content="#cac6bc">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/b612-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/b612-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!still && !location.hash && (window.scrollY || 0) < 40) {
+        d.classList.add('intro');
+        setTimeout(function () { d.classList.remove('intro'); }, 5000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap top-in">
+      <a class="brand" href="./"><img src="logo.png" width="343" height="148" alt="Tooey"></a>
+      <button class="menu-key" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" class="nav" aria-label="Main">
+        <a href="privacy.html">Privacy</a>
+        <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
+        <a class="key key-cap key-sm" href="#join"><span class="key-face">Join the pilot</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap hero-in">
+        <h1 id="hero-h">Tooey runs the numbers behind your restaurant, and the final call stays yours.</h1>
+        <div class="hero-side">
+          <p class="lead">Today that means prep: each night Tooey reads the day’s POS sales and emails, before prep, how many of each dish to make.</p>
+          <a class="key key-red" href="#join"><span class="key-face">Join the free pilot</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="desk-scroll" id="desk-scroll" aria-labelledby="desk-h">
+      <h2 class="sr-only" id="desk-h">Prep, shifts and slow nights</h2>
+      <div class="stage" id="stage">
+        <div class="desk" id="desk">
+
+          <!-- Prep: the bank that is wired in -->
+          <section class="bank bank-prep powered" id="bank-prep" aria-labelledby="prep-h">
+            <div class="bank-head">
+              <div class="patch">
+                <span class="engrave">Your sales</span>
+                <span class="jack" id="jack-src" aria-hidden="true"></span>
+              </div>
+              <div class="patch-gap" aria-hidden="true"><svg class="cable-still" viewBox="0 0 150 60" preserveAspectRatio="none"><path d="M-18 16 Q75 70 168 16" fill="none" stroke="#1f2023" stroke-width="9" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></div>
+              <div class="bank-title">
+                <span class="jack" id="jack-prep" aria-hidden="true"></span>
+                <span class="led on" id="led-prep" aria-hidden="true"></span>
+                <h3 id="prep-h">Prep</h3>
+              </div>
+              <p class="bank-cap">A count for every dish, a little over what Tooey expects to sell.</p>
+            </div>
+
+            <div class="board">
+              <div class="scale-key" aria-hidden="true">
+                <span class="engrave small ex">Example counts</span>
+                <span class="key-row"><i class="glyph-pred"></i><span class="engrave small">Predicted</span></span>
+                <span class="key-row"><i class="glyph-cap"></i><span class="engrave small">Prep</span></span>
+              </div>
+
+              <div class="channels" id="prep-channels">
+                <div class="ch">
+                  <div class="lcd"><span class="lcd-name">Short rib</span><span class="lcd-num">24</span></div>
+                  <div class="fader" role="slider" tabindex="0" aria-label="Short rib, prep count" aria-valuemin="0" aria-valuemax="50" aria-valuenow="24" data-max="50" data-set="24" style="--p:.48;--sp:.48;--pred:.44">
+                    <div class="slot"><i class="pred"></i><i class="ghost"></i><span class="cap"><i class="cap-led"></i></span></div>
+                  </div>
+                </div>
+                <div class="ch">
+                  <div class="lcd"><span class="lcd-name">Cacio e pepe</span><span class="lcd-num">31</span></div>
+                  <div class="fader" role="slider" tabindex="0" aria-label="Cacio e pepe, prep count" aria-valuemin="0" aria-valuemax="50" aria-valuenow="31" data-max="50" data-set="31" style="--p:.62;--sp:.62;--pred:.56">
+                    <div class="slot"><i class="pred"></i><i class="ghost"></i><span class="cap"><i class="cap-led"></i></span></div>
+                  </div>
+                </div>
+                <div class="ch">
+                  <div class="lcd"><span class="lcd-name">Half chicken</span><span class="lcd-num">18</span></div>
+                  <div class="fader" role="slider" tabindex="0" aria-label="Half chicken, prep count" aria-valuemin="0" aria-valuemax="50" aria-valuenow="18" data-max="50" data-set="18" style="--p:.36;--sp:.36;--pred:.32">
+                    <div class="slot"><i class="pred"></i><i class="ghost"></i><span class="cap"><i class="cap-led"></i></span></div>
+                  </div>
+                </div>
+                <div class="ch">
+                  <div class="lcd"><span class="lcd-name">Smash burger</span><span class="lcd-num">40</span></div>
+                  <div class="fader" role="slider" tabindex="0" aria-label="Smash burger, prep count" aria-valuemin="0" aria-valuemax="50" aria-valuenow="40" data-max="50" data-set="40" style="--p:.8;--sp:.8;--pred:.74">
+                    <div class="slot"><i class="pred"></i><i class="ghost"></i><span class="cap"><i class="cap-led"></i></span></div>
+                  </div>
+                </div>
+                <div class="ch">
+                  <div class="lcd"><span class="lcd-name">Caesar</span><span class="lcd-num">16</span></div>
+                  <div class="fader" role="slider" tabindex="0" aria-label="Caesar, prep count" aria-valuemin="0" aria-valuemax="50" aria-valuenow="16" data-max="50" data-set="16" style="--p:.32;--sp:.32;--pred:.28">
+                    <div class="slot"><i class="pred"></i><i class="ghost"></i><span class="cap"><i class="cap-led"></i></span></div>
+                  </div>
+                </div>
+                <div class="ch ch-blank">
+                  <div class="lcd"><span class="lcd-name">Crudo</span><span class="lcd-num lcd-note">Too new to call</span></div>
+                  <div class="fader" role="slider" tabindex="0" aria-label="Crudo, prep count" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0" aria-valuetext="Blank, too new to call" data-max="50" data-set="blank" style="--p:0;--sp:0">
+                    <div class="slot"><i class="ghost"></i><span class="cap"><i class="cap-led"></i></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="call">
+                <button class="key key-red key-call" id="key-call" type="button" aria-pressed="false"><span class="key-face">Your call</span></button>
+              </div>
+            </div>
+
+            <canvas class="cable" id="cable" aria-hidden="true"></canvas>
+            <button class="plug-hit" id="plug-hit" type="button" aria-pressed="true" aria-label="Your sales cable, plugged into Prep. Press to unplug."></button>
+          </section>
+
+          <!-- Shifts: in the desk, not wired yet -->
+          <section class="bank bank-shifts" id="bank-shifts" aria-labelledby="shifts-h">
+            <div class="bank-head">
+              <div class="bank-title">
+                <span class="jack" aria-hidden="true"></span>
+                <span class="led" aria-hidden="true"></span>
+                <h3 id="shifts-h">Shifts</h3>
+              </div>
+              <p class="bank-cap">Who works when, matched to how busy each hour will be.</p>
+            </div>
+            <div class="board">
+              <div class="lcd lcd-wide lcd-off" aria-hidden="true"><svg class="ghost-svg" id="ghost-shifts" viewBox="0 0 400 120" preserveAspectRatio="none"><rect x="10" y="78" width="36" height="6" rx="1" class="gs"/><rect x="10" y="70" width="36" height="6" rx="1" class="gs"/><rect x="10" y="62" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10" y="54" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10" y="46" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10" y="38" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10" y="30" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10" y="22" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10" y="14" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="10.0" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="19.5" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="29.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="38.5" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="58.5" y="78" width="36" height="6" rx="1" class="gs"/><rect x="58.5" y="70" width="36" height="6" rx="1" class="gs"/><rect x="58.5" y="62" width="36" height="6" rx="1" class="gs"/><rect x="58.5" y="54" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="58.5" y="46" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="58.5" y="38" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="58.5" y="30" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="58.5" y="22" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="58.5" y="14" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="58.5" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="58.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="68.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="77.5" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="87.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="107" y="78" width="36" height="6" rx="1" class="gs"/><rect x="107" y="70" width="36" height="6" rx="1" class="gs"/><rect x="107" y="62" width="36" height="6" rx="1" class="gs"/><rect x="107" y="54" width="36" height="6" rx="1" class="gs"/><rect x="107" y="46" width="36" height="6" rx="1" class="gs"/><rect x="107" y="38" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="107" y="30" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="107" y="22" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="107" y="14" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="107" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="107.0" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="116.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="126.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="135.5" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="155.5" y="78" width="36" height="6" rx="1" class="gs"/><rect x="155.5" y="70" width="36" height="6" rx="1" class="gs"/><rect x="155.5" y="62" width="36" height="6" rx="1" class="gs"/><rect x="155.5" y="54" width="36" height="6" rx="1" class="gs"/><rect x="155.5" y="46" width="36" height="6" rx="1" class="gs"/><rect x="155.5" y="38" width="36" height="6" rx="1" class="gs"/><rect x="155.5" y="30" width="36" height="6" rx="1" class="gs"/><rect x="155.5" y="22" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="155.5" y="14" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="155.5" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="155.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="165.0" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="174.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="184.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="204" y="78" width="36" height="6" rx="1" class="gs"/><rect x="204" y="70" width="36" height="6" rx="1" class="gs"/><rect x="204" y="62" width="36" height="6" rx="1" class="gs"/><rect x="204" y="54" width="36" height="6" rx="1" class="gs"/><rect x="204" y="46" width="36" height="6" rx="1" class="gs"/><rect x="204" y="38" width="36" height="6" rx="1" class="gs"/><rect x="204" y="30" width="36" height="6" rx="1" class="gs"/><rect x="204" y="22" width="36" height="6" rx="1" class="gs"/><rect x="204" y="14" width="36" height="6" rx="1" class="gs"/><rect x="204" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="204.0" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="213.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="223.0" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="232.5" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="252.5" y="78" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="70" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="62" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="54" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="46" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="38" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="30" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="22" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="14" width="36" height="6" rx="1" class="gs"/><rect x="252.5" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="252.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="262.0" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="271.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="281.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="301" y="78" width="36" height="6" rx="1" class="gs"/><rect x="301" y="70" width="36" height="6" rx="1" class="gs"/><rect x="301" y="62" width="36" height="6" rx="1" class="gs"/><rect x="301" y="54" width="36" height="6" rx="1" class="gs"/><rect x="301" y="46" width="36" height="6" rx="1" class="gs"/><rect x="301" y="38" width="36" height="6" rx="1" class="gs"/><rect x="301" y="30" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="301" y="22" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="301" y="14" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="301" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="301.0" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="310.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="320.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="329.5" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="349.5" y="78" width="36" height="6" rx="1" class="gs"/><rect x="349.5" y="70" width="36" height="6" rx="1" class="gs"/><rect x="349.5" y="62" width="36" height="6" rx="1" class="gs"/><rect x="349.5" y="54" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="349.5" y="46" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="349.5" y="38" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="349.5" y="30" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="349.5" y="22" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="349.5" y="14" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="349.5" y="6" width="36" height="6" rx="1" class="gs gs-faint"/><rect x="349.5" y="96" width="7" height="16" rx="1.5" class="gs"/><rect x="359.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="368.5" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/><rect x="378.0" y="96" width="7" height="16" rx="1.5" class="gs gs-faint"/></svg></div>
+              <div class="channels channels-short" id="shift-channels"></div>
+            </div>
+          </section>
+
+          <!-- Slow nights: in the desk, not wired yet -->
+          <section class="bank bank-slow" id="bank-slow" aria-labelledby="slow-h">
+            <div class="bank-head">
+              <div class="bank-title">
+                <span class="jack" aria-hidden="true"></span>
+                <span class="led" aria-hidden="true"></span>
+                <h3 id="slow-h">Slow nights</h3>
+              </div>
+              <p class="bank-cap">See the quiet nights coming, and fill them.</p>
+            </div>
+            <div class="board">
+              <div class="lcd lcd-wide lcd-off" aria-hidden="true"><svg class="ghost-svg" id="ghost-slow" viewBox="0 0 280 120" preserveAspectRatio="none"><rect x="10" y="98" width="28" height="7" rx="1" class="gs"/><rect x="10" y="89" width="28" height="7" rx="1" class="gs"/><rect x="10" y="80" width="28" height="7" rx="1" class="gs"/><rect x="10" y="71" width="28" height="7" rx="1" class="gs"/><rect x="10" y="62" width="28" height="7" rx="1" class="gs"/><rect x="10" y="53" width="28" height="7" rx="1" class="gs"/><rect x="10" y="44" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="10" y="35" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="10" y="26" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="10" y="17" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="10" y="110" width="28" height="4" rx="1" class="gs gs-faint"/><rect x="48.5" y="98" width="28" height="7" rx="1" class="gs"/><rect x="48.5" y="89" width="28" height="7" rx="1" class="gs"/><rect x="48.5" y="80" width="28" height="7" rx="1" class="gs"/><rect x="48.5" y="71" width="28" height="7" rx="1" class="gs gs-fill"/><rect x="48.5" y="62" width="28" height="7" rx="1" class="gs gs-fill"/><rect x="48.5" y="53" width="28" height="7" rx="1" class="gs gs-fill"/><rect x="48.5" y="44" width="28" height="7" rx="1" class="gs gs-fill"/><rect x="48.5" y="35" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="48.5" y="26" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="48.5" y="17" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="48.5" y="110" width="28" height="4" rx="1" class="gs"/><rect x="87" y="98" width="28" height="7" rx="1" class="gs"/><rect x="87" y="89" width="28" height="7" rx="1" class="gs"/><rect x="87" y="80" width="28" height="7" rx="1" class="gs"/><rect x="87" y="71" width="28" height="7" rx="1" class="gs"/><rect x="87" y="62" width="28" height="7" rx="1" class="gs"/><rect x="87" y="53" width="28" height="7" rx="1" class="gs"/><rect x="87" y="44" width="28" height="7" rx="1" class="gs"/><rect x="87" y="35" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="87" y="26" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="87" y="17" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="87" y="110" width="28" height="4" rx="1" class="gs gs-faint"/><rect x="125.5" y="98" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="89" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="80" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="71" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="62" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="53" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="44" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="35" width="28" height="7" rx="1" class="gs"/><rect x="125.5" y="26" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="125.5" y="17" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="125.5" y="110" width="28" height="4" rx="1" class="gs gs-faint"/><rect x="164" y="98" width="28" height="7" rx="1" class="gs"/><rect x="164" y="89" width="28" height="7" rx="1" class="gs"/><rect x="164" y="80" width="28" height="7" rx="1" class="gs"/><rect x="164" y="71" width="28" height="7" rx="1" class="gs"/><rect x="164" y="62" width="28" height="7" rx="1" class="gs"/><rect x="164" y="53" width="28" height="7" rx="1" class="gs"/><rect x="164" y="44" width="28" height="7" rx="1" class="gs"/><rect x="164" y="35" width="28" height="7" rx="1" class="gs"/><rect x="164" y="26" width="28" height="7" rx="1" class="gs"/><rect x="164" y="17" width="28" height="7" rx="1" class="gs"/><rect x="164" y="110" width="28" height="4" rx="1" class="gs gs-faint"/><rect x="202.5" y="98" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="89" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="80" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="71" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="62" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="53" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="44" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="35" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="26" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="17" width="28" height="7" rx="1" class="gs"/><rect x="202.5" y="110" width="28" height="4" rx="1" class="gs gs-faint"/><rect x="241" y="98" width="28" height="7" rx="1" class="gs"/><rect x="241" y="89" width="28" height="7" rx="1" class="gs"/><rect x="241" y="80" width="28" height="7" rx="1" class="gs"/><rect x="241" y="71" width="28" height="7" rx="1" class="gs"/><rect x="241" y="62" width="28" height="7" rx="1" class="gs"/><rect x="241" y="53" width="28" height="7" rx="1" class="gs"/><rect x="241" y="44" width="28" height="7" rx="1" class="gs"/><rect x="241" y="35" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="241" y="26" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="241" y="17" width="28" height="7" rx="1" class="gs gs-faint"/><rect x="241" y="110" width="28" height="4" rx="1" class="gs gs-faint"/></svg></div>
+              <div class="knob-well">
+                <div class="knob" id="knob" role="slider" tabindex="0" aria-label="Slow nights knob, not connected yet" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" style="--a:-135deg">
+                  <span class="knob-ticks" aria-hidden="true"></span>
+                  <span class="knob-body" aria-hidden="true"><span class="knob-cap"><i class="knob-line"></i></span></span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <p class="honest" id="honest">Prep is wired in today. Shifts and slow nights are what we’re building.</p>
+      </div>
+    </section>
+
+    <section class="pilot" aria-labelledby="pilot-h">
+      <div class="wrap">
+        <h2 id="pilot-h">How the pilot starts</h2>
+        <ol class="strip" id="strip">
+          <li class="step">
+            <span class="lamp on" aria-hidden="true"></span>
+            <button class="toggle" type="button" role="switch" aria-checked="true" aria-labelledby="step1"><span class="nut" aria-hidden="true"></span><span class="bat" aria-hidden="true"><i></i></span></button>
+            <p id="step1">We set up a nightly download from your POS. Most systems work.</p>
+          </li>
+          <li class="step">
+            <span class="lamp on" aria-hidden="true"></span>
+            <button class="toggle" type="button" role="switch" aria-checked="true" aria-labelledby="step2"><span class="nut" aria-hidden="true"></span><span class="bat" aria-hidden="true"><i></i></span></button>
+            <p id="step2">About five weeks of past sales, then about a week of setup.</p>
+          </li>
+          <li class="step">
+            <span class="lamp on" aria-hidden="true"></span>
+            <button class="toggle" type="button" role="switch" aria-checked="true" aria-labelledby="step3"><span class="nut" aria-hidden="true"></span><span class="bat" aria-hidden="true"><i></i></span></button>
+            <p id="step3">Free during the pilot. Check the counts against what sold, then decide.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="join" id="join" aria-labelledby="join-h">
+      <div class="wrap join-in">
+        <div class="join-copy">
+          <h2 id="join-h">Join the free pilot</h2>
+          <p>We’re a small team of university students, and we’ll write back.</p>
+        </div>
+
+        <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New Tooey inquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="honey" aria-hidden="true">
+            <label for="f-honey">Leave this empty</label>
+            <input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-rest">Restaurant</label>
+            <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field field-wide">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="f-pos">POS system <span class="opt">(optional)</span></label>
+            <input id="f-pos" name="pos" type="text">
+          </div>
+          <div class="field field-wide">
+            <label for="f-msg">Message <span class="opt">(optional)</span></label>
+            <textarea id="f-msg" name="message" rows="4"></textarea>
+          </div>
+
+          <div class="send-row">
+            <span class="lamp" id="send-lamp" aria-hidden="true"></span>
+            <p class="status" id="status" role="status" aria-live="polite"></p>
+            <button class="key key-red" type="submit" id="send"><span class="key-face">Ask to join</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <p>Tooey LLC</p>
+      <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="js/desk.js"></script>
+</body>
+</html>
