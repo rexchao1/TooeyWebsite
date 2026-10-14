@@ -3,6 +3,8 @@
 //   python3 -m http.server 5173 &
 //   node explorations/_gallery/shoot.cjs            (all)
 //   node explorations/_gallery/shoot.cjs 03-sandbox (one)
+//   STILL=1 node ... shoots every view with reduced motion (for the WebGL sites,
+//   which compile slowly under software rendering)
 let playwright;
 try { playwright = require('playwright'); }
 catch { playwright = require('/opt/node22/lib/node_modules/playwright'); }
@@ -17,6 +19,7 @@ const all = ['00-original'].concat(
   fs.readdirSync(root).filter((d) => /^\d\d-/.test(d) && fs.existsSync(path.join(root, d, 'index.html')))
 );
 const only = process.argv.slice(2);
+const still = !!process.env.STILL;
 const sites = only.length ? all.filter((s) => only.includes(s)) : all;
 
 const urlFor = (s) => (s === '00-original' ? `${base}/index.html` : `${base}/explorations/${s}/`);
@@ -53,8 +56,8 @@ async function shoot(browser, url, file, opts) {
   const browser = await playwright.chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
   for (const s of sites) {
     const url = urlFor(s);
-    await shoot(browser, url, path.join(out, `${s}-desktop.jpg`), { viewport: { width: 1440, height: 900 } });
-    await shoot(browser, url, path.join(out, `${s}-phone.jpg`), { viewport: { width: 390, height: 844 }, scale: 2, mobile: true });
+    await shoot(browser, url, path.join(out, `${s}-desktop.jpg`), { viewport: { width: 1440, height: 900 }, reduce: still });
+    await shoot(browser, url, path.join(out, `${s}-phone.jpg`), { viewport: { width: 390, height: 844 }, scale: 2, mobile: true, reduce: still });
     await shoot(browser, url, path.join(out, `${s}-desktop-full.jpg`), { viewport: { width: 1440, height: 900 }, full: true, reduce: true, wait: 1500 });
     await shoot(browser, url, path.join(out, `${s}-phone-full.jpg`), { viewport: { width: 390, height: 844 }, full: true, reduce: true, mobile: true, wait: 1500 });
     console.log('shot', s);

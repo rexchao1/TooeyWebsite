@@ -1,0 +1,14 @@
+{
+  "name": "tooey-23-unfold-src",
+  "private": true,
+  "description": "Build-time only: bundles the scene and renders the posters. Nothing here ships.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "posters": "node posters.cjs"
+  },
+  "devDependencies": {
+    "three": "0.180.0",
+    "esbuild": "0.28.2"
+  }
+}

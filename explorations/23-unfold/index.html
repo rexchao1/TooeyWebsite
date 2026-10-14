@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey tells you how much to make</title>
+<meta name="description" content="Tooey runs the back end of an independent restaurant from its own sales: how much of each dish to prep, the right people on each night, and fuller slow nights.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/spectral-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/spectral-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+(function (d) {
+  d.classList.add('js');
+  var q = location.search, rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!rm && 'WebGL2RenderingContext' in window && q.indexOf('still') < 0 && q.indexOf('capture') < 0) d.classList.add('motion');
+})(document.documentElement);
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top__in">
+    <a class="brand" href="./" aria-label="Tooey, home"><img src="logo-porcelain.png" alt="" width="343" height="148"></a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main">
+      <a href="#prep">Prep</a>
+      <a href="#shifts">Shifts</a>
+      <a href="#growth">Growth</a>
+      <a href="#start">Start</a>
+      <a class="btn btn--small" href="#talk">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero__text">
+      <h1 id="hero-h">Tooey tells you how much to make.</h1>
+      <p class="lead">It runs the back end of your restaurant from your own sales: prep, shifts, slow nights. Make more money, spend less time managing.</p>
+      <p><a class="btn" href="#talk">Talk to us</a></p>
+    </div>
+    <figure class="shot shot--hero" data-shot="hero">
+      <picture>
+        <source media="(max-width: 760px)" srcset="posters/hero-tall.webp">
+        <img class="poster" src="posters/hero-wide.webp" alt="At dawn, three deli quarts on a steel shelf, each with masking tape written in marker: pork belly 26, polenta 30, chowder 16." width="1400" height="1400" fetchpriority="high">
+      </picture>
+    </figure>
+  </section>
+
+  <section class="sec" id="prep" aria-labelledby="prep-h">
+    <div class="sec__head">
+      <h2 id="prep-h">A count for every dish, before prep.</h2>
+      <p>A little over what should sell, from your past sales, the weekday, season and holidays.</p>
+    </div>
+    <figure class="shot shot--band" data-shot="prep">
+      <picture>
+        <source media="(max-width: 760px)" srcset="posters/prep-tall.webp">
+        <img class="poster" src="posters/prep-wide.webp" alt="The prep kitchen in morning light: the shelf of labelled quarts, and on the steel table two more quarts filled to their counts, slaw 20 and aioli 40." width="1600" height="800" loading="lazy">
+      </picture>
+    </figure>
+  </section>
+
+  <section class="sec" id="shifts" aria-labelledby="shifts-h">
+    <div class="sec__head">
+      <h2 id="shifts-h">The right people on.</h2>
+      <p>Shifts follow how busy each night will be. As tickets build, another cook comes on; as they thin, one goes home.</p>
+    </div>
+    <figure class="shot shot--band" data-shot="line">
+      <picture>
+        <source media="(max-width: 760px)" srcset="posters/line-tall.webp">
+        <img class="poster" src="posters/line-wide.webp" alt="The line seen across the pass during service. As tickets fill the rail, more stations are lit and cooking; as they thin out, one goes dark." width="1600" height="800" loading="lazy">
+      </picture>
+    </figure>
+  </section>
+
+  <section class="sec" id="growth" aria-labelledby="growth-h">
+    <div class="sec__head">
+      <h2 id="growth-h">Fuller slow nights.</h2>
+      <p>Tooey finds your quiet nights and brings regulars back to fill them.</p>
+    </div>
+    <figure class="shot shot--band" data-shot="room">
+      <picture>
+        <source media="(max-width: 760px)" srcset="posters/room-tall.webp">
+        <img class="poster" src="posters/room-wide.webp" alt="The dining room on a Tuesday, the chalkboard says so. Table lamps come on one table at a time until most of the room is lit and served." width="1600" height="800" loading="lazy">
+      </picture>
+    </figure>
+  </section>
+
+  <section class="sec" id="closer" aria-labelledby="closer-h">
+    <div class="sec__head">
+      <h2 id="closer-h">Closer than a guess.</h2>
+      <p>A guess would have made 34 pork belly. Tooey said 26, and 25 sold, so one was left at close.</p>
+    </div>
+    <figure class="shot shot--band" data-shot="close">
+      <picture>
+        <source media="(max-width: 760px)" srcset="posters/close-tall.webp">
+        <img class="poster" src="posters/close-wide.webp" alt="Close up on the pork belly quart at the end of the night. A grease pencil line marks a guess of 34 near the rim, the tape says 26, and one portion is left in the bottom." width="1600" height="800" loading="lazy">
+      </picture>
+      <figcaption>Example</figcaption>
+    </figure>
+  </section>
+
+  <section class="start" id="start" aria-labelledby="start-h">
+    <div class="start__in">
+      <h2 id="start-h">Running in about a week.</h2>
+      <ol class="steps">
+        <li><span class="steps__n" aria-hidden="true">1</span><p>We set up a nightly download from your POS. Most systems work.</p></li>
+        <li><span class="steps__n" aria-hidden="true">2</span><p>Tooey reads about five weeks of past sales.</p></li>
+        <li><span class="steps__n" aria-hidden="true">3</span><p>Check the counts against what sold, then decide.</p></li>
+      </ol>
+      <p class="free">Free during the pilot.</p>
+    </div>
+  </section>
+
+  <section class="talk" id="talk" aria-labelledby="talk-h">
+    <div class="talk__in">
+      <div class="talk__intro">
+        <h2 id="talk-h">Talk to us</h2>
+        <p>We're Tooey LLC, a small team of university students. Email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a> or use the form.</p>
+      </div>
+      <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New Tooey inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-rest">Restaurant</label>
+          <input id="f-rest" name="restaurant" type="text" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone <span>(optional)</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field field--wide">
+          <label for="f-pos">Your POS <span>(optional)</span></label>
+          <input id="f-pos" name="pos" type="text">
+        </div>
+        <div class="field field--wide">
+          <label for="f-msg">Message <span>(optional)</span></label>
+          <textarea id="f-msg" name="message" rows="4"></textarea>
+        </div>
+        <div class="form__end">
+          <button class="btn" type="submit">Send message</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__in">
+    <p>Tooey LLC</p>
+    <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a> <a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
