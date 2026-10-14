@@ -184,3 +184,22 @@ reviewed at desktop only:
 | 29 | `29-follow-the-order` | One sharp order travels through soft, out-of-focus rooms |
 
 - [x] Four sites built, reviewed from scroll frames at 1440, committed, and added to the gallery
+
+## Round seven (2026-10-14)
+
+Rex shared screenshots of meuze.ai: deep but simple, one image treatment
+everywhere, a strict frame. We took the decisions, not the answers. A
+samples page (`explorations/_samples/`) compared three treatments (tally
+hatching, thermal print, light only) on two sources and both grounds; he
+chose Light only, both sources, both grounds, and asked that every build
+come as one dark and one light. Two deeper sites on one system: Light only,
+a prep-sheet hairline grid, Literata / Source Serif 4 / Schibsted Grotesk,
+lamplight the only accent, about five screens.
+
+| # | Folder | Ground and source |
+|---|---|---|
+| 30 | `30-light-basalt` | Basalt, 3D renders |
+| 31 | `31-light-porcelain` | Porcelain, drawn rooms in slate line |
+
+- [x] Samples page; treatment chosen
+- [x] Two sites built, reviewed from 1440 scroll frames, one fix round on 30, committed, added to the gallery

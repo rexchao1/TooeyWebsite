@@ -368,5 +368,31 @@ window.EXPLORATIONS = [
     weaknesses: ["The moving check can briefly cross a text column between rooms.", "The overnight “week of dots” reads a little like a chart."],
     ask: "The headline is about the order, not the owner. Does that land?",
     pages: [{ label: 'Home', href: '29-follow-the-order/index.html' }, { label: 'Privacy', href: '29-follow-the-order/privacy.html' }]
+  },
+  {
+    id: '30-light-basalt', num: '30', name: "Light, on basalt", round: 7,
+    href: '30-light-basalt/', notes: '30-light-basalt/NOTES.md', words: 194, motion: 'Scroll lights',
+    line: "Rendered rooms reduced to light on dark stone; the lights come up as you scroll.",
+    brief: "Round seven: one system (Light only, the prep-sheet grid, three faces with fixed jobs, lamplight the only accent), about five screens. Dark ground, from the 3D renders.",
+    headline: "The back end of your restaurant.",
+    concept: "The hero is three labelled quarts lighting cup by cup on load. What Tooey does pins one picture for a screen and a half: morning light on the prep station, then the line’s stations switching on one by one, then the dining room’s table lamps on a Tuesday, with Prep, Shifts and Growth on the grid beside it. Closer than a guess lights the same Saturday station twice: a guess (out of dough, risotto binned) then Tooey (a little of each left). Three steps on the grid; the form as ruled sheet rows.",
+    look: "Basalt and lamplight. Literata, Source Serif 4, Schibsted Grotesk. Hairline column grid. Canvas treatment, no libraries.",
+    strengths: ["Closest to the polish of meuze.ai without borrowing its look.", "Images and page are one surface; nothing reads as a video."],
+    weaknesses: ["The guess vs Tooey trays are small; the captions carry the point.", "How to start has no image and is the plainest section."],
+    ask: "Dark and moody: right for owners who work nights, or too sombre?",
+    pages: [{ label: 'Home', href: '30-light-basalt/index.html' }, { label: 'Privacy', href: '30-light-basalt/privacy.html' }]
+  },
+  {
+    id: '31-light-porcelain', num: '31', name: "Light, on porcelain", round: 7,
+    href: '31-light-porcelain/', notes: '31-light-porcelain/NOTES.md', words: 190, motion: 'Scroll lights',
+    line: "Drawn rooms as fine slate line on porcelain, with lamplight washing in as you scroll.",
+    brief: "Round seven: one system (Light only, the prep-sheet grid, three faces with fixed jobs, lamplight the only accent), about five screens. Light ground, from the drawn rooms, held with a slate line.",
+    headline: "The back end of your restaurant.",
+    concept: "The hero is a line drawing of the street front; sconces and door glass warm up on load and the window as you scroll. What Tooey does pins one picture: the prep sheet (Friday: short rib 27, risotto 33, burrata 19), then the kitchen line, then the dining room, each lit lamp by lamp. Closer than a guess sets two Friday sheets side by side, guessed and Tooey’s, with what sold pencilled in; the guess lights first. How to start lights the counter and POS above three steps; the form sits in the one basalt band.",
+    look: "Porcelain, slate line, lamplight washes. Literata, Source Serif 4, Schibsted Grotesk. Hairline column grid. Canvas treatment, no libraries.",
+    strengths: ["Elegant and calm, like a refined architectural illustration.", "The guess vs Tooey sheets are the clearest comparison of the round."],
+    weaknesses: ["The hero starts very faint until its lights come up.", "The comparison sheets look more like tables than drawn rooms."],
+    ask: "Light reads more approachable. Does it feel as premium as the dark one?",
+    pages: [{ label: 'Home', href: '31-light-porcelain/index.html' }, { label: 'Privacy', href: '31-light-porcelain/privacy.html' }]
   }
 ];
