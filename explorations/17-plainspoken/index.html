@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey, the planning behind your restaurant</title>
+<meta name="description" content="Tooey does the planning behind your restaurant. We start with prep: every night Tooey reads your sales, and by morning you know how much of each dish to make.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('pre');setTimeout(function(){d.classList.remove('pre')},3000);}})(document.documentElement);</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="./"><img src="logo.png" width="343" height="148" alt="Tooey"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#prep">How it works</a></li>
+        <li><a href="#going">Where it's going</a></li>
+        <li><a href="#start">Getting started</a></li>
+        <li><a class="nav-cta" href="#pilot">Join the free pilot</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-top">
+      <h1 id="hero-title">Tooey does the planning behind your restaurant.</h1>
+      <div class="hero-side">
+        <p class="lead">We start with prep. Every night Tooey reads your sales, and by morning you know how much of each dish to make.</p>
+        <a class="btn" href="#pilot">Join the free pilot</a>
+      </div>
+    </div>
+
+    <figure class="band live" id="fig-hero" aria-label="Example: Monday's sales become the prep count for Tuesday">
+      <div class="wrap stage">
+        <table class="sales">
+          <caption>Monday's sales</caption>
+          <thead class="spacer-head"><tr><th scope="col">Dish</th><th scope="col">Sold</th></tr></thead>
+          <tbody>
+            <tr data-row="0"><th scope="row"><span class="tx">Short rib</span></th><td><span class="tx">41</span></td></tr>
+            <tr data-row="1"><th scope="row"><span class="tx">Caesar</span></th><td><span class="tx">63</span></td></tr>
+            <tr data-row="2"><th scope="row"><span class="tx">Fries</span></th><td><span class="tx">128</span></td></tr>
+            <tr data-row="3"><th scope="row"><span class="tx">Lamb special</span></th><td><span class="tx">6</span></td></tr>
+          </tbody>
+        </table>
+
+        <table class="prep">
+          <caption>Prep for Tuesday</caption>
+          <thead><tr><th scope="col"><span class="sr-only">Dish</span></th><th scope="col">Predicted</th><th scope="col" class="t-prep">Prep</th></tr></thead>
+          <tbody>
+            <tr data-row="0"><th scope="row"><span class="nm">Short rib</span></th><td class="pred" data-from="41">33</td><td class="pp">36</td></tr>
+            <tr data-row="1"><th scope="row"><span class="nm">Caesar</span></th><td class="pred" data-from="63">52</td><td class="pp">56</td></tr>
+            <tr data-row="2"><th scope="row"><span class="nm">Fries</span></th><td class="pred" data-from="128">104</td><td class="pp">112</td></tr>
+            <tr data-row="3" class="blank"><th scope="row"><span class="nm">Lamb special</span><span class="why">New this week</span></th><td class="pred" data-from="6">—</td><td class="pp"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption class="wrap fig-foot"><span class="example">Example</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="prep" aria-labelledby="prep-title">
+    <div class="wrap cols">
+      <div class="words">
+        <h2 id="prep-title">Know how much to make.</h2>
+        <p>Counts come from your sales history: day of week, time of year, holidays. Prep sits a little over. Dishes too new or too slow to call get a blank and a reason.</p>
+      </div>
+      <figure class="panel live fig" id="fig-prep" aria-label="Example: short rib on the last five Tuesdays, the predicted count, and prep a little over">
+        <p class="dish">Short rib</p>
+        <div class="past">
+          <span class="past-label">Tuesdays</span>
+          <span class="past-nums"><span>31</span><span>35</span><span>33</span><span>30</span><span>36</span></span>
+        </div>
+        <div class="calls">
+          <div class="call"><span class="call-label">Predicted</span><span class="call-num c-pred">33</span></div>
+          <div class="call"><span class="call-label t-prep">Prep</span><span class="call-num c-prep">36</span></div>
+        </div>
+        <figcaption><span class="example">Example</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec going" id="going" aria-labelledby="going-title">
+    <div class="wrap cols">
+      <div class="words">
+        <h2 id="going-title">Where Tooey is going.</h2>
+        <p>Prep runs today. Shifts and growth are still being built.</p>
+      </div>
+    </div>
+
+    <div class="wrap cols sub">
+      <div class="words">
+        <h3>Shifts that fit the night.</h3>
+        <p>The right people on for how busy it will be.</p>
+      </div>
+      <figure class="fig plain" id="fig-shifts" aria-label="Idea: people on each hour of the night, matched to how busy it will be">
+        <div class="hours" role="presentation">
+          <span class="row-label sr-only">Hour</span>
+          <span class="h">4</span><span class="h">5</span><span class="h">6</span><span class="h">7</span><span class="h">8</span><span class="h">9</span><span class="h">10</span><span class="h">11</span>
+        </div>
+        <div class="crew">
+          <span class="row-label">People on</span>
+          <span class="n" style="--k:2">2</span><span class="n" style="--k:2">2</span><span class="n" style="--k:3">3</span><span class="n" style="--k:5">5</span><span class="n" style="--k:7">7</span><span class="n" style="--k:6">6</span><span class="n" style="--k:4">4</span><span class="n" style="--k:2">2</span>
+        </div>
+      </figure>
+    </div>
+
+    <div class="wrap cols sub">
+      <div class="words">
+        <h3>Fuller quiet nights.</h3>
+        <p>Bring regulars back on slow nights.</p>
+      </div>
+      <figure class="fig plain" id="fig-growth" aria-label="Idea: a week of nights, with Tuesday filling up">
+        <ul class="week">
+          <li style="--w:330">Monday</li>
+          <li class="tue" style="--w:760">Tuesday</li>
+          <li style="--w:380">Wednesday</li>
+          <li style="--w:520">Thursday</li>
+          <li style="--w:800">Friday</li>
+          <li style="--w:800">Saturday</li>
+          <li style="--w:600">Sunday</li>
+        </ul>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec" id="start" aria-labelledby="start-title">
+    <div class="wrap cols">
+      <div class="words">
+        <h2 id="start-title">Up and running in about a week.</h2>
+        <ol class="steps">
+          <li>We connect a nightly download from your POS. Most systems work.</li>
+          <li>Tooey needs about five weeks of your past sales.</li>
+          <li>Check the morning counts against what sold, then decide.</li>
+        </ol>
+      </div>
+      <figure class="panel live fig" id="fig-check" aria-label="Example: prep 36 against 34 sold">
+        <div class="calls">
+          <div class="call"><span class="call-label t-prep">Prep</span><span class="call-num c-prep">36</span></div>
+          <div class="call"><span class="call-label">Sold</span><span class="call-num c-sold">34</span></div>
+        </div>
+        <figcaption><span class="example">Example</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec contact" id="pilot" aria-labelledby="pilot-title">
+    <div class="wrap cols">
+      <div class="words">
+        <h2 id="pilot-title">Join the free pilot.</h2>
+        <p>A small team of university students.</p>
+        <p><a class="mail" href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+      </div>
+      <form class="form" id="pilot-form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Tooey inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="honey" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field half"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field half"><label for="f-pos">POS system <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text"></div>
+        <div class="field"><label for="f-msg">Anything we should know <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+        <div class="form-foot">
+          <button class="btn" type="submit">Send</button>
+          <p class="status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-row">
+    <span>Tooey LLC</span>
+    <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+</footer>
+
+<script src="vendor/gsap.min.js" defer></script>
+<script src="site.js" defer></script>
+</body>
+</html>
