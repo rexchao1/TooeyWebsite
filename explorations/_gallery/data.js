@@ -264,5 +264,57 @@ window.EXPLORATIONS = [
     weaknesses: ["The growth figure reads as mood without its caption.", "Dark and quiet; little colour to remember it by."],
     ask: "Premium is a promise; does it suit a free pilot from a student team?",
     pages: [{ label: 'Home', href: '21-refined/index.html' }, { label: 'Privacy', href: '21-refined/privacy.html' }]
+  },
+  {
+    id: '22-one-take', num: '22', name: "One take", round: 5,
+    href: '22-one-take/', notes: '22-one-take/NOTES.md', words: 197, motion: "3D, plays in view",
+    line: "One camera, one day in a bistro: the receipt prints, steaks hit the tray, cooks arrive, the room fills.",
+    brief: "Round five: 21’s colours, a realistic restaurant, Tooey as a finished product, nothing crucial over five seconds. Direction: " + "one take" + '.',
+    headline: "Tooey plans your prep, your shifts and your slow nights from what you sold.",
+    concept: "A live 3D bistro with a film grade. One canvas moves into each section’s frame and the camera travels there from where it left off, so the page reads as one take. Monday night the bar printer prints the day’s sales; Tuesday 6 am the kitchen printer prints the counts and 26 steaks land on a tray; at 7 cooks walk in just ahead of the tickets; at 8 guests streak in and sit. Closer than a guess: on a guessed rota four cooks stand idle; on Tooey’s, two are busy.",
+    look: "21’s palette with tungsten, street light and morning sun. People as long-exposure blurs, never sharp. Alegreya Sans. Three.js.",
+    strengths: ["The only site with people, and the staffing comparison is one only it can show.", "Each beat is short; the take still feels continuous."],
+    weaknesses: ["The wide rooms look rendered, and the people pass only because they are blurred.", "The heaviest scene; real-phone frame rate unverified."],
+    ask: "Does showing staff (even blurred) help, or does it pull toward a video-game look?",
+    pages: [{ label: 'Home', href: '22-one-take/index.html' }, { label: 'Privacy', href: '22-one-take/privacy.html' }]
+  },
+  {
+    id: '23-unfold', num: '23', name: "Unfold", round: 5,
+    href: '23-unfold/', notes: '23-unfold/NOTES.md', words: 195, motion: "3D, plays in view",
+    line: "Tight on one taped quart at dawn, then the view pulls back: shelf, kitchen, line, dining room.",
+    brief: "Round five: 21’s colours, a realistic restaurant, Tooey as a finished product, nothing crucial over five seconds. Direction: " + "unfold" + '.',
+    headline: "Tooey tells you how much to make.",
+    concept: "Macro lens, real depth of field, dawn light. The hero fills a pork-belly quart and writes “26” on the tape in 1.8 s, then pulls back to the shelf. Each section steps further out: the prep kitchen, the line (stations light as tickets build), the dining room (table lamps come on, 3 of 10 to 8). Closer than a guess goes back to the same quart at close: a grease-pencil line at the guess, Tooey’s count on the tape, and where the food actually ended, just under it.",
+    look: "21’s palette, macro photography feel. Spectral, with Permanent Marker only on the tape. Three.js.",
+    strengths: ["The most convincingly real close-ups of the round.", "The accuracy shot is one object read up close; no chart, no setup."],
+    weaknesses: ["The wide line and dining-room shots look rendered.", "No people, so shifts relies on its sentence."],
+    ask: "The simplest headline of all twenty. Is it enough, or should it say more than prep?",
+    pages: [{ label: 'Home', href: '23-unfold/index.html' }, { label: 'Privacy', href: '23-unfold/privacy.html' }]
+  },
+  {
+    id: '24-closer', num: '24', name: "Closer", round: 5,
+    href: '24-closer/', notes: '24-closer/NOTES.md', words: 194, motion: "3D hero, ambient loop",
+    line: "The same Saturday on two steel stations: a guess runs out of dough at 8:40 and bins risotto; Tooey’s count lasts the night.",
+    brief: "Round five: 21’s colours, a realistic restaurant, Tooey as a finished product, nothing crucial over five seconds. Direction: " + "closer" + '.',
+    headline: "The back end of your restaurant, worked out from your own sales.",
+    concept: "Two identical stations under one heat lamp, same tickets at the same moments. In 4.6 s the guessed side runs out of pizza dough (an “86 Pizza” ticket drops) and tips leftover risotto into the bin; Tooey’s side ends every dish with a little over. An optional loop then plays a quiet Tuesday where the guess over-preps. Below, one still of the wall behind the line: a labelled dough box, a time clock with card racks, a full ticket spike.",
+    look: "21’s palette, clean product-render steel. Chivo. Three.js.",
+    strengths: ["The clearest answer to “why not just guess”, in under five seconds.", "Fair comparison: same labels, same light, only the outcome differs."],
+    weaknesses: ["Reads as a clean product render, not a photograph.", "The bin is a dark rim at the edge; the arc into it does the work."],
+    ask: "Is the comparison the whole pitch, with prep, shifts and growth as supporting cast?",
+    pages: [{ label: 'Home', href: '24-closer/index.html' }, { label: 'Privacy', href: '24-closer/privacy.html' }]
+  },
+  {
+    id: '25-real-time', num: '25', name: "Real-time", round: 5,
+    href: '25-real-time/', notes: '25-real-time/NOTES.md', words: 199, motion: "3D, plays in view",
+    line: "A daylit kitchen and dining room: printed labels go on, aprons come off hooks, chairs come down.",
+    brief: "Round five: 21’s colours, a realistic restaurant, Tooey as a finished product, nothing crucial over five seconds. Direction: " + "real-time" + '.',
+    headline: "The planning side of your restaurant, done before you unlock the door.",
+    concept: "Architectural-photography 3D: level camera, hard window shadows, sharp focus. Dawn comes up and printed labels land on four food boxes in 2.1 s. Prep: 24 tagliatelle nests land on a tray, then two more set apart. Shifts: the clock runs 3:30 to 7:30 as aprons come off the hooks by the back door. Growth: chairs come down at 9 of 12 tables. Closer than a guess: two trays at close, 16 nests under cling film on the guess, two on Tooey’s.",
+    look: "21’s palette, white tile and steel in daylight. Hanken Grotesk. Three.js.",
+    strengths: ["The calmest and most legible of the 3D sites.", "Aprons on hooks is a fresh, real-world way to show staffing."],
+    weaknesses: ["Clean render: no bounce light, wear or clutter, so it doesn’t read as a photo.", "Labels on the hero boxes are small."],
+    ask: "Daylight or night: which feels more like your customers’ restaurants?",
+    pages: [{ label: 'Home', href: '25-real-time/index.html' }, { label: 'Privacy', href: '25-real-time/privacy.html' }]
   }
 ];

@@ -142,3 +142,26 @@ ultramarine, which matched 04.
 
 - [x] Plans, collision review, five go-aheads
 - [x] Five sites built, reviewed with motion frames, committed, and added to the gallery
+
+## Round five (2026-10-14)
+
+Rex narrowed it down: keep 21's colours; he liked the single animation of
+16, the moving and expanding hero of 18, and the meaningful animation of 12,
+pointed at accuracy against guessing. He asked for realism (a real
+restaurant, or an animation of one), Tooey presented as a finished product,
+no example item left blank, and nothing that needs more than about five
+seconds on one screen. Photo hosts are unreachable from this environment,
+so realism is rendered (Three.js, procedural geometry, canvas textures).
+
+All four plans converged on a 3D restaurant with taped quarts, lamps
+lighting tables, and a guess-vs-Tooey ending with an 86 and a bin. Before
+building, each site was given its own objects: 22 people (blurred) and
+staffing, 23 macro quarts and a single-quart comparison, 24 the side-by-side
+stations, 25 daylight, aprons and sheet trays.
+
+Claims to settle before any of this ships: these pages present shifts and
+growth as working, and say Tooey's counts are closer than a guess (no
+figures). Both need to be true first.
+
+- [x] Plans, collision review, four go-aheads
+- [x] Four sites built, reviewed from rendered stills and frames, committed, and added to the gallery
