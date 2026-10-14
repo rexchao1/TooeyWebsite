@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: follow the order</title>
+<meta name="description" content="Tooey runs the back end of an independent restaurant from its own sales: a prep count for every dish each morning, shifts matched to how busy each night will be. Free during the pilot.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/gloock.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/onest.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function (d) {
+    var r = d.documentElement;
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion');
+    setTimeout(function () { if (!window.__tooey) r.classList.remove('motion'); }, 3000);
+  })(document);
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="./"><img src="logo-porcelain.png" alt="Tooey" width="343" height="148"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main">
+      <a href="#table">How it works</a>
+      <a href="#pilot">Pilot</a>
+      <a class="btn btn-small" href="#talk">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Outside, at the door. Plays on load. -->
+  <section class="room room-door" id="door" data-room aria-labelledby="h-door">
+    <svg class="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="d-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a332d"/><stop offset="1" stop-color="#322c28"/></linearGradient>
+        <radialGradient id="d-win" cx=".5" cy=".42" r=".75"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".78"/><stop offset=".55" stop-color="#b98a58" stop-opacity=".55"/><stop offset="1" stop-color="#4a3a2c" stop-opacity=".9"/></radialGradient>
+        <linearGradient id="d-in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".95"/><stop offset=".7" stop-color="#d7a96f" stop-opacity=".85"/><stop offset="1" stop-color="#8a6544" stop-opacity=".9"/></linearGradient>
+        <linearGradient id="d-spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".55"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient>
+        <linearGradient id="d-fadeg" x1="640" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="d-fade"><rect x="0" y="0" width="1600" height="1000" fill="url(#d-fadeg)"/></mask>
+        <radialGradient id="d-glow"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".7"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g mask="url(#d-fade)"><rect x="560" y="0" width="1080" height="870" fill="url(#d-wall)"/>
+      <rect x="560" y="120" width="1080" height="70" fill="#2a2522"/></g>
+      <!-- upstairs windows, dark -->
+      <rect x="760" y="10" width="140" height="90" fill="#26221f"/><rect x="1110" y="10" width="140" height="90" fill="#2b2622"/><rect x="1400" y="10" width="140" height="90" fill="#26221f"/>
+      <!-- striped awning -->
+      <g class="awning">
+        <path d="M690 230 H1590 L1620 322 H660 Z" fill="#3c4a3e"/>
+        <path d="M750 230 H810 L815 322 H745 Z M870 230 H930 L938 322 H865 Z M990 230 H1050 L1060 322 H985 Z M1110 230 H1170 L1180 322 H1105 Z M1230 230 H1290 L1302 322 H1225 Z M1350 230 H1410 L1424 322 H1345 Z M1470 230 H1530 L1546 322 H1465 Z" fill="#4a5848"/>
+        <path d="M660 322 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 q15 22 30 0 Z" fill="#33403a"/>
+      </g>
+      <!-- left window with diners -->
+      <rect x="720" y="380" width="300" height="380" fill="url(#d-win)"/>
+      <g fill="#2a231e" opacity=".85">
+        <circle cx="790" cy="560" r="24"/><path d="M752 640 q38 -60 76 0 v120 h-76z"/>
+        <circle cx="930" cy="548" r="26"/><path d="M890 632 q40 -64 80 0 v128 h-80z"/>
+        <rect x="740" y="660" width="260" height="16" fill="#3a2c22"/>
+      </g>
+      <circle cx="860" cy="420" r="9" fill="#fff4dc"/>
+      <rect x="866" y="380" width="8" height="380" fill="#2b2420"/><rect x="720" y="568" width="300" height="7" fill="#2b2420"/>
+      <!-- right window -->
+      <rect x="1300" y="380" width="270" height="380" fill="url(#d-win)"/>
+      <g fill="#2a231e" opacity=".85">
+        <circle cx="1380" cy="566" r="24"/><path d="M1342 646 q38 -60 76 0 v114 h-76z"/>
+        <circle cx="1500" cy="574" r="22"/><path d="M1466 650 q34 -54 68 0 v110 h-68z"/>
+        <rect x="1320" y="664" width="230" height="16" fill="#3a2c22"/>
+      </g>
+      <circle cx="1440" cy="420" r="9" fill="#fff4dc"/>
+      <rect x="1430" y="380" width="8" height="380" fill="#2b2420"/>
+      <!-- the doorway: warm room behind, two leaves that open on load -->
+      <rect x="1060" y="350" width="190" height="510" fill="url(#d-in)"/>
+      <g class="d-inside" fill="#5b4330" opacity=".7">
+        <ellipse cx="1155" cy="640" rx="70" ry="14"/><rect x="1150" y="640" width="10" height="120"/>
+        <circle cx="1118" cy="590" r="18" fill="#4a3628"/><circle cx="1196" cy="584" r="18" fill="#4a3628"/>
+      </g>
+      <g class="leaf leaf-l"><rect x="1060" y="350" width="95" height="510" fill="#3a2c22"/><rect x="1076" y="380" width="63" height="250" fill="#f1d2a0" opacity=".32"/><rect x="1140" y="610" width="6" height="40" fill="#8a6a4a"/></g>
+      <g class="leaf leaf-r"><rect x="1155" y="350" width="95" height="510" fill="#35281f"/><rect x="1171" y="380" width="63" height="250" fill="#f1d2a0" opacity=".3"/><rect x="1164" y="610" width="6" height="40" fill="#8a6a4a"/></g>
+      <rect x="1048" y="338" width="214" height="14" fill="#2a2420"/>
+      <!-- sconces -->
+      <circle cx="1030" cy="430" r="90" fill="url(#d-glow)"/><circle cx="1030" cy="430" r="10" fill="#fff4dc"/>
+      <circle cx="1280" cy="430" r="90" fill="url(#d-glow)"/><circle cx="1280" cy="430" r="10" fill="#fff4dc"/>
+      <!-- bay trees in pots -->
+      <g fill="#2f3a30"><circle cx="1012" cy="700" r="44"/><rect x="1009" y="700" width="6" height="110" fill="#3a2c22"/><rect x="988" y="800" width="48" height="60" fill="#3e3934"/></g>
+      <g fill="#2f3a30"><circle cx="1298" cy="700" r="44"/><rect x="1295" y="700" width="6" height="110" fill="#3a2c22"/><rect x="1274" y="800" width="48" height="60" fill="#3e3934"/></g>
+      <!-- pavement and the light that spills out -->
+      <rect x="0" y="860" width="1600" height="140" fill="#282624"/>
+      <rect x="0" y="858" width="1600" height="5" fill="#3b3833"/>
+      <path d="M740 862 H1000 L1060 1000 H660 Z M1300 862 H1570 L1640 1000 H1260 Z" fill="url(#d-spill)" opacity=".35"/>
+      <path class="d-spill" d="M1060 862 H1250 L1360 1000 H960 Z" fill="url(#d-spill)"/>
+    </svg>
+    <div class="wrap room-in">
+      <div class="copy">
+        <h1 id="h-door">Every order tonight makes tomorrow easier.</h1>
+        <p class="lead">Tooey runs your restaurant's back end from its own sales: more money, less time managing.</p>
+        <p class="cta"><a class="btn" href="#talk">Talk to us</a></p>
+      </div>
+      <div class="spot" aria-hidden="true">
+        <div class="still">
+          <div class="obj check blank">
+            <div class="check-head"><span class="check-box"><span class="hand hand-t">6</span></span></div>
+            <p class="hand hand-order"><span>2</span> short rib</p>
+            <span class="hand-tick"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The dining room. The check is written on arrival. -->
+  <section class="room room-table flip-side" id="table" data-room aria-labelledby="h-table">
+    <svg class="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="t-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f2d2a"/><stop offset="1" stop-color="#3b3631"/></linearGradient>
+        <radialGradient id="t-glow"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".75"/><stop offset=".45" stop-color="#f1d2a0" stop-opacity=".22"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></radialGradient>
+        <linearGradient id="t-booth" x1="820" y1="0" x2="960" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#323a32" stop-opacity="0"/><stop offset="1" stop-color="#323a32"/></linearGradient>
+        <linearGradient id="t-oak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5e43"/><stop offset="1" stop-color="#4a382a"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1600" height="660" fill="url(#t-wall)"/>
+      <rect x="0" y="560" width="1600" height="100" fill="#43362b"/>
+      <rect x="0" y="556" width="1600" height="6" fill="#5e4a38"/>
+      <rect x="0" y="660" width="1600" height="340" fill="#2a2825"/>
+      <!-- pictures on the wall -->
+      <rect x="230" y="210" width="150" height="190" fill="#3f3a34"/><rect x="246" y="226" width="118" height="158" fill="#4b4a3d"/>
+      <rect x="1220" y="190" width="220" height="150" fill="#3f3a34"/><rect x="1236" y="206" width="188" height="118" fill="#4f4538"/>
+      <!-- booth along the right wall -->
+      <path d="M760 470 q0 -20 20 -20 H1600 V700 H760 Z" fill="url(#t-booth)"/>
+      <path d="M900 600 H1600 V700 H900 Z" fill="#2b312b" opacity=".8"/>
+      <!-- pendant lamps and their pools -->
+      <g class="lamps">
+        <g class="lamp" style="--k:0"><rect x="436" y="0" width="3" height="190" fill="#4a443d"/><circle class="glow" cx="438" cy="250" r="300" fill="url(#t-glow)"/><path d="M398 236 q40 -60 80 0 z" fill="#2a2522"/><ellipse cx="438" cy="236" rx="40" ry="6" fill="#fff1d4"/></g>
+        <g class="lamp" style="--k:1"><rect x="1000" y="0" width="3" height="170" fill="#4a443d"/><circle class="glow" cx="1002" cy="230" r="230" fill="url(#t-glow)"/><path d="M970 216 q32 -48 64 0 z" fill="#2a2522"/><ellipse cx="1002" cy="216" rx="32" ry="5" fill="#fff1d4"/></g>
+        <g class="lamp" style="--k:2"><rect x="1330" y="0" width="3" height="170" fill="#4a443d"/><circle class="glow" cx="1332" cy="230" r="230" fill="url(#t-glow)"/><path d="M1300 216 q32 -48 64 0 z" fill="#2a2522"/><ellipse cx="1332" cy="216" rx="32" ry="5" fill="#fff1d4"/></g>
+        <g class="lamp" style="--k:3"><rect x="120" y="0" width="3" height="150" fill="#4a443d"/><circle class="glow" cx="122" cy="210" r="200" fill="url(#t-glow)"/><path d="M94 196 q28 -42 56 0 z" fill="#2a2522"/><ellipse cx="122" cy="196" rx="28" ry="5" fill="#fff1d4"/></g>
+      </g>
+      <!-- tables in the room, with guests as soft shapes -->
+      <g fill="#231f1c" opacity=".9">
+        <circle cx="940" cy="470" r="26"/><path d="M900 556 q40 -66 80 0 v60 h-80z"/>
+        <circle cx="1070" cy="478" r="24"/><path d="M1034 560 q36 -60 72 0 v56 h-72z"/>
+        <circle cx="1290" cy="480" r="24"/><path d="M1254 560 q36 -60 72 0 v56 h-72z"/>
+        <circle cx="1420" cy="472" r="26"/><path d="M1380 556 q40 -66 80 0 v60 h-80z"/>
+      </g>
+      <ellipse cx="1004" cy="606" rx="130" ry="20" fill="#5a4634"/>
+      <ellipse cx="1356" cy="606" rx="130" ry="20" fill="#5a4634"/>
+      <!-- table six, in front -->
+      <g fill="#24201d">
+        <circle cx="300" cy="560" r="36"/><path d="M244 690 q56 -92 112 0z"/>
+        <circle cx="610" cy="548" r="38"/><path d="M552 690 q58 -96 116 0z"/>
+      </g>
+      <ellipse cx="450" cy="760" rx="330" ry="66" fill="#1d1b19" opacity=".7"/>
+      <ellipse cx="450" cy="716" rx="320" ry="62" fill="url(#t-oak)"/>
+      <ellipse cx="450" cy="704" rx="300" ry="50" fill="#f1d2a0" opacity=".14"/>
+      <rect x="210" y="740" width="22" height="260" fill="#2b231d"/><rect x="668" y="740" width="22" height="260" fill="#2b231d"/>
+      <!-- glasses and a candle on table six -->
+      <g class="glints"><path d="M226 640 h22 l-4 50 h-14z" fill="#d8d2c4" opacity=".35"/><rect class="glint" x="232" y="646" width="4" height="34" fill="#fffaf0"/>
+        <path d="M680 636 h22 l-4 54 h-14z" fill="#d8d2c4" opacity=".35"/><rect class="glint" x="686" y="642" width="4" height="36" fill="#fffaf0" style="--k:1"/></g>
+      <rect x="616" y="676" width="14" height="30" fill="#e9e1cf"/>
+      <circle class="flame" cx="623" cy="666" r="70" fill="url(#t-glow)"/><ellipse cx="623" cy="668" rx="4" ry="8" fill="#fff6e0"/>
+    </svg>
+    <div class="wrap room-in">
+      <div class="copy">
+        <h2 id="h-table">Table six orders short rib.</h2>
+        <p>Night after night, sales like this tell Tooey what guests will order.</p>
+      </div>
+      <div class="spot" aria-hidden="true">
+        <div class="still">
+          <div class="obj check">
+            <div class="check-head"><span class="check-box"><span class="hand hand-t">6</span></span></div>
+            <p class="hand hand-order"><span>2</span> short rib</p>
+            <span class="hand-tick"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Behind the bar, at the POS. The check turns over into a printed ticket. -->
+  <section class="room room-pos" id="pos" data-room aria-labelledby="h-pos">
+    <svg class="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="p-strip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".5"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient>
+        <radialGradient id="p-screen"><stop offset="0" stop-color="#dfe4e2" stop-opacity=".55"/><stop offset="1" stop-color="#dfe4e2" stop-opacity="0"/></radialGradient>
+        <linearGradient id="p-fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a4634" stop-opacity="0"/><stop offset=".4" stop-color="#5a4634"/></linearGradient>
+        <linearGradient id="p-mg" x1="0" y1="0" x2="1" y2="0"><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/></linearGradient><mask id="p-m"><rect x="0" y="0" width="1600" height="1000" fill="url(#p-mg)"/></mask>
+        <linearGradient id="p-oak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a6a4a"/><stop offset=".15" stop-color="#5e4835"/><stop offset="1" stop-color="#3c2f25"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1600" height="1000" fill="#2c2a27"/>
+      <!-- back bar: two shelves of bottles, lit from beneath -->
+      <g class="shelf">
+        <rect x="0" y="300" width="1600" height="10" fill="url(#p-fade)"/>
+        <rect x="0" y="310" width="1600" height="90" fill="url(#p-strip)" opacity=".7" mask="url(#p-m)"/>
+        <g opacity=".95">
+          <rect x="600" y="160" width="40" height="140" rx="10" fill="#3e4a3f"/><rect x="660" y="190" width="36" height="110" rx="10" fill="#6a4e2e"/><rect x="716" y="150" width="40" height="150" rx="10" fill="#4a4744"/><rect x="776" y="176" width="38" height="124" rx="10" fill="#5c4a2c"/><rect x="836" y="160" width="40" height="140" rx="10" fill="#3e4a3f"/>
+          <rect x="1180" y="168" width="40" height="132" rx="10" fill="#6a4e2e"/><rect x="1240" y="150" width="40" height="150" rx="10" fill="#3e4a3f"/><rect x="1300" y="184" width="36" height="116" rx="10" fill="#4a4744"/><rect x="1356" y="160" width="40" height="140" rx="10" fill="#5c4a2c"/><rect x="1416" y="174" width="38" height="126" rx="10" fill="#3e4a3f"/><rect x="1476" y="150" width="40" height="150" rx="10" fill="#6a4e2e"/>
+        </g>
+        <g class="b-glint" fill="#fff4dc" opacity=".55">
+          <rect x="608" y="180" width="5" height="100"/><rect x="667" y="206" width="4" height="80"/><rect x="724" y="170" width="5" height="110"/><rect x="783" y="194" width="4" height="90"/><rect x="844" y="180" width="5" height="100"/>
+          <rect x="1188" y="186" width="5" height="96"/><rect x="1248" y="170" width="5" height="110"/><rect x="1307" y="202" width="4" height="82"/><rect x="1364" y="180" width="5" height="100"/><rect x="1424" y="192" width="4" height="90"/><rect x="1484" y="170" width="5" height="110"/>
+        </g>
+        <rect x="0" y="520" width="1600" height="10" fill="url(#p-fade)" opacity=".8"/>
+        <g opacity=".8"><rect x="640" y="430" width="70" height="90" rx="6" fill="#3a3632"/><rect x="740" y="446" width="70" height="74" rx="6" fill="#3a3632"/><rect x="1380" y="436" width="80" height="84" rx="6" fill="#3a3632"/><rect x="1480" y="446" width="70" height="74" rx="6" fill="#3a3632"/></g>
+      </g>
+      <!-- the POS: a generic touchscreen on a stand, and a small printer -->
+      <g class="pos">
+        <circle cx="1420" cy="560" r="260" fill="url(#p-screen)"/>
+        <path d="M1400 690 h50 l-10 -70 h-30z" fill="#1e1e1e"/>
+        <g transform="rotate(-6 1420 560)">
+          <rect x="1290" y="470" width="260" height="170" rx="12" fill="#1c1d1e"/>
+          <rect x="1302" y="482" width="236" height="146" rx="4" fill="#5f6664"/>
+          <g class="tiles" fill="#dfe4e2">
+            <rect x="1312" y="494" width="50" height="30" style="--k:0"/><rect x="1370" y="494" width="50" height="30" style="--k:1"/><rect x="1428" y="494" width="50" height="30" style="--k:2"/>
+            <rect x="1312" y="532" width="50" height="30" style="--k:3"/><rect x="1370" y="532" width="50" height="30" style="--k:4"/><rect x="1428" y="532" width="50" height="30" style="--k:5"/>
+            <rect x="1312" y="570" width="50" height="30" style="--k:6"/><rect x="1370" y="570" width="50" height="30" style="--k:7"/><rect x="1428" y="570" width="50" height="30" style="--k:8"/>
+            <rect x="1486" y="494" width="42" height="106" style="--k:9"/>
+          </g>
+        </g>
+        <rect x="1080" y="640" width="130" height="56" rx="8" fill="#232323"/>
+        <rect x="1094" y="640" width="102" height="6" fill="#111"/>
+        <circle class="led" cx="1194" cy="672" r="5" fill="#a9c1a6"/>
+      </g>
+      <!-- the bar top -->
+      <rect x="0" y="690" width="1600" height="70" fill="url(#p-oak)"/>
+      <rect x="0" y="688" width="1600" height="3" fill="#b48f68" opacity=".7"/>
+      <rect x="0" y="760" width="1600" height="240" fill="#221f1d"/>
+      <g fill="#d8d2c4" opacity=".25"><path d="M140 600 h40 l-6 90 h-28z"/><path d="M230 620 h34 l-5 70 h-24z"/></g>
+    </svg>
+    <div class="wrap room-in">
+      <div class="copy">
+        <h2 id="h-pos">Your POS already wrote it down.</h2>
+        <p>We set up a nightly download from it. Most systems work.</p>
+      </div>
+      <div class="spot" aria-hidden="true">
+        <div class="still">
+          <div class="obj ticket">
+            <p class="tk-head" aria-hidden="true"></p>
+            <p class="tk-line"><span>2</span> Short rib</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overnight. The ticket folds into a point of light and joins the day's sales. -->
+  <section class="room room-night flip-side" id="night" data-room aria-labelledby="h-night">
+    <svg class="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="n-moon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8d9aa3" stop-opacity=".5"/><stop offset="1" stop-color="#5d6a74" stop-opacity=".2"/></linearGradient>
+        <linearGradient id="n-patch" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8d9aa3" stop-opacity=".22"/><stop offset="1" stop-color="#8d9aa3" stop-opacity="0"/></linearGradient>
+        <radialGradient id="n-dot"><stop offset="0" stop-color="#fff3da"/><stop offset=".5" stop-color="#f1d2a0" stop-opacity=".9"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect x="0" y="0" width="1600" height="1000" fill="#262422"/>
+      <rect x="0" y="660" width="1600" height="340" fill="#211f1d"/>
+      <!-- tall window, cool light, a patch on the floor -->
+      <rect x="1180" y="90" width="300" height="470" fill="url(#n-moon)"/>
+      <rect x="1326" y="90" width="8" height="470" fill="#262422"/><rect x="1180" y="320" width="300" height="8" fill="#262422"/>
+      <path d="M1180 700 H1480 L1260 990 H880 Z" fill="url(#n-patch)"/>
+      <!-- chairs up on the tables -->
+      <g fill="#1c1a18"><rect x="140" y="600" width="260" height="14" rx="4"/><rect x="170" y="614" width="10" height="220"/><rect x="360" y="614" width="10" height="220"/><rect x="160" y="588" width="80" height="12" rx="2"/><path d="M166 588 l-6 -104 M234 588 l6 -104" stroke="#1c1a18" stroke-width="9"/><rect x="230" y="588" width="10" height="70"/><rect x="300" y="588" width="80" height="12" rx="2"/><path d="M306 588 l-6 -104 M374 588 l6 -104" stroke="#1c1a18" stroke-width="9"/><rect x="370" y="588" width="10" height="70"/><rect x="620" y="610" width="240" height="14" rx="4"/><rect x="650" y="624" width="10" height="210"/><rect x="820" y="624" width="10" height="210"/><rect x="640" y="598" width="80" height="12" rx="2"/><path d="M646 598 l-6 -104 M714 598 l6 -104" stroke="#1c1a18" stroke-width="9"/><rect x="710" y="598" width="10" height="70"/><rect x="760" y="598" width="80" height="12" rx="2"/><path d="M766 598 l-6 -104 M834 598 l6 -104" stroke="#1c1a18" stroke-width="9"/><rect x="830" y="598" width="10" height="70"/><rect x="1000" y="620" width="240" height="14" rx="4"/><rect x="1030" y="634" width="10" height="200"/><rect x="1200" y="634" width="10" height="200"/><rect x="1020" y="608" width="80" height="12" rx="2"/><path d="M1026 608 l-6 -104 M1094 608 l6 -104" stroke="#1c1a18" stroke-width="9"/><rect x="1090" y="608" width="10" height="70"/><rect x="1140" y="608" width="80" height="12" rx="2"/><path d="M1146 608 l-6 -104 M1214 608 l6 -104" stroke="#1c1a18" stroke-width="9"/><rect x="1210" y="608" width="10" height="70"/></g>
+      <g stroke="#8d9aa3" stroke-opacity=".22" stroke-width="3" fill="none"><path d="M1026 608 l-6 -104 M1166 608 l-6 -104"/></g>
+      <!-- the day's sales, gathering into the shape of a week -->
+      <g class="dots" fill="url(#n-dot)" transform="translate(-90 -40)"><circle class="dot" cx="372" cy="800" r="7" style="--dx:-89px;--dy:-166px;--d:0.43s"/><circle class="dot" cx="372" cy="778" r="7" style="--dx:-371px;--dy:-246px;--d:0.9s"/><circle class="dot" cx="372" cy="756" r="7" style="--dx:-324px;--dy:54px;--d:0.64s"/><circle class="dot" cx="424" cy="800" r="7" style="--dx:99px;--dy:-101px;--d:0.04s"/><circle class="dot" cx="424" cy="778" r="7" style="--dx:24px;--dy:108px;--d:0.08s"/><circle class="dot" cx="424" cy="756" r="7" style="--dx:-328px;--dy:114px;--d:0.07s"/><circle class="dot" cx="424" cy="734" r="7" style="--dx:159px;--dy:-194px;--d:1.04s"/><circle class="dot" cx="476" cy="800" r="7" style="--dx:225px;--dy:-257px;--d:0.63s"/><circle class="dot" cx="476" cy="778" r="7" style="--dx:-14px;--dy:-270px;--d:1.07s"/><circle class="dot" cx="476" cy="756" r="7" style="--dx:-373px;--dy:-184px;--d:0.32s"/><circle class="dot" cx="476" cy="734" r="7" style="--dx:-273px;--dy:-200px;--d:0.63s"/><circle class="dot" cx="528" cy="800" r="7" style="--dx:153px;--dy:-135px;--d:0.11s"/><circle class="dot" cx="528" cy="778" r="7" style="--dx:164px;--dy:-128px;--d:0.41s"/><circle class="dot" cx="528" cy="756" r="7" style="--dx:140px;--dy:-256px;--d:0.62s"/><circle class="dot" cx="528" cy="734" r="7" style="--dx:213px;--dy:-110px;--d:0.55s"/><circle class="dot" cx="528" cy="712" r="7" style="--dx:124px;--dy:117px;--d:0.85s"/><circle class="dot" cx="528" cy="690" r="7" style="--dx:56px;--dy:144px;--d:0.4s"/><circle class="dot" cx="580" cy="800" r="7" style="--dx:-166px;--dy:-136px;--d:0.77s"/><circle class="dot" cx="580" cy="778" r="7" style="--dx:-171px;--dy:-237px;--d:0.63s"/><circle class="dot" cx="580" cy="756" r="7" style="--dx:117px;--dy:186px;--d:0.96s"/><circle class="dot" cx="580" cy="734" r="7" style="--dx:326px;--dy:139px;--d:0.32s"/><circle class="dot" cx="580" cy="712" r="7" style="--dx:-346px;--dy:-200px;--d:0.56s"/><circle class="dot" cx="580" cy="690" r="7" style="--dx:-252px;--dy:30px;--d:0.17s"/><circle class="dot" cx="580" cy="668" r="7" style="--dx:80px;--dy:111px;--d:0.04s"/><circle class="dot" cx="580" cy="646" r="7" style="--dx:264px;--dy:-241px;--d:0.84s"/><circle class="dot" cx="580" cy="624" r="7" style="--dx:166px;--dy:1px;--d:0.37s"/><circle class="dot" cx="632" cy="800" r="7" style="--dx:-62px;--dy:188px;--d:0.64s"/><circle class="dot" cx="632" cy="778" r="7" style="--dx:47px;--dy:-250px;--d:0.92s"/><circle class="dot" cx="632" cy="756" r="7" style="--dx:-144px;--dy:165px;--d:0.77s"/><circle class="dot" cx="632" cy="734" r="7" style="--dx:-354px;--dy:-258px;--d:0.8s"/><circle class="dot" cx="632" cy="712" r="7" style="--dx:-103px;--dy:136px;--d:0.31s"/><circle class="dot" cx="632" cy="690" r="7" style="--dx:-25px;--dy:35px;--d:0.02s"/><circle class="dot" cx="632" cy="668" r="7" style="--dx:52px;--dy:43px;--d:0.18s"/><circle class="dot" cx="632" cy="646" r="7" style="--dx:-301px;--dy:185px;--d:0.06s"/><circle class="dot" cx="632" cy="624" r="7" style="--dx:366px;--dy:-26px;--d:0.14s"/><circle class="dot" cx="632" cy="602" r="7" style="--dx:-167px;--dy:87px;--d:0.43s"/><circle class="dot" cx="684" cy="800" r="7" style="--dx:88px;--dy:-238px;--d:0.18s"/><circle class="dot" cx="684" cy="778" r="7" style="--dx:-9px;--dy:-36px;--d:0.97s"/><circle class="dot" cx="684" cy="756" r="7" style="--dx:418px;--dy:120px;--d:0.95s"/><circle class="dot" cx="684" cy="734" r="7" style="--dx:-135px;--dy:105px;--d:1.09s"/><circle class="dot" cx="684" cy="712" r="7" style="--dx:279px;--dy:69px;--d:1.05s"/><circle class="dot" cx="684" cy="690" r="7" style="--dx:-266px;--dy:-236px;--d:0.19s"/></g>
+    </svg>
+    <div class="wrap room-in">
+      <div class="copy">
+        <h2 id="h-night">Overnight, Tooey works it out.</h2>
+        <p>It reads each dish's sales by day of week, time of year and holidays.</p>
+      </div>
+      <div class="spot" aria-hidden="true">
+        <div class="still">
+          <div class="obj spark"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The kitchen, next morning. The light becomes a line on the prep sheet. -->
+  <section class="room room-kitchen" id="kitchen" data-room aria-labelledby="h-kitchen">
+    <svg class="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <pattern id="k-tile" width="60" height="30" patternUnits="userSpaceOnUse"><rect width="60" height="30" fill="#3a3834"/><path d="M0 29.5 H60 M59.5 0 V30" stroke="#2c2a27" stroke-width="2"/></pattern>
+        <linearGradient id="k-win" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6ecd8" stop-opacity=".85"/><stop offset="1" stop-color="#f1d2a0" stop-opacity=".55"/></linearGradient>
+        <linearGradient id="k-beam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".35"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient>
+        <linearGradient id="k-steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a7aaab"/><stop offset=".25" stop-color="#6f7273"/><stop offset="1" stop-color="#4a4c4d"/></linearGradient>
+        <linearGradient id="k-hood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4f5253"/><stop offset=".5" stop-color="#6c6f70"/><stop offset="1" stop-color="#4a4c4d"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1600" height="720" fill="url(#k-tile)" opacity=".85"/>
+      <rect x="0" y="0" width="1600" height="720" fill="#2f2d2a" opacity=".45"/>
+      <!-- hood and hanging pans on the left -->
+      <path d="M80 0 H760 L700 150 H140 Z" fill="url(#k-hood)"/>
+      <rect x="140" y="150" width="560" height="8" fill="#8a8d8e"/>
+      <g fill="#3d3e3f" stroke="#7d8082" stroke-width="3">
+        <circle cx="210" cy="330" r="58"/><circle cx="340" cy="350" r="46"/><circle cx="460" cy="336" r="54"/>
+      </g>
+      <g stroke="#3d3e3f" stroke-width="10"><path d="M210 272 v-70 M340 304 v-100 M460 282 v-80"/></g>
+      <rect x="150" y="196" width="400" height="6" fill="#6c6f70"/>
+      <!-- window, morning light raking down across the counter -->
+      <rect x="1240" y="60" width="300" height="320" fill="url(#k-win)"/>
+      <rect x="1386" y="60" width="8" height="320" fill="#3a3834"/><rect x="1240" y="214" width="300" height="8" fill="#3a3834"/>
+      <g class="beams"><path d="M1240 120 L1540 380 L1200 1000 L520 1000 Z" fill="url(#k-beam)"/><path d="M1240 240 L1390 380 L900 1000 L700 1000 Z" fill="url(#k-beam)" opacity=".7"/></g>
+      <!-- the steel counter and what is on it -->
+      <rect x="0" y="720" width="1600" height="280" fill="#3c3e3f"/>
+      <rect x="0" y="700" width="1600" height="30" fill="url(#k-steel)"/>
+      <rect class="edge" x="0" y="700" width="1600" height="3" fill="#e9ecec" opacity=".55"/>
+      <g opacity=".9">
+        <rect x="120" y="610" width="200" height="92" rx="6" fill="#59472f"/><rect x="120" y="610" width="200" height="8" fill="#7c6346"/>
+        <rect x="380" y="590" width="90" height="112" rx="10" fill="#d9d6cc" opacity=".35"/><rect x="480" y="610" width="90" height="92" rx="10" fill="#d9d6cc" opacity=".3"/>
+        <ellipse cx="700" cy="690" rx="90" ry="14" fill="#cfcbc0" opacity=".5"/><ellipse cx="700" cy="676" rx="80" ry="12" fill="#cfcbc0" opacity=".45"/><ellipse cx="700" cy="662" rx="70" ry="10" fill="#cfcbc0" opacity=".4"/>
+        <rect x="1380" y="560" width="160" height="142" rx="8" fill="#7d8082"/><rect x="1380" y="560" width="160" height="10" fill="#b5b8b9"/>
+      </g>
+      <rect class="k-glint" x="0" y="699" width="200" height="5" fill="#fff" opacity="0"/>
+    </svg>
+    <div class="wrap room-in">
+      <div class="copy">
+        <h2 id="h-kitchen">By morning, it's on the prep sheet.</h2>
+        <p>Each dish gets a count a little over what should sell: closer than a guess.</p>
+      </div>
+      <div class="spot" aria-hidden="true">
+        <div class="still">
+          <div class="obj sheet">
+            <p class="sh-head"><span class="sh-title">Tuesday prep</span><span class="sh-ex">Example</span></p>
+            <ul class="sh-rows">
+              <li class="row-main" style="--k:0"><span>Short rib</span><b>26</b><span class="pencil guess">guess 40</span></li>
+              <li style="--k:1"><span>Roast chicken</span><b>22</b></li>
+              <li style="--k:2"><span>Mushroom risotto</span><b>31</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service, that night. The sheet goes up on the rail; the crew and the room fill. -->
+  <section class="room room-service flip-side" id="service" data-room aria-labelledby="h-service">
+    <svg class="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="s-glow"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".7"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></radialGradient>
+        <linearGradient id="s-heat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".5"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient>
+        <linearGradient id="s-steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b5b8b9"/><stop offset=".3" stop-color="#6f7273"/><stop offset="1" stop-color="#3c3e3f"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1600" height="1000" fill="#2a2826"/>
+      <g transform="translate(0 -120)">
+      <!-- through the pass: the dining room on a Tuesday -->
+      <rect x="0" y="300" width="1600" height="270" fill="#35302b"/>
+      <g class="room-lamps">
+        <circle class="rl" cx="780" cy="400" r="110" fill="url(#s-glow)" style="--k:0"/><circle class="rl" cx="980" cy="390" r="110" fill="url(#s-glow)" style="--k:1"/>
+        <circle class="rl" cx="1180" cy="404" r="110" fill="url(#s-glow)" style="--k:2"/><circle class="rl" cx="1380" cy="394" r="110" fill="url(#s-glow)" style="--k:3"/>
+        <circle class="rl" cx="1560" cy="402" r="110" fill="url(#s-glow)" style="--k:4"/>
+      </g>
+      <g class="guests" fill="#221e1b">
+        <g class="g early" style="--k:0"><circle cx="740" cy="470" r="18"/><path d="M712 540 q28 -48 56 0z"/></g>
+        <g class="g" style="--k:1"><circle cx="830" cy="476" r="17"/><path d="M804 540 q26 -44 52 0z"/></g>
+        <g class="g" style="--k:2"><circle cx="950" cy="466" r="18"/><path d="M922 540 q28 -48 56 0z"/></g>
+        <g class="g" style="--k:3"><circle cx="1030" cy="474" r="17"/><path d="M1004 540 q26 -44 52 0z"/></g>
+        <g class="g early" style="--k:4"><circle cx="1160" cy="470" r="18"/><path d="M1132 540 q28 -48 56 0z"/></g>
+        <g class="g" style="--k:5"><circle cx="1240" cy="476" r="17"/><path d="M1214 540 q26 -44 52 0z"/></g>
+        <g class="g" style="--k:6"><circle cx="1360" cy="468" r="18"/><path d="M1332 540 q28 -48 56 0z"/></g>
+        <g class="g early" style="--k:7"><circle cx="1450" cy="474" r="17"/><path d="M1424 540 q26 -44 52 0z"/></g>
+        <g class="g" style="--k:8"><circle cx="1550" cy="470" r="18"/><path d="M1522 540 q28 -48 56 0z"/></g>
+      </g>
+      <!-- the ticket rail and heat lamps above the pass -->
+      <rect x="0" y="0" width="1600" height="300" fill="#2c2a27"/>
+      <rect x="120" y="226" width="840" height="14" rx="4" fill="url(#s-steel)"/>
+      <rect x="120" y="226" width="840" height="2" fill="#e9ecec" opacity=".6"/>
+      <g class="heat"><rect x="560" y="250" width="1040" height="18" fill="#4a4c4d"/><rect x="560" y="268" width="1040" height="160" fill="url(#s-heat)"/></g>
+      <!-- the pass shelf, two short ribs going out -->
+      <rect x="0" y="570" width="1600" height="26" fill="url(#s-steel)"/>
+      <g class="plates">
+        <ellipse cx="900" cy="566" rx="80" ry="16" fill="#e9e6dc"/><ellipse cx="900" cy="562" rx="42" ry="8" fill="#5a3426"/><ellipse cx="884" cy="558" rx="10" ry="3" fill="#fff" opacity=".7"/>
+        <ellipse cx="1090" cy="566" rx="80" ry="16" fill="#e9e6dc"/><ellipse cx="1090" cy="562" rx="42" ry="8" fill="#5a3426"/><ellipse cx="1074" cy="558" rx="10" ry="3" fill="#fff" opacity=".7"/>
+      </g>
+      <rect x="0" y="596" width="1600" height="524" fill="#252321"/>
+      </g>
+      <!-- the crew, arriving at their stations -->
+      <g class="crew" fill="#1b1917" opacity=".8">
+        <g class="c" style="--k:0"><circle cx="220" cy="770" r="34"/><path d="M110 1000 q6 -160 110 -176 q104 16 110 176z"/></g>
+        <g class="c" style="--k:1"><circle cx="560" cy="756" r="35"/><path d="M446 1000 q6 -170 114 -186 q108 16 114 186z"/></g>
+        <g class="c" style="--k:2"><circle cx="1500" cy="780" r="33"/><path d="M1394 1000 q6 -152 106 -168 q100 16 106 168z"/></g>
+      </g>
+    </svg>
+    <div class="wrap room-in">
+      <div class="copy">
+        <h2 id="h-service">The right crew on the right night.</h2>
+        <p>Shifts match how busy each night will be. Slow nights fill, and regulars return.</p>
+      </div>
+      <div class="spot" aria-hidden="true">
+        <div class="still">
+          <div class="obj sheet done">
+            <span class="clip"></span>
+            <p class="sh-head"><span class="sh-title">Tuesday prep</span><span class="sh-ex">Example</span></p>
+            <ul class="sh-rows">
+              <li class="row-main" style="--k:0"><span>Short rib</span><b>26</b><span class="pencil guess">guess 40</span><span class="pencil sold">sold 24</span></li>
+              <li style="--k:1"><span>Roast chicken</span><b>22</b></li>
+              <li style="--k:2"><span>Mushroom risotto</span><b>31</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec pilot" id="pilot" aria-labelledby="h-pilot">
+    <div class="wrap pilot-in">
+      <h2 id="h-pilot">Free during the pilot.</h2>
+      <ul class="terms">
+        <li>Tooey needs about five weeks of past sales.</li>
+        <li>Setup takes about a week.</li>
+        <li>Check the counts against what sold, then decide.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec talk" id="talk" aria-labelledby="h-talk">
+    <svg class="scene door-end" viewBox="0 0 800 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="e-in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".9"/><stop offset="1" stop-color="#a77a4c" stop-opacity=".85"/></linearGradient>
+        <linearGradient id="e-spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".45"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient>
+        <radialGradient id="e-glow"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".6"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect x="150" y="220" width="500" height="400" fill="#352f2a"/>
+      <rect x="330" y="330" width="140" height="290" fill="url(#e-in)"/>
+      <rect x="330" y="330" width="16" height="290" fill="#3a2c22"/><rect x="454" y="330" width="16" height="290" fill="#35281f"/>
+      <rect x="320" y="318" width="160" height="12" fill="#2a2420"/>
+      <circle cx="300" cy="390" r="70" fill="url(#e-glow)"/><circle cx="300" cy="390" r="7" fill="#fff4dc"/>
+      <circle cx="500" cy="390" r="70" fill="url(#e-glow)"/><circle cx="500" cy="390" r="7" fill="#fff4dc"/>
+      <rect x="0" y="620" width="800" height="80" fill="#282624"/>
+      <path d="M330 622 H470 L560 700 H240 Z" fill="url(#e-spill)"/>
+    </svg>
+    <div class="wrap talk-in">
+      <div class="talk-copy">
+        <h2 id="h-talk">Talk to us</h2>
+        <p>Tooey LLC is a small team of university students. Write here or to <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
+      </div>
+      <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New Tooey inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="hp" aria-hidden="true"><label for="f-honey">Leave this empty</label><input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field field-wide"><label for="f-pos">Your POS <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text"></div>
+        <div class="field field-wide"><label for="f-msg">Message <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+        <div class="form-end">
+          <button class="btn" type="submit">Send message</button>
+          <p class="status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>Tooey LLC</p>
+    <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+    <p><a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
