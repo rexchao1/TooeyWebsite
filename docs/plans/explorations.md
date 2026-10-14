@@ -141,4 +141,4 @@ and moved to orange; 21 dropped teal for stone, smoke glass and lamplight;
 ultramarine, which matched 04.
 
 - [x] Plans, collision review, five go-aheads
-- [ ] Five sites built, reviewed, committed, and added to the gallery
+- [x] Five sites built, reviewed with motion frames, committed, and added to the gallery

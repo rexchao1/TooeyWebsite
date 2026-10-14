@@ -29,4 +29,4 @@ into `dist/`, which is what Vercel publishes.
 | `logo.png` | The Tooey wordmark. |
 | `fonts/` | Self-hosted Literata (headings), Source Serif 4 (text), Schibsted Grotesk (labels and buttons), and Reenie Beanie (the hero's pencil note). |
 | `src/` | An unused one-page Svelte draft. Editing it does not change the live site. |
-| `explorations/` | Ten redesign explorations and a gallery to compare them (http://localhost:5173/explorations/). Not deployed; see `docs/plans/explorations.md`. |
+| `explorations/` | Twenty redesign explorations in three rounds and a gallery to compare them (http://localhost:5173/explorations/). Not deployed; see `docs/plans/explorations.md`. |

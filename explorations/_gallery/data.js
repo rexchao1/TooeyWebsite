@@ -199,5 +199,70 @@ window.EXPLORATIONS = [
     weaknesses: ['The run is 7–8 seconds; scroll early and you miss part of it.', 'Labels clip briefly at the frame edge during camera moves.'],
     ask: 'Too playful for the owner you want, or exactly the tone?',
     pages: [{ label: 'Home', href: '16-chain-reaction/index.html' }, { label: 'Privacy', href: '16-chain-reaction/privacy.html' }]
+  },
+  {
+    id: '17-plainspoken', num: '17', name: "Plainspoken", round: 4,
+    href: '17-plainspoken/', notes: '17-plainspoken/NOTES.md', words: 196, motion: "Plays in view",
+    line: "Last night’s sales slide across and become this morning’s prep counts, set as big type.",
+    brief: "Round four: a direct site about Tooey, creative motion inside it. Tone: plainspoken and product-first.",
+    headline: "Tooey does the planning behind your restaurant.",
+    concept: "Every figure is type that moves; no charts. In the hero, Monday’s sales rows slide into “Prep for Tuesday”, growing to display size while the numbers roll like an odometer; Prep counts up in teal and the lamb special rolls to a dash. Shifts: every hour starts at “4” and rolls to its own head count. Growth: the week’s day names take on weight, and Tuesday fills in.",
+    look: "White, true black, one teal for live. Atkinson Hyperlegible Next. GSAP.",
+    strengths: ["The clearest site in the gallery: an owner gets it in five seconds.", "The type-as-figure idea is original and consistent from top to bottom."],
+    weaknesses: ["On phones the hero rows overlap for half a second in flight.", "Could read as too plain next to the louder sites."],
+    ask: "Is “clear” enough of a personality, or does it need one bolder moment?",
+    pages: [{ label: 'Home', href: '17-plainspoken/index.html' }, { label: 'Privacy', href: '17-plainspoken/privacy.html' }]
+  },
+  {
+    id: '18-hospitable', num: '18', name: "Hospitable", round: 4,
+    href: '18-hospitable/', notes: '18-hospitable/NOTES.md', words: 198, motion: "Plays in view",
+    line: "Tickets drop on the spike, the sun comes up, and deli quarts fill to their counts.",
+    brief: "Round four: a direct site about Tooey, creative motion inside it. Tone: warm and hospitable.",
+    headline: "Tooey minds the back end, so you can look after the people.",
+    concept: "Hand-inked drawings with a faint line boil. In the hero, yesterday’s tickets drop onto a spike, the moon sets, and each masking-tape label is written in marker as its quart fills and sloshes; the special gets a dash and stays empty. What’s being built (shifts, a quiet Tuesday filling) is drawn on order-pad sheets taped to the wall, inked but not coloured in.",
+    look: "Kraft, espresso, china-marker red-orange. Besley and Shantell Sans. GSAP.",
+    strengths: ["The warmest voice of the round; the headline is about people, not software.", "Coloured-in vs pinned-up is a gentle, legible honesty device."],
+    weaknesses: ["The tan spoon in the logo nearly disappears on kraft.", "Handwritten labels are small on a 320 phone."],
+    ask: "Does the hand-drawn warmth feel trustworthy, or too casual for software?",
+    pages: [{ label: 'Home', href: '18-hospitable/index.html' }, { label: 'Privacy', href: '18-hospitable/privacy.html' }]
+  },
+  {
+    id: '19-precise', num: '19', name: "Precise", round: 4,
+    href: '19-precise/', notes: '19-precise/NOTES.md', words: 199, motion: "Plays in view",
+    line: "One night’s sales line splits into three routes: prep, shifts, growth.",
+    brief: "Round four: a direct site about Tooey, creative motion inside it. Tone: precise and exact.",
+    headline: "The back end of your restaurant.",
+    concept: "Motion graphics with rules: time moves at a steady speed, values settle, numbers roll. In the hero, tonight’s sales draw in, gather to a point and branch: a solid orange route to the prep counts, outline routes to a staffing step chart and a week of bars. Prep shows five past Mondays, a level line at 38 and a +4 block to 42; a new dish stops short with “Too new to call”.",
+    look: "Pure white, ink, one orange. Filled = live, outline = being built. Sofia Sans and Semi Condensed. No libraries.",
+    strengths: ["The most rigorous: every mark has a meaning and a rule for how it moves.", "The hero diagram tells the whole back-end story in one picture."],
+    weaknesses: ["The shifts and growth figures need their animation to make sense once they stop.", "The quietest look of the five; may feel like a generic SaaS page at a glance."],
+    ask: "Too sober, or is restraint the point?",
+    pages: [{ label: 'Home', href: '19-precise/index.html' }, { label: 'Privacy', href: '19-precise/privacy.html' }]
+  },
+  {
+    id: '20-bold', num: '20', name: "Bold", round: 4,
+    href: '20-bold/', notes: '20-bold/NOTES.md', words: 196, motion: "Plays in view",
+    line: "The headline swings round to face you; counts drop onto a shelf, squash and settle.",
+    brief: "Round four: a direct site about Tooey, creative motion inside it. Tone: bold and loud.",
+    headline: "The back office your restaurant never hired.",
+    concept: "Tilt Warp’s rotation axes carry the motion. The headline words swing to face you and lean toward the pointer. Three example counts fall onto a taffy-pink shelf, rolling as they drop; a lemon “Too new to call” slides in. Prep flips from Predicted 57 to Prep 61. Shifts and growth are ink line drawings on white: staff pills slide under a busy curve, and a regular arcs back into Tuesday.",
+    look: "Persimmon ground, taffy pink for live, plate white for being built, deep ink. Tilt Warp and Rethink Sans. GSAP.",
+    strengths: ["Instantly memorable and still easy to read.", "The colour blocks do the live-vs-coming work without a word of jargon."],
+    weaknesses: ["The wordmark is set in type; the real logo didn’t sit on persimmon.", "Getting started is the most ordinary block on the page."],
+    ask: "Is persimmon the brand, or too loud for the owner you want?",
+    pages: [{ label: 'Home', href: '20-bold/index.html' }, { label: 'Privacy', href: '20-bold/privacy.html' }]
+  },
+  {
+    id: '21-refined', num: '21', name: "Refined", round: 4,
+    href: '21-refined/', notes: '21-refined/NOTES.md', words: 195, motion: "Plays, cursor light",
+    line: "Morning light crosses a stone counter and the counts come into focus in porcelain ramekins.",
+    brief: "Round four: a direct site about Tooey, creative motion inside it. Tone: refined and premium.",
+    headline: "The planning behind service, taken care of.",
+    concept: "Light moving over real materials. In the hero, the counter is in night shade while the day’s sales draw in as hairlines; a band of light crosses, shadows swing short, and each ramekin’s count comes into focus as the light reaches it. The cursor moves the light. Prep stacks porcelain plates to Predicted 24, then two glazed ones to 26. Shifts and growth are smoke glass: panes stack over a busy night pressed into the stone; lamps come on over a quiet Tuesday.",
+    look: "Warm basalt, porcelain, smoke glass, one lamplight. Commissioner. No libraries.",
+    strengths: ["The most premium feel in the gallery, with no luxury clichés.", "Porcelain vs glass is an elegant, physical honesty device."],
+    weaknesses: ["The growth figure reads as mood without its caption.", "Dark and quiet; little colour to remember it by."],
+    ask: "Premium is a promise; does it suit a free pilot from a student team?",
+    pages: [{ label: 'Home', href: '21-refined/index.html' }, { label: 'Privacy', href: '21-refined/privacy.html' }]
   }
 ];
