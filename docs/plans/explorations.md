@@ -104,3 +104,41 @@ in its demo, which implied unmeasured accuracy; its runs now vary and say
 - [x] Round two plans, collision review, and go-ahead
 - [x] Ten sites rebuilt, reviewed with motion frames, and committed
 - [x] Gallery rewritten for round two
+
+## Round three (2026-10-14)
+
+Rex kept round two and asked for more: more animation and creativity, and
+copy about Tooey as the operator's back end (prep, shifts, growth) rather
+than forecasting. He liked 02, 04, 06 and 09 best, so the brief named what
+they do well (the data is the art, one continuous scene, a payoff, a real
+voice, one complete world) and asked for better. Cap: 180 words. Shifts
+and growth are shown as being built, never as working.
+
+Six plans came in and five were built: 12 (the rota), 13 (a drawing
+sheet), 14 (a shopfront through a week), 15 (a mixing desk), 16 (a marble
+run). 11 overlapped 13 and 12 and was dropped. Each found its own way to
+separate live from coming: ink vs pencil (12), ink vs drafting blue (13),
+lit vs reflected (14), patched vs unpatched (15), painted vs white card
+(16). 14 moved off blue and concrete, and 16 off cobalt and a shared body
+face, before building.
+
+- [x] Plans, collision review, five go-aheads
+- [x] Five sites built, reviewed with motion frames, and committed
+- [x] Gallery grouped by round
+
+## Round four (2026-10-14)
+
+Rex: less of a theme; a direct website about Tooey with creative animation
+inside it. Not cliché, not wordy, not crazy. Cap: 200 words, normal scroll,
+no whole-page metaphor. Five briefs by tone: plainspoken (17), hospitable
+(18), precise (19), bold (20), refined (21).
+
+Three plans converged on a cool white ground with a teal accent and the
+same bar-and-line charts, and two used deli containers. Before building:
+17 took the typographic lane (no charts) and kept teal; 19 kept the charts
+and moved to orange; 21 dropped teal for stone, smoke glass and lamplight;
+18 dropped cobalt and its pencil device; 20 moved its ground off
+ultramarine, which matched 04.
+
+- [x] Plans, collision review, five go-aheads
+- [ ] Five sites built, reviewed, committed, and added to the gallery

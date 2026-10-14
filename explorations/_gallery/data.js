@@ -1,4 +1,4 @@
-// The gallery's content, round two. `brief` is the direction the agent was
+// The gallery's content, rounds two to four. `brief` is the direction the agent was
 // given; the rest is the orchestrator's review. Round one is in git history.
 window.EXPLORATIONS = [
   {
@@ -15,7 +15,7 @@ window.EXPLORATIONS = [
     ]
   },
   {
-    id: '01-margin', num: '01', name: 'Margin',
+    id: '01-margin', num: '01', round: 2, name: 'Margin',
     href: '01-margin/', notes: '01-margin/NOTES.md', words: 137, motion: 'Hands-on',
     line: 'You make the prep call. Watch it land in the bin, or as tickets that never print.',
     brief: 'Prep sits between two losses: food in the bin, and sales that never happen. No figures allowed.',
@@ -27,7 +27,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '01-margin/index.html' }, { label: 'Privacy', href: '01-margin/privacy.html' }]
   },
   {
-    id: '02-time-back', num: '02', name: 'Overnight',
+    id: '02-time-back', num: '02', round: 2, name: 'Overnight',
     href: '02-time-back/', notes: '02-time-back/NOTES.md', words: 115, motion: 'Scroll',
     line: 'The day’s sales become star trails, and at dawn they straighten into the prep list.',
     brief: 'Tooey works while the restaurant is closed. Make the night, and the turn to morning, the experience.',
@@ -39,7 +39,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '02-time-back/index.html' }, { label: 'Privacy', href: '02-time-back/privacy.html' }]
   },
   {
-    id: '03-sandbox', num: '03', name: 'Play',
+    id: '03-sandbox', num: '03', round: 2, name: 'Play',
     href: '03-sandbox/', notes: '03-sandbox/NOTES.md', words: 126, motion: 'Hands-on',
     line: 'The menu is the chart: dish names swell with what will sell. Drag through two weeks.',
     brief: 'The visitor understands Tooey by touching it. The interaction is the site.',
@@ -51,7 +51,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '03-sandbox/index.html' }, { label: 'Privacy', href: '03-sandbox/privacy.html' }]
   },
   {
-    id: '04-glass-box', num: '04', name: 'Nothing hidden',
+    id: '04-glass-box', num: '04', round: 2, name: 'Nothing hidden',
     href: '04-glass-box/', notes: '04-glass-box/NOTES.md', words: 127, motion: 'Scroll',
     line: 'Every count is built from plates you sold. When there aren’t enough, the line stays blank.',
     brief: 'Owners distrust black boxes. Show the mechanism; make the honesty visible.',
@@ -63,7 +63,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '04-glass-box/index.html' }, { label: 'Privacy', href: '04-glass-box/privacy.html' }]
   },
   {
-    id: '05-pilot-terms', num: '05', name: 'The invitation',
+    id: '05-pilot-terms', num: '05', round: 2, name: 'The invitation',
     href: '05-pilot-terms/', notes: '05-pilot-terms/NOTES.md', words: 106, motion: 'Scroll',
     line: 'A folded card on a red tablecloth. Open it, and the reply card is the form.',
     brief: 'Tooey is early and choosing its first restaurants. An invitation, not a pitch.',
@@ -76,7 +76,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '05-pilot-terms/index.html' }, { label: 'Privacy', href: '05-pilot-terms/privacy.html' }]
   },
   {
-    id: '06-platform', num: '06', name: 'The company',
+    id: '06-platform', num: '06', round: 2, name: 'The company',
     href: '06-platform/', notes: '06-platform/NOTES.md', words: 141, motion: 'Scroll',
     line: 'A restaurant’s whole year, woven in brass, then a dive into one empty cell: tomorrow.',
     brief: 'A company with a large ambition, of which the prep count is the first working piece. No roadmap.',
@@ -88,7 +88,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '06-platform/index.html' }, { label: 'Privacy', href: '06-platform/privacy.html' }]
   },
   {
-    id: '07-your-sales', num: '07', name: 'The pattern',
+    id: '07-your-sales', num: '07', round: 2, name: 'The pattern',
     href: '07-your-sales/', notes: '07-your-sales/NOTES.md', words: 133, motion: 'Hands-on',
     line: 'Turn the dial until a year of sales snaps into a weekly rhythm.',
     brief: 'Every restaurant’s sales hold a rhythm the owner never sees. Make the visitor see it.',
@@ -100,7 +100,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '07-your-sales/index.html' }, { label: 'Privacy', href: '07-your-sales/privacy.html' }]
   },
   {
-    id: '08-the-analyst', num: '08', name: 'The unfair advantage',
+    id: '08-the-analyst', num: '08', round: 2, name: 'The unfair advantage',
     href: '08-the-analyst/', notes: '08-the-analyst/NOTES.md', words: 100, motion: 'Plays itself',
     line: 'A chain’s planning department collapses into one owner. Then Tooey lights up beside them.',
     brief: 'Chains have teams reading their numbers; independents have the owner, after close. A cause, not a product page.',
@@ -112,7 +112,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '08-the-analyst/index.html' }, { label: 'Privacy', href: '08-the-analyst/privacy.html' }]
   },
   {
-    id: '09-skeptic', num: '09', name: 'Straight talk',
+    id: '09-skeptic', num: '09', round: 2, name: 'Straight talk',
     href: '09-skeptic/', notes: '09-skeptic/NOTES.md', words: 147, motion: 'Plays itself',
     line: 'The AI pitch falls apart while you watch. Throw the buzzwords around.',
     brief: 'The visitor has been burned by software and AI hype. Disarm them: blunt, brief, a little funny.',
@@ -124,7 +124,7 @@ window.EXPLORATIONS = [
     pages: [{ label: 'Home', href: '09-skeptic/index.html' }, { label: 'Privacy', href: '09-skeptic/privacy.html' }]
   },
   {
-    id: '10-quiet', num: '10', name: 'Calm',
+    id: '10-quiet', num: '10', round: 2, name: 'Calm',
     href: '10-quiet/', notes: '10-quiet/NOTES.md', words: 92, motion: 'Plays itself',
     line: 'A roar of orders tallies into a few quiet numbers. Then the heat lamp goes off.',
     brief: 'A restaurant is loud; Tooey is the one quiet thing in the day. Few words, one calm moment.',
@@ -134,5 +134,70 @@ window.EXPLORATIONS = [
     strengths: ['The fewest words (92) and the clearest emotional promise.', 'Every motion is the real mechanism: sales lines becoming counts.'],
     weaknesses: ['The white rest state depends on having seen the red.', 'All the craft is in the hero; the sections below are deliberately plain.'],
     pages: [{ label: 'Home', href: '10-quiet/index.html' }, { label: 'Privacy', href: '10-quiet/privacy.html' }]
+  },
+  {
+    id: '12-shifts', num: '12', name: 'The rota', round: 3,
+    href: '12-shifts/', notes: '12-shifts/NOTES.md', words: 178, motion: 'Scroll scene',
+    line: 'The rush rises behind the rota like a tide, and the shifts are recut to fit.',
+    brief: 'Round three: Tooey as the operator’s back end, led by shifts. More motion, under 180 words.',
+    headline: 'Staff and prep for the night you’re about to have.',
+    concept: 'A full-width rota is the hero. Tuesday’s rush fills behind six fixed shifts and sloshes (a real spring simulation); hatching marks people with nothing to do. On scroll, Saturday spills over in highlighter pink, a pencilled rota is cut to fit, the tide drains into Tooey’s inked prep row, and a fuller Tuesday is pencilled in.',
+    look: 'Copy-paper white, biro blue, lime and pink highlighter. Saira, using its width axis. No libraries.',
+    strengths: ['Shifts made physical: you see six people standing around on a Tuesday.', 'Ink for what works today and pencil for what’s being built is instantly clear.'],
+    weaknesses: ['On phones the prep moment is quiet, and at 320 the first screen is text only.', 'Redraws every frame; may drop frames on old phones.'],
+    ask: 'Is shifts the right lead, given prep is the only live part?',
+    pages: [{ label: 'Home', href: '12-shifts/index.html' }, { label: 'Privacy', href: '12-shifts/privacy.html' }]
+  },
+  {
+    id: '13-grow', num: '13', name: 'Room to grow', round: 3,
+    href: '13-grow/', notes: '13-grow/NOTES.md', words: 176, motion: 'Scroll scene',
+    line: 'One architect’s drawing of a restaurant. Every mark is a sale, a portion, a shift or a guest.',
+    brief: 'Round three: growth. The restaurant getting fuller, and one day a second place.',
+    headline: 'You didn’t open a restaurant to count gnocchi.',
+    concept: 'A plan drawing of an example restaurant. Sales pop onto tables, drain into the POS, and an envelope carries the counts to four pans that fill square by square. The camera moves to staff diamonds walking in, then four Tuesdays filling the room, then the sheet unrolls to a second place. "Somebody has to count the gnocchi. It doesn’t have to be you."',
+    look: 'Apricot drawing sheet, aubergine ink, drafting blue for what’s proposed. Science Gothic and Figtree. GSAP.',
+    strengths: ['The strongest voice of the round; the payoff line lands.', 'Ink = built, blue = proposed is a real drafting convention, so the honesty device needs no badge.'],
+    weaknesses: ['A landscape plan on a portrait phone leaves empty bands.', 'The Tuesdays beat is busy and needs the key.'],
+    ask: 'Does "a second place" overpromise, or is it the right ambition to show?',
+    pages: [{ label: 'Home', href: '13-grow/index.html' }, { label: 'Privacy', href: '13-grow/privacy.html' }]
+  },
+  {
+    id: '14-operators-day', num: '14', name: 'The owner’s week', round: 3,
+    href: '14-operators-day/', notes: '14-operators-day/NOTES.md', words: 179, motion: 'Scroll scene',
+    line: 'One shopfront, Monday to Sunday, as you scroll. Lit is Tooey today; reflected is what’s coming.',
+    brief: 'Round three: an operator’s whole week, with Tooey running behind it.',
+    headline: 'The prep’s already counted.',
+    concept: 'The page is a painted shopfront seen from across the street. Scroll runs the week: sky, sun and moon, diners walking in and leaving (each one a cover), tubs in the basement filling at dawn and draining with service. The day name on the fascia gets heavier as the room fills. Shifts and growth appear as reflections in the glass.',
+    look: 'Aubergine paint, night, limewash, brick, lamplight. Imbue (weight follows covers) and a grotesque. GSAP ScrollTrigger.',
+    strengths: ['The most cinematic: a whole week in one continuous shot.', 'The type weight tracking the room is a lovely, honest data detail.'],
+    weaknesses: ['Reflections can read as ghost customers before the caption lands.', 'About five screens of scrolling before the pilot.'],
+    ask: 'Too long a scroll for a busy owner?',
+    pages: [{ label: 'Home', href: '14-operators-day/index.html' }, { label: 'Privacy', href: '14-operators-day/privacy.html' }]
+  },
+  {
+    id: '15-control', num: '15', name: 'In control', round: 3,
+    href: '15-control/', notes: '15-control/NOTES.md', words: 172, motion: 'Hands-on',
+    line: 'Motorised faders set themselves to tonight’s counts. Touch one and the motor lets go.',
+    brief: 'Round three: control. Tooey does the work; the owner keeps the final call.',
+    headline: 'Tooey runs the numbers behind your restaurant, and the final call stays yours.',
+    concept: 'A mixing desk. On load the "Your sales" cable swings into the Prep jack and the faders motor up to example counts (Crudo stays put: too new to call). Grab a cap and the motor releases; pull the plug and the bank goes dark. Shifts and Slow nights banks sit unpatched, their LCDs showing ghost segments.',
+    look: 'Pumice panel, graphite, owner red for what you press, LCD green. B612.',
+    strengths: ['The most tactile site in the gallery; the honesty device (unpatched banks) is excellent.', 'The headline states the deal in one line.'],
+    weaknesses: ['The metaphor is a step removed from a kitchen.', 'Small fader targets on phones.'],
+    ask: 'Does "a mixing desk" say restaurant to an owner, or just say clever?',
+    pages: [{ label: 'Home', href: '15-control/index.html' }, { label: 'Privacy', href: '15-control/privacy.html' }]
+  },
+  {
+    id: '16-chain-reaction', num: '16', name: 'Chain reaction', round: 3,
+    href: '16-chain-reaction/', notes: '16-chain-reaction/NOTES.md', words: 170, motion: 'Plays, then scroll',
+    line: 'A ball of Friday’s sales runs a kitchen marble run: tubs fill, cooks stand up, a bell seats Monday.',
+    brief: 'Round three: in a restaurant nothing happens alone. One night’s sales set everything moving.',
+    headline: 'One busy Friday moves everything.',
+    concept: 'A receipt printer drops a ball of Friday’s sales. It rolls down a painted sheet pan, a ladle tips it across the prep tubs (each fills as it passes; gnocchi stays empty, too new), then onto white-card track where cooks pop up and a bell seats Monday’s table. Scroll follows the consequences; a Tuesday button reruns it smaller.',
+    look: 'Pistachio, aubergine, radish. Painted parts work today; white card is being built. Caprasimo and Libre Franklin. GSAP.',
+    strengths: ['Joyful and easy to get: cause and effect you can watch.', 'Painted vs white card is a clear, warm honesty device.'],
+    weaknesses: ['The run is 7–8 seconds; scroll early and you miss part of it.', 'Labels clip briefly at the frame edge during camera moves.'],
+    ask: 'Too playful for the owner you want, or exactly the tone?',
+    pages: [{ label: 'Home', href: '16-chain-reaction/index.html' }, { label: 'Privacy', href: '16-chain-reaction/privacy.html' }]
   }
 ];
