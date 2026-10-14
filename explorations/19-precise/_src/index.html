@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: the back end of your restaurant</title>
+<meta name="description" content="Tooey turns your own sales into decisions about prep, shifts and slow nights. The morning prep count is live in a free pilot.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/sofia-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/sofia-sans-semi-condensed.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  document.documentElement.classList.add('js');
+  try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion'); } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head wrap">
+  <a class="brand" href="./" aria-label="Tooey home"><img src="logo.png" alt="Tooey" width="343" height="148"></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <nav id="site-nav" class="site-nav" aria-label="Main">
+    <ul>
+      <li><a href="#prep">How it works</a></li>
+      <li><a href="#start">Getting started</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a class="btn btn--small" href="#pilot">Join the pilot</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-head">
+      <h1 id="hero-title">The back end of your restaurant.</h1>
+      <div class="hero-side">
+        <p class="lead">Tooey turns your own sales into decisions about prep, shifts and slow nights. Built to help you earn more and manage less.</p>
+        <p class="actions">
+          <a class="btn" href="#pilot">Join the pilot</a>
+          <a class="link" href="#prep">How it works</a>
+        </p>
+      </div>
+    </div>
+
+    <figure class="figure hero-fig" data-fig="hero" data-autoplay>
+      <p class="sr-only">Diagram: tonight's sales feed three outputs. Prep counts, drawn solid, are live. Shifts and growth, drawn in outline, are being built.</p>
+      <div class="fig-stage">
+        <!--fig:hero:wide-->
+        <!--fig:hero:narrow-->
+      </div>
+      <figcaption>Example night. Prep is live; shifts and growth are being built.</figcaption>
+    </figure>
+  </section>
+
+  <section class="part part--live wrap" id="prep" aria-labelledby="prep-title">
+    <div class="part-text">
+      <h2 id="prep-title">How much of each dish to make.</h2>
+      <p>Each night Tooey reads the day's sales and, before prep, emails every dish: Predicted, and Prep, a little over. Dishes too new or slow to call get a blank and a reason.</p>
+    </div>
+    <figure class="figure part-fig plate" data-fig="prep">
+      <div class="fig-stage">
+        <!--fig:prep:wide-->
+        <!--fig:prep:narrow-->
+      </div>
+      <figcaption>Example</figcaption>
+    </figure>
+  </section>
+
+  <section class="part part--concept wrap" id="shifts" aria-labelledby="shifts-title">
+    <div class="part-text">
+      <h2 id="shifts-title">The right people on at the right time.</h2>
+      <p>Matched to how busy each hour will be.</p>
+    </div>
+    <figure class="figure part-fig" data-fig="shifts">
+      <div class="fig-stage">
+        <!--fig:shifts:wide-->
+        <!--fig:shifts:narrow-->
+      </div>
+      <figcaption>Concept</figcaption>
+    </figure>
+  </section>
+
+  <section class="part part--concept wrap" id="growth" aria-labelledby="growth-title">
+    <div class="part-text">
+      <h2 id="growth-title">Fuller slow nights.</h2>
+      <p>Spot quiet nights ahead and bring regulars back.</p>
+    </div>
+    <figure class="figure part-fig" data-fig="growth">
+      <div class="fig-stage">
+        <!--fig:growth:wide-->
+        <!--fig:growth:narrow-->
+      </div>
+      <figcaption>Concept</figcaption>
+    </figure>
+  </section>
+
+  <section class="start wrap" id="start" aria-labelledby="start-title">
+    <h2 id="start-title">How to start</h2>
+    <ol class="steps">
+      <li><span class="step-n" aria-hidden="true">1</span><p>We set up a nightly download from your POS. Most systems work.</p></li>
+      <li><span class="step-n" aria-hidden="true">2</span><p>Tooey needs about five weeks of past sales.</p></li>
+      <li><span class="step-n" aria-hidden="true">3</span><p>Setup takes about a week.</p></li>
+      <li><span class="step-n" aria-hidden="true">4</span><p>Check each count against what sold, then decide.</p></li>
+    </ol>
+  </section>
+
+  <section class="pilot wrap" id="pilot" aria-labelledby="pilot-title">
+    <div class="pilot-text">
+      <h2 id="pilot-title">Join the pilot.</h2>
+      <p>Free during the pilot. Your sales serve only your restaurant.</p>
+    </div>
+    <form class="form plate" id="pilot-form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="hp" aria-hidden="true"><label for="f-honey">Leave this empty</label><input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off"></div>
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-restaurant">Restaurant</label><input id="f-restaurant" name="restaurant" type="text" autocomplete="organization" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field field--wide"><label for="f-pos">Which POS you use <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text"></div>
+      <div class="field field--wide"><label for="f-message">Anything we should know <span class="opt">(optional)</span></label><textarea id="f-message" name="message" rows="4"></textarea></div>
+      <div class="form-foot">
+        <button class="btn" type="submit">Send</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-foot wrap">
+  <p>Tooey LLC, a small team of university students.</p>
+  <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+  <p><a href="privacy.html">Privacy</a></p>
+</footer>
+
+<script src="figures.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
