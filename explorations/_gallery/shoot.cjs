@@ -50,7 +50,7 @@ async function shoot(browser, url, file, opts) {
 
 (async () => {
   fs.mkdirSync(out, { recursive: true });
-  const browser = await playwright.chromium.launch();
+  const browser = await playwright.chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
   for (const s of sites) {
     const url = urlFor(s);
     await shoot(browser, url, path.join(out, `${s}-desktop.jpg`), { viewport: { width: 1440, height: 900 } });

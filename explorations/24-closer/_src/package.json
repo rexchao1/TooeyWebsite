@@ -1,0 +1,14 @@
+{
+  "name": "tooey-24-closer",
+  "private": true,
+  "description": "Build for explorations/24-closer: bundles the scene and renders the stills.",
+  "scripts": {
+    "build": "node build.mjs",
+    "stills": "node stills.mjs 5234"
+  },
+  "dependencies": {
+    "@fontsource-variable/chivo": "^5.3.0",
+    "esbuild": "^0.28.2",
+    "three": "0.186.1"
+  }
+}
