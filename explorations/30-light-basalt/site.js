@@ -14,10 +14,21 @@
   var OPTS = {
     hero:  { src: 'img/counts.webp', fx: 0.5, fy: 0.62, zoom: 1.04, first: [0.42, 0.62] },
     prep:  { src: 'img/prep.webp',   fx: 0.3, fy: 0.5, zoom: 1.0, gamma: 0.82, first: [0.1, 0.2] },
-    line:  { src: 'img/line.webp',   fx: 0.55, fy: 0.5, zoom: 1.0, core: 0.42 },
+    // the line: each station is its own pool, and they come on left to right
+    line:  { src: 'img/line.webp', fx: 0.19, fy: 0.5, zoom: 1.0, gamma: 1.1, core: 0.38, glow: 0.75,
+             pools: [[0.17, 0.44, 0.1, 0.4], [0.39, 0.46, 0.1, 0.4], [0.63, 0.48, 0.1, 0.4]],
+             floor: 0.2, boost: 1.35,
+             lights: [[0.17, 0.45], [0.39, 0.47], [0.63, 0.49]] },
     room:  { src: 'img/room.webp',   fx: 0.75, fy: 0.7, zoom: 1.0 },
-    guess: { src: 'img/guess.webp',  fx: 0.5, fy: 0.5, zoom: 1.0, core: 0.5, gamma: 1.3 },
-    tooey: { src: 'img/tooey.webp',  fx: 0.5, fy: 0.5, zoom: 1.0, core: 0.5, gamma: 1.3 }
+    // the same Saturday at close: the light goes to what is left in each tray
+    guess: { src: 'img/guess.webp', fx: 0.5, fy: 0.5, zoom: 0.93, gamma: 1.15, glow: 0.8,
+             pools: [[0.23, 0.42, 0.13, 0.12], [0.53, 0.45, 0.12, 0.1], [0.74, 0.39, 0.06, 0.07]],
+             floor: 0.42, boost: 1.15,
+             lights: [[0.23, 0.42], [0.53, 0.45], [0.74, 0.39]] },
+    tooey: { src: 'img/tooey.webp', fx: 0.5, fy: 0.5, zoom: 0.93, gamma: 1.15, glow: 0.8,
+             pools: [[0.16, 0.42, 0.07, 0.08], [0.5, 0.39, 0.05, 0.08], [0.71, 0.39, 0.06, 0.07]],
+             floor: 0.42, boost: 1.2,
+             lights: [[0.16, 0.42], [0.5, 0.39], [0.71, 0.39]] }
   };
   var scenes = {};
   [].forEach.call(document.querySelectorAll('canvas[data-scene]'), function (cv) {

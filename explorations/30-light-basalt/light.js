@@ -93,7 +93,23 @@
     lo /= 255; hi /= 255;
     var gam = o.gamma || 1;
     for (i = 0; i < n; i++) L[i] = Math.pow(clamp((L[i] - lo) / Math.max(0.1, hi - lo), 0, 1), gam);
-    return { W: W, H: H, R: R, G: G, B: B, L: L };
+    // pools: where the story is, the light is kept; elsewhere it is let down
+    // pools and lights are given as fractions of the source image
+    var ox = (W - dw) * fx, oy = (H - dh) * fy;
+    function map(p) { return [(p[0] * dw + ox) / W, (p[1] * dh + oy) / H, (p[2] || 0) * dw / W, (p[3] || 0) * dh / H]; }
+    if (o.pools) {
+      var floor = o.floor == null ? 0.3 : o.floor, boost = o.boost || 1.08, pools = o.pools.map(map);
+      for (var yy = 0; yy < H; yy++) for (var xx = 0; xx < W; xx++) {
+        var f = 0, u = xx / W, v = yy / H;
+        for (var k = 0; k < pools.length; k++) {
+          var pp = pools[k], dx = (u - pp[0]) / pp[2], dy = (v - pp[1]) / pp[3];
+          f = Math.max(f, Math.exp(-(dx * dx + dy * dy)));
+        }
+        i = yy * W + xx;
+        L[i] = clamp(L[i] * (floor + (boost - floor) * f), 0, 1);
+      }
+    }
+    return { W: W, H: H, R: R, G: G, B: B, L: L, map: map };
   }
 
   /* Only what is lit survives: lamps, lit tops and rims, with a soft glow in
@@ -159,6 +175,8 @@
       if (ox !== null) return Math.hypot(a.x - ox, a.y - oy) - Math.hypot(b.x - ox, b.y - oy);
       return (a.y + a.x * 0.25) - (b.y + b.x * 0.25);
     });
+    // or the lights are named, in the order they come on
+    if (o.lights) keep = o.lights.map(function (l) { var m = P.map(l); return { x: m[0] * W, y: m[1] * H, v: 1 }; });
     var N = keep.length;
     keep.forEach(function (p, j) { p.t = N === 1 ? 0 : (j / (N - 1)) * 0.72; });
     return { color: col, lights: keep.slice(0, 16), sig: 34 * s };
