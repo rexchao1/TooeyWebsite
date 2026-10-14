@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: the back end of your restaurant</title>
+<meta name="description" content="Tooey runs the back end of an independent restaurant, starting with prep: every morning, an email of how many of each dish to make.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/science-gothic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.className = still ? 'js still' : 'js motion';
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#start">Skip to the form</a>
+<header class="top">
+  <a class="brand" href="./" aria-label="Tooey, home"><img src="logo.png" alt="tooey" width="343" height="148"></a>
+  <nav aria-label="Main">
+    <a href="#notes">What it takes</a>
+    <a class="nav-privacy" href="privacy.html">Privacy</a>
+    <a class="btn btn-small" href="#start">Join the pilot</a>
+  </nav>
+</header>
+
+<main>
+  <section id="scene" class="scene" aria-labelledby="headline">
+    <div class="hero">
+      <h1 id="headline">You didn't open a restaurant to count gnocchi.</h1>
+      <p class="lead">Tooey runs the back end, starting with prep: every morning, an email of how many of each dish to make.</p>
+      <a class="btn" href="#start">Join the free pilot</a>
+    </div>
+
+    <div class="stage">
+      <svg id="world" class="world" viewBox="-40 -40 1080 1030" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+<g id="everything">
+<defs>
+  <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="hatch-line"/></pattern>
+  <linearGradient id="rollShade" x1="0" x2="1" y1="0" y2="0">
+    <stop offset="0" stop-color="#f3c79c"/><stop offset=".35" stop-color="#fde3c6"/><stop offset=".7" stop-color="#e9b688"/><stop offset="1" stop-color="#cf9a6c"/>
+  </linearGradient>
+  <linearGradient id="rollShadow" x1="0" x2="1"><stop offset="0" stop-color="#2b1a33" stop-opacity=".16"/><stop offset="1" stop-color="#2b1a33" stop-opacity="0"/></linearGradient>
+  <radialGradient id="candleGlow"><stop offset="0" stop-color="#fff4dc" stop-opacity=".95"/><stop offset=".55" stop-color="#fff4dc" stop-opacity=".5"/><stop offset="1" stop-color="#fff4dc" stop-opacity="0"/></radialGradient>
+  <clipPath id="sheetClip"><rect id="sheetClipRect" x="-40" y="-60" width="2220" height="1070"/></clipPath>
+</defs>
+<rect class="table" x="-3000" y="-3000" width="9000" height="8000"/>
+<g id="paper">
+  <rect id="sheet" class="sheet" x="-40" y="-40" width="2220" height="1030"/>
+  <rect id="sheetFrame" class="frame" x="-22" y="-22" width="2184" height="994"/>
+</g>
+<g id="planA">
+<rect class="floor" x="40" y="40" width="920" height="200"/>
+<rect class="floor" id="diningFloor" x="40" y="240" width="920" height="420"/>
+<g id="fixtures">
+<rect class="fx" x="60" y="52" width="170" height="60"/>
+<circle class="fx-thin" cx="88" cy="69" r="9"/>
+<circle class="fx-thin" cx="88" cy="95" r="9"/>
+<circle class="fx-thin" cx="145" cy="69" r="9"/>
+<circle class="fx-thin" cx="145" cy="95" r="9"/>
+<circle class="fx-thin" cx="202" cy="69" r="9"/>
+<circle class="fx-thin" cx="202" cy="95" r="9"/>
+<rect class="fx hatched" x="245" y="52" width="120" height="60"/>
+<rect class="fx" x="380" y="52" width="120" height="60"/><line class="fx-thin" x1="440" y1="52" x2="440" y2="112"/>
+<rect class="fx" x="60" y="172" width="104" height="54"/><rect class="fx-thin" x="68" y="180" width="40" height="38" rx="6"/><rect class="fx-thin" x="116" y="180" width="40" height="38" rx="6"/>
+<rect class="fx steel" x="540" y="50" width="402" height="174"/>
+<rect class="fx hatched" x="520" y="232" width="440" height="18"/>
+<rect class="fx hatched" x="906" y="290" width="40" height="330"/>
+<g id="pos"><rect class="fx" x="560" y="604" width="54" height="36"/><rect class="ink-fill" x="572" y="611" width="30" height="16" rx="2"/></g>
+</g>
+<circle class="glow on" id="glow0" cx="150" cy="330" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl0" x="122" y="302" width="56" height="56"/>
+<circle class="chair" cx="106" cy="330" r="9"/>
+<circle class="chair" cx="194" cy="330" r="9"/>
+<circle class="chair" cx="150" cy="286" r="9"/>
+<circle class="chair" cx="150" cy="374" r="9"/>
+<circle class="glow on" id="glow1" cx="320" cy="330" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl1" x="292" y="302" width="56" height="56"/>
+<circle class="chair" cx="276" cy="330" r="9"/>
+<circle class="chair" cx="364" cy="330" r="9"/>
+<circle class="chair" cx="320" cy="286" r="9"/>
+<circle class="chair" cx="320" cy="374" r="9"/>
+<circle class="glow on" id="glow2" cx="640" cy="330" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl2" x="612" y="302" width="56" height="56"/>
+<circle class="chair" cx="596" cy="330" r="9"/>
+<circle class="chair" cx="684" cy="330" r="9"/>
+<circle class="chair" cx="640" cy="286" r="9"/>
+<circle class="chair" cx="640" cy="374" r="9"/>
+<circle class="glow on" id="glow3" cx="810" cy="330" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl3" x="782" y="302" width="56" height="56"/>
+<circle class="chair" cx="766" cy="330" r="9"/>
+<circle class="chair" cx="854" cy="330" r="9"/>
+<circle class="chair" cx="810" cy="286" r="9"/>
+<circle class="chair" cx="810" cy="374" r="9"/>
+<circle class="glow on" id="glow4" cx="150" cy="450" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl4" x="122" y="422" width="56" height="56"/>
+<circle class="chair" cx="106" cy="450" r="9"/>
+<circle class="chair" cx="194" cy="450" r="9"/>
+<circle class="chair" cx="150" cy="406" r="9"/>
+<circle class="chair" cx="150" cy="494" r="9"/>
+<circle class="glow on" id="glow5" cx="320" cy="450" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl5" x="292" y="422" width="56" height="56"/>
+<circle class="chair" cx="276" cy="450" r="9"/>
+<circle class="chair" cx="364" cy="450" r="9"/>
+<circle class="chair" cx="320" cy="406" r="9"/>
+<circle class="chair" cx="320" cy="494" r="9"/>
+<circle class="glow on" id="glow6" cx="640" cy="450" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl6" x="612" y="422" width="56" height="56"/>
+<circle class="chair" cx="596" cy="450" r="9"/>
+<circle class="chair" cx="684" cy="450" r="9"/>
+<circle class="chair" cx="640" cy="406" r="9"/>
+<circle class="chair" cx="640" cy="494" r="9"/>
+<circle class="glow on" id="glow7" cx="810" cy="450" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl7" x="782" y="422" width="56" height="56"/>
+<circle class="chair" cx="766" cy="450" r="9"/>
+<circle class="chair" cx="854" cy="450" r="9"/>
+<circle class="chair" cx="810" cy="406" r="9"/>
+<circle class="chair" cx="810" cy="494" r="9"/>
+<circle class="glow on" id="glow8" cx="150" cy="570" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl8" x="122" y="542" width="56" height="56"/>
+<circle class="chair" cx="106" cy="570" r="9"/>
+<circle class="chair" cx="194" cy="570" r="9"/>
+<circle class="chair" cx="150" cy="526" r="9"/>
+<circle class="chair" cx="150" cy="614" r="9"/>
+<circle class="glow on" id="glow9" cx="320" cy="570" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl9" x="292" y="542" width="56" height="56"/>
+<circle class="chair" cx="276" cy="570" r="9"/>
+<circle class="chair" cx="364" cy="570" r="9"/>
+<circle class="chair" cx="320" cy="526" r="9"/>
+<circle class="chair" cx="320" cy="614" r="9"/>
+<circle class="glow on" id="glow10" cx="640" cy="570" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl10" x="612" y="542" width="56" height="56"/>
+<circle class="chair" cx="596" cy="570" r="9"/>
+<circle class="chair" cx="684" cy="570" r="9"/>
+<circle class="chair" cx="640" cy="526" r="9"/>
+<circle class="chair" cx="640" cy="614" r="9"/>
+<circle class="glow on" id="glow11" cx="810" cy="570" r="62" fill="url(#candleGlow)"/>
+<rect class="tbl lit" id="tbl11" x="782" y="542" width="56" height="56"/>
+<circle class="chair" cx="766" cy="570" r="9"/>
+<circle class="chair" cx="854" cy="570" r="9"/>
+<circle class="chair" cx="810" cy="526" r="9"/>
+<circle class="chair" cx="810" cy="614" r="9"/>
+<circle class="chair" cx="884" cy="312" r="8"/>
+<circle class="chair" cx="884" cy="353" r="8"/>
+<circle class="chair" cx="884" cy="394" r="8"/>
+<circle class="chair" cx="884" cy="435" r="8"/>
+<circle class="chair" cx="884" cy="476" r="8"/>
+<circle class="chair" cx="884" cy="517" r="8"/>
+<circle class="chair" cx="884" cy="558" r="8"/>
+<circle class="chair" cx="884" cy="599" r="8"/>
+<g id="walls">
+  <path class="wall" pathLength="1" d="M40 150 V40 H960 V660 H860"/>
+  <path class="wall" pathLength="1" d="M600 660 H520"/>
+  <path class="wall" pathLength="1" d="M450 660 H360"/>
+  <path class="wall" pathLength="1" d="M120 660 H40 V200"/>
+  <path class="wall inner" pathLength="1" d="M40 240 H440"/>
+  <path class="glass" d="M120 656 H360 M120 664 H360 M600 656 H860 M600 664 H860"/>
+  <path class="door" d="M450 660 V592"/><path class="swing" d="M520 660 A68 68 0 0 0 450 592"/>
+  <path class="door" d="M40 200 H90"/><path class="swing" d="M40 150 A50 50 0 0 1 90 200"/>
+</g>
+<g id="pans">
+<g class="pan" id="pan0">
+<rect class="pan-rim" x="556" y="58" width="84" height="118" rx="3"/>
+<rect class="portion" x="562" y="158" width="12" height="12"/>
+<rect class="portion" x="577" y="158" width="12" height="12"/>
+<rect class="portion" x="592" y="158" width="12" height="12"/>
+<rect class="portion" x="607" y="158" width="12" height="12"/>
+<rect class="portion" x="622" y="158" width="12" height="12"/>
+<rect class="portion" x="562" y="143" width="12" height="12"/>
+<rect class="portion" x="577" y="143" width="12" height="12"/>
+<rect class="portion" x="592" y="143" width="12" height="12"/>
+<rect class="portion" x="607" y="143" width="12" height="12"/>
+<rect class="portion" x="622" y="143" width="12" height="12"/>
+<rect class="portion" x="562" y="128" width="12" height="12"/>
+<rect class="portion" x="577" y="128" width="12" height="12"/>
+<rect class="portion" x="592" y="128" width="12" height="12"/>
+<rect class="portion" x="607" y="128" width="12" height="12"/>
+<rect class="portion" x="622" y="128" width="12" height="12"/>
+<rect class="portion" x="562" y="113" width="12" height="12"/>
+<rect class="portion" x="577" y="113" width="12" height="12"/>
+<rect class="portion" x="592" y="113" width="12" height="12"/>
+<rect class="portion" x="607" y="113" width="12" height="12"/>
+<rect class="portion" x="622" y="113" width="12" height="12"/>
+<rect class="portion" x="562" y="98" width="12" height="12"/>
+<rect class="portion" x="577" y="98" width="12" height="12"/>
+<rect class="portion over" x="592" y="98" width="12" height="12"/>
+<rect class="portion over" x="607" y="98" width="12" height="12"/>
+<path class="pred" d="M549 96 H647"/>
+<text class="pan-name" x="556" y="194">Gnocchi</text>
+<text class="pan-count" x="556" y="217">24</text>
+</g>
+<g class="pan" id="pan1">
+<rect class="pan-rim" x="652" y="58" width="84" height="118" rx="3"/>
+<rect class="portion" x="658" y="158" width="12" height="12"/>
+<rect class="portion" x="673" y="158" width="12" height="12"/>
+<rect class="portion" x="688" y="158" width="12" height="12"/>
+<rect class="portion" x="703" y="158" width="12" height="12"/>
+<rect class="portion" x="718" y="158" width="12" height="12"/>
+<rect class="portion" x="658" y="143" width="12" height="12"/>
+<rect class="portion" x="673" y="143" width="12" height="12"/>
+<rect class="portion" x="688" y="143" width="12" height="12"/>
+<rect class="portion" x="703" y="143" width="12" height="12"/>
+<rect class="portion" x="718" y="143" width="12" height="12"/>
+<rect class="portion" x="658" y="128" width="12" height="12"/>
+<rect class="portion" x="673" y="128" width="12" height="12"/>
+<rect class="portion" x="688" y="128" width="12" height="12"/>
+<rect class="portion" x="703" y="128" width="12" height="12"/>
+<rect class="portion" x="718" y="128" width="12" height="12"/>
+<rect class="portion" x="658" y="113" width="12" height="12"/>
+<rect class="portion over" x="673" y="113" width="12" height="12"/>
+<rect class="portion over" x="688" y="113" width="12" height="12"/>
+<path class="pred" d="M645 111 H743"/>
+<text class="pan-name" x="652" y="194">Short rib</text>
+<text class="pan-count" x="652" y="217">18</text>
+</g>
+<g class="pan" id="pan2">
+<rect class="pan-rim" x="748" y="58" width="84" height="118" rx="3"/>
+<rect class="portion" x="754" y="158" width="12" height="12"/>
+<rect class="portion" x="769" y="158" width="12" height="12"/>
+<rect class="portion" x="784" y="158" width="12" height="12"/>
+<rect class="portion" x="799" y="158" width="12" height="12"/>
+<rect class="portion" x="814" y="158" width="12" height="12"/>
+<rect class="portion" x="754" y="143" width="12" height="12"/>
+<rect class="portion" x="769" y="143" width="12" height="12"/>
+<rect class="portion" x="784" y="143" width="12" height="12"/>
+<rect class="portion" x="799" y="143" width="12" height="12"/>
+<rect class="portion" x="814" y="143" width="12" height="12"/>
+<rect class="portion" x="754" y="128" width="12" height="12"/>
+<rect class="portion" x="769" y="128" width="12" height="12"/>
+<rect class="portion" x="784" y="128" width="12" height="12"/>
+<rect class="portion" x="799" y="128" width="12" height="12"/>
+<rect class="portion" x="814" y="128" width="12" height="12"/>
+<rect class="portion" x="754" y="113" width="12" height="12"/>
+<rect class="portion" x="769" y="113" width="12" height="12"/>
+<rect class="portion" x="784" y="113" width="12" height="12"/>
+<rect class="portion" x="799" y="113" width="12" height="12"/>
+<rect class="portion" x="814" y="113" width="12" height="12"/>
+<rect class="portion" x="754" y="98" width="12" height="12"/>
+<rect class="portion" x="769" y="98" width="12" height="12"/>
+<rect class="portion" x="784" y="98" width="12" height="12"/>
+<rect class="portion" x="799" y="98" width="12" height="12"/>
+<rect class="portion" x="814" y="98" width="12" height="12"/>
+<rect class="portion" x="754" y="83" width="12" height="12"/>
+<rect class="portion" x="769" y="83" width="12" height="12"/>
+<rect class="portion" x="784" y="83" width="12" height="12"/>
+<rect class="portion over" x="799" y="83" width="12" height="12"/>
+<rect class="portion over" x="814" y="83" width="12" height="12"/>
+<rect class="portion over" x="754" y="68" width="12" height="12"/>
+<path class="pred" d="M741 81 H839"/>
+<text class="pan-name" x="748" y="194">Caesar</text>
+<text class="pan-count" x="748" y="217">31</text>
+</g>
+<g class="pan" id="pan3">
+<rect class="pan-rim" x="844" y="58" width="84" height="118" rx="3"/>
+<text class="pan-name" x="844" y="194">Lamb special</text>
+<text class="pencil" id="pencil"><tspan x="853" y="86">Too new</tspan><tspan x="853" y="102">to call,</tspan><tspan x="853" y="118">so we</tspan><tspan x="853" y="134">don't.</tspan></text>
+</g>
+</g>
+<g id="sales" class="transient">
+<circle class="sale" cx="166.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="324.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="324.5" r="3.4"/>
+<circle class="sale" cx="155.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="155.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="155.5" cy="313.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="313.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="166.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="313.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="166.5" cy="313.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="314.5" cy="324.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="324.5" r="3.4"/>
+<circle class="sale" cx="325.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="314.5" cy="346.5" r="3.4"/>
+<circle class="sale" cx="325.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="324.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="313.5" r="3.4"/>
+<circle class="sale" cx="656.5" cy="313.5" r="3.4"/>
+<circle class="sale" cx="656.5" cy="324.5" r="3.4"/>
+<circle class="sale" cx="645.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="634.5" cy="324.5" r="3.4"/>
+<circle class="sale" cx="793.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="313.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="804.5" cy="335.5" r="3.4"/>
+<circle class="sale" cx="166.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="155.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="155.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="166.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="325.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="325.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="314.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="314.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="314.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="314.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="623.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="634.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="623.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="645.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="634.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="645.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="656.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="623.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="656.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="793.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="815.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="793.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="804.5" cy="433.5" r="3.4"/>
+<circle class="sale" cx="804.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="815.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="815.5" cy="455.5" r="3.4"/>
+<circle class="sale" cx="793.5" cy="444.5" r="3.4"/>
+<circle class="sale" cx="804.5" cy="466.5" r="3.4"/>
+<circle class="sale" cx="166.5" cy="575.5" r="3.4"/>
+<circle class="sale" cx="166.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="144.5" cy="575.5" r="3.4"/>
+<circle class="sale" cx="155.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="166.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="155.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="133.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="336.5" cy="575.5" r="3.4"/>
+<circle class="sale" cx="303.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="314.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="325.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="645.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="656.5" cy="575.5" r="3.4"/>
+<circle class="sale" cx="645.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="634.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="656.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="634.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="656.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="623.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="645.5" cy="575.5" r="3.4"/>
+<circle class="sale" cx="623.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="634.5" cy="575.5" r="3.4"/>
+<circle class="sale" cx="623.5" cy="575.5" r="3.4"/>
+<circle class="sale" cx="645.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="623.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="793.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="793.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="804.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="586.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="553.5" r="3.4"/>
+<circle class="sale" cx="826.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="815.5" cy="564.5" r="3.4"/>
+<circle class="sale" cx="918" cy="312" r="3.4"/>
+<circle class="sale" cx="918" cy="353" r="3.4"/>
+<circle class="sale" cx="930" cy="353" r="3.4"/>
+<circle class="sale" cx="918" cy="394" r="3.4"/>
+<circle class="sale" cx="918" cy="435" r="3.4"/>
+<circle class="sale" cx="918" cy="476" r="3.4"/>
+<circle class="sale" cx="918" cy="517" r="3.4"/>
+<circle class="sale" cx="918" cy="558" r="3.4"/>
+<circle class="sale" cx="930" cy="558" r="3.4"/>
+<circle class="sale" cx="918" cy="599" r="3.4"/>
+<circle class="sale" cx="930" cy="599" r="3.4"/>
+</g>
+<text id="salesNote" class="note transient" x="560" y="712">Last night's sales, one dot per dish.</text>
+<g id="envelope" class="transient"><rect class="env" x="574" y="600" width="28" height="20"/><path class="env-flap" d="M574 600 L588 612 L602 600"/></g>
+<g id="guests">
+<circle class="guest ink-g regular" cx="596" cy="450" r="8.5" data-t="10"/>
+<circle class="guest ink-g" cx="150" cy="406" r="8.5" data-t="4"/>
+<circle class="guest ink-g" cx="684" cy="330" r="8.5" data-t="2"/>
+<circle class="guest ink-g" cx="810" cy="286" r="8.5" data-t="3"/>
+<circle class="guest ink-g" cx="640" cy="374" r="8.5" data-t="2"/>
+<circle class="guest ink-g" cx="364" cy="570" r="8.5" data-t="9"/>
+<circle class="guest ink-g" cx="276" cy="570" r="8.5" data-t="9"/>
+<circle class="guest ink-g" cx="320" cy="526" r="8.5" data-t="9"/>
+<circle class="guest ink-g" cx="106" cy="330" r="8.5" data-t="0"/>
+<circle class="guest ink-g" cx="194" cy="330" r="8.5" data-t="0"/>
+<circle class="guest ink-g" cx="320" cy="494" r="8.5" data-t="5"/>
+<circle class="guest ink-g" cx="884" cy="558" r="8.5" data-t="-1"/>
+<circle class="guest ink-g" cx="854" cy="330" r="8.5" data-t="3"/>
+<circle class="guest ink-g" cx="106" cy="570" r="8.5" data-t="8"/>
+<circle class="guest ink-g" cx="150" cy="494" r="8.5" data-t="4"/>
+<circle class="guest ink-g" cx="854" cy="450" r="8.5" data-t="7"/>
+<circle class="guest ink-g" cx="810" cy="614" r="8.5" data-t="11"/>
+<circle class="guest ink-g" cx="854" cy="570" r="8.5" data-t="11"/>
+<circle class="guest ink-g" cx="884" cy="312" r="8.5" data-t="-1"/>
+<circle class="guest ink-g" cx="640" cy="286" r="8.5" data-t="2"/>
+<circle class="guest blue-g" cx="150" cy="286" r="7.5" data-week="2" data-t="0"/>
+<circle class="guest blue-g" cx="766" cy="330" r="7.5" data-week="2" data-t="3"/>
+<circle class="guest blue-g" cx="596" cy="330" r="7.5" data-week="2" data-t="2"/>
+<circle class="guest blue-g" cx="766" cy="450" r="7.5" data-week="2" data-t="7"/>
+<circle class="guest blue-g" cx="596" cy="570" r="7.5" data-week="2" data-t="10"/>
+<circle class="guest blue-g" cx="684" cy="450" r="7.5" data-week="3" data-t="6"/>
+<circle class="guest blue-g" cx="884" cy="435" r="7.5" data-week="3" data-t="-1"/>
+<circle class="guest blue-g" cx="150" cy="614" r="7.5" data-week="3" data-t="8"/>
+<circle class="guest blue-g" cx="150" cy="374" r="7.5" data-week="3" data-t="0"/>
+<circle class="guest blue-g" cx="810" cy="374" r="7.5" data-week="3" data-t="3"/>
+<circle class="guest blue-g" cx="194" cy="450" r="7.5" data-week="4" data-t="4"/>
+<circle class="guest blue-g" cx="320" cy="406" r="7.5" data-week="4" data-t="5"/>
+<circle class="guest blue-g" cx="320" cy="374" r="7.5" data-week="4" data-t="1"/>
+<circle class="guest blue-g" cx="640" cy="406" r="7.5" data-week="4" data-t="6"/>
+</g>
+<g id="rings"><circle class="ring" cx="596" cy="450" r="15" data-week="2"/><circle class="ring" cx="596" cy="450" r="20" data-week="3"/><circle class="ring" cx="596" cy="450" r="25" data-week="4"/></g>
+<g id="staff">
+<g class="staffer" data-x="150" data-y="142" transform="translate(150 142)"><rect class="staff-c" x="-9" y="-9" width="18" height="18" transform="rotate(45)"/></g>
+<g class="staffer" data-x="305" data-y="142" transform="translate(305 142)"><rect class="staff-c" x="-9" y="-9" width="18" height="18" transform="rotate(45)"/></g>
+<g class="staffer" data-x="480" data-y="410" transform="translate(480 410)"><rect class="staff-c" x="-9" y="-9" width="18" height="18" transform="rotate(45)"/></g>
+<g class="staffer" data-x="480" data-y="540" transform="translate(480 540)"><rect class="staff-c" x="-9" y="-9" width="18" height="18" transform="rotate(45)"/></g>
+</g>
+</g>
+<g id="strip">
+<g id="scalebar">
+<rect class="sb-dark" x="120" y="862" width="87.5" height="10"/>
+<rect class="sb-light" x="207.5" y="862" width="87.5" height="10"/>
+<rect class="sb-dark" x="295" y="862" width="87.5" height="10"/>
+<rect class="sb-light" x="382.5" y="862" width="87.5" height="10"/>
+<rect class="sb-dark" x="470" y="862" width="87.5" height="10"/>
+<rect class="sb-light" x="557.5" y="862" width="87.5" height="10"/>
+<rect class="sb-dark" x="645" y="862" width="87.5" height="10"/>
+<rect class="sb-light" x="732.5" y="862" width="87.5" height="10"/>
+</g>
+<g id="hours"><rect class="hour-box" x="120" y="862" width="700" height="10"/>
+<line class="hour-tick" x1="220" y1="862" x2="220" y2="872"/>
+<line class="hour-tick" x1="320" y1="862" x2="320" y2="872"/>
+<line class="hour-tick" x1="420" y1="862" x2="420" y2="872"/>
+<line class="hour-tick" x1="520" y1="862" x2="520" y2="872"/>
+<line class="hour-tick" x1="620" y1="862" x2="620" y2="872"/>
+<line class="hour-tick" x1="720" y1="862" x2="720" y2="872"/>
+<text class="strip-label" x="120" y="950">4pm</text><text class="strip-label" x="820" y="950" text-anchor="end">11pm</text></g>
+<path id="busy" class="busy" pathLength="1" d="M120 856.6 C145 856.6 145 854.6 170 854.6 C195 854.6 195 851.2 220 851.2 C245 851.2 245 845.7 270 845.7 C295 845.7 295 838.9 320 838.9 C345 838.9 345 832.1 370 832.1 C395 832.1 395 827 420 827 C445 827 445 826 470 826 C495 826 495 829.4 520 829.4 C545 829.4 545 834.8 570 834.8 C595 834.8 595 841 620 841 C645 841 645 846.4 670 846.4 C695 846.4 695 851.2 720 851.2 C745 851.2 745 854.9 770 854.9 C795 854.9 795 857.3 820 857.3"/>
+<g id="bars">
+<rect class="bar-dot" x="-3.6" y="-3.6" width="7.2" height="7.2" transform="translate(102 884) rotate(45)"/><rect class="shift-bar" x="120" y="880" width="700" height="8"/>
+<rect class="bar-dot" x="-3.6" y="-3.6" width="7.2" height="7.2" transform="translate(102 897) rotate(45)"/><rect class="shift-bar" x="270" y="893" width="450" height="8"/>
+<rect class="bar-dot" x="-3.6" y="-3.6" width="7.2" height="7.2" transform="translate(102 910) rotate(45)"/><rect class="shift-bar" x="220" y="906" width="600" height="8"/>
+<rect class="bar-dot" x="-3.6" y="-3.6" width="7.2" height="7.2" transform="translate(102 923) rotate(45)"/><rect class="shift-bar" x="320" y="919" width="400" height="8"/>
+</g>
+<text id="rotaLabel" class="rota-label" x="120" y="822">Tuesday: 2 line, 2 floor</text>
+</g>
+<g id="patio">
+  <path class="b-line" pathLength="1" d="M120 672 V800 H860 V672"/>
+  <circle class="b-thin" cx="200" cy="738" r="15"/><circle class="b-thin" cx="173" cy="738" r="7"/><circle class="b-thin" cx="227" cy="738" r="7"/><circle class="b-thin" cx="330" cy="738" r="15"/><circle class="b-thin" cx="303" cy="738" r="7"/><circle class="b-thin" cx="357" cy="738" r="7"/><circle class="b-thin" cx="620" cy="738" r="15"/><circle class="b-thin" cx="593" cy="738" r="7"/><circle class="b-thin" cx="647" cy="738" r="7"/><circle class="b-thin" cx="760" cy="738" r="15"/><circle class="b-thin" cx="733" cy="738" r="7"/><circle class="b-thin" cx="787" cy="738" r="7"/>
+</g>
+<g clip-path="url(#sheetClip)">
+<g id="street"><path class="curb" pathLength="1" d="M1110 -22 V972"/><path class="curb" pathLength="1" d="M1290 -22 V972"/></g>
+<g id="placeB">
+  <path class="b-wall" pathLength="1" d="M1340 160 H2060 V640 H1730"/>
+  <path class="b-wall" pathLength="1" d="M1670 640 H1340 V160"/>
+  <path class="b-line" pathLength="1" d="M1340 300 H1640"/>
+  <rect class="b-thin" x="1700" y="292" width="360" height="14"/>
+  <rect class="b-thin" x="1760" y="190" width="42" height="64" rx="3"/><rect class="b-thin" x="1816" y="190" width="42" height="64" rx="3"/><rect class="b-thin" x="1872" y="190" width="42" height="64" rx="3"/><rect class="b-thin" x="1928" y="190" width="42" height="64" rx="3"/>
+  <rect class="b-thin" x="1370" y="180" width="140" height="44"/>
+  <rect class="b-thin" x="1428" y="378" width="44" height="44"/><rect class="b-thin" x="1428" y="518" width="44" height="44"/><rect class="b-thin" x="1558" y="378" width="44" height="44"/><rect class="b-thin" x="1558" y="518" width="44" height="44"/><rect class="b-thin" x="1808" y="378" width="44" height="44"/><rect class="b-thin" x="1808" y="518" width="44" height="44"/><rect class="b-thin" x="1938" y="378" width="44" height="44"/><rect class="b-thin" x="1938" y="518" width="44" height="44"/>
+  <path class="b-thin" d="M1670 640 V584"/><path class="b-thin" d="M1730 640 A60 60 0 0 0 1670 580"/>
+  <text id="placeName" class="place-name" x="1700" y="718" text-anchor="middle">Your place</text>
+</g>
+<g id="link"><path id="linkPath" class="b-line" pathLength="1" d="M966 140 H1200 V230 H1334"/><circle class="b-dot" cx="966" cy="140" r="4.5"/><circle class="b-dot" cx="1334" cy="230" r="4.5"/></g>
+</g>
+<g id="roll" transform="translate(2180 0)"><rect x="0" y="-46" width="34" height="1042" fill="url(#rollShadow)"/><rect x="-14" y="-48" width="26" height="1046" rx="13" fill="url(#rollShade)" class="roll-body"/></g>
+<g id="tags" aria-hidden="true"><g class="tag" transform="translate(420 622)"><circle r="17"/><text y="6" text-anchor="middle">1</text></g><g class="tag" transform="translate(548 40)"><circle r="17"/><text y="6" text-anchor="middle">2</text></g><g class="tag" transform="translate(92 840)"><circle r="17"/><text y="6" text-anchor="middle">3</text></g><g class="tag" transform="translate(560 410)"><circle r="17"/><text y="6" text-anchor="middle">4</text></g><g class="tag" transform="translate(1330 690)"><circle r="17"/><text y="6" text-anchor="middle">5</text></g></g>
+</g>
+      </svg>
+      <ol class="beats">
+        <li data-beat="1">Last night's sales, one dot per dish.</li>
+        <li data-beat="2">This morning's count, with a little over.</li>
+        <li data-beat="3">In blue, because we're still drawing it: shifts that fit the night.</li>
+        <li data-beat="4">Slow Tuesdays, filled. Each ring is a regular coming back.<span class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i></span></li>
+        <li data-beat="5"><span class="stretch">Busier nights need a bigger sheet.</span></li>
+      </ol>
+      <div class="legend">
+        <p class="legend-title">Example restaurant</p>
+        <p class="legend-row"><span class="swatch ink" aria-hidden="true"></span>Ink is built.</p>
+        <p class="legend-row"><span class="swatch blue" aria-hidden="true"></span>Blue is proposed.</p>
+      </div>
+      <p class="payoff">Somebody has to count the gnocchi. It doesn't have to be you.</p>
+    </div>
+
+    <figure class="wide-still" aria-hidden="true">
+      <svg viewBox="-40 -40 2220 1030"><use href="#everything"/></svg>
+    </figure>
+  </section>
+
+  <section id="notes" class="sheet notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">What it takes.</h2>
+    <div class="notes-body">
+      <ol>
+        <li><span>A nightly download from your POS; most systems work.</span></li>
+        <li><span>About five weeks of past sales.</span></li>
+        <li><span>About a week of setup.</span></li>
+        <li><span>You check our counts against what sold, then decide.</span></li>
+      </ol>
+      <p class="free">Free while we're in a pilot.</p>
+    </div>
+  </section>
+
+  <section id="start" class="sheet titleblock" aria-labelledby="start-h">
+    <div class="tb-intro">
+      <h2 id="start-h">Tell us where you're headed.</h2>
+      <p>We're a small team of university students. We'll write back by email.</p>
+      <div class="tb-plan" aria-hidden="true">
+        <svg viewBox="1320 140 780 610"><use href="#placeB"/></svg>
+        <p class="stamp" id="stamp">Received</p>
+      </div>
+    </div>
+    <form class="tb-form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+      <div class="cell"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="cell"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" autocomplete="organization" required maxlength="80"></div>
+      <div class="cell"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="cell"><label for="f-phone">Phone <span>(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="cell wide"><label for="f-pos">Which POS <span>(optional)</span></label><input id="f-pos" name="pos"></div>
+      <div class="cell wide"><label for="f-msg">Anything else <span>(optional)</span></label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="cell wide send">
+        <button class="btn" type="submit" id="send">Send it over</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Tooey LLC. Drawn by a small team.</p>
+  <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+  <p><a href="privacy.html">Privacy</a></p>
+</footer>
+
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="site.js" defer></script>
+</body>
+</html>
