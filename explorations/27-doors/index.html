@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: the back end of your restaurant</title>
+<meta name="description" content="Tooey works out prep, shifts and slow nights from your restaurant's own sales, so you make more money and spend less time managing. Free during the pilot.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/young-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/red-hat-text.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function (d) {
+    var r = d.documentElement;
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('motion');
+    setTimeout(function () { if (!window.__tooey) r.classList.remove('motion'); }, 3000);
+  })(document);
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Shared paint: oak, brass, steel and the lamp pool. -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-oak" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4a3626"/><stop offset=".35" stop-color="#5b4331"/><stop offset=".7" stop-color="#523c2b"/><stop offset="1" stop-color="#433122"/>
+    </linearGradient>
+    <linearGradient id="g-brass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6e5a3c"/><stop offset=".45" stop-color="#c2a674"/><stop offset="1" stop-color="#5f4d33"/>
+    </linearGradient>
+    <linearGradient id="g-steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#555a59"/><stop offset=".3" stop-color="#7b807e"/><stop offset=".55" stop-color="#626766"/><stop offset=".85" stop-color="#727775"/><stop offset="1" stop-color="#4f5453"/>
+    </linearGradient>
+    <pattern id="g-brush" width="7" height="240" patternUnits="userSpaceOnUse">
+      <path d="M1.5 0V240" stroke="#fff" stroke-opacity=".035"/><path d="M4.5 0V240" stroke="#000" stroke-opacity=".05"/>
+    </pattern>
+    <radialGradient id="g-pool">
+      <stop offset="0" stop-color="#f1d2a0" stop-opacity=".42"/><stop offset=".4" stop-color="#f1d2a0" stop-opacity=".13"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g-cool">
+      <stop offset="0" stop-color="#eef0ea" stop-opacity=".5"/><stop offset=".45" stop-color="#eef0ea" stop-opacity=".12"/><stop offset="1" stop-color="#eef0ea" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g-port" cx=".42" cy=".38" r=".7">
+      <stop offset="0" stop-color="#f4f4ef"/><stop offset=".7" stop-color="#c9cdc6"/><stop offset="1" stop-color="#9ea39c"/>
+    </radialGradient>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./"><img src="logo-porcelain.png" alt="Tooey" width="343" height="148"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main">
+      <a href="#prep">Prep</a>
+      <a href="#start">Pilot</a>
+      <a class="btn btn-small" href="#talk">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ROOM 1: outside, then through the front doors, past the host stand, to a table. -->
+  <section class="room r-dining" data-room="dining" aria-labelledby="hero-title">
+    <div class="pin">
+
+      <div class="layer outside street" style="--fx:.62">
+        <div class="stage">
+          <svg class="art" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="s-wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#211f1d"/><stop offset=".5" stop-color="#2f2d2a"/><stop offset="1" stop-color="#2c2a27"/>
+              </linearGradient>
+              <pattern id="s-brick" width="64" height="24" patternUnits="userSpaceOnUse">
+                <path d="M0 .6H64M0 12.6H64M.6 0V12M32.6 12V24" stroke="#151413" stroke-opacity=".6" stroke-width="1.3" fill="none"/>
+                <path d="M2 1.9H31M34 13.9H63" stroke="#fff" stroke-opacity=".03"/>
+              </pattern>
+              <linearGradient id="s-left" x1="0" x2="1">
+                <stop offset="0" stop-color="#262422" stop-opacity=".9"/><stop offset=".36" stop-color="#262422" stop-opacity=".55"/><stop offset=".52" stop-color="#262422" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="s-interior" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2a221b"/><stop offset=".42" stop-color="#6e5338"/><stop offset=".78" stop-color="#4c3a28"/><stop offset="1" stop-color="#2b231b"/>
+              </linearGradient>
+              <linearGradient id="s-spill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f1d2a0" stop-opacity=".3"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="s-awn" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#46564a"/><stop offset="1" stop-color="#2b352e"/>
+              </linearGradient>
+              <pattern id="s-stripe" width="46" height="10" patternUnits="userSpaceOnUse"><rect width="23" height="10" fill="#000" fill-opacity=".17"/></pattern>
+              <linearGradient id="s-under" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="s-b10" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="10"/></filter>
+              <filter id="s-b3"><feGaussianBlur stdDeviation="3"/></filter>
+              <mask id="s-hole" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900">
+                <rect width="1600" height="900" fill="#fff"/><rect x="950" y="360" width="260" height="440" fill="#000"/>
+              </mask>
+            </defs>
+            <g mask="url(#s-hole)">
+              <rect width="1600" height="900" fill="url(#s-wall)"/>
+              <rect width="1600" height="800" fill="url(#s-brick)"/>
+
+              <!-- lamp light on the brick -->
+              <g class="s-wallglow">
+                <ellipse cx="900" cy="440" rx="150" ry="230" fill="url(#g-pool)"/>
+                <ellipse cx="1260" cy="440" rx="150" ry="230" fill="url(#g-pool)"/>
+                <ellipse cx="1080" cy="790" rx="260" ry="60" fill="url(#g-pool)"/>
+              </g>
+
+              <!-- lit menu case -->
+              <g>
+                <rect x="782" y="430" width="88" height="112" fill="#000" opacity=".5" filter="url(#s-b3)" transform="translate(5 7)"/>
+                <rect x="780" y="428" width="88" height="112" rx="2" fill="#4a3626"/>
+                <rect x="788" y="436" width="72" height="96" fill="#d9d2c3"/>
+                <g fill="#232a2f" opacity=".5">
+                  <rect x="806" y="448" width="36" height="3"/>
+                  <rect x="798" y="462" width="40" height="2"/><rect x="842" y="462" width="8" height="2"/>
+                  <rect x="798" y="472" width="32" height="2"/><rect x="842" y="472" width="8" height="2"/>
+                  <rect x="798" y="482" width="44" height="2"/><rect x="842" y="482" width="8" height="2"/>
+                  <rect x="798" y="496" width="28" height="2"/><rect x="842" y="496" width="8" height="2"/>
+                  <rect x="798" y="506" width="38" height="2"/><rect x="842" y="506" width="8" height="2"/>
+                </g>
+                <rect x="788" y="436" width="72" height="96" fill="#f1d2a0" opacity=".16"/>
+                <path d="M788 436H830L788 486Z" fill="#fff" opacity=".08"/>
+                <rect class="s-dark" x="788" y="436" width="72" height="96" fill="#14110e"/>
+              </g>
+
+              <!-- right window -->
+              <g transform="translate(1300 352)">
+                <rect x="-8" y="-8" width="276" height="366" fill="#171615"/>
+                <rect width="260" height="350" fill="#4a3626"/>
+                <rect x="14" y="14" width="232" height="322" fill="url(#s-interior)"/>
+                <ellipse cx="78" cy="150" rx="90" ry="120" fill="url(#g-pool)"/>
+                <ellipse cx="186" cy="150" rx="90" ry="120" fill="url(#g-pool)"/>
+                <path d="M78 14V122M186 14V122" stroke="#1a1512" stroke-width="2"/>
+                <path d="M56 142Q58 116 78 114Q98 116 100 142Z" fill="#1c1713"/>
+                <path d="M164 142Q166 116 186 114Q206 116 208 142Z" fill="#1c1713"/>
+                <ellipse cx="78" cy="142" rx="20" ry="3.5" fill="#f1d2a0"/>
+                <ellipse cx="186" cy="142" rx="20" ry="3.5" fill="#f1d2a0"/>
+                <circle cx="96" cy="250" r="20" fill="#2b2119"/>
+                <path d="M56 300C56 276 74 268 96 268C118 268 136 276 136 300Z" fill="#2b2119"/>
+                <path d="M80 238Q96 226 112 240" stroke="#f1d2a0" stroke-opacity=".35" stroke-width="2" fill="none"/>
+                <circle cx="190" cy="258" r="18" fill="#30251c"/>
+                <path d="M156 300C156 280 170 274 190 274C210 274 224 280 224 300Z" fill="#30251c"/>
+                <rect x="14" y="298" width="232" height="38" fill="#241c15"/>
+                <rect x="14" y="298" width="232" height="2.5" fill="#f1d2a0" fill-opacity=".45"/>
+                <rect x="14" y="98" width="232" height="6" fill="#4a3626"/>
+                <rect x="127" y="14" width="6" height="322" fill="#4a3626"/>
+                <path d="M14 14H96L14 120Z" fill="#fff" fill-opacity=".045"/>
+                <path d="M140 336L246 196V250L196 336Z" fill="#fff" fill-opacity=".03"/>
+                <rect class="s-dark" x="14" y="14" width="232" height="322" fill="#14110e"/>
+                <rect x="-16" y="350" width="292" height="14" fill="#47433d"/>
+                <rect x="-16" y="350" width="292" height="2" fill="#6c665e"/>
+              </g>
+
+              <!-- door surround and transom -->
+              <rect x="926" y="300" width="308" height="500" fill="url(#g-oak)"/>
+              <rect x="926" y="300" width="308" height="2" fill="#7d6148"/>
+              <rect x="950" y="316" width="260" height="34" fill="#6e5338"/>
+              <rect x="950" y="316" width="260" height="34" fill="#f1d2a0" opacity=".35"/>
+              <rect class="s-dark" x="950" y="316" width="260" height="34" fill="#14110e"/>
+              <path d="M1015 316V350M1080 316V350M1145 316V350" stroke="#4a3626" stroke-width="5"/>
+              <rect x="950" y="350" width="260" height="10" fill="#3b2b1e"/>
+              <rect x="944" y="360" width="6" height="440" fill="#2a1e15"/>
+              <rect x="1210" y="360" width="6" height="440" fill="#2a1e15"/>
+
+              <!-- awning -->
+              <rect x="880" y="318" width="400" height="30" fill="#000" opacity=".5" filter="url(#s-b10)"/>
+              <path d="M898 238H1262L1292 298H868Z" fill="url(#s-awn)"/>
+              <path d="M898 238H1262L1292 298H868Z" fill="url(#s-stripe)"/>
+              <path d="M898 238.5H1262" stroke="#7d8b7d" stroke-opacity=".5"/>
+              <rect x="868" y="298" width="424" height="24" fill="#2b352e"/>
+              <rect x="868" y="298" width="424" height="24" fill="url(#s-stripe)"/>
+              <rect x="868" y="319" width="424" height="3" fill="#f1d2a0" fill-opacity=".2"/>
+              <rect x="896" y="232" width="368" height="6" fill="#1b1a18"/>
+
+              <!-- sconces -->
+              <g class="s-sconce">
+                <rect x="895" y="404" width="10" height="34" rx="2" fill="#2b2622"/>
+                <path d="M900 420H884" stroke="#6e5a3c" stroke-width="3"/>
+                <circle cx="880" cy="412" r="12" fill="#f1d2a0"/>
+                <circle cx="880" cy="412" r="30" fill="#f1d2a0" opacity=".35" filter="url(#s-b10)"/>
+                <rect x="1255" y="404" width="10" height="34" rx="2" fill="#2b2622"/>
+                <path d="M1260 420H1276" stroke="#6e5a3c" stroke-width="3"/>
+                <circle cx="1280" cy="412" r="12" fill="#f1d2a0"/>
+                <circle cx="1280" cy="412" r="30" fill="#f1d2a0" opacity=".35" filter="url(#s-b10)"/>
+              </g>
+              <circle class="s-dark s-bulb" cx="880" cy="412" r="12" fill="#3a332b"/>
+              <circle class="s-dark s-bulb" cx="1280" cy="412" r="12" fill="#3a332b"/>
+
+              <!-- planter -->
+              <g>
+                <ellipse cx="1262" cy="800" rx="34" ry="6" fill="#000" opacity=".45"/>
+                <path d="M1240 742H1284L1280 800H1244Z" fill="#3f3b35"/>
+                <path d="M1240 742H1284" stroke="#5d5850" stroke-width="2"/>
+                <circle cx="1252" cy="724" r="20" fill="#2c3a2e"/><circle cx="1274" cy="716" r="22" fill="#324235"/><circle cx="1262" cy="700" r="18" fill="#36473a"/>
+                <path d="M1244 708Q1250 694 1262 690" stroke="#f1d2a0" stroke-opacity=".3" stroke-width="3" fill="none"/>
+              </g>
+
+              <!-- pavement -->
+              <rect y="800" width="1600" height="100" fill="#201e1c"/>
+              <rect y="800" width="1600" height="2" fill="#3a3733"/>
+              <rect x="916" y="800" width="328" height="16" fill="#47433d"/>
+              <rect x="916" y="800" width="328" height="2" fill="#6c665e"/>
+              <path class="s-spill" d="M950 816H1210L1330 900H830Z" fill="url(#s-spill)"/>
+              <path class="s-spill" d="M1314 800H1546L1600 900H1290Z" fill="url(#s-spill)" opacity=".45"/>
+              <rect y="884" width="1600" height="16" fill="#282624"/>
+              <rect y="884" width="1600" height="1.5" fill="#45413b"/>
+
+              <rect width="1600" height="900" fill="url(#s-left)"/>
+            </g>
+          </svg>
+
+          <div class="doorway" style="--x:950;--y:360;--w:260;--h:440">
+            <div class="leaf leaf-l">
+              <svg viewBox="0 0 130 440" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path fill-rule="evenodd" fill="url(#g-oak)" d="M0 0H130V440H0Z M18 20V300H112V20Z"/>
+                <rect x="18" y="20" width="94" height="280" fill="#f1d2a0" fill-opacity=".1"/>
+                <rect class="s-dark" x="18" y="20" width="94" height="280" fill="#14110e"/>
+                <path d="M18 20H74L18 128Z" fill="#fff" fill-opacity=".07"/>
+                <rect x="18" y="20" width="94" height="280" fill="none" stroke="#2a1d14" stroke-width="4"/>
+                <rect x="18" y="322" width="94" height="100" fill="#3f2d20"/>
+                <path d="M18 323.5H112M19.5 322V422" stroke="#24190f" stroke-width="3"/>
+                <path d="M111 322V422M18 421H112" stroke="#6e533b" stroke-width="2"/>
+                <rect x="102" y="150" width="8" height="132" rx="4" fill="url(#g-brass)"/>
+                <rect x="104.5" y="156" width="1.6" height="118" fill="#fff" fill-opacity=".45"/>
+                <rect x="127" width="3" height="440" fill="#1a130d"/>
+              </svg>
+            </div>
+            <div class="leaf leaf-r">
+              <svg viewBox="0 0 130 440" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g transform="translate(130 0) scale(-1 1)">
+                  <path fill-rule="evenodd" fill="url(#g-oak)" d="M0 0H130V440H0Z M18 20V300H112V20Z"/>
+                  <rect x="18" y="20" width="94" height="280" fill="#f1d2a0" fill-opacity=".1"/>
+                  <rect class="s-dark" x="18" y="20" width="94" height="280" fill="#14110e"/>
+                  <path d="M112 300H70L112 210Z" fill="#fff" fill-opacity=".05"/>
+                  <rect x="18" y="20" width="94" height="280" fill="none" stroke="#2a1d14" stroke-width="4"/>
+                  <rect x="18" y="322" width="94" height="100" fill="#3f2d20"/>
+                  <path d="M18 323.5H112M19.5 322V422" stroke="#24190f" stroke-width="3"/>
+                  <path d="M111 322V422M18 421H112" stroke="#6e533b" stroke-width="2"/>
+                  <rect x="102" y="150" width="8" height="132" rx="4" fill="url(#g-brass)"/>
+                  <rect x="104.5" y="156" width="1.6" height="118" fill="#fff" fill-opacity=".45"/>
+                  <rect x="127" width="3" height="440" fill="#120d09"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="txt txt-hero">
+          <h1 id="hero-title">The back end of your restaurant, worked out from your own&nbsp;sales.</h1>
+          <p class="lead">Prep, shifts and slow nights, planned for you. Make more money and spend less time managing.</p>
+          <a class="btn" href="#talk">Join the free pilot</a>
+        </div>
+      </div>
+
+      <div class="layer inside dining" style="--fx:.62" aria-labelledby="dining-title" role="group">
+        <div class="stage">
+          <svg class="art" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="d-wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#22201e"/><stop offset=".6" stop-color="#35322e"/><stop offset="1" stop-color="#3a3632"/>
+              </linearGradient>
+              <linearGradient id="d-wain" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#4c3828"/><stop offset="1" stop-color="#34271c"/>
+              </linearGradient>
+              <linearGradient id="d-banq" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#5a3731"/><stop offset="1" stop-color="#3b2522"/>
+              </linearGradient>
+              <linearGradient id="d-floor" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#271f18"/><stop offset="1" stop-color="#372b20"/>
+              </linearGradient>
+              <radialGradient id="d-marble" cx=".42" cy=".3" r=".75">
+                <stop offset="0" stop-color="#f2f1ec"/><stop offset="1" stop-color="#bab4a9"/>
+              </radialGradient>
+              <linearGradient id="d-cone" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f1d2a0" stop-opacity=".2"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="d-left" x1="0" x2="1">
+                <stop offset="0" stop-color="#252321" stop-opacity=".92"/><stop offset=".36" stop-color="#252321" stop-opacity=".6"/><stop offset=".52" stop-color="#252321" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="d-blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="9"/></filter>
+              <g id="d-shade">
+                <path d="M-25 0Q-23 -27 0 -29Q23 -27 25 0Z" fill="#1b1815"/>
+                <path d="M-25 0Q-23 -27 0 -29" stroke="#f1d2a0" stroke-opacity=".2" fill="none"/>
+                <ellipse rx="23" ry="4" fill="#f1d2a0"/>
+                <ellipse cy="5" rx="36" ry="11" fill="#f1d2a0" opacity=".4" filter="url(#d-blur)"/>
+              </g>
+              <g id="d-tb">
+                <ellipse cy="38" rx="20" ry="4" fill="#000" opacity=".5"/>
+                <rect x="-2.5" y="6" width="5" height="32" fill="#191512"/>
+                <ellipse cy="2" rx="56" ry="9.5" fill="#a9a398"/>
+                <ellipse rx="56" ry="9" fill="url(#d-marble)"/>
+              </g>
+              <g id="d-ft">
+                <ellipse cy="142" rx="74" ry="10" fill="#000" opacity=".55" filter="url(#d-blur)"/>
+                <rect x="-4.5" y="10" width="9" height="128" fill="#15120f"/>
+                <ellipse cy="138" rx="34" ry="6" fill="#1d1915"/>
+                <ellipse cy="3" rx="98" ry="17" fill="#a9a398"/>
+                <ellipse rx="98" ry="16" fill="url(#d-marble)"/>
+              </g>
+              <g id="d-chair">
+                <path d="M0 136V40Q0 12 24 12Q48 12 48 40V136" stroke="#1d1814" stroke-width="5" fill="none"/>
+                <path d="M8 136V48Q8 24 24 24Q40 24 40 48V136" stroke="#1d1814" stroke-width="3" fill="none"/>
+                <path d="M2 30Q24 6 46 30" stroke="#f1d2a0" stroke-opacity=".18" stroke-width="2" fill="none"/>
+              </g>
+            </defs>
+
+            <rect width="1600" height="900" fill="#2b2825"/>
+            <rect width="1600" height="480" fill="url(#d-wall)"/>
+            <rect y="150" width="1600" height="6" fill="#403c36"/>
+            <rect y="150" width="1600" height="1.5" fill="#5c564d"/>
+
+            <!-- wall light -->
+            <g>
+              <ellipse cx="720" cy="390" rx="120" ry="130" fill="url(#g-pool)"/>
+              <ellipse cx="920" cy="390" rx="120" ry="130" fill="url(#g-pool)"/>
+              <ellipse cx="1120" cy="390" rx="120" ry="130" fill="url(#g-pool)"/>
+              <ellipse cx="1320" cy="390" rx="120" ry="130" fill="url(#g-pool)"/>
+              <ellipse cx="1520" cy="390" rx="120" ry="130" fill="url(#g-pool)"/>
+            </g>
+
+            <!-- chalkboard -->
+            <g>
+              <rect x="968" y="352" width="104" height="72" fill="#000" opacity=".4" transform="translate(4 6)" filter="url(#d-blur)"/>
+              <rect x="966" y="350" width="108" height="76" rx="2" fill="#4a3626"/>
+              <rect x="972" y="356" width="96" height="64" fill="#262a27"/>
+              <text class="chalk" x="1020" y="396" text-anchor="middle">Tuesday</text>
+              <path d="M986 406Q1020 410 1054 405" stroke="#e9e6de" stroke-opacity=".35" stroke-width="1.5" fill="none"/>
+            </g>
+
+            <!-- wainscot and banquette -->
+            <rect y="470" width="1600" height="130" fill="url(#d-wain)"/>
+            <g stroke="#2b1f16" stroke-width="2" fill="none" opacity=".7">
+              <path d="M40 480V596M200 480V596M360 480V596M520 480V596M680 480V596M840 480V596M1000 480V596M1160 480V596M1320 480V596M1480 480V596"/>
+            </g>
+            <rect y="470" width="1600" height="3" fill="#6e5440"/>
+            <rect y="488" width="1600" height="74" fill="url(#d-banq)"/>
+            <g stroke="#2d1b18" stroke-width="2" opacity=".6"><path d="M60 492V560M140 492V560M220 492V560M300 492V560M380 492V560M460 492V560M540 492V560M620 492V560M700 492V560M780 492V560M860 492V560M940 492V560M1020 492V560M1100 492V560M1180 492V560M1260 492V560M1340 492V560M1420 492V560M1500 492V560M1580 492V560"/></g>
+            <rect y="488" width="1600" height="2" fill="#f1d2a0" fill-opacity=".14"/>
+            <rect y="562" width="1600" height="38" fill="#3a2421"/>
+            <rect y="562" width="1600" height="2" fill="#7a4d45" opacity=".6"/>
+
+            <!-- floor -->
+            <rect y="600" width="1600" height="300" fill="url(#d-floor)"/>
+            <g stroke="#000" stroke-opacity=".28" stroke-width="1.5">
+              <path d="M0 609H1600M0 621H1600M0 636H1600M0 655H1600M0 678H1600M0 706H1600M0 740H1600M0 781H1600M0 830H1600M0 888H1600"/>
+            </g>
+            <g stroke="#000" stroke-opacity=".2" stroke-width="1.5">
+              <path d="M210 609V621M640 621V636M1180 609V621M420 636V655M1010 636V655M1400 655V678M300 678V706M860 678V706M560 706V740M1240 706V740M140 740V781M760 740V781M1460 781V830M420 781V830M1000 830V888"/>
+            </g>
+            <g>
+              <ellipse cx="760" cy="770" rx="200" ry="70" fill="url(#g-pool)" opacity=".55"/>
+              <ellipse cx="1060" cy="770" rx="200" ry="70" fill="url(#g-pool)" opacity=".55"/>
+              <ellipse cx="1360" cy="770" rx="200" ry="70" fill="url(#g-pool)" opacity=".55"/>
+            </g>
+
+            <!-- back row: dim tables on the left -->
+            <use href="#d-tb" x="320" y="575" opacity=".55"/>
+            <use href="#d-tb" x="520" y="575" opacity=".7"/>
+
+            <!-- back row lamps and tables -->
+            <g class="lamp add" style="--k:2">
+              <path d="M720 0V302" stroke="#151311" stroke-width="2"/>
+              <path d="M697 330H743L790 574H650Z" fill="url(#d-cone)"/>
+              <use href="#d-shade" x="720" y="330"/>
+              <ellipse cx="720" cy="575" rx="54" ry="8" fill="#f1d2a0" opacity=".25"/>
+            </g>
+            <g class="lamp" >
+              <path d="M920 0V302" stroke="#151311" stroke-width="2"/>
+              <path d="M897 330H943L990 574H850Z" fill="url(#d-cone)"/>
+              <use href="#d-shade" x="920" y="330"/>
+            </g>
+            <g class="lamp add" style="--k:4">
+              <path d="M1120 0V302" stroke="#151311" stroke-width="2"/>
+              <path d="M1097 330H1143L1190 574H1050Z" fill="url(#d-cone)"/>
+              <use href="#d-shade" x="1120" y="330"/>
+            </g>
+            <g class="lamp add" style="--k:0">
+              <path d="M1320 0V302" stroke="#151311" stroke-width="2"/>
+              <path d="M1297 330H1343L1390 574H1250Z" fill="url(#d-cone)"/>
+              <use href="#d-shade" x="1320" y="330"/>
+            </g>
+            <g class="lamp add" style="--k:5">
+              <path d="M1520 0V302" stroke="#151311" stroke-width="2"/>
+              <path d="M1497 330H1543L1590 574H1450Z" fill="url(#d-cone)"/>
+              <use href="#d-shade" x="1520" y="330"/>
+            </g>
+
+            <!-- back row diners (behind tables, on the banquette) -->
+            <g class="dn add" style="--k:2"><circle cx="730" cy="512" r="14" fill="#4a3f37"/><path d="M706 578C706 546 716 530 730 530C744 530 756 546 756 578Z" fill="#4a3f37"/><path d="M719 503Q730 495 741 503" stroke="#f1d2a0" stroke-opacity=".45" stroke-width="2" fill="none"/></g>
+            <g class="dn"><circle cx="906" cy="510" r="14" fill="#4a3f37"/><path d="M882 578C882 546 892 528 906 528C920 528 932 546 932 578Z" fill="#4a3f37"/><path d="M895 501Q906 493 917 501" stroke="#f1d2a0" stroke-opacity=".45" stroke-width="2" fill="none"/>
+              <circle cx="944" cy="514" r="13" fill="#51463c"/><path d="M922 578C922 548 932 532 944 532C956 532 968 548 968 578Z" fill="#51463c"/></g>
+            <g class="dn add" style="--k:4"><circle cx="1132" cy="512" r="14" fill="#4a3f37"/><path d="M1108 578C1108 546 1118 530 1132 530C1146 530 1158 546 1158 578Z" fill="#4a3f37"/><path d="M1121 503Q1132 495 1143 503" stroke="#f1d2a0" stroke-opacity=".45" stroke-width="2" fill="none"/></g>
+            <g class="dn add" style="--k:0"><circle cx="1306" cy="510" r="14" fill="#4a3f37"/><path d="M1282 578C1282 546 1292 528 1306 528C1320 528 1332 546 1332 578Z" fill="#4a3f37"/><path d="M1295 501Q1306 493 1317 501" stroke="#f1d2a0" stroke-opacity=".45" stroke-width="2" fill="none"/>
+              <circle cx="1342" cy="514" r="13" fill="#51463c"/><path d="M1320 578C1320 548 1330 532 1342 532C1354 532 1366 548 1366 578Z" fill="#51463c"/></g>
+            <g class="dn add" style="--k:5"><circle cx="1510" cy="512" r="14" fill="#4a3f37"/><path d="M1486 578C1486 546 1496 530 1510 530C1524 530 1536 546 1536 578Z" fill="#4a3f37"/><path d="M1499 503Q1510 495 1521 503" stroke="#f1d2a0" stroke-opacity=".45" stroke-width="2" fill="none"/></g>
+
+            <use href="#d-tb" x="720" y="575"/>
+            <use href="#d-tb" x="920" y="575"/>
+            <use href="#d-tb" x="1120" y="575"/>
+            <use href="#d-tb" x="1320" y="575"/>
+            <use href="#d-tb" x="1520" y="575"/>
+            <g fill="#f2f1ec" opacity=".75"><rect x="902" y="566" width="3" height="10"/><rect x="934" y="567" width="3" height="9"/><rect x="1316" y="566" width="3" height="10"/></g>
+
+            <!-- front row lamps -->
+            <g class="lamp add" style="--k:1">
+              <path d="M760 0V200" stroke="#151311" stroke-width="2.5"/>
+              <path d="M724 236H796L880 724H640Z" fill="url(#d-cone)" opacity=".8"/>
+              <use href="#d-shade" transform="translate(760 236) scale(1.55)"/>
+              <ellipse cx="760" cy="724" rx="92" ry="14" fill="#f1d2a0" opacity=".3"/>
+            </g>
+            <g class="lamp add" style="--k:3">
+              <path d="M1060 0V200" stroke="#151311" stroke-width="2.5"/>
+              <path d="M1024 236H1096L1180 724H940Z" fill="url(#d-cone)" opacity=".8"/>
+              <use href="#d-shade" transform="translate(1060 236) scale(1.55)"/>
+              <ellipse cx="1060" cy="724" rx="92" ry="14" fill="#f1d2a0" opacity=".3"/>
+            </g>
+            <g class="lamp">
+              <path d="M1360 0V200" stroke="#151311" stroke-width="2.5"/>
+              <path d="M1324 236H1396L1480 724H1240Z" fill="url(#d-cone)" opacity=".8"/>
+              <use href="#d-shade" transform="translate(1360 236) scale(1.55)"/>
+              <ellipse cx="1360" cy="724" rx="92" ry="14" fill="#f1d2a0" opacity=".3"/>
+            </g>
+
+            <!-- front row: empty chairs, then diners -->
+            <use href="#d-chair" x="316" y="620" opacity=".6"/>
+            <use href="#d-ft" x="460" y="724" opacity=".5"/>
+            <use href="#d-chair" x="556" y="620" opacity=".6"/>
+
+            <g class="dn add" style="--k:1">
+              <circle cx="644" cy="652" r="21" fill="#2b2521"/>
+              <path d="M606 790C606 712 620 680 644 680C668 680 684 712 684 790Z" fill="#2b2521"/>
+              <path d="M650 633Q666 640 664 660" stroke="#f1d2a0" stroke-opacity=".5" stroke-width="2.5" fill="none"/>
+              <circle cx="878" cy="656" r="20" fill="#302924"/>
+              <path d="M842 790C842 716 856 684 878 684C900 684 914 716 914 790Z" fill="#302924"/>
+              <path d="M872 638Q858 644 860 662" stroke="#f1d2a0" stroke-opacity=".5" stroke-width="2.5" fill="none"/>
+            </g>
+            <use href="#d-ft" x="760" y="724"/>
+
+            <g class="dn add" style="--k:3">
+              <circle cx="944" cy="652" r="21" fill="#2b2521"/>
+              <path d="M906 790C906 712 920 680 944 680C968 680 984 712 984 790Z" fill="#2b2521"/>
+              <path d="M950 633Q966 640 964 660" stroke="#f1d2a0" stroke-opacity=".5" stroke-width="2.5" fill="none"/>
+              <circle cx="1178" cy="656" r="20" fill="#302924"/>
+              <path d="M1142 790C1142 716 1156 684 1178 684C1200 684 1214 716 1214 790Z" fill="#302924"/>
+              <path d="M1172 638Q1158 644 1160 662" stroke="#f1d2a0" stroke-opacity=".5" stroke-width="2.5" fill="none"/>
+            </g>
+            <use href="#d-ft" x="1060" y="724"/>
+
+            <g class="dn">
+              <circle cx="1244" cy="652" r="21" fill="#2b2521"/>
+              <path d="M1206 790C1206 712 1220 680 1244 680C1268 680 1284 712 1284 790Z" fill="#2b2521"/>
+              <path d="M1250 633Q1266 640 1264 660" stroke="#f1d2a0" stroke-opacity=".5" stroke-width="2.5" fill="none"/>
+              <circle cx="1478" cy="656" r="20" fill="#302924"/>
+              <path d="M1442 790C1442 716 1456 684 1478 684C1500 684 1514 716 1514 790Z" fill="#302924"/>
+              <path d="M1472 638Q1458 644 1460 662" stroke="#f1d2a0" stroke-opacity=".5" stroke-width="2.5" fill="none"/>
+            </g>
+            <use href="#d-ft" x="1360" y="724"/>
+            <g fill="#f2f1ec"><ellipse cx="1330" cy="718" rx="26" ry="5" opacity=".9"/><ellipse cx="1392" cy="720" rx="26" ry="5" opacity=".9"/><rect x="1358" y="700" width="4" height="16" opacity=".6"/></g>
+            <g class="dn add" style="--k:1" fill="#f2f1ec"><ellipse cx="730" cy="718" rx="26" ry="5" opacity=".9"/><ellipse cx="792" cy="720" rx="26" ry="5" opacity=".9"/></g>
+            <g class="dn add" style="--k:3" fill="#f2f1ec"><ellipse cx="1030" cy="718" rx="26" ry="5" opacity=".9"/><ellipse cx="1092" cy="720" rx="26" ry="5" opacity=".9"/><rect x="1058" y="700" width="4" height="16" opacity=".6"/></g>
+
+            <!-- the table you are led to -->
+            <g class="d-near">
+              <ellipse cx="1290" cy="900" rx="380" ry="40" fill="#000" opacity=".5" filter="url(#d-blur)"/>
+              <ellipse cx="1290" cy="872" rx="360" ry="62" fill="#a9a398"/>
+              <ellipse cx="1290" cy="866" rx="360" ry="60" fill="url(#d-marble)"/>
+              <ellipse cx="1290" cy="866" rx="300" ry="44" fill="#f1d2a0" opacity=".14"/>
+              <ellipse cx="1210" cy="862" rx="88" ry="20" fill="#d6d2c9"/>
+              <ellipse cx="1210" cy="860" rx="88" ry="19" fill="#f4f3ef"/>
+              <ellipse cx="1210" cy="861" rx="58" ry="12" fill="#e7e4dc"/>
+              <rect x="1116" y="850" width="5" height="26" rx="2" fill="#a8a296"/>
+              <rect x="1302" y="850" width="5" height="26" rx="2" fill="#a8a296"/>
+              <path d="M1354 780Q1352 818 1372 824Q1392 818 1390 780Z" fill="#f2f1ec" opacity=".22"/>
+              <path d="M1354 780Q1352 818 1372 824Q1392 818 1390 780" stroke="#f2f1ec" stroke-opacity=".6" stroke-width="1.5" fill="none"/>
+              <path d="M1372 824V856" stroke="#f2f1ec" stroke-opacity=".55" stroke-width="2"/>
+              <ellipse cx="1372" cy="858" rx="14" ry="3.5" fill="none" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1.5"/>
+              <path d="M1360 788Q1360 806 1366 814" stroke="#fff" stroke-opacity=".8" stroke-width="2" fill="none"/>
+            </g>
+
+            <!-- host stand, which you pass -->
+            <g class="d-host">
+              <ellipse cx="1080" cy="806" rx="96" ry="10" fill="#000" opacity=".5" filter="url(#d-blur)"/>
+              <path d="M1030 600H1130L1122 802H1038Z" fill="url(#d-wain)"/>
+              <path d="M1044 620H1116L1110 780H1050Z" fill="none" stroke="#2b1f16" stroke-width="2"/>
+              <path d="M1018 578H1142L1134 604H1026Z" fill="#5a4330"/>
+              <path d="M1018 578.5H1142" stroke="#8a6d4f" stroke-width="2"/>
+              <ellipse cx="1084" cy="584" rx="56" ry="8" fill="#f1d2a0" opacity=".35"/>
+              <rect x="1040" y="570" width="46" height="8" fill="#ece9e1" transform="skewX(-12)" transform-origin="1063 574"/>
+              <path d="M1124 578V548Q1124 538 1112 538" stroke="#8a7350" stroke-width="3" fill="none"/>
+              <path d="M1094 532H1124L1118 543H1100Z" fill="#2a2420"/>
+              <ellipse cx="1109" cy="544" rx="11" ry="2.5" fill="#f1d2a0"/>
+            </g>
+
+            <rect width="1600" height="900" fill="url(#d-left)"/>
+          </svg>
+        </div>
+
+        <div class="txt">
+          <h2 id="dining-title">Fuller slow nights, and regulars who come&nbsp;back.</h2>
+          <p>See the quiet nights coming, in time to fill them.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ROOM 2: behind the counter. The till drawer opens; the day's sales print. -->
+  <section class="room r-counter" data-room="counter" id="sales" aria-labelledby="counter-title">
+    <div class="pin">
+      <div class="layer inside counter" style="--fx:.68">
+        <div class="stage">
+          <svg class="art" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="c-oak" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2c231b"/><stop offset=".6" stop-color="#3a2d22"/><stop offset="1" stop-color="#3e3024"/>
+              </linearGradient>
+              <pattern id="c-grain" width="640" height="46" patternUnits="userSpaceOnUse">
+                <path d="M0 8C160 6 320 12 640 8M0 23C210 26 400 19 640 23M0 36C130 34 430 39 640 35" stroke="#000" stroke-opacity=".16" fill="none"/>
+                <path d="M0 15C200 13 420 18 640 15M0 42C240 44 380 40 640 42" stroke="#f1d2a0" stroke-opacity=".035" fill="none"/>
+              </pattern>
+              <radialGradient id="c-light" cx="1080" cy="400" r="640" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#f1d2a0" stop-opacity=".2"/><stop offset=".55" stop-color="#f1d2a0" stop-opacity=".06"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="c-screen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2b3439"/><stop offset="1" stop-color="#20272c"/>
+              </linearGradient>
+              <radialGradient id="c-coin" cx=".4" cy=".35" r=".7">
+                <stop offset="0" stop-color="#d4cdbd"/><stop offset="1" stop-color="#77726a"/>
+              </radialGradient>
+              <radialGradient id="c-copper" cx=".4" cy=".35" r=".7">
+                <stop offset="0" stop-color="#b8906a"/><stop offset="1" stop-color="#6a4a33"/>
+              </radialGradient>
+              <linearGradient id="c-lip" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="c-left" x1="0" x2="1">
+                <stop offset="0" stop-color="#252321" stop-opacity=".88"/><stop offset=".34" stop-color="#252321" stop-opacity=".5"/><stop offset=".48" stop-color="#252321" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="c-paper" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#e2e0d9"/><stop offset=".5" stop-color="#f2f1ec"/><stop offset="1" stop-color="#dcd9d1"/>
+              </linearGradient>
+              <filter id="c-b6" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+              <filter id="c-b20" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter>
+              <clipPath id="c-tapeclip"><rect x="1212" y="461" width="110" height="460"/></clipPath>
+            </defs>
+
+            <rect width="1600" height="900" fill="#1c1a18"/>
+
+            <!-- the till drawer, under the counter until it opens -->
+            <g class="c-drawer">
+              <rect x="898" y="426" width="364" height="216" fill="#3a3d3e"/>
+              <rect x="906" y="434" width="348" height="200" fill="#26292a"/>
+              <g>
+                <rect x="914" y="442" width="62" height="100" fill="#303334"/>
+                <rect x="982" y="442" width="62" height="100" fill="#303334"/>
+                <rect x="1050" y="442" width="62" height="100" fill="#303334"/>
+                <rect x="1118" y="442" width="62" height="100" fill="#303334"/>
+                <rect x="1186" y="442" width="62" height="100" fill="#303334"/>
+                <rect x="920" y="450" width="50" height="86" fill="#6d7766"/><path d="M920 462H970M920 470H970" stroke="#000" stroke-opacity=".15"/>
+                <rect x="988" y="452" width="50" height="84" fill="#8a8476"/><path d="M988 466H1038" stroke="#000" stroke-opacity=".15"/>
+                <rect x="1056" y="454" width="50" height="82" fill="#7a6c5f"/>
+                <rect x="1124" y="456" width="50" height="80" fill="#68736f"/>
+                <rect x="1192" y="470" width="50" height="66" fill="#827c6c" opacity=".7"/>
+                <rect x="914" y="442" width="334" height="14" fill="#000" opacity=".2"/>
+              </g>
+              <g>
+                <circle cx="940" cy="590" r="20" fill="#1e2122"/><circle cx="940" cy="590" r="15" fill="url(#c-coin)"/>
+                <circle cx="994" cy="590" r="20" fill="#1e2122"/><circle cx="994" cy="590" r="15" fill="url(#c-coin)"/>
+                <circle cx="1048" cy="590" r="20" fill="#1e2122"/><circle cx="1048" cy="590" r="14" fill="url(#c-copper)"/>
+                <circle cx="1102" cy="590" r="20" fill="#1e2122"/><circle cx="1102" cy="590" r="15" fill="url(#c-coin)"/>
+                <circle cx="1156" cy="590" r="20" fill="#1e2122"/><circle cx="1156" cy="590" r="14" fill="url(#c-copper)"/>
+                <circle cx="1210" cy="590" r="20" fill="#1e2122"/><circle cx="1210" cy="590" r="13" fill="url(#c-coin)"/>
+                <path d="M932 582Q938 578 946 581M986 582Q992 578 1000 581M1094 582Q1100 578 1108 581M1202 583Q1208 579 1216 582" stroke="#fff" stroke-opacity=".6" stroke-width="1.5" fill="none"/>
+              </g>
+              <rect x="894" y="626" width="372" height="18" rx="2" fill="#2b2e2f"/>
+              <rect x="894" y="626" width="372" height="1.5" fill="#8a8f8f"/>
+              <circle cx="1080" cy="636" r="4" fill="#16181a"/>
+            </g>
+
+            <!-- counter top -->
+            <rect width="1600" height="640" fill="url(#c-oak)"/>
+            <rect width="1600" height="640" fill="url(#c-grain)"/>
+            <rect width="1600" height="640" fill="url(#c-light)"/>
+            <rect y="640" width="1600" height="12" fill="#4b392a"/>
+            <rect y="640" width="1600" height="1.5" fill="#f1d2a0" fill-opacity=".28"/>
+            <rect y="652" width="1600" height="34" fill="url(#c-lip)"/>
+
+            <!-- glasses, a towel -->
+            <g>
+              <g transform="translate(756 -24) rotate(-7 720 480)">
+                <rect x="644" y="430" width="156" height="96" fill="#000" opacity=".35" filter="url(#c-b6)" transform="translate(6 8)"/>
+                <rect x="644" y="430" width="156" height="96" fill="#9a958a"/>
+                <rect x="644" y="446" width="156" height="10" fill="#3d4a3e" opacity=".8"/>
+                <rect x="644" y="500" width="156" height="10" fill="#3d4a3e" opacity=".8"/>
+                <path d="M644 478H800" stroke="#000" stroke-opacity=".18" stroke-width="3"/>
+                <path d="M644 431H800" stroke="#fff" stroke-opacity=".2"/>
+              </g>
+            </g>
+
+            <!-- the terminal -->
+            <g>
+              <ellipse cx="1040" cy="400" rx="230" ry="150" fill="#dcd9d2" opacity=".05" filter="url(#c-b20)"/>
+              <rect x="896" y="302" width="290" height="188" rx="14" fill="#000" opacity=".5" filter="url(#c-b6)" transform="translate(12 16)"/>
+              <rect x="896" y="302" width="290" height="188" rx="14" fill="#1a1c1d"/>
+              <rect x="896" y="302" width="290" height="188" rx="14" fill="none" stroke="#45494b" stroke-width="2"/>
+              <rect x="910" y="316" width="262" height="160" rx="5" fill="url(#c-screen)"/>
+              <g class="c-tiles" fill="#dcd9d2">
+                <rect x="922" y="328" width="56" height="30" rx="3" opacity=".08"/><rect x="986" y="328" width="56" height="30" rx="3" opacity=".08"/><rect x="1050" y="328" width="56" height="30" rx="3" opacity=".08"/>
+                <rect x="922" y="366" width="56" height="30" rx="3" opacity=".08"/><rect x="986" y="366" width="56" height="30" rx="3" opacity=".14"/><rect x="1050" y="366" width="56" height="30" rx="3" opacity=".08"/>
+                <rect x="922" y="404" width="56" height="30" rx="3" opacity=".08"/><rect x="986" y="404" width="56" height="30" rx="3" opacity=".08"/><rect x="1050" y="404" width="56" height="30" rx="3" opacity=".08"/>
+                <rect x="1116" y="328" width="46" height="106" rx="3" opacity=".06"/>
+                <rect x="922" y="442" width="240" height="24" rx="3" opacity=".12"/>
+              </g>
+              <rect class="c-glow" x="910" y="316" width="262" height="160" rx="5" fill="#dcd9d2" opacity=".08"/>
+              <path d="M910 316H1010L910 400Z" fill="#fff" opacity=".04"/>
+            </g>
+
+            <!-- receipt printer -->
+            <g>
+              <rect x="1212" y="352" width="108" height="114" rx="12" fill="#000" opacity=".5" filter="url(#c-b6)" transform="translate(10 14)"/>
+              <rect x="1212" y="352" width="108" height="114" rx="12" fill="#232527"/>
+              <rect x="1220" y="360" width="92" height="70" rx="8" fill="#2e3133"/>
+              <path d="M1222 361H1310" stroke="#fff" stroke-opacity=".12"/>
+              <rect x="1222" y="455" width="88" height="5" rx="1" fill="#0d0e0f"/>
+              <circle cx="1302" cy="442" r="3" fill="#f1d2a0"/>
+            </g>
+
+            <!-- the day's sales, printed -->
+            <g clip-path="url(#c-tapeclip)">
+              <g class="c-tape">
+                <rect x="1230" y="466" width="80" height="404" fill="#000" opacity=".45" filter="url(#c-b6)" transform="translate(8 10)"/>
+                <rect x="1224" y="460" width="84" height="404" fill="url(#c-paper)"/>
+                <g fill="#232a2f" opacity=".62">
+                  <rect x="1234" y="478" width="34" height="3"/><rect x="1288" y="478" width="10" height="3"/>
+                  <rect x="1234" y="496" width="44" height="3"/><rect x="1288" y="496" width="10" height="3"/>
+                  <rect x="1234" y="514" width="26" height="3"/><rect x="1292" y="514" width="6" height="3"/>
+                  <rect x="1234" y="532" width="40" height="3"/><rect x="1288" y="532" width="10" height="3"/>
+                  <rect x="1234" y="550" width="30" height="3"/><rect x="1288" y="550" width="10" height="3"/>
+                  <rect x="1234" y="568" width="46" height="3"/><rect x="1292" y="568" width="6" height="3"/>
+                  <rect x="1234" y="586" width="36" height="3"/><rect x="1288" y="586" width="10" height="3"/>
+                  <rect x="1234" y="604" width="22" height="3"/><rect x="1288" y="604" width="10" height="3"/>
+                  <rect x="1234" y="622" width="42" height="3"/><rect x="1292" y="622" width="6" height="3"/>
+                  <rect x="1234" y="640" width="32" height="3"/><rect x="1288" y="640" width="10" height="3"/>
+                  <rect x="1234" y="658" width="38" height="3"/><rect x="1288" y="658" width="10" height="3"/>
+                  <rect x="1234" y="676" width="28" height="3"/><rect x="1292" y="676" width="6" height="3"/>
+                  <rect x="1234" y="694" width="44" height="3"/><rect x="1288" y="694" width="10" height="3"/>
+                  <rect x="1234" y="712" width="34" height="3"/><rect x="1288" y="712" width="10" height="3"/>
+                  <rect x="1234" y="730" width="40" height="3"/><rect x="1292" y="730" width="6" height="3"/>
+                  <rect x="1234" y="748" width="30" height="3"/><rect x="1288" y="748" width="10" height="3"/>
+                  <rect x="1234" y="766" width="36" height="3"/><rect x="1288" y="766" width="10" height="3"/>
+                  <rect x="1234" y="796" width="64" height="1.5"/>
+                </g>
+                <text class="c-day" x="1266" y="830" text-anchor="middle">Thursday</text>
+                <path d="M1224 864H1308" stroke="#000" stroke-opacity=".12" stroke-width="2"/>
+              </g>
+            </g>
+
+            <!-- overnight, out to Tooey -->
+            <path class="c-thread" d="M1266 352C1262 280 1300 200 1380 140S1520 40 1600 -10" stroke="#f1d2a0" stroke-width="2" stroke-linecap="round" fill="none" pathLength="1" opacity=".75"/>
+
+            <rect width="1600" height="900" fill="url(#c-left)"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <h2 id="counter-title">It starts with what you already&nbsp;sell.</h2>
+          <p>Each night Tooey reads the day's sales, dish by dish, with the day of week, time of year and holidays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOM 3: the kitchen door swings open on a Friday line. -->
+  <section class="room r-kitchen" data-room="kitchen" id="shifts" aria-labelledby="kitchen-title">
+    <div class="pin">
+
+      <div class="layer outside kdoor" style="--fx:.7">
+        <div class="stage">
+          <svg class="art" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="kd-wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#22201e"/><stop offset=".7" stop-color="#33302c"/><stop offset="1" stop-color="#36332e"/>
+              </linearGradient>
+              <linearGradient id="kd-spill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#eef0ea" stop-opacity=".32"/><stop offset="1" stop-color="#eef0ea" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="kd-left" x1="0" x2="1">
+                <stop offset="0" stop-color="#252321" stop-opacity=".85"/><stop offset=".4" stop-color="#252321" stop-opacity=".4"/><stop offset=".55" stop-color="#252321" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="kd-b8" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+              <mask id="kd-hole" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900">
+                <rect width="1600" height="900" fill="#fff"/><rect x="1000" y="280" width="240" height="540" fill="#000"/>
+              </mask>
+            </defs>
+            <g mask="url(#kd-hole)">
+              <rect width="1600" height="900" fill="url(#kd-wall)"/>
+              <rect y="150" width="1600" height="6" fill="#403c36"/>
+              <ellipse cx="1120" cy="300" rx="260" ry="260" fill="url(#g-cool)" opacity=".25"/>
+              <rect y="600" width="1600" height="220" fill="url(#d-wain)"/>
+              <g stroke="#2b1f16" stroke-width="2" opacity=".7"><path d="M80 610V816M280 610V816M480 610V816M680 610V816M880 610V816M1360 610V816M1560 610V816"/></g>
+              <rect y="596" width="1600" height="8" fill="#5a4432"/>
+              <rect y="596" width="1600" height="2" fill="#8a6d4f"/>
+              <!-- side station with plates -->
+              <g>
+                <ellipse cx="880" cy="300" rx="130" ry="200" fill="url(#g-pool)"/>
+                <rect x="875" y="290" width="10" height="34" rx="2" fill="#2b2622"/>
+                <path d="M880 306H864" stroke="#6e5a3c" stroke-width="3"/>
+                <circle cx="860" cy="298" r="12" fill="#f1d2a0"/>
+                <circle cx="860" cy="298" r="30" fill="#f1d2a0" opacity=".3" filter="url(#kd-b8)"/>
+                <ellipse cx="1380" cy="300" rx="130" ry="200" fill="url(#g-pool)"/>
+                <rect x="1375" y="290" width="10" height="34" rx="2" fill="#2b2622"/>
+                <path d="M1380 306H1396" stroke="#6e5a3c" stroke-width="3"/>
+                <circle cx="1400" cy="298" r="12" fill="#f1d2a0"/>
+                <circle cx="1400" cy="298" r="30" fill="#f1d2a0" opacity=".3" filter="url(#kd-b8)"/>
+              </g>
+              <g>
+                <rect x="752" y="552" width="180" height="16" fill="#000" opacity=".35" filter="url(#kd-b8)"/>
+                <rect x="740" y="540" width="204" height="10" fill="#4a3626"/>
+                <ellipse cx="800" cy="534" rx="40" ry="7" fill="#c9c4ba"/>
+                <rect x="760" y="510" width="80" height="24" fill="#e7e5df"/>
+                <path d="M760 514H840M760 518H840M760 522H840M760 526H840M760 530H840" stroke="#000" stroke-opacity=".1"/>
+                <ellipse cx="800" cy="510" rx="40" ry="7" fill="#f2f1ec"/>
+                <ellipse cx="800" cy="510" rx="26" ry="4" fill="#e3e0d8"/>
+                <path d="M884 540V482Q884 470 896 470H900Q910 470 910 482V540Z" fill="#f2f1ec" opacity=".18"/>
+                <path d="M884 540V482Q884 470 896 470H900Q910 470 910 482V540" stroke="#f2f1ec" stroke-opacity=".5" fill="none"/>
+                <path d="M890 486V530" stroke="#fff" stroke-opacity=".7" stroke-width="2"/>
+              </g>
+              <rect y="816" width="1600" height="84" fill="#1d1c1a"/>
+              <rect y="816" width="1600" height="2" fill="#3a3733"/>
+              <path class="kd-spill" d="M1000 818H1240L1330 900H910Z" fill="url(#kd-spill)"/>
+              <!-- steel trim round the opening -->
+              <rect x="986" y="266" width="268" height="14" fill="#6c706f"/>
+              <rect x="986" y="266" width="268" height="2" fill="#a2a6a3"/>
+              <rect x="986" y="280" width="14" height="538" fill="#5f6362"/>
+              <rect x="1240" y="280" width="14" height="538" fill="#5f6362"/>
+              <rect x="998" y="280" width="2" height="538" fill="#eef0ea" opacity=".5"/>
+              <rect x="1240" y="280" width="2" height="538" fill="#eef0ea" opacity=".5"/>
+              <rect width="1600" height="900" fill="url(#kd-left)"/>
+            </g>
+          </svg>
+          <div class="doorway" style="--x:1000;--y:280;--w:240;--h:540">
+            <div class="leaf leaf-k">
+              <svg viewBox="0 0 240 540" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <rect width="240" height="540" fill="url(#g-steel)"/>
+                <rect width="240" height="540" fill="url(#g-brush)"/>
+                <rect x="0" y="440" width="240" height="100" fill="#3f4342"/>
+                <path d="M0 441H240" stroke="#9ea29f" stroke-width="2"/>
+                <path d="M30 480L64 470M120 500L170 488M180 470L210 466" stroke="#fff" stroke-opacity=".08" stroke-width="2"/>
+                <circle cx="120" cy="168" r="52" fill="#3a3e3d"/>
+                <circle cx="120" cy="168" r="44" fill="url(#g-port)"/>
+                <circle cx="132" cy="190" r="16" fill="#8f938c" opacity=".55"/>
+                <path d="M104 210Q118 196 150 200L156 212Z" fill="#8f938c" opacity=".5"/>
+                <path d="M92 146Q104 128 126 126" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".85"/>
+                <circle cx="120" cy="168" r="48" fill="none" stroke="#a5a9a6" stroke-width="5"/>
+                <rect x="160" y="250" width="50" height="116" rx="3" fill="#8b8f8d"/>
+                <rect x="162" y="252" width="3" height="112" fill="#fff" fill-opacity=".35"/>
+                <rect x="236" width="4" height="540" fill="#2e3231"/>
+                <rect width="3" height="540" fill="#9da19e" opacity=".5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer inside kitchen" style="--fx:.62" role="group" aria-labelledby="kitchen-title">
+        <div class="stage">
+          <svg class="art" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+            <defs>
+              <pattern id="kc-tile" width="56" height="56" patternUnits="userSpaceOnUse">
+                <rect width="56" height="56" fill="#57554f"/>
+                <path d="M0 .75H56M0 28.75H56M.75 0V28M28.75 28V56" stroke="#3b3935" stroke-width="1.5"/>
+                <path d="M2 2.6H54M2 30.6H26M31 30.6H56" stroke="#fff" stroke-opacity=".08"/>
+              </pattern>
+              <linearGradient id="kc-hood" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3c403f"/><stop offset=".8" stop-color="#5e6261"/><stop offset="1" stop-color="#6c706e"/>
+              </linearGradient>
+              <linearGradient id="kc-pass" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9a9e9b"/><stop offset="1" stop-color="#6f7371"/>
+              </linearGradient>
+              <linearGradient id="kc-front" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3f4342"/><stop offset="1" stop-color="#2a2d2c"/>
+              </linearGradient>
+              <linearGradient id="kc-jacket" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e2ded5"/><stop offset="1" stop-color="#a7a39a"/>
+              </linearGradient>
+              <linearGradient id="kc-left" x1="0" x2="1">
+                <stop offset="0" stop-color="#252321" stop-opacity=".94"/><stop offset=".34" stop-color="#252321" stop-opacity=".7"/><stop offset=".46" stop-color="#252321" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="kc-lamp" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f1d2a0" stop-opacity=".3"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="kc-b8" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+              <g id="kc-tk">
+                <rect x="-15" y="0" width="30" height="58" fill="#ecebe5"/>
+                <rect x="-15" y="0" width="30" height="5" fill="#cfccc4"/>
+                <path d="M-9 14H6M-9 22H9M-9 30H3M-9 38H8M-9 46H5" stroke="#232a2f" stroke-opacity=".5" stroke-width="2"/>
+              </g>
+              <g id="kc-cook">
+                <path d="M-64 0C-62 -70 -42 -116 0 -116C42 -116 62 -70 64 0Z" fill="url(#kc-jacket)"/>
+                <path d="M-14 -112L0 -80L14 -112" stroke="#8d897f" stroke-width="2" fill="none"/>
+                <g fill="#8d897f"><circle cx="-10" cy="-66" r="2.5"/><circle cx="10" cy="-66" r="2.5"/><circle cx="-10" cy="-44" r="2.5"/><circle cx="10" cy="-44" r="2.5"/><circle cx="-10" cy="-22" r="2.5"/><circle cx="10" cy="-22" r="2.5"/></g>
+                <ellipse cy="-146" rx="24" ry="28" fill="#4d4540"/><path d="M-18 -168Q0 -176 18 -168" stroke="#f1d2a0" stroke-opacity=".3" stroke-width="2" fill="none"/>
+                <path d="M-25 -158Q-24 -184 0 -186Q24 -184 25 -158Q0 -166 -25 -158Z" fill="#dcd8cf"/>
+                <path d="M-50 -92Q-30 -116 0 -116Q30 -116 50 -92" stroke="#f1d2a0" stroke-opacity=".35" stroke-width="3" fill="none"/>
+              </g>
+            </defs>
+
+            <rect width="1600" height="900" fill="#2b2a27"/>
+            <rect width="1600" height="240" fill="url(#kc-hood)"/>
+            <g transform="translate(0 90)">
+            <rect y="150" width="1600" height="380" fill="url(#kc-tile)"/>
+            <g>
+              <ellipse cx="800" cy="390" rx="200" ry="150" fill="url(#g-pool)" opacity=".6"/>
+              <ellipse cx="1060" cy="390" rx="200" ry="150" fill="url(#g-pool)" opacity=".6"/>
+              <ellipse cx="1320" cy="390" rx="200" ry="150" fill="url(#g-pool)" opacity=".6"/>
+            </g>
+
+            <!-- hood -->
+            <g fill="#2f3332" opacity=".8">
+              <rect x="640" y="34" width="230" height="84"/><rect x="900" y="34" width="230" height="84"/><rect x="1160" y="34" width="230" height="84"/><rect x="1420" y="34" width="230" height="84"/>
+            </g>
+            <g stroke="#6a6e6c" stroke-width="3" opacity=".5">
+              <path d="M650 118L690 34M690 118L730 34M730 118L770 34M770 118L810 34M810 118L850 34M910 118L950 34M950 118L990 34M990 118L1030 34M1030 118L1070 34M1070 118L1110 34M1170 118L1210 34M1210 118L1250 34M1250 118L1290 34M1290 118L1330 34M1330 118L1370 34M1430 118L1470 34M1470 118L1510 34M1510 118L1550 34"/>
+            </g>
+            <rect y="146" width="1600" height="12" fill="#7c807e"/>
+            <rect y="146" width="1600" height="1.5" fill="#c2c6c2" opacity=".7"/>
+            <rect y="158" width="1600" height="16" fill="#000" opacity=".3"/>
+
+            <!-- ticket rail -->
+            <rect x="660" y="176" width="940" height="12" fill="#8a8e8c"/>
+            <rect x="660" y="176" width="940" height="2" fill="#d0d3cf"/>
+            <rect x="660" y="188" width="940" height="6" fill="#000" opacity=".25"/>
+            <g class="kc-tickets">
+              <use class="tk" href="#kc-tk" transform="translate(700 184) rotate(-2)"/>
+              <use class="tk" href="#kc-tk" transform="translate(770 184) rotate(1.5)"/>
+              <use class="tk" href="#kc-tk" transform="translate(850 184) rotate(-1)"/>
+              <use class="tk" href="#kc-tk" transform="translate(890 184) rotate(2)"/>
+              <use class="tk" href="#kc-tk" transform="translate(970 184) rotate(-2.5)"/>
+              <use class="tk" href="#kc-tk" transform="translate(1008 184) rotate(1)"/>
+              <use class="tk" href="#kc-tk" transform="translate(1046 184) rotate(-1)"/>
+              <use class="tk" href="#kc-tk" transform="translate(1120 184) rotate(2)"/>
+              <use class="tk" href="#kc-tk" transform="translate(1158 184) rotate(-1.5)"/>
+              <use class="tk" href="#kc-tk" transform="translate(1196 184) rotate(1)"/>
+              <use class="tk" href="#kc-tk" transform="translate(1270 184) rotate(-2)"/>
+              <use class="tk" href="#kc-tk" transform="translate(1308 184) rotate(1.5)"/>
+            </g>
+
+            <!-- heat lamps -->
+            <g>
+              <path d="M800 158V300M1060 158V300M1320 158V300" stroke="#2a2d2c" stroke-width="3"/>
+              <path d="M700 340H900L960 512H640Z" fill="url(#kc-lamp)"/>
+              <path d="M960 340H1160L1220 512H900Z" fill="url(#kc-lamp)"/>
+              <path d="M1220 340H1420L1480 512H1160Z" fill="url(#kc-lamp)"/>
+              <rect x="700" y="300" width="200" height="40" rx="4" fill="#2c302f"/>
+              <rect x="960" y="300" width="200" height="40" rx="4" fill="#2c302f"/>
+              <rect x="1220" y="300" width="200" height="40" rx="4" fill="#2c302f"/>
+              <path d="M700 301H900M960 301H1160M1220 301H1420" stroke="#8a8e8c" stroke-width="2"/>
+              <rect x="710" y="336" width="180" height="6" rx="3" fill="#f1d2a0"/>
+              <rect x="970" y="336" width="180" height="6" rx="3" fill="#f1d2a0"/>
+              <rect x="1230" y="336" width="180" height="6" rx="3" fill="#f1d2a0"/>
+            </g>
+
+            <!-- the line: cooks behind the pass -->
+            <g class="ck add" style="--k:0"><use href="#kc-cook" x="760" y="520"/></g>
+            <g class="ck"><use href="#kc-cook" x="905" y="526"/></g>
+            <g class="ck add" style="--k:1"><use href="#kc-cook" x="1050" y="520"/></g>
+            <g class="ck"><use href="#kc-cook" x="1195" y="526"/></g>
+            <g class="ck add" style="--k:2"><use href="#kc-cook" x="1340" y="520"/></g>
+
+            <!-- the pass -->
+            <rect y="506" width="1600" height="24" fill="url(#kc-pass)"/>
+            <rect y="506" width="1600" height="1.5" fill="#e3e6e1"/>
+            <g>
+              <ellipse cx="800" cy="508" rx="150" ry="10" fill="#f1d2a0" opacity=".3"/>
+              <ellipse cx="1060" cy="508" rx="150" ry="10" fill="#f1d2a0" opacity=".3"/>
+              <ellipse cx="1320" cy="508" rx="150" ry="10" fill="#f1d2a0" opacity=".3"/>
+            </g>
+            <rect y="530" width="1600" height="120" fill="url(#kc-front)"/>
+            <rect y="530" width="1600" height="120" fill="url(#g-brush)"/>
+            <g stroke="#1f2221" stroke-width="2"><path d="M640 530V650M930 530V650M1190 530V650M1450 530V650"/></g>
+
+            <!-- shelf under the pass: plates and pans waiting -->
+            <rect y="650" width="1600" height="100" fill="#1b1d1d"/>
+            <rect y="650" width="1600" height="14" fill="#000" opacity=".4"/>
+            <g>
+              <rect x="700" y="704" width="96" height="38" fill="#d6d3cb"/><path d="M700 710H796M700 716H796M700 722H796M700 728H796M700 734H796" stroke="#000" stroke-opacity=".12"/><rect x="700" y="702" width="96" height="4" rx="2" fill="#f2f1ec"/>
+              <rect x="820" y="716" width="96" height="26" fill="#d6d3cb"/><path d="M820 722H916M820 728H916M820 734H916" stroke="#000" stroke-opacity=".12"/><rect x="820" y="714" width="96" height="4" rx="2" fill="#f2f1ec"/>
+              <rect x="980" y="700" width="70" height="42" fill="#6f7371"/><rect x="980" y="700" width="70" height="3" fill="#b9bdb9"/>
+              <rect x="1060" y="700" width="70" height="42" fill="#6f7371"/><rect x="1060" y="700" width="70" height="3" fill="#b9bdb9"/>
+              <rect x="1200" y="710" width="110" height="32" fill="#d6d3cb"/><path d="M1200 716H1310M1200 722H1310M1200 728H1310M1200 734H1310" stroke="#000" stroke-opacity=".12"/><rect x="1200" y="708" width="110" height="4" rx="2" fill="#f2f1ec"/>
+              <rect x="1380" y="712" width="80" height="30" fill="#6f7371"/><rect x="1380" y="712" width="80" height="3" fill="#b9bdb9"/>
+            </g>
+            <rect y="742" width="1600" height="8" fill="#6c706e"/>
+            <rect y="742" width="1600" height="1.5" fill="#a9ada9"/>
+            <rect y="750" width="1600" height="80" fill="url(#kc-front)"/>
+            <rect y="750" width="1600" height="80" fill="url(#g-brush)"/>
+
+            <!-- plates up -->
+            <g class="pl" style="--k:0"><ellipse cx="832" cy="506" rx="48" ry="10" fill="#cfcac0"/><ellipse cx="832" cy="504" rx="48" ry="9.5" fill="#f2f1ec"/><ellipse cx="824" cy="502" rx="18" ry="4.5" fill="#6e3527"/><ellipse cx="844" cy="501" rx="12" ry="3.5" fill="#55693f"/></g>
+            <g class="pl" style="--k:1"><ellipse cx="978" cy="506" rx="48" ry="10" fill="#cfcac0"/><ellipse cx="978" cy="504" rx="48" ry="9.5" fill="#f2f1ec"/><ellipse cx="976" cy="502" rx="22" ry="5" fill="#c9a86a"/><ellipse cx="990" cy="500" rx="8" ry="3" fill="#55693f"/></g>
+            <g class="pl" style="--k:2"><ellipse cx="1122" cy="506" rx="48" ry="10" fill="#cfcac0"/><ellipse cx="1122" cy="504" rx="48" ry="9.5" fill="#f2f1ec"/><ellipse cx="1118" cy="502" rx="16" ry="4.5" fill="#e5ddc8"/><ellipse cx="1132" cy="502" rx="10" ry="3.5" fill="#8a3b2e"/></g>
+            <g class="pl" style="--k:3"><ellipse cx="1268" cy="506" rx="48" ry="10" fill="#cfcac0"/><ellipse cx="1268" cy="504" rx="48" ry="9.5" fill="#f2f1ec"/><ellipse cx="1264" cy="502" rx="20" ry="4.5" fill="#6e3527"/></g>
+            </g>
+
+            <!-- clock -->
+            <g>
+              <circle cx="1478" cy="482" r="46" fill="#000" opacity=".4" filter="url(#kc-b8)" transform="translate(4 6)"/>
+              <circle cx="1478" cy="482" r="44" fill="#2a2d2c"/>
+              <circle cx="1478" cy="482" r="38" fill="#eceae4"/>
+              <g stroke="#232a2f" stroke-width="2.5" stroke-linecap="round">
+                <path d="M1478 448V454M1478 510V516M1444 482H1450M1506 482H1512"/>
+              </g>
+              <g class="kc-hr"><path d="M1478 482V458" stroke="#232a2f" stroke-width="4" stroke-linecap="round"/></g>
+              <g class="kc-min"><path d="M1478 482V450" stroke="#232a2f" stroke-width="2.5" stroke-linecap="round"/></g>
+              <circle cx="1478" cy="482" r="3.5" fill="#232a2f"/>
+              <text class="kc-label" x="1478" y="552" text-anchor="middle">Example</text>
+            </g>
+
+            <rect width="1600" height="900" fill="url(#kc-left)"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <h2 id="kitchen-title">The right people on, at the right&nbsp;time.</h2>
+          <p>Shifts matched to how busy each night will be: more hands for the rush, fewer for the lull.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ROOM 4: the prep sheet slides off the printer on the pass. -->
+  <section class="room r-prep" data-room="prep" aria-labelledby="prep-title">
+    <span class="anchor" id="prep"></span>
+    <div class="pin">
+
+      <div class="layer outside printer" style="--fx:.7">
+        <div class="stage">
+          <svg class="art" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="pt-dim" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#22201e" stop-opacity=".85"/><stop offset="1" stop-color="#22201e" stop-opacity=".35"/>
+              </linearGradient>
+              <linearGradient id="pt-left" x1="0" x2="1">
+                <stop offset="0" stop-color="#252321" stop-opacity=".9"/><stop offset=".4" stop-color="#252321" stop-opacity=".5"/><stop offset=".55" stop-color="#252321" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="pt-body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2e3133"/><stop offset="1" stop-color="#1f2122"/>
+              </linearGradient>
+              <filter id="pt-b8" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+              <clipPath id="pt-clip"><rect x="1000" y="-600" width="240" height="1093"/></clipPath>
+            </defs>
+            <rect width="1600" height="900" fill="#2b2a27"/>
+            <rect width="1600" height="600" fill="url(#kc-tile)"/>
+            <rect width="1600" height="600" fill="url(#pt-dim)"/>
+            <ellipse cx="1120" cy="420" rx="320" ry="220" fill="url(#g-pool)" opacity=".8"/>
+            <rect x="900" y="0" width="440" height="40" rx="4" fill="#2c302f"/>
+            <rect x="910" y="36" width="420" height="6" rx="3" fill="#f1d2a0"/>
+            <path d="M900 42H1340L1420 600H820Z" fill="url(#kc-lamp)" opacity=".7"/>
+
+            <!-- pass -->
+            <rect y="598" width="1600" height="26" fill="url(#kc-pass)"/>
+            <rect y="598" width="1600" height="1.5" fill="#e3e6e1"/>
+            <ellipse cx="1120" cy="604" rx="260" ry="10" fill="#f1d2a0" opacity=".3"/>
+            <rect y="624" width="1600" height="276" fill="url(#kc-front)"/>
+            <rect y="624" width="1600" height="276" fill="url(#g-brush)"/>
+            <g stroke="#1f2221" stroke-width="2"><path d="M600 624V900M880 624V900M1360 624V900"/></g>
+
+            <!-- a plate waiting, to the left -->
+            <g>
+              <ellipse cx="760" cy="600" rx="56" ry="11" fill="#cfcac0"/><ellipse cx="760" cy="598" rx="56" ry="10.5" fill="#f2f1ec"/><ellipse cx="754" cy="596" rx="20" ry="4.5" fill="#6e3527"/><ellipse cx="776" cy="595" rx="10" ry="3" fill="#55693f"/>
+            </g>
+
+            <!-- printer -->
+            <ellipse cx="1120" cy="606" rx="110" ry="10" fill="#000" opacity=".55" filter="url(#pt-b8)"/>
+            <rect x="1036" y="484" width="168" height="120" rx="14" fill="url(#pt-body)"/>
+            <rect x="1036" y="484" width="168" height="18" rx="9" fill="#383b3d"/>
+            <path d="M1046 485H1194" stroke="#fff" stroke-opacity=".18"/>
+            <rect x="1056" y="489" width="128" height="6" rx="2" fill="#0b0c0c"/>
+            <rect x="1052" y="560" width="30" height="10" rx="2" fill="#3b3e40"/>
+            <circle cx="1184" cy="565" r="3.5" fill="#f1d2a0"/>
+            <circle cx="1184" cy="565" r="9" fill="#f1d2a0" opacity=".25" filter="url(#pt-b8)"/>
+
+            <!-- paper, feeding up out of the slot -->
+            <g clip-path="url(#pt-clip)">
+              <g class="pt-paper">
+                <rect x="1072" y="495" width="96" height="560" fill="#000" opacity=".4" filter="url(#pt-b8)" transform="translate(-6 0)"/>
+                <rect class="pt-anchor" x="1064" y="493" width="112" height="560" fill="#f2f1ec"/>
+                <rect x="1064" y="493" width="112" height="560" fill="url(#c-paper)" opacity=".6"/>
+                <g fill="#232a2f" opacity=".7">
+                  <rect x="1078" y="512" width="42" height="7"/>
+                  <rect x="1078" y="534" width="84" height="1.2"/>
+                  <rect x="1078" y="552" width="40" height="3"/><rect x="1146" y="550" width="10" height="5"/>
+                  <rect x="1078" y="574" width="30" height="3"/><rect x="1146" y="572" width="10" height="5"/>
+                  <rect x="1078" y="596" width="34" height="3"/><rect x="1146" y="594" width="10" height="5"/>
+                </g>
+                <g stroke="#232a2f" stroke-opacity=".08"><path d="M1078 630H1162M1078 660H1162M1078 690H1162M1078 720H1162M1078 750H1162M1078 780H1162M1078 810H1162M1078 840H1162"/></g>
+              </g>
+            </g>
+
+            <rect width="1600" height="900" fill="url(#pt-left)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="layer inside sheet" style="--fx:.6" role="group" aria-labelledby="prep-title">
+        <div class="stage">
+          <svg class="art" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+            <defs>
+              <pattern id="ps-brush" width="600" height="9" patternUnits="userSpaceOnUse">
+                <path d="M0 2H600" stroke="#fff" stroke-opacity=".03"/><path d="M0 6H600" stroke="#000" stroke-opacity=".06"/>
+              </pattern>
+              <linearGradient id="ps-steel" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#46494a"/><stop offset=".55" stop-color="#363939"/><stop offset="1" stop-color="#2d2f2f"/>
+              </linearGradient>
+              <linearGradient id="ps-morning" x1="0" y1="0" x2="1" y2=".4">
+                <stop offset="0" stop-color="#f1d2a0" stop-opacity=".16"/><stop offset=".5" stop-color="#f1d2a0" stop-opacity=".05"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="ps-paper" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#e9e8e2"/><stop offset=".15" stop-color="#f2f1ec"/><stop offset=".9" stop-color="#f0efea"/><stop offset="1" stop-color="#e3e1da"/>
+              </linearGradient>
+              <linearGradient id="ps-left" x1="0" x2="1">
+                <stop offset="0" stop-color="#252321" stop-opacity=".85"/><stop offset=".36" stop-color="#252321" stop-opacity=".45"/><stop offset=".48" stop-color="#252321" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="ps-b14" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+              <filter id="ps-b5" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
+            </defs>
+            <rect width="1600" height="900" fill="url(#ps-steel)"/>
+            <rect width="1600" height="900" fill="url(#ps-brush)"/>
+            <rect width="1600" height="900" fill="url(#ps-morning)"/>
+
+            <!-- pencil and a towel -->
+            <g transform="rotate(64 1450 330)">
+              <rect x="1440" y="200" width="16" height="230" rx="2" fill="#000" opacity=".4" filter="url(#ps-b5)" transform="translate(10 6)"/>
+              <rect x="1440" y="220" width="16" height="200" fill="#a88d55"/>
+              <rect x="1440" y="220" width="5" height="200" fill="#c4a96f"/>
+              <rect x="1440" y="412" width="16" height="18" fill="#8d8a84"/>
+              <path d="M1440 220L1448 192L1456 220Z" fill="#d9c4a0"/>
+              <path d="M1445.5 202L1448 192L1450.5 202Z" fill="#2a2a2a"/>
+            </g>
+            <g transform="rotate(8 1460 740)">
+              <rect x="1370" y="660" width="220" height="150" fill="#000" opacity=".4" filter="url(#ps-b14)" transform="translate(8 10)"/>
+              <rect x="1370" y="660" width="220" height="150" fill="#9a958a"/>
+              <rect x="1370" y="684" width="220" height="12" fill="#3d4a3e" opacity=".85"/>
+              <rect x="1370" y="770" width="220" height="12" fill="#3d4a3e" opacity=".85"/>
+              <path d="M1370 734H1590" stroke="#000" stroke-opacity=".2" stroke-width="3"/>
+            </g>
+
+            <!-- the prep sheet -->
+            <g transform="rotate(-1.2 1050 450)">
+              <rect x="772" y="-40" width="580" height="990" fill="#000" opacity=".55" filter="url(#ps-b14)" transform="translate(14 18)"/>
+              <rect class="ps-anchor" x="760" y="-40" width="580" height="990" fill="url(#ps-paper)"/>
+              <path d="M760 -40H1340L760 380Z" fill="#f1d2a0" opacity=".07"/>
+              <text class="ps-day" x="812" y="140">Friday</text>
+              <text class="ps-ex" x="1290" y="140" text-anchor="end">Example</text>
+              <path d="M812 176H1290" stroke="#232a2f" stroke-width="1.6"/>
+              <text class="ps-col" x="1058" y="226" text-anchor="middle">Guess</text>
+              <text class="ps-col" x="1166" y="226" text-anchor="middle">Prep</text>
+              <text class="ps-col" x="1262" y="226" text-anchor="middle">Sold</text>
+
+              <g class="ps-row" style="--k:0">
+                <text class="ps-dish" x="812" y="300">Short rib</text>
+                <text class="ps-guess" x="1058" y="300" text-anchor="middle">40</text>
+                <path class="ps-strike" d="M1036 292L1082 286" pathLength="1"/>
+                <text class="ps-n" x="1166" y="302" text-anchor="middle" data-n="27">27</text>
+                <text class="ps-sold" x="1262" y="300" text-anchor="middle">25</text>
+              </g>
+              <path d="M812 336H1290" stroke="#232a2f" stroke-opacity=".14"/>
+              <g class="ps-row" style="--k:1">
+                <text class="ps-dish" x="812" y="390">Risotto</text>
+                <text class="ps-guess" x="1058" y="390" text-anchor="middle">20</text>
+                <path class="ps-strike" d="M1036 382L1082 376" pathLength="1"/>
+                <text class="ps-n" x="1166" y="392" text-anchor="middle" data-n="33">33</text>
+                <text class="ps-sold" x="1262" y="390" text-anchor="middle">31</text>
+              </g>
+              <path d="M812 426H1290" stroke="#232a2f" stroke-opacity=".14"/>
+              <g class="ps-row" style="--k:2">
+                <text class="ps-dish" x="812" y="480">Burrata</text>
+                <text class="ps-guess" x="1058" y="480" text-anchor="middle">25</text>
+                <path class="ps-strike" d="M1036 472L1082 466" pathLength="1"/>
+                <text class="ps-n" x="1166" y="482" text-anchor="middle" data-n="19">19</text>
+                <text class="ps-sold" x="1262" y="480" text-anchor="middle">18</text>
+              </g>
+              <path d="M812 516H1290" stroke="#232a2f" stroke-opacity=".14"/>
+              <g stroke="#232a2f" stroke-opacity=".06"><path d="M812 606H1290M812 696H1290M812 786H1290M812 876H1290"/></g>
+            </g>
+
+            <rect width="1600" height="900" fill="url(#ps-left)"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <h2 id="prep-title">Closer than a&nbsp;guess.</h2>
+          <p>Before prep each morning, a count for every dish: a little over what should sell.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="start" id="start" aria-labelledby="start-title">
+    <div class="wrap start-in">
+      <h2 id="start-title">Running in about a&nbsp;week.</h2>
+      <div>
+        <ol class="steps">
+          <li>We set up a nightly download from your POS. Most systems work.</li>
+          <li>Tooey needs about five weeks of past sales.</li>
+          <li>You check the counts against what sold, then decide.</li>
+        </ol>
+        <p class="free">Free during the pilot.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="talk" id="talk" aria-labelledby="talk-title">
+    <div class="wrap talk-in">
+      <div class="talk-copy">
+        <h2 id="talk-title">Talk to us</h2>
+        <p>Tooey LLC is a small team of university students. Write here, or to <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a>.</p>
+      </div>
+      <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New Tooey inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="hp" aria-hidden="true"><label for="f-honey">Leave this empty</label><input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field field-wide"><label for="f-pos">Your POS <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text"></div>
+        <div class="field field-wide"><label for="f-msg">Message <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+        <div class="form-end">
+          <button class="btn" type="submit">Send message</button>
+          <p class="status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>Tooey LLC</p>
+    <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+    <p><a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
