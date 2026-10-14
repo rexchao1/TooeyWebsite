@@ -103,20 +103,15 @@ function head(o, front, cx, top, hat, guest = false) {
   if (front) {
     g.ellipse(cx, top + 18, 23, 19, 0, Math.PI, Math.PI * 2);
     g.fill();
-    // soft shading only: eye sockets and the shadow under the nose and chin
-    const eye = g.createRadialGradient(cx, top + 30, 2, cx, top + 30, 18);
-    eye.addColorStop(0, 'rgba(30,15,8,0.0)');
-    eye.addColorStop(1, 'rgba(30,15,8,0.0)');
-    g.fillStyle = 'rgba(30,15,8,0.3)';
-    g.beginPath(); g.ellipse(cx - 8, top + 29, 7, 4, 0, 0, 7); g.fill();
-    g.beginPath(); g.ellipse(cx + 8, top + 29, 7, 4, 0, 0, 7); g.fill();
-    g.fillStyle = 'rgba(30,15,8,0.12)';
-    g.beginPath(); g.ellipse(cx + 1, top + 42, 4, 2.5, 0, 0, 7); g.fill();
-    const chin = g.createLinearGradient(0, top + 46, 0, top + 62);
-    chin.addColorStop(0, 'rgba(0,0,0,0)');
-    chin.addColorStop(1, 'rgba(0,0,0,0.3)');
-    g.fillStyle = chin;
-    g.fillRect(cx - 22, top + 46, 44, 20);
+    // no features at all: a soft head, lit from above, falling into shadow
+    const sh = g.createLinearGradient(0, top + 14, 0, top + 62);
+    sh.addColorStop(0, 'rgba(0,0,0,0)');
+    sh.addColorStop(1, 'rgba(0,0,0,0.35)');
+    g.save();
+    g.globalCompositeOperation = 'source-atop';
+    g.fillStyle = sh;
+    g.fillRect(cx - 30, top, 60, 80);
+    g.restore();
   } else {
     g.ellipse(cx, top + 26, 23, 27, 0, 0, Math.PI * 2);
     g.fill();
@@ -339,7 +334,7 @@ const LEAD = s => 0.18 + 5.5 * Math.pow(s + 0.5, 8);
 export const cellSize = (wide) => [wide ? W * 2 : W, H];
 
 export function paintCook(o, state, variant = 0) {
-  const front = state === 'idle';
+  const front = false; // nobody faces the camera
   const wide = state === 'walk';
   const out = cell(wide ? W * 2 : W, H);
   const cx = W / 2;
@@ -347,7 +342,7 @@ export function paintCook(o, state, variant = 0) {
   const hd = head(o, front, cx, 58, o.cap);
   const body = cookBody(o, front, cx);
   if (state === 'idle') {
-    const pose = variant % 2 ? 'fold' : 'down';
+    const pose = variant % 2 ? 'work' : 'down';
     const a1 = cookArm(o, -1, pose, cx), a2 = cookArm(o, 1, pose, cx);
     // the slightest sway: a person standing still is nearly sharp
     const sway = s => ({ dx: s * 4, dy: 0, rot: 0 });
@@ -386,7 +381,7 @@ export function paintGuest(o, state, variant = 0) {
   const wide = state === 'walk';
   const out = cell(wide ? W * 2 : W, H);
   const cx = W / 2, ox = wide ? W / 2 : 0;
-  const hd = head(o, true, cx, seated ? 150 : 56, null, true);
+  const hd = head(o, variant % 2 === 1, cx, seated ? 150 : 56, null, true);
   if (seated) {
     const body = guestBody(o, true, cx, false);
     const a1 = guestArm(o, -1, 'table', cx, true), a2 = guestArm(o, 1, variant % 2 ? 'table' : 'down', cx, true);

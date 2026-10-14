@@ -169,6 +169,7 @@ export function buildSet(scene) {
   B.rbox(M.steel, 0, 1.08, 0, 3.3, 0.04, 0.8, 0.01);
   B.rbox(M.steel, 0, 1.95, -0.05, 3.0, 0.06, 0.16, 0.02);
   B.box(M.steel, -1.6, 1.6, 2.15, 2.19, -0.1, 0.1);
+  for (let k = 0; k < 5; k++) B.cyl(M.plate, 0.95, 1.112 + k * 0.022, 0.12, 0.13, 0.11, 0.02, 28);
   // the kitchen door frame
   B.box(M.frame, -4.34, -4.3, 0, 2.1, -0.08, 0.08); B.box(M.frame, -3.3, -3.26, 0, 2.1, -0.08, 0.08);
 
@@ -432,7 +433,7 @@ export function buildSet(scene) {
   });
 
   // printers' paper
-  S.barSlip = makeSlip(scene, T.slip('Monday', [['Steak frites', 23], ['Mussels', 28], ['Gnocchi', 15]]), new THREE.Vector3(3.318, 1.198, 2.25), 1);
+  S.barSlip = makeSlip(scene, T.slip('Monday', [['Steak frites', 23], ['Mussels', 28], ['Gnocchi', 15]], { big: true }), new THREE.Vector3(3.318, 1.198, 2.25), 1);
   S.kitSlip = makeSlip(scene, T.slip('Prep', [['Steak frites', 26], ['Mussels', 31], ['Gnocchi', 18]], { big: true }), new THREE.Vector3(-4.622, 1.018, -1.0), 1);
 
   // steak portions on the sheet tray

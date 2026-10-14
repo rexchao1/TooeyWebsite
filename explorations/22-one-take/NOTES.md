@@ -20,8 +20,8 @@ working or walking streaks.
   tungsten highlights), lifted blacks, grain and a vignette.
 - People are painted in canvas by body part. Each part is laid down many times
   along its own motion, with the arm turning about the shoulder. Walkers get a
-  trail with the person at the front. Cooks have no faces from behind, and
-  diners' faces are in shadow.
+  trail with the person at the front. Nobody has a face: heads are soft
+  shapes only. Nobody is ever sharp and facing the camera.
 - People are painted in small slices after the hero starts, so they don't
   block first paint.
 - `_src/stills.cjs` renders each beat's last frame from the live scene to
@@ -37,11 +37,11 @@ working or walking streaks.
 ## Beats
 | Section | Beat | Length | Point clear at |
 |---|---|---|---|
-| Hero | Monday night: a dolly in on the bar printer while it prints the day's sales | 3.1 s | 2.6 s |
+| Hero | Monday night: a push in on the bar printer until its printed lines are legible at 1440 and 390 | 3.1 s | 2.6 s |
 | Prep | Through the pass to the kitchen at 6 am: the kitchen printer prints the prep counts and 26 steaks land on the sheet tray | 4.3 s | 4.2 s |
 | Shifts | A turn to the line. The clock runs from 4:30 to 7. Three cooks walk in, each just before a run of tickets | 4.0 s | 3.0 s |
 | Growth | Back out to the dining room at 8 pm: guests stream in through the door and sit, and the room fills | 4.3 s | 3.5 s |
-| Closer than a guess | A turn to the pass at 5:30 pm, played twice. On the guessed rota, four cooks stand still and sharp. The film winds back, and on Tooey's rota two cooks are blurred with work. A toggle flips between the two | 3.9 s | 3.3 s |
+| Closer than a guess | A turn to the pass at 5:30 pm, played twice. The lens holds the empty pass and a stack of plates sharp. On the guessed rota, four cooks stand still, turned away and out of focus. The film winds back, and on Tooey's rota two cooks are streaked with work. A toggle flips between the two | 3.9 s | 3.3 s |
 
 The whole take is about 20 s, spread over five sections. Nothing is pinned.
 
@@ -61,6 +61,6 @@ footer left out. That is 181 in the page itself plus 16 printed in the scene
   them out through the pass.
 
 ## Weakness
-The people are the weak point up close. Blurred and at a distance they read
-as people. Sharp and facing the camera (the guessed rota, the seated diners),
-they look like painted mannequins.
+The people hold up because they are always blurred, turned away or out of
+focus. Up close, their silhouettes are still simple painted shapes, so the
+frames lean on depth of field to keep them believable.

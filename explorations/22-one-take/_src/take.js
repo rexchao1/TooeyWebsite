@@ -23,18 +23,18 @@ function keys(t, k) {
 // fov is vertical, for a 2:1 frame; pfov is for a 4:5 phone frame.
 const STATIONS = {
   0: { focus: 1.9, ap: 0.012, pos: V(4.3, 1.68, 0.75), tgt: V(2.4, 1.05, 3.9), fov: 42, pfov: 64, ppos: V(4.25, 1.7, 0.9), ptgt: V(2.9, 1.1, 3.4) },
-  1: { focus: 0.92, ap: 0.02, pos: V(4.05, 1.56, 1.78), tgt: V(3.25, 1.2, 2.3), fov: 30, pfov: 40, ppos: V(4.0, 1.55, 1.9), ptgt: V(3.25, 1.2, 2.3) },
+  1: { focus: 0.52, ap: 0.016, pos: V(3.74, 1.42, 1.98), tgt: V(3.3, 1.26, 2.25), fov: 30, pfov: 34, ppos: V(3.7, 1.4, 2.03), ptgt: V(3.3, 1.27, 2.25) },
   2: { focus: 0.72, ap: 0.012, pos: V(-4.12, 1.3, -0.62), tgt: V(-4.6, 0.98, -1.42), fov: 38, pfov: 50, ppos: V(-4.02, 1.36, -0.5), ptgt: V(-4.63, 0.97, -1.32) },
   3: { focus: 3.3, ap: 0.008, pos: V(-3.4, 1.72, -0.7), tgt: V(0.4, 1.25, -4.3), fov: 44, pfov: 66 },
-  4: { focus: 4.6, ap: 0.008, pos: V(1.9, 1.72, 0.7), tgt: V(1.2, 0.9, 7.6), fov: 46, pfov: 66, ptgt: V(1.0, 0.55, 7.2) },
-  5: { focus: 2.9, ap: 0.0045, pos: V(0.2, 1.55, 1.75), tgt: V(0.05, 1.25, -3.0), fov: 38, pfov: 56, ppos: V(0.15, 1.5, 2.1), ptgt: V(0.05, 1.5, -3.0) },
+  4: { focus: 3.1, ap: 0.011, pos: V(1.9, 1.72, 0.7), tgt: V(1.2, 0.9, 7.6), fov: 46, pfov: 66, ptgt: V(1.0, 0.55, 7.2) },
+  5: { focus: 1.8, ap: 0.013, pos: V(0.2, 1.55, 1.75), tgt: V(0.05, 1.25, -3.0), fov: 38, pfov: 56, ppos: V(0.15, 1.5, 2.1), ptgt: V(0.05, 1.5, -3.0) },
 };
 
 const PRESETS = {
   night: {
-    hemi: 0.05, env: 0.05, sun: 0, street: 26, bar: 7, din: 0, hood: 0, kit: 0, heat: 0,
+    hemi: 0.06, env: 0.07, sun: 0, street: 30, bar: 9, din: 0, hood: 0, kit: 0, heat: 0,
     bBar: 9, bDin: 0, bHood: 0, bHeat: 0, bCeil: 0, status: 3, screen: 0.5,
-    streetN: 1, streetD: 0, skyM: 0, skyE: 1, backS: 0.22, backK: 0.4, exposure: 1.25, warm: 0.6, grain: 0.06, vig: 0.5,
+    streetN: 1, streetD: 0, skyM: 0, skyE: 1, backS: 0.22, backK: 0.4, exposure: 1.6, warm: 0.6, grain: 0.06, vig: 0.5,
     tintD: [0.34, 0.36, 0.42], tintK: [0.2, 0.2, 0.22], tintO: [0.4, 0.46, 0.55],
   },
   morning: {
@@ -128,7 +128,7 @@ export async function start(opts = {}) {
   const lineWalkers = [0, 2, 3].map(ci => P([lazy(() => paintCook(COOKS[ci], 'walk'), true)], { wide: true }));
   const seatedTex = GUESTS.map((g, i) => lazy(() => paintGuest(g, 'seated', i)));
   const guestWalkTex = GUESTS.slice(0, 4).map(g => lazy(() => paintGuest(g, 'walk'), true));
-  const IDLE_SPOTS = [V(-0.55, 0, -0.8), V(0.55, 0, -0.8), V(0.0, 0, -3.5), V(1.95, 0, -3.5)];
+  const IDLE_SPOTS = [V(-1.3, 0, -2.6), V(-0.25, 0, -3.6), V(0.9, 0, -2.8), V(1.9, 0, -3.6)];
   const idles = [0, 1, 2, 3].map(i => P([lazy(() => paintCook(COOKS[i], 'idle', i))]).set(IDLE_SPOTS[i].x, 0, IDLE_SPOTS[i].z));
 
   // seats: every chair, plus the banquette side of the wall tables
