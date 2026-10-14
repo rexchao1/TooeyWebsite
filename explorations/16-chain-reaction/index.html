@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey, the back end of your restaurant</title>
+<meta name="description" content="Tooey runs the back end of your restaurant from your own sales. Today, that's a prep count every morning.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/caprasimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/libre-franklin-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="./" aria-label="Tooey home"><img src="logo.png" alt="Tooey" width="343" height="148"></a>
+  <nav aria-label="Main">
+    <a class="navlink" href="privacy.html">Privacy</a>
+    <a class="navcta" href="#join">Join the pilot</a>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="scene" id="scene">
+
+    <section class="chapter chapter--hero" id="top" aria-labelledby="h-hero">
+      <div class="chapter__text">
+        <h1 id="h-hero">One busy Friday moves everything.</h1>
+        <p class="lead">Tooey runs the back end of your restaurant from your own sales. Today, that's a prep count every morning.</p>
+        <p><a class="btn" href="#join">Join the free pilot</a></p>
+      </div>
+    </section>
+
+    <figure class="stage" id="stage" aria-labelledby="stage-cap">
+      <div class="stage__view">
+        <svg id="world" viewBox="50 20 1010 1356" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A marble run. A ball for Friday's sales rolls out of a receipt printer, fills the prep tubs, stands three cooks up on the line, and rings a bell that brings guests to Monday's tables.">
+          <defs>
+            <g id="cook-shape">
+              <path class="c-card" d="M-28 0 L-22 -58 Q-22 -66 -14 -66 L14 -66 Q22 -66 22 -58 L28 0 Z"/>
+              <path class="c-shade" d="M0 -66 L14 -66 Q22 -66 22 -58 L28 0 L0 0 Z"/>
+              <rect class="c-line" x="-13" y="-44" width="26" height="40" rx="3"/>
+              <circle class="c-card" cx="0" cy="-82" r="15"/>
+              <path class="c-card" d="M-13 -95 L-13 -106 Q-24 -110 -20 -120 Q-14 -130 -4 -124 Q2 -134 10 -126 Q22 -128 20 -116 Q22 -108 13 -106 L13 -95 Z"/>
+              <rect class="c-shade" x="-13" y="-100" width="26" height="6"/>
+            </g>
+            <g id="table-shape">
+              <rect class="c-card" x="-5" y="-52" width="10" height="50"/>
+              <rect class="c-card" x="-24" y="-6" width="48" height="6" rx="3"/>
+              <rect class="c-card" x="-52" y="-64" width="104" height="11" rx="4"/>
+              <rect class="c-shade" x="0" y="-64" width="52" height="11" rx="4"/>
+              <path class="c-card" d="M-86 0 L-86 -78 L-78 -78 L-78 -34 L-58 -34 L-58 -27 L-78 -27 L-78 0 Z"/>
+              <path class="c-card" d="M86 0 L86 -78 L78 -78 L78 -34 L58 -34 L58 -27 L78 -27 L78 0 Z"/>
+            </g>
+            <g id="guest-l">
+              <rect class="c-card" x="-80" y="-80" width="26" height="48" rx="12"/>
+              <circle class="c-card" cx="-67" cy="-94" r="13"/>
+            </g>
+            <g id="guest-r">
+              <rect class="c-card" x="54" y="-80" width="26" height="48" rx="12"/>
+              <rect class="c-shade" x="67" y="-80" width="13" height="48" rx="6"/>
+              <circle class="c-card" cx="67" cy="-94" r="13"/>
+            </g>
+            <filter id="cardshadow" x="-30%" y="-30%" width="160%" height="170%" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#5d6d3e" flood-opacity="0.32"/></filter>
+            <clipPath id="tubclip-1"><path d="M596 596 L704 596 L696 704 L604 704 Z"/></clipPath>
+            <clipPath id="tubclip-2"><path d="M446 596 L554 596 L546 704 L454 704 Z"/></clipPath>
+            <clipPath id="tubclip-3"><path d="M296 596 L404 596 L396 704 L304 704 Z"/></clipPath>
+          </defs>
+
+          <!-- Prep email, painted (scroll, wide screens) -->
+          <g id="mail" class="mail">
+            <rect class="p-ink" x="796" y="496" width="384" height="250" rx="18"/>
+            <text class="m-head" x="822" y="544">Example: Saturday</text>
+            <text class="m-col" x="1062" y="584" text-anchor="end">Predicted</text>
+            <text class="m-col" x="1152" y="584" text-anchor="end">Prep</text>
+            <line class="m-rule" x1="822" y1="598" x2="1154" y2="598"/>
+            <text class="m-dish" x="822" y="636">Burger</text>
+            <text class="m-num" id="n-p1" x="1062" y="636" text-anchor="end">58</text>
+            <text class="m-prep" id="n-q1" x="1152" y="636" text-anchor="end">64</text>
+            <line class="m-rule" x1="822" y1="652" x2="1154" y2="652"/>
+            <text class="m-dish" x="822" y="688">Short rib</text>
+            <text class="m-num" id="n-p2" x="1062" y="688" text-anchor="end">22</text>
+            <text class="m-prep" id="n-q2" x="1152" y="688" text-anchor="end">25</text>
+            <line class="m-rule" x1="822" y1="704" x2="1154" y2="704"/>
+            <text class="m-dish" x="822" y="732">Gnocchi</text>
+            <text class="m-blank" id="n-g" x="1152" y="732" text-anchor="end">Too new</text>
+          </g>
+          <g id="chips" aria-hidden="true">
+            <rect class="chip" id="chip1" x="-20" y="-11" width="40" height="22" rx="11" transform="translate(650 640)"/>
+            <rect class="chip" id="chip2" x="-20" y="-11" width="40" height="22" rx="11" transform="translate(500 660)"/>
+          </g>
+
+          <!-- Painted: chute (sheet pan) -->
+          <g id="chute">
+            <line class="p-rod" x1="300" y1="272" x2="764" y2="384" stroke-width="22"/>
+            <line class="p-rod" x1="762" y1="362" x2="766" y2="384" stroke-width="12"/>
+            <line class="p-thin" x1="380" y1="290" x2="380" y2="330"/>
+            <line class="p-thin" x1="680" y1="362" x2="680" y2="402"/>
+          </g>
+
+          <!-- Painted: ladle on a pivot -->
+          <g id="stand">
+            <path class="p-deep" d="M842 414 L812 478 L872 478 Z"/>
+            <rect class="p-ink" x="796" y="476" width="92" height="10" rx="5"/>
+          </g>
+          <g id="ladle">
+            <path class="p-ink" d="M744 404 A46 46 0 0 0 836 404 Z"/>
+            <line class="p-rod" x1="830" y1="406" x2="1000" y2="330" stroke-width="16"/>
+            <path class="p-hook" d="M1000 330 q 14 -6 10 -22"/>
+            <circle class="p-pin" cx="842" cy="410" r="7"/>
+          </g>
+
+          <!-- Painted: rail and the prep tubs -->
+          <g id="rail">
+            <line class="p-rod" x1="752" y1="512" x2="232" y2="574" stroke-width="14"/>
+            <line class="p-thin" x1="640" y1="520" x2="640" y2="490"/>
+            <line class="p-thin" x1="380" y1="551" x2="380" y2="521"/>
+          </g>
+          <g class="tub" id="tub1">
+            <path class="t-body" d="M596 596 L704 596 L696 704 L604 704 Z"/>
+            <g clip-path="url(#tubclip-1)"><rect class="t-fill" id="fill1" x="590" y="600" width="120" height="104" transform="matrix(1 0 0 0.84 0 112.64)"/></g>
+            <path class="t-edge" d="M596 596 L704 596 L696 704 L604 704 Z"/>
+            <rect class="p-ink" id="lid1" x="590" y="582" width="120" height="15" rx="6"/>
+          </g>
+          <g class="tub" id="tub2">
+            <path class="t-body" d="M446 596 L554 596 L546 704 L454 704 Z"/>
+            <g clip-path="url(#tubclip-2)"><rect class="t-fill" id="fill2" x="440" y="600" width="120" height="104" transform="matrix(1 0 0 0.62 0 267.52)"/></g>
+            <path class="t-edge" d="M446 596 L554 596 L546 704 L454 704 Z"/>
+            <rect class="p-ink" id="lid2" x="440" y="582" width="120" height="15" rx="6"/>
+          </g>
+          <g class="tub" id="tub3">
+            <path class="t-body" d="M296 596 L404 596 L396 704 L304 704 Z"/>
+            <path class="t-edge" d="M296 596 L404 596 L396 704 L304 704 Z"/>
+            <rect class="p-ink" id="lid3" x="290" y="582" width="120" height="15" rx="6"/>
+          </g>
+          <rect class="p-ink" x="262" y="704" width="476" height="14" rx="7"/>
+          <text class="w-label" x="110" y="668">Prep</text>
+
+          <g id="lower" transform="translate(0 50)">
+          <!-- Shifts: who works when, a card clock that pops up (scroll) -->
+          <g id="clock-wrap" transform="translate(410 820)"><g id="clock">
+            <path class="c-card" d="M-34 0 L-14 -40 L14 -40 L34 0 Z"/>
+            <path class="c-shade" d="M0 -40 L14 -40 L34 0 L0 0 Z"/>
+            <g transform="translate(0 -92) scale(0.86)">
+              <circle class="c-card" r="62"/>
+              <path class="c-shade" d="M0 -62 A62 62 0 0 1 0 62 Z" opacity=".55"/>
+              <line class="c-tick" x1="0" y1="-50" x2="0" y2="-38" transform="rotate(0)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(30)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(60)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-38" transform="rotate(90)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(120)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(150)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-38" transform="rotate(180)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(210)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(240)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-38" transform="rotate(270)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(300)"/><line class="c-tick" x1="0" y1="-50" x2="0" y2="-42" transform="rotate(330)"/>
+              <line id="hand-h" class="c-hand" x1="0" y1="6" x2="0" y2="-30" transform="rotate(240)"/>
+              <line id="hand-m" class="c-hand c-hand--m" x1="0" y1="8" x2="0" y2="-44"/>
+              <circle class="c-pin" r="5"/>
+            </g>
+          </g></g>
+
+          <!-- Card: the line, with cooks that pop up -->
+          <g class="cook" transform="translate(560 834) scale(1.22)"><g class="pop" id="cook1"><use href="#cook-shape"/></g></g>
+          <g class="cook" transform="translate(690 848) scale(1.22)"><g class="pop" id="cook2"><use href="#cook-shape"/></g></g>
+          <g class="cook" transform="translate(820 863) scale(1.22)"><g class="pop" id="cook3"><use href="#cook-shape"/></g></g>
+          <g id="track">
+            <path class="c-flap" d="M158 800 L880 880 L880 908 L158 828 Z"/>
+            <path class="c-card" d="M158 792 L880 872 L880 884 L158 804 Z"/>
+            <path class="c-card" d="M146 700 L158 700 L158 812 L146 812 Z"/>
+            <path class="c-shade" d="M262 818 L276 818 L268 860 Z"/>
+          </g>
+          <text class="w-label" x="168" y="902">Shifts</text>
+
+          <!-- Card: backboard, ramp, shelf, bell -->
+          <path id="backboard" class="c-card" d="M930 820 L943 820 L943 1010 L930 1010 Z"/>
+          <g id="ramp">
+            <path class="c-flap" d="M924 1012 L452 1132 L452 1158 L924 1038 Z"/>
+            <path class="c-card" d="M924 1004 L452 1124 L452 1136 L924 1016 Z"/>
+            <path class="c-flap" d="M452 1132 L208 1132 L208 1158 L452 1158 Z"/>
+            <path class="c-card" d="M452 1124 L208 1124 L208 1136 L452 1136 Z"/>
+          </g>
+          <g id="bell">
+            <rect class="c-card" x="262" y="1110" width="136" height="14" rx="6"/>
+            <path class="c-card" d="M276 1110 A54 54 0 0 1 384 1110 Z"/>
+            <path class="c-shade" d="M330 1056 A54 54 0 0 1 384 1110 L330 1110 Z"/>
+            <rect class="c-card" x="325" y="1044" width="10" height="13"/>
+            <ellipse class="c-card" cx="330" cy="1042" rx="14" ry="6"/>
+          </g>
+          <g id="rings">
+            <path class="ring" d="M262 1026 q -22 34 0 68"/>
+            <path class="ring" d="M240 1012 q -30 48 0 96"/>
+            <path class="ring" d="M398 1026 q 22 34 0 68"/>
+            <path class="ring" d="M420 1012 q 30 48 0 96"/>
+          </g>
+          <text class="w-label" x="214" y="1222">Monday</text>
+
+          <!-- Card: Monday's room -->
+          <g class="table" transform="translate(548 1290) scale(1.15)"><g class="pop" id="table1"><use href="#table-shape"/><g class="pop-g" id="t1g"><use href="#guest-l"/><use href="#guest-r"/></g></g></g>
+          <g class="table" transform="translate(752 1290) scale(1.15)"><g class="pop" id="table2"><use href="#table-shape"/><g class="pop-g"><use href="#guest-l"/><use href="#guest-r"/></g></g></g>
+          <g class="table" transform="translate(956 1290) scale(1.15)"><g class="pop" id="table3"><use href="#table-shape"/><g class="pop-g"><use href="#guest-l"/><use href="#guest-r"/></g></g></g>
+          <g class="floor">
+          <path class="c-flap" d="M430 1296 L1040 1296 L1040 1318 L430 1318 Z"/>
+          <path class="c-card" d="M430 1290 L1040 1290 L1040 1302 L430 1302 Z"/>
+          </g>
+
+          </g>
+
+          <!-- The signal: one ball of sales -->
+          <g id="ball" transform="translate(418 1140)">
+            <g id="ballspin">
+              <circle class="b-body" id="ballbody" r="34"/>
+              <path class="b-seam" id="ballseam" d="M-21 -21 A30 30 0 0 1 21 -21"/>
+            </g>
+            <text class="b-label" id="balllabel" y="6" text-anchor="middle">Fri</text>
+          </g>
+
+          <!-- Painted: the receipt printer -->
+          <g id="receipt">
+            <path class="r-paper" d="M138 150 L138 48 L146 40 L154 48 L162 40 L170 48 L178 40 L186 48 L194 40 L202 48 L210 40 L218 48 L226 40 L234 48 L242 40 L252 48 L252 150 Z"/>
+            <rect class="r-line" data-day="mon" x="152" y="62" width="34" height="5" rx="2"/>
+            <rect class="r-line" data-day="tue" x="152" y="74" width="40" height="5" rx="2"/>
+            <rect class="r-line" data-day="wed" x="152" y="86" width="50" height="5" rx="2"/>
+            <rect class="r-line" data-day="thu" x="152" y="98" width="62" height="5" rx="2"/>
+            <rect class="r-line is-hot" data-day="fri" x="152" y="110" width="86" height="5" rx="2"/>
+            <rect class="r-line" data-day="sat" x="152" y="122" width="78" height="5" rx="2"/>
+            <rect class="r-line" data-day="sun" x="152" y="134" width="46" height="5" rx="2"/>
+          </g>
+          <g id="printer">
+            <rect class="p-ink" x="90" y="150" width="212" height="130" rx="24"/>
+            <rect class="p-deep" x="126" y="144" width="138" height="12" rx="6"/>
+            <rect class="p-screen" x="118" y="188" width="76" height="30" rx="8"/>
+            <circle class="p-button" cx="256" cy="203" r="11"/>
+            <rect class="p-deep" x="278" y="222" width="24" height="44" rx="8"/>
+            <rect class="p-ink" x="112" y="278" width="34" height="10" rx="4"/>
+            <rect class="p-ink" x="246" y="278" width="34" height="10" rx="4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="stage__bar">
+        <div class="days" role="group" aria-label="Run the machine with the sales of a">
+          <button type="button" class="day" data-day="fri" aria-pressed="true"><span class="day__dot day__dot--big" aria-hidden="true"></span>Friday</button>
+          <button type="button" class="day" data-day="tue" aria-pressed="false"><span class="day__dot" aria-hidden="true"></span>Tuesday</button>
+        </div>
+        <figcaption id="stage-cap">Painted parts work today; white card is what we're building.</figcaption>
+      </div>
+    </figure>
+
+    <section class="chapter chapter--prep" id="prep" aria-labelledby="h-prep">
+      <div class="chapter__text">
+        <h2 id="h-prep">Prep, counted overnight.</h2>
+        <p>Each night Tooey reads the day's POS sales. Before prep, an email lists every dish: what we expect, and a little over to make. Too new or too slow to call stays blank, with a reason.</p>
+        <div class="mailwrap">
+        <table class="mailcard">
+          <caption>Example: Saturday</caption>
+          <thead><tr><th scope="col"><span class="sr">Dish</span></th><th scope="col">Predicted</th><th scope="col">Prep</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Burger</th><td>58</td><td class="q">64</td></tr>
+            <tr><th scope="row">Short rib</th><td>22</td><td class="q">25</td></tr>
+            <tr><th scope="row">Gnocchi</th><td colspan="2" class="blank">Too new</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter chapter--shifts" id="shifts" aria-labelledby="h-shifts">
+      <div class="chapter__text">
+        <h2 id="h-shifts">Hands where the rush is.</h2>
+        <p>A busy Friday needs more people on the line. We're building shift plans from the same sales.</p>
+      </div>
+    </section>
+
+    <section class="chapter chapter--monday" id="monday" aria-labelledby="h-monday">
+      <div class="chapter__text">
+        <h2 id="h-monday">A fuller Monday.</h2>
+        <p>Friday's rush and Monday's lull are one picture. We're building ways to bring regulars back when it's slow.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="join" id="join" aria-labelledby="h-join">
+    <div class="join__text">
+      <h2 id="h-join">Join the free pilot</h2>
+      <p>Setup takes about a week and needs about five weeks of past sales. Most POS systems work. You check our counts against what sold, then decide.</p>
+    </div>
+    <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field field--wide"><label for="f-pos">Which POS? <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text"></div>
+      <div class="field field--wide"><label for="f-msg">Anything we should know? <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="form__foot">
+        <button class="btn" type="submit" id="send">Send</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Tooey LLC</p>
+  <p><a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
+  <p><a href="privacy.html">Privacy</a></p>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/MotionPathPlugin.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
