@@ -316,5 +316,57 @@ window.EXPLORATIONS = [
     weaknesses: ["Clean render: no bounce light, wear or clutter, so it doesn’t read as a photo.", "Labels on the hero boxes are small."],
     ask: "Daylight or night: which feels more like your customers’ restaurants?",
     pages: [{ label: 'Home', href: '25-real-time/index.html' }, { label: 'Privacy', href: '25-real-time/privacy.html' }]
+  },
+  {
+    id: '26-walk-in', num: '26', name: "Walk in", round: 6,
+    href: '26-walk-in/', notes: '26-walk-in/NOTES.md', words: 199, motion: "Scroll walk + arrivals",
+    line: "Scroll walks you across the street, through the doors, past the tables and the till, into the kitchen and up to the prep sheet.",
+    brief: "Round six: a walk through one casual restaurant (outside, the doors, a table, behind the POS, the kitchen, the prep sheet), drawn and lit as part of the page. Style: walking forward into depth.",
+    headline: "Your restaurant makes more, and you manage less.",
+    concept: "The restaurant is drawn as lit planes at different depths, like stage flats, filling the page. On load the street lamp, sign and windows warm up at dusk. Scrolling carries you forward: the doors swing open and the facade parts around you; tables and lamps pass at their own depths; the swing door opens into the kitchen. In each room one detail plays on arrival: lamps come on at empty tables, the receipt printer feeds the day’s sales, cooks step onto the line, and the prep counts tick up with the old guesses struck through.",
+    look: "21’s palette, dusk brick and green awning, warm lamp pools. Epilogue. No libraries.",
+    strengths: ["The most literal version of your idea: you really walk in.", "Street and dining room are warm and convincing."],
+    weaknesses: ["The kitchen is the weakest room: grey, less lit, simple cooks.", "Every plane redraws as it scales; smoothness on a real laptop untested."],
+    ask: "Is walking forward the feeling you want, or too much like a game?",
+    pages: [{ label: 'Home', href: '26-walk-in/index.html' }, { label: 'Privacy', href: '26-walk-in/privacy.html' }]
+  },
+  {
+    id: '27-doors', num: '27', name: "Doors", round: 6,
+    href: '27-doors/', notes: '27-doors/NOTES.md', words: 198, motion: "Scroll openings + rooms play",
+    line: "Each room change is a real opening: the front doors, the till drawer, the kitchen swing door, the prep sheet coming off the printer.",
+    brief: "Round six: a walk through one casual restaurant (outside, the doors, a table, behind the POS, the kitchen, the prep sheet), drawn and lit as part of the page. Style: thresholds: each move between rooms is an opening you scroll through.",
+    headline: "The back end of your restaurant, worked out from your own sales.",
+    concept: "A brick front with a green awning lights up on load. Scrolling swings the double doors in and you push through into a lamp-lit dining room where, on a Tuesday, tables fill. The till drawer slides open and the day’s sales print. A steel swing door gives way to the kitchen: the clock runs 4 to 7 and cooks step on just ahead of the tickets. The prep sheet feeds up from a printer and becomes the sheet on the steel: counts tick up, guesses struck through, what sold pencilled in.",
+    look: "21’s palette with brick, oak, green awning, oxblood banquette. Young Serif and Red Hat Text. No libraries.",
+    strengths: ["The richest, most finished illustration of the four.", "Openings make the scroll feel physical without a long pin."],
+    weaknesses: ["The kitchen’s point (staff matched to the night) only shows while it animates.", "Cooks’ heads read a little like chess pawns."],
+    ask: "The serif makes it feel like a nice restaurant. Right for Tooey, or too much?",
+    pages: [{ label: 'Home', href: '27-doors/index.html' }, { label: 'Privacy', href: '27-doors/privacy.html' }]
+  },
+  {
+    id: '28-side-track', num: '28', name: "Side track", round: 6,
+    href: '28-side-track/', notes: '28-side-track/NOTES.md', words: 194, motion: "Sideways scroll + rooms play",
+    line: "The restaurant drawn side-on, end to end. Scrolling slides you along it from the pavement to the prep table.",
+    brief: "Round six: a walk through one casual restaurant (outside, the doors, a table, behind the POS, the kitchen, the prep sheet), drawn and lit as part of the page. Style: a sideways tracking shot through a side elevation.",
+    headline: "The back end of your restaurant, worked out from its own sales.",
+    concept: "One long architectural section at eye level, with hatched walls and slabs. A sticky stage turns scroll into one sideways move over six screens, pausing at each room; foreground pillars, lamps and stools pass faster than the back wall. Lights come on along the street on load; the front door swings with the scroll; the dining room fills; the till prints and a thread runs through the ceiling to the prep sheet at the far end; the swing door lets a server through; the kitchen compares a flat guess with what really sold; the prep sheet’s counts tick up.",
+    look: "21’s palette, flat vector with gradient light. Golos Text. No libraries.",
+    strengths: ["The clearest map of how a restaurant works, front to back.", "The thread from till to prep sheet tells the story without words."],
+    weaknesses: ["Flat vector, so it feels like a clean diagram more than a lit place.", "The white boards (Friday, the guess chart) read like cards dropped into the drawing."],
+    ask: "Clear but cool. Is clarity worth losing some warmth?",
+    pages: [{ label: 'Home', href: '28-side-track/index.html' }, { label: 'Privacy', href: '28-side-track/privacy.html' }]
+  },
+  {
+    id: '29-follow-the-order', num: '29', name: "Follow the order", round: 6,
+    href: '29-follow-the-order/', notes: '29-follow-the-order/NOTES.md', words: 186, motion: "Scroll path + rooms play",
+    line: "One guest check travels down the page: the table, the POS, overnight, the morning prep sheet, the ticket rail.",
+    brief: "Round six: a walk through one casual restaurant (outside, the doors, a table, behind the POS, the kitchen, the prep sheet), drawn and lit as part of the page. Style: follow one thing: a single order travels through the restaurant.",
+    headline: "Every order tonight makes tomorrow easier.",
+    concept: "The rooms are soft and out of focus, like light behind the text, so the page and the scene are one surface. Only the order is sharp. On load the door opens and a blank check settles in its light. Scrolling carries it to table six, where it’s written; flips it into a printed ticket at the POS; folds it into a point of light overnight among the day’s sales; stretches it into the short-rib line of the morning prep sheet (guess struck through); then lifts the sheet to the rail as cooks step on and the room fills.",
+    look: "21’s palette, blurred painterly rooms, one sharp lit object. Gloock and Onest. No libraries, 188 KB.",
+    strengths: ["Blends into the page best of the four: no edges anywhere.", "One object makes the whole data story easy to follow."],
+    weaknesses: ["The moving check can briefly cross a text column between rooms.", "The overnight “week of dots” reads a little like a chart."],
+    ask: "The headline is about the order, not the owner. Does that land?",
+    pages: [{ label: 'Home', href: '29-follow-the-order/index.html' }, { label: 'Privacy', href: '29-follow-the-order/privacy.html' }]
   }
 ];

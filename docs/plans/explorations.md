@@ -165,3 +165,22 @@ figures). Both need to be true first.
 
 - [x] Plans, collision review, four go-aheads
 - [x] Four sites built, reviewed from rendered stills and frames, committed, and added to the gallery
+
+## Round six (2026-10-14)
+
+Rex on round five: "little 3D videos pasted into a generic website." He
+wants the animation to be part of the page, not realistic for its own sake,
+with some scroll-driven motion. His idea: a walk through one casual
+restaurant, from outside, through the doors, to a table, behind the POS,
+into the back kitchen and onto the prep sheet. Four variations, each in
+21's palette, drawn and lit in SVG (no 3D), built without a plan gate and
+reviewed at desktop only:
+
+| # | Folder | How the walk moves |
+|---|---|---|
+| 26 | `26-walk-in` | Forward into depth; walls part as you pass through |
+| 27 | `27-doors` | Each room change is an opening you scroll through; rooms play on arrival |
+| 28 | `28-side-track` | One side elevation, tracked sideways |
+| 29 | `29-follow-the-order` | One sharp order travels through soft, out-of-focus rooms |
+
+- [x] Four sites built, reviewed from scroll frames at 1440, committed, and added to the gallery
