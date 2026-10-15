@@ -446,5 +446,31 @@ window.EXPLORATIONS = [
     weaknesses: ["About three screens of scroll for three short texts; fast scrollers miss the animations.", "The closing section is spare: one line and a button."],
     ask: 'Which of the new informative sections should come next?',
     pages: [{ label: 'Home', href: '35-operating-system/index.html' }, { label: 'Privacy', href: '35-operating-system/privacy.html' }]
+  },
+  {
+    id: '36-hero-windows', num: '36', name: "Hero: windows", round: 9,
+    href: '36-hero-windows/', notes: '36-hero-windows/NOTES.md', words: 190, motion: 'OS hero + typed/flicker text',
+    line: "The building’s windows light up as app windows: Forecast, Prep, Shifts, then the dining room as “Tonight”.",
+    brief: 'Round nine: site 35 with an operating-system hero. Headline effect switchable: ?text=type or ?text=flicker (review switch bottom-left).',
+    headline: 'Your new restaurant operating system.',
+    concept: "Each upper window has a hairline title bar and a small status dot; on load they light in turn: a week’s forecast with Friday busiest, the prep counts, the shift board filling in; then the shop window, titled Tonight, lights and four guests sit. About 3.6 s. The headline types in with a caret, or flickers on like a sign.",
+    look: '35’s look: porcelain, slate line, lamplight; Literata, Source Serif 4, Schibsted Grotesk.',
+    strengths: ["Reads at a glance as a building running Tooey.", "Shows all three things Tooey does in the first screen."],
+    weaknesses: ["The windows are small; prep and shift text is 9–14px at 1440.", "On phones the windows become a decorative strip."],
+    ask: 'Typed or flicker? And this hero, or the other one?',
+    pages: [{ label: 'Home (typed)', href: '36-hero-windows/index.html?text=type' }, { label: 'Home (flicker)', href: '36-hero-windows/index.html?text=flicker' }, { label: 'Privacy', href: '36-hero-windows/privacy.html' }]
+  },
+  {
+    id: '37-hero-boot', num: '37', name: "Hero: boot up", round: 9,
+    href: '37-hero-boot/', notes: '37-hero-boot/NOTES.md', words: 190, motion: 'OS hero + typed/flicker text',
+    line: "The restaurant boots up: one lamplight wire runs from the till to the forecast, the prep sheet, the shift board and the dining room.",
+    brief: 'Round nine: site 35 with an operating-system hero. Headline effect switchable: ?text=type or ?text=flicker (review switch bottom-left).',
+    headline: 'Your new restaurant operating system.',
+    concept: "A two-storey cutaway, dark at first. The till lights (Sales in); the wire climbs to the office forecast board (Forecast ready), drops to the prep sheet as counts are pencilled in (Prep sent), crosses to the shift board (Shifts set), runs along the ceiling lighting each pendant as guests sit (Open). Booted at about 4.2 s. Headline flickers on or types in.",
+    look: '35’s look: porcelain, slate line, lamplight; Literata, Source Serif 4, Schibsted Grotesk.',
+    strengths: ["The clearest picture of Tooey as the system connecting everything.", "A real sequence with a payoff: the restaurant opens."],
+    weaknesses: ["Status tags are tiny on phones; needs a phone crop.", "The ceiling wire crosses the vertical runs like a junction."],
+    ask: 'Typed or flicker? And this hero, or the other one?',
+    pages: [{ label: 'Home (typed)', href: '37-hero-boot/index.html?text=type' }, { label: 'Home (flicker)', href: '37-hero-boot/index.html?text=flicker' }, { label: 'Privacy', href: '37-hero-boot/privacy.html' }]
   }
 ];
