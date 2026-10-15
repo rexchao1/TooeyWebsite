@@ -250,7 +250,7 @@
     if (!f) return;
     var status = document.getElementById('form-status');
     var submit = f.querySelector('button[type="submit"]');
-    var required = ['name', 'restaurant', 'email'];
+    var required = ['name', 'restaurant', 'email', 'pos'];
     var say = function (state, html) { status.dataset.state = state; status.innerHTML = html; };
 
     f.addEventListener('submit', function (e) {
@@ -266,7 +266,7 @@
         if (bad) missing.push(el);
       });
       if (missing.length) {
-        say('error', 'Add your name, your restaurant and a working email, then send again.');
+        say('error', 'Add your name, your restaurant, a working email and your POS, then send again.');
         missing[0].focus();
         return;
       }
