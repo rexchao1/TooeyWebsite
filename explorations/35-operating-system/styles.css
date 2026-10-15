@@ -841,3 +841,26 @@ html.modal-open { overflow: hidden; }
 @media (min-width: 761px) {
   .foot p:last-child { grid-column: 4; text-align: right; }
 }
+
+/* Lights on: three pendants hang over the closing bar and light it */
+.talk-lamps {
+  grid-column: 1 / 5;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  margin-bottom: -2px;
+  position: relative; z-index: 5; pointer-events: none;
+}
+.talk-lamp { display: flex; justify-content: center; }
+.talk-lamp svg { width: clamp(9rem, 16vw, 15rem); height: auto; overflow: visible; }
+.talk-lamp line, .talk-lamp .shade { fill: none; stroke: var(--slate); stroke-width: 1.3; stroke-linecap: round; }
+.talk-lamp .shade { fill: var(--porcelain); }
+.talk-lamp .bulb { fill: #fff6e4; stroke: none; filter: drop-shadow(0 0 6px rgba(241, 210, 160, .95)); }
+.talk .bar {
+  background:
+    radial-gradient(22% 110% at 16.7% 0%, rgba(241, 210, 160, .95), rgba(241, 210, 160, 0) 75%),
+    radial-gradient(22% 110% at 50% 0%, rgba(241, 210, 160, .95), rgba(241, 210, 160, 0) 75%),
+    radial-gradient(22% 110% at 83.3% 0%, rgba(241, 210, 160, .95), rgba(241, 210, 160, 0) 75%),
+    #f6f0e3;
+  box-shadow: inset 0 0 0 1px rgba(35, 42, 47, .22);
+}
+.talk .bar:hover { background-color: #f1e5cc; }
+@media (max-width: 760px) { .talk-lamps { grid-column: 1; } .talk-lamp:nth-child(n+2) { visibility: hidden; } }
