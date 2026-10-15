@@ -1,8 +1,9 @@
 /* Tooey, exploration 35: the operating system (site 34, revised).
    Draws the rooms, then lights them: the street on load, and, with a mouse,
    the pointer as a lamp. Prep, shifts and growth share one pinned section
-   that steps through the three as the page scrolls. Then the dialog and
-   the form inside it. */
+   that steps through the three as the page scrolls. When scrolling stops
+   between two resting places, the page eases to the nearer one. Then the
+   dialog and the form inside it. */
 (function () {
   'use strict';
   var root = document.documentElement;
@@ -16,11 +17,11 @@
 
   form();
   dialog();
+  snapping();
   if (!window.TooeyScenes) return;
   var S = window.TooeyScenes;
 
   function clamp(x, a, b) { return x < a ? a : x > b ? b : x; }
-  function smooth(a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
 
   /* ---------- draw ---------- */
   var scenes = [].map.call(document.querySelectorAll('.scene[data-scene]'), function (fig) {
@@ -39,7 +40,6 @@
     };
   });
   var hero = scenes.filter(function (s) { return s.hero; })[0];
-  var closer = scenes.filter(function (s) { return s.fig.classList.contains('scene-closer'); })[0];
 
   function size() {
     scenes.forEach(function (s) {
@@ -103,14 +103,13 @@
     pinned = on;
     work.classList.toggle('is-pinned', on);
     workItems.forEach(function (li, i) {
-      var h = li.querySelector('h2');
+      var h = li.querySelector('h3');
       if (on) {
         h.innerHTML = '<button type="button" class="step-go">' + h.textContent + '</button>';
         h.firstChild.addEventListener('click', function () { jump(i); });
       } else {
         h.textContent = h.textContent;
         li.classList.remove('is-on');
-        li.style.removeProperty('--p');
       }
     });
     if (on) {
@@ -130,11 +129,14 @@
 
   function travel(vh) { return Math.max(1, work.offsetHeight - (vh - headH())); }
 
-  // scroll so step i is the active one; the section stays put, so this reads as a switch
+  // Step i rests at progress i / (STEPS - 1): the first where the pin begins,
+  // the last where it ends. Each step is active for the half-way band around
+  // its resting place, so easing to the nearest resting place never changes
+  // which step is showing.
   function jump(i) {
     var vh = window.innerHeight;
     var y = work.getBoundingClientRect().top + window.pageYOffset - headH();
-    y += i * travel(vh) / STEPS + (i ? 2 : 0);
+    y += i * travel(vh) / (STEPS - 1);
     window.scrollTo({ top: Math.round(y), behavior: 'instant' });
   }
 
@@ -148,7 +150,7 @@
     if (!pinned) return;
     var r = work.getBoundingClientRect(), top = headH();
     var prog = clamp((top - r.top) / travel(vh), 0, 1);
-    var idx = Math.min(STEPS - 1, Math.floor(prog * STEPS));
+    var idx = clamp(Math.round(prog * (STEPS - 1)), 0, STEPS - 1);
     if (idx !== active) {
       active = idx;
       workFigs.forEach(function (f, i) { f.classList.toggle('is-on', i === idx); });
@@ -158,41 +160,10 @@
         if (b) { if (i === idx) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); }
       });
     }
-    workItems[idx].style.setProperty('--p', clamp(prog * STEPS - idx, 0, 1).toFixed(3));
     // each scene plays its own small animation when it becomes the one on view
     var inView = r.top < vh * 0.55 && r.bottom > vh * 0.45;
     if (inView && playing !== idx) { playing = idx; replay(workFigs[idx]); }
     if (r.bottom < 0 || r.top > vh) playing = -1;
-  }
-
-  /* ---------- the closer: the same Friday, run down to close ---------- */
-  var closerSec = document.querySelector('.closer');
-  var lv = [], surf = [], glows = [], hh, hm;
-  if (closer) {
-    var g = closer.D.closeGeom;
-    lv = [].slice.call(closer.art.querySelectorAll('.actors .lvl'));
-    surf = [].slice.call(closer.art.querySelectorAll('.actors .surface'));
-    glows = [].slice.call(closer.art.querySelectorAll('.w.left'));
-    hh = closer.art.querySelector('.hand-h');
-    hm = closer.art.querySelector('.hand-m');
-    var top = g.CB - 6;
-    closer.setT = function (t) {
-      var run = smooth(0.08, 0.66, t);
-      lv.forEach(function (r, i) {
-        var a = +r.getAttribute('data-from'), b = +r.getAttribute('data-to');
-        var level = a + (b - a) * run, y = top - level * g.CH;
-        r.setAttribute('y', y.toFixed(1));
-        r.setAttribute('height', (g.CB - y).toFixed(1));
-        surf[i].setAttribute('transform', 'translate(0 ' + y.toFixed(1) + ')');
-      });
-      // from half past four to eleven
-      var mins = 16.5 * 60 + run * 6.5 * 60;
-      hh.setAttribute('transform', 'rotate(' + ((mins / 60) % 12 * 30).toFixed(2) + ' 500 74)');
-      hm.setAttribute('transform', 'rotate(' + ((mins % 60) * 6).toFixed(2) + ' 500 74)');
-      var glow = smooth(0.68, 0.86, t);
-      closer.art.style.setProperty('--glow', glow.toFixed(3));
-    };
-    closer.setT(motion ? 0 : 1);
   }
 
   /* ---------- scroll: the light washes in ---------- */
@@ -205,12 +176,6 @@
       var lit = motion ? clamp((vh - r.top) / (vh * 0.85), 0, 1) : 1;
       if (s.lit !== lit) { s.lit = lit; s.art.style.setProperty('--lit', lit.toFixed(3)); }
     });
-    if (closer && closerSec) {
-      var cr = closerSec.getBoundingClientRect();
-      var t = motion ? clamp(-cr.top / Math.max(1, cr.height - vh), 0, 1) : 1;
-      if (window.innerWidth <= 760) t = motion ? clamp((vh * 0.75 - closer.art.getBoundingClientRect().top) / (vh * 0.6), 0, 1) : 1;
-      closer.setT(t);
-    }
   }
 
   /* ---------- the pointer is a lamp ---------- */
@@ -325,7 +290,7 @@
         say('sent', 'Sent. We will reply to ' + escapeHtml(data.email) + '.');
       }).catch(function () {
         submit.disabled = false;
-        submit.textContent = 'Send message';
+        submit.textContent = 'Start my free pilot';
         var body = encodeURIComponent(
           'Name: ' + data.name + '\nRestaurant: ' + data.restaurant + '\nPhone: ' + (data.phone || '') +
           '\nPOS: ' + (data.pos || '') + '\n\n' + (data.message || ''));
@@ -336,7 +301,7 @@
   }
 
   /* ---------------------------------------------------------------- */
-  /* "Talk to us": a modal dialog holding the form */
+  /* "Try Tooey free": a modal dialog holding the form */
   function dialog() {
     var dlg = document.getElementById('talk-dialog');
     var openers = [].slice.call(document.querySelectorAll('.talk-open'));
@@ -375,6 +340,81 @@
       var openLater = function () { setTimeout(function () { open(endBtn); }, 60); };
       if (document.readyState === 'complete') openLater(); else window.addEventListener('load', openLater);
     }
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Snap to the nearest resting place, gently.
+     Resting places: the top of each section (under the header), each step
+     of the pinned section, and the very bottom of the page. Once scrolling
+     has been idle for 150ms, and no finger, button or key is down, the page
+     eases (0.6s, ease-out) to the nearest one, if it is near enough. Any
+     wheel, touch, key or pointer input stops the ease at once. Off under
+     reduced motion and while the dialog is open. */
+  function snapping() {
+    if (!motion || !window.requestAnimationFrame) return;
+    var header = document.querySelector('.top');
+    var IDLE = 150, DUR = 600;
+    var timer = 0, anim = 0, own = false, down = false, held = false, lastSet = -1;
+
+    function points() {
+      var vh = window.innerHeight, hh = header ? header.offsetHeight : 0;
+      var y0 = window.pageYOffset, max = document.documentElement.scrollHeight - vh;
+      var out = [0, max];
+      [].forEach.call(document.querySelectorAll('main > section'), function (sec) {
+        var top = sec.getBoundingClientRect().top + y0 - hh;
+        out.push(top);
+        if (sec.classList.contains('is-pinned')) {
+          var n = sec.querySelectorAll('.work-item').length;
+          var tr = sec.offsetHeight - (vh - hh);
+          for (var i = 1; i < n; i++) out.push(top + tr * i / (n - 1));
+        }
+      });
+      return out.filter(function (p) { return p >= 0 && p <= max; });
+    }
+
+    function cancel() {
+      if (anim) cancelAnimationFrame(anim);
+      anim = 0; own = false;
+      clearTimeout(timer);
+    }
+
+    function settle() {
+      if (down) { held = true; return; } // wait for the finger or button to lift
+      if (root.classList.contains('modal-open')) return;
+      var y = window.pageYOffset, vh = window.innerHeight;
+      var best = null, d = Infinity;
+      points().forEach(function (p) { var dd = Math.abs(p - y); if (dd < d) { d = dd; best = p; } });
+      // only when it is truly between two places, and never a long haul
+      if (best === null || d < 2 || d > vh * 0.75) return;
+      var from = y, to = Math.round(best), t0 = performance.now();
+      own = true;
+      (function step(now) {
+        var t = Math.min(1, (now - t0) / DUR), e = 1 - Math.pow(1 - t, 3);
+        lastSet = Math.round(from + (to - from) * e);
+        window.scrollTo(0, lastSet);
+        if (t < 1) anim = requestAnimationFrame(step);
+        else { anim = 0; setTimeout(function () { own = false; }, 50); }
+      })(t0);
+    }
+
+    function wait() { clearTimeout(timer); timer = setTimeout(settle, IDLE); }
+
+    window.addEventListener('scroll', function () {
+      if (own && Math.abs(window.pageYOffset - lastSet) <= 1) return; // our own ease
+      if (own) cancel();
+      wait();
+    }, { passive: true });
+    ['wheel', 'touchstart', 'touchmove', 'keydown'].forEach(function (t) {
+      window.addEventListener(t, function () { if (own) cancel(); }, { passive: true });
+    });
+    window.addEventListener('pointerdown', function () { down = true; if (own) cancel(); }, { passive: true });
+    window.addEventListener('touchstart', function () { down = true; }, { passive: true });
+    // after a drag or a swipe that scrolled, settle once it is let go; a plain click never moves the page
+    var up = function () { down = false; if (held) { held = false; wait(); } };
+    window.addEventListener('pointerup', up, { passive: true });
+    window.addEventListener('pointercancel', up, { passive: true });
+    window.addEventListener('touchend', up, { passive: true });
+    window.addEventListener('touchcancel', up, { passive: true });
   }
 
   function escapeHtml(s) {

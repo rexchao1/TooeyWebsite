@@ -61,7 +61,7 @@ body {
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
-h1, h2, p, ol, figure { margin: 0; }
+h1, h2, h3, p, ol, figure { margin: 0; }
 ol { padding: 0; list-style: none; }
 
 :focus-visible { outline: 2px solid var(--slate); outline-offset: 3px; border-radius: 2px; }
@@ -95,7 +95,7 @@ ol { padding: 0; list-style: none; }
 }
 .btn:hover { background: #ecc78e; box-shadow: inset 0 0 0 1px rgba(35, 42, 47, .3); }
 .btn-small { font-size: .9375rem; padding: .8rem 1.1rem .75rem; }
-/* "Talk to us" opens the dialog; without scripts it is an email link */
+/* "Try Tooey free" opens the dialog; without scripts it is an email link */
 .js .talk-mail, html:not(.js) .talk-open { display: none; }
 
 /* ---------- the sheet: ruled columns and rows ---------- */
@@ -407,7 +407,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 }
 
 /* ---------- section headings ---------- */
-.work h2, .closer h2, .start h2, .talk h2, .dlg h2 {
+.work h2, .start h2, .dlg h2 {
   font-family: var(--display);
   font-weight: 400;
   font-size: clamp(2.2rem, 3.3vw, 3.3rem);
@@ -417,12 +417,12 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 }
 
 /* ---------- 2. what it does: prep, shifts, growth ----------
-   Default (no script, reduced motion, narrow screens): each drawing sits
-   beside its words, three rows in normal flow, every scene finished. The
-   stage and the list dissolve into the grid so each row can pair them up.
-   With .is-pinned (motion, wide screen) the section is tall, the inner
-   block sticks under the header, and the three drawings stack in one
-   place and cross-fade as the visitor scrolls through the steps. */
+   Default (no script, reduced motion, narrow screens): the heading, then
+   each drawing beside its words, three rows in normal flow, every scene
+   finished. The stage and the text dissolve into the grid so each row can
+   pair them up. With .is-pinned (motion, wide screen) the section is tall,
+   the inner block sticks under the header, the three drawings stack in one
+   place and cross-fade, and the heading stays over the list throughout. */
 .work-pin {
   padding: clamp(3rem, 8vh, 6rem) var(--g) clamp(2rem, 5vh, 4rem);
   display: grid;
@@ -430,14 +430,23 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   align-items: center;
   row-gap: clamp(1rem, 4vh, 3rem);
 }
-.work-stage, .work-list { display: contents; }
+.work-stage, .work-text, .work-list { display: contents; }
 .work-list { margin: 0; }
+.work-head { grid-column: 1 / 3; grid-row: 1; position: relative; z-index: 4; padding: 0 var(--pad); }
+.work-head p { margin-top: 1rem; color: var(--ink-2); max-width: 20em; }
 .work .scene-room { grid-column: 1 / 4; margin-left: calc(-1 * var(--g)); }
 .work-item { grid-column: 4; position: relative; z-index: 4; padding: 2rem var(--pad); }
-.work [data-step="0"] { grid-row: 1; }
-.work [data-step="1"] { grid-row: 2; }
-.work [data-step="2"] { grid-row: 3; }
-.work-item p { margin-top: 1.25rem; color: var(--ink-2); max-width: 15em; }
+.work [data-step="0"] { grid-row: 2; }
+.work [data-step="1"] { grid-row: 3; }
+.work [data-step="2"] { grid-row: 4; }
+.work-item h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 2.3vw, 2.3rem);
+  line-height: 1.1;
+  letter-spacing: -.018em;
+}
+.work-item p { margin-top: 1rem; color: var(--ink-2); max-width: 15em; }
 .scene-room .art {
   aspect-ratio: 1000 / 720;
   /* fades toward the words on the right, and at top and bottom */
@@ -451,8 +460,9 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   mask-composite: intersect;
 }
 
-/* pinned: about one screen of scroll per step */
-.work.is-pinned { height: calc(100vh + 3 * 95vh); }
+/* pinned: the first step rests where the pin begins, the second a little
+   over a screen later, the third where the pin ends */
+.work.is-pinned { height: calc(100vh + 240vh); }
 .work.is-pinned .work-pin {
   position: sticky; top: var(--top);
   height: calc(100vh - var(--top));
@@ -475,14 +485,19 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   transition: opacity .75s ease;
 }
 .work.is-pinned .scene-room.is-on { opacity: 1; }
-.work.is-pinned .work-list {
+.work.is-pinned .work-text {
   display: block;
   grid-column: 4; grid-row: 1;
   position: relative; z-index: 4;
+}
+.work.is-pinned .work-head { padding: 0 var(--pad) 1.6rem; }
+.work.is-pinned .work-head p { margin-top: .8rem; font-size: 1.0625rem; line-height: 1.5; }
+.work.is-pinned .work-list {
+  display: block;
   border-top: 1px solid var(--rule-strong);
 }
 .work.is-pinned .work-item {
-  padding: 1.3rem var(--pad) 1.6rem;
+  padding: 1.05rem var(--pad) 1.2rem;
   border-bottom: 1px solid var(--rule);
   opacity: .3;
   transition: opacity .45s ease;
@@ -491,17 +506,16 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .work.is-pinned .work-item.is-on { opacity: 1; }
 .work.is-pinned .work-item:hover { opacity: .62; }
 .work.is-pinned .work-item.is-on:hover { opacity: 1; }
-.work.is-pinned .work-item p { margin-top: .7rem; font-size: 1.0625rem; }
-/* a hairline that runs along the top of the active step as it is scrolled */
+.work.is-pinned .work-item p { margin-top: .45rem; font-size: 1.0625rem; line-height: 1.5; }
+/* a slate hairline draws along the top of the active step */
 .work.is-pinned .work-item::before {
   content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
   background: var(--slate);
   transform-origin: left;
-  transform: scaleX(var(--p, 0));
-  opacity: 0;
-  transition: opacity .3s ease;
+  transform: scaleX(0);
+  transition: transform .7s cubic-bezier(.3, 0, .2, 1);
 }
-.work.is-pinned .work-item.is-on::before { opacity: .7; }
+.work.is-pinned .work-item.is-on::before { transform: scaleX(1); }
 .work .step-go {
   all: unset;
   cursor: pointer;
@@ -510,49 +524,54 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .work .step-go::after { content: ""; position: absolute; inset: 0; }
 .work .step-go:focus-visible { outline: 2px solid var(--slate); outline-offset: 4px; }
 
-/* ---------- 5. closer than a guess ---------- */
-.closer-pin {
-  position: relative;
-  padding: clamp(3rem, 8vh, 5rem) var(--g);
+/* ---------- 3. built for independents: words over a street ---------- */
+.indie {
+  padding: clamp(3rem, 7vh, 5rem) var(--g) clamp(1rem, 3vh, 2rem);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: center;
+  align-items: end;
 }
-.closer-copy {
-  grid-column: 1;
-  grid-row: 1;
-  position: relative; z-index: 4;
-  padding: 2rem var(--pad);
+.indie h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 3.3vw, 3.3rem);
+  line-height: 1.04;
+  letter-spacing: -.022em;
+  text-wrap: balance;
+  max-width: 11em;
 }
-.closer-copy p { margin-top: 1.5rem; color: var(--ink-2); max-width: 15em; }
-.closer-copy .caption {
-  max-width: none;
-  margin-top: 2.5rem; padding-top: .9rem;
+.indie-copy { grid-column: 1 / 3; grid-row: 1; padding: 0 var(--pad); position: relative; z-index: 4; }
+.indie-copy p { margin-top: 1.25rem; color: var(--ink-2); max-width: 22em; }
+.indie-points {
+  grid-column: 3 / 5; grid-row: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  margin: 0; padding: 0; list-style: none;
   border-top: 1px solid var(--rule-strong);
-  font: 500 .875rem/1.4 var(--ui);
-  color: var(--ink-2);
+  position: relative; z-index: 4;
 }
-.scene-closer {
-  grid-column: 2 / 5;
-  grid-row: 1;
-  margin-right: calc(-1 * var(--g));
+.indie-points li { padding: 1.2rem var(--pad) .2rem; }
+.indie-points h3 { font: 400 1.375rem/1.2 var(--display); letter-spacing: -.01em; }
+.indie-points p { margin-top: .6rem; color: var(--ink-2); font-size: 1.0625rem; line-height: 1.5; max-width: 16em; }
+.scene-street {
+  grid-column: 1 / 5; grid-row: 2;
+  margin: clamp(1rem, 2.5vh, 1.5rem) calc(-1 * var(--g)) 0;
 }
-.scene-closer .art {
-  aspect-ratio: 1000 / 560;
+.scene-street .art {
+  aspect-ratio: 1400 / 480;
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 8%, #000 86%, transparent 100%);
+    linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 90%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 8%, #000 86%, transparent 100%);
+    linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 90%, transparent 100%);
   mask-composite: intersect;
 }
-.w.left { opacity: calc(var(--a, 1) * var(--glow, 1)); }
-.motion .closer { height: 230vh; }
-.motion .closer-pin { position: sticky; top: var(--top); height: calc(100vh - var(--top)); min-height: 560px; padding-block: 0; }
+/* each shop's lamps come on in turn as the street scrolls in: a short ramp
+   from each wash's own threshold (--s), scrubbed by --lit */
+.w.shop { opacity: calc(var(--a, 1) * clamp(0, (var(--lit, 1) - var(--s, 0)) * 6, 1)); }
 
-/* ---------- 6. how to start ---------- */
+/* ---------- 4. how to start ---------- */
 .start {
   padding: clamp(5rem, 14vh, 9rem) var(--g) clamp(4rem, 10vh, 7rem);
   display: grid;
@@ -595,40 +614,48 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   position: relative; z-index: 4;
 }
 
-/* ---------- the close: one line and the button ---------- */
+/* ---------- the close: one wide lamplight bar ---------- */
 .talk {
-  padding: clamp(5rem, 13vh, 8rem) var(--g) clamp(5rem, 13vh, 8rem);
+  padding: clamp(4.5rem, 12vh, 8rem) var(--g) clamp(4.5rem, 12vh, 7.5rem);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: start;
 }
-.talk h2 {
-  grid-column: 1 / 3;
-  grid-row: 1;
-  padding: 0 var(--pad);
-  position: relative; z-index: 5;
-  font-size: clamp(2.4rem, 4.2vw, 4.2rem);
-  line-height: 1;
-  max-width: 9em;
-}
-.talk-end {
-  grid-column: 1 / 3;
-  grid-row: 2;
-  justify-self: start;
-  margin-top: 2.25rem;
-  padding: 0 var(--pad);
+.talk-note {
+  grid-column: 1 / 5;
+  padding: 0 var(--pad) 1.1rem;
   position: relative; z-index: 4;
+  font: 500 1rem/1.4 var(--ui);
+  color: var(--ink-2);
 }
-/* a little lamplight on the paper behind the button */
-.talk-end::before {
-  content: ""; position: absolute; z-index: -1;
-  left: 50%; top: 50%; width: 20rem; height: 10rem;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(253, 222, 170, .5), rgba(253, 222, 170, .18) 55%, rgba(253, 222, 170, 0));
-  mix-blend-mode: multiply;
-  pointer-events: none;
+.bar {
+  grid-column: 1 / 5;
+  position: relative; z-index: 4;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  width: 100%;
+  padding: clamp(2rem, 5vw, 4.25rem) var(--pad) clamp(2.2rem, 5.2vw, 4.5rem);
+  border: 0; border-radius: 2px;
+  font: 400 clamp(3rem, 7.6vw, 8.5rem)/.95 var(--display);
+  letter-spacing: -.032em;
+  text-align: left;
+  text-decoration: none;
+  color: var(--slate);
+  cursor: pointer;
+  /* lamplight: brightest a little left of centre, warm to the ends */
+  background:
+    radial-gradient(70% 140% at 34% 40%, rgba(253, 228, 186, .9), rgba(253, 228, 186, 0) 70%),
+    var(--lamp);
+  box-shadow: inset 0 0 0 1px rgba(35, 42, 47, .18);
+  transition: background-color .25s ease, box-shadow .25s ease;
 }
+.bar:hover { background-color: #ebc387; box-shadow: inset 0 0 0 1px rgba(35, 42, 47, .32); }
+.bar:focus-visible { outline: 2px solid var(--slate); outline-offset: 4px; }
+.bar-arrow {
+  flex: none;
+  width: clamp(4rem, 9vw, 9rem); height: auto;
+  fill: none; stroke: var(--slate); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform .3s cubic-bezier(.3, 0, .2, 1);
+}
+.bar:hover .bar-arrow { transform: translateX(.6rem); }
 
 /* ---------- the dialog: the form on porcelain ---------- */
 html.modal-open { overflow: hidden; }
@@ -778,28 +805,30 @@ html.modal-open { overflow: hidden; }
   .hero-copy { padding: calc(93vw - 2rem) 0 3.5rem; }
   .hero-copy::before { display: none; }
 
-  .work-pin, .closer-pin, .start, .talk, .foot, .page { grid-template-columns: 1fr; }
+  .work-pin, .indie, .start, .talk, .foot, .page { grid-template-columns: 1fr; }
   .work-pin { padding-top: 3.5rem; row-gap: 0; }
+  .work-head { grid-column: 1; padding: 0; }
   .work-item { grid-column: 1; padding: 2rem 0 0; }
   .work .scene-room { grid-column: 1; margin-inline: calc(-1 * var(--g)); }
-  .work-item[data-step="0"] { grid-row: 1; } .work .scene-room[data-step="0"] { grid-row: 2; }
-  .work-item[data-step="1"] { grid-row: 3; } .work .scene-room[data-step="1"] { grid-row: 4; }
-  .work-item[data-step="2"] { grid-row: 5; } .work .scene-room[data-step="2"] { grid-row: 6; }
-  .closer-copy { grid-column: 1 !important; grid-row: 1; padding: 0; }
-  .scene-closer { grid-column: 1 !important; grid-row: 2; margin-inline: calc(-1 * var(--g)) !important; }
-  .scene-room .art, .scene-closer .art {
+  .work-item[data-step="0"] { grid-row: 2; } .work .scene-room[data-step="0"] { grid-row: 3; }
+  .work-item[data-step="1"] { grid-row: 4; } .work .scene-room[data-step="1"] { grid-row: 5; }
+  .work-item[data-step="2"] { grid-row: 6; } .work .scene-room[data-step="2"] { grid-row: 7; }
+  .scene-room .art {
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
   }
-  .motion .closer { height: auto; }
-  .motion .closer-pin { position: relative; height: auto; min-height: 0; padding-block: 3.5rem 2rem; }
-  .closer-copy .caption { margin-top: 1.5rem; }
 
+  .indie-copy, .indie-points, .scene-street { grid-column: 1; }
+  .indie-copy { padding: 0; }
+  .indie-points { grid-row: 2; grid-template-columns: 1fr; margin-top: 2rem; }
+  .indie-points li { padding-inline: 0; }
+  .scene-street { grid-row: 3; }
   .start h2 { grid-row: 1; padding: 0 0 2rem; }
   .steps { grid-column: 1; grid-row: 2; grid-template-columns: 1fr; }
   .steps li { padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
   .free { grid-column: 1; grid-row: 3; margin-top: 2rem; padding-inline: 0; }
-  .talk h2, .talk-end, .foot p, .page h1, .page .intro, .terms h2, .terms div { padding-inline: 0; grid-column: 1; }
+  .bar { grid-column: 1; padding-inline: 1.25rem; font-size: clamp(2.4rem, 11vw, 3rem); gap: 1rem; }
+  .talk-note, .foot p, .page h1, .page .intro, .terms h2, .terms div { padding-inline: 0; grid-column: 1; }
   .form { grid-template-columns: 1fr; }
   .field, .field-wide, .form-end { grid-column: 1; }
   .foot { gap: .5rem; }

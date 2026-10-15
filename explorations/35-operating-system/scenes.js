@@ -1,6 +1,7 @@
-/* Tooey, exploration 35 (drawings unchanged from 34, the lit room).
-   The five drawings: the street front, the prep table, the line, the dining
-   room, and the same Friday at close. Coordinates are in each drawing's own
+/* Tooey, exploration 35. The first four drawings are 34's (the lit room);
+   the fifth is new. The five drawings: the street front, the prep table,
+   the line, the dining room, and a street of independents (which replaces
+   34's "same Friday at close"). Coordinates are in each drawing's own
    units; 1 unit is about one screen pixel at 1440 wide. */
 (function () {
   'use strict';
@@ -1128,95 +1129,296 @@
   }
 
   /* ================================================================== */
-  /* 5. The same Friday, at close: what a guess left over, and Tooey's.   */
-  var CLOSE = { dishes: ['Short rib', 'Risotto', 'Burrata'], guess: [40, 38, 28], tooey: [27, 33, 19], sold: [25, 31, 18], cap: 44 };
+  /* 5. A street of independents: a trattoria, a café, a bistro and a     */
+  /*    taqueria, side by side. Their lamps come on in turn as the        */
+  /*    section scrolls in (each wash carries its own threshold, --s).    */
+  function indies() {
+    var D = new Drawing(1400, 480), o, i, x, y, R;
+    var G = 420; // the pavement line
 
-  function closer() {
-    var D = new Drawing(1000, 560), o, i, x, y;
-    var CT = 214, CB = 392, CH = CB - CT - 10;   // container top, bottom, usable height
+    // a wall lantern on a short arm, hung at (lx, ly)
+    function lantern(o, lx, ly, d) {
+      o.q += P.rc(lx - 4 - d * 8, ly - 4, 8, 22) + P.q(lx - d * 8, ly + 6, lx - d * 2, ly + 4, lx, ly - 2);
+      o.f += P.pg([lx - 9, ly, lx + 9, ly, lx + 7, ly + 28, lx - 7, ly + 28]);
+      o.k += P.pg([lx - 9, ly, lx + 9, ly, lx + 7, ly + 28, lx - 7, ly + 28]) + P.pg([lx - 12, ly, lx, ly - 11, lx + 12, ly]);
+      o.q += P.vl(lx, ly, ly + 28) + P.pg([lx - 5, ly + 28, lx + 5, ly + 28, lx, ly + 35]);
+      o.d += P.el(lx, ly + 15, 2.2, 4.5);
+    }
+    // a dome pendant inside a window
+    function pendant(o, px, top, py, r) {
+      o.q += P.vl(px, top, py - r * 0.8);
+      o.f += P.pg([px - r, py].concat(P.arcPts(px, py, r, r * 0.8, 180, 360)));
+      o.k += P.arc(px, py, r, r * 0.8, 180, 360) + P.hl(px - r - 1, px + r + 1, py);
+    }
+    // a small round table side on, top at y
+    function smallTable(o, cx, y, w) {
+      o.f += P.rc(cx - w / 2, y - 3, w, 4);
+      o.k += P.hl(cx - w / 2, cx + w / 2, y - 3);
+      o.q += P.hl(cx - w / 2 + 2, cx + w / 2 - 2, y + 1) + P.vl(cx, y + 1, G - 4) + P.ln(cx - 12, G, cx, G - 6) + P.ln(cx + 12, G, cx, G - 6);
+    }
 
+    /* ---------- A. the trattoria: brick, arched windows, striped awning */
+    var A = 20, AW = 330;
     o = D.o();
-    o.x = P.tiles(0, 0, 1000, 560, 44, 22, true);
-
-    // the clock between the two shelves
-    o = D.o();
-    clock(o, 500, 74, 32, 0, 0, true);
-
-    var units = [[40, 'A guess', CLOSE.guess, 'g'], [530, 'Tooey', CLOSE.tooey, 't']];
-    var actors = '', defs = '';
-    units.forEach(function (u) {
-      var ux = u[0], uw = 430, side = u[3];
-      // posts and shelves
-      o = D.o();
-      o.f = P.rc(ux, 120, 8, 440) + P.rc(ux + uw - 8, 120, 8, 440);
-      o.k = P.rc(ux, 120, 8, 440) + P.rc(ux + uw - 8, 120, 8, 440);
-      for (y = 130; y < 560; y += 14) o.d += P.hl(ux + 1, ux + 7, y) + P.hl(ux + uw - 7, ux + uw - 1, y);
-      [[140, 'top'], [CB, 'main'], [500, 'low']].forEach(function (sh) {
-        var s = D.o(), sy = sh[0];
-        s.f = P.rc(ux, sy, uw, 10);
-        s.k = P.hl(ux, ux + uw, sy) + P.hl(ux, ux + uw, sy + 10);
-        s.q = P.hl(ux, ux + uw, sy + 5);
-        for (x = ux + 12; x < ux + uw - 6; x += 8) s.d += P.vl(x, sy, sy + 10);
-        s.d += P.rc(ux - 2, sy - 3, 12, 16) + P.rc(ux + uw - 10, sy - 3, 12, 16);
-      });
-      // the heading on the top shelf
-      o = D.o();
-      o.t = tx(ux + 16, 124, u[1], 'tx-h tx-big');
-      // stacked deli lids and a towel on the top shelf
-      o.f = P.rc(ux + uw - 120, 116, 90, 24);
-      for (i = 0; i < 6; i++) o.q += P.pl([ux + uw - 120, 140 - i * 4, ux + uw - 116, 137 - i * 4, ux + uw - 34, 137 - i * 4, ux + uw - 30, 140 - i * 4]);
-      o = D.o();
-      o.f = P.pg([ux + 300, CB + 10, ux + 334, CB + 10, ux + 338, CB + 64, ux + 296, CB + 60]);
-      o.q = P.pg([ux + 300, CB + 10, ux + 334, CB + 10, ux + 338, CB + 64, ux + 296, CB + 60]);
-      o.d = P.hl(ux + 298, ux + 336, CB + 52) + P.hl(ux + 298, ux + 336, CB + 56);
-      // sheet trays and a spike of spent tickets on the low shelf
-      o = D.o();
-      for (i = 0; i < 5; i++) { o.f += P.rc(ux + 20, 490 - i * 7, 200, 8); o.q += P.pl([ux + 20, 492 - i * 7, ux + 24, 498 - i * 7, ux + 216, 498 - i * 7, ux + 220, 492 - i * 7]); }
-      o = D.o();
-      o.q = P.vl(ux + 300, 436, 498) + P.rc(ux + 284, 496, 32, 4);
-      for (i = 0; i < 7; i++) { var tw = 30 + (i % 3) * 4; o.f += P.rc(ux + 300 - tw / 2 + (i % 2) * 3, 480 - i * 6, tw, 4); o.q += P.hl(ux + 300 - tw / 2 + (i % 2) * 3, ux + 300 + tw / 2 + (i % 2) * 3, 480 - i * 6); }
-
-      // three clear containers, each with a tape label
-      for (i = 0; i < 3; i++) {
-        var cx = ux + 22 + i * 132, cw = 116;
-        var s = D.o();
-        s.f = P.rc(cx, CT, cw, CB - CT);
-        s.k = P.pl([cx, CT + 6, cx + 2, CB, cx + cw - 2, CB, cx + cw, CT + 6]) + P.rc(cx - 4, CT - 2, cw + 8, 8);
-        for (var m = 1; m < 8; m++) s.d += P.hl(cx + 3, cx + (m % 2 ? 9 : 14), CB - m * (CH / 8));
-        // tape label on the lid
-        actors += '';
-        var lab = blank();
-        lab.f = P.pg([cx + 14, CT - 30, cx + cw - 10, CT - 28, cx + cw - 12, CT - 4, cx + 12, CT - 6]);
-        lab.q = P.pg([cx + 14, CT - 30, cx + cw - 10, CT - 28, cx + cw - 12, CT - 4, cx + 12, CT - 6]);
-        lab.t = tx(cx + 20, CT - 12, CLOSE.dishes[i], 'tx-l') + tx(cx + cw - 16, CT - 11, u[2][i], 'tx-n', ' text-anchor="end"');
-        var lo = D.o(); lo.f = lab.f; lo.q = lab.q; lo.t = lab.t;
-
-        // what is in it, drawn over the full height and cut to its level
-        var id = 'cl-' + side + i, inner = [cx + 4, CT + 8, cw - 8, CB - CT - 10];
-        var cont = blank(), r = T.rng(50 + i);
-        if (i === 0) {
-          for (var yy = CB - 12; yy > CT + 10; yy -= 16) for (x = cx + 10 + ((yy / 16) % 2) * 8; x < cx + cw - 12; x += 22) cont.d += P.el(x + r() * 4, yy + r() * 3, 9, 6);
-        } else if (i === 1) {
-          for (var k = 0; k < 160; k++) cont.d += P.el(cx + 8 + r() * (cw - 16), CT + 12 + r() * (CB - CT - 24), 1.3, 1);
-        } else {
-          for (yy = CB - 20; yy > CT + 14; yy -= 30) for (x = cx + 22 + ((yy / 30 | 0) % 2) * 14; x < cx + cw - 16; x += 34) cont.d += P.el(x, yy, 13, 12) + P.arc(x, yy, 8, 7, 200, 290);
-          for (yy = CB - 8; yy > CT + 10; yy -= 22) cont.d += P.wave(cx + 8, yy, cw - 16, 1, 3);
-        }
-        var level = u[2][i] / CLOSE.cap, left = (u[2][i] - CLOSE.sold[i]) / CLOSE.cap;
-        defs += '<clipPath id="' + id + '"><rect class="lvl" data-from="' + level.toFixed(3) + '" data-to="' + left.toFixed(3) + '" x="' + inner[0] + '" y="' + CT + '" width="' + inner[2] + '" height="' + (CB - CT) + '"/></clipPath>';
-        actors += '<g class="contents" clip-path="url(#' + id + ')">' + piece(cont) + '</g>';
-        actors += '<path class="surface q" data-x="' + cx + '" d="' + P.wave(cx + 4, 0, cw - 8, 1.6, 2) + '" data-from="' + level.toFixed(3) + '" data-to="' + left.toFixed(3) + '"/>';
-        var lh = left * CH;
-        D.wash(cx + cw / 2, CB - 6 - lh / 2, 70 + lh * 0.25, lh / 2 + 34, side === 'g' ? 1 : 0.35, { cls: 'left' });
-      }
+    o.f = P.rc(A, 30, AW, G - 30);
+    o.x = P.bricks(A, 30, AW, G - 30, 28, 9);
+    o.k = P.vl(A, 30, G) + P.vl(A + AW, 30, G);
+    o.q = P.hl(A - 6, A + AW + 6, 36) + P.hl(A - 6, A + AW + 6, 44) + P.hl(A, A + AW, 52);
+    [A + 50, A + 140, A + 230].forEach(function (wx) {
+      var s = D.o(), w = 50, t = 86, b = 176;
+      s.f = P.pg([wx, b, wx, t].concat(P.arcPts(wx + w / 2, t, w / 2, w / 2, 180, 360)).concat([wx + w, b]));
+      s.k = P.pl([wx, b, wx, t].concat(P.arcPts(wx + w / 2, t, w / 2, w / 2, 180, 360)).concat([wx + w, b])) + P.hl(wx - 6, wx + w + 6, b) + P.hl(wx - 4, wx + w + 4, b + 5);
+      s.q = P.vl(wx + w / 2, t - w / 2 + 4, b) + P.hl(wx + 3, wx + w - 3, 126);
+      s.d = P.arc(wx + w / 2, t, w / 2 + 7, w / 2 + 7, 180, 360);
+      for (i = 1; i < 6; i++) { var a = Math.PI + Math.PI * i / 6; s.d += P.ln(wx + w / 2 + Math.cos(a) * (w / 2), t + Math.sin(a) * (w / 2), wx + w / 2 + Math.cos(a) * (w / 2 + 7), t + Math.sin(a) * (w / 2 + 7)); }
     });
+    // shopfront: a window either side of an arched door
+    o = D.o();
+    o.f = P.rc(A + 14, 262, AW - 28, G - 262);
+    [[A + 24, 108], [A + 206, 108]].forEach(function (wv) {
+      var wx = wv[0], w = wv[1];
+      o.k += P.rc(wx, 276, w, 104);
+      o.q += P.rc(wx + 5, 281, w - 10, 94) + P.rc(wx, 384, w, 30);
+      o.d += P.rc(wx + 6, 389, w - 12, 20) + P.ln(wx + 14, 360, wx + 46, 300) + P.ln(wx + 28, 364, wx + 58, 308);
+    });
+    // inside the windows: a pendant over a small table with a candle and a bottle
+    pendant(o, A + 78, 281, 312, 16);
+    pendant(o, A + 260, 281, 312, 16);
+    o.q += P.hl(A + 44, A + 112, 356) + P.hl(A + 226, A + 294, 356);
+    bottle(o, A + 62, 356, 0, 0.55);
+    candle(o, A + 92, 356);
+    wineGlass(o, A + 244, 356, 0.6);
+    candle(o, A + 274, 356);
+    // the door
+    o.k += P.pl([A + 140, G, A + 140, 300].concat(P.arcPts(A + 165, 300, 25, 25, 180, 360)).concat([A + 190, G]));
+    o.q += P.vl(A + 165, 276, G) + P.rc(A + 146, 312, 13, 60) + P.rc(A + 171, 312, 13, 60);
+    o.d += P.rc(A + 146, 382, 13, 30) + P.rc(A + 171, 382, 13, 30);
+    // the striped awning
+    o = D.o();
+    var aw = [A + 10, 224, A + AW - 10, 224, A + AW - 2, 256, A + 2, 256];
+    o.f = P.pg(aw) + P.rc(A + 2, 256, AW - 4, 12);
+    o.k = P.pg(aw) + P.hl(A + 2, A + AW - 2, 268);
+    for (x = A + 2; x < A + AW - 4; x += 20) o.q += P.arc(x + 10, 264, 10, 6, 0, 180);
+    for (i = 0; i <= 16; i++) {
+      var tt = i / 16, xt = A + 10 + (AW - 20) * tt, xb = A + 2 + (AW - 4) * tt;
+      o.q += P.ln(xt, 224, xb, 256);
+      if (i < 16 && i % 2 === 0) {
+        var t2 = (i + 1) / 16, xt2 = A + 10 + (AW - 20) * t2, xb2 = A + 2 + (AW - 4) * t2;
+        for (var h = 1; h < 4; h++) o.d += P.ln(xt + (xt2 - xt) * h / 4, 225, xb + (xb2 - xb) * h / 4, 255);
+      }
+    }
+    // lanterns either side of the door, and a blade sign with a glass on it
+    o = D.o();
+    lantern(o, A + 128, 282, -1);
+    lantern(o, A + 202, 282, 1);
+    o = D.o();
+    o.q = P.hl(A + AW - 4, A + AW + 40, 196) + P.hl(A + AW - 4, A + AW + 40, 199) + P.vl(A + AW + 32, 199, 204) + P.vl(A + AW + 8, 199, 204);
+    o.f = P.el(A + AW + 20, 222, 18);
+    o.k = P.el(A + AW + 20, 222, 18);
+    o.q += P.el(A + AW + 20, 222, 14);
+    wineGlass(o, A + AW + 20, 234, 0.62);
 
-    actors += '<g class="hands">' + '<path class="k hand-h" d="M500 74L500 58"/><path class="k hand-m" d="M500 74L500 50"/></g>';
-    D.actorDefs = defs;
-    D.actors = actors;
-    D.closeGeom = { CT: CT, CB: CB, CH: CH };
+    /* ---------- B. the café: painted boards, a big window, a table out front */
+    var B = 372, BW = 316;
+    o = D.o();
+    o.f = P.rc(B, 96, BW, G - 96);
+    o.x = '';
+    for (x = B + 8; x < B + BW; x += 9) o.x += P.vl(x, 104, 214);
+    o.k = P.vl(B, 96, G) + P.vl(B + BW, 96, G) + P.hl(B - 4, B + BW + 4, 96);
+    o.q = P.hl(B - 4, B + BW + 4, 104) + P.hl(B, B + BW, 214);
+    // the upstairs window and its flower box
+    o = D.o();
+    o.f = P.rc(B + 98, 120, 120, 70);
+    o.k = P.rc(B + 98, 120, 120, 70);
+    o.q = P.rc(B + 103, 125, 53, 60) + P.rc(B + 160, 125, 53, 60);
+    o.f += P.rc(B + 92, 190, 132, 16);
+    o.q += P.rc(B + 92, 190, 132, 16);
+    for (i = 0; i < 11; i++) { x = B + 98 + i * 12; o.d += P.c(x, 190, x - 3, 182, x + 3, 176, x + 6, 180) + P.el(x + 5, 179, 2.2); }
+    // the fascia with a cup on it
+    o = D.o();
+    o.f = P.rc(B + 8, 220, BW - 16, 34);
+    o.k = P.rco(B + 8, 220, BW - 16, 34, 3);
+    o.q = P.rc(B + 14, 226, BW - 28, 22);
+    var cx = B + BW / 2;
+    o.k += P.pl([cx - 11, 230, cx - 9, 243, cx + 9, 243, cx + 11, 230, cx - 11, 230]) + P.arc(cx + 13, 235, 5, 4, -90, 90) + P.hl(cx - 15, cx + 15, 246);
+    o.d = P.wave(cx - 4, 228, 6, 1.4, 1, true) + P.wave(cx + 3, 228, 6, 1.4, 1, true) + P.hl(cx - 120, cx - 30, 237) + P.hl(cx + 30, cx + 120, 237);
+    // the window: globes inside, a counter and a cake stand
+    o = D.o();
+    o.f = P.rc(B + 14, 262, BW - 28, G - 262);
+    o.k = P.rc(B + 20, 266, 206, 112) + P.rco(B + 14, 258, BW - 28, G - 258, 3);
+    o.q = P.rc(B + 25, 271, 196, 102) + P.rc(B + 20, 384, 206, 30);
+    o.d = P.rc(B + 26, 389, 96, 20) + P.rc(B + 126, 389, 94, 20) + P.ln(B + 36, 366, B + 70, 300) + P.ln(B + 150, 368, B + 186, 296);
+    [B + 64, B + 123, B + 182].forEach(function (gx) {
+      o.q += P.vl(gx, 271, 292);
+      o.f += P.el(gx, 301, 9);
+      o.k += P.el(gx, 301, 9);
+    });
+    o.q += P.hl(B + 25, B + 221, 350) + P.hl(B + 25, B + 221, 354);
+    o.q += P.vl(B + 90, 336, 350) + P.hl(B + 76, B + 104, 336) + P.arc(B + 90, 336, 13, 10, 180, 360);
+    tumbler(o, B + 140, 350, 12, 9);
+    tumbler(o, B + 154, 350, 12, 9);
+    // the door, half glass
+    o.k += P.rc(B + 238, 266, 62, G - 266);
+    o.q += P.rc(B + 245, 273, 48, 82) + P.rc(B + 245, 364, 48, 48);
+    o.d += P.hl(B + 249, B + 289, 314) + P.vl(B + 286, 360, 368);
+    // a table on the pavement, two chairs, one guest
+    o = D.o(); bistroChair(o, B + 112, 384, 1, 0.78);
+    o = D.o(); sitter(o, B + 112, 384, 1, 0.78);
+    o = D.o(); bistroChair(o, B + 200, 384, -1, 0.78);
+    o = D.o(); smallTable(o, B + 156, 372, 46);
+    tumbler(o, B + 148, 369, 9, 7);
+    // a lamp over the door
+    o = D.o();
+    lantern(o, B + 269, 226, 1);
+
+    /* ---------- C. the bistro: ashlar, shutters, tall paned windows */
+    var C = 710, CW = 330;
+    o = D.o();
+    o.f = P.rc(C, 20, CW, G - 20);
+    o.x = P.tiles(C, 30, CW, 184, 55, 23, true);
+    o.k = P.vl(C, 20, G) + P.vl(C + CW, 20, G) + P.hl(C - 8, C + CW + 8, 20);
+    o.q = P.hl(C - 8, C + CW + 8, 28) + P.hl(C - 4, C + CW + 4, 214) + P.hl(C - 4, C + CW + 4, 220);
+    // three tall windows with open shutters
+    [C + 52, C + 140, C + 228].forEach(function (wx) {
+      var s = D.o(), w = 50, t = 66, b = 186;
+      s.f = P.rc(wx - 24, t, w + 48, b - t + 6);
+      s.k = P.rc(wx, t, w, b - t) + P.hl(wx - 6, wx + w + 6, b + 4);
+      s.q = P.vl(wx + w / 2, t + 4, b) + P.hl(wx + 3, wx + w - 3, t + 40) + P.hl(wx + 3, wx + w - 3, t + 80) + P.rc(wx + 3, t + 3, w - 6, b - t - 6);
+      s.q += P.rc(wx - 22, t, 20, b - t) + P.rc(wx + w + 2, t, 20, b - t);
+      for (y = t + 6; y < b - 4; y += 6) s.d += P.hl(wx - 19, wx - 5, y) + P.hl(wx + w + 5, wx + w + 19, y);
+      s.q += P.hl(wx - 8, wx + w + 8, t - 6) + P.hl(wx - 8, wx + w + 8, t - 2);
+    });
+    // the fascia, with a cloche on it, and two lamps that light it
+    o = D.o();
+    o.f = P.rc(C + 10, 224, CW - 20, 32);
+    o.k = P.rco(C + 10, 224, CW - 20, 32, 3);
+    o.q = P.rc(C + 16, 230, CW - 32, 20);
+    var kx = C + CW / 2;
+    o.k += P.arc(kx, 246, 15, 12, 180, 360) + P.hl(kx - 19, kx + 19, 246) + P.el(kx, 232, 2);
+    o.d = P.ln(kx - 70, 240, kx - 34, 240) + P.ln(kx + 34, 240, kx + 70, 240) + P.pg([kx - 76, 240, kx - 72, 237, kx - 68, 240, kx - 72, 243]) + P.pg([kx + 68, 240, kx + 72, 237, kx + 76, 240, kx + 72, 243]);
+    [C + 70, C + CW - 70].forEach(function (lx) {
+      o.q += P.c(lx, 214, lx, 204, lx + 4, 198, lx + 16, 198) + P.pg([lx + 8, 196, lx + 24, 196, lx + 28, 204, lx + 4, 204]);
+    });
+    // three tall glazed doors with café curtains
+    o = D.o();
+    o.f = P.rc(C + 16, 262, CW - 32, G - 262);
+    o.k = P.rco(C + 16, 262, CW - 32, G - 262, 3);
+    [C + 28, C + 128, C + 228].forEach(function (dx, k) {
+      var w = 78;
+      o.k += P.rc(dx, 272, w, G - 272);
+      o.q += P.rc(dx + 5, 277, w - 10, 118) + P.rc(dx + 5, 400, w - 10, 16);
+      for (i = 1; i < 3; i++) o.d += P.vl(dx + 5 + (w - 10) * i / 3, 277, 334);
+      o.d += P.hl(dx + 5, dx + w - 5, 306) + P.hl(dx + 5, dx + w - 5, 334);
+      // curtain on a rail across the lower panes
+      o.q += P.hl(dx + 3, dx + w - 3, 340);
+      o.f += P.rc(dx + 6, 342, w - 12, 50);
+      for (x = dx + 9; x < dx + w - 8; x += 7) o.d += P.q(x, 342, x + 2, 368, x, 392);
+      o.q += P.wave(dx + 6, 342, w - 12, 1.4, 5);
+      if (k === 1) o.q += P.vl(dx + w - 10, 350, 380);
+    });
+    // a candle glow above each curtain
+    o.d += P.vl(C + 67, 314, 330) + P.vl(C + 267, 314, 330);
+
+    /* ---------- D. the taqueria: plaster, a curved parapet, a walk-up window */
+    var Dx = 1060, DW = 318;
+    o = D.o();
+    var top = [Dx, 150, Dx + 90, 150].concat(P.arcPts(Dx + DW / 2, 150, 70, 46, 180, 360)).concat([Dx + DW - 90, 150, Dx + DW, 150]);
+    o.f = P.pg(top.concat([Dx + DW, G, Dx, G]));
+    o.k = P.pl(top) + P.vl(Dx, 150, G) + P.vl(Dx + DW, 150, G);
+    o.q = P.pl(top.map(function (v, k) { return k % 2 ? v + 8 : v; }).slice(2, -2));
+    R = T.rng(21);
+    o.x = '';
+    for (i = 0; i < 260; i++) {
+      x = Dx + 6 + R() * (DW - 12); y = 160 + R() * 240;
+      if (y > 250 && y < 420 && x > Dx + 20 && x < Dx + 300) continue;
+      o.x += P.arc(x, y, 1.6, 1, 0, 160);
+    }
+    // a sun painted under the parapet
+    var sx = Dx + DW / 2, sy = 140;
+    o.k += P.el(sx, sy, 15);
+    for (i = 0; i < 12; i++) { var ra = i * Math.PI / 6; o.q += P.ln(sx + Math.cos(ra) * 20, sy + Math.sin(ra) * 20, sx + Math.cos(ra) * (i % 2 ? 26 : 30), sy + Math.sin(ra) * (i % 2 ? 26 : 30)); }
+    o.d += P.el(sx, sy, 10);
+    // papel picado across the front
+    o = D.o();
+    o.q = P.q(Dx + 4, 178, Dx + DW / 2, 194, Dx + DW - 4, 178);
+    for (i = 0; i < 13; i++) {
+      x = Dx + 14 + i * 22.5; var yy = 178 + 16 * (1 - Math.pow((x - Dx - DW / 2) / (DW / 2), 2)) * 1;
+      o.f += P.pg([x, yy, x + 16, yy, x + 16, yy + 22, x + 12, yy + 19, x + 8, yy + 22, x + 4, yy + 19, x, yy + 22]);
+      o.q += P.pg([x, yy, x + 16, yy, x + 16, yy + 22, x + 12, yy + 19, x + 8, yy + 22, x + 4, yy + 19, x, yy + 22]);
+      o.d += P.el(x + 8, yy + 8, 2.4) + P.el(x + 4, yy + 14, 1.2) + P.el(x + 12, yy + 14, 1.2);
+    }
+    // the walk-up window, shutter rolled up, a menu board inside
+    o = D.o();
+    o.f = P.rc(Dx + 26, 256, 176, 104);
+    o.k = P.rco(Dx + 26, 256, 176, 104, 3) + P.rc(Dx + 22, 360, 184, 7);
+    o.q = P.rc(Dx + 30, 260, 168, 14) + P.hl(Dx + 30, Dx + 198, 266);
+    o.q += P.rc(Dx + 62, 284, 104, 46);
+    for (i = 0; i < 4; i++) o.d += P.hl(Dx + 70, Dx + 120 + (i * 13) % 30, 294 + i * 9) + P.hl(Dx + 146, Dx + 158, 294 + i * 9);
+    o.d += P.ln(Dx + 40, 350, Dx + 58, 316);
+    // tiles under the counter
+    o.q += P.rc(Dx + 26, 367, 176, G - 367);
+    var tw = 22, th = (G - 367) / 3;
+    for (x = Dx + 26; x < Dx + 200; x += tw) for (y = 367; y < G - 2; y += th) {
+      o.d += P.rc(x, y, tw, th) + P.pg([x + tw / 2, y + 3, x + tw - 4, y + th / 2, x + tw / 2, y + th - 3, x + 4, y + th / 2]);
+    }
+    // the door
+    o.k += P.rc(Dx + 226, 262, 66, G - 262);
+    o.q += P.rc(Dx + 233, 269, 52, 88) + P.hl(Dx + 233, Dx + 285, 380);
+    o.d += P.vl(Dx + 280, 368, 392);
+    // string lights from wall to wall
+    o = D.o();
+    var bulbs = [];
+    o.q = '';
+    for (i = 0; i <= 20; i++) {
+      var bt = i / 20, bx = Dx + 8 + (DW - 16) * bt, by = 228 + Math.sin(bt * Math.PI) * 18;
+      o.q += (i ? L2(bx, by) : 'M' + bx.toFixed(1) + ' ' + by.toFixed(1));
+      if (i % 2 === 1) bulbs.push([bx, by]);
+    }
+    bulbs.forEach(function (b) { o.f += P.el(b[0], b[1] + 6, 2.8, 4); o.d += P.el(b[0], b[1] + 6, 2.8, 4) + P.vl(b[0], b[1], b[1] + 2); });
+    // a cactus in a pot by the door
+    o = D.o();
+    o.f = P.pg([Dx + 298, 392, Dx + 330, 392, Dx + 326, G, Dx + 302, G]);
+    o.k = P.pg([Dx + 298, 392, Dx + 330, 392, Dx + 326, G, Dx + 302, G]);
+    o.f += P.el(Dx + 314, 366, 9, 26) + P.el(Dx + 300, 352, 6, 14) + P.el(Dx + 328, 346, 6, 16);
+    o.q += P.el(Dx + 314, 366, 9, 26) + P.el(Dx + 300, 352, 6, 14) + P.el(Dx + 328, 346, 6, 16);
+    o.d += P.vl(Dx + 314, 346, 386) + P.vl(Dx + 300, 344, 360) + P.vl(Dx + 328, 336, 356);
+
+    /* ---------- between the buildings: downpipes; then the pavement */
+    o = D.o();
+    [A + AW + 11, B + BW + 11, C + CW + 10].forEach(function (px) {
+      o.q += P.vl(px - 2, 60, G) + P.vl(px + 2, 60, G) + P.rc(px - 5, 56, 10, 6);
+      for (y = 100; y < G; y += 70) o.d += P.hl(px - 4, px + 4, y);
+    });
+    o = D.o();
+    o.k = P.hl(0, 1400, G);
+    o.q = P.hl(0, 1400, 456) + P.hl(0, 1400, 464);
+    for (x = 30; x < 1400; x += 88) o.d += P.ln(x, G, x - 9, 456);
+    o.d += P.hl(0, 1400, 438);
+
+    // light: each shop's lamps carry their own threshold (--s), so they come on in turn
+    var sA = 0.05, sB = 0.17, sC = 0.29, sD = 0.41;
+    D.wash(A + 128, 300, 46, 52, 1, { cls: 'shop', s: sA });
+    D.wash(A + 202, 300, 46, 52, 1, { cls: 'shop', s: sA + 0.02 });
+    D.wash(A + 78, 330, 70, 60, 0.9, { cls: 'shop', s: sA + 0.04 });
+    D.wash(A + 260, 330, 70, 60, 0.9, { cls: 'shop', s: sA + 0.05 });
+    D.wash(A + 165, 440, 170, 34, 0.55, { cls: 'shop', s: sA + 0.06 });
+    D.wash(A + AW + 20, 222, 34, 34, 0.5, { cls: 'shop', s: sA + 0.08 });
+    D.wash(B + 123, 310, 120, 66, 1, { cls: 'shop', s: sB });
+    D.wash(B + 269, 246, 44, 48, 1, { cls: 'shop', s: sB + 0.03 });
+    D.wash(B + 156, 404, 110, 40, 0.7, { cls: 'shop', s: sB + 0.06 });
+    D.wash(C + CW / 2, 232, 140, 30, 0.8, { cls: 'shop', s: sC });
+    D.wash(C + 67, 318, 46, 56, 0.95, { cls: 'shop', s: sC + 0.03 });
+    D.wash(C + 167, 318, 46, 56, 0.95, { cls: 'shop', s: sC + 0.04 });
+    D.wash(C + 267, 318, 46, 56, 0.95, { cls: 'shop', s: sC + 0.05 });
+    D.wash(C + CW / 2, 440, 170, 34, 0.5, { cls: 'shop', s: sC + 0.07 });
+    D.wash(Dx + DW / 2, 240, 170, 40, 0.9, { cls: 'shop', s: sD });
+    D.wash(Dx + 114, 310, 100, 60, 0.85, { cls: 'shop', s: sD + 0.04 });
+    D.wash(Dx + 259, 310, 40, 56, 0.6, { cls: 'shop', s: sD + 0.06 });
+    D.wash(Dx + 114, 440, 130, 32, 0.5, { cls: 'shop', s: sD + 0.08 });
     return D;
+
+    function L2(x, y) { return 'L' + x.toFixed(1) + ' ' + y.toFixed(1); }
   }
 
-  window.TooeyScenes = { street: street, prep: prep, line: line, dining: dining, closer: closer, PREP: PREP, CLOSE: CLOSE };
+  window.TooeyScenes = { street: street, prep: prep, line: line, dining: dining, indies: indies, PREP: PREP };
 })();

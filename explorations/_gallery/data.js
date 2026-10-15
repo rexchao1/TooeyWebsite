@@ -437,7 +437,7 @@ window.EXPLORATIONS = [
   {
     id: '35-operating-system', num: '35', name: 'Operating system', round: 9,
     href: '35-operating-system/', notes: '35-operating-system/NOTES.md', words: 190, motion: 'Pinned steps + cursor lamp',
-    line: "34, revised to your notes: the new headline, one pinned prep/shifts/growth section, a pop-up form, a header that stays put.",
+    line: "34, revised to your notes: the new headline, What Tooey does as one pinned section, Built for independent restaurants, a big Try Tooey free bar and a pop-up form.",
     brief: "Round nine: 34 with the founder’s four changes.",
     headline: 'Your new restaurant operating system.',
     concept: "The hero street front lights up on load under the new headline. Prep, Shifts and Growth are one pinned section: the drawing on the left cross-fades from the prep table to the kitchen line to the dining room as you scroll, each replaying its own animation, while the three items stay stacked on the right, the active one in full ink with a thin progress line. Clicking an item jumps to it. Talk to us is a button everywhere; it opens a small dialog with the form. The header is always visible.",
