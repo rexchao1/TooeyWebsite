@@ -290,9 +290,9 @@
         say('sent', 'Sent. We will reply to ' + escapeHtml(data.email) + '.');
       }).catch(function () {
         submit.disabled = false;
-        submit.textContent = 'Start my free pilot';
+        submit.textContent = 'Send';
         var body = encodeURIComponent(
-          'Name: ' + data.name + '\nRestaurant: ' + data.restaurant + '\nPhone: ' + (data.phone || '') +
+          'Name: ' + data.name + '\nRestaurant: ' + data.restaurant +
           '\nPOS: ' + (data.pos || '') + '\n\n' + (data.message || ''));
         say('error', 'Not sent: the form service did not answer. Your words are still here. Send them by <a href="mailto:tooeyteam@gmail.com?subject=' +
           encodeURIComponent('New Tooey inquiry') + '&amp;body=' + body + '">email instead</a>.');

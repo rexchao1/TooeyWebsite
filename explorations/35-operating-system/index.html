@@ -137,8 +137,8 @@
     <button class="dlg-close" type="button" aria-label="Close">
       <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 5l10 10M15 5L5 15"/></svg>
     </button>
-    <h2 id="dlg-title">Try Tooey free</h2>
-    <p id="dlg-desc">Tell us about your restaurant and we'll set up your free pilot. We reply by email.</p>
+    <h2 id="dlg-title">Try Tooey</h2>
+    <p id="dlg-desc">Tell us about your restaurant and we'll set up your free pilot.</p>
     <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
       <input type="hidden" name="_subject" value="New Tooey inquiry">
       <input type="hidden" name="_template" value="table">
@@ -147,11 +147,10 @@
       <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required autofocus></div>
       <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
       <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-      <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
-      <div class="field field-wide"><label for="f-pos">Your POS <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text"></div>
+      <div class="field"><label for="f-pos">Your POS <span class="opt">(optional)</span></label><input id="f-pos" name="pos" type="text"></div>
       <div class="field field-wide"><label for="f-msg">Message <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3"></textarea></div>
       <div class="form-end">
-        <button class="btn" type="submit">Start my free pilot</button>
+        <button class="btn btn-send" type="submit">Send</button>
         <p class="status" id="form-status" role="status" aria-live="polite"></p>
       </div>
     </form>
