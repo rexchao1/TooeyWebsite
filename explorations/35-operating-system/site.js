@@ -294,7 +294,7 @@
         var body = encodeURIComponent(
           'Name: ' + data.name + '\nRestaurant: ' + data.restaurant +
           '\nPOS: ' + (data.pos || '') + '\n\n' + (data.message || ''));
-        say('error', 'Not sent: the form service did not answer. Your words are still here. Send them by <a href="mailto:tooeyteam@gmail.com?subject=' +
+        say('error', 'Not sent: the form service did not answer. Your words are still here. Send them by <a href="mailto:team@usetooey.com?subject=' +
           encodeURIComponent('New Tooey inquiry') + '&amp;body=' + body + '">email instead</a>.');
       });
     });
@@ -306,7 +306,7 @@
     var dlg = document.getElementById('talk-dialog');
     var openers = [].slice.call(document.querySelectorAll('.talk-open'));
     if (!dlg) return;
-    var mail = 'mailto:tooeyteam@gmail.com?subject=' + encodeURIComponent('New Tooey inquiry');
+    var mail = 'mailto:team@usetooey.com?subject=' + encodeURIComponent('New Tooey inquiry');
     var last = null;
 
     function open(btn) {
