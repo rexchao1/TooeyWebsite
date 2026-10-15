@@ -836,3 +836,8 @@ html.modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Privacy sits at the bottom right of the footer on wide screens */
+@media (min-width: 761px) {
+  .foot p:last-child { grid-column: 4; text-align: right; }
+}
