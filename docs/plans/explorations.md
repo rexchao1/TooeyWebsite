@@ -203,3 +203,17 @@ lamplight the only accent, about five screens.
 
 - [x] Samples page; treatment chosen
 - [x] Two sites built, reviewed from 1440 scroll frames, one fix round on 30, committed, added to the gallery
+
+## Round eight (2026-10-15)
+
+Rex chose 31 and asked for slightly more complexity and better animation.
+Three combinations on 31's look (porcelain, slate line, lamplight, the
+prep-sheet grid), drawn in SVG:
+
+| # | Folder | Combination |
+|---|---|---|
+| 32 | `32-walk-through` | One continuous drawing that draws itself, with living details per room |
+| 33 | `33-living-sheet` | Scenes draw themselves; lines morph between scenes; numbers write themselves |
+| 34 | `34-lit-room` | Fewer, denser scenes; the cursor is a lamp; leftovers glow |
+
+- [x] Three sites built, reviewed at 1440, committed, added to the gallery

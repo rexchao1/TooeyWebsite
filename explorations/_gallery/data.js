@@ -394,5 +394,44 @@ window.EXPLORATIONS = [
     weaknesses: ["The hero starts very faint until its lights come up.", "The comparison sheets look more like tables than drawn rooms."],
     ask: "Light reads more approachable. Does it feel as premium as the dark one?",
     pages: [{ label: 'Home', href: '31-light-porcelain/index.html' }, { label: 'Privacy', href: '31-light-porcelain/privacy.html' }]
+  },
+  {
+    id: '32-walk-through', num: '32', name: "Walk-through", round: 8,
+    href: '32-walk-through/', notes: '32-walk-through/NOTES.md', words: 185, motion: "Scroll walk, draws itself",
+    line: "One long line drawing of the restaurant; scroll walks the camera from the street to the prep sheet, each room drawing itself as you arrive.",
+    brief: "Round eight: built on 31’s light look, slightly more complex with better animation. Combination: one continuous drawing, drawing itself, with living details.",
+    headline: 'The back end of your restaurant.',
+    concept: "The street front draws itself on load and the doors swing open. A pinned walk of about four screens moves the camera along one drawing: in the dining room guests sit and table lamps come on; at the counter the POS flashes and the receipt prints; on the line tickets clip onto the rail and three cooks step on; at the prep table the sheet writes itself (guess, Tooey, sold), labelled Example. Then How to start and the form.",
+    look: 'Porcelain, slate line, lamplight washes; Literata, Source Serif 4, Schibsted Grotesk; the prep-sheet grid. SVG, no libraries.',
+    strengths: ["The most cinematic: one continuous place, not separate pictures.", "Every room has a small, specific moment."],
+    weaknesses: ["Crisper than 31, so it reads a little more like a diagram.", "Redrawing while rooms draw in may stutter on slower machines (untested on real hardware)."],
+    ask: "Is the walk worth the four-screen pin?",
+    pages: [{ label: 'Home', href: '32-walk-through/index.html' }, { label: 'Privacy', href: '32-walk-through/privacy.html' }]
+  },
+  {
+    id: '33-living-sheet', num: '33', name: "Living sheet", round: 8,
+    href: '33-living-sheet/', notes: '33-living-sheet/NOTES.md', words: 192, motion: "Scroll morph, numbers write",
+    line: "Each scene draws itself, and its lines morph into the next: brick courses become the prep sheet’s rows, rows become kitchen tiles, tiles become floorboards.",
+    brief: "Round eight: built on 31’s light look, slightly more complex with better animation. Combination: scenes that draw themselves, lines that morph between scenes, numbers that write themselves.",
+    headline: 'The back end of your restaurant.',
+    concept: "The street front draws on load. Scroll lifts the brick courses into the prep sheet’s ruled rows, and the counts are written stroke by stroke before settling into type. The rows widen into the kitchen’s tiles as five cooks draw in; tiles become the dining room’s floorboards as guests appear and pendants light. Then two sheets, a guess and Tooey’s: counts written, what sold pencilled in, the guesses struck through, Tooey’s circled. The rules land on the three steps.",
+    look: 'Porcelain, slate line, lamplight washes; Literata, Source Serif 4, Schibsted Grotesk; the prep-sheet grid. SVG, no libraries.',
+    strengths: ["The most refined and the clearest guess-vs-Tooey of all.", "The morphs make the page feel like one sheet."],
+    weaknesses: ["Mid-morph the screen is briefly sparse loose lines.", "More technical-drawing than 31’s softer look."],
+    ask: "Does the morph read as clever, or just as lines moving?",
+    pages: [{ label: 'Home', href: '33-living-sheet/index.html' }, { label: 'Privacy', href: '33-living-sheet/privacy.html' }]
+  },
+  {
+    id: '34-lit-room', num: '34', name: "Lit room", round: 8,
+    href: '34-lit-room/', notes: '34-lit-room/NOTES.md', words: 196, motion: "Cursor lamp + scenes play",
+    line: "Four dense line drawings full of real detail; your cursor is a lamp that warms the drawing and reveals the fine detail under it.",
+    brief: "Round eight: built on 31’s light look, slightly more complex with better animation. Combination: fewer, denser scenes, living details, the cursor as a lamp, glowing leftovers.",
+    headline: 'The back end of your restaurant.',
+    concept: "The street front (brick, sash windows, a bicycle, diners in the window) lights lantern by lantern on load and a guest sits. The prep table pencils six counts onto a clipboard while steam rises; the line prints a ticket and a third cook steps on; the dining room’s pendants come on and a guest sits. A 1.3-screen pin runs a Friday on two shelves, a guess and Tooey’s: the clock runs to close, the guessed leftovers glow, Tooey’s are nearly empty. Example.",
+    look: 'Porcelain, slate line, lamplight washes; Literata, Source Serif 4, Schibsted Grotesk; the prep-sheet grid. SVG, no libraries.',
+    strengths: ["The richest drawings of all thirty-four sites.", "The cursor lamp makes the page feel touchable."],
+    weaknesses: ["The people are stiff, and the line scene is busy across the cooks.", "Fine detail only shows where you point; a still mouse sees the plainer version."],
+    ask: "Too much detail, or exactly the depth you were after?",
+    pages: [{ label: 'Home', href: '34-lit-room/index.html' }, { label: 'Privacy', href: '34-lit-room/privacy.html' }]
   }
 ];
