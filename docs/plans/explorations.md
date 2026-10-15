@@ -228,3 +228,16 @@ the form; the header always visible. Next: more informative sections (his
 pick pending).
 
 - [x] 35 built, reviewed at 1440, committed, added to the gallery
+- [x] 35's wording settled through comments on a static copy
+- [x] Hero options: 36 (shop windows as OS windows) and 37 (the
+  restaurant boots up), each with typed or flicker headline text
+
+## Round ten (2026-10-15)
+
+37 read too flat. Two looping heroes for 35: a string connecting the POS,
+the fridge and the chef; real depth; no cursor lamp; a long fade into the
+left; a retro VHS glitch headline.
+
+- [x] 38: axonometric kitchen, brass thread, bead loops every 10 s
+- [x] 39: one-point perspective through the pass, pulse runs in depth
+- [ ] Rex picks a hero; port it into 35

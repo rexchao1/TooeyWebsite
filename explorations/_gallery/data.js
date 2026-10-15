@@ -472,5 +472,31 @@ window.EXPLORATIONS = [
     weaknesses: ["Status tags are tiny on phones; needs a phone crop.", "The ceiling wire crosses the vertical runs like a junction."],
     ask: 'Typed or flicker? And this hero, or the other one?',
     pages: [{ label: 'Home (typed)', href: '37-hero-boot/index.html?text=type' }, { label: 'Home (flicker)', href: '37-hero-boot/index.html?text=flicker' }, { label: 'Privacy', href: '37-hero-boot/privacy.html' }]
+  },
+  {
+    id: '38-hero-string-iso', num: '38', name: "Hero: string, axonometric", round: 10,
+    href: '38-hero-string-iso/', notes: '38-hero-string-iso/NOTES.md', words: 190, motion: 'Looping string hero + VHS glitch',
+    line: "A shaded axonometric kitchen; a brass thread loops between the till, the fridge and the cook every ten seconds.",
+    brief: 'Round ten: site 35 with a looping hero. A string connecting the POS, the fridge and the chef; depth, not flat; no hover lamp; a long left fade; a VHS glitch headline. ?t=<ms> holds a moment.',
+    headline: 'Your new restaurant operating system.',
+    concept: "A 30° cutaway of the kitchen with shading. A bead runs the thread: a receipt at the till, the fridge opens and its tubs light with Example counts (Short rib 27, Risotto 33, Burrata 19), the pan flares and a plate lands, then back to the till. The headline locks in like a VHS tape in about 1.5 s, then glitches lightly every 7–10 s.",
+    look: '35’s look: porcelain, slate line, lamplight; Literata, Source Serif 4, Schibsted Grotesk.',
+    strengths: ["Reads as one machine: all three stations visible at once.", "Shading gives it real volume, unlike 37."],
+    weaknesses: ["Axonometric keeps it a diagram rather than a room.", "Phone layout still needs its own crop."],
+    ask: 'This one or 39?',
+    pages: [{ label: 'Home', href: '38-hero-string-iso/index.html' }, { label: 'Privacy', href: '38-hero-string-iso/privacy.html' }]
+  },
+  {
+    id: '39-hero-string-depth', num: '39', name: "Hero: string, perspective", round: 10,
+    href: '39-hero-string-depth/', notes: '39-hero-string-depth/NOTES.md', words: 190, motion: 'Looping string hero + VHS glitch',
+    line: "From the dining room through the pass: an amber thread zigzags back and forth in depth between the POS, the fridge, the chef and the pass.",
+    brief: 'Round ten: site 35 with a looping hero. A string connecting the POS, the fridge and the chef; depth, not flat; no hover lamp; a long left fade; a VHS glitch headline. ?freeze=<s> holds a moment.',
+    headline: 'Your new restaurant operating system.',
+    concept: "One-point perspective in three planes: the counter with the POS, the pass with heat lamps, the kitchen with the chef and a reach-in fridge. A pulse prints a ticket, opens the fridge (Example: Short rib 27, Risotto 33, Burrata 19, Focaccia 12), makes the chef toss the pan, slides a plate under the lamps and returns. Ten-second seamless loop with a slow camera drift.",
+    look: '35’s look: porcelain, slate line, lamplight; Literata, Source Serif 4, Schibsted Grotesk.',
+    strengths: ["Real depth: one vanishing point, haze on far planes, the thread passes behind the lamps.", "Feels like standing in the restaurant."],
+    weaknesses: ["Tub dish names are about 7 px on a laptop; only the counts read.", "The POS and printer are the darkest things in the frame and pull the eye first."],
+    ask: 'This one or 38?',
+    pages: [{ label: 'Home', href: '39-hero-string-depth/index.html' }, { label: 'Privacy', href: '39-hero-string-depth/privacy.html' }]
   }
 ];
