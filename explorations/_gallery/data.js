@@ -433,5 +433,18 @@ window.EXPLORATIONS = [
     weaknesses: ["The people are stiff, and the line scene is busy across the cooks.", "Fine detail only shows where you point; a still mouse sees the plainer version."],
     ask: "Too much detail, or exactly the depth you were after?",
     pages: [{ label: 'Home', href: '34-lit-room/index.html' }, { label: 'Privacy', href: '34-lit-room/privacy.html' }]
+  },
+  {
+    id: '35-operating-system', num: '35', name: 'Operating system', round: 9,
+    href: '35-operating-system/', notes: '35-operating-system/NOTES.md', words: 190, motion: 'Pinned steps + cursor lamp',
+    line: "34, revised to your notes: the new headline, one pinned prep/shifts/growth section, a pop-up form, a header that stays put.",
+    brief: "Round nine: 34 with the founder’s four changes.",
+    headline: 'Your new restaurant operating system.',
+    concept: "The hero street front lights up on load under the new headline. Prep, Shifts and Growth are one pinned section: the drawing on the left cross-fades from the prep table to the kitchen line to the dining room as you scroll, each replaying its own animation, while the three items stay stacked on the right, the active one in full ink with a thin progress line. Clicking an item jumps to it. Talk to us is a button everywhere; it opens a small dialog with the form. The header is always visible.",
+    look: 'Porcelain, slate line, lamplight washes and the cursor lamp; Literata, Source Serif 4, Schibsted Grotesk. SVG, no libraries.',
+    strengths: ["Your structure, with 34’s drawings intact.", "The pop-up keeps the page short and the ask simple."],
+    weaknesses: ["About three screens of scroll for three short texts; fast scrollers miss the animations.", "The closing section is spare: one line and a button."],
+    ask: 'Which of the new informative sections should come next?',
+    pages: [{ label: 'Home', href: '35-operating-system/index.html' }, { label: 'Privacy', href: '35-operating-system/privacy.html' }]
   }
 ];

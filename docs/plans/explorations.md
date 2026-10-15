@@ -217,3 +217,14 @@ prep-sheet grid), drawn in SVG:
 | 34 | `34-lit-room` | Fewer, denser scenes; the cursor is a lamp; leftovers glow |
 
 - [x] Three sites built, reviewed at 1440, committed, added to the gallery
+
+## Round nine (2026-10-15)
+
+Rex picked 34. Changes, made as `35-operating-system` (34 kept): headline
+"Your new restaurant operating system."; prep, shifts and growth as one
+pinned section with the three items stacked on the right and the drawing
+cross-fading on the left; Talk to us as a button that opens a dialog with
+the form; the header always visible. Next: more informative sections (his
+pick pending).
+
+- [x] 35 built, reviewed at 1440, committed, added to the gallery
