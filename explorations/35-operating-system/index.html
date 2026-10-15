@@ -43,14 +43,15 @@
     </div>
   </section>
 
-  <!-- What it does: prep, shifts, growth. With motion on a wide screen the
+  <!-- What it does: forecast, prep, shifts. With motion on a wide screen the
        section pins under its heading and steps through the three (site.js
        adds .is-pinned);
        otherwise each drawing sits beside its words in normal flow. -->
   <section class="work sheet" id="what" aria-labelledby="work-title">
     <div class="work-pin">
       <div class="work-stage">
-        <figure class="scene scene-room" data-scene="prep" data-step="0">
+        <figure class="scene scene-room" data-scene="dining" data-step="0" aria-hidden="true"><div class="art"></div></figure>
+        <figure class="scene scene-room" data-scene="prep" data-step="1">
           <div class="art" aria-hidden="true"></div>
           <div class="sr"><table>
             <caption>Example: one Friday's prep sheet</caption>
@@ -65,8 +66,7 @@
             </tbody>
           </table></div>
         </figure>
-        <figure class="scene scene-room" data-scene="line" data-step="1" aria-hidden="true"><div class="art"></div></figure>
-        <figure class="scene scene-room" data-scene="dining" data-step="2" aria-hidden="true"><div class="art"></div></figure>
+        <figure class="scene scene-room" data-scene="line" data-step="2" aria-hidden="true"><div class="art"></div></figure>
       </div>
       <div class="work-text">
       <div class="work-head">
@@ -75,16 +75,16 @@
       </div>
       <ol class="work-list">
         <li class="work-item" data-step="0">
+          <h3 id="forecast-title">Forecast</h3>
+          <p>How busy each day will be and what will sell, worked out from your own sales.</p>
+        </li>
+        <li class="work-item" data-step="1">
           <h3 id="prep-title">Prep</h3>
           <p>How much of each dish to make, ready every morning before prep: a little over what should sell.</p>
         </li>
-        <li class="work-item" data-step="1">
+        <li class="work-item" data-step="2">
           <h3 id="shifts-title">Shifts</h3>
           <p>The right amount of people on at the right time, matched to how busy each night will be.</p>
-        </li>
-        <li class="work-item" data-step="2">
-          <h3 id="growth-title">Growth</h3>
-          <p>Fuller slow nights, and regulars who come back.</p>
         </li>
       </ol>
       </div>
@@ -96,7 +96,7 @@
   <section class="indie sheet" id="who" aria-labelledby="indie-title">
     <div class="indie-copy">
       <h2 id="indie-title">Built for independent restaurants.</h2>
-      <p>The big chains have whole teams doing this planning. An independent has the owner. Tooey does that planning for them.</p>
+      <p>Large chains have entire teams for forecasting, prep and scheduling. Independent restaurants have the owner. Tooey gives independents that same planning, built from their own sales.</p>
     </div>
     <ul class="indie-points">
       <li><h3>One location or a few</h3><p>Sit-down restaurants, run by the people who own them.</p></li>
