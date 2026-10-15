@@ -498,5 +498,31 @@ window.EXPLORATIONS = [
     weaknesses: ["Tub dish names are about 7 px on a laptop; only the counts read.", "The POS and printer are the darkest things in the frame and pull the eye first."],
     ask: 'This one or 38?',
     pages: [{ label: 'Home', href: '39-hero-string-depth/index.html' }, { label: 'Privacy', href: '39-hero-string-depth/privacy.html' }]
+  },
+  {
+    id: '40-hero-day-cycle', num: '40', name: "Hero: one day", round: 11,
+    href: '40-hero-day-cycle/', notes: '40-hero-day-cycle/NOTES.md', words: 190, motion: 'Full-bleed day-cycle hero, moving camera',
+    line: "Night close to morning prep to service and back: the night's receipt becomes the morning's counts.",
+    brief: 'Round eleven: 39 made grand. Full-bleed, a moving camera, objects instead of the string (receipt, meat, dish). ?freeze=<s> holds a moment.',
+    headline: 'Your new restaurant operating system.',
+    concept: "A 13 s loop through a 3D-projected room. Night: the till prints the night's sales; the receipt drifts to the fridge as night turns to dawn; the fridge opens on Example counts (Short rib 27, Risotto 33, Burrata 19, Focaccia 12); the short rib goes to the chef; the dish goes out to a full room; lights dim to night.",
+    look: '39’s drawing in a full-bleed frame with lighting washes: basalt night, porcelain morning, lamplight service.',
+    strengths: ["Tells what Tooey does: sales become tomorrow's plan.", "Real camera move with depth; labels readable."],
+    weaknesses: ["Night reads as grey murk rather than dark; the whole frame looks hazy.", "The wash behind the words fogs the left 40%.", "Flat guests look awkward on the pull-back."],
+    ask: 'This story or 41’s?',
+    pages: [{ label: 'Home', href: '40-hero-day-cycle/index.html' }, { label: 'Privacy', href: '40-hero-day-cycle/privacy.html' }]
+  },
+  {
+    id: '41-hero-relay', num: '41', name: "Hero: the relay", round: 11,
+    href: '41-hero-relay/', notes: '41-hero-relay/NOTES.md', words: 190, motion: 'Full-bleed relay hero, moving camera',
+    line: "A receipt to the fridge, meat to the chef, the dish out, with the camera travelling alongside.",
+    brief: 'Round eleven: 39 made grand. Full-bleed, a moving camera, objects instead of the string (receipt, meat, dish). ?freeze=<s> holds a moment.',
+    headline: 'Your new restaurant operating system.',
+    concept: "A 12 s loop in constant evening light. The POS prints a receipt that floats through the pass to the fridge (push-in); Example counts appear; a short rib crosses to the chef (lateral track); the pan sears; the dish goes out under the heat lamps (pull-back) as the next receipt prints.",
+    look: '39’s drawing in a full-bleed frame, warm evening lamplight throughout.',
+    strengths: ["Choreographed hand-offs read as one relay.", "Light POS; labels readable."],
+    weaknesses: ["Pale and washed out overall.", "Fridge door barely reads when open.", "Floating objects look odd."],
+    ask: 'This story or 40’s?',
+    pages: [{ label: 'Home', href: '41-hero-relay/index.html' }, { label: 'Privacy', href: '41-hero-relay/privacy.html' }]
   }
 ];

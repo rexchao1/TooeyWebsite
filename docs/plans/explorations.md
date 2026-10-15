@@ -240,4 +240,15 @@ left; a retro VHS glitch headline.
 
 - [x] 38: axonometric kitchen, brass thread, bead loops every 10 s
 - [x] 39: one-point perspective through the pass, pulse runs in depth
-- [ ] Rex picks a hero; port it into 35
+- [x] Rex picked 39
+
+## Round eleven (2026-10-15)
+
+39, made grand: full-bleed, a moving camera, and objects travelling
+instead of the string (a receipt to the fridge, meat to the chef, the dish
+out).
+
+- [x] 40: one day (night close, morning prep, service), the receipt as
+  last night's sales becoming this morning's counts
+- [x] 41: the relay as described, constant evening light
+- [ ] Rex picks; fix its weak spots; port it into 35
