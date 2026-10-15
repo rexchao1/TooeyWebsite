@@ -867,3 +867,9 @@ html.modal-open { overflow: hidden; }
 /* The closing bar's words: heavier and larger */
 .talk .bar { font-size: clamp(3.5rem, 9.4vw, 10.5rem); font-weight: 600; letter-spacing: -.035em; }
 .talk .bar-arrow { stroke-width: 2.4; }
+@media (max-width: 760px) {
+  .talk-lamps { grid-template-columns: repeat(3, minmax(0, 1fr)); min-width: 0; }
+  .talk-lamp { min-width: 0; }
+  .talk-lamp svg { width: 100%; max-width: 9rem; }
+  .talk .bar { font-size: clamp(2.6rem, 12vw, 4rem); min-width: 0; }
+}
