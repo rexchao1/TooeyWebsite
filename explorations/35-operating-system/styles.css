@@ -864,3 +864,6 @@ html.modal-open { overflow: hidden; }
 }
 .talk .bar:hover { background-color: #f1e5cc; }
 @media (max-width: 760px) { .talk-lamps { grid-column: 1; } .talk-lamp:nth-child(n+2) { visibility: hidden; } }
+/* The closing bar's words: heavier and larger */
+.talk .bar { font-size: clamp(3.5rem, 9.4vw, 10.5rem); font-weight: 600; letter-spacing: -.035em; }
+.talk .bar-arrow { stroke-width: 2.4; }
