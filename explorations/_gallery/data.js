@@ -537,5 +537,18 @@ window.EXPLORATIONS = [
     weaknesses: ["The chef passes behind the headline in the kitchen beats.", "People read from a distance but look illustrated up close.", "About 52 fps at the busiest moment in headless Chromium."],
     ask: 'Port this into 35?',
     pages: [{ label: 'Home', href: '42-hero-day-scroll/index.html' }, { label: 'Privacy', href: '42-hero-day-scroll/privacy.html' }]
+  },
+  {
+    id: '43-hero-day-what-it-does', num: '43', name: "Hero: the day tells what Tooey does", round: 13,
+    href: '43-hero-day-what-it-does/', notes: '43-hero-day-what-it-does/NOTES.md', words: 190, motion: 'Scroll-driven day with the three notes inside it',
+    line: "42, slower, with \"What Tooey does\" inside the day: forecast at the till, prep at the fridge, shifts as a server brings the plate.",
+    brief: 'Round thirteen: 42 revised. Slower (540vh), the work section moved into the hero, the headline fades on scroll, a server serves the plate, a clear header over the scene. ?p=<0..1> sets progress.',
+    headline: 'Your new restaurant operating system.',
+    concept: "The lead's three key words underline and fly up into a rail under the header. The till's screen draws tomorrow's forecast beside tonight's sales (Forecast, left third); the sheet lands on the fridge as it opens (Prep, right third); a server takes the plate from the pass to its table in a full room (Shifts, left third), and the day ends there.",
+    look: '42’s room. Notes in porcelain on a soft shade, ink in the bright morning. Header without paper or rules over the scene.',
+    strengths: ["The three notes are tied to moments that explain them.", "The words-to-rail handoff is seamless.", "Ends on a served table and a full room."],
+    weaknesses: ["People still look illustrated up close.", "The receipt crosses the room quickly between Forecast and Prep.", "On a phone the paper is empty while the steak sears."],
+    ask: 'Port this into 35?',
+    pages: [{ label: 'Home', href: '43-hero-day-what-it-does/index.html' }, { label: 'Privacy', href: '43-hero-day-what-it-does/privacy.html' }]
   }
 ];

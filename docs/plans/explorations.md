@@ -260,4 +260,14 @@ beats, morphs (receipt to prep sheet, steak to pan to plate), unlabeled
 food, faceless but realistic people, no column lines in the hero.
 
 - [x] 42 built, reviewed at 1440, committed
+- [x] Rex reviewed 42 and asked for changes
+
+## Round thirteen (2026-10-15)
+
+42 revised as 43: slower, the "What Tooey does" section moved into the day
+(forecast at the till, prep at the fridge, shifts as a server serves the
+plate), the headline fades on scroll and its three key words fly up into a
+rail, a clear header over the scene.
+
+- [x] 43 built, reviewed at 1440, 1280 and 390, committed
 - [ ] Rex reviews; port into 35
