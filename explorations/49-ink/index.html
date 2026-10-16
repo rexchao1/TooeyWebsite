@@ -13,6 +13,8 @@
 <script>
   (function (r) {
     r.classList.add('js');
+    var h = new URLSearchParams(location.search).get('hero');
+    r.setAttribute('data-hero', /^(console|mail|sheet)$/.test(h) ? h : 'console');
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       r.classList.add('motion');
       // the headline waits to be typed (site.js); never longer than 3s
@@ -40,24 +42,95 @@
   <!-- Hero: the street front. Its lights come on as the page loads. -->
   <section class="hero sheet" aria-labelledby="hero-title">
     <figure class="scene scene-hero" data-scene="street" aria-hidden="true"><div class="art"></div></figure>
-    <!-- Tooey's morning email over the street: the notice, then the email
-         itself, as the console sends it to the kitchen at 6am. -->
+    <!-- Three takes on the console over the street, chosen by ?hero=
+         (console, mail, sheet). Each carries the console's demo restaurant,
+         marked Example. -->
     <div class="hero-os" aria-hidden="true">
-      <div class="note">
+
+      <!-- console: the Forecast page in the console's own window -->
+      <div class="h-win h-console" data-hero="console">
+        <div class="h-bar"><i></i><i></i><i></i><span>Tooey</span></div>
+        <div class="h-app">
+          <nav class="h-side">
+            <p class="h-brand"><img src="favicon.svg" alt="" width="20" height="20">Tooey</p>
+            <p class="is-on"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>Forecast</p>
+            <p><svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Upload</p>
+            <p><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</p>
+          </nav>
+          <div class="h-main">
+            <div class="h-head">
+              <div><p class="h-h1">Tomorrow&rsquo;s demand</p><p class="h-date">Tuesday, October 7</p></div>
+              <div class="h-total"><span>Total expected sales</span><b>$4,410</b><em>+$90 vs average Tuesday</em></div>
+            </div>
+            <p class="h-cols"><span>Mains</span><span>Have ready</span></p>
+            <ul class="h-rows">
+            <li><span>Prime rib</span><b>16</b><i>slices</i></li>
+            <li><span>Fish tacos</span><b>18</b><i>orders</i></li>
+            <li><span>Fish and chips</span><b>16</b><i>portions</i></li>
+            <li><span>Mushroom risotto</span><b>12</b><i>portions</i></li>
+            <li><span>Ribeye</span><b>10</b><i>steaks</i></li>
+            <li><span>Roast chicken</span><b>8</b><i>halves</i></li>
+            </ul>
+            <p class="h-why"><span>214 covers expected</span><span>From sales through Monday, 11:42pm</span><span class="win-tag">Example</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- mail: the morning email, opened in the kitchen's inbox -->
+      <div class="h-win h-mail" data-hero="mail">
+        <div class="h-bar"><i></i><i></i><i></i><span>Inbox</span></div>
+        <div class="h-app">
+          <ul class="h-inbox">
+            <li class="is-on"><b>Tooey</b><time>6:00am</time><span>Tuesday prep: 214 covers</span></li>
+            <li><b>Tooey</b><time>Mon</time><span>Monday prep</span></li>
+            <li><b>Tooey</b><time>Sun</time><span>Sunday prep</span></li>
+            <li><b>Tooey</b><time>Sat</time><span>Saturday prep</span></li>
+          </ul>
+          <div class="h-letter">
+            <p class="h-from"><img src="favicon.svg" alt="" width="28" height="28"><span><b>Tooey</b>to the kitchen</span><time>6:00am</time></p>
+            <p class="h-h1">Tuesday prep: 214 covers</p>
+            <p class="h-date">Tuesday, October 7 &middot; Expected sales $4,410</p>
+            <p class="h-cols"><span>Have ready</span></p>
+            <ul class="h-rows">
+            <li><span>Prime rib</span><b>16</b><i>slices</i></li>
+            <li><span>Fish tacos</span><b>18</b><i>orders</i></li>
+            <li><span>Fish and chips</span><b>16</b><i>portions</i></li>
+            <li><span>Mushroom risotto</span><b>12</b><i>portions</i></li>
+            <li><span>Ribeye</span><b>10</b><i>steaks</i></li>
+            </ul>
+            <p class="h-why"><span class="h-print">Print the prep sheet</span><span class="win-tag">Example</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- sheet: the printed prep sheet, pinned up at 6am -->
+      <div class="h-paper" data-hero="sheet">
+        <i class="h-tape"></i>
+        <div class="sheet-top">
+          <div>
+            <p class="sheet-brand"><img src="favicon.svg" alt="" width="14" height="14">Tooey</p>
+            <p class="c-title">Tuesday prep</p>
+            <p class="c-note">Tuesday, October 7</p>
+          </div>
+          <div class="sheet-covers"><span>Expected covers</span><b>214</b></div>
+        </div>
+        <table class="prep-sheet">
+          <thead><tr><th>Item</th><th>Have ready</th><th>On hand</th><th>Done</th></tr></thead>
+          <tbody>
+            <tr><td>Prime rib</td><td><b>16</b> slices</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Fish tacos</td><td><b>18</b> orders</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Fish and chips</td><td><b>16</b> portions</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Mushroom risotto</td><td><b>12</b> portions</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Ribeye</td><td><b>10</b> steaks</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Roast chicken</td><td><b>8</b> halves</td><td></td><td><i class="box"></i></td></tr>
+          </tbody>
+        </table>
+        <span class="win-tag sheet-tag">Example</span>
+      </div>
+      <div class="note" data-hero="sheet">
         <span class="note-mark"><img src="favicon.svg" alt=""></span>
         <span class="note-text"><b>Tooey</b>Tuesday's prep list is in.</span>
         <span class="note-time">6:00am</span>
-      </div>
-      <div class="card c-mail win-mini">
-        <p class="c-from-line"><img src="favicon.svg" alt="" width="18" height="18"><span>From Tooey · 6:00am</span><span class="win-tag">Example</span></p>
-        <p class="c-title">Tuesday, October 7</p>
-        <p class="c-note">Expected sales $4,410 · 214 covers</p>
-        <p class="c-k c-k-gap">Have ready</p>
-        <ul class="c-rows">
-          <li><span>Prime rib</span><b>16</b></li>
-          <li><span>Fish tacos</span><b>18</b></li>
-          <li><span>Margherita pizza</span><b>22</b></li>
-        </ul>
       </div>
     </div>
     <div class="hero-copy">
