@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: your new restaurant operating system</title>
+<meta name="description" content="Tooey runs prep, shifts and slow nights from your restaurant's own sales, so you make more and manage less. Free during the pilot.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/literata.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function (r) {
+    r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      r.classList.add('motion');
+      // the headline waits to be typed (site.js); never longer than 3s
+      r.classList.add('hero-wait');
+      setTimeout(function () { r.classList.remove('hero-wait'); }, 3000);
+    }
+  })(document.documentElement);
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="./"><img src="logo.png" alt="Tooey" width="343" height="148"></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#what">What it does</a>
+    <a href="#start">Pilot</a>
+    <button class="btn btn-small talk-open" type="button" aria-haspopup="dialog" aria-controls="talk-dialog">Try Tooey free</button>
+    <a class="btn btn-small talk-mail" href="mailto:team@usetooey.com?subject=New%20Tooey%20inquiry">Try Tooey free</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero: the street front. Its lights come on as the page loads. -->
+  <section class="hero sheet" aria-labelledby="hero-title">
+    <figure class="scene scene-hero" data-scene="street" aria-hidden="true"><div class="art"></div></figure>
+    <!-- Tooey's morning email over the street: the notice, then the email
+         itself, as the console sends it to the kitchen at 6am. -->
+    <div class="hero-os" aria-hidden="true">
+      <div class="note">
+        <span class="note-mark"><img src="favicon.svg" alt=""></span>
+        <span class="note-text"><b>Tooey</b>Tuesday's prep list is in.</span>
+        <span class="note-time">6:00am</span>
+      </div>
+      <div class="card c-mail win-mini">
+        <p class="c-from-line"><img src="favicon.svg" alt="" width="18" height="18"><span>From Tooey · 6:00am</span><span class="win-tag">Example</span></p>
+        <p class="c-title">Tuesday, October 7</p>
+        <p class="c-note">Expected sales $4,410 · 214 covers</p>
+        <p class="c-k c-k-gap">Have ready</p>
+        <ul class="c-rows">
+          <li><span>Prime rib</span><b>16</b></li>
+          <li><span>Fish tacos</span><b>18</b></li>
+          <li><span>Margherita pizza</span><b>22</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <h1 id="hero-title">Your new restaurant operating system.</h1>
+      <p class="lead">Tooey calculates your forecast, prep and shifts from your own sales, so you make more and manage less.</p>
+      <button class="btn talk-open" type="button" aria-haspopup="dialog" aria-controls="talk-dialog">Try Tooey free</button>
+      <a class="btn talk-mail" href="mailto:team@usetooey.com?subject=New%20Tooey%20inquiry">Try Tooey free</a>
+    </div>
+  </section>
+
+  <!-- What it does: one board, three scenes, one thread.
+       Each scene is a photograph of a restaurant at work with a piece of
+       Tooey's real console pinned to it, and a thread runs from pin to pin.
+       With motion on a wide screen the section pins and the camera follows
+       the thread from Forecast to Prep to Shifts as the page scrolls
+       (site.js adds .is-pinned and moves the board); the words stay put and
+       only the step in view comes up. Otherwise the whole board shows at
+       once. The pictures are illustrations drawn from free Unsplash
+       photographs (see NOTES.md); the floor plan is plan.svg, from plan.py;
+       the figures are the console's demo restaurant, marked Example. -->
+  <section class="work sheet" id="what" aria-labelledby="work-title">
+    <div class="work-pin">
+      <div class="work-stage">
+        <div class="view">
+        <img class="plan" src="plan.svg" alt="" width="3200" height="2960" decoding="async">
+        <div class="board">
+          <svg class="thread" viewBox="0 0 2200 2120" aria-hidden="true" focusable="false">
+            <path class="thread-shade" d=""/>
+            <path class="thread-line" d=""/>
+          </svg>
+
+          <!-- 0. Forecast: the day ahead, read at the counter -->
+          <figure class="shot" data-shot="0">
+            <div class="shot-photo"><img src="art/forecast-1800.jpg" srcset="art/forecast-1100.jpg 1100w, art/forecast-1800.jpg 1800w" sizes="1100px" width="1800" height="1200" alt="" decoding="async"></div>
+            <p class="shot-cap" aria-hidden="true"><b>01</b> Forecast</p>
+            <div class="card c-forecast" aria-hidden="true">
+              <i class="pin" aria-hidden="true"></i>
+              <p class="c-head"><span>Forecast</span><span class="win-tag">Example</span></p>
+              <p class="c-sub">Tuesday, October 7</p>
+              <div class="c-stats">
+                <div class="c-stat">
+                  <p class="c-k">Expected sales <em class="chip chip-up">+2%</em></p>
+                  <p class="c-big"><b data-count="4410" data-pre="$">$4,410</b></p>
+                  <p class="c-note">+$90 vs average Tuesday</p>
+                </div>
+                <div class="c-stat">
+                  <p class="c-k">Expected covers <em class="chip chip-up">+3%</em></p>
+                  <p class="c-big"><b data-count="214">214</b></p>
+                  <p class="c-note">+6 vs average Tuesday</p>
+                </div>
+              </div>
+              <dl class="c-from">
+                <div><dt>Sales through</dt><dd>Monday, 11:42pm</dd></div>
+                <div><dt>Compared with</dt><dd>Last 4 Tuesdays</dd></div>
+              </dl>
+            </div>
+            <figcaption class="sr">A restaurant owner at the counter, reading the day ahead on a tablet. Example forecast for Tuesday: $4,410 in sales and 214 covers, a little over an average Tuesday, built from sales through Monday night.</figcaption>
+          </figure>
+
+          <!-- 1. Prep: the printed sheet beside the board -->
+          <figure class="shot" data-shot="1">
+            <div class="shot-photo"><img src="art/prep-1600.jpg" srcset="art/prep-1100.jpg 1100w, art/prep-1600.jpg 1600w" sizes="1100px" width="1600" height="1200" alt="" decoding="async"></div>
+            <p class="shot-cap" aria-hidden="true"><b>02</b> Prep</p>
+            <div class="card c-sheet" aria-hidden="true">
+              <i class="pin" aria-hidden="true"></i>
+              <div class="sheet-top">
+                <div>
+                  <p class="sheet-brand"><img src="favicon.svg" alt="" width="14" height="14">Tooey</p>
+                  <p class="c-title">Tuesday prep</p>
+                  <p class="c-note">Tuesday, October 7</p>
+                </div>
+                <div class="sheet-covers"><span>Expected covers</span><b>214</b></div>
+              </div>
+              <table class="prep-sheet">
+                <thead><tr><th>Item</th><th>Have ready</th><th>On hand</th><th>Done</th></tr></thead>
+                <tbody>
+                  <tr style="--i:0"><td>Prime rib</td><td><b>16</b> slices</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:1"><td>Fish tacos</td><td><b>18</b> orders</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:2"><td>Fish and chips</td><td><b>16</b> portions</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:3"><td>Mushroom risotto</td><td><b>12</b> portions</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:4"><td>Ribeye</td><td><b>10</b> steaks</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:5"><td>Roast chicken</td><td><b>8</b> halves</td><td></td><td><i class="box"></i></td></tr>
+                </tbody>
+              </table>
+              <span class="win-tag sheet-tag">Example</span>
+            </div>
+            <figcaption class="sr">A cook at the prep station in the morning. Example printed prep sheet: how much of each main to have ready, ticked off as it is made.</figcaption>
+          </figure>
+
+          <!-- 2. Shifts: the team before service -->
+          <figure class="shot" data-shot="2">
+            <div class="shot-photo"><img src="art/shifts-1800.jpg" srcset="art/shifts-1100.jpg 1100w, art/shifts-1800.jpg 1800w" sizes="1100px" width="1800" height="1200" alt="" decoding="async"></div>
+            <p class="shot-cap" aria-hidden="true"><b>03</b> Shifts</p>
+            <div class="card c-hours" aria-hidden="true">
+              <i class="pin" aria-hidden="true"></i>
+              <p class="c-head"><span>Busy hours</span><span class="win-tag">Example</span></p>
+              <p class="c-sub">An average Tuesday, last 4 weeks</p>
+              <div class="heat">
+                <div class="heat-cell" style="--v:.26;--i:0"><b>$200</b><i>11</i></div>
+                <div class="heat-cell is-dark" style="--v:.74;--i:1"><b>$560</b><i>12</i></div>
+                <div class="heat-cell is-dark" style="--v:.64;--i:2"><b>$490</b><i>1</i></div>
+                <div class="heat-cell" style="--v:.26;--i:3"><b>$200</b><i>2</i></div>
+                <div class="heat-cell" style="--v:.16;--i:4"><b>$120</b><i>3</i></div>
+                <div class="heat-cell" style="--v:.18;--i:5"><b>$140</b><i>4</i></div>
+                <div class="heat-cell" style="--v:.43;--i:6"><b>$330</b><i>5</i></div>
+                <div class="heat-cell is-dark" style="--v:.84;--i:7"><b>$640</b><i>6</i></div>
+                <div class="heat-cell is-dark is-peak" style="--v:1;--i:8"><b>$760</b><i>7pm</i></div>
+                <div class="heat-cell is-dark" style="--v:.79;--i:9"><b>$600</b><i>8</i></div>
+                <div class="heat-cell" style="--v:.32;--i:10"><b>$240</b><i>9</i></div>
+                <div class="heat-cell" style="--v:.08;--i:11"><b>$60</b><i>10</i></div>
+              </div>
+              <p class="c-busiest"><span>Busiest hour</span><b>7pm</b><span class="c-note">$760 on average</span></p>
+            </div>
+            <figcaption class="sr">The kitchen team together at the pass before service. Example busy hours for an average Tuesday: sales by hour from 11am to 10pm, busiest at 7pm with $760 on average.</figcaption>
+          </figure>
+        </div>
+        </div>
+      </div>
+      <div class="work-text">
+      <div class="work-head">
+        <h2 id="work-title">What Tooey does</h2>
+        <p>Three core operations, planned daily from your own sales data.</p>
+      </div>
+      <ol class="work-list">
+        <li class="work-item" data-step="0">
+          <h3 id="forecast-title">Forecast</h3>
+          <p>How busy each day will be and what will sell, worked out from your own sales.</p>
+        </li>
+        <li class="work-item" data-step="1">
+          <h3 id="prep-title">Prep</h3>
+          <p>How much of each dish to make, ready every morning before prep: a little over what should sell.</p>
+        </li>
+        <li class="work-item" data-step="2">
+          <h3 id="shifts-title">Shifts</h3>
+          <p>The right amount of people on at the right time, matched to how busy each night will be.</p>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </section>
+  <!-- Who it's for: a street of four independents. Their lamps come on in
+       turn as the section scrolls in. -->
+  <section class="indie sheet" id="who" aria-labelledby="indie-title">
+    <div class="indie-copy">
+      <h2 id="indie-title">Built for independent restaurants.</h2>
+      <p>Large chains have entire teams running their back office. Independent restaurants have the owner. Tooey is that team.</p>
+    </div>
+    <figure class="scene scene-street" data-scene="indies" aria-hidden="true"><div class="art"></div></figure>
+  </section>
+
+  <!-- How to start. -->
+  <section class="start sheet" id="start" aria-labelledby="start-title">
+    <h2 id="start-title">Setup in a&nbsp;week.</h2>
+    <ol class="steps">
+      <li><span class="n" aria-hidden="true">1</span><h3>Onboard with our team</h3><p>We set up an automatic nightly download from your POS.</p></li>
+      <li><span class="n" aria-hidden="true">2</span><h3>Tooey learns your restaurant</h3><p>We train its model on all of your past sales, so it fits your restaurant.</p></li>
+      <li><span class="n" aria-hidden="true">3</span><h3>Deploy</h3><p>Check the counts against what sold, then decide.</p></li>
+    </ol>
+  </section>
+
+  <!-- The close: one wide lamplight bar. The form lives in the dialog below. -->
+  <section class="talk sheet" id="talk" aria-label="Try Tooey free">
+    <div class="talk-lamps" aria-hidden="true"><span class="talk-lamp"><svg viewBox="0 0 200 170" aria-hidden="true" focusable="false"><defs><linearGradient id="LG0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".75"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient></defs><polygon points="78,62 122,62 168,170 32,170" fill="url(#LG0)"/><line x1="100" y1="0" x2="100" y2="38"/><path d="M76 62 Q76 40 100 38 Q124 40 124 62 Z" class="shade"/><line x1="72" y1="62" x2="128" y2="62"/><circle cx="100" cy="66" r="5" class="bulb"/></svg></span><span class="talk-lamp"><svg viewBox="0 0 200 170" aria-hidden="true" focusable="false"><defs><linearGradient id="LG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".75"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient></defs><polygon points="78,62 122,62 168,170 32,170" fill="url(#LG1)"/><line x1="100" y1="0" x2="100" y2="38"/><path d="M76 62 Q76 40 100 38 Q124 40 124 62 Z" class="shade"/><line x1="72" y1="62" x2="128" y2="62"/><circle cx="100" cy="66" r="5" class="bulb"/></svg></span><span class="talk-lamp"><svg viewBox="0 0 200 170" aria-hidden="true" focusable="false"><defs><linearGradient id="LG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".75"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient></defs><polygon points="78,62 122,62 168,170 32,170" fill="url(#LG2)"/><line x1="100" y1="0" x2="100" y2="38"/><path d="M76 62 Q76 40 100 38 Q124 40 124 62 Z" class="shade"/><line x1="72" y1="62" x2="128" y2="62"/><circle cx="100" cy="66" r="5" class="bulb"/></svg></span></div>
+    <button class="bar talk-open" type="button" aria-haspopup="dialog" aria-controls="talk-dialog">
+      <span class="bar-word">Try Tooey free</span>
+      <svg class="bar-arrow" viewBox="0 0 120 40" aria-hidden="true" focusable="false"><path d="M2 20H116M98 4L116 20L98 36"/></svg>
+    </button>
+    <a class="bar talk-mail" href="mailto:team@usetooey.com?subject=New%20Tooey%20inquiry">
+      <span class="bar-word">Try Tooey free</span>
+      <svg class="bar-arrow" viewBox="0 0 120 40" aria-hidden="true" focusable="false"><path d="M2 20H116M98 4L116 20L98 36"/></svg>
+    </a>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Tooey LLC</p>
+  <p><a href="privacy.html">Privacy</a></p>
+</footer>
+
+<!-- Try Tooey free: a modal dialog holding the contact form. -->
+<dialog class="talk-dialog" id="talk-dialog" aria-labelledby="dlg-title" aria-describedby="dlg-desc">
+  <div class="dlg">
+    <button class="dlg-close" type="button" aria-label="Close">
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+    <h2 id="dlg-title">Try Tooey</h2>
+    <p id="dlg-desc">Tell us about your restaurant and we'll set up your free pilot.</p>
+    <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="hp" aria-hidden="true"><label for="f-honey">Leave this empty</label><input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required autofocus></div>
+      <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-pos">Your POS</label><input id="f-pos" name="pos" type="text" required></div>
+      <div class="field field-wide"><label for="f-msg">Message <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="form-end">
+        <button class="btn btn-send" type="submit">Send</button>
+        <p class="status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script src="draw.js"></script>
+<script src="scenes.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

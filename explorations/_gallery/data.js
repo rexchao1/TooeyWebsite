@@ -615,5 +615,18 @@ window.EXPLORATIONS = [
     weaknesses: ['The finish is a filter over stock, not illustration.', 'The forecast scene is a café counter in daylight.', 'Shifts still shows Busy hours.'],
     ask: 'Does the camera and thread make it coherent, and is the finish the right direction to commission for real?',
     pages: [{ label: 'Home', href: '48-thread/index.html' }, { label: 'Privacy', href: '48-thread/privacy.html' }]
+  },
+  {
+    id: '49-ink', num: '49', name: 'Ink', round: 19,
+    href: '49-ink/', notes: '49-ink/NOTES.md', words: 369, motion: 'Typed headline; a camera follows a thread over a floor plan, scenes sliding under a glass panel',
+    line: '48 with the same camera and thread, where the scenes are drawn, the board is the restaurant\'s floor plan, and the words float on glass over it.',
+    brief: 'Round nineteen: Rex found 48\'s finish still read as a photograph and asked for a drawn but realistic option, a background that does more, and the words overlaid so things pass under them, Apple-like.',
+    headline: 'Your new restaurant operating system.',
+    concept: 'The board is one restaurant\'s floor plan, each scene pinned where it happens (counter, kitchen, pass). The plan moves a little slower than the scenes, for depth. The words sit on a frosted panel; the camera frames each scene in the room left of it.',
+    look: '48\'s page, with ink and watercolour illustrations made from the stand-in photographs, a faint architect\'s plan with warm lamp pools behind them, and a frosted glass panel whose current step is a raised white tile.',
+    strengths: ['Reads as drawn, keeps real rooms and people.', 'The floor plan gives the camera a place to move through.', 'The glass panel lets the board run full width and pass under the words.'],
+    weaknesses: ['The illustrations are AI-generated, from three different restaurants.', 'The floor plan is invented.', 'Shifts still shows Busy hours.'],
+    ask: 'Is drawn the right direction, and does the plan and glass make the section feel finished?',
+    pages: [{ label: 'Home', href: '49-ink/index.html' }, { label: 'Privacy', href: '49-ink/privacy.html' }]
   }
 ];

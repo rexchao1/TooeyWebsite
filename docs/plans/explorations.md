@@ -346,3 +346,14 @@ Built as 48 (`explorations/48-thread/`), 47 with its exact words.
 - [x] Reviewed at 1440 at each stop and mid-way, and reduced motion; gallery entry and shots
 - [ ] Rex decides on the camera and thread, and whether to commission illustration from one real restaurant
 
+## Round nineteen (2026-10-16)
+
+Rex on 48: the finish does not look drawn at all, it is a real photo.
+He asked for an option that looks drawn but real, a background that does more than plain paper, and "What Tooey does" overlaid so things pass under it, like Apple's UI.
+Built as 49 (`explorations/49-ink/`), 48 with its exact words.
+
+- [x] The three scenes redrawn as ink and watercolour illustrations from the stand-in photographs (AI-generated; hands and faces checked)
+- [x] The board laid over one restaurant's floor plan (`plan.py`), each scene where it happens, with a little parallax
+- [x] The words on a frosted glass panel over a full-width board; the camera frames each scene left of it
+- [x] Reviewed at 1440 at each stop and mid-way, and reduced motion; gallery entry and shots
+- [ ] Rex decides on drawn versus photographed, and on the plan and glass
