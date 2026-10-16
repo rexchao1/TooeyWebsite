@@ -309,3 +309,14 @@ Built as 45 (`explorations/45-photo-treatments/`), a comparison page, not a site
 - [x] A scroll camera through the photo with three held framings
 - [x] Reviewed at 1440; gallery entry and shots
 - [ ] Rex picks a treatment, and decides on stock or our own photos
+
+## Round sixteen (2026-10-16)
+
+Rex has no photos and asked what an OS company's website would look like: the product as the picture.
+Built as 46 (`explorations/46-tooey-os/`), 44 with its exact words.
+
+- [x] A notification and a small prep window over the hero street, after the headline types
+- [x] "What Tooey does" as a desk of Tooey windows (POS, forecast, prep sheet, shifts), with a camera that glides to each step's window
+- [x] Every sample number tagged Example
+- [x] Reviewed at 1440; gallery entry and shots
+- [ ] Rex decides between the windows and the drawn rooms

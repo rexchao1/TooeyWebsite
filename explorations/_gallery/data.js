@@ -576,5 +576,18 @@ window.EXPLORATIONS = [
     weaknesses: ['A stock test photo; the site would want our own.', 'The characters barely read as a photo at this size.', 'Engraved zooms past about 2x go soft and abstract with this photo.'],
     ask: 'Which treatment, and would you shoot photos at a real restaurant?',
     pages: [{ label: 'Comparison', href: '45-photo-treatments/index.html' }]
+  },
+  {
+    id: '46-tooey-os', num: '46', name: 'Tooey windows', round: 16,
+    href: '46-tooey-os/', notes: '46-tooey-os/NOTES.md', words: 194, motion: 'Typed headline; camera across Tooey windows',
+    line: '44 with the same words, where the pictures are Tooey itself: a notification and a prep window over the street, and a desk of windows the camera glides across.',
+    brief: 'Round sixteen: no photos. Design it the way an OS site would: the product is the picture.',
+    headline: 'Your new restaurant operating system.',
+    concept: 'Pinned, a camera glides across a desk of Tooey windows, from the forecast to the prep sheet to the shifts, and each window plays as it comes into focus.',
+    look: '44 unchanged, plus light Tooey windows: porcelain cards with a title bar, slate type, warm amber for the busy curve, every sample tagged Example.',
+    strengths: ['Needs no photos or AI art.', 'Shows exactly what an owner would get each morning.', 'Keeps 44\'s words and street.'],
+    weaknesses: ['Sample counts are invented, though labelled Example.', 'A picture of software says less about the restaurant than the drawn rooms.', 'Phone views were not reviewed this round.'],
+    ask: 'Do the windows sell it better than the drawn rooms did?',
+    pages: [{ label: 'Home', href: '46-tooey-os/index.html' }, { label: 'Privacy', href: '46-tooey-os/privacy.html' }]
   }
 ];
