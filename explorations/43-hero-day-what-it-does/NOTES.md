@@ -15,7 +15,7 @@ No words changed.
 The three notes keep their wording from 42's section.
 
 ## What the founder asked for, and what 43 does
-- **Slower.** The day takes 540vh of scroll on a desktop (42: 190vh) and 400svh on a phone.
+- **Slower.** The day takes 540vh of scroll on a desktop (42: 190vh) and 400svh on a phone, with stops at each note (see below).
   What is shown eases toward the scroll with a 0.14 s time constant (42: 0.11 s).
 - **The hero text disappears on scroll.** The headline, the rest of the lead and the button fade and lift away over the first 3% of the day.
 - **A clever, smooth way to say "this is what Tooey does".** The lead already names the three: forecast, prep and shifts.
@@ -52,6 +52,22 @@ The three notes keep their wording from 42's section.
   - A face shows where a head turns toward us, so a profile no longer reads as a ball of hair.
   - The headline's tape blips stop once the day starts.
   - "What it does" in the nav goes to the forecast, inside the day.
+
+## Round two of notes: stops, pace and fixes
+- **The day stops at each note.** Forecast and Prep each hold for a stretch of scroll (15% of the day, about four wheel notches) where nothing moves, so they are hard to scroll past by accident.
+  Shifts holds at the end of the day.
+- **It slows into each stop and eases out of it.** Scroll maps to the day through a smooth curve that is flat at each stop, so the motion decelerates as it arrives and gathers pace as it leaves.
+- **It comes to rest on a stop.** If the scroll stops just short of a note or inside its stretch, the page glides to the stop (`TooeyHero.stops()`, used by `site.js`).
+  Once past a stop's end, it lets go.
+- **Faster between stops**, most of all from the fridge to the server: that stretch now takes 23% of the scroll for over half the day.
+- **The till's chart stays on the screen.** It is now drawn in true perspective and clipped to the screen; before, a flat approximation let the bars run off its edge up close.
+- **The prep sheet is clipped to the top shelf's front edge**, inside the fridge, hanging over the steaks, larger and facing us.
+  The door now opens before the sheet arrives.
+- **People.**
+  - Arms and legs are each one smooth limb, so no ring shows at the elbow or knee.
+  - The upper arm starts under the shoulder's outline, so no bump stands above it.
+  - The chef's apron straps are narrower and cross at the middle of the back; the flaps at the hips are now a narrow edge.
+  - Short hair comes down to the nape; ears show only where the head turns them toward us; faces are smaller and forward.
 
 ## How the timeline works
 42's beats (the receipt, the fridge, the sear, the plate) keep their own clock.

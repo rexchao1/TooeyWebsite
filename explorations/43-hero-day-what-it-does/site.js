@@ -388,7 +388,13 @@
       var y = window.pageYOffset, vh = window.innerHeight;
       // inside the day the scroll is the scrubber: wherever it stops, it stays
       var day = heroDay();
-      if (day && y > day[0] + 1 && y < day[1] - 1) return;
+      if (day && y > day[0] + 1 && y < day[1] - 1) {
+        // 43: except near a note, where the day comes to rest on it
+        var stops = window.TooeyHero.stops ? window.TooeyHero.stops() : [], hold = null;
+        stops.forEach(function (st) { if (y >= st.from && y <= st.to) hold = st.at; });
+        if (hold == null || Math.abs(hold - y) < 2) return;
+        return glide(y, Math.round(hold));
+      }
       var best = null, d = Infinity, pts = points(), release = false;
       pts.forEach(function (p) { var dd = Math.abs(p - y); if (dd < d) { d = dd; best = p; } });
       // 42: past the end of the day, the hero lets go the way the visitor was going:
@@ -406,7 +412,10 @@
       }
       // only when it is truly between two places, and never a long haul
       if (best === null || d < 2 || (d > vh * 0.75 && !release)) return;
-      var from = y, to = Math.round(best), t0 = performance.now();
+      glide(y, Math.round(best));
+    }
+    function glide(from, to) {
+      var t0 = performance.now();
       own = true;
       (function step(now) {
         var t = Math.min(1, (now - t0) / DUR), e = 1 - Math.pow(1 - t, 3);

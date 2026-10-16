@@ -338,6 +338,26 @@
     ctx.globalAlpha = 1;
   }
   // a capsule tapering from (a, ra) to (b, rb), in screen space
+  // a limb through three points (shoulder, elbow, wrist; hip, knee, ankle) as
+  // one outline, rounded at both ends, so no seam shows at the joint
+  function tube(P, R) {
+    var a = P[0], b = P[1], c = P[2];
+    var d1 = nrm2([b[0] - a[0], b[1] - a[1]]), d2 = nrm2([c[0] - b[0], c[1] - b[1]]);
+    var n1 = [-d1[1], d1[0]], n2 = [-d2[1], d2[0]], nm = nrm2([n1[0] + n2[0], n1[1] + n2[1]]);
+    var cs = Math.max(0.55, nm[0] * n1[0] + nm[1] * n1[1]), turn = d1[0] * d2[1] - d1[1] * d2[0];
+    // the outside of the bend swells a little; the inside creases
+    var ro = R[1] / cs, ri = R[1];
+    var rp = turn > 0 ? ri : ro, rm = turn > 0 ? ro : ri;
+    var a0 = Math.atan2(n1[1], n1[0]), a2 = Math.atan2(n2[1], n2[0]);
+    ctx.beginPath();
+    ctx.moveTo(a[0] + n1[0] * R[0], a[1] + n1[1] * R[0]);
+    ctx.quadraticCurveTo(b[0] + nm[0] * rp, b[1] + nm[1] * rp, c[0] + n2[0] * R[2], c[1] + n2[1] * R[2]);
+    ctx.arc(c[0], c[1], R[2], a2, a2 - Math.PI, true);
+    ctx.quadraticCurveTo(b[0] - nm[0] * rm, b[1] - nm[1] * rm, a[0] - n1[0] * R[0], a[1] - n1[1] * R[0]);
+    ctx.arc(a[0], a[1], R[0], a0 + Math.PI, a0, true);
+    ctx.closePath();
+  }
+  function nrm2(v) { var l = Math.hypot(v[0], v[1]) || 1; return [v[0] / l, v[1] / l]; }
   function capsule(a, ra, b, rb, keep) {
     var dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy);
     if (!keep) ctx.beginPath();
@@ -753,8 +773,11 @@
           var h = P2(J['hip' + sd]), k = P2(J['kn' + sd]), a = P2(J['an' + sd]);
           if (!h || !k || !a) return;
           var Ll = faceLight(J['kn' + sd], add3(nB, o.r, sd === 'L' ? -0.5 : 0.5), room), lc = mulL(o.legs, Ll);
-          capsule(h, 0.092 * px, k, 0.074 * px); fillStroke(lc, 1, 'q', room, z);
-          capsule(k, 0.07 * px, a, 0.06 * px); fillStroke(scl(lc, 0.94), 1, 'q', room, z);
+          tube([h, k, a], [0.09 * px, 0.068 * px, 0.058 * px]);
+          var gl = ctx.createLinearGradient(h[0], h[1], a[0], a[1]);
+          gl.addColorStop(0, css(lc)); gl.addColorStop(1, css(scl(lc, 0.9)));
+          ctx.fillStyle = gl; ctx.fill();
+          ctx.lineWidth = LW.q * lw; ctx.strokeStyle = ink(lc, 'q', room); ctx.stroke();
           // a break in the trouser over the shoe, and the shoe
           var ft = P2(add3(add3(J['an' + sd], o.f, 0.13), up, -0.055)), a2 = P2(add3(J['an' + sd], up, -0.045));
           if (ft && a2) { capsule(a2, 0.048 * px, ft, 0.04 * px); fillStroke(mulL(o.shoe || '#232323', Ll), 1, 'q', room, z); }
@@ -769,23 +792,29 @@
       var S = J['sh' + sd], E = J['el' + sd], Wr = J['wr' + sd], Hd = J['hd' + sd], sg = sd === 'L' ? -1 : 1;
       var ez = toCam(E)[2], tz = toCam(add3(J.rings[2].c, o.r, sg * 0.12))[2];
       parts.push({ z: ez < tz - 0.03 ? z - 0.3 : z + 0.05, f: function () {
-        var s = P2(S), e = P2(E), w = P2(Wr), h = P2(Hd);
+        var s = P2(add3(add3(S, [0, -0.03, 0]), o.r, -sg * 0.02)), e = P2(E), w = P2(Wr), h = P2(Hd);
         if (!s || !e || !w) return;
         var nOut = nrm3(add3(scl3(o.r, sg), nB, 0.4));
         var La = faceLight(E, nOut, room), sc = mulL(o.sleeve || o.top, La), sk = mulL(o.skin, La);
         var wm = [lerp(e[0], w[0], 0.28), lerp(e[1], w[1], 0.28)];
         // rolled sleeves: the bare forearm and hand first, the sleeve over them
         if (o.rolled) {
-          capsule(wm, 0.04 * px, w, 0.031 * px);
-          if (h) capsule(w, 0.028 * px, h, 0.03 * px, true);
+          // the bare forearm and hand, then the rolled sleeve over its upper end
+          if (h) tube([e, w, h], [0.04 * px, 0.03 * px, 0.029 * px]); else capsule(e, 0.04 * px, w, 0.03 * px);
           fillStroke(sk, 1, 'q', room, z);
+          tube([s, e, wm], [0.056 * px, 0.05 * px, 0.047 * px]);
+          fillStroke(sc, 1, 'q', room, z);
+          // the roll: a band round the sleeve's end
+          var wd = nrm2([w[0] - e[0], w[1] - e[1]]);
+          ctx.beginPath(); ctx.moveTo(wm[0] - wd[1] * 0.047 * px, wm[1] + wd[0] * 0.047 * px); ctx.lineTo(wm[0] + wd[1] * 0.047 * px, wm[1] - wd[0] * 0.047 * px);
+          ctx.lineWidth = LW.d * lw; ctx.strokeStyle = ink(sc, 'd', room, 1.4); ctx.stroke();
+        } else {
+          if (h) { capsule(w, 0.028 * px, h, 0.03 * px); fillStroke(sk, 1, 'q', room, z); }
+          tube([s, e, w], [0.056 * px, 0.044 * px, 0.033 * px]);
+          fillStroke(sc, 1, 'q', room, z);
         }
-        capsule(s, 0.058 * px, e, 0.045 * px);
-        if (o.rolled) capsule(e, 0.05 * px, wm, 0.047 * px, true); else capsule(e, 0.043 * px, w, 0.032 * px, true);
-        fillStroke(sc, 1, 'q', room, z);
-        if (!o.rolled && h) { capsule(w, 0.028 * px, h, 0.03 * px); fillStroke(sk, 1, 'q', room, z); }
         if (z < 4.2) {
-          capsule(s, 0.058 * px, e, 0.045 * px); strokeRim(rim, 1.1 * lw, 0.7);
+          tube([s, e, o.rolled ? wm : w], [0.056 * px, 0.046 * px, 0.04 * px]); strokeRim(rim, 1.1 * lw, 0.7);
           // a fold at the inside of the elbow
           ctx.beginPath(); var ee = [lerp(s[0], e[0], 0.8), lerp(s[1], e[1], 0.8)];
           ctx.moveTo(ee[0] - 0.02 * px, ee[1] - 0.012 * px); ctx.quadraticCurveTo(e[0] - sg * 0.005 * px, e[1] + 0.01 * px, ee[0] + 0.025 * px, ee[1] + 0.012 * px);
@@ -858,19 +887,19 @@
         ctx.lineCap = 'butt';
         if (!o.waistOnly) [-1, 1].forEach(function (sg) {
           var q1 = P2(add3(add3(add3(J.neck, o.r, 0.085 * sg), up, -0.035), o.f, -0.05));
-          var q2 = bk(2, -0.05 * sg), q3 = bk(1, -0.86 * sg, -0.02);
+          var q2 = bk(2, -0.12 * sg, -0.04), q3 = bk(1, -0.8 * sg, -0.02);
           if (q1 && q2 && q3) {
             ctx.beginPath(); ctx.moveTo(q1[0], q1[1]); ctx.quadraticCurveTo(q2[0], q2[1], q3[0], q3[1]);
-            ctx.lineWidth = 0.034 * px; ctx.strokeStyle = css(ap); ctx.stroke();
-            ctx.lineWidth = 0.6 * lw; ctx.strokeStyle = css(scl(ap, 1.35), 0.6); ctx.stroke();
+            ctx.lineWidth = 0.026 * px; ctx.strokeStyle = css(scl(ap, 0.82)); ctx.stroke();
+            ctx.lineWidth = 0.018 * px; ctx.strokeStyle = css(ap); ctx.stroke();
           }
         });
         var t1 = bk(1, -1, -0.02), tc = bk(1, 0, -0.025), t2 = bk(1, 1, -0.02);
         if (t1 && t2 && tc) { ctx.beginPath(); ctx.moveTo(t1[0], t1[1]); ctx.quadraticCurveTo(tc[0], tc[1] + 0.006 * px, t2[0], t2[1]); ctx.lineWidth = 0.03 * px; ctx.strokeStyle = css(ap); ctx.stroke(); }
         ctx.lineCap = 'round';
-        // the apron's skirt shows at the sides of the hips
+        // the apron's skirt shows as a narrow edge at each side of the hips
         [-1, 1].forEach(function (sg) {
-          var a1 = bk(0, 0.98 * sg, 0.1), a2 = bk(0, 0.72 * sg, 0.06), a3 = bk(0, 0.66 * sg, -0.12), a4 = bk(0, 1.0 * sg, -0.12);
+          var a1 = bk(0, 1.0 * sg, 0.06), a2 = bk(0, 0.86 * sg, 0.05), a3 = bk(0, 0.9 * sg, -0.06), a4 = bk(0, 1.0 * sg, -0.06);
           if (a1 && a2 && a3 && a4) { polyPath([a1, a2, a3, a4]); ctx.fillStyle = css(scl(ap, 0.9)); ctx.fill(); }
         });
       }
@@ -960,8 +989,8 @@
     // ears, where they face us
     var ears = [];
     [-1, 1].forEach(function (s) {
-      var ep = add3(add3(add3(H, J.hr, R[0] * 0.97 * s), J.hu, -0.015), J.hf, -0.004);
-      if (dot3(scl3(J.hr, s), nrm3(sub3(camPos(), ep))) > -0.35) {
+      var ep = add3(add3(add3(H, J.hr, R[0] * 1.02 * s), J.hu, -0.018), J.hf, 0.004);
+      if (dot3(scl3(J.hr, s), nrm3(sub3(camPos(), ep))) > 0.4) {
         var e = ellOf(ep, [[J.hr, 0.012], [J.hu, 0.03], [J.hf, 0.02]]);
         if (e) ears.push(e);
       }
@@ -979,11 +1008,12 @@
       }
     }
     // hair: a shell over the back and top of the skull, standing a little proud of it
-    var hc = add3(add3(H, J.hf, cap ? -0.006 : -0.014), J.hu, cap ? 0.004 : 0.012);
-    var hr = cap ? [R[0] * 1.02, R[1] * 0.93, R[2] * 1.01] : long ? [R[0] * 1.12, R[1] * 1.03, R[2] * 1.07] : [R[0] * 1.05, R[1] * 0.97, R[2] * 1.04];
+    // short hair comes down to the nape at the back
+    var hc = add3(add3(H, J.hf, cap ? -0.006 : -0.014), J.hu, cap ? 0.004 : st === 'short' ? -0.002 : 0.012);
+    var hr = cap ? [R[0] * 1.02, R[1] * 0.93, R[2] * 1.01] : long ? [R[0] * 1.12, R[1] * 1.03, R[2] * 1.07] : st === 'short' ? [R[0] * 1.05, R[1] * 1.0, R[2] * 1.05] : [R[0] * 1.05, R[1] * 0.97, R[2] * 1.04];
     var shell = ellOf(hc, [[J.hr, hr[0]], [J.hu, hr[1]], [J.hf, hr[2]]]);
     // the face's side of the skull is not hair: cut the shell where it passes forward of the hairline
-    var face = ellOf(add3(add3(H, J.hf, R[2] * 0.62), J.hu, -0.03), [[J.hr, R[0] * 1.2], [J.hu, R[1] * 0.92], [J.hf, R[2] * 0.62]]);
+    var face = ellOf(add3(add3(H, J.hf, R[2] * 0.72), J.hu, -0.03), [[J.hr, R[0] * 0.95], [J.hu, R[1] * 0.9], [J.hf, R[2] * 0.5]]);
     var nape = ellOf(add3(add3(H, J.hu, -R[1] * 0.92), J.hf, -0.01), [[J.hr, R[0] * 0.7], [J.hu, R[1] * 0.36], [J.hf, R[2] * 0.8]]);
     if (long) longHair(o, J, hair, z, px, room, rim);
     if (shell) {
@@ -1060,7 +1090,7 @@
     }
     if (st === 'short') {
       // the nape below the hairline: skin over the lower back of the skull
-      var np = ellOf(add3(add3(H, J.hf, -R[2] * 0.55), J.hu, -R[1] * 0.78), [[J.hr, R[0] * 0.62], [J.hu, R[1] * 0.3], [J.hf, R[2] * 0.5]]);
+      var np = ellOf(add3(add3(H, J.hf, -R[2] * 0.5), J.hu, -R[1] * 0.92), [[J.hr, R[0] * 0.5], [J.hu, R[1] * 0.2], [J.hf, R[2] * 0.45]]);
       if (np) {
         ctx.save(); ellPath(skull); ctx.clip();
         ellPath(np); ctx.fillStyle = css(scl(skin, 0.86)); ctx.fill();
@@ -1589,7 +1619,9 @@
   }
 
   /* ---- the prep sheet's resting place: the fridge's side, facing us ---- */
-  var SHEET_ON = { c: [FX0 - 0.004, 0.12, FZ + 0.34], u: [0, 0, -1], v: [0, -1, 0] };   // u: across, v: down
+  // the prep sheet's place: clipped to the front edge of the top shelf, hanging
+  // over the steaks' shelf, facing out (u: across, v: down, k: metres a unit)
+  var SHEET_ON = { c: [1.14, -0.065, FZ + 0.02], u: [1, 0, 0], v: [0, -1, 0], k: 0.015 };
 
   /* ---- the chef: at the range, back to us ---- */
   var CHEF = makeFigure({ b: [-1.08, FL, 6.0], th: 0.22, stand: true, build: 'chef', top: col('#f1f0ec'), skin: col('#c58e6c'), hair: col('#1f1b19'),
@@ -1971,26 +2003,36 @@
      sales become tomorrow's forecast, then the server's walk takes the end.
      WARP maps 43's progress onto 42's clock (monotone, so nothing runs back). */
   var WK = [[0, -1.5], [1.2, -0.28], [1.7, 0.47], [1.85, 0.58], [3.45, 2.85], [4.0, 3.3], [4.9, 4.2], [6.4, 6.2], [6.85, 6.75], [7.6, 7.3], [8.9, 8.75], [10, 10]];
-  var WM = (function () {
-    var n = WK.length, d = [], m = [], i;
-    for (i = 0; i < n - 1; i++) d.push((WK[i + 1][1] - WK[i][1]) / (WK[i + 1][0] - WK[i][0]));
+  // a smooth curve through knots that never turns back (Fritsch and Carlson):
+  // flat between two equal knots, and easing into and out of them
+  function mono(K) {
+    var n = K.length, d = [], m = [], i;
+    for (i = 0; i < n - 1; i++) d.push((K[i + 1][1] - K[i][1]) / (K[i + 1][0] - K[i][0]));
     m[0] = d[0]; m[n - 1] = d[n - 2];
     for (i = 1; i < n - 1; i++) m[i] = d[i - 1] * d[i] <= 0 ? 0 : (d[i - 1] + d[i]) / 2;
     for (i = 0; i < n - 1; i++) {
       if (d[i] === 0) { m[i] = m[i + 1] = 0; continue; }
       var a = m[i] / d[i], b = m[i + 1] / d[i], h = a * a + b * b;
-      if (h > 9) { var k = 3 / Math.sqrt(h); m[i] = k * a * d[i]; m[i + 1] = k * b * d[i]; }
+      if (h > 9) { var q = 3 / Math.sqrt(h); m[i] = q * a * d[i]; m[i + 1] = q * b * d[i]; }
     }
-    return m;
-  })();
-  function WARP(x) {
-    var n = WK.length, i = 0;
-    x = clamp(x, 0, 10);
-    while (i < n - 2 && x > WK[i + 1][0]) i++;
-    var h = WK[i + 1][0] - WK[i][0], u = (x - WK[i][0]) / h;
-    var h00 = 2 * u * u * u - 3 * u * u + 1, h10 = u * u * u - 2 * u * u + u, h01 = -2 * u * u * u + 3 * u * u, h11 = u * u * u - u * u;
-    return h00 * WK[i][1] + h10 * h * WM[i] + h01 * WK[i + 1][1] + h11 * h * WM[i + 1];
+    return function (x) {
+      var i2 = 0;
+      x = clamp(x, K[0][0], K[n - 1][0]);
+      while (i2 < n - 2 && x > K[i2 + 1][0]) i2++;
+      var hh = K[i2 + 1][0] - K[i2][0], u = (x - K[i2][0]) / hh;
+      var h00 = 2 * u * u * u - 3 * u * u + 1, h10 = u * u * u - 2 * u * u + u, h01 = -2 * u * u * u + 3 * u * u, h11 = u * u * u - u * u;
+      return h00 * K[i2][1] + h10 * hh * m[i2] + h01 * K[i2 + 1][1] + h11 * hh * m[i2 + 1];
+    };
   }
+  var WARP = mono(WK);
+  /* The scroll to the day. The day holds still at each note (a stretch of
+     scroll where nothing moves, so it is hard to scroll past by accident),
+     slows as it comes into a note and leaves it gently, and moves quickly in
+     between. Progress p (0..1 of the scroll) to s (0..10). */
+  var STOPS = [{ at: 0.195, from: 0.12, to: 0.27 }, { at: 0.495, from: 0.42, to: 0.57 }];
+  var PK = [[0, 0], [0.12, 1.3], [0.27, 1.3], [0.42, 3.95], [0.57, 3.95], [0.8, 9.35], [1, 10]];
+  var DAY = mono(PK);
+
   function spline(K, s, keys) {
     var n = K.length, i = 0;
     s = clamp(s, K[0][0], K[n - 1][0]);
@@ -2030,7 +2072,7 @@
   }
 
   // the receipt's flight: off the printer, up, back through the pass, to the fridge's side
-  var SHEETK = [[0.5, add3(SLOT, [0, 0.03, 0])], [0.9, [1.0, 0.12, -0.4]], [1.4, [0.75, 0.14, 1.0]], [1.85, [0.55, 0.14, 2.6]], [2.25, [0.4, 0.14, 3.9]], [2.6, [FX0 - 0.22, 0.14, FZ + 0.18]], [2.85, [FX0 - 0.03, 0.1, FZ + 0.32]]];
+  var SHEETK = [[0.5, add3(SLOT, [0, 0.03, 0])], [0.9, [1.0, 0.12, -0.4]], [1.4, [0.75, 0.14, 1.0]], [1.85, [0.55, 0.14, 2.6]], [2.25, [0.45, 0.14, 3.9]], [2.6, [0.95, 0.1, FZ - 0.4]], [2.85, [1.12, 0.06, FZ - 0.06]]];
   // the steak: from the tray, up and across the kitchen, into the pan
   var MP = [[HERO.c[0], HERO.c[1], HERO.c[2]], [HERO.c[0] - 0.25, 0.02, HERO.c[2] - 0.3], [-0.15, -0.12, 6.3], [PB[0], PB[1] + 0.035, PB[2]]];
   // the plate: from the range to the pass, then out to its table
@@ -2066,7 +2108,7 @@
     LI[L_SKY] = 0.3 * D;
     ST.heat = heat;
     // the fridge
-    ST.door = eio(lin(s, 2.65, 3.45)) * (1 - eio(lin(s, 4.25, 4.95)));
+    ST.door = eio(lin(s, 1.95, 2.6)) * (1 - eio(lin(s, 4.25, 4.95)));
     LI[L_FRIDGE] = 1.5 * sm(ST.door * 1.5);
     // the sear
     ST.flare = clamp(env(s, 4.95, 5.08, 5.2, 5.55) + 0.6 * env(s, 5.35, 5.45, 5.55, 5.85), 0, 1);
@@ -2363,7 +2405,7 @@
       var xf = bill;
       if (land > 0) {
         // on the fridge's side: centimetres along u (across) and v (down) of that face
-        var O = P2(add3(SHEET_ON.c, SHEET_ON.v, 0.15)), A = P2(add3(add3(SHEET_ON.c, SHEET_ON.v, 0.15), SHEET_ON.u, 0.014)), B = P2(add3(SHEET_ON.c, SHEET_ON.v, 0.164));
+        var SK = SHEET_ON.k, O = P2(add3(SHEET_ON.c, SHEET_ON.v, 0.15)), A = P2(add3(add3(SHEET_ON.c, SHEET_ON.v, 0.15), SHEET_ON.u, SK)), B = P2(add3(SHEET_ON.c, SHEET_ON.v, 0.15 + SK));
         if (O && A && B) {
           var pl = [A[0] - O[0], A[1] - O[1], B[0] - O[0], B[1] - O[1], O[0], O[1]];
           xf = bill.map(function (v, i) { return lerp(v, pl[i], land); });
@@ -2419,7 +2461,7 @@
       var lit = mixc(mulL('#cfd5d6', AMB.d), '#ffe6bd', on);
       g.addColorStop(0, css(scl(lit, 1.04))); g.addColorStop(1, css(scl(lit, 0.9)));
       ctx.fillStyle = g; ctx.fill();
-      chart(sn, on);
+      chart(sn, on, sc);
     }
     // its light on the stand and the receipt
     ctx.save(); ctx.globalCompositeOperation = ADD;
@@ -2439,38 +2481,52 @@
      the screen's face. */
   var TONIGHT = [0.3, 0.46, 0.62, 0.88, 0.94, 0.72, 0.4];
   var TOMORROW = [0.36, 0.52, 0.74, 0.98, 1.0, 0.8, 0.46];
-  function chart(sn, on) {
-    var O = SCREEN[0], ux = sub3(SCREEN[1], SCREEN[0]), vy = sub3(SCREEN[3], SCREEN[0]);
-    var W = len3(ux) * 1000, H = len3(vy) * 1000;
-    var xf = planeXf(O, scl3(nrm3(ux), 0.001), scl3(nrm3(vy), 0.001));
-    if (!xf) return;
-    var z = toCam(O)[2], ink2 = css(SLATE, 0.3 + 0.5 * on), amber = [160, 92, 26];
-    setXf(xf);
-    var pad = 13, mid = W / 2, base0 = H - 13, top0 = 34, bh = base0 - top0;
-    // the two halves, and a hairline under each
-    ctx.lineWidth = 0.5; ctx.strokeStyle = css(SLATE, 0.18 + 0.2 * on);
-    ctx.beginPath(); ctx.moveTo(pad, base0 + 0.5); ctx.lineTo(mid - 7, base0 + 0.5); ctx.moveTo(mid + 7, base0 + 0.5); ctx.lineTo(W - pad, base0 + 0.5); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(mid, top0 - 18); ctx.lineTo(mid, base0); ctx.strokeStyle = css(SLATE, 0.1 + 0.12 * on); ctx.stroke();
+  function chart(sn, on, sc) {
+    var O = SCREEN[0], e1 = sub3(SCREEN[1], O), e2 = sub3(SCREEN[3], O);
+    var W = len3(e1) * 1000, H = len3(e2) * 1000, ux = nrm3(e1), vy = nrm3(e2);
+    // a point on the screen's face, in millimetres from its top left corner
+    function M(x, y) { return add3(add3(O, ux, x / 1000), vy, y / 1000); }
+    function Q(x, y) { return P2(M(x, y)); }
+    function rect(x, y, w, h) {
+      var q = [Q(x, y), Q(x + w, y), Q(x + w, y + h), Q(x, y + h)];
+      if (q[0] && q[1] && q[2] && q[3]) { polyPath(q); ctx.fill(); }
+    }
+    function line(x0, y0, x1, y1) {
+      var a = Q(x0, y0), b = Q(x1, y1);
+      if (a && b) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+    }
+    function text(str, x, y) {
+      var xf = planeXf(M(x, y), scl3(ux, 0.001), scl3(vy, 0.001));
+      if (xf) { setXf(xf); ctx.fillText(str, 0, 0); base(); }
+    }
+    var amber = [160, 92, 26];
+    ctx.save();
+    polyPath(sc); ctx.clip();
+    var pad = W * 0.07, mid = W / 2, gap = W * 0.035, base0 = H * 0.86, top0 = H * 0.3, bh = base0 - top0;
+    ctx.lineWidth = 1; ctx.strokeStyle = css(SLATE, 0.18 + 0.2 * on);
+    line(pad, base0, mid - gap, base0); line(mid + gap, base0, W - pad, base0);
+    ctx.strokeStyle = css(SLATE, 0.1 + 0.12 * on); line(mid, H * 0.1, mid, base0);
     var fk = ramp(sn, 0.5, 0.75);
     if (fontsOK) {
-      ctx.font = '600 10px "Schibsted Grotesk", sans-serif'; ctx.textBaseline = 'alphabetic';
-      ctx.fillStyle = ink2; ctx.fillText('Tonight', pad, top0 - 12);
-      ctx.fillStyle = css(amber, (0.45 + 0.55 * on) * fk); ctx.fillText('Tomorrow', mid + 7, top0 - 12);
+      ctx.font = '600 ' + (H * 0.075).toFixed(2) + 'px "Schibsted Grotesk", sans-serif'; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+      ctx.fillStyle = css(SLATE, 0.3 + 0.5 * on); text('Tonight', pad, H * 0.18);
+      ctx.fillStyle = css(amber, (0.45 + 0.55 * on) * fk); text('Tomorrow', mid + gap, H * 0.18);
     }
     function bars(vals, x0, x1, grow, c, a) {
       var n = vals.length, step = (x1 - x0) / n, bw = step * 0.56;
+      ctx.fillStyle = css(c, a);
       for (var i = 0; i < n; i++) {
         var k = grow(i);
         if (k <= 0.002) continue;
-        var hh = vals[i] * bh * k, x = x0 + i * step + (step - bw) / 2;
-        ctx.fillStyle = css(c, a); ctx.fillRect(x, base0 - hh, bw, hh);
+        var hh = vals[i] * bh * k;
+        rect(x0 + i * step + (step - bw) / 2, base0 - hh, bw, hh);
       }
     }
-    bars(TONIGHT, pad, mid - 7, function () { return 1; }, SLATE, 0.22 + 0.4 * on);
+    bars(TONIGHT, pad, mid - gap, function () { return 1; }, SLATE, 0.22 + 0.4 * on);
     // tonight's shape, faint, under tomorrow's, so the eye reads the one from the other
-    bars(TONIGHT, mid + 7, W - pad, function () { return fk; }, SLATE, 0.08 * fk);
-    bars(TOMORROW, mid + 7, W - pad, function (i) { return eio(lin(sn, 0.62 + i * 0.07, 0.86 + i * 0.07)); }, amber, 0.55 + 0.4 * on);
-    base();
+    bars(TONIGHT, mid + gap, W - pad, function () { return fk; }, SLATE, 0.08 * fk);
+    bars(TOMORROW, mid + gap, W - pad, function (i) { return eio(lin(sn, 0.62 + i * 0.07, 0.86 + i * 0.07)); }, amber, 0.55 + 0.4 * on);
+    ctx.restore();
   }
 
   /* ---------- a table, its chairs, its guests ---------- */
@@ -2979,7 +3035,7 @@
       if (!motion || stillMode || !heroEl) return;
       e.preventDefault();
       var top = heroEl.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({ top: Math.round(top + travel() * 0.125), behavior: 'smooth' });
+      window.scrollTo({ top: Math.round(top + travel() * STOPS[0].at), behavior: 'smooth' });
     });
   });
 
@@ -3005,8 +3061,17 @@
       var top = heroEl.getBoundingClientRect().top + window.pageYOffset;
       return [top, top + travel()];
     },
+    // where the day holds: for each note, the scroll position it rests at and
+    // the stretch round it that comes to rest there (site.js snaps to these)
+    stops: function () {
+      var r = this.range();
+      if (!r) return [];
+      var L = r[1] - r[0];
+      // coming in, a stop catches the scroll a little early; once past its end, it lets go
+      return STOPS.map(function (st) { return { at: r[0] + L * st.at, from: r[0] + L * (st.from - 0.05), to: r[0] + L * st.to }; });
+    },
     // where the day is: the scroll's target and what is shown (for review)
-    progress: function () { return { target: target, shown: shown }; }
+    progress: function () { return { target: target, shown: shown, s: DAY(shown) }; }
   };
 
   function paintStill() { stillMode = true; frame(STILL_S, 0); }
@@ -3032,7 +3097,7 @@
   var raf = 0, visible = true, textStart = 0, textOver = false;
   function draw() {
     var now = performance.now(), t = (fixedP != null && !liveIdle) ? 0 : (now - t0) / 1000;
-    frame(shown * 10, t);
+    frame(DAY(shown), t);
   }
   function tick(now) {
     raf = 0;
