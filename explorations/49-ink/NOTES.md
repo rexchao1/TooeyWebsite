@@ -26,8 +26,7 @@ The illustrations were made with Codex's image generation tool (`image_gen`, its
 
 They are AI-generated, which is a different promise from a photograph or a commissioned drawing.
 Hands and faces were checked at full size; none looked wrong.
-At Rex's request the man at the counter in `forecast` was given a real person's likeness, from a photograph Rex supplied; only his head was regenerated and pasted back, so the rest of the drawing is unchanged.
-That person's agreement is needed before this ships.
+At Rex's request the man at the counter in `forecast` has tight curly hair; only his head was regenerated and pasted back, so his face and the rest of the drawing are unchanged.
 Generated at a smaller size and enlarged to 1800 and 1600px wide, so they are soft up close.
 Before anything like this ships, an illustrator drawing from one real restaurant is the better source.
 
