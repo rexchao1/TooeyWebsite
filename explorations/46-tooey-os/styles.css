@@ -981,6 +981,8 @@ html.modal-open { overflow: hidden; }
   }
   .hero-copy { padding: calc(93vw - 2rem) 0 3.5rem; }
   .hero-copy::before { display: none; }
+  /* tonight's sheet would sit over the headline: the notice carries it */
+  .win-mini { display: none; }
 
   .work-pin, .indie, .start, .talk, .foot, .page { grid-template-columns: 1fr; }
   .work-pin { padding-top: 3.5rem; row-gap: 0; }

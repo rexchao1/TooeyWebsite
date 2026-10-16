@@ -320,3 +320,15 @@ Built as 46 (`explorations/46-tooey-os/`), 44 with its exact words.
 - [x] Every sample number tagged Example
 - [x] Reviewed at 1440; gallery entry and shots
 - [ ] Rex decides between the windows and the drawn rooms
+
+## Round seventeen (2026-10-16)
+
+Rex shared the real Tooey console screens and asked whether real photographs, tied together with motion, would look more real than drawing everything.
+Built as 47 (`explorations/47-night-to-morning/`), 46 with its exact words. Rex is still working on shifts, so its stop shows Busy hours.
+
+- [x] "What Tooey does" as five photographs, Monday's close to Tuesday's service, in one duotone that runs night blue to dawn amber, pinned with a crossfade and a slow push-in
+- [x] A card cut from the real console on each: sales and POS sync, forecast, morning email, printed prep sheet, busy hours; demo figures tagged Example
+- [x] The morning email in the hero
+- [x] Phone: each step followed by its photographs; the hero card overlap fixed in 46 too
+- [x] Reviewed at 1440 and 390, and reduced motion at 1440; gallery entry and shots
+- [ ] Rex decides on the photographs, and on shooting one real restaurant from close to service

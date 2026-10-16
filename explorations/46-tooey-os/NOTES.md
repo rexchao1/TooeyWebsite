@@ -17,6 +17,7 @@ The street, the independents section, setup and the form are 44's.
 ## Checked
 At 1440×900 in Chromium: the hero at rest with the notification and the window; each of the three pinned steps at rest after the glide.
 Phone views were out of scope this round and were not reviewed.
+Round seventeen found the tonight's-sheet window covering the headline at phone width; it is now hidden there and the notice carries it.
 
 ## Weakness
 The sample counts are invented; they are labelled Example, but a real restaurant's sheet would be stronger.

@@ -589,5 +589,18 @@ window.EXPLORATIONS = [
     weaknesses: ['Sample counts are invented, though labelled Example.', 'A picture of software says less about the restaurant than the drawn rooms.', 'Phone views were not reviewed this round.'],
     ask: 'Do the windows sell it better than the drawn rooms did?',
     pages: [{ label: 'Home', href: '46-tooey-os/index.html' }, { label: 'Privacy', href: '46-tooey-os/privacy.html' }]
+  },
+  {
+    id: '47-night-to-morning', num: '47', name: 'Night to morning', round: 17,
+    href: '47-night-to-morning/', notes: '47-night-to-morning/NOTES.md', words: 369, motion: 'Typed headline; five photographs crossfade and push in, each card plays',
+    line: '46 with the same words, where "What Tooey does" is one night in five photographs, Monday\'s close to Tuesday\'s service, each carrying a card cut from the real console.',
+    brief: 'Round seventeen: Rex shared the real console screens and asked whether real photographs tied together with motion would look more real than drawing everything.',
+    headline: 'Your new restaurant operating system.',
+    concept: 'Pinned, the reel steps through five moments: the POS synced at 11:42pm, the forecast overnight, the morning email at 6am, the printed prep sheet ticked off, the busy hours at 7pm. The light runs from night blue to dawn amber.',
+    look: '46 unchanged, plus five photographs in one duotone with grain, and porcelain cards in the console\'s own layout; the prep sheet is paper.',
+    strengths: ['Real rooms and real people, with no drawing and no AI art.', 'The cards are the console\'s own screens and words, not invented windows.', 'One night is a story an owner recognises.'],
+    weaknesses: ['Stock photographs from five different restaurants.', 'Shifts shows Busy hours, as the console has no shifts screen yet.', 'Heavier than the drawn rooms.'],
+    ask: 'Do the photographs carry it, and would you shoot one real restaurant from close to service?',
+    pages: [{ label: 'Home', href: '47-night-to-morning/index.html' }, { label: 'Privacy', href: '47-night-to-morning/privacy.html' }]
   }
 ];
