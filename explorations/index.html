@@ -66,11 +66,6 @@ button { font: inherit; color: inherit; }
 }
 .btn:hover { background: var(--hover); }
 .btn[aria-disabled="true"] { opacity: .4; pointer-events: none; }
-.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 2px; }
-.seg button {
-  border: 0; background: none; height: 26px; padding: 0 10px; border-radius: 6px; cursor: pointer; font-size: 13px; color: var(--muted);
-}
-.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
 
 /* ---------- overview ---------- */
 .overview { max-width: 1280px; margin: 0 auto; padding: 48px 20px 80px; }
@@ -79,7 +74,7 @@ button { font: inherit; color: inherit; }
 .intro p { margin: 0; max-width: 62ch; color: var(--muted); }
 .intro p + p { margin-top: 8px; }
 .intro code { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--hover); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
-.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px 24px; }
+.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 40px 28px; }
 .card { display: flex; flex-direction: column; min-width: 0; }
 .thumb {
   position: relative; display: block; border-radius: 12px; overflow: hidden;
@@ -88,24 +83,12 @@ button { font: inherit; color: inherit; }
 }
 .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s ease; }
 .thumb:hover img { transform: scale(1.015); }
-.thumb .phone {
-  position: absolute; right: 14px; bottom: -14%; width: 21%;
-  aspect-ratio: 390 / 844; border-radius: 10px; overflow: hidden;
-  border: 3px solid #111; background: #111; box-shadow: 0 8px 24px rgba(0,0,0,.25);
-}
-.thumb .phone img { object-fit: cover; }
-[data-mode="phone"] .grid .thumb { aspect-ratio: 16 / 10; display: flex; justify-content: center; align-items: flex-start; padding-top: 18px; }
-[data-mode="phone"] .grid .thumb > img { display: none; }
-[data-mode="phone"] .grid .thumb .phone { position: static; width: 44%; height: auto; }
 .meta { padding: 14px 2px 0; }
-.round { margin: 0 0 48px; }
-.round > h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px; }
-.round > p { margin: 0 0 20px; color: var(--muted); max-width: 70ch; }
 .meta h2 { font-size: 17px; margin: 0; font-weight: 600; letter-spacing: -0.01em; display: flex; gap: 8px; align-items: baseline; }
 .meta p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
 .meta .tags { font-size: 13px; color: var(--faint); }
+.meta .eyebrow { margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
 .meta .row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-.card.original .thumb { box-shadow: none; border-style: dashed; }
 
 /* ---------- detail ---------- */
 .detail { display: grid; grid-template-columns: minmax(0, 1fr) 380px; height: calc(100vh - 56px); height: calc(100dvh - 56px); }
@@ -115,7 +98,6 @@ button { font: inherit; color: inherit; }
 .stage { position: relative; flex: 1; min-height: 0; background: var(--stage); overflow: hidden; display: flex; align-items: flex-start; justify-content: center; gap: 24px; padding: 20px; }
 .frame { position: relative; flex: none; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
 .frame iframe { border: 0; display: block; transform-origin: 0 0; background: #fff; }
-.frame.phone { border-radius: 28px; border: 8px solid #111; }
 .frame .label { position: absolute; left: 0; right: 0; bottom: 100%; }
 .info { min-height: 0; overflow-y: auto; padding: 24px 24px 48px; background: var(--panel); }
 .info h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin: 26px 0 8px; font-weight: 600; }
@@ -163,30 +145,20 @@ button { font: inherit; color: inherit; }
   <div class="intro">
     <div>
       <h1>Directions for the Tooey site</h1>
-      <p>Forty-three explorations in thirteen rounds, newest first. Each was built by its own agent. The current site comes first, for reference.</p>
-    </div>
-    <div class="seg" role="group" aria-label="Thumbnails">
-      <button type="button" data-thumb="desktop" aria-pressed="true">Desktop</button>
-      <button type="button" data-thumb="phone" aria-pressed="false">Phone</button>
+      <p>Explorations 41 to 49, one per round, newest first. Each round builds on the one before. Reviewed on desktop.</p>
     </div>
   </div>
-  <div id="grid" data-mode="desktop"></div>
+  <div id="grid"></div>
 </main>
 
 <main class="detail" id="detail" hidden>
   <div class="stage-wrap">
     <div class="toolbar">
       <h2 id="dTitle"></h2>
-      <div class="seg" role="group" aria-label="Preview size">
-        <button type="button" data-view="both" aria-pressed="true">Both</button>
-        <button type="button" data-view="desktop" aria-pressed="false">Desktop</button>
-        <button type="button" data-view="phone" aria-pressed="false">Phone</button>
-      </div>
       <a class="btn" id="dOpen" target="_blank" rel="noopener">Open site ↗</a>
     </div>
     <div class="stage" id="stage">
       <div class="frame desktop" id="fDesk"><iframe id="iDesk" title="Desktop preview" width="1440" height="900" loading="lazy"></iframe></div>
-      <div class="frame phone" id="fPhone"><iframe id="iPhone" title="Phone preview" width="390" height="844" loading="lazy"></iframe></div>
     </div>
   </div>
   <aside class="info" id="info" aria-live="polite"></aside>
@@ -195,25 +167,24 @@ button { font: inherit; color: inherit; }
 <script src="_gallery/data.js"></script>
 <script>
 (function () {
-  var sites = window.EXPLORATIONS || [];
+  // 41 onward, newest first; the arrows follow the same order
+  var sites = (window.EXPLORATIONS || []).filter(function (s) { return +s.num > 40; }).reverse();
   var grid = document.getElementById('grid');
   var overview = document.getElementById('overview');
   var detail = document.getElementById('detail');
   var pager = document.getElementById('pager');
   var allLink = document.getElementById('allLink');
-  var view = 'both';
-  try { view = localStorage.getItem('tooey-gallery-view') || 'both'; } catch (e) {}
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function shot(id, kind) { return '_gallery/shots/' + id + '-' + kind + '.jpg'; }
 
-  function card(s) {
-    return '<li class="card' + (s.id === '00-original' ? ' original' : '') + '">' +
+  function card(s, round, roundText) {
+    return '<li class="card">' +
       '<a class="thumb" href="#' + s.id + '" aria-label="Review ' + esc(s.name) + '">' +
         '<img src="' + shot(s.id, 'desktop') + '" alt="" loading="lazy">' +
-        '<span class="phone"><img src="' + shot(s.id, 'phone') + '" alt="" loading="lazy"></span>' +
       '</a>' +
       '<div class="meta">' +
+        (round ? '<p class="eyebrow" title="' + esc(roundText) + '">Round ' + esc(s.round) + ' \u00b7 ' + esc(round) + '</p>' : '') +
         '<h2><span class="num">' + esc(s.num) + '</span>' + esc(s.name) + '</h2>' +
         '<p>' + esc(s.line) + '</p>' +
         (s.motion ? '<p class="tags">' + esc(s.motion) + (s.words ? ' \u00b7 ' + s.words + ' words' : '') + '</p>' : '') +
@@ -222,36 +193,23 @@ button { font: inherit; color: inherit; }
       '</div></li>';
   }
   var ROUNDS = [
-    { n: 0, title: 'Today', text: '' },
+    { n: 19, title: 'Round nineteen: drawn, over a floor plan', text: '48 drawn instead of photographed, over the restaurant\'s floor plan, the words on glass, and the console window in the hero.' },
+    { n: 18, title: 'Round eighteen: one board, one thread', text: 'Three scenes on one board, joined by a thread the camera follows from Forecast to Prep to Shifts.' },
+    { n: 17, title: 'Round seventeen: real photographs', text: 'What Tooey does as one night in five photographs, each carrying a card from the real console.' },
     { n: 16, title: 'Round sixteen: the product is the picture', text: '44 with the same words, pictured with Tooey\'s own windows and a camera that glides across them.' },
     { n: 15, title: 'Round fifteen: free art from a photo', text: 'One free photo treated in code three ways, each animated, and a scroll camera.' },
     { n: 14, title: 'Round fourteen: back to 35', text: '35 with a typed headline, a smooth header, a clean hero and a shorter pin.' },
     { n: 13, title: 'Round thirteen: the day tells what Tooey does', text: '42 revised: slower, the three notes inside the day, a server, a clear header.' },
     { n: 12, title: 'Round twelve: one day, on scroll', text: '40 revised: scroll-driven, faster, with morphs, real food and darker night.' },
-    { n: 11, title: 'Round eleven: 39, made grand', text: 'Full-bleed, a moving camera, and a receipt, meat and dish instead of the string. 40 runs through a day; 41 is the relay as described.' },
-    { n: 10, title: 'Round ten: the string hero', text: 'Two looping heroes for 35: a thread connecting the POS, the fridge and the chef, with a VHS glitch headline.' },
-    { n: 9, title: 'Round nine: 34, revised', text: 'Your changes to 34 (35), then two operating-system heroes: shop windows (36) and boot up (37).' },
-    { n: 8, title: 'Round eight: building on 31', text: 'Three combinations on 31’s light look, each richer and better animated: a walk-through, a living sheet, a lit room.' },
-    { n: 7, title: 'Round seven: one system, dark and light', text: 'Built on the Light only treatment you chose from the samples page (explorations/_samples/): one on basalt from the 3D renders, one on porcelain from the drawn rooms.' },
-    { n: 6, title: 'Round six: walk through the restaurant', text: 'Your idea, four ways: outside, the doors, a table, behind the POS, the kitchen, the prep sheet. Drawn and lit as part of the page, with scroll moving you through it. Desktop reviewed.' },
-    { n: 5, title: 'Round five: 21’s colours, a real restaurant', text: 'Rendered restaurants in 3D. Tooey shown as finished, every example dish gets a count, and nothing crucial takes over five seconds. Under 200 words.' },
-    { n: 4, title: 'Round four: a direct site, creative motion inside', text: 'Plain company sites about Tooey, with the creativity in the animations rather than a whole-page idea. Under 200 words.' },
-    { n: 3, title: 'Round three: the operator’s back end', text: 'Prep, shifts and growth, with more motion and a stronger voice. Built from what worked in 02, 04, 06 and 09. Under 180 words.' },
-    { n: 2, title: 'Round two: anti-cliché, few words', text: 'Each rebuilt from scratch with one signature motion piece. Under 150 words.' }
+    { n: 11, title: 'Round eleven: the relay', text: 'A receipt, meat and a dish passed along instead of a string, with a moving camera.' }
   ];
-  grid.innerHTML = ROUNDS.map(function (r) {
-    var items = sites.filter(function (s) { return (s.round || 0) === r.n; });
-    if (!items.length) return '';
-    return '<section class="round">' + (r.n ? '<h2>' + esc(r.title) + '</h2><p>' + esc(r.text) + '</p>' : '') +
-      '<ol class="grid">' + items.map(card).join('') + '</ol></section>';
-  }).join('');
+  var byRound = {};
+  ROUNDS.forEach(function (r) { byRound[r.n] = r; });
+  grid.innerHTML = '<ol class="grid">' + sites.map(function (s) {
+    var r = byRound[s.round];
+    return card(s, r ? r.title.replace(/^Round [a-z]+: /, '') : '', r ? r.text : '');
+  }).join('') + '</ol>';
 
-  document.querySelectorAll('[data-thumb]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      grid.dataset.mode = b.dataset.thumb;
-      document.querySelectorAll('[data-thumb]').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
-    });
-  });
 
   function list(items) { return items && items.length ? '<ul>' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Pending review.</p>'; }
 
@@ -262,19 +220,16 @@ button { font: inherit; color: inherit; }
     if (s.concept) html += '<h3>What it became</h3><p>' + esc(s.concept) + '</p>';
     if (s.look) html += '<h3>Look</h3><p>' + esc(s.look) + '</p>';
     if (s.motion) html += '<h3>Motion</h3><p>' + esc(s.motion) + (s.words ? ', ' + s.words + ' words on the home page' : '') + '</p>';
-    if (s.id !== '00-original') {
-      html += '<h3>Strengths</h3>' + list(s.strengths);
-      html += '<h3>Weaknesses</h3>' + list(s.weaknesses);
-    }
+    html += '<h3>Strengths</h3>' + list(s.strengths);
+    html += '<h3>Weaknesses</h3>' + list(s.weaknesses);
     if (s.ask) html += '<h3>For Rex to decide</h3><p>' + esc(s.ask) + '</p>';
     if (s.pages && s.pages.length) {
       html += '<h3>Pages</h3><p class="links">' + s.pages.map(function (p) {
         return '<a class="btn" href="' + p.href + '" target="_blank" rel="noopener">' + esc(p.label) + ' ↗</a>';
       }).join('') + '</p>';
     }
-    html += '<h3>Full-page screenshots</h3><p class="links">' +
-      '<a class="btn" href="' + shot(s.id, 'desktop-full') + '" target="_blank" rel="noopener">Desktop ↗</a>' +
-      '<a class="btn" href="' + shot(s.id, 'phone-full') + '" target="_blank" rel="noopener">Phone ↗</a></p>';
+    html += '<h3>Full-page screenshot</h3><p class="links">' +
+      '<a class="btn" href="' + shot(s.id, 'desktop-full') + '" target="_blank" rel="noopener">Desktop ↗</a></p>';
     if (s.notes) html += '<h3>Its own notes</h3><p><a href="' + s.notes + '" target="_blank" rel="noopener">NOTES.md</a>' + (s.stack ? ' <span class="muted">· ' + esc(s.stack) + '</span>' : '') + '</p>';
     document.getElementById('info').innerHTML = html;
   }
@@ -287,7 +242,6 @@ button { font: inherit; color: inherit; }
       overview.hidden = false; detail.hidden = true; pager.hidden = true; allLink.hidden = true;
       document.title = 'Tooey · Directions';
       document.getElementById('iDesk').removeAttribute('src');
-      document.getElementById('iPhone').removeAttribute('src');
       return;
     }
     var s = sites[i];
@@ -298,48 +252,25 @@ button { font: inherit; color: inherit; }
     document.getElementById('dOpen').href = s.href;
     document.getElementById('prev').href = '#' + sites[(i - 1 + sites.length) % sites.length].id;
     document.getElementById('next').href = '#' + sites[(i + 1) % sites.length].id;
-    var d = document.getElementById('iDesk'), p = document.getElementById('iPhone');
+    var d = document.getElementById('iDesk');
     if (d.getAttribute('src') !== s.href) d.src = s.href;
-    if (p.getAttribute('src') !== s.href) p.src = s.href;
     renderInfo(s);
     window.scrollTo(0, 0);
     layout();
   }
 
-  function setView(v) {
-    view = v;
-    try { localStorage.setItem('tooey-gallery-view', v); } catch (e) {}
-    document.querySelectorAll('[data-view]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === v ? 'true' : 'false'); });
-    layout();
-  }
-  document.querySelectorAll('[data-view]').forEach(function (b) { b.addEventListener('click', function () { setView(b.dataset.view); }); });
-
   function layout() {
     if (!current) return;
     var stage = document.getElementById('stage');
-    var fD = document.getElementById('fDesk'), fP = document.getElementById('fPhone');
-    var iD = document.getElementById('iDesk'), iP = document.getElementById('iPhone');
-    var pad = window.innerWidth <= 640 ? 24 : 40, gap = 24;
+    var fD = document.getElementById('fDesk'), iD = document.getElementById('iDesk');
+    var pad = window.innerWidth <= 640 ? 24 : 40;
     var W = stage.clientWidth - pad, H = stage.clientHeight - pad;
-    var v = view;
-    if (v === 'both' && W < 900) v = W < 600 ? 'phone' : 'desktop';
-    fD.hidden = v === 'phone'; fP.hidden = v === 'desktop';
-
-    var pScale = Math.min(1, (H - 16) / 844, (W - 16) / 390);
-    if (v !== 'desktop') {
-      iP.style.transform = 'scale(' + pScale + ')';
-      fP.style.width = Math.round(390 * pScale) + 16 + 'px';
-      fP.style.height = Math.round(844 * pScale) + 16 + 'px';
-    }
-    if (v !== 'phone') {
-      var avail = v === 'both' ? W - (390 * pScale + 16) - gap : W;
-      var dScale = Math.min(1, avail / 1440);
-      var dH = Math.max(400, H / dScale);
-      iD.style.height = dH + 'px';
-      iD.style.transform = 'scale(' + dScale + ')';
-      fD.style.width = Math.round(1440 * dScale) + 'px';
-      fD.style.height = Math.round(dH * dScale) + 'px';
-    }
+    var dScale = Math.min(1, W / 1440);
+    var dH = Math.max(400, H / dScale);
+    iD.style.height = dH + 'px';
+    iD.style.transform = 'scale(' + dScale + ')';
+    fD.style.width = Math.round(1440 * dScale) + 'px';
+    fD.style.height = Math.round(dH * dScale) + 'px';
   }
   window.addEventListener('resize', layout);
 
@@ -352,7 +283,6 @@ button { font: inherit; color: inherit; }
 
   function route() { show(decodeURIComponent(location.hash.slice(1))); }
   window.addEventListener('hashchange', route);
-  setView(view);
   route();
 })();
 </script>
