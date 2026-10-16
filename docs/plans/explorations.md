@@ -251,4 +251,13 @@ out).
 - [x] 40: one day (night close, morning prep, service), the receipt as
   last night's sales becoming this morning's counts
 - [x] 41: the relay as described, constant evening light
-- [ ] Rex picks; fix its weak spots; port it into 35
+- [x] Rex picked 40
+
+## Round twelve (2026-10-16)
+
+40 revised as 42: scroll-driven instead of timed, faster, overlapping
+beats, morphs (receipt to prep sheet, steak to pan to plate), unlabeled
+food, faceless but realistic people, no column lines in the hero.
+
+- [x] 42 built, reviewed at 1440, committed
+- [ ] Rex reviews; port into 35

@@ -524,5 +524,18 @@ window.EXPLORATIONS = [
     weaknesses: ["Pale and washed out overall.", "Fridge door barely reads when open.", "Floating objects look odd."],
     ask: 'This story or 40’s?',
     pages: [{ label: 'Home', href: '41-hero-relay/index.html' }, { label: 'Privacy', href: '41-hero-relay/privacy.html' }]
+  },
+  {
+    id: '42-hero-day-scroll', num: '42', name: "Hero: one day, on scroll", round: 12,
+    href: '42-hero-day-scroll/', notes: '42-hero-day-scroll/NOTES.md', words: 190, motion: 'Scroll-driven day-cycle hero with morphs',
+    line: "40 on scroll: the night's receipt morphs into a prep sheet, the steak sears and becomes a plate, the room fills.",
+    brief: 'Round twelve: 40 revised. Scroll-driven (about 1.9 screens), faster, overlapping beats, morphs, unlabeled food, realistic faceless people, no column lines in the hero. ?p=<0..1> sets progress.',
+    headline: 'Your new restaurant operating system.',
+    concept: "Canvas 3D room. Dark dining room, till prints the receipt; it flies through the pass and morphs into an Example prep sheet clipped to the fridge as dawn breaks; the fridge opens on the approach (unlabeled food); a steak goes to the pan, sears, and the pan morphs into a plate; the camera pulls back to a full lamplit room.",
+    look: '40’s room, now dark and rich: basalt night, crisp morning, lamplight service. Headline in porcelain on desktop.',
+    strengths: ["Feels cinematic and grand; night is truly dark.", "Morphs tie the beats into one motion."],
+    weaknesses: ["The chef passes behind the headline in the kitchen beats.", "People read from a distance but look illustrated up close.", "About 52 fps at the busiest moment in headless Chromium."],
+    ask: 'Port this into 35?',
+    pages: [{ label: 'Home', href: '42-hero-day-scroll/index.html' }, { label: 'Privacy', href: '42-hero-day-scroll/privacy.html' }]
   }
 ];
