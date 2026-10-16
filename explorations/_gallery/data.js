@@ -602,5 +602,18 @@ window.EXPLORATIONS = [
     weaknesses: ['Stock photographs from five different restaurants.', 'Shifts shows Busy hours, as the console has no shifts screen yet.', 'Heavier than the drawn rooms.'],
     ask: 'Do the photographs carry it, and would you shoot one real restaurant from close to service?',
     pages: [{ label: 'Home', href: '47-night-to-morning/index.html' }, { label: 'Privacy', href: '47-night-to-morning/privacy.html' }]
+  },
+  {
+    id: '48-thread', num: '48', name: 'Thread', round: 18,
+    href: '48-thread/', notes: '48-thread/NOTES.md', words: 369, motion: 'Typed headline; a camera follows a thread across one board, scene to scene',
+    line: '47 with the same words, where "What Tooey does" is one board: three scenes joined by a thread, and a camera that follows it from Forecast to Prep to Shifts.',
+    brief: 'Round eighteen: Rex found 47 not coherent enough and asked for three pictures on one board, a camera following a string between them, the words staying put, and a cinematic illustrated finish.',
+    headline: 'Your new restaurant operating system.',
+    concept: 'Pinned, the camera rests on each scene, then follows the thread to the next one, pulling back a little on the way while the thread draws ahead. The steps on the right stay put; the one in view comes up.',
+    look: '47\'s page, plus a paper board with a faint dot grid; three photographs given an illustrated finish in code (soft brush areas, warm grade, thin ink lines), printed with a mat, with console cards pinned on and a terracotta thread.',
+    strengths: ['One space and one camera: the three steps read as one story.', 'Real rooms and people, made to look like one set.', 'The thread is the product\'s own logic: the forecast feeds the prep, which feeds the shifts.'],
+    weaknesses: ['The finish is a filter over stock, not illustration.', 'The forecast scene is a café counter in daylight.', 'Shifts still shows Busy hours.'],
+    ask: 'Does the camera and thread make it coherent, and is the finish the right direction to commission for real?',
+    pages: [{ label: 'Home', href: '48-thread/index.html' }, { label: 'Privacy', href: '48-thread/privacy.html' }]
   }
 ];

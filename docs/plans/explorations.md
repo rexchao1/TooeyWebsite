@@ -332,3 +332,17 @@ Built as 47 (`explorations/47-night-to-morning/`), 46 with its exact words. Rex 
 - [x] Phone: each step followed by its photographs; the hero card overlap fixed in 46 too
 - [x] Reviewed at 1440 and 390, and reduced motion at 1440; gallery entry and shots
 - [ ] Rex decides on the photographs, and on shooting one real restaurant from close to service
+
+## Round eighteen (2026-10-16)
+
+Rex found 47 not coherent enough: five photographs crossfading, no camera.
+He asked for three pictures on one board, a camera that follows a string from Forecast to Prep to Shifts while the words stay put, and a look closer to cinematic illustrated realism (no doodles, no obvious whiteboard).
+From here on, phone views are out of scope for explorations.
+Built as 48 (`explorations/48-thread/`), 47 with its exact words.
+
+- [x] One board in the section's paper with three scenes (forecast at the counter, prep at the station, the team at the pass), each with a console card pinned on
+- [x] A thread from pin to pin, and a camera that rests on each scene and follows the thread between them, pulling back a little; the thread draws ahead
+- [x] An illustrated finish in code over the stand-in photographs (`photos/finish.py`)
+- [x] Reviewed at 1440 at each stop and mid-way, and reduced motion; gallery entry and shots
+- [ ] Rex decides on the camera and thread, and whether to commission illustration from one real restaurant
+
