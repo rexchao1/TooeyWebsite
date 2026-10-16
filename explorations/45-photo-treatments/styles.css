@@ -1,0 +1,56 @@
+/* Tooey, exploration 45: one free photo put through three treatments in
+   code, each animated, and a scroll driven camera. A comparison page, not
+   a site. */
+
+@font-face {
+  font-family: "Literata";
+  src: url("../44-typed-os/fonts/literata.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("../44-typed-os/fonts/schibsted-grotesk.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+:root {
+  --porcelain: #f2f1ec;
+  --slate: #232a2f;
+  --ink-2: rgba(35, 42, 47, .74);
+  --rule: rgba(35, 42, 47, .16);
+  --lamp: #f1d2a0;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--porcelain); color: var(--slate); }
+body { font: 400 17px/1.55 "Schibsted Grotesk", system-ui, sans-serif; }
+main { width: min(1240px, calc(100% - 64px)); margin: 0 auto; }
+
+.intro { padding: 96px 0 56px; max-width: 760px; }
+.kicker { margin: 0 0 14px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+h1 { margin: 0; font: 400 52px/1.08 "Literata", Georgia, serif; letter-spacing: -.01em; }
+.lead { margin: 20px 0 0; font-size: 19px; color: var(--ink-2); }
+
+.panel { padding: 40px 0 72px; border-top: 1px solid var(--rule); }
+.cap { display: grid; grid-template-columns: 300px 1fr auto; gap: 32px; align-items: baseline; margin-bottom: 22px; }
+h2 { margin: 0; font: 500 24px/1.2 "Literata", Georgia, serif; }
+.cap p { margin: 0; color: var(--ink-2); max-width: 560px; }
+.replay {
+  font: inherit; font-size: 14px; color: var(--slate); background: none; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 7px 16px;
+}
+.replay:hover { border-color: var(--slate); }
+
+canvas { display: block; width: 100%; aspect-ratio: 16 / 9; }
+
+.scroll { height: 340vh; border-top: 1px solid var(--rule); }
+.stick { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: center; }
+.stick canvas { height: min(84vh, calc((min(1240px, 100vw - 64px) - 300px) * 9 / 16)); width: auto; justify-self: start; }
+.stops { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.stops li { font: 400 19px/1.3 "Literata", Georgia, serif; color: rgba(35, 42, 47, .32); transition: color .35s; padding-left: 18px; border-left: 2px solid transparent; }
+.stops li.on { color: var(--slate); border-left-color: var(--slate); }
+
+.foot { padding: 48px 0 80px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink-2); }
+.foot a { color: inherit; }

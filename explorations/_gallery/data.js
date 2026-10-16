@@ -563,5 +563,18 @@ window.EXPLORATIONS = [
     weaknesses: ['The headline is blank for about 0.4s before it types.', 'The upper windows are cut by the top of the page.', 'Phone views were not reviewed this round.'],
     ask: 'Is the typing the right speed, and is the cursor the right weight?',
     pages: [{ label: 'Home', href: '44-typed-os/index.html' }, { label: 'Privacy', href: '44-typed-os/privacy.html' }]
+  },
+  {
+    id: '45-photo-treatments', num: '45', name: 'Photo treatments', round: 15,
+    href: '45-photo-treatments/', notes: '45-photo-treatments/NOTES.md', words: 120, motion: 'Three animated treatments; scroll camera',
+    line: 'One free photo drawn three ways in code: engraved lines, typed characters, a warm duotone, plus a scroll camera.',
+    brief: 'Round fifteen: free art. Can a stock photo, treated in code, look as designed as a drawing, and can it move well?',
+    headline: 'One free photo, three treatments.',
+    concept: 'A comparison page, not a site. Each treatment draws itself in, then drifts; the last section moves the camera through the photo on scroll.',
+    look: 'Porcelain and slate. Engraving: horizontal slate lines that thicken in the dark. Characters: the photo set in monospace. Duotone: slate to porcelain through a warm middle, with live grain.',
+    strengths: ['Free, with no AI and no licence worry for the code.', 'Real people, so no drawn figures.', 'The duotone looks finished at once.'],
+    weaknesses: ['A stock test photo; the site would want our own.', 'The characters barely read as a photo at this size.', 'Engraved zooms past about 2x go soft and abstract with this photo.'],
+    ask: 'Which treatment, and would you shoot photos at a real restaurant?',
+    pages: [{ label: 'Comparison', href: '45-photo-treatments/index.html' }]
   }
 ];

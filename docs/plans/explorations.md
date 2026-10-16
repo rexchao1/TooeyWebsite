@@ -298,3 +298,14 @@ Seen in 35 at 1440 (2026-10-16). Phone views are out of scope:
   sticky to a fast scroll. Try about 250vh.
 - [x] 44 built, reviewed at 1440, committed
 - [ ] Rex reviews 44
+
+## Round fifteen (2026-10-16)
+
+Rex wants polished art for a single restaurant building in the hero and a scroll camera through "What Tooey does" (POS, prep sheet, cook), without paying.
+Recraft's free plan does not license images for commercial use, so test the free route: a real photo, treated in code.
+Built as 45 (`explorations/45-photo-treatments/`), a comparison page, not a site.
+
+- [x] One free Unsplash photo, three animated treatments: engraved lines, typed characters, warm duotone
+- [x] A scroll camera through the photo with three held framings
+- [x] Reviewed at 1440; gallery entry and shots
+- [ ] Rex picks a treatment, and decides on stock or our own photos
