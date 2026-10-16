@@ -19,6 +19,7 @@
   form();
   dialog();
   snapping();
+  headerFill();
   if (!window.TooeyScenes) return;
   var S = window.TooeyScenes;
 
@@ -124,7 +125,7 @@
       var sum = w.reduce(function (a, b) { return a + b; }, 0), acc = t0;
       return w.map(function (v) { acc += v / sum * total; return acc; });
     }
-    var H0 = 520, HT = 1350, L0 = H0 + HT + 380, LT = 950;
+    var H0 = 420, HT = 1100, L0 = H0 + HT + 220, LT = 380;
     var th = plan(hc, HT, H0), tl = plan(lc, LT, L0);
     var cur = null, hi = 0, li = 0, t0 = performance.now();
     function caret(el, pre) {
@@ -151,6 +152,15 @@
         copy.className = 'hero-copy';
       }, 2500);
     })(t0);
+  }
+  // the header is clear at the very top, over the street, and fills with
+  // porcelain as soon as the page scrolls
+  function headerFill() {
+    var top = document.querySelector('.top');
+    if (!top) return;
+    function set() { top.classList.toggle('is-solid', window.pageYOffset > 4); }
+    set();
+    window.addEventListener('scroll', set, { passive: true });
   }
   function rnd(seed) {
     var s = seed >>> 0;

@@ -135,8 +135,14 @@ section[id], main { scroll-margin-top: var(--top); }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  background: var(--porcelain);
+  background: rgba(242, 241, 236, 0);
+  transition: background-color .35s ease;
 }
+/* clear over the top of the hero, so the street runs up under it; once the
+   page scrolls (site.js adds .is-solid) it fills with porcelain */
+.top.is-solid { background: var(--porcelain); }
+/* over the drawing, the nav words keep a little cleared paper round them */
+.top:not(.is-solid) .nav a:not(.btn) { text-shadow: 0 0 4px var(--porcelain), 0 0 10px var(--porcelain), 0 0 16px var(--porcelain); }
 .top > * { position: relative; }
 .top::after {
   /* no rule under the header: the page fades out as it slides under it */
@@ -144,7 +150,10 @@ section[id], main { scroll-margin-top: var(--top); }
   height: 28px;
   pointer-events: none;
   background: linear-gradient(to bottom, var(--porcelain), rgba(242, 241, 236, 0));
+  opacity: 0;
+  transition: opacity .35s ease;
 }
+.top.is-solid::after { opacity: 1; }
 .brand { grid-column: 1; padding-left: var(--pad); justify-self: start; }
 .brand img { width: auto; height: 34px; }
 .nav {
@@ -355,20 +364,22 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 }
 .hero::before, .hero::after { display: none; }
 .scene-hero {
+  /* runs from above the top of the page, under the header, to the
+     pavement; wide enough to reach behind the headline */
   position: absolute;
   right: 0; bottom: 1vh;
-  height: min(95vh, 1040px);
+  height: min(106vh, 1165px);
   aspect-ratio: 1000 / 800;
 }
 .scene-hero .art {
   height: 100%;
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 12%, #000 30%),
-    linear-gradient(to bottom, transparent 0%, #000 14%, #000 88%, transparent 100%);
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 7%, #000 18%),
+    linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0,0,0,.35) 12%, #000 30%),
-    linear-gradient(to bottom, transparent 0%, #000 14%, #000 88%, transparent 100%);
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 7%, #000 18%),
+    linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
   mask-composite: intersect;
 }
 .hero-copy {
