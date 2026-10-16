@@ -270,4 +270,31 @@ plate), the headline fades on scroll and its three key words fly up into a
 rail, a clear header over the scene.
 
 - [x] 43 built, reviewed at 1440, 1280 and 390, committed
-- [ ] Rex reviews; port into 35
+- [x] Rex reviewed; went back to 35 instead (round fourteen)
+
+## Round fourteen (2026-10-16)
+
+Rex prefers 35 to 36 through 43: those did too much.
+Back to 35, kept small, built as 44 (`explorations/44-typed-os/`).
+
+Rex's notes:
+
+- [x] Hero headline types itself out, computer feel. 36 already built
+  this (`?text=type`: headline in about 1.15s with a thin caret, lead
+  after, button fades in). Port it, and push it toward a terminal: block
+  caret, slightly uneven key timing, caret keeps blinking a moment at the
+  end. Real words stay in the `h1`; reduced motion shows them finished.
+- [x] Header smooth, no border: drop the bottom hairline (`.top::after`)
+  and the column rules through the header (`.top::before`). Instead of a
+  hard edge, a soft porcelain fade at its bottom (or a light blur) as the
+  page slides under it.
+
+Seen in 35 at 1440 (2026-10-16). Phone views are out of scope:
+
+- [x] The column rules run through the headline at 1440 (the second rule
+  cuts "Your new restaurant"). 42 dropped column lines in the hero; do
+  the same here.
+- [x] The pin is long for three short lines (340vh) and Shifts feels
+  sticky to a fast scroll. Try about 250vh.
+- [x] 44 built, reviewed at 1440, committed
+- [ ] Rex reviews 44

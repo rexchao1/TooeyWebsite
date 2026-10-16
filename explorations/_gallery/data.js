@@ -550,5 +550,18 @@ window.EXPLORATIONS = [
     weaknesses: ["People still look illustrated up close.", "The receipt crosses the room quickly between Forecast and Prep.", "On a phone the paper is empty while the steak sears."],
     ask: 'Port this into 35?',
     pages: [{ label: 'Home', href: '43-hero-day-what-it-does/index.html' }, { label: 'Privacy', href: '43-hero-day-what-it-does/privacy.html' }]
+  },
+  {
+    id: '44-typed-os', num: '44', name: '35, typed', round: 14,
+    href: '44-typed-os/', notes: '44-typed-os/NOTES.md', words: 194, motion: 'Typed headline; pinned three-step section',
+    line: '35 with the headline typed out under a block cursor, a header with no rules, a clean hero and a shorter pin.',
+    brief: 'Round fourteen: back to 35, kept small. A typed headline, a smooth header, no column rules in the hero, the pin cut from 340vh to 250vh.',
+    headline: 'Your new restaurant operating system.',
+    concept: 'On load a block cursor waits, then types the headline at an uneven hand and the line under it a little faster. It blinks a moment at the end and goes, and the button fades in.',
+    look: '35 unchanged, except: the header has no hairline and no column rules, the page fades out under it, and the hero has no column rules.',
+    strengths: ['Keeps 35, which you preferred.', 'The typing reads as a screen without changing the type.', 'The pin no longer drags.'],
+    weaknesses: ['The headline is blank for about half a second before it types.', 'Phone views were not reviewed this round.'],
+    ask: 'Is the typing the right speed, and is the cursor the right weight?',
+    pages: [{ label: 'Home', href: '44-typed-os/index.html' }, { label: 'Privacy', href: '44-typed-os/privacy.html' }]
   }
 ];
