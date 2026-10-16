@@ -15,7 +15,7 @@ He wanted an option that looks drawn but real, a background that does more than 
    The step in view sits on a raised white tile inside the glass; the other two fade.
    The camera frames each scene in the room left of the panel, not in the middle of the page.
 
-4. **The hero carries the console.** Over the street, the console's own window: its sidebar (Forecast, Upload, Email) and the Forecast page, with the day's expected sales, and for each main what will sell and what to have ready. The 6am notification lands on its corner.
+4. **The hero carries the console.** Over the street, the console's own window: its sidebar (Forecast, Upload, Email) and the Forecast page, with the day's expected sales, and for each main what will sell and what to have ready. The 6am notification lands on its top left corner.
    Two other takes stay in the page for comparison: `?hero=mail` (the morning email in an inbox) and `?hero=sheet` (the printed sheet taped up).
    The hero window carries no Example tag, at Rex's word.
    The Will sell figures are not in the demo data: each is set a little under its Have ready amount, as prep is defined.
