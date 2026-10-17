@@ -101,7 +101,9 @@
   function heroText() {
     var copy = document.querySelector('.hero-copy');
     root.classList.remove('hero-wait');
-    if (!copy || !motion) { root.classList.add('os-in'); return; }
+    // the console comes up over the street while the headline types
+    root.classList.add('os-in');
+    if (!copy || !motion) return;
     var h1 = copy.querySelector('h1'), lead = copy.querySelector('.lead');
     var timers = [];
     function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
@@ -152,8 +154,6 @@
       copy.classList.toggle('fx-idle', t < H0 || (hi === hc.length && li === 0) || li === lc.length);
       if (li < lc.length) { requestAnimationFrame(tick); return; }
       later(function () { copy.classList.add('fx-btn'); }, 120);
-      // then Tooey's notice and the morning email come up over the street
-      later(function () { root.classList.add('os-in'); }, 260);
       later(function () { copy.classList.add('fx-gone'); }, 2100);
       later(function () {
         [].forEach.call(copy.querySelectorAll('.fx-dup'), function (d) { d.parentNode.removeChild(d); });

@@ -636,7 +636,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 
 /* ---------- cards: pieces of Tooey's console ----------
    The console's own layout and words, set in the site's faces. The
-   figures are its demo restaurant, marked Example. */
+   figures are its demo restaurant. */
 .card {
   position: absolute; z-index: 4;
   margin: 0;
@@ -845,7 +845,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .note-mark img { width: 22px; height: 22px; }
 .note-text b { display: block; font-weight: 600; font-size: 13px; }
 .note-time { align-self: start; font-size: 12px; color: rgba(35, 42, 47, .5); }
-[data-hero="console"] .note { top: calc(var(--top) + 8vh - 34px); right: auto; left: calc(49vw - 36px); z-index: 2; box-shadow: 0 0 0 .5px rgba(35, 42, 47, .1), 0 24px 50px -18px rgba(35, 42, 47, .45); }
+[data-hero="console"] .note { top: calc(var(--top) + 14px); right: auto; left: calc(var(--g) + var(--pad)); z-index: 2; box-shadow: 0 0 0 .5px rgba(35, 42, 47, .1), 0 24px 50px -18px rgba(35, 42, 47, .45); }
 [data-hero="sheet"] .note { top: auto; bottom: 10vh; right: auto; left: calc(55vw + 300px); }
 
 .motion .hero-os > * { opacity: 0; }

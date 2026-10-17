@@ -15,9 +15,10 @@ He wanted an option that looks drawn but real, a background that does more than 
    The step in view sits on a raised white tile inside the glass; the other two fade.
    The camera frames each scene in the room left of the panel, not in the middle of the page.
 
-4. **The hero carries the console.** Over the street, the console's own window: its sidebar (Forecast, Upload, Email) and the Forecast page, with the day's expected sales, and for each main what will sell and what to have ready. The 6am notification lands on its top left corner.
+4. **The hero carries the console.** Over the street, the console's own window: its sidebar (Forecast, Upload, Email) and the Forecast page, with the day's expected sales, and for each main what will sell and what to have ready. The 6am notification lands in the top left of the page, under the logo.
+   The window and the notification come up while the headline types, not after it.
    Two other takes stay in the page for comparison: `?hero=mail` (the morning email in an inbox) and `?hero=sheet` (the printed sheet taped up).
-   The hero window carries no Example tag, at Rex's word.
+   The hero window and the three cards in What Tooey does carry no Example tag, at Rex's word. The screen reader captions still say the figures are an example.
    The Will sell figures are not in the demo data: each is set a little under its Have ready amount, as prep is defined.
 
 ## The pictures
@@ -32,6 +33,7 @@ The illustrations were made with Codex's image generation tool (`image_gen`, its
 They are AI-generated, which is a different promise from a photograph or a commissioned drawing.
 Hands and faces were checked at full size; none looked wrong.
 At Rex's request the man at the counter in `forecast` has tight curly hair; only his head was regenerated and pasted back, so his face and the rest of the drawing are unchanged.
+At Rex's request the man in the back on the left of `forecast` is drawn as East Asian; only his head was regenerated and pasted back.
 Generated at a smaller size and enlarged to 1800 and 1600px wide, so they are soft up close.
 Before anything like this ships, an illustrator drawing from one real restaurant is the better source.
 
