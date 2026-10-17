@@ -14,7 +14,7 @@
   (function (r) {
     r.classList.add('js');
     var h = new URLSearchParams(location.search).get('hero');
-    r.setAttribute('data-hero', /^(console|mail|sheet)$/.test(h) ? h : 'console');
+    r.setAttribute('data-hero', /^(console|mail|sheet|note)$/.test(h) ? h : 'console');
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       r.classList.add('motion');
       // the headline waits to be typed (site.js); never longer than 3s
@@ -42,8 +42,9 @@
   <!-- Hero: the street front. Its lights come on as the page loads. -->
   <section class="hero sheet" aria-labelledby="hero-title">
     <figure class="scene scene-hero" data-scene="street" aria-hidden="true"><div class="art"></div></figure>
-    <!-- Three takes on the console over the street, chosen by ?hero=
-         (console, mail, sheet). Each carries the console's demo restaurant. -->
+    <!-- Four takes over the street, chosen by ?hero= (console, mail,
+         sheet, note). The first three carry the console's demo restaurant;
+         note is the 6am notification alone. -->
     <div class="hero-os" aria-hidden="true">
 
       <!-- console: the Forecast page in the console's own window -->

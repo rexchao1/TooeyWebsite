@@ -17,7 +17,7 @@ He wanted an option that looks drawn but real, a background that does more than 
 
 4. **The hero carries the console.** Over the street, the console's own window: its sidebar (Forecast, Upload, Email) and the Forecast page, with the day's expected sales, and for each main what will sell and what to have ready. The 6am notification lands in the top left of the page, under the logo.
    The window and the notification come up while the headline types, not after it.
-   Two other takes stay in the page for comparison: `?hero=mail` (the morning email in an inbox) and `?hero=sheet` (the printed sheet taped up).
+   Two other takes stay in the page for comparison: `?hero=mail` (the morning email in an inbox) and `?hero=sheet` (the printed sheet taped up), and `?hero=note` (no window: the street and the 6am notification alone).
    The hero window and the three cards in What Tooey does carry no Example tag, at Rex's word. The screen reader captions still say the figures are an example.
    The Will sell figures are not in the demo data: each is set a little under its Have ready amount, as prep is defined.
 
