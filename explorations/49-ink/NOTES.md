@@ -30,6 +30,8 @@ Rex liked 49 and took most of a review's suggestions.
 - **Cards.** The forecast card sits on the empty bar so the tablet he reads stays in view. The prep sheet is half way through the morning: three made, three to go. Busy hours keeps its title, runs paper to amber instead of grey, and gains "Most hands on 6 to 9pm" (the three busiest hours). That line is not in the console today; it says what the Shifts words promise.
 - **Plan labels** moved so none is cut by the glass, the view's edge or a pin at a stop.
 - **Independents.** The street is painted taller, with a pale sky that fades into the paper at the top (`_src/paint/prompt-indies-tall.md`). On a wide screen the heading and paragraph sit in that sky and the section warms toward the rooftops, so there is no hard edge between white page and painting. On a phone the words come first and the street sits under them.
+- **Setup in a week.** Each step has a quick pen sketch in the page's two colours, slate ink and one amber: the POS and its printer, a stack of old receipts on a ledger, the prep sheet beside the ticket rail (Codex image generation, prompt in `_src/sketch/prompt.md`; white turned to transparency and cropped). The section is tighter top and bottom. Step 3 keeps its title and line.
+- **Closing bar.** The three lamps hang dark until the pointer reaches "Try Tooey free", then they light the bar. Touch screens, which have no hover, keep them lit.
 
 ## The chef's hat (2026-10-20)
 Rex supplied a new logo: a chef's hat with a winding line through it, on a white rounded tile (`_src/mark-source.png`).
@@ -46,6 +48,7 @@ The illustrations were made with Codex's image generation tool (`image_gen`, its
 | `forecast` | https://unsplash.com/photos/X_bbCAYzlTs |
 | `prep` | https://unsplash.com/photos/y-XZf_TNRms (the blurry wall on the left cropped off) |
 | `shifts` | https://unsplash.com/photos/VUd9yv41hh0 |
+| `sketch-pos`, `sketch-receipts`, `sketch-prep` | No photograph; prompt in `_src/sketch/prompt.md` |
 | `street`, `indies` | No photograph: the page's own line drawings (`_src/ref/`) and the three scenes for style; prompt in `_src/paint/prompt.md` |
 
 They are AI-generated, which is a different promise from a photograph or a commissioned drawing.

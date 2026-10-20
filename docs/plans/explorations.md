@@ -372,4 +372,6 @@ Worked in 49 itself; the line drawings stay behind `?art=line` for comparison.
 - [x] Hero street and the four shops painted in the scenes' ink and watercolour (Codex image generation, from the line drawings)
 - [x] Reviewed at 1440 at every stop; gallery shot and notes
 - [x] Independents: taller painting with a pale sky, heading set in the sky, page warms toward the rooftops; stacked on phones
+- [x] Setup in a week: two-colour pen sketch per step, tighter spacing
+- [x] Closing lamps off until hover
 - [ ] Rex: does the forecast picture say forecasting, or does it need a new scene

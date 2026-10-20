@@ -987,7 +987,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 
 /* ---------- 4. how to start ---------- */
 .start {
-  padding: clamp(5rem, 14vh, 9rem) var(--g) clamp(4rem, 10vh, 7rem);
+  padding: clamp(3.5rem, 9vh, 6rem) var(--g) clamp(1.5rem, 4vh, 3rem);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -1002,10 +1002,22 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   grid-row: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--rule-strong);
   position: relative; z-index: 4;
 }
-.steps li { padding: 1.6rem var(--pad) 0; display: grid; grid-template-columns: auto 1fr; column-gap: .7rem; align-items: baseline; align-content: start; }
+/* each step has a quick two-colour pen sketch standing on its rule; the
+   rule reaches out to the column lines through the image's border */
+.steps .sketch {
+  grid-column: 1 / -1; grid-row: 1;
+  display: block; box-sizing: border-box;
+  width: 100%; height: clamp(8rem, 13vw, 11.5rem);
+  object-fit: contain; object-position: center bottom;
+  padding-bottom: 1rem; margin-bottom: 1.4rem;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(var(--rule-strong), var(--rule-strong)) 0 0 1 0 / 0 0 1px 0 / 0 var(--pad);
+}
+.steps li > .n, .steps li > h3 { grid-row: 2; }
+.steps li > p { grid-row: 3; }
+.steps li { padding: 0 var(--pad); display: grid; grid-template-columns: auto 1fr; column-gap: .7rem; align-items: baseline; align-content: start; }
 .steps li > h3, .steps li > p { grid-column: 2; }
 .steps .n {
   grid-column: 1; grid-row: 1;
@@ -1033,7 +1045,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 
 /* ---------- the close: one wide lamplight bar ---------- */
 .talk {
-  padding: clamp(4.5rem, 12vh, 8rem) var(--g) clamp(4.5rem, 12vh, 7.5rem);
+  padding: clamp(2.5rem, 7vh, 5rem) var(--g) clamp(4.5rem, 12vh, 7.5rem);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -1242,6 +1254,7 @@ html.modal-open { overflow: hidden; }
   .start h2 { grid-row: 1; padding: 0 0 2rem; }
   .steps { grid-column: 1; grid-row: 2; grid-template-columns: 1fr; }
   .steps li { padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+  .steps .sketch { width: auto; max-width: 70%; height: 7.5rem; object-position: left bottom; margin: 0 0 1rem; padding: 0; border: 0; }
   .free { grid-column: 1; grid-row: 3; margin-top: 2rem; padding-inline: 0; }
   .bar { grid-column: 1; padding-inline: 1.25rem; font-size: clamp(2.4rem, 11vw, 3rem); gap: 1rem; }
   .talk-note, .foot p, .page h1, .page .intro, .terms h2, .terms div { padding-inline: 0; grid-column: 1; }
