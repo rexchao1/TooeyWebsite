@@ -29,6 +29,7 @@ Rex liked 49 and took most of a review's suggestions.
 - **Headline** one step smaller, two lines, same words.
 - **Cards.** The forecast card sits on the empty bar so the tablet he reads stays in view. The prep sheet is half way through the morning: three made, three to go. Busy hours keeps its title, runs paper to amber instead of grey, and gains "Most hands on 6 to 9pm" (the three busiest hours). That line is not in the console today; it says what the Shifts words promise.
 - **Plan labels** moved so none is cut by the glass, the view's edge or a pin at a stop.
+- **Independents.** The street is painted taller, with a pale sky that fades into the paper at the top (`_src/paint/prompt-indies-tall.md`). On a wide screen the heading and paragraph sit in that sky and the section warms toward the rooftops, so there is no hard edge between white page and painting. On a phone the words come first and the street sits under them.
 
 ## The chef's hat (2026-10-20)
 Rex supplied a new logo: a chef's hat with a winding line through it, on a white rounded tile (`_src/mark-source.png`).
@@ -51,7 +52,7 @@ They are AI-generated, which is a different promise from a photograph or a commi
 Hands and faces were checked at full size; none looked wrong.
 At Rex's request the man at the counter in `forecast` has tight curly hair; only his head was regenerated and pasted back, so his face and the rest of the drawing are unchanged.
 At Rex's request the man in the back on the left of `forecast` is drawn as East Asian; only his head was regenerated and pasted back.
-`street` (1402px) and `indies` (2172px) are a little soft on a large screen.
+`street` (1402px) and `indies` (1774px) are a little soft on a large screen.
 Generated at a smaller size and enlarged to 1800 and 1600px wide, so they are soft up close.
 Before anything like this ships, an illustrator drawing from one real restaurant is the better source.
 
