@@ -401,10 +401,10 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .hero h1 {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(2.9rem, 5vw, 5.2rem);
-  line-height: .98;
-  letter-spacing: -.028em;
-  max-width: 9em;
+  font-size: clamp(2.5rem, 4.1vw, 4.3rem);
+  line-height: 1;
+  letter-spacing: -.026em;
+  max-width: 11em;
   text-wrap: balance;
 }
 .lead {
@@ -611,10 +611,12 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   background: radial-gradient(circle at 35% 30%, #f6dcae, #b8874a 60%, #7a5428);
   box-shadow: 0 2px 3px rgba(10, 14, 18, .35);
 }
-.c-forecast .pin, .c-hours .pin { right: 22px; top: -8px; }
+.c-hours .pin { right: 22px; top: -8px; }
+.c-forecast .pin { right: 22px; top: -8px; }
 .c-sheet .pin { left: 26px; top: -8px; }
 /* the cards on the board, by scene */
-.board .c-forecast { left: 520px; top: 440px; width: 440px; bottom: auto; }
+/* on the empty bar in the foreground, clear of the laptop he is reading */
+.board .c-forecast { left: -110px; top: 470px; width: 440px; bottom: auto; }
 .board .c-sheet { left: -130px; top: 300px; width: 440px; bottom: auto; }
 .board .c-hours { left: 520px; top: 470px; width: 580px; bottom: auto; transform: none; }
 .board .card { z-index: 3; }
@@ -721,16 +723,18 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   display: grid; place-items: center;
   width: 100%; height: 44px; border-radius: 5px;
   font-size: 10.5px; font-weight: 500;
-  background: color-mix(in srgb, var(--slate) calc(var(--v) * 92%), #e9e7e0);
+  background: color-mix(in srgb, #9c5a26 calc(var(--v) * 94%), #f1ebdd);
   color: rgba(35, 42, 47, .75);
 }
 .heat-cell.is-dark b { color: #fbfaf7; }
 .heat-cell i { font-style: normal; font-size: 10.5px; color: rgba(35, 42, 47, .55); }
 .heat-cell.is-peak i { color: var(--slate); font-weight: 600; }
-.heat-cell.is-peak b { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px var(--lamp); }
+.heat-cell.is-peak b { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px var(--slate); }
 .c-busiest { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 13px; color: rgba(35, 42, 47, .62); }
 .c-busiest b { font: 400 22px/1 var(--display); color: var(--slate); }
 .c-busiest .c-note { margin: 0; }
+.c-staff { margin-top: 8px !important; font-size: 13px; color: var(--slate); }
+.c-staff b { font-weight: 600; }
 
 /* ---------- the cards play when the camera reaches their scene ----------
    The cards stay pinned up all along; what is on them plays. */
@@ -740,6 +744,9 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .prep-sheet tr:nth-child(2) .box { --i: 1; } .prep-sheet tr:nth-child(3) .box { --i: 2; } .prep-sheet tr:nth-child(4) .box { --i: 3; }
 .prep-sheet tr:nth-child(5) .box { --i: 4; } .prep-sheet tr:nth-child(6) .box { --i: 5; }
 .motion .work.is-pinned .shot.play .box::after { animation: fade .2s calc(1.9s + var(--i, 0) * 260ms) both; }
+/* half way through the morning: three made, three to go */
+.c-sheet tr:nth-child(n+4) .box, .motion .work.is-pinned .shot.play .c-sheet tr:nth-child(n+4) .box { background: transparent; animation: none; }
+.c-sheet tr:nth-child(n+4) .box::after { display: none; }
 /* hours: the day fills in, left to right */
 .motion .work.is-pinned .shot:not(.play) .heat-cell b { opacity: 0; }
 .motion .work.is-pinned .shot.play .heat-cell b { animation: cell .5s calc(.9s + var(--i) * 70ms) cubic-bezier(.2, .8, .2, 1) both; }
@@ -747,7 +754,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 
 @keyframes tick-box { from { background: transparent; } to { background: var(--slate); } }
 @keyframes cell { from { opacity: 0; transform: scaleY(.4); } to { opacity: 1; transform: none; } }
-@keyframes peak { from { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px rgba(241, 210, 160, 0); } to { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px var(--lamp); } }
+@keyframes peak { from { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px rgba(35, 42, 47, 0); } to { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px var(--slate); } }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* ---------- the hero: the console over the street ----------
@@ -757,8 +764,10 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 [data-hero="console"] .hero-os [data-hero="console"],
 [data-hero="mail"] .hero-os [data-hero="mail"],
 [data-hero="sheet"] .hero-os [data-hero="sheet"] { display: block; }
+.hero-os .h-console { left: auto; width: 760px; top: calc(var(--top) + 4vh); scale: .7; transform-origin: right top; }
 
-/* a window, glass at the chrome, running off the right edge */
+/* a window, glass at the chrome, up over the first floor so the door and
+   the lit dining room stay in view */
 .h-win {
   position: absolute; left: 49vw; right: var(--g); top: calc(var(--top) + 8vh);
   border-radius: 16px;
@@ -845,6 +854,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .note-mark img { width: 22px; height: 22px; }
 .note-text b { display: block; font-weight: 600; font-size: 13px; }
 .note-time { align-self: start; font-size: 12px; color: rgba(35, 42, 47, .5); }
+[data-hero="console"] .note-morning, html:not([data-hero="console"]) .note-night { display: none; }
 [data-hero="console"] .note { top: calc(var(--top) + 14px); right: auto; left: calc(var(--g) + var(--pad)); z-index: 2; box-shadow: 0 0 0 .5px rgba(35, 42, 47, .1), 0 24px 50px -18px rgba(35, 42, 47, .45); }
 [data-hero="note"] .note { right: calc(var(--g) + var(--pad)); box-shadow: 0 0 0 .5px rgba(35, 42, 47, .1), 0 24px 50px -18px rgba(35, 42, 47, .45); }
 [data-hero="sheet"] .note { top: auto; bottom: 10vh; right: auto; left: calc(55vw + 300px); }
@@ -900,6 +910,39 @@ html:not(.motion) .steam { stroke-opacity: .3; }
     linear-gradient(to bottom, transparent 0%, #000 12%, #000 90%, transparent 100%);
   mask-composite: intersect;
 }
+/* ---------- the painted street and shops (art/, see NOTES.md) ----------
+   The paintings lie over the line drawings, which stay in the page for
+   ?art=line. The lights come up as each scene plays. */
+.paint { display: none; }
+[data-art="paint"] .scene .art { visibility: hidden; }
+[data-art="paint"] .paint {
+  display: block; position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+[data-art="paint"] .scene-hero .paint {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 7%, #000 18%),
+    linear-gradient(to bottom, transparent 0%, transparent 6%, #000 20%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,.5) 7%, #000 18%),
+    linear-gradient(to bottom, transparent 0%, transparent 6%, #000 20%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+}
+[data-art="paint"] .scene-street .paint {
+  object-position: center bottom;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 22%, #000 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 22%, #000 90%, transparent 100%);
+  mask-composite: intersect;
+}
+.motion[data-art="paint"] .paint { transition: filter 1.8s ease; }
+.motion[data-art="paint"] .scene:not(.play) .paint { filter: brightness(.7) saturate(.65); }
+
 /* each shop's lamps come on in turn as the street scrolls in: a short ramp
    from each wash's own threshold (--s), scrubbed by --lit */
 .w.shop { opacity: calc(var(--a, 1) * clamp(0, (var(--lit, 1) - var(--s, 0)) * 6, 1)); }

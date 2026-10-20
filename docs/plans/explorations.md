@@ -357,3 +357,18 @@ Built as 49 (`explorations/49-ink/`), 48 with its exact words.
 - [x] The words on a frosted glass panel over a full-width board; the camera frames each scene left of it
 - [x] Reviewed at 1440 at each stop and mid-way, and reduced motion; gallery entry and shots
 - [ ] Rex decides on drawn versus photographed, and on the plan and glass
+
+## Round twenty (2026-10-20)
+
+Rex likes 49 and asked how to make it better. From the review he took: paint the hero and the street to match the scenes, let the hero show the street, a staffing line on the Busy hours card (the title stays), cards that point at what the person is doing, plan labels clear of the glass, a warm busy-hours chart, a smaller headline (same words), and a notification that agrees with "Tomorrow's demand" (the window keeps its title).
+Worked in 49 itself; the line drawings stay behind `?art=line` for comparison.
+
+- [x] Notification moved to the night before, to agree with "Tomorrow's demand"
+- [x] Headline one step smaller
+- [x] Hero window smaller and up over the first floor, so the door and diners show
+- [x] Busy hours card gains a staffing line; chart in paper to amber
+- [x] Prep sheet half ticked; forecast card placed off the laptop
+- [x] Plan labels clear of the glass and the view's edges
+- [x] Hero street and the four shops painted in the scenes' ink and watercolour (Codex image generation, from the line drawings)
+- [x] Reviewed at 1440 at every stop; gallery shot and notes
+- [ ] Rex: does the forecast picture say forecasting, or does it need a new scene

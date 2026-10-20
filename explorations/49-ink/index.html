@@ -15,6 +15,8 @@
     r.classList.add('js');
     var h = new URLSearchParams(location.search).get('hero');
     r.setAttribute('data-hero', /^(console|mail|sheet|note)$/.test(h) ? h : 'console');
+    // the street and the shops are painted; ?art=line shows the line drawings
+    r.setAttribute('data-art', new URLSearchParams(location.search).get('art') === 'line' ? 'line' : 'paint');
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       r.classList.add('motion');
       // the headline waits to be typed (site.js); never longer than 3s
@@ -41,7 +43,7 @@
 
   <!-- Hero: the street front. Its lights come on as the page loads. -->
   <section class="hero sheet" aria-labelledby="hero-title">
-    <figure class="scene scene-hero" data-scene="street" aria-hidden="true"><div class="art"></div></figure>
+    <figure class="scene scene-hero" data-scene="street" aria-hidden="true"><div class="art"></div><img class="paint" src="art/street.jpg" alt="" width="1402" height="1122" decoding="async"></figure>
     <!-- Four takes over the street, chosen by ?hero= (console, mail,
          sheet, note). The first three carry the console's demo restaurant;
          note is the 6am notification alone. -->
@@ -129,8 +131,11 @@
       </div>
       <div class="note">
         <span class="note-mark"><img src="favicon.svg" alt=""></span>
-        <span class="note-text"><b>Tooey</b>Tuesday's prep list is in.</span>
-        <span class="note-time">6:00am</span>
+        <!-- the console shows tomorrow, so its note comes the night before -->
+        <span class="note-text note-night"><b>Tooey</b>Tomorrow's forecast is ready.</span>
+        <span class="note-time note-night">11:50pm</span>
+        <span class="note-text note-morning"><b>Tooey</b>Tuesday's prep list is in.</span>
+        <span class="note-time note-morning">6:00am</span>
       </div>
     </div>
     <div class="hero-copy">
@@ -242,8 +247,9 @@
                 <div class="heat-cell" style="--v:.08;--i:11"><b>$60</b><i>10</i></div>
               </div>
               <p class="c-busiest"><span>Busiest hour</span><b>7pm</b><span class="c-note">$760 on average</span></p>
+              <p class="c-staff">Most hands on <b>6 to 9pm</b></p>
             </div>
-            <figcaption class="sr">The kitchen team together at the pass before service. Example busy hours for an average Tuesday: sales by hour from 11am to 10pm, busiest at 7pm with $760 on average.</figcaption>
+            <figcaption class="sr">The kitchen team together at the pass before service. Example busy hours for an average Tuesday: sales by hour from 11am to 10pm, busiest at 7pm with $760 on average, so the most people are on from 6 to 9pm.</figcaption>
           </figure>
         </div>
         </div>
@@ -277,7 +283,7 @@
       <h2 id="indie-title">Built for independent restaurants.</h2>
       <p>Large chains have entire teams running their back office. Independent restaurants have the owner. Tooey is that team.</p>
     </div>
-    <figure class="scene scene-street" data-scene="indies" aria-hidden="true"><div class="art"></div></figure>
+    <figure class="scene scene-street" data-scene="indies" aria-hidden="true"><div class="art"></div><img class="paint" src="art/indies.jpg" alt="" width="2172" height="724" loading="lazy" decoding="async"></figure>
   </section>
 
   <!-- How to start. -->

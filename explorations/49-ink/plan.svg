@@ -110,13 +110,13 @@
 <text x="1850" y="1235" font-family="Schibsted Grotesk, sans-serif" font-size="20" font-weight="600" letter-spacing="3.2" fill="#232a2f" fill-opacity="0.36" text-anchor="middle">THE LINE</text>
 <rect x="1300" y="-150" width="520" height="110" rx="0" fill="none" stroke="#232a2f" stroke-opacity="0.24" stroke-width="1.6"/>
 <text x="1560" y="-170" font-family="Schibsted Grotesk, sans-serif" font-size="20" font-weight="600" letter-spacing="3.2" fill="#232a2f" fill-opacity="0.34" text-anchor="middle">DISH</text>
-<text x="2380" y="1235" font-family="Schibsted Grotesk, sans-serif" font-size="26" font-weight="600" letter-spacing="4.2" fill="#232a2f" fill-opacity="0.46" text-anchor="end">KITCHEN</text>
+<text x="1210" y="566" font-family="Schibsted Grotesk, sans-serif" font-size="26" font-weight="600" letter-spacing="4.2" fill="#232a2f" fill-opacity="0.46" text-anchor="start">KITCHEN</text>
 <rect x="1150" y="1300" width="60" height="520" rx="0" fill="rgba(35,42,47,.03)" stroke="#232a2f" stroke-opacity="0.3" stroke-width="1.8"/>
 <circle cx="1180" cy="1360" r="12" fill="none" stroke="#232a2f" stroke-opacity="0.3" stroke-width="1.4"/>
 <circle cx="1180" cy="1490" r="12" fill="none" stroke="#232a2f" stroke-opacity="0.3" stroke-width="1.4"/>
 <circle cx="1180" cy="1620" r="12" fill="none" stroke="#232a2f" stroke-opacity="0.3" stroke-width="1.4"/>
 <circle cx="1180" cy="1750" r="12" fill="none" stroke="#232a2f" stroke-opacity="0.3" stroke-width="1.4"/>
-<text x="1240" y="1860" font-family="Schibsted Grotesk, sans-serif" font-size="20" font-weight="600" letter-spacing="3.2" fill="#232a2f" fill-opacity="0.4" text-anchor="start">THE PASS</text>
+<text x="1300" y="2130" font-family="Schibsted Grotesk, sans-serif" font-size="20" font-weight="600" letter-spacing="3.2" fill="#232a2f" fill-opacity="0.4" text-anchor="end">THE PASS</text>
 <path d="M 40 -120 L 980 -120 L 980 600" fill="none" stroke="#232a2f" stroke-opacity=".3" stroke-width="44" stroke-linejoin="round"/>
 <path d="M 40 -120 L 980 -120 L 980 600" fill="none" stroke="#efece4" stroke-width="38" stroke-linejoin="round"/>
 <circle cx="100" cy="-40" r="22" fill="none" stroke="#232a2f" stroke-opacity="0.26" stroke-width="1.6"/>
@@ -204,8 +204,8 @@
 <rect x="1194" y="2465" width="34" height="34" rx="8" fill="none" stroke="#232a2f" stroke-opacity="0.2" stroke-width="1.4"/>
 <path d="M -330 2520 L 1260 2520" stroke="#232a2f" stroke-opacity=".26" stroke-width="40"/>
 <path d="M -330 2520 L 1260 2520" stroke="#efece4" stroke-width="34"/>
-<text x="-300" y="760" font-family="Schibsted Grotesk, sans-serif" font-size="26" font-weight="600" letter-spacing="4.2" fill="#232a2f" fill-opacity="0.46" text-anchor="start">DINING ROOM</text>
-<text x="2380" y="1440" font-family="Schibsted Grotesk, sans-serif" font-size="26" font-weight="600" letter-spacing="4.2" fill="#232a2f" fill-opacity="0.46" text-anchor="end">DINING ROOM</text>
+<text x="700" y="810" font-family="Schibsted Grotesk, sans-serif" font-size="26" font-weight="600" letter-spacing="4.2" fill="#232a2f" fill-opacity="0.46" text-anchor="start">DINING ROOM</text>
+<text x="1620" y="1700" font-family="Schibsted Grotesk, sans-serif" font-size="26" font-weight="600" letter-spacing="4.2" fill="#232a2f" fill-opacity="0.46" text-anchor="start">DINING ROOM</text>
 <text x="-300" y="2380" font-family="Schibsted Grotesk, sans-serif" font-size="20" font-weight="600" letter-spacing="3.2" fill="#232a2f" fill-opacity="0.34" text-anchor="start">BANQUETTE</text>
 <line x1="-360" y1="-340" x2="2560" y2="-340" stroke="#232a2f" stroke-opacity="0.26" stroke-width="1.4"/>
 <line x1="-360" y1="-356" x2="-360" y2="-324" stroke="#232a2f" stroke-opacity="0.3" stroke-width="1.4"/>

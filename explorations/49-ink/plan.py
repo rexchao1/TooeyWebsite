@@ -106,13 +106,13 @@ for k in range(8):
 label(1850, 1235, "THE LINE", 20, .36, "middle")
 rect(1300, -150, 520, 110, .24, 1.6)           # dish
 label(1560, -170, "DISH", 20, .34, "middle")
-label(2380, 1235, "KITCHEN", 26, .46, "end")
+label(1210, 566, "KITCHEN", 26, .46)  # above the prep scene, clear of the glass
 
 # the pass: the opening in the kitchen wall, with its shelf and heat lamps
 rect(1150, 1300, 60, 520, .3, 1.8, fill="rgba(35,42,47,.03)")
 for k in range(4):
     circle(1180, 1360 + k * 130, 12, .3, 1.4)
-label(1240, 1860, "THE PASS", 20, .4)
+label(1300, 2130, "THE PASS", 20, .4, "end")  # under the shifts card, clear of its pin
 
 # the counter and its stools (top left); the bar back along the wall
 add(f'<path d="M 40 -120 L 980 -120 L 980 600" fill="none" stroke="{INK}" stroke-opacity=".3" stroke-width="44" stroke-linejoin="round"/>')
@@ -133,8 +133,8 @@ for x in (-200, 60, 320, 580, 840, 1100):
     table_two(x, 2440, True)
 add(f'<path d="M -330 2520 L 1260 2520" stroke="{INK}" stroke-opacity=".26" stroke-width="40"/>')
 add(f'<path d="M -330 2520 L 1260 2520" stroke="#efece4" stroke-width="34"/>')
-label(-300, 760, "DINING ROOM", 26, .46)
-label(2380, 1440, "DINING ROOM", 26, .46, "end")
+label(700, 810, "DINING ROOM", 26, .46)  # inside the view at the first stop, clear of the card
+label(1620, 1700, "DINING ROOM", 26, .46)
 label(-300, 2380, "BANQUETTE", 20, .34)
 
 # dimension lines along the top, like a drawing set

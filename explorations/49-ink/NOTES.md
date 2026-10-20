@@ -21,6 +21,15 @@ He wanted an option that looks drawn but real, a background that does more than 
    The hero window and the three cards in What Tooey does carry no Example tag, at Rex's word. The screen reader captions still say the figures are an example.
    The Will sell figures are not in the demo data: each is set a little under its Have ready amount, as prep is defined.
 
+## Round twenty (2026-10-20)
+Rex liked 49 and took most of a review's suggestions.
+- **Painted street and shops.** The hero's restaurant front and the four independents are now ink and watercolour paintings like the three scenes (`art/street.jpg`, `art/indies.jpg`), so the page reads as one book. They lie over the line drawings, which stay for comparison at `?art=line`. Each painting comes up from dim as its scene plays. The lamp that followed the pointer and the guest who sits down are line-drawing effects and do not show over the paintings.
+- **The hero shows the street.** The console window is smaller and sits up over the first floor, so the door, the lanterns and both tables of diners stay in view.
+- **Night before.** The window keeps "Tomorrow's demand", so its notification is now Monday 11:50pm, "Tomorrow's forecast is ready.", just after the 11:42pm sales it is built from. The other hero takes keep the 6am note.
+- **Headline** one step smaller, two lines, same words.
+- **Cards.** The forecast card sits on the empty bar so the tablet he reads stays in view. The prep sheet is half way through the morning: three made, three to go. Busy hours keeps its title, runs paper to amber instead of grey, and gains "Most hands on 6 to 9pm" (the three busiest hours). That line is not in the console today; it says what the Shifts words promise.
+- **Plan labels** moved so none is cut by the glass, the view's edge or a pin at a stop.
+
 ## The pictures
 The illustrations were made with Codex's image generation tool (`image_gen`, its model is not disclosed), from these free Unsplash photographs as references (originals in `photos/raw/`):
 
@@ -29,11 +38,13 @@ The illustrations were made with Codex's image generation tool (`image_gen`, its
 | `forecast` | https://unsplash.com/photos/X_bbCAYzlTs |
 | `prep` | https://unsplash.com/photos/y-XZf_TNRms (the blurry wall on the left cropped off) |
 | `shifts` | https://unsplash.com/photos/VUd9yv41hh0 |
+| `street`, `indies` | No photograph: the page's own line drawings (`_src/ref/`) and the three scenes for style; prompt in `_src/paint/prompt.md` |
 
 They are AI-generated, which is a different promise from a photograph or a commissioned drawing.
 Hands and faces were checked at full size; none looked wrong.
 At Rex's request the man at the counter in `forecast` has tight curly hair; only his head was regenerated and pasted back, so his face and the rest of the drawing are unchanged.
 At Rex's request the man in the back on the left of `forecast` is drawn as East Asian; only his head was regenerated and pasted back.
+`street` (1402px) and `indies` (2172px) are a little soft on a large screen.
 Generated at a smaller size and enlarged to 1800 and 1600px wide, so they are soft up close.
 Before anything like this ships, an illustrator drawing from one real restaurant is the better source.
 
