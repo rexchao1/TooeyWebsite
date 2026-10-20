@@ -429,7 +429,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 /* the words sit on a little cleared paper as the drawing runs under them */
 .hero-copy::before {
   content: ""; position: absolute; z-index: -1;
-  inset: -14% -48% -8% -30%;
+  inset: -40% -48% -8% -30%;
   background: radial-gradient(closest-side, rgba(242, 241, 236, .92), rgba(242, 241, 236, .7) 60%, rgba(242, 241, 236, 0));
 }
 
