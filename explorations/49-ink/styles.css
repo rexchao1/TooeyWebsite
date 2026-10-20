@@ -152,7 +152,7 @@ section[id], main { scroll-margin-top: var(--top); }
    page scrolls (site.js adds .is-solid) it fills with porcelain */
 .top.is-solid { background: var(--porcelain); }
 /* over the drawing, the nav words keep a little cleared paper round them */
-.top:not(.is-solid) .nav a:not(.btn) { text-shadow: 0 0 4px var(--porcelain), 0 0 10px var(--porcelain), 0 0 16px var(--porcelain); }
+.top:not(.is-solid) .nav a:not(.btn) { text-shadow: 0 0 3px var(--porcelain), 0 0 8px var(--porcelain), 0 0 14px var(--porcelain), 0 0 22px var(--porcelain); }
 .top > * { position: relative; }
 .top::after {
   /* no rule under the header: the page fades out as it slides under it */
@@ -169,6 +169,14 @@ section[id], main { scroll-margin-top: var(--top); }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--slate); }
 .brand img { width: auto; height: 34px; }
 .brand span:not(.sr) { font: 600 27px/1 var(--ui); letter-spacing: -.035em; }
+/* over the hero the logo is larger; it settles to its usual size once the
+   page scrolls (.is-solid), growing from its left edge */
+@media (min-width: 761px) {
+  .brand img, .brand span:not(.sr) { transition: height .35s ease, font-size .35s ease; }
+  .top:not(.is-solid) .brand img { height: 54px; }
+  .top:not(.is-solid) .brand span:not(.sr) { font-size: 42px; }
+  .top:not(.is-solid) .brand { gap: 14px; }
+}
 .nav {
   grid-column: 3 / 5;
   justify-self: end;
@@ -176,7 +184,7 @@ section[id], main { scroll-margin-top: var(--top); }
   padding-right: var(--pad);
   font: 500 .9375rem/1 var(--ui);
 }
-.nav a:not(.btn) { text-decoration: none; color: var(--ink-2); padding: .5rem 0; }
+.nav a:not(.btn) { text-decoration: none; color: var(--slate); font-weight: 600; padding: .5rem 0; }
 .nav .btn { margin-left: .25rem; }
 .nav a:not(.btn):hover { color: var(--ink); text-decoration: underline; text-underline-offset: .3em; text-decoration-thickness: 1px; }
 
@@ -421,7 +429,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 /* the words sit on a little cleared paper as the drawing runs under them */
 .hero-copy::before {
   content: ""; position: absolute; z-index: -1;
-  inset: -12% -18% -6% -30%;
+  inset: -14% -48% -8% -30%;
   background: radial-gradient(closest-side, rgba(242, 241, 236, .92), rgba(242, 241, 236, .7) 60%, rgba(242, 241, 236, 0));
 }
 
@@ -799,6 +807,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .h-total span { font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(35, 42, 47, .55); }
 .h-total b { font: 400 30px/1.1 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
 .h-total em { font-style: normal; font-size: 12px; color: rgba(35, 42, 47, .58); }
+.h-total .h-up { font: inherit; font-weight: 600; color: #2e6a45; }
 .h-cols { display: grid; grid-template-columns: 1fr 76px 112px; gap: 8px; margin-top: 22px !important; padding-bottom: 8px; border-bottom: 1px solid var(--rule-strong); font-size: 10.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: rgba(35, 42, 47, .55); }
 .h-rows { list-style: none; margin: 0; padding: 0; }
 .h-rows li { display: grid; grid-template-columns: 1fr 76px 34px 70px; align-items: baseline; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--rule); }
@@ -853,7 +862,15 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   box-shadow: 0 18px 40px -20px rgba(35, 42, 47, .4);
   font: 400 14px/1.35 var(--ui);
 }
-.note-mark { width: 36px; height: 36px; border-radius: 9px; background: var(--porcelain); border: 1px solid var(--rule); display: grid; place-items: center; }
+.note-mark { position: relative; width: 36px; height: 36px; border-radius: 9px; background: var(--porcelain); border: 1px solid var(--rule); display: grid; place-items: center; }
+.note-mark::after {
+  /* unread */
+  content: ""; position: absolute; top: -4px; right: -4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #d2482f; box-shadow: 0 0 0 2px #fbfaf7;
+}
+.motion.os-in .note-mark::after { animation: dot-in .4s 1.5s cubic-bezier(.3, 1.6, .5, 1) both; }
+@keyframes dot-in { from { transform: scale(0); } to { transform: none; } }
 .note-mark img { width: 22px; height: 22px; }
 .note-text b { display: block; font-weight: 600; font-size: 13px; }
 .note-time { align-self: start; font-size: 12px; color: rgba(35, 42, 47, .5); }
