@@ -8,3 +8,6 @@ node_modules
 vite.config.js.timestamp-*
 .lavish
 /dist
+
+# redesign explorations stay on this machine, not in git
+/explorations
