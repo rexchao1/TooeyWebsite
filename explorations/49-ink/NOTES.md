@@ -30,6 +30,13 @@ Rex liked 49 and took most of a review's suggestions.
 - **Cards.** The forecast card sits on the empty bar so the tablet he reads stays in view. The prep sheet is half way through the morning: three made, three to go. Busy hours keeps its title, runs paper to amber instead of grey, and gains "Most hands on 6 to 9pm" (the three busiest hours). That line is not in the console today; it says what the Shifts words promise.
 - **Plan labels** moved so none is cut by the glass, the view's edge or a pin at a stop.
 
+## The chef's hat (2026-10-20)
+Rex supplied a new logo: a chef's hat with a winding line through it, on a white rounded tile (`_src/mark-source.png`).
+It is traced to `mark.svg` (the hat alone, in slate) and `favicon.svg` (the hat on the white tile).
+The header pairs the hat with "tooey" set in the UI face; the old spoon wordmark (`logo.png`) is gone from 49.
+The hat also replaces the "t" mark inside the console, the notification, the email and the printed sheet.
+The live site still has the old logo.
+
 ## The pictures
 The illustrations were made with Codex's image generation tool (`image_gen`, its model is not disclosed), from these free Unsplash photographs as references (originals in `photos/raw/`):
 

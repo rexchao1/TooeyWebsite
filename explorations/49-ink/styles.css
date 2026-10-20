@@ -165,7 +165,10 @@ section[id], main { scroll-margin-top: var(--top); }
 }
 .top.is-solid::after { opacity: 1; }
 .brand { grid-column: 1; padding-left: var(--pad); justify-self: start; }
+/* the mark, a chef's hat, beside the name set in the UI face */
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--slate); }
 .brand img { width: auto; height: 34px; }
+.brand span:not(.sr) { font: 600 27px/1 var(--ui); letter-spacing: -.035em; }
 .nav {
   grid-column: 3 / 5;
   justify-self: end;
@@ -1165,6 +1168,7 @@ html.modal-open { overflow: hidden; }
   .sheet::before { background-size: calc(100% - 2 * var(--g)) 100%; }
   .top { grid-template-columns: auto 1fr; }
   .brand img { height: 28px; }
+  .brand span:not(.sr) { font-size: 23px; }
   .brand { padding-left: 0; }
   .nav { grid-column: 2; padding-right: 0; gap: 1rem; }
   .nav a:not(.btn) { display: none; }
