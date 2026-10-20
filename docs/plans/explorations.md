@@ -1,5 +1,7 @@
 # Ten explorations
 
+**2026-10-20: exploration 49 ("ink") is now the live site. Explorations 1 to 40 were deleted; 41 to 49, the gallery and the samples are kept on Rex's machine only (`explorations/` is ignored by git). Paths below refer to that local copy.**
+
 Rex asked for ten independent redesigns of the public site, each from a
 different strategic reading of Tooey, built as working sites, reviewed, and
 shown side by side in a local gallery. Nothing here replaces the live site.

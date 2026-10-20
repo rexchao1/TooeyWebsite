@@ -1,6 +1,12 @@
 {
 	"framework": null,
 	"installCommand": "echo skip",
-	"buildCommand": "mkdir -p dist/fonts && cp index.html how.html about.html privacy.html styles.css site.js logo.png favicon.svg dist/ && cp fonts/* dist/fonts/",
-	"outputDirectory": "dist"
+	"buildCommand": "mkdir -p dist/fonts dist/art && cp index.html privacy.html styles.css site.js scenes.js draw.js plan.svg mark.svg favicon.svg dist/ && cp fonts/* dist/fonts/ && cp art/* dist/art/",
+	"outputDirectory": "dist",
+	"redirects": [
+		{ "source": "/how.html", "destination": "/#what", "permanent": true },
+		{ "source": "/how", "destination": "/#what", "permanent": true },
+		{ "source": "/about.html", "destination": "/", "permanent": true },
+		{ "source": "/about", "destination": "/", "permanent": true }
+	]
 }

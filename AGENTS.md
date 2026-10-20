@@ -4,11 +4,15 @@ Read `README.md` first. This is marketing, not the product. The
 operator console is a separate repository (TooeyApp). Do not import from
 it or reach into it from here.
 
-The live site is static HTML at the repo root: `index.html`, `how.html`,
-`about.html`, `privacy.html`, plus `styles.css`, `site.js`, `logo.png`,
-`favicon.svg`, and `fonts/`. Vercel copies those into `dist/`. The Svelte
-app under `src/` is a leftover draft and is not deployed. Do not edit
-`src/` expecting the change to go live.
+The live site is static HTML at the repo root: `index.html`, `privacy.html`,
+`styles.css`, `site.js`, `draw.js`, `scenes.js`, `plan.svg`, `mark.svg`,
+`favicon.svg`, `art/`, and `fonts/`. Vercel copies those into `dist/` (the
+list is in `vercel.json` and `package.json`; a new live file goes in both).
+The Svelte app under `src/` is a leftover draft and is not deployed. Do not
+edit `src/` expecting the change to go live.
+
+`explorations/` is ignored by git and lives only on the maintainer's machine.
+The live design is exploration 49; its picture prompts and sources are there.
 
 ## Commands
 

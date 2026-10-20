@@ -1,418 +1,351 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Tooey · The operations partner for independent restaurants</title>
-  <meta name="description" content="The operations partner for independent restaurants. We start with prep. Each morning before the kitchen opens, you get a count for every dish. No more guessing." />
-  <meta property="og:title" content="Tooey · The operations partner for independent restaurants" />
-  <meta property="og:description" content="We start with prep. Each morning before the kitchen opens, you get a count for every dish. No more guessing." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#eef1e7" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preload" href="fonts/literata.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tooey: your new restaurant operating system</title>
+<meta name="description" content="Tooey runs prep, shifts and slow nights from your restaurant's own sales, so you make more and manage less. Free during the pilot.">
+<meta property="og:title" content="Tooey: your new restaurant operating system">
+<meta property="og:description" content="Tooey runs prep, shifts and slow nights from your restaurant's own sales, so you make more and manage less. Free during the pilot.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/literata.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function (r) {
+    r.classList.add('js');
+    var h = new URLSearchParams(location.search).get('hero');
+    r.setAttribute('data-hero', /^(console|mail|sheet|note)$/.test(h) ? h : 'console');
+    // the street and the shops are painted; ?art=line shows the line drawings
+    r.setAttribute('data-art', new URLSearchParams(location.search).get('art') === 'line' ? 'line' : 'paint');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      r.classList.add('motion');
+      // the headline waits to be typed (site.js); never longer than 3s
+      r.classList.add('hero-wait');
+      setTimeout(function () { r.classList.remove('hero-wait'); }, 3000);
+    }
+  })(document.documentElement);
+</script>
 </head>
-<body class="home">
-  <a class="skip" href="#main">Skip to content</a>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="logo.png" width="171" height="74" alt="Tooey" /></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-        <span></span><span></span>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Main">
-        <a href="how.html">How it works</a>
-        <a href="about.html">About</a>
-        <a class="nav-more" href="privacy.html">Privacy</a>
-        <p class="nav-note">Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
-        <a class="btn btn-primary nav-cta" href="#contact">Talk to us</a>
-      </nav>
+<header class="top">
+  <a class="brand" href="./"><img src="mark.svg" alt="" width="822" height="743"><span aria-hidden="true">Tooey</span><span class="sr">Tooey</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#what">What it does</a>
+    <a href="#start">Pilot</a>
+    <button class="btn btn-small talk-open" type="button" aria-haspopup="dialog" aria-controls="talk-dialog">Try Tooey free</button>
+    <a class="btn btn-small talk-mail" href="mailto:tooeyteam@gmail.com?subject=New%20Tooey%20inquiry">Try Tooey free</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero: the street front. Its lights come on as the page loads. -->
+  <section class="hero sheet" aria-labelledby="hero-title">
+    <figure class="scene scene-hero" data-scene="street" aria-hidden="true"><div class="art"></div><img class="paint" src="art/street.jpg" alt="" width="1402" height="1122" decoding="async"></figure>
+    <!-- Four takes over the street, chosen by ?hero= (console, mail,
+         sheet, note). The first three carry the console's demo restaurant;
+         note is the 6am notification alone. -->
+    <div class="hero-os" aria-hidden="true">
+
+      <!-- console: the Forecast page in the console's own window -->
+      <div class="h-win h-console" data-hero="console">
+        <div class="h-bar"><i></i><i></i><i></i></div>
+        <div class="h-app">
+          <nav class="h-side">
+            <p class="h-brand"><img src="mark.svg" alt="" width="20" height="20">Tooey</p>
+            <p class="is-on"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>Forecast</p>
+            <p><svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Upload</p>
+            <p><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</p>
+          </nav>
+          <div class="h-main">
+            <div class="h-head">
+              <div><p class="h-h1">Tomorrow&rsquo;s demand</p><p class="h-date">Tuesday, October 7</p></div>
+              <div class="h-total"><span>Total expected sales</span><b>$4,410</b><em><b class="h-up">+$90</b> vs average Tuesday</em></div>
+            </div>
+            <p class="h-cols"><span>Mains</span><span>Will sell</span><span>Have ready</span></p>
+            <ul class="h-rows">
+            <li><span>Prime rib</span><s>14</s><b>16</b><i>slices</i></li>
+            <li><span>Fish tacos</span><s>16</s><b>18</b><i>orders</i></li>
+            <li><span>Fish and chips</span><s>14</s><b>16</b><i>portions</i></li>
+            <li><span>Mushroom risotto</span><s>10</s><b>12</b><i>portions</i></li>
+            <li><span>Ribeye</span><s>9</s><b>10</b><i>steaks</i></li>
+            <li><span>Roast chicken</span><s>7</s><b>8</b><i>halves</i></li>
+            </ul>
+            <p class="h-why"><span>214 covers expected</span><span>From sales through Monday, 11:42pm</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- mail: the morning email, opened in the kitchen's inbox -->
+      <div class="h-win h-mail" data-hero="mail">
+        <div class="h-bar"><i></i><i></i><i></i><span>Inbox</span></div>
+        <div class="h-app">
+          <ul class="h-inbox">
+            <li class="is-on"><b>Tooey</b><time>6:00am</time><span>Tuesday prep: 214 covers</span></li>
+            <li><b>Tooey</b><time>Mon</time><span>Monday prep</span></li>
+            <li><b>Tooey</b><time>Sun</time><span>Sunday prep</span></li>
+            <li><b>Tooey</b><time>Sat</time><span>Saturday prep</span></li>
+          </ul>
+          <div class="h-letter">
+            <p class="h-from"><img src="mark.svg" alt="" width="28" height="28"><span><b>Tooey</b>to the kitchen</span><time>6:00am</time></p>
+            <p class="h-h1">Tuesday prep: 214 covers</p>
+            <p class="h-date">Tuesday, October 7 &middot; Expected sales $4,410</p>
+            <p class="h-cols"><span>Have ready</span></p>
+            <ul class="h-rows">
+            <li><span>Prime rib</span><b>16</b><i>slices</i></li>
+            <li><span>Fish tacos</span><b>18</b><i>orders</i></li>
+            <li><span>Fish and chips</span><b>16</b><i>portions</i></li>
+            <li><span>Mushroom risotto</span><b>12</b><i>portions</i></li>
+            <li><span>Ribeye</span><b>10</b><i>steaks</i></li>
+            </ul>
+            <p class="h-why"><span class="h-print">Print the prep sheet</span><span class="win-tag">Example</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- sheet: the printed prep sheet, pinned up at 6am -->
+      <div class="h-paper" data-hero="sheet">
+        <i class="h-tape"></i>
+        <div class="sheet-top">
+          <div>
+            <p class="sheet-brand"><img src="mark.svg" alt="" width="14" height="14">Tooey</p>
+            <p class="c-title">Tuesday prep</p>
+            <p class="c-note">Tuesday, October 7</p>
+          </div>
+          <div class="sheet-covers"><span>Expected covers</span><b>214</b></div>
+        </div>
+        <table class="prep-sheet">
+          <thead><tr><th>Item</th><th>Have ready</th><th>On hand</th><th>Done</th></tr></thead>
+          <tbody>
+            <tr><td>Prime rib</td><td><b>16</b> slices</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Fish tacos</td><td><b>18</b> orders</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Fish and chips</td><td><b>16</b> portions</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Mushroom risotto</td><td><b>12</b> portions</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Ribeye</td><td><b>10</b> steaks</td><td></td><td><i class="box"></i></td></tr>
+            <tr><td>Roast chicken</td><td><b>8</b> halves</td><td></td><td><i class="box"></i></td></tr>
+          </tbody>
+        </table>
+        <span class="win-tag sheet-tag">Example</span>
+      </div>
+      <div class="note">
+        <span class="note-mark"><img src="mark.svg" alt=""></span>
+        <!-- the console shows tomorrow, so its note comes the night before -->
+        <span class="note-text note-night"><b>Tooey</b>Tomorrow's forecast is ready.</span>
+        <span class="note-time note-night">11:50pm</span>
+        <span class="note-text note-morning"><b>Tooey</b>Tuesday's prep list is in.</span>
+        <span class="note-time note-morning">6:00am</span>
+      </div>
     </div>
-  </header>
-
-  <main id="main">
-    <section class="hero">
-      <div class="window-light" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>The operations partner for independent restaurants.</h1>
-          <p class="lead">We start with prep. Each morning before the kitchen opens, you get a count for every dish. No more guessing.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Talk to us</a>
-            <a class="go" href="how.html">How it works</a>
-          </div>
-        </div>
-        <div class="counter">
-          <div class="sheet-stack">
-            <div class="sheet sheet-past" aria-hidden="true"><div class="sheet-bar"></div></div>
-            <div class="sheet sheet-past" aria-hidden="true"><div class="sheet-bar"></div></div>
-            <figure class="sheet sheet-now" aria-label="Tooey forecast for tomorrow">
-              <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="Tooey" /></div>
-              <div class="sheet-body">
-                <p class="sheet-kicker">Today</p>
-                <p class="sheet-day">Tuesday</p>
-                <table class="forecast">
-                  <thead>
-                    <tr><th>Item</th><th>Predicted</th><th>Prep</th><th><span class="th-long">vs. last Tue</span><span class="th-short">vs. Tue</span></th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Cheeseburger</td><td class="predicted">42</td><td class="prep">45</td><td class="delta">+8%</td></tr>
-                    <tr><td>Chicken sandwich</td><td class="predicted">31</td><td class="prep">33</td><td class="delta">+5%</td></tr>
-                    <tr><td>Caesar salad</td><td class="predicted">24</td><td class="prep">26</td><td class="delta">−4%</td></tr>
-                    <tr><td>House pasta</td><td class="predicted">18</td><td class="prep">20</td><td class="delta">+12%</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </figure>
-            <div class="old-list" aria-hidden="true">
-              <div class="old-paper">
-                <p class="old-title">Tue prep</p>
-                <p>burgers <del>40</del> 50?</p>
-                <p>chx sand 30ish</p>
-                <p>caesar 20? 30?</p>
-                <p>pasta <del>25</del> ask chef</p>
-                <p>86'd salmon last wk!!</p>
-              </div>
-            </div>
-            <div class="old-ball" aria-hidden="true">
-              <svg viewBox="0 0 100 100">
-              <defs><clipPath id="ball-clip"><polygon points="91.9,49.7 90.4,59.1 87.7,66.4 77.7,75.3 77.1,82.2 68.9,88.2 53.8,86.7 45.7,82.4 38.3,87.2 24.5,80.9 18.1,76.6 10.9,71.0 7.8,57.5 15.3,51.4 7.2,40.8 15.8,30.0 21.0,22.4 27.6,20.5 38.8,18.0 48.2,12.8 52.2,13.9 62.8,12.5 70.1,19.5 76.2,25.3 90.0,33.7 88.8,43.4"/></clipPath></defs>
-              <g clip-path="url(#ball-clip)" stroke="rgba(150,126,60,0.18)" stroke-width="0.35" stroke-linejoin="round">
-              <polygon points="77.7,75.3 77.1,82.2 68.9,88.2" fill="#eadfb8"/>
-              <polygon points="87.7,66.4 77.7,75.3 78.4,61.3" fill="#e0d19e"/>
-              <polygon points="15.8,30.0 21.0,22.4 27.1,30.7" fill="#fdf9e7"/>
-              <polygon points="76.2,25.3 90.0,33.7 71.8,36.3" fill="#e3d5a6"/>
-              <polygon points="90.0,33.7 88.8,43.4 71.8,36.3" fill="#e2d5a5"/>
-              <polygon points="70.1,19.5 76.2,25.3 71.8,36.3" fill="#e1d3a2"/>
-              <polygon points="10.9,71.0 7.8,57.5 17.2,56.6" fill="#f4edd2"/>
-              <polygon points="7.8,57.5 15.3,51.4 17.2,56.6" fill="#f8f3dc"/>
-              <polygon points="77.7,75.3 68.9,88.2 56.0,79.3" fill="#e0d19e"/>
-              <polygon points="68.9,88.2 53.8,86.7 56.0,79.3" fill="#e0d19e"/>
-              <polygon points="21.0,22.4 27.6,20.5 30.0,25.2" fill="#f1e9ca"/>
-              <polygon points="21.0,22.4 27.1,30.7 30.0,25.2" fill="#fbf7e4"/>
-              <polygon points="27.6,20.5 38.8,18.0 30.0,25.2" fill="#f5eed3"/>
-              <polygon points="90.4,59.1 87.7,66.4 80.6,58.3" fill="#e8dcb3"/>
-              <polygon points="87.7,66.4 78.4,61.3 80.6,58.3" fill="#e5d8ab"/>
-              <polygon points="91.9,49.7 90.4,59.1 80.6,58.3" fill="#eee4c2"/>
-              <polygon points="38.3,87.2 24.5,80.9 30.6,75.9" fill="#e4d7aa"/>
-              <polygon points="24.5,80.9 18.1,76.6 30.6,75.9" fill="#efe7c6"/>
-              <polygon points="18.1,76.6 10.9,71.0 24.0,67.6" fill="#f6efd6"/>
-              <polygon points="10.9,71.0 17.2,56.6 24.0,67.6" fill="#e8ddb4"/>
-              <polygon points="17.2,56.6 29.4,58.1 24.0,67.6" fill="#e8ddb4"/>
-              <polygon points="29.4,58.1 29.1,66.4 24.0,67.6" fill="#e3d5a6"/>
-              <polygon points="29.1,66.4 30.6,75.9 24.0,67.6" fill="#fdf9e8"/>
-              <polygon points="18.1,76.6 30.6,75.9 24.0,67.6" fill="#faf5e0"/>
-              <polygon points="53.8,86.7 45.7,82.4 54.7,78.2" fill="#e0d19e"/>
-              <polygon points="53.8,86.7 56.0,79.3 54.7,78.2" fill="#e0d19e"/>
-              <polygon points="70.1,19.5 71.8,36.3 59.1,32.4" fill="#f4edd1"/>
-              <polygon points="15.3,51.4 7.2,40.8 24.1,39.5" fill="#f6f0d7"/>
-              <polygon points="7.2,40.8 15.8,30.0 24.1,39.5" fill="#faf5e0"/>
-              <polygon points="15.8,30.0 27.1,30.7 24.1,39.5" fill="#fdf8e7"/>
-              <polygon points="27.1,30.7 39.7,46.3 24.1,39.5" fill="#fcf8e6"/>
-              <polygon points="48.2,12.8 52.2,13.9 55.8,20.5" fill="#f0e8c8"/>
-              <polygon points="52.2,13.9 62.8,12.5 55.8,20.5" fill="#fcf8e5"/>
-              <polygon points="62.8,12.5 70.1,19.5 55.8,20.5" fill="#faf5e1"/>
-              <polygon points="70.1,19.5 59.1,32.4 55.8,20.5" fill="#f9f4de"/>
-              <polygon points="77.7,75.3 78.4,61.3 69.0,66.3" fill="#e0d19e"/>
-              <polygon points="77.7,75.3 56.0,79.3 69.0,66.3" fill="#e0d19e"/>
-              <polygon points="56.0,79.3 54.7,78.2 69.0,66.3" fill="#e0d19e"/>
-              <polygon points="30.6,75.9 38.1,64.8 43.4,73.2" fill="#e0d19e"/>
-              <polygon points="48.6,68.4 38.1,64.8 43.4,73.2" fill="#e0d19e"/>
-              <polygon points="91.9,49.7 88.8,43.4 79.1,55.8" fill="#f8f3dc"/>
-              <polygon points="91.9,49.7 80.6,58.3 79.1,55.8" fill="#e1d3a1"/>
-              <polygon points="78.4,61.3 80.6,58.3 79.1,55.8" fill="#e0d19e"/>
-              <polygon points="57.7,33.5 59.1,32.4 60.0,40.6" fill="#ece2bd"/>
-              <polygon points="39.7,46.3 57.7,33.5 60.0,40.6" fill="#eee5c4"/>
-              <polygon points="65.3,56.8 69.0,66.3 56.6,58.7" fill="#f3ebcf"/>
-              <polygon points="54.7,78.2 48.6,68.4 56.6,58.7" fill="#e0d19e"/>
-              <polygon points="54.7,78.2 69.0,66.3 56.6,58.7" fill="#f2ebce"/>
-              <polygon points="48.6,68.4 38.1,64.8 56.6,58.7" fill="#f8f3dc"/>
-              <polygon points="39.7,46.3 38.1,64.8 56.6,58.7" fill="#e5d8ab"/>
-              <polygon points="39.7,46.3 60.0,40.6 56.6,58.7" fill="#e5d8ac"/>
-              <polygon points="88.8,43.4 71.8,36.3 68.3,41.1" fill="#e0d19e"/>
-              <polygon points="88.8,43.4 79.1,55.8 68.3,41.1" fill="#e7dbb0"/>
-              <polygon points="71.8,36.3 59.1,32.4 68.3,41.1" fill="#ede3bf"/>
-              <polygon points="59.1,32.4 60.0,40.6 68.3,41.1" fill="#e8ddb4"/>
-              <polygon points="65.3,56.8 69.0,66.3 68.8,56.5" fill="#f5edd3"/>
-              <polygon points="78.4,61.3 69.0,66.3 68.8,56.5" fill="#ede3c0"/>
-              <polygon points="78.4,61.3 79.1,55.8 68.8,56.5" fill="#eee5c2"/>
-              <polygon points="38.3,87.2 30.6,75.9 45.2,77.1" fill="#e5d8ac"/>
-              <polygon points="30.6,75.9 43.4,73.2 45.2,77.1" fill="#e4d7a9"/>
-              <polygon points="54.7,78.2 48.6,68.4 45.2,77.1" fill="#e0d19e"/>
-              <polygon points="48.6,68.4 43.4,73.2 45.2,77.1" fill="#e6daae"/>
-              <polygon points="27.1,30.7 39.7,46.3 48.5,28.4" fill="#fdf9e8"/>
-              <polygon points="27.1,30.7 30.0,25.2 48.5,28.4" fill="#faf5e1"/>
-              <polygon points="38.8,18.0 30.0,25.2 48.5,28.4" fill="#f3eccf"/>
-              <polygon points="39.7,46.3 57.7,33.5 48.5,28.4" fill="#f6f0d7"/>
-              <polygon points="38.8,18.0 48.2,12.8 48.5,28.4" fill="#f5eed3"/>
-              <polygon points="48.2,12.8 55.8,20.5 48.5,28.4" fill="#fcf8e7"/>
-              <polygon points="57.7,33.5 59.1,32.4 48.5,28.4" fill="#e0d19e"/>
-              <polygon points="59.1,32.4 55.8,20.5 48.5,28.4" fill="#fcf7e4"/>
-              <polygon points="60.0,40.6 56.6,58.7 65.9,49.8" fill="#f6f0d7"/>
-              <polygon points="65.3,56.8 56.6,58.7 65.9,49.8" fill="#fcf7e4"/>
-              <polygon points="60.0,40.6 68.3,41.1 65.9,49.8" fill="#f7f1d9"/>
-              <polygon points="79.1,55.8 68.3,41.1 65.9,49.8" fill="#ebe0bb"/>
-              <polygon points="79.1,55.8 68.8,56.5 65.9,49.8" fill="#efe6c4"/>
-              <polygon points="65.3,56.8 68.8,56.5 65.9,49.8" fill="#f9f4df"/>
-              <polygon points="29.1,66.4 30.6,75.9 34.1,64.3" fill="#f4edd2"/>
-              <polygon points="30.6,75.9 38.1,64.8 34.1,64.3" fill="#eee5c3"/>
-              <polygon points="29.4,58.1 29.1,66.4 34.1,64.3" fill="#ede3c0"/>
-              <polygon points="45.7,82.4 38.3,87.2 45.4,81.3" fill="#e0d19e"/>
-              <polygon points="38.3,87.2 45.2,77.1 45.4,81.3" fill="#fcf7e5"/>
-              <polygon points="45.7,82.4 54.7,78.2 45.4,81.3" fill="#e0d19e"/>
-              <polygon points="54.7,78.2 45.2,77.1 45.4,81.3" fill="#f4ecd0"/>
-              <polygon points="29.4,58.1 39.7,46.3 36.2,63.3" fill="#f5eed4"/>
-              <polygon points="39.7,46.3 38.1,64.8 36.2,63.3" fill="#f4edd2"/>
-              <polygon points="38.1,64.8 34.1,64.3 36.2,63.3" fill="#fbf6e3"/>
-              <polygon points="29.4,58.1 34.1,64.3 36.2,63.3" fill="#fcf7e5"/>
-              <polygon points="15.3,51.4 17.2,56.6 25.9,44.5" fill="#f8f2db"/>
-              <polygon points="17.2,56.6 29.4,58.1 25.9,44.5" fill="#ece1bc"/>
-              <polygon points="15.3,51.4 24.1,39.5 25.9,44.5" fill="#f8f2db"/>
-              <polygon points="29.4,58.1 39.7,46.3 25.9,44.5" fill="#ece2bd"/>
-              <polygon points="39.7,46.3 24.1,39.5 25.9,44.5" fill="#fbf6e3"/>
-              </g>
-              <g clip-path="url(#ball-clip)" fill="none" stroke-linecap="round">
-              <g stroke="rgba(92,128,160,0.4)" stroke-width="0.6"><path d="M14 44 l9 3 l6 -2"/><path d="M60 30 l10 4 l9 0"/><path d="M44 78 l8 -3 l9 2"/><path d="M33 22 l7 3"/></g>
-              <path d="M36 70 l2 8 l-1 7" stroke="rgba(196,84,70,0.45)" stroke-width="0.6"/>
-              <g stroke="#3f4043" stroke-width="0.8" opacity="0.7"><path d="M45 20 q2 -3 4 0 t4 0"/><path d="M18 56 q3 -2 5 1 m2 -2 l1 4"/><path d="M66 55 l4 2 m-2 -4 l1 5"/><path d="M51 69 q2 -2 4 0 t3 1"/></g>
-              </g>
-              <polygon points="91.9,49.7 90.4,59.1 87.7,66.4 77.7,75.3 77.1,82.2 68.9,88.2 53.8,86.7 45.7,82.4 38.3,87.2 24.5,80.9 18.1,76.6 10.9,71.0 7.8,57.5 15.3,51.4 7.2,40.8 15.8,30.0 21.0,22.4 27.6,20.5 38.8,18.0 48.2,12.8 52.2,13.9 62.8,12.5 70.1,19.5 76.2,25.3 90.0,33.7 88.8,43.4" fill="none" stroke="rgba(130,106,46,0.35)" stroke-width="0.6" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section night-section">
-      <div class="container">
-        <div class="night-head">
-          <h2 class="big">What happens each night</h2>
-          <a class="go" href="how.html">How the counts are made</a>
-        </div>
-        <div class="night">
-          <ol class="terms">
-            <li class="term">
-              <span class="term-n">01</span>
-              <div class="term-text"><h3>We pull the day's sales.</h3></div>
-              <div class="term-pic panel" aria-hidden="true">
-                <div class="pic pic-pull">
-                  <div class="check in">
-                    <div class="check-head"><span>Your POS</span><span class="check-src">Monday</span></div>
-                    <div class="check-row in" style="--d: 0.2s"><span>Cheeseburger</span><span>43</span></div>
-                    <div class="check-row in" style="--d: 0.3s"><span>Chicken sandwich</span><span>31</span></div>
-                    <div class="check-row in" style="--d: 0.4s"><span>Caesar salad</span><span>17</span></div>
-                    <div class="check-row in" style="--d: 0.5s"><span>House pasta</span><span>19</span></div>
-                    <span class="stamp in" style="--d: 0.85s">Pulled</span>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="term">
-              <span class="term-n">02</span>
-              <div class="term-text"><h3>Tomorrow's list is in your email.</h3></div>
-              <div class="term-pic panel" aria-hidden="true">
-                <div class="pic pic-email">
-                  <div class="mail in">
-                    <p class="mail-from"><i class="unread"></i><b>Tooey</b> to you</p>
-                    <p class="mail-subject">Your prep list for Tuesday</p>
-                    <table class="forecast">
-                      <thead><tr><th>Item</th><th>Predicted</th><th>Prep</th></tr></thead>
-                      <tbody>
-                        <tr class="in" style="--d: 0.3s"><td>Cheeseburger</td><td class="predicted">42</td><td class="prep">45</td></tr>
-                        <tr class="in" style="--d: 0.4s"><td>Chicken sandwich</td><td class="predicted">31</td><td class="prep">33</td></tr>
-                        <tr class="in" style="--d: 0.5s"><td>Caesar salad</td><td class="predicted">24</td><td class="prep">26</td></tr>
-                        <tr class="in" style="--d: 0.6s"><td>House pasta</td><td class="predicted">18</td><td class="prep">20</td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="term">
-              <span class="term-n">03</span>
-              <div class="term-text"><h3>Print it and prep from it.</h3></div>
-              <div class="term-pic panel" aria-hidden="true">
-                <div class="pic pic-print">
-                  <div class="sheet pic-sheet in">
-                    <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
-                    <div class="sheet-body">
-                      <p class="sheet-kicker">Today</p>
-                      <p class="sheet-day">Tuesday</p>
-                      <table class="forecast">
-                        <thead><tr><th>Item</th><th>Prep</th><th class="done"><span class="pencil in" style="--d: 0.35s">done</span></th></tr></thead>
-                        <tbody>
-                          <tr><td>Cheeseburger</td><td class="prep">45</td><td class="done"><span class="pencil in" style="--d: 0.55s"><i class="tick"></i></span></td></tr>
-                          <tr><td>Chicken sandwich</td><td class="prep">33</td><td class="done"><span class="pencil in" style="--d: 0.75s"><i class="tick"></i></span></td></tr>
-                          <tr><td>Caesar salad</td><td class="prep">26</td><td class="done"><span class="pencil in" style="--d: 0.95s"><i class="tick"></i></span></td></tr>
-                          <tr><td>House pasta</td><td class="prep">20</td><td class="done"></td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ol>
-          <div class="night-stage panel" aria-hidden="true">
-            <div class="window-light"><span></span><span></span><span></span><span></span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="onboard-head">
-          <h2 class="big">Onboarding.</h2>
-          <p class="lead"><strong>We're in a pilot, so it's free for now.</strong> Check our counts against what you actually sold, then decide.</p>
-        </div>
-        <div class="onboard panel">
-          <div class="window-light" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          <ol class="onboard-list">
-            <li class="onboard-step step-1">
-              <div class="onboard-pic" aria-hidden="true">
-                <div class="check slip in">
-                  <div class="check-head"><span>Your POS</span><span class="check-src">Past sales</span></div>
-                  <div class="check-row in" style="--d: 0.15s"><span>Week 1</span><span>1,186</span></div>
-                  <div class="check-row in" style="--d: 0.22s"><span>Week 2</span><span>1,240</span></div>
-                  <div class="check-row in" style="--d: 0.29s"><span>Week 3</span><span>1,097</span></div>
-                  <div class="check-row in" style="--d: 0.36s"><span>Week 4</span><span>1,312</span></div>
-                  <div class="check-row in" style="--d: 0.43s"><span>Week 5</span><span>1,268</span></div>
-                  <span class="stamp in" style="--d: 0.7s">Connected</span>
-                </div>
-              </div>
-              <div class="onboard-text">
-                <span class="onboard-n">01</span>
-                <h3>We connect to your sales.</h3>
-                <p>We install a nightly download from your POS. It works with most systems. You'll need about five weeks of past sales to start.</p>
-              </div>
-            </li>
-            <li class="onboard-arrow arrow-1" aria-hidden="true">
-              <svg viewBox="0 0 64 40" fill="none"><path class="arrow-line" pathLength="1" d="M4 27 C 14 13, 26 33, 38 21 S 52 13, 59 17"/><path class="arrow-head" pathLength="1" d="M50 10 L59 17 L49 22"/></svg>
-            </li>
-            <li class="onboard-step step-2">
-              <div class="onboard-pic" aria-hidden="true">
-                <div class="week in">
-                  <div class="week-head"><span class="sheet-kicker">Setup</span><span class="week-title">About a week</span></div>
-                  <div class="week-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
-                  <div class="week-grid">
-                    <span class="task task-1 in" style="--d: 0.2s">What matters</span>
-                    <span class="task task-2 in" style="--d: 0.45s">Set up the list</span>
-                    <span class="task task-3 in" style="--d: 0.7s">Check it</span>
-                  </div>
-                </div>
-              </div>
-              <div class="onboard-text">
-                <span class="onboard-n">02</span>
-                <h3>A week of setup.</h3>
-                <p>Tell us what matters in your kitchen, then check the list before you use it.</p>
-              </div>
-            </li>
-            <li class="onboard-arrow arrow-2" aria-hidden="true">
-              <svg viewBox="0 0 64 40" fill="none"><path class="arrow-line" pathLength="1" d="M4 27 C 14 13, 26 33, 38 21 S 52 13, 59 17"/><path class="arrow-head" pathLength="1" d="M50 10 L59 17 L49 22"/></svg>
-            </li>
-            <li class="onboard-step step-3">
-              <div class="onboard-pic" aria-hidden="true">
-                <div class="sheet first-sheet in">
-                  <div class="sheet-bar"><span>Forecast</span><img src="logo.png" width="60" height="26" alt="" /></div>
-                  <div class="sheet-body">
-                    <p class="sheet-kicker">Today</p>
-                    <p class="sheet-day">Tuesday</p>
-                    <table class="forecast">
-                      <thead><tr><th>Item</th><th>Prep</th><th class="sold"><span class="pencil in" style="--d: 0.45s">sold</span></th></tr></thead>
-                      <tbody>
-                        <tr><td>Cheeseburger</td><td class="prep">45</td><td class="sold"><span class="pencil in" style="--d: 0.65s">43<i class="tick"></i></span></td></tr>
-                        <tr><td>Caesar salad</td><td class="prep">26</td><td class="sold"><span class="pencil off in" style="--d: 0.85s">17</span></td></tr>
-                        <tr><td>House pasta</td><td class="prep">20</td><td class="sold"><span class="pencil in" style="--d: 1.05s">19<i class="tick"></i></span></td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="onboard-text">
-                <span class="onboard-n">03</span>
-                <h3>Your first list.</h3>
-                <p>From then on, counts arrive each morning before prep.</p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div class="container contact-grid">
-        <div class="contact-copy">
-          <h2 class="big">Want to try it?</h2>
-          <p class="lead">We're a few university students. Tell us about your restaurant and one of us will write back.</p>
-          <p class="mail">Or email <a href="mailto:tooeyteam@gmail.com">tooeyteam@gmail.com</a></p>
-        </div>
-        <form id="contactForm">
-          <input type="hidden" name="_subject" value="New Tooey inquiry" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <div class="form-row">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" required autocomplete="name" />
-            </div>
-            <div class="field">
-              <label for="restaurant">Restaurant</label>
-              <input id="restaurant" name="restaurant" required autocomplete="organization" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required autocomplete="email" />
-            </div>
-            <div class="field">
-              <label for="phone">Phone <span class="opt">optional</span></label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" />
-            </div>
-          </div>
-          <div class="field">
-            <label for="pos">Which POS do you use? <span class="opt">optional</span></label>
-            <input id="pos" name="pos" placeholder="Toast, Square, Clover…" />
-          </div>
-          <div class="field">
-            <label for="message">Anything else <span class="opt">optional</span></label>
-            <textarea id="message" name="message"></textarea>
-          </div>
-          <div class="form-foot">
-            <button class="btn btn-primary" type="submit" id="contactSubmit">Send</button>
-            <p class="form-note" id="contactNote">Goes to tooeyteam@gmail.com. <a href="privacy.html">Privacy</a></p>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a class="brand" href="index.html"><img src="logo.png" width="171" height="74" alt="Tooey" /></a>
-        <p class="copyright">© 2026 Tooey LLC</p>
-      </div>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="how.html">How it works</a>
-        <a href="about.html">About</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="#contact">Talk to us</a>
-      </nav>
+    <div class="hero-copy">
+      <h1 id="hero-title">Your new restaurant operating system.</h1>
+      <p class="lead">Tooey calculates your forecast, prep and shifts from your own sales, so you make more and manage less.</p>
+      <button class="btn talk-open" type="button" aria-haspopup="dialog" aria-controls="talk-dialog">Try Tooey free</button>
+      <a class="btn talk-mail" href="mailto:tooeyteam@gmail.com?subject=New%20Tooey%20inquiry">Try Tooey free</a>
     </div>
-  </footer>
+  </section>
 
-  <div class="cta-bar">
-    <p>Free while we're in a pilot.</p>
-    <a class="btn btn-primary" href="#contact">Talk to us</a>
+  <!-- What it does: one board, three scenes, one thread.
+       Each scene is a photograph of a restaurant at work with a piece of
+       Tooey's real console pinned to it, and a thread runs from pin to pin.
+       With motion on a wide screen the section pins and the camera follows
+       the thread from Forecast to Prep to Shifts as the page scrolls
+       (site.js adds .is-pinned and moves the board); the words stay put and
+       only the step in view comes up. Otherwise the whole board shows at
+       once. The pictures are illustrations drawn from free Unsplash
+       photographs (see NOTES.md); the floor plan is plan.svg, from plan.py;
+       the figures are the console's demo restaurant. -->
+  <section class="work sheet" id="what" aria-labelledby="work-title">
+    <div class="work-pin">
+      <div class="work-stage">
+        <div class="view">
+        <img class="plan" src="plan.svg" alt="" width="3200" height="2960" decoding="async">
+        <div class="board">
+          <svg class="thread" viewBox="0 0 2200 2120" aria-hidden="true" focusable="false">
+            <path class="thread-shade" d=""/>
+            <path class="thread-line" d=""/>
+          </svg>
+
+          <!-- 0. Forecast: the day ahead, read at the counter -->
+          <figure class="shot" data-shot="0">
+            <div class="shot-photo"><img src="art/forecast-1800.jpg" srcset="art/forecast-1100.jpg 1100w, art/forecast-1800.jpg 1800w" sizes="1100px" width="1800" height="1200" alt="" decoding="async"></div>
+            <p class="shot-cap" aria-hidden="true"><b>01</b> Forecast</p>
+            <div class="card c-forecast" aria-hidden="true">
+              <i class="pin" aria-hidden="true"></i>
+              <p class="c-head"><span>Forecast</span></p>
+              <p class="c-sub">Tuesday, October 7</p>
+              <div class="c-stats">
+                <div class="c-stat">
+                  <p class="c-k">Expected sales <em class="chip chip-up">+2%</em></p>
+                  <p class="c-big"><b data-count="4410" data-pre="$">$4,410</b></p>
+                  <p class="c-note">+$90 vs average Tuesday</p>
+                </div>
+                <div class="c-stat">
+                  <p class="c-k">Expected covers <em class="chip chip-up">+3%</em></p>
+                  <p class="c-big"><b data-count="214">214</b></p>
+                  <p class="c-note">+6 vs average Tuesday</p>
+                </div>
+              </div>
+              <dl class="c-from">
+                <div><dt>Sales through</dt><dd>Monday, 11:42pm</dd></div>
+                <div><dt>Compared with</dt><dd>Last 4 Tuesdays</dd></div>
+              </dl>
+            </div>
+            <figcaption class="sr">A restaurant owner at the counter, reading the day ahead on a tablet. Example forecast for Tuesday: $4,410 in sales and 214 covers, a little over an average Tuesday, built from sales through Monday night.</figcaption>
+          </figure>
+
+          <!-- 1. Prep: the printed sheet beside the board -->
+          <figure class="shot" data-shot="1">
+            <div class="shot-photo"><img src="art/prep-1600.jpg" srcset="art/prep-1100.jpg 1100w, art/prep-1600.jpg 1600w" sizes="1100px" width="1600" height="1200" alt="" decoding="async"></div>
+            <p class="shot-cap" aria-hidden="true"><b>02</b> Prep</p>
+            <div class="card c-sheet" aria-hidden="true">
+              <i class="pin" aria-hidden="true"></i>
+              <div class="sheet-top">
+                <div>
+                  <p class="sheet-brand"><img src="mark.svg" alt="" width="14" height="14">Tooey</p>
+                  <p class="c-title">Tuesday prep</p>
+                  <p class="c-note">Tuesday, October 7</p>
+                </div>
+                <div class="sheet-covers"><span>Expected covers</span><b>214</b></div>
+              </div>
+              <table class="prep-sheet">
+                <thead><tr><th>Item</th><th>Have ready</th><th>On hand</th><th>Done</th></tr></thead>
+                <tbody>
+                  <tr style="--i:0"><td>Prime rib</td><td><b>16</b> slices</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:1"><td>Fish tacos</td><td><b>18</b> orders</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:2"><td>Fish and chips</td><td><b>16</b> portions</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:3"><td>Mushroom risotto</td><td><b>12</b> portions</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:4"><td>Ribeye</td><td><b>10</b> steaks</td><td></td><td><i class="box"></i></td></tr>
+                  <tr style="--i:5"><td>Roast chicken</td><td><b>8</b> halves</td><td></td><td><i class="box"></i></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption class="sr">A cook at the prep station in the morning. Example printed prep sheet: how much of each main to have ready, ticked off as it is made.</figcaption>
+          </figure>
+
+          <!-- 2. Shifts: the team before service -->
+          <figure class="shot" data-shot="2">
+            <div class="shot-photo"><img src="art/shifts-1800.jpg" srcset="art/shifts-1100.jpg 1100w, art/shifts-1800.jpg 1800w" sizes="1100px" width="1800" height="1200" alt="" decoding="async"></div>
+            <p class="shot-cap" aria-hidden="true"><b>03</b> Shifts</p>
+            <div class="card c-hours" aria-hidden="true">
+              <i class="pin" aria-hidden="true"></i>
+              <p class="c-head"><span>Busy hours</span></p>
+              <p class="c-sub">An average Tuesday, last 4 weeks</p>
+              <div class="heat">
+                <div class="heat-cell" style="--v:.26;--i:0"><b>$200</b><i>11</i></div>
+                <div class="heat-cell is-dark" style="--v:.74;--i:1"><b>$560</b><i>12</i></div>
+                <div class="heat-cell is-dark" style="--v:.64;--i:2"><b>$490</b><i>1</i></div>
+                <div class="heat-cell" style="--v:.26;--i:3"><b>$200</b><i>2</i></div>
+                <div class="heat-cell" style="--v:.16;--i:4"><b>$120</b><i>3</i></div>
+                <div class="heat-cell" style="--v:.18;--i:5"><b>$140</b><i>4</i></div>
+                <div class="heat-cell" style="--v:.43;--i:6"><b>$330</b><i>5</i></div>
+                <div class="heat-cell is-dark" style="--v:.84;--i:7"><b>$640</b><i>6</i></div>
+                <div class="heat-cell is-dark is-peak" style="--v:1;--i:8"><b>$760</b><i>7pm</i></div>
+                <div class="heat-cell is-dark" style="--v:.79;--i:9"><b>$600</b><i>8</i></div>
+                <div class="heat-cell" style="--v:.32;--i:10"><b>$240</b><i>9</i></div>
+                <div class="heat-cell" style="--v:.08;--i:11"><b>$60</b><i>10</i></div>
+              </div>
+              <p class="c-busiest"><span>Busiest hour</span><b>7pm</b><span class="c-note">$760 on average</span></p>
+              <p class="c-staff">Most hands on <b>6 to 9pm</b></p>
+            </div>
+            <figcaption class="sr">The kitchen team together at the pass before service. Example busy hours for an average Tuesday: sales by hour from 11am to 10pm, busiest at 7pm with $760 on average, so the most people are on from 6 to 9pm.</figcaption>
+          </figure>
+        </div>
+        </div>
+      </div>
+      <div class="work-text">
+      <div class="work-head">
+        <h2 id="work-title">What Tooey does</h2>
+        <p>Three core operations, planned daily from your own sales data.</p>
+      </div>
+      <ol class="work-list">
+        <li class="work-item" data-step="0">
+          <h3 id="forecast-title">Forecast</h3>
+          <p>How busy each day will be and what will sell, worked out from your own sales.</p>
+        </li>
+        <li class="work-item" data-step="1">
+          <h3 id="prep-title">Prep</h3>
+          <p>How much of each dish to make, ready every morning before prep: a little over what should sell.</p>
+        </li>
+        <li class="work-item" data-step="2">
+          <h3 id="shifts-title">Shifts</h3>
+          <p>The right amount of people on at the right time, matched to how busy each night will be.</p>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </section>
+  <!-- Who it's for: a street of four independents. Their lamps come on in
+       turn as the section scrolls in. -->
+  <section class="indie sheet" id="who" aria-labelledby="indie-title">
+    <div class="indie-copy">
+      <h2 id="indie-title">Built for independent restaurants.</h2>
+      <p>Large chains have entire teams running their back office. Independent restaurants have the owner. Tooey is that team.</p>
+    </div>
+    <figure class="scene scene-street" data-scene="indies" aria-hidden="true"><div class="art"></div><img class="paint" src="art/indies.jpg" alt="" width="1774" height="887" loading="lazy" decoding="async"></figure>
+  </section>
+
+  <!-- How to start. -->
+  <section class="start sheet" id="start" aria-labelledby="start-title">
+    <h2 id="start-title">Setup in a&nbsp;week.</h2>
+    <ol class="steps">
+      <li><img class="sketch" src="art/sketch-pos.png" alt="" width="670" height="417" loading="lazy" decoding="async"><span class="n" aria-hidden="true">1</span><h3>Onboard with our team</h3><p>We set up an automatic nightly download from your POS.</p></li>
+      <li><img class="sketch" src="art/sketch-receipts.png" alt="" width="695" height="550" loading="lazy" decoding="async"><span class="n" aria-hidden="true">2</span><h3>Tooey learns your restaurant</h3><p>We train its model on all of your past sales, so it fits your restaurant.</p></li>
+      <li><img class="sketch" src="art/sketch-prep.png" alt="" width="671" height="445" loading="lazy" decoding="async"><span class="n" aria-hidden="true">3</span><h3>Deploy</h3><p>Check the counts against what sold, then decide.</p></li>
+    </ol>
+  </section>
+
+  <!-- The close: one wide lamplight bar. The form lives in the dialog below. -->
+  <section class="talk sheet" id="talk" aria-label="Try Tooey free">
+    <div class="talk-lamps" aria-hidden="true"><span class="talk-lamp"><svg viewBox="0 0 200 170" aria-hidden="true" focusable="false"><defs><linearGradient id="LG0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".75"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient></defs><polygon points="78,62 122,62 168,170 32,170" fill="url(#LG0)"/><line x1="100" y1="0" x2="100" y2="38"/><path d="M76 62 Q76 40 100 38 Q124 40 124 62 Z" class="shade"/><line x1="72" y1="62" x2="128" y2="62"/><circle cx="100" cy="66" r="5" class="bulb"/></svg></span><span class="talk-lamp"><svg viewBox="0 0 200 170" aria-hidden="true" focusable="false"><defs><linearGradient id="LG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".75"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient></defs><polygon points="78,62 122,62 168,170 32,170" fill="url(#LG1)"/><line x1="100" y1="0" x2="100" y2="38"/><path d="M76 62 Q76 40 100 38 Q124 40 124 62 Z" class="shade"/><line x1="72" y1="62" x2="128" y2="62"/><circle cx="100" cy="66" r="5" class="bulb"/></svg></span><span class="talk-lamp"><svg viewBox="0 0 200 170" aria-hidden="true" focusable="false"><defs><linearGradient id="LG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d2a0" stop-opacity=".75"/><stop offset="1" stop-color="#f1d2a0" stop-opacity="0"/></linearGradient></defs><polygon points="78,62 122,62 168,170 32,170" fill="url(#LG2)"/><line x1="100" y1="0" x2="100" y2="38"/><path d="M76 62 Q76 40 100 38 Q124 40 124 62 Z" class="shade"/><line x1="72" y1="62" x2="128" y2="62"/><circle cx="100" cy="66" r="5" class="bulb"/></svg></span></div>
+    <button class="bar talk-open" type="button" aria-haspopup="dialog" aria-controls="talk-dialog">
+      <span class="bar-word">Try Tooey free</span>
+      <svg class="bar-arrow" viewBox="0 0 120 40" aria-hidden="true" focusable="false"><path d="M2 20H116M98 4L116 20L98 36"/></svg>
+    </button>
+    <a class="bar talk-mail" href="mailto:tooeyteam@gmail.com?subject=New%20Tooey%20inquiry">
+      <span class="bar-word">Try Tooey free</span>
+      <svg class="bar-arrow" viewBox="0 0 120 40" aria-hidden="true" focusable="false"><path d="M2 20H116M98 4L116 20L98 36"/></svg>
+    </a>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Tooey LLC</p>
+  <p><a href="privacy.html">Privacy</a></p>
+</footer>
+
+<!-- Try Tooey free: a modal dialog holding the contact form. -->
+<dialog class="talk-dialog" id="talk-dialog" aria-labelledby="dlg-title" aria-describedby="dlg-desc">
+  <div class="dlg">
+    <button class="dlg-close" type="button" aria-label="Close">
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+    <h2 id="dlg-title">Try Tooey</h2>
+    <p id="dlg-desc">Tell us about your restaurant and we'll set up your free pilot.</p>
+    <form class="form" id="form" action="https://formsubmit.co/tooeyteam@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Tooey inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="hp" aria-hidden="true"><label for="f-honey">Leave this empty</label><input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required autofocus></div>
+      <div class="field"><label for="f-rest">Restaurant</label><input id="f-rest" name="restaurant" type="text" autocomplete="organization" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-pos">Your POS</label><input id="f-pos" name="pos" type="text" required></div>
+      <div class="field field-wide"><label for="f-msg">Message <span class="opt">(optional)</span></label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="form-end">
+        <button class="btn btn-send" type="submit">Send</button>
+        <p class="status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
+</dialog>
 
-  <script src="site.js"></script>
+<script src="draw.js"></script>
+<script src="scenes.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
