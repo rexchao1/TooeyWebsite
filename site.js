@@ -7,7 +7,7 @@
    Exploration 44: 35 with the headline typed out on load.
    Exploration 35: the operating system (site 34, revised).
    Draws the rooms, then lights them: the street on load, and, with a mouse,
-   the pointer as a lamp. Prep, shifts and growth share one pinned section
+   the pointer as a lamp. Prep, inventory and growth share one pinned section
    that steps through the three as the page scrolls. When scrolling stops
    between two resting places, the page eases to the nearer one. Then the
    dialog and the form inside it. */

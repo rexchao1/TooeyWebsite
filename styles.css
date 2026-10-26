@@ -11,7 +11,7 @@
    Exploration 44: 35 with a typed headline, a header with no rules,
    no column rules in the hero and a shorter pin. Exploration 35: the
    operating system. Site 34 (the lit room), revised: a sticky header, one
-   pinned section for prep, shifts and growth, and the form moved into a
+   pinned section for prep, inventory and growth, and the form moved into a
    dialog. Built on 31, light on porcelain.
    The page is a prep sheet: four ruled columns between two margins, rows
    ruled across them. Pictures are drawn rooms put through one treatment,
@@ -475,7 +475,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   text-wrap: balance;
 }
 
-/* ---------- 2. what it does: prep, shifts, growth ----------
+/* ---------- 2. what it does: prep, inventory, growth ----------
    Default (no script, reduced motion, narrow screens): the heading, then
    each drawing beside its words, three rows in normal flow, every scene
    finished. The stage and the text dissolve into the grid so each row can
@@ -622,14 +622,14 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   background: radial-gradient(circle at 35% 30%, #f6dcae, #b8874a 60%, #7a5428);
   box-shadow: 0 2px 3px rgba(10, 14, 18, .35);
 }
-.c-hours .pin { right: 22px; top: -8px; }
+.c-stock .pin { right: 22px; top: -8px; }
 .c-forecast .pin { right: 22px; top: -8px; }
 .c-sheet .pin { left: 26px; top: -8px; }
 /* the cards on the board, by scene */
 /* on the empty bar in the foreground, clear of the laptop he is reading */
 .board .c-forecast { left: -110px; top: 470px; width: 440px; bottom: auto; }
 .board .c-sheet { left: -130px; top: 300px; width: 440px; bottom: auto; }
-.board .c-hours { left: 520px; top: 470px; width: 580px; bottom: auto; transform: none; }
+.board .c-stock { left: 520px; top: 330px; width: 580px; bottom: auto; transform: none; }
 .board .card { z-index: 3; }
 /* the thread sits over the photographs and under the cards */
 .board .shot-photo, .board .shot-cap { position: relative; z-index: 1; }
@@ -663,7 +663,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   text-align: left;
 }
 .card :where(p) { margin: 0; }
-.c-rows b, .prep-sheet b, .sheet-covers b, .heat-cell b { font-variant-numeric: tabular-nums; }
+.c-rows b, .prep-sheet b, .sheet-covers b { font-variant-numeric: tabular-nums; }
 .win-tag {
   margin-left: auto;
   font: 500 10px/1.6 var(--ui); letter-spacing: .1em; text-transform: uppercase;
@@ -726,26 +726,24 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .box::after { content: ""; position: absolute; left: 4px; top: 1px; width: 3.5px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
 .sheet-tag { position: absolute; right: 24px; top: 20px; }
 
-/* shifts: busy hours */
-.c-hours { left: 50%; bottom: 7%; width: min(600px, 88%); transform: translateX(-50%); }
-.heat { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 14px; }
-.heat-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.heat-cell b {
-  display: grid; place-items: center;
-  width: 100%; height: 44px; border-radius: 5px;
-  font-size: 10.5px; font-weight: 500;
-  background: color-mix(in srgb, #9c5a26 calc(var(--v) * 94%), #f1ebdd);
-  color: rgba(35, 42, 47, .75);
-}
-.heat-cell.is-dark b { color: #fbfaf7; }
-.heat-cell i { font-style: normal; font-size: 10.5px; color: rgba(35, 42, 47, .55); }
-.heat-cell.is-peak i { color: var(--slate); font-weight: 600; }
-.heat-cell.is-peak b { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px var(--slate); }
-.c-busiest { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 13px; color: rgba(35, 42, 47, .62); }
+/* inventory: on hand against need */
+.c-stock { left: 50%; bottom: 7%; width: min(600px, 88%); transform: translateX(-50%); }
+.c-stock .c-head .win-tag { color: #9a3a2e; border-color: rgba(154, 58, 46, .3); }
+.stock { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.stock th { font: 600 10.5px/1 var(--ui); letter-spacing: .09em; text-transform: uppercase; text-align: left; white-space: nowrap; padding: 0 0 8px; border-bottom: 1px solid var(--rule-strong); color: rgba(35, 42, 47, .62); }
+.stock td { padding: 7px 0; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.stock th:nth-child(2), .stock td:nth-child(2) { width: 34%; }
+.stock th:nth-child(3), .stock td:nth-child(3) { width: 16%; color: rgba(35, 42, 47, .62); }
+.stock th:nth-child(4), .stock td:nth-child(4) { width: 16%; text-align: right; }
+.stock td:nth-child(3) { font-size: 12.5px; }
+.lvl { display: inline-block; vertical-align: middle; width: 64px; height: 6px; margin-right: 10px; border-radius: 3px; background: #ece5d6; overflow: hidden; }
+.lvl i { display: block; height: 100%; width: calc(var(--v) * 100%); border-radius: 3px; background: #6f8a6a; transform-origin: left; }
+.is-low .lvl i { background: #b0603a; }
+.stock td b { font-weight: 600; color: #9a3a2e; }
+.stock .ok { font-size: 12px; color: #2e6a45; }
+.c-busiest { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; padding-top: 4px; font-size: 13px; color: rgba(35, 42, 47, .62); }
 .c-busiest b { font: 400 22px/1 var(--display); color: var(--slate); }
 .c-busiest .c-note { margin: 0; }
-.c-staff { margin-top: 8px !important; font-size: 13px; color: var(--slate); }
-.c-staff b { font-weight: 600; }
 
 /* ---------- the cards play when the camera reaches their scene ----------
    The cards stay pinned up all along; what is on them plays. */
@@ -758,14 +756,12 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 /* half way through the morning: three made, three to go */
 .c-sheet tr:nth-child(n+4) .box, .motion .work.is-pinned .shot.play .c-sheet tr:nth-child(n+4) .box { background: transparent; animation: none; }
 .c-sheet tr:nth-child(n+4) .box::after { display: none; }
-/* hours: the day fills in, left to right */
-.motion .work.is-pinned .shot:not(.play) .heat-cell b { opacity: 0; }
-.motion .work.is-pinned .shot.play .heat-cell b { animation: cell .5s calc(.9s + var(--i) * 70ms) cubic-bezier(.2, .8, .2, 1) both; }
-.motion .work.is-pinned .shot.play .heat-cell.is-peak b { animation: cell .5s calc(.9s + var(--i) * 70ms) cubic-bezier(.2, .8, .2, 1) both, peak 1.2s 2s ease-out both; }
+/* inventory: the shelf levels fill in, row by row */
+.motion .work.is-pinned .shot:not(.play) .lvl i { transform: scaleX(0); }
+.motion .work.is-pinned .shot.play .lvl i { animation: fill .6s calc(.9s + var(--i) * 120ms) cubic-bezier(.2, .8, .2, 1) both; }
 
 @keyframes tick-box { from { background: transparent; } to { background: var(--slate); } }
-@keyframes cell { from { opacity: 0; transform: scaleY(.4); } to { opacity: 1; transform: none; } }
-@keyframes peak { from { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px rgba(35, 42, 47, 0); } to { box-shadow: 0 0 0 2px #fbfaf7, 0 0 0 3.5px var(--slate); } }
+@keyframes fill { from { transform: scaleX(0); } to { transform: none; } }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* ---------- the hero: the console over the street ----------
