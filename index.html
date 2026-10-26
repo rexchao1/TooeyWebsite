@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tooey: your new restaurant operating system</title>
-<meta name="description" content="Tooey runs prep, shifts and slow nights from your restaurant's own sales, so you make more and manage less. Free during the pilot.">
+<meta name="description" content="Tooey runs prep, inventory and slow nights from your restaurant's own sales, so you make more and manage less. Free during the pilot.">
 <meta property="og:title" content="Tooey: your new restaurant operating system">
-<meta property="og:description" content="Tooey runs prep, shifts and slow nights from your restaurant's own sales, so you make more and manage less. Free during the pilot.">
+<meta property="og:description" content="Tooey runs prep, inventory and slow nights from your restaurant's own sales, so you make more and manage less. Free during the pilot.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/literata.woff2" as="font" type="font/woff2" crossorigin>
@@ -142,7 +142,7 @@
     </div>
     <div class="hero-copy">
       <h1 id="hero-title">Your new restaurant operating system.</h1>
-      <p class="lead">Tooey calculates your forecast, prep and shifts from your own sales, so you make more and manage less.</p>
+      <p class="lead">Tooey calculates your forecast, prep and inventory from your own sales, so you make more and manage less.</p>
       <button class="btn talk-open" type="button" aria-haspopup="dialog" aria-controls="talk-dialog">Try Tooey free</button>
       <a class="btn talk-mail" href="mailto:tooeyteam@gmail.com?subject=New%20Tooey%20inquiry">Try Tooey free</a>
     </div>
@@ -152,7 +152,7 @@
        Each scene is a photograph of a restaurant at work with a piece of
        Tooey's real console pinned to it, and a thread runs from pin to pin.
        With motion on a wide screen the section pins and the camera follows
-       the thread from Forecast to Prep to Shifts as the page scrolls
+       the thread from Forecast to Prep to Inventory as the page scrolls
        (site.js adds .is-pinned and moves the board); the words stay put and
        only the step in view comes up. Otherwise the whole board shows at
        once. The pictures are illustrations drawn from free Unsplash
@@ -226,32 +226,28 @@
             <figcaption class="sr">A cook at the prep station in the morning. Example printed prep sheet: how much of each main to have ready, ticked off as it is made.</figcaption>
           </figure>
 
-          <!-- 2. Shifts: the team before service -->
+          <!-- 2. Inventory: what is on the shelf against what the week needs -->
           <figure class="shot" data-shot="2">
             <div class="shot-photo"><img src="art/shifts-1800.jpg" srcset="art/shifts-1100.jpg 1100w, art/shifts-1800.jpg 1800w" sizes="1100px" width="1800" height="1200" alt="" decoding="async"></div>
-            <p class="shot-cap" aria-hidden="true"><b>03</b> Shifts</p>
-            <div class="card c-hours" aria-hidden="true">
+            <p class="shot-cap" aria-hidden="true"><b>03</b> Inventory</p>
+            <div class="card c-stock" aria-hidden="true">
               <i class="pin" aria-hidden="true"></i>
-              <p class="c-head"><span>Busy hours</span></p>
-              <p class="c-sub">An average Tuesday, last 4 weeks</p>
-              <div class="heat">
-                <div class="heat-cell" style="--v:.26;--i:0"><b>$200</b><i>11</i></div>
-                <div class="heat-cell is-dark" style="--v:.74;--i:1"><b>$560</b><i>12</i></div>
-                <div class="heat-cell is-dark" style="--v:.64;--i:2"><b>$490</b><i>1</i></div>
-                <div class="heat-cell" style="--v:.26;--i:3"><b>$200</b><i>2</i></div>
-                <div class="heat-cell" style="--v:.16;--i:4"><b>$120</b><i>3</i></div>
-                <div class="heat-cell" style="--v:.18;--i:5"><b>$140</b><i>4</i></div>
-                <div class="heat-cell" style="--v:.43;--i:6"><b>$330</b><i>5</i></div>
-                <div class="heat-cell is-dark" style="--v:.84;--i:7"><b>$640</b><i>6</i></div>
-                <div class="heat-cell is-dark is-peak" style="--v:1;--i:8"><b>$760</b><i>7pm</i></div>
-                <div class="heat-cell is-dark" style="--v:.79;--i:9"><b>$600</b><i>8</i></div>
-                <div class="heat-cell" style="--v:.32;--i:10"><b>$240</b><i>9</i></div>
-                <div class="heat-cell" style="--v:.08;--i:11"><b>$60</b><i>10</i></div>
-              </div>
-              <p class="c-busiest"><span>Busiest hour</span><b>7pm</b><span class="c-note">$760 on average</span></p>
-              <p class="c-staff">Most hands on <b>6 to 9pm</b></p>
+              <p class="c-head"><span>Inventory</span><span class="win-tag">Order by 4pm</span></p>
+              <p class="c-sub">Counted Tuesday morning, for service through Wednesday</p>
+              <table class="stock">
+                <thead><tr><th>Item</th><th>On hand</th><th>Need</th><th>Order</th></tr></thead>
+                <tbody>
+                  <tr class="is-low" style="--i:0;--v:0.5"><td>Prime rib</td><td><span class="lvl"><i></i></span>1 roast</td><td>2 roasts</td><td><b>1 roast</b></td></tr>
+                  <tr class="is-low" style="--i:1;--v:0.6"><td>Cod fillets</td><td><span class="lvl"><i></i></span>6 lb</td><td>10 lb</td><td><b>5 lb</b></td></tr>
+                  <tr class="is-low" style="--i:2;--v:0.78"><td>Ribeye</td><td><span class="lvl"><i></i></span>14 steaks</td><td>18 steaks</td><td><b>6 steaks</b></td></tr>
+                  <tr style="--i:3;--v:1"><td>Whole chickens</td><td><span class="lvl"><i></i></span>6</td><td>5</td><td><span class="ok">Stocked</span></td></tr>
+                  <tr style="--i:4;--v:1"><td>Arborio rice</td><td><span class="lvl"><i></i></span>12 lb</td><td>5 lb</td><td><span class="ok">Stocked</span></td></tr>
+                  <tr class="is-low" style="--i:5;--v:0.5"><td>Fryer oil</td><td><span class="lvl"><i></i></span>1 jug</td><td>2 jugs</td><td><b>2 jugs</b></td></tr>
+                </tbody>
+              </table>
+              <p class="c-busiest"><span>Next delivery</span><b>Wed 7am</b><span class="c-note">4 items on the order</span></p>
             </div>
-            <figcaption class="sr">The kitchen team together at the pass before service. Example busy hours for an average Tuesday: sales by hour from 11am to 10pm, busiest at 7pm with $760 on average, so the most people are on from 6 to 9pm.</figcaption>
+            <figcaption class="sr">The kitchen team together at the pass before service. Example inventory for Tuesday: what is on the shelf against what Tuesday and Wednesday should use, with four items short and added to the order before the 4pm cutoff.</figcaption>
           </figure>
         </div>
         </div>
@@ -271,8 +267,8 @@
           <p>How much of each dish to make, ready every morning before prep: a little over what should sell.</p>
         </li>
         <li class="work-item" data-step="2">
-          <h3 id="shifts-title">Shifts</h3>
-          <p>The right amount of people on at the right time, matched to how busy each night will be.</p>
+          <h3 id="inventory-title">Inventory</h3>
+          <p>What's on the shelf against what the next few days will use, and what to order before the cutoff.</p>
         </li>
       </ol>
       </div>
