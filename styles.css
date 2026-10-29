@@ -107,8 +107,6 @@ ol { padding: 0; list-style: none; }
 }
 .btn:hover { background: #ecc78e; box-shadow: inset 0 0 0 1px rgba(35, 42, 47, .3); }
 .btn-small { font-size: .9375rem; padding: .8rem 1.1rem .75rem; }
-/* "Try Tooey free" opens the dialog; without scripts it is an email link */
-.js .talk-mail, html:not(.js) .talk-open { display: none; }
 
 /* ---------- the sheet: ruled columns and rows ---------- */
 .sheet { position: relative; }
@@ -425,7 +423,14 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   font-size: clamp(1.125rem, 1.35vw, 1.3125rem);
   line-height: 1.5;
 }
-.hero .btn { margin-top: 2.25rem; }
+.hero-actions { margin-top: 2.25rem; }
+.hero-alt {
+  margin: .8rem 0 0;
+  font: 400 .9375rem/1.45 var(--serif);
+  color: var(--ink-2);
+}
+.hero-alt a { text-underline-offset: .18em; text-decoration-thickness: 1px; }
+.hero-alt a:hover { color: var(--ink); }
 /* the words sit on a little cleared paper as the drawing runs under them */
 .hero-copy::before {
   content: ""; position: absolute; z-index: -1;
@@ -437,7 +442,7 @@ html:not(.motion) .steam { stroke-opacity: .3; }
    The real words stay in the heading. While it types they are transparent,
    and an aria-hidden copy on top, one span per letter, shows them as they
    are set, with a block cursor after the last one. Then the copy goes. */
-.hero-wait .hero-copy h1, .hero-wait .hero-copy .lead, .hero-wait .hero-copy .btn { opacity: 0; }
+.hero-wait .hero-copy h1, .hero-wait .hero-copy .lead, .hero-wait .hero-copy .hero-actions { opacity: 0; }
 .hero-copy h1, .hero-copy .lead { position: relative; }
 .fx-run h1, .fx-run .lead { color: transparent; }
 .fx-dup {
@@ -448,8 +453,8 @@ html:not(.motion) .steam { stroke-opacity: .3; }
 .lead .fx-dup { color: var(--ink-2); }
 .fx-dup .ch { color: transparent; }
 .fx-dup .ch.on { color: inherit; }
-.fx-run .btn.talk-open { opacity: 0; transition: opacity .6s ease; }
-.fx-run.fx-btn .btn.talk-open { opacity: 1; }
+.fx-run .hero-actions { opacity: 0; transition: opacity .6s ease; }
+.fx-run.fx-btn .hero-actions { opacity: 1; }
 .ch.cur, .ch.pre { position: relative; }
 .ch.cur::after, .ch.pre::before {
   /* cap height to baseline, a little narrower than a letter */
@@ -1310,6 +1315,12 @@ html.modal-open { overflow: hidden; }
 /* The closing bar's words: heavier and larger */
 .talk .bar { font-size: clamp(3.5rem, 9.4vw, 10.5rem); font-weight: 600; letter-spacing: -.035em; }
 .talk .bar-arrow { stroke-width: 2.4; }
+/* "Schedule a demo" stays one line until the bar is too narrow, then breaks
+   after Schedule so the second line is "a demo" rather than a leftover word. */
+@media (max-width: 680px) {
+  .talk .bar-word { line-height: .9; }
+  .bar-rest { display: block; }
+}
 @media (max-width: 760px) {
   .talk-lamps { grid-template-columns: repeat(3, minmax(0, 1fr)); min-width: 0; }
   .talk-lamp { min-width: 0; }
