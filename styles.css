@@ -1220,7 +1220,9 @@ html.modal-open { overflow: hidden; }
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 76%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 76%, transparent 100%);
   }
-  .hero-copy { padding: calc(93vw - .5rem) 0 3.5rem; }
+  /* the street starts 2vh under the header and is 92.8vw tall: start the
+     words just under it so the headline never sits on the pavement */
+  .hero-copy { padding: calc(2vh + 93vw + 1rem) 0 3.5rem; }
   .hero-copy::before { display: none; }
 
   .work-pin, .indie, .start, .talk, .foot, .page { grid-template-columns: 1fr; }
@@ -1308,8 +1310,30 @@ html.modal-open { overflow: hidden; }
 /* The closing bar's words: heavier and larger */
 .talk .bar { font-size: clamp(3.5rem, 9.4vw, 10.5rem); font-weight: 600; letter-spacing: -.035em; }
 .talk .bar-arrow { stroke-width: 2.4; }
-/* "Schedule a demo" stays one line until the bar is too narrow, then breaks
-   after Schedule so the second line is "a demo" rather than a leftover word. */
+/* On hover the bar pops: it lifts toward the reader, the lamps flood it
+   amber, a slate edge closes round it and the arrow runs further out. */
+.talk .bar { transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease; }
+.talk .bar:hover, .talk .bar:focus-visible {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow:
+    0 28px 60px -18px rgba(35, 42, 47, .45),
+    0 0 90px -10px rgba(241, 190, 110, .85);
+}
+.talk .bar:hover::before, .talk .bar:focus-visible::before {
+  background:
+    radial-gradient(30% 130% at 16.7% 0%, rgba(250, 200, 120, 1), rgba(250, 200, 120, 0) 80%),
+    radial-gradient(30% 130% at 50% 0%, rgba(250, 200, 120, 1), rgba(250, 200, 120, 0) 80%),
+    radial-gradient(30% 130% at 83.3% 0%, rgba(250, 200, 120, 1), rgba(250, 200, 120, 0) 80%),
+    #f1d6a4;
+}
+.talk .bar:hover { outline: 3px solid var(--slate); outline-offset: -3px; }
+.talk .bar:hover .bar-arrow, .talk .bar:focus-visible .bar-arrow { transform: translateX(1rem); }
+.talk .bar:active { transform: translateY(-2px) scale(1.004); }
+@media (prefers-reduced-motion: reduce) {
+  .talk .bar:hover, .talk .bar:focus-visible { transform: none; }
+}
+/* "Try Tooey free" stays one line until the bar is too narrow, then breaks
+   before free so the second line is not a stray letter or two. */
 @media (max-width: 680px) {
   .talk .bar-word { line-height: .9; }
   .bar-rest { display: block; }
