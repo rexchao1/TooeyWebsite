@@ -424,13 +424,6 @@ html:not(.motion) .steam { stroke-opacity: .3; }
   line-height: 1.5;
 }
 .hero-actions { margin-top: 2.25rem; }
-.hero-alt {
-  margin: .8rem 0 0;
-  font: 400 .9375rem/1.45 var(--serif);
-  color: var(--ink-2);
-}
-.hero-alt a { text-underline-offset: .18em; text-decoration-thickness: 1px; }
-.hero-alt a:hover { color: var(--ink); }
 /* the words sit on a little cleared paper as the drawing runs under them */
 .hero-copy::before {
   content: ""; position: absolute; z-index: -1;
